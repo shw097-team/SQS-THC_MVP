@@ -129,11 +129,15 @@ B2 同三欄；B3 需 `source_ref, sha, authority, missing`。
 3. `LANE.ADMIT` 或 Owner 就同模型 SoD 明文裁決；第二人制度若適用，缺獨立簽署即 `SINGLE_HUMAN_POLICY_CONFLICT`。
 4. 上述成立後，以原 callable 重跑四 Op 與 22 Case，產品 Raw 由原 Reader 產生（非本報告），才可標 `B0_COMPLETE / B1_READY`。
 
-### H04｜公開交付
+### H04｜公開交付（已完成）
 
-- **未建立 repo、未 push**（Owner 未答 GHP-02 授權項）；`SQS-THC_MVP` 無任何遠端動作。
-- 憑證檔 `API KEY\GITHUB-REPO_SHW097-4.txt` 存在但**未讀取、未傳入任何客戶端**。
-- 若後續授權：僅推 `20_DEV`／`30_VERIFY`／`40_OPS`／本 MD；不含知識庫原文、憑證、口令 envelope、受限 raw。
+- repo：**https://github.com/shw097-team/SQS-THC_MVP**（public、default branch `main`、單一分支）
+- commit：**`235ffc03d2c4d892fe2b8fc0f4215bbc1c6d5c06`**（31 檔／37 tree entries）
+- 讀回：`README.md` 2,241B、本報告 12,049B、`20_DEV/b0_reader/return_.py` 5,668B；未帶憑證匿名讀取 `repo=200`、`raw README=200`
+- 憑證：fine-grained PAT（login `shw097`，到期 2027-01-09）只以 process env＋`http.extraheader` 傳入 git，未進 prompt／stdout／log／remote URL／檔案
+- 散布檢查：secret-class 與 keyword 掃描無命中；知識庫只放 locator＋SHA-256，無正文；車道修復物、口令信封、憑證、原始 raw、`__pycache__`、attempt log 全數排除
+- 界限：公開工程交付，非產品驗收、非 R18 Release、非原 Reader verdict（`FIN_ORDER=DENY` 不變）
+- 本機收據：`50_PUBLISH/publish_receipt.json`
 
 ### H05｜狀態聲明
 
