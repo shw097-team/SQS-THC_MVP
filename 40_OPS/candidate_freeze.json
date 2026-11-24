@@ -1,0 +1,70 @@
+{
+ "schema": "B0.CANDIDATE.FREEZE/1",
+ "subject": "SST/SQS-THC/PH01/E00",
+ "batch_id": "B0",
+ "file_count": 15,
+ "tree_sha256": "397d1ecaec6a7909c1d510e2891466763119487df26916c9e14735ed6a0a4585",
+ "files": {
+  "RUN_TESTS.cmd": {
+   "sha256": "b6a1d4f16eaed26d1deefa882bc0ebf5aabc01c9687a825fa2f85eb009d8e6db",
+   "bytes": 64
+  },
+  "WORKORDER_B0_DEV.md": {
+   "sha256": "fad5dc5cc54559a98d97a7c053f0e2f86221e675440008efea6eb1d998b04e9d",
+   "bytes": 9009
+  },
+  "b0_reader/bytes_.py": {
+   "sha256": "2cf306586d364c4c778b2acd25e9b01abe9accd45785a54b472e84a3e7e97d71",
+   "bytes": 5079
+  },
+  "b0_reader/cli.py": {
+   "sha256": "c33985364ddde0b8f42e5ebb9c5c1f01d74cad74cc1504ff041231a4942c27cd",
+   "bytes": 2172
+  },
+  "b0_reader/controls.py": {
+   "sha256": "b1965452a969afdbcea303516740210f939bb7a806db0aa9fb2a5d614abdb79e",
+   "bytes": 8185
+  },
+  "b0_reader/errors.py": {
+   "sha256": "240cecda8c49589dea28638717061bffadf865f47d5fbc1d926d2fb5c39e9620",
+   "bytes": 2485
+  },
+  "b0_reader/fields.py": {
+   "sha256": "cd0c2e77cc0ce4bb93e8c9ccfb25c3ce56ea6e24dcfa38ec2926fa69e6050acb",
+   "bytes": 3965
+  },
+  "b0_reader/return_.py": {
+   "sha256": "265455d3c3cdd6ec2bf8824d5c540455af4e36b0592865089498edc45e08e7e1",
+   "bytes": 5668
+  },
+  "b0_reader/root.py": {
+   "sha256": "e84c8cdd1e4beeb4a564fcfecc8f3442a78a64f7641b4c479344180c0873724d",
+   "bytes": 8071
+  },
+  "b0_reader/__init__.py": {
+   "sha256": "ded1d82e28a3e78d6a135423552e90bbc4eb19d34c05c170f28cc02387515331",
+   "bytes": 617
+  },
+  "tests/test_b0_bytes.py": {
+   "sha256": "59d21d6a98f0cb566369080b2cc94eeb760d71996ca9a5a90a46f495cfe45c8d",
+   "bytes": 4361
+  },
+  "tests/test_b0_cases.py": {
+   "sha256": "704214db3f8c2226cd141e87ee1300cbce4ce8a6216d66ee01a444dac508564b",
+   "bytes": 10734
+  },
+  "tests/test_b0_fields.py": {
+   "sha256": "a3efc85f05320c9c1248074298c5d24ecff0d38045b0338f736905c5324bd9e6",
+   "bytes": 3246
+  },
+  "tests/test_b0_return.py": {
+   "sha256": "c0bdeb456767217729a813f2f98d67c85c0fbbc7a7bd51bc4c5025351da210c1",
+   "bytes": 6133
+  },
+  "tests/test_b0_root.py": {
+   "sha256": "57c0131489ba56848b83d783f3caac6d799eb43a1859c1cdb92e0fb345d80bbc",
+   "bytes": 6339
+  }
+ },
+ "note": "canonical freeze used by 40_OPS/ops_run.json; excludes receipts, attempt logs and __pycache__"
+}

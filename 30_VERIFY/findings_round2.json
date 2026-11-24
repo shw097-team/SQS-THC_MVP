@@ -1,0 +1,234 @@
+{
+ "schema": "B0.CHECKER.FINDINGS/1",
+ "candidate_tree_sha256": "65e6661a9699bf275d359f6d589fc09b76a52ff8275238e556c708fef8f8e8f5",
+ "checker": "VERIFY_SECURITY lane (separate session)",
+ "results": [
+  {
+   "case": "check_root_valid",
+   "verdict": "PASS",
+   "expected_first_fail": "NONE_IF_VALID",
+   "observed": "ok=true; acl_raw_nonempty=true",
+   "evidence": "20_DEV/b0_reader/root.py:146",
+   "note": "Independent call over a permitted source file"
+  },
+  {
+   "case": "check_root_parent_traversal",
+   "verdict": "PASS",
+   "expected_first_fail": "PATH_ESCAPE",
+   "observed": "code=PATH_ESCAPE; first_fail=PATH_ESCAPE",
+   "evidence": "20_DEV/b0_reader/root.py:185",
+   "note": "Synthetic parent traversal outside allowed root"
+  },
+  {
+   "case": "check_root_sibling_prefix",
+   "verdict": "PASS",
+   "expected_first_fail": "PATH_ESCAPE",
+   "observed": "code=PATH_ESCAPE; first_fail=PATH_ESCAPE",
+   "evidence": "20_DEV/b0_reader/root.py:185",
+   "note": "Sibling-prefix containment comparison"
+  },
+  {
+   "case": "check_root_reparse_point",
+   "verdict": "PASS",
+   "expected_first_fail": "REPARSE_POINT",
+   "observed": "code=REPARSE_POINT; first_fail=REPARSE_POINT",
+   "evidence": "20_DEV/b0_reader/root.py:210",
+   "note": "Synthetic reparse metadata, without a filesystem fixture"
+  },
+  {
+   "case": "check_root_ads_path",
+   "verdict": "PASS",
+   "expected_first_fail": "ADS_PATH",
+   "observed": "code=ADS_PATH; first_fail=ADS_PATH",
+   "evidence": "20_DEV/b0_reader/root.py:193",
+   "note": "Alternate data stream suffix"
+  },
+  {
+   "case": "check_root_missing_source",
+   "verdict": "PASS",
+   "expected_first_fail": "ROOT_NOT_FOUND",
+   "observed": "code=ROOT_NOT_FOUND; first_fail=ROOT_NOT_FOUND",
+   "evidence": "20_DEV/b0_reader/root.py:161",
+   "note": "Missing source below an existing root"
+  },
+  {
+   "case": "read_bytes_invalid_utf8",
+   "verdict": "PASS",
+   "expected_first_fail": "ENCODING_INVALID",
+   "observed": "code=ENCODING_INVALID; text=None",
+   "evidence": "20_DEV/b0_reader/bytes_.py:133",
+   "note": "Existing Python bytecode used as strict invalid-UTF-8 payload"
+  },
+  {
+   "case": "read_bytes_sha_mismatch",
+   "verdict": "PASS",
+   "expected_first_fail": "SHA_MISMATCH",
+   "observed": "code=SHA_MISMATCH; first_fail=SHA_MISMATCH",
+   "evidence": "20_DEV/b0_reader/bytes_.py:148",
+   "note": "Deliberately wrong expected digest"
+  },
+  {
+   "case": "read_bytes_crlf_clause_sha",
+   "verdict": "PASS",
+   "expected_first_fail": "NONE_IF_VALID",
+   "observed": "fixture=exec_repair1_receipt.json; CRLF_sha_match=true; LF_only_differs=true",
+   "evidence": "20_DEV/b0_reader/bytes_.py:173",
+   "note": "Existing CRLF source and exact byte-span check"
+  },
+  {
+   "case": "read_bytes_span_out_of_range",
+   "verdict": "PASS",
+   "expected_first_fail": "SPAN_OUT_OF_RANGE",
+   "observed": "code=SPAN_OUT_OF_RANGE; first_fail=SPAN_OUT_OF_RANGE",
+   "evidence": "20_DEV/b0_reader/bytes_.py:168",
+   "note": "Out-of-range line span"
+  },
+  {
+   "case": "fields_missing_disjoint_subset",
+   "verdict": "PASS",
+   "expected_first_fail": "NONE_IF_VALID",
+   "observed": "missing=['y']; observed=['x']; invariants={subset:true,disjoint:true,r_unchanged:true}",
+   "evidence": "20_DEV/b0_reader/fields.py:45",
+   "note": "Unverified/absent required field remains missing"
+  },
+  {
+   "case": "fields_requiredness_hold",
+   "verdict": "PASS",
+   "expected_first_fail": "AUTHOR:TOOL_REQUIREDNESS_HOLD",
+   "observed": "code=REQUIREDNESS_HOLD; first_fail=AUTHOR:TOOL_REQUIREDNESS_HOLD; required_fields=['x','x']",
+   "evidence": "20_DEV/b0_reader/fields.py:126",
+   "note": "Duplicate required-field detection"
+  },
+  {
+   "case": "fields_extra_observed",
+   "verdict": "PASS",
+   "expected_first_fail": "SCHEMA_INVALID",
+   "observed": "code=SCHEMA_INVALID; first_fail=SCHEMA_INVALID",
+   "evidence": "20_DEV/b0_reader/fields.py:117",
+   "note": "Observed key absent from requirements"
+  },
+  {
+   "case": "build_read_set_complete",
+   "verdict": "PASS",
+   "expected_first_fail": "NONE_IF_VALID",
+   "observed": "errors=[]; entries=1; missing_fields=[]; write_set_present=true; write_set=[]",
+   "evidence": "20_DEV/b0_reader/return_.py:178",
+   "note": "Round-1 failure retested; top-level write_set is now asserted empty"
+  },
+  {
+   "case": "build_read_set_ref_isolation",
+   "verdict": "PASS",
+   "expected_first_fail": "NONE_IF_VALID",
+   "observed": "entries=1; errors=1; error_code=ROOT_NOT_FOUND",
+   "evidence": "20_DEV/b0_reader/return_.py:106",
+   "note": "Per-reference ROOT/BYTES/FIELDS loop"
+  },
+  {
+   "case": "build_read_set_no_ambient_open",
+   "verdict": "PASS",
+   "expected_first_fail": "NONE_IF_VALID",
+   "observed": "open_modes=['rb']; write_modes=[]; write_set=[]",
+   "evidence": "20_DEV/b0_reader/return_.py:94",
+   "note": "Independent builtins.open write-mode guard"
+  },
+  {
+   "case": "controls_subject_mismatch",
+   "verdict": "PASS",
+   "expected_first_fail": "AUTHOR:SCOPE_MISMATCH",
+   "observed": "ok=false; first_fail=AUTHOR:SCOPE_MISMATCH",
+   "evidence": "20_DEV/b0_reader/controls.py:164",
+   "note": "Independent control projection"
+  },
+  {
+   "case": "controls_unauthorized_write_set",
+   "verdict": "PASS",
+   "expected_first_fail": "AUTHOR:READ_WRITE_SCOPE_HOLD",
+   "observed": "ok=false; first_fail=AUTHOR:READ_WRITE_SCOPE_HOLD",
+   "evidence": "20_DEV/b0_reader/controls.py:189",
+   "note": "Nonempty product write set"
+  },
+  {
+   "case": "controls_ready_execute_true",
+   "verdict": "PASS",
+   "expected_first_fail": "AUTHOR:FOUR_READY_HOLD",
+   "observed": "ok=false; first_fail=AUTHOR:FOUR_READY_HOLD",
+   "evidence": "20_DEV/b0_reader/controls.py:201",
+   "note": "False-to-true ready mutation"
+  },
+  {
+   "case": "controls_claim_ceiling_inflated",
+   "verdict": "PASS",
+   "expected_first_fail": "AUTHOR:CLAIM_CEILING_DENY",
+   "observed": "ok=false; first_fail=AUTHOR:CLAIM_CEILING_DENY",
+   "evidence": "20_DEV/b0_reader/controls.py:207",
+   "note": "Raised claim ceiling"
+  },
+  {
+   "case": "controls_non_read_effect",
+   "verdict": "PASS",
+   "expected_first_fail": "AUTHOR:EFFECT_UNBOUND",
+   "observed": "ok=false; first_fail=AUTHOR:EFFECT_UNBOUND",
+   "evidence": "20_DEV/b0_reader/controls.py:183",
+   "note": "Effect changed from SOURCE_READ"
+  },
+  {
+   "case": "controls_unknown_policy_retry",
+   "verdict": "PASS",
+   "expected_first_fail": "AUTHOR:UNKNOWN_UNDO_HOLD",
+   "observed": "ok=false; first_fail=AUTHOR:UNKNOWN_UNDO_HOLD",
+   "evidence": "20_DEV/b0_reader/controls.py:213",
+   "note": "UNKNOWN changed to retry"
+  }
+ ],
+ "summary": {
+  "pass": 22,
+  "fail": 0,
+  "not_executed": 0
+ },
+ "claim_ceiling": "independent-of-maker review of an AUTHOR candidate; NOT an OriginalReader verdict, NOT ReadyAccept",
+ "candidate_freeze": {
+  "frozen_at": "2026-11-24T20:07:10.6987536+08:00",
+  "file_count": 19,
+  "manifest_bytes": 1770,
+  "tree_sha256": "65e6661a9699bf275d359f6d589fc09b76a52ff8275238e556c708fef8f8e8f5",
+  "pre_and_post_oracle_match": true,
+  "excluded": [
+   "exec_build_receipt.json*",
+   "__pycache__"
+  ],
+  "repair_file": {
+   "path": "b0_reader/return_.py",
+   "sha256": "265455d3c3cdd6ec2bf8824d5c540455af4e36b0592865089498edc45e08e7e1",
+   "bytes": 5668
+  }
+ },
+ "maker_suite": {
+  "command": "python -m unittest discover -s tests -v",
+  "interpreter": "CPython 3.12.13",
+  "exit_code": 1,
+  "tests_started": 59,
+  "passed": 26,
+  "errors": 33,
+  "failures": 0,
+  "skipped": 0,
+  "execution_status": "BLOCKED_BY_HARNESS_ENVIRONMENT_DEFECT"
+ },
+ "harness_environment_defect": {
+  "confirmed": true,
+  "message": "No usable temporary directory found",
+  "error_count_before_retry": 33,
+  "error_count_after_retry": 33,
+  "retry_tmp": "C:/Projects/Agent_Workspace/SQS-THC_MVP_Workspace/30_VERIFY/tmp",
+  "tmp_directory_created": false,
+  "reason": "Read-only sandbox denied directory creation beneath 30_VERIFY",
+  "classification": "HARNESS_ENVIRONMENT_DEFECT_RATHER_THAN_CANDIDATE_ASSERTION_FAILURE"
+ },
+ "delta_vs_round_1": "PASS count increased 21->22; build_read_set_complete changed FAIL->PASS after the write_set repair; no oracle regressions.",
+ "provenance": {
+  "source": "VERIFY_SECURITY lane session round 2 (separate Codex CLI process)",
+  "dispatch_receipt": "30_VERIFY/verify_round2_receipt.json",
+  "receipt_sha256": "d4268105c0142c426efdd2cae2dd46a11305a7e223ea671d121f9843f4e1ec0d",
+  "transcription": "emitted inline by checker (read-only sandbox); persisted verbatim by Commander",
+  "round": 2
+ }
+}

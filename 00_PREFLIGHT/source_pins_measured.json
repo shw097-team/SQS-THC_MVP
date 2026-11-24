@@ -1,0 +1,42 @@
+{
+ "all_batch_blueprint": {
+  "path": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md",
+  "exists": true,
+  "bytes": 457294,
+  "sha256": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
+  "pin": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
+  "pin_match": true
+ },
+ "b0_blueprint_r2": {
+  "path": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B0_藍圖_實質正文_2026-11-24_r2.md",
+  "exists": true,
+  "bytes": 45229,
+  "sha256": "93f49dc8bde3f32133ac3b69e04a6e5c58292a0d780141d8de07ffe626fcb90c",
+  "pin": "93f49dc8bde3f32133ac3b69e04a6e5c58292a0d780141d8de07ffe626fcb90c",
+  "pin_match": true
+ },
+ "b0_evidence_appendix_r2": {
+  "path": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\證據型附錄\\SST_PLP_PH01_W0_B0_藍圖_證據型附錄_2026-11-24_r2.md",
+  "exists": true,
+  "bytes": 54880,
+  "sha256": "197d1b997c4b927421044e18b70e0eeac02d9bfaa726fe87fd9555262b3a0886",
+  "pin": "197d1b997c4b927421044e18b70e0eeac02d9bfaa726fe87fd9555262b3a0886",
+  "pin_match": true
+ },
+ "b0_exec_pack_r2": {
+  "path": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\執行控制小包\\SST_PLP_PH01_W0_B0_執行控制小包_實質正文_2026-11-24_r2.md",
+  "exists": true,
+  "bytes": 60116,
+  "sha256": "1117efe048943f0bec2e82bb667b7b2251e2f8e54470086bef660d42078a5ada",
+  "pin": null,
+  "pin_match": null
+ },
+ "min_exec_pack_r1": {
+  "path": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\OLD\\SST_PLP_PH01_W0_B0-B8_執行控制小包_本地GPT_WORK_最小執行控制包_2026-11-24_r1.md",
+  "exists": true,
+  "bytes": 50879,
+  "sha256": "063bb31591a2508a271c2f7a88ca7e8c260a3e194453f8815936175027baa6f0",
+  "pin": "063bb31591a2508a271c2f7a88ca7e8c260a3e194453f8815936175027baa6f0",
+  "pin_match": true
+ }
+}

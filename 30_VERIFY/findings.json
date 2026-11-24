@@ -1,0 +1,197 @@
+{
+ "schema": "B0.CHECKER.FINDINGS/1",
+ "candidate_tree_sha256": "84669ffe15fc5843fe78b06a6d56eaf5037dd3954b3048bb2383f0933bf1ba74",
+ "checker": "VERIFY_SECURITY lane (separate session)",
+ "results": [
+  {
+   "case": "check_root_valid",
+   "verdict": "PASS",
+   "expected_first_fail": "NONE_IF_VALID",
+   "observed": "ok=true; acl_raw nonempty",
+   "evidence": "20_DEV/b0_reader/root.py:146",
+   "note": "Independent call over a permitted source file"
+  },
+  {
+   "case": "check_root_parent_traversal",
+   "verdict": "PASS",
+   "expected_first_fail": "PATH_ESCAPE",
+   "observed": "code=PATH_ESCAPE; first_fail=PATH_ESCAPE",
+   "evidence": "20_DEV/b0_reader/root.py:185",
+   "note": "Synthetic parent traversal outside allowed root"
+  },
+  {
+   "case": "check_root_sibling_prefix",
+   "verdict": "PASS",
+   "expected_first_fail": "PATH_ESCAPE",
+   "observed": "code=PATH_ESCAPE; first_fail=PATH_ESCAPE",
+   "evidence": "20_DEV/b0_reader/root.py:185",
+   "note": "Sibling-prefix containment comparison"
+  },
+  {
+   "case": "check_root_reparse_point",
+   "verdict": "PASS",
+   "expected_first_fail": "REPARSE_POINT",
+   "observed": "code=REPARSE_POINT; first_fail=REPARSE_POINT",
+   "evidence": "20_DEV/b0_reader/root.py:205",
+   "note": "Synthetic reparse metadata, without a filesystem fixture"
+  },
+  {
+   "case": "check_root_ads_path",
+   "verdict": "PASS",
+   "expected_first_fail": "ADS_PATH",
+   "observed": "code=ADS_PATH; first_fail=ADS_PATH",
+   "evidence": "20_DEV/b0_reader/root.py:193",
+   "note": "Alternate data stream suffix"
+  },
+  {
+   "case": "check_root_missing_source",
+   "verdict": "PASS",
+   "expected_first_fail": "ROOT_NOT_FOUND",
+   "observed": "code=ROOT_NOT_FOUND; first_fail=ROOT_NOT_FOUND",
+   "evidence": "20_DEV/b0_reader/root.py:146",
+   "note": "Missing source below an existing root"
+  },
+  {
+   "case": "read_bytes_invalid_utf8",
+   "verdict": "PASS",
+   "expected_first_fail": "ENCODING_INVALID",
+   "observed": "code=ENCODING_INVALID; text=None",
+   "evidence": "20_DEV/b0_reader/bytes_.py:133",
+   "note": "Synthetic invalid UTF-8 payload"
+  },
+  {
+   "case": "read_bytes_sha_mismatch",
+   "verdict": "PASS",
+   "expected_first_fail": "SHA_MISMATCH",
+   "observed": "code=SHA_MISMATCH; first_fail=SHA_MISMATCH",
+   "evidence": "20_DEV/b0_reader/bytes_.py:148",
+   "note": "Deliberately wrong expected digest"
+  },
+  {
+   "case": "read_bytes_crlf_clause_sha",
+   "verdict": "PASS",
+   "expected_first_fail": "NONE_IF_VALID",
+   "observed": "clause_sha preserves CR before LF",
+   "evidence": "20_DEV/b0_reader/bytes_.py:173",
+   "note": "Exact CRLF byte-span check"
+  },
+  {
+   "case": "read_bytes_span_out_of_range",
+   "verdict": "PASS",
+   "expected_first_fail": "SPAN_OUT_OF_RANGE",
+   "observed": "code=SPAN_OUT_OF_RANGE; first_fail=SPAN_OUT_OF_RANGE",
+   "evidence": "20_DEV/b0_reader/bytes_.py:168",
+   "note": "Out-of-range line span"
+  },
+  {
+   "case": "fields_missing_disjoint_subset",
+   "verdict": "PASS",
+   "expected_first_fail": "NONE_IF_VALID",
+   "observed": "missing=[y]; observed=[x]; subset=true; disjoint=true",
+   "evidence": "20_DEV/b0_reader/fields.py:45",
+   "note": "Unverified field remains missing"
+  },
+  {
+   "case": "fields_requiredness_hold",
+   "verdict": "PASS",
+   "expected_first_fail": "AUTHOR:TOOL_REQUIREDNESS_HOLD",
+   "observed": "code=REQUIREDNESS_HOLD; first_fail=AUTHOR:TOOL_REQUIREDNESS_HOLD",
+   "evidence": "20_DEV/b0_reader/fields.py:126",
+   "note": "Duplicate required-field detection"
+  },
+  {
+   "case": "fields_extra_observed",
+   "verdict": "PASS",
+   "expected_first_fail": "SCHEMA_INVALID",
+   "observed": "code=SCHEMA_INVALID; first_fail=SCHEMA_INVALID",
+   "evidence": "20_DEV/b0_reader/fields.py:117",
+   "note": "Observed key absent from requirements"
+  },
+  {
+   "case": "build_read_set_complete",
+   "verdict": "FAIL",
+   "expected_first_fail": "NONE_IF_VALID",
+   "observed": "errors=[]; entry missing_fields=[]; top-level write_set key absent",
+   "evidence": "20_DEV/b0_reader/return_.py:171",
+   "note": "Checker contract requires write_set==[]"
+  },
+  {
+   "case": "build_read_set_ref_isolation",
+   "verdict": "PASS",
+   "expected_first_fail": "NONE_IF_VALID",
+   "observed": "valid reference retained; failing reference isolated in errors",
+   "evidence": "20_DEV/b0_reader/return_.py:115",
+   "note": "Per-reference ROOT/BYTES/FIELDS loop"
+  },
+  {
+   "case": "build_read_set_no_ambient_open",
+   "verdict": "PASS",
+   "expected_first_fail": "NONE_IF_VALID",
+   "observed": "no builtins.open write mode observed",
+   "evidence": "20_DEV/b0_reader/return_.py:94",
+   "note": "Independent monkeypatch assertion"
+  },
+  {
+   "case": "controls_subject_mismatch",
+   "verdict": "PASS",
+   "expected_first_fail": "AUTHOR:SCOPE_MISMATCH",
+   "observed": "first_fail=AUTHOR:SCOPE_MISMATCH",
+   "evidence": "20_DEV/b0_reader/controls.py:164",
+   "note": "Independent control projection"
+  },
+  {
+   "case": "controls_unauthorized_write_set",
+   "verdict": "PASS",
+   "expected_first_fail": "AUTHOR:READ_WRITE_SCOPE_HOLD",
+   "observed": "first_fail=AUTHOR:READ_WRITE_SCOPE_HOLD",
+   "evidence": "20_DEV/b0_reader/controls.py:183",
+   "note": "Nonempty product write set"
+  },
+  {
+   "case": "controls_ready_execute_true",
+   "verdict": "PASS",
+   "expected_first_fail": "AUTHOR:FOUR_READY_HOLD",
+   "observed": "first_fail=AUTHOR:FOUR_READY_HOLD",
+   "evidence": "20_DEV/b0_reader/controls.py:189",
+   "note": "False-to-true ready mutation"
+  },
+  {
+   "case": "controls_claim_ceiling_inflated",
+   "verdict": "PASS",
+   "expected_first_fail": "AUTHOR:CLAIM_CEILING_DENY",
+   "observed": "first_fail=AUTHOR:CLAIM_CEILING_DENY",
+   "evidence": "20_DEV/b0_reader/controls.py:201",
+   "note": "Raised claim ceiling"
+  },
+  {
+   "case": "controls_non_read_effect",
+   "verdict": "PASS",
+   "expected_first_fail": "AUTHOR:EFFECT_UNBOUND",
+   "observed": "first_fail=AUTHOR:EFFECT_UNBOUND",
+   "evidence": "20_DEV/b0_reader/controls.py:207",
+   "note": "Effect changed from SOURCE_READ"
+  },
+  {
+   "case": "controls_unknown_policy_retry",
+   "verdict": "PASS",
+   "expected_first_fail": "AUTHOR:UNKNOWN_UNDO_HOLD",
+   "observed": "first_fail=AUTHOR:UNKNOWN_UNDO_HOLD",
+   "evidence": "20_DEV/b0_reader/controls.py:213",
+   "note": "UNKNOWN changed to retry"
+  }
+ ],
+ "summary": {
+  "pass": 21,
+  "fail": 1,
+  "not_executed": 0
+ },
+ "claim_ceiling": "independent-of-maker review of an AUTHOR candidate; NOT an OriginalReader verdict, NOT ReadyAccept",
+ "provenance": {
+  "source": "VERIFY_SECURITY lane session (separate Codex CLI process)",
+  "dispatch_receipt": "30_VERIFY/verify_receipt.json",
+  "receipt_sha256": "d07cfdb424ed8126e4aaba2bf2f90448a9791a5c44bbb9e0ab7cc694ba095770",
+  "transcription": "checker emitted this JSON in its final message because its sandbox is read-only; persisted verbatim by Commander",
+  "stdout_log": "attempt-21992-1795519831-3-stdout.txt",
+  "round": 1
+ }
+}
