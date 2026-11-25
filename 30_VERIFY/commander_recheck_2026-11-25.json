@@ -1,0 +1,82 @@
+{
+ "schema": "SST-B0-COMMANDER-INDEPENDENT-RECHECK/1",
+ "generated_at": "2026-11-25T15:50:52+0800",
+ "candidate_digest": "1257f5ee18fbd52c86ef71ae406b33919104bf1452801794af73551b04c0ca1b",
+ "spec_version": "2026-11-25_r4_Native-first",
+ "top_level_keys": [
+  "bid",
+  "candidate_digest",
+  "entries",
+  "errors",
+  "extensions",
+  "fin_order",
+  "original_wave",
+  "preimage",
+  "scope",
+  "source_manifest",
+  "spec_version",
+  "subject",
+  "wire_version",
+  "write_set"
+ ],
+ "wire_version": "SST.B0.SourceReadSet/2",
+ "write_set": [],
+ "preimage": "N/A",
+ "fin_order": "DENY",
+ "entries_checks": [
+  {
+   "source_id": "SST.ALL.W0.BLUEPRINT",
+   "locator": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md",
+   "declared_sha": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
+   "recomputed_sha": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
+   "sha_match": true,
+   "declared_bytes": 457294,
+   "actual_bytes": 457294,
+   "bytes_match": true,
+   "declared_clause_sha": "77132f0636e30b0cf8d5df1ae3438228b18d847d718e5ffbf5c56825229f9bf6",
+   "recomputed_clause_sha": "77132f0636e30b0cf8d5df1ae3438228b18d847d718e5ffbf5c56825229f9bf6",
+   "clause_match": true,
+   "observed_value": "READ 只讀合法來源，不能繼承 DEV 效應。",
+   "value_sha_match": true,
+   "span": [
+    573,
+    573
+   ],
+   "R": [
+    "read"
+   ],
+   "P": [
+    "read"
+   ],
+   "M": []
+  },
+  {
+   "source_id": "SST.W0M.MAIN",
+   "locator": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_WM\\SST_PLP_PH01_ALL_WNM_2026-11-24_r2\\SST_PLP_PH01_W0M_實質正文.md",
+   "declared_sha": "5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96",
+   "recomputed_sha": "5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96",
+   "sha_match": true,
+   "declared_bytes": 311983,
+   "actual_bytes": 311983,
+   "bytes_match": true,
+   "declared_clause_sha": "4f0db2cb1d7c740eaf3b5a1de6be4517c951fe654010aeb43100104d13dfbaf5",
+   "recomputed_clause_sha": "4f0db2cb1d7c740eaf3b5a1de6be4517c951fe654010aeb43100104d13dfbaf5",
+   "clause_match": true,
+   "observed_value": "READ 只讀合法來源，不能繼承 DEV 效應。",
+   "value_sha_match": true,
+   "span": [
+    299,
+    299
+   ],
+   "R": [
+    "read"
+   ],
+   "P": [
+    "read"
+   ],
+   "M": []
+  }
+ ],
+ "all_match": true,
+ "note": "Computed by the Commander from the original source bytes; does not import the product's serializer."
+}

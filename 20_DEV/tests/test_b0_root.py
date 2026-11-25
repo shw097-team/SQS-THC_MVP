@@ -1,4 +1,4 @@
-"""Tests for B0.ROOT.
+"""Tests for B0.ROOT v2 path and Windows identity checks.
 
 AUTHOR_CANDIDATE_NOT_PRODUCT_ADMITTED
 """
@@ -10,152 +10,167 @@ import subprocess
 import tempfile
 import unittest
 from pathlib import Path
-from unittest.mock import patch
 
-from b0_reader.root import check_root
+from b0_reader.root import (
+    PathSecurityError,
+    canonical_local_path,
+    check_expected_identity,
+    check_root,
+    close_root_verdict,
+    is_component_contained,
+    open_authorized_file,
+    validate_path_security,
+)
+
+
+TEST_TEMP_ROOT = Path.cwd() / ".tmp_tests"
 
 
 class B0RootTests(unittest.TestCase):
     def setUp(self) -> None:
-        self.temp = tempfile.TemporaryDirectory()
+        TEST_TEMP_ROOT.mkdir(parents=True, exist_ok=True)
+        self.temp = tempfile.TemporaryDirectory(dir=TEST_TEMP_ROOT)
         self.addCleanup(self.temp.cleanup)
         self.root = Path(self.temp.name) / "root"
         self.root.mkdir()
         self.source = self.root / "source.txt"
+        self.source.write_bytes(b"payload\n")
 
-    def test_valid_root_and_exact_verdict_keys(self) -> None:
-        self.source.write_text("payload\n", encoding="utf-8")
+    def test_valid_root_uses_the_approved_windows_handle(self) -> None:
+        handle, verdict = open_authorized_file(
+            self.source,
+            allowed_root=self.root,
+        )
+        self.addCleanup(handle.close)
+        self.addCleanup(close_root_verdict, verdict)
+        self.assertTrue(verdict["ok"])
+        self.assertEqual(
+            verdict["canonical_path"],
+            canonical_local_path(self.source),
+        )
+        self.assertEqual(verdict["identity"], handle.identity().tuple)
+        self.assertTrue(verdict["acl_raw"])
+        self.assertIsNone(verdict["first_fail"])
+
+    def test_ROOT_UNBOUND_is_terminal_and_does_not_read_source(self) -> None:
+        verdict = check_root(None, self.source)  # type: ignore[arg-type]
+        self.assertFalse(verdict["ok"])
+        self.assertEqual(verdict["code"], "ROOT_UNBOUND")
+        self.assertEqual(verdict["first_fail"], "ROOT_UNBOUND")
+
+    def test_PATH_INVALID_rejects_ambiguous_path_forms(self) -> None:
+        source = canonical_local_path(self.source)
+        invalid = (
+            "source.txt",
+            str(self.root) + r"\..\outside.txt",
+            str(self.root) + r"\.\source.txt",
+            r"\\server\share\source.txt",
+            r"\\.\C:\source.txt",
+        )
+        for value in invalid:
+            with self.subTest(value=value):
+                with self.assertRaises(PathSecurityError) as raised:
+                    canonical_local_path(value)
+                self.assertEqual(raised.exception.code, "PATH_INVALID")
+        with self.assertRaises(PathSecurityError) as raised:
+            canonical_local_path(source + ":hidden")
+        self.assertEqual(raised.exception.code, "PATH_INVALID")
+        with self.assertRaises(PathSecurityError) as raised:
+            canonical_local_path(str(self.root) + "\\bad*name.txt")
+        self.assertEqual(raised.exception.code, "PATH_INVALID")
+
+    def test_PATH_ESCAPE_rejects_component_prefix_sibling(self) -> None:
+        sibling_root = Path(self.temp.name) / "root_evil"
+        sibling_root.mkdir()
+        outside = sibling_root / "outside.txt"
+        outside.write_bytes(b"outside\n")
+        self.assertFalse(is_component_contained(outside, self.root))
+        with self.assertRaises(PathSecurityError) as raised:
+            validate_path_security(outside, allowed_root=self.root)
+        self.assertEqual(raised.exception.code, "PATH_ESCAPE")
+
+    def test_PATH_INVALID_rejects_allowed_root_itself(self) -> None:
+        with self.assertRaises(PathSecurityError) as raised:
+            validate_path_security(self.root, allowed_root=self.root)
+        self.assertEqual(raised.exception.code, "PATH_INVALID")
+
+    def test_PATH_IDENTITY_UNVERIFIED_for_missing_or_non_file_source(self) -> None:
+        missing = self.root / "missing.txt"
+        directory = self.root / "directory"
+        directory.mkdir()
+        for source in (missing, directory):
+            with self.subTest(source=source.name):
+                with self.assertRaises(PathSecurityError) as raised:
+                    validate_path_security(source, allowed_root=self.root)
+                self.assertEqual(
+                    raised.exception.code,
+                    "PATH_IDENTITY_UNVERIFIED",
+                )
+
+    def test_PATH_REPARSE_DENIED_for_real_junction(self) -> None:
+        target = self.root / "target"
+        target.mkdir()
+        link = self.root / "junction"
+        completed = subprocess.run(
+            ["cmd", "/c", "mklink", "/J", str(link), str(target)],
+            capture_output=True,
+            check=False,
+            shell=False,
+        )
+        self.assertEqual(
+            completed.returncode,
+            0,
+            completed.stderr.decode(errors="replace"),
+        )
+        linked_source = link / "source.txt"
+        linked_source.write_bytes(b"linked\n")
+        with self.assertRaises(PathSecurityError) as raised:
+            validate_path_security(linked_source, allowed_root=self.root)
+        self.assertEqual(raised.exception.code, "PATH_REPARSE_DENIED")
+
+    def test_check_root_returns_only_the_compatibility_projection(self) -> None:
         verdict = check_root(self.root, self.source)
         self.assertEqual(
             set(verdict),
             {"ok", "realpath", "acl_raw", "code", "first_fail"},
         )
         self.assertTrue(verdict["ok"])
-        self.assertIsNone(verdict["code"])
-        self.assertIsNone(verdict["first_fail"])
-        self.assertEqual(verdict["realpath"], os.path.realpath(self.source))
-        self.assertIsInstance(verdict["acl_raw"], str)
-
-    def test_acls_are_read_with_icacls(self) -> None:
-        self.source.write_text("payload\n", encoding="utf-8")
-        completed = subprocess.CompletedProcess(
-            ["icacls", str(self.source)],
-            0,
-            stdout=b"ACL ORIGINAL BYTES",
-            stderr=b"",
+        self.assertEqual(
+            os.path.normcase(verdict["realpath"]),
+            os.path.normcase(self.source),
         )
-        with patch("b0_reader.root.subprocess.run", return_value=completed) as run:
-            verdict = check_root(self.root, self.source)
-        self.assertTrue(verdict["ok"])
-        self.assertIn("ACL ORIGINAL BYTES", verdict["acl_raw"])
-        self.assertEqual(run.call_args.args[0][0], "icacls")
 
-    def test_ROOT_NOT_FOUND_does_not_read_source_content(self) -> None:
-        missing = Path(self.temp.name) / "missing"
-        with patch("b0_reader.root.open") as opened:
-            verdict = check_root(missing, self.root / "x.txt")
-        self.assertEqual(verdict["code"], "ROOT_NOT_FOUND")
-        self.assertEqual(verdict["first_fail"], "ROOT_NOT_FOUND")
-        opened.assert_not_called()
-
-    def test_ROOT_NOT_DIR(self) -> None:
-        not_dir = Path(self.temp.name) / "file"
-        not_dir.write_text("x", encoding="utf-8")
-        verdict = check_root(not_dir, self.source)
-        self.assertEqual(verdict["code"], "ROOT_NOT_DIR")
-
-    def test_PATH_ESCAPE_and_sibling_prefix(self) -> None:
-        sibling_root = Path(self.temp.name) / "root_evil"
-        sibling_root.mkdir()
-        escaped = sibling_root / "source.txt"
-        escaped.write_text("outside\n", encoding="utf-8")
-        verdict = check_root(self.root, escaped)
-        self.assertEqual(verdict["code"], "PATH_ESCAPE")
-        self.assertEqual(verdict["first_fail"], "PATH_ESCAPE")
-
-    def test_PATH_ESCAPE_with_parent_traversal(self) -> None:
-        escaped = self.root / ".." / "outside.txt"
-        escaped.write_text("outside\n", encoding="utf-8")
-        verdict = check_root(self.root, escaped)
-        self.assertEqual(verdict["code"], "PATH_ESCAPE")
-
-    @unittest.skipUnless(os.name == "nt", "Windows alternate streams")
-    def test_ADS_PATH(self) -> None:
-        self.source.write_text("payload\n", encoding="utf-8")
-        verdict = check_root(self.root, f"{self.source}:hidden")
-        self.assertEqual(verdict["code"], "ADS_PATH")
-
-    def test_REPARSE_POINT_with_actual_link_when_available(self) -> None:
-        target = self.root / "target"
-        target.mkdir()
-        created = False
-        try:
-            if os.name == "nt":
-                result = subprocess.run(
-                    ["cmd", "/c", "mklink", "/J", str(self.root / "link"), str(target)],
-                    capture_output=True,
-                    check=False,
-                )
-                created = result.returncode == 0
-            else:
-                os.symlink(target, self.root / "link", target_is_directory=True)
-                created = True
-        except OSError:
-            created = False
-        if not created:
-            self.skipTest("junction/privileged symlink unavailable")
-        verdict = check_root(self.root, self.root / "link")
-        self.assertEqual(verdict["code"], "REPARSE_POINT")
-        self.assertEqual(verdict["first_fail"], "REPARSE_POINT")
-
-    def test_REPARSE_POINT_attribute_is_rejected(self) -> None:
-        self.source.write_text("payload\n", encoding="utf-8")
-        with patch(
-            "b0_reader.root._is_reparse_point",
-            side_effect=lambda path, metadata: os.path.normcase(os.path.abspath(path))
-            == os.path.normcase(os.path.abspath(self.source)),
-        ):
-            verdict = check_root(self.root, self.source)
-        self.assertEqual(verdict["code"], "REPARSE_POINT")
-
-    def test_RIGHTS_DENIED(self) -> None:
-        self.source.write_text("payload\n", encoding="utf-8")
-        with patch("b0_reader.root.open", side_effect=PermissionError):
-            verdict = check_root(self.root, self.source)
-        self.assertEqual(verdict["code"], "RIGHTS_DENIED")
-
-    def test_NAMESPACE_MISMATCH(self) -> None:
-        namespace_root = self.root / "tenant-a"
-        namespace_root.mkdir()
-        source = namespace_root / "source.txt"
-        source.write_text("payload\n", encoding="utf-8")
-        verdict = check_root(
-            self.root,
-            source,
-            expected_namespace="tenant-b",
+    def test_namespace_and_version_mismatches_are_distinct(self) -> None:
+        verdict: dict[str, object] = {}
+        self.assertEqual(
+            check_expected_identity(
+                verdict,
+                expected_namespace="tenant-a",
+                expected_version="v2",
+                namespace="tenant-b",
+                source_version="v2",
+            ),
+            "NAMESPACE_MISMATCH",
         )
-        self.assertEqual(verdict["code"], "NAMESPACE_MISMATCH")
-
-    def test_VERSION_DRIFT(self) -> None:
-        version_root = self.root / "v2"
-        version_root.mkdir()
-        source = version_root / "source.txt"
-        source.write_text("payload\n", encoding="utf-8")
-        verdict = check_root(self.root, source, expected_version="v3")
-        self.assertEqual(verdict["code"], "VERSION_DRIFT")
-
-    def test_identity_expectations_match_when_present(self) -> None:
-        namespace_root = self.root / "tenant-a" / "v2"
-        namespace_root.mkdir(parents=True)
-        source = namespace_root / "source.txt"
-        source.write_text("payload\n", encoding="utf-8")
-        verdict = check_root(
-            self.root,
-            source,
-            expected_namespace="tenant-a",
-            expected_version="v2",
+        self.assertEqual(
+            check_expected_identity(
+                verdict,
+                expected_namespace="tenant-a",
+                expected_version="v2",
+                namespace="tenant-a",
+                source_version="v3",
+            ),
+            "VERSION_MISMATCH",
         )
-        self.assertTrue(verdict["ok"])
+        self.assertIsNone(
+            check_expected_identity(
+                verdict,
+                expected_namespace="tenant-a",
+                expected_version="v2",
+                namespace="tenant-a",
+                source_version="v2",
+            )
+        )
 
 
 if __name__ == "__main__":

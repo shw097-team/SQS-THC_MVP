@@ -1,0 +1,30 @@
+{
+ "child_id": "REQ-12::AUTHOR-SPLIT-01",
+ "original_id": "REQ-12",
+ "owner": "PR-07",
+ "polarity": "POSITIVE_READ_AND_DEV_DENY",
+ "required_fields": [
+  "read"
+ ],
+ "required_set_spec_version": "B0RequiredSetSpec/1",
+ "requiredness": "AUTHOR_SPLIT_UNRATIFIED",
+ "requirement_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_WM\\SST_PLP_PH01_ALL_WNM_2026-11-24_r2\\SST_PLP_PH01_W0M_實質正文.md",
+ "requirement_sha": "5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96",
+ "requirement_span": [
+  295,
+  307
+ ],
+ "rules": [
+  {
+   "expected_literal": "READ 只讀合法來源，不能繼承 DEV 效應。",
+   "field": "read",
+   "method": "MD_LABEL",
+   "prefix": "- **How／Predicate**：",
+   "source_id": "SST.W0M.MAIN",
+   "span": [
+    299,
+    299
+   ]
+  }
+ ]
+}

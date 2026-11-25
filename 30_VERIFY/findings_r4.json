@@ -1,0 +1,164 @@
+{
+ "schema": "SST-B0-CHECKER-FINDINGS/1",
+ "candidate_digest": "7a4711ad76d4693bd6ca318fd3915c619cda36824ba794da62906c5b0569f6f3",
+ "checker": {
+  "lane": "VERIFY_SECURITY",
+  "engine": "codex-cli 0.169.0-alpha.11.1",
+  "served_arm": "opencode-go/deepseek-v4.1-flash",
+  "session": "separate dispatch (read-only role)",
+  "receipt": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\30_VERIFY\\verify_r4_receipt.json"
+ },
+ "findings": [
+  {
+   "id": "FREEZE-DIGEST",
+   "spec_ref": "§02.A code candidate; §06.4",
+   "severity": "P2",
+   "verdict": "PASS",
+   "evidence": "依候選列出的 24 檔逐一重算 raw SHA256 與 byte length，重建 2468-byte manifest，其 SHA256 為 7a4711ad76d4693bd6ca318fd3915c619cda36824ba794da62906c5b0569f6f3；24 檔內容與 candidate_freeze.json 全部相符。",
+   "required_repair": "無。"
+  },
+  {
+   "id": "POS-REAL-SOURCES",
+   "spec_ref": "§02.F; §02.R; §04.BYTES; §04.FIELDS; §06.3 N01/N03/N04",
+   "severity": "P2",
+   "verdict": "PASS",
+   "evidence": "POS 由產品 CLI 對兩份 envelope 所指真原件實跑，exit=0、stdout=5429 bytes/SHA 37694dae72fdc39a24d59d8db0376f004657f52f1271ae90aaed414245612f00、stderr 空。SST.ALL.W0.BLUEPRINT 為 457294 bytes/SHA dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1、span [572,579]、clause SHA 77132f0636e30b0cf8d5df1ae3438228b18d847d718e5ffbf5c56825229f9bf6；SST.W0M.MAIN 為 311983 bytes/SHA 5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96、span [295,307]、clause SHA 4f0db2cb1d7c740eaf3b5a1de6be4517c951fe654010aeb43100104d13dfbaf5。兩值均由原件物理 span 重算；value_sha 均為 78a231eaa93d64fed87001426970d5133e89847b3f7668e514d6b0f259798dab。R=P=[\"read\"]、M=[]，envelope 14 欄、entry 18 欄、authority 14 欄，write_set=[]、preimage=N/A、fin_order=DENY、extensions={}。",
+   "required_repair": "無；此 PASS 僅涵蓋真來源讀取、byte/clause/value 與 v2 幾何。"
+  },
+  {
+   "id": "NEG-PIN",
+   "spec_ref": "§02.A expected_sha; §04.D; §06.3 N03",
+   "severity": "P2",
+   "verdict": "PASS",
+   "evidence": "PIN 請求只把第一來源 expected_sha 改為零值；exit=2，stdout=3383 bytes/SHA 64e941bf8b957db0ec184846cd7ac7035964c434aeb2aab3ce9a2b55504f13b4，stderr=SOURCE_PIN_MISMATCH，stdout 為一個成功 entry 加一個 BYTES error 的合法分帳。",
+   "required_repair": "無。"
+  },
+  {
+   "id": "NEG-SPAN",
+   "spec_ref": "§04.BYTES; §04.D; §06.3 N03",
+   "severity": "P2",
+   "verdict": "PASS",
+   "evidence": "SPAN 的實際行為為 exit=2、stdout=871 bytes/SHA 15c136cb，stderr=SPAN_INVALID/SHA d8243bf0；越界 span 未產生以為合法的內容。",
+   "required_repair": "無，限已觀察之 exit 與固定碼。"
+  },
+  {
+   "id": "NEG-SPAN-SINGLE-MUTATION",
+   "spec_ref": "§06.0 第2項; §06.3",
+   "severity": "P1",
+   "verdict": "HOLD",
+   "evidence": "SPAN 請求同時移除第一來源並把其餘來源 span 從 [295,307] 改為 [99999,100000]，不是從同一 POS 僅改一項；因此其拒絕成立，但不足以單獨證明 SPAN FirstFail 的單變異隔離。",
+   "required_repair": "以完整合法 POS baseline 複製後，只改一個來源的 clause_span，重跑並保存 raw。"
+  },
+  {
+   "id": "NEG-EFFECT",
+   "spec_ref": "§02.E; §04.D; §06.2/§06.3 N05",
+   "severity": "P2",
+   "verdict": "PASS",
+   "evidence": "EFFECT 請求只增加一個 write_set path；exit=64、stdout 空、stderr=EFFECT_DENIED，符合讀取前拒絕與不得繼承 DEV effect。",
+   "required_repair": "無。"
+  },
+  {
+   "id": "NEG-SCOPE",
+   "spec_ref": "§02.A; §02.E; §04.D",
+   "severity": "P2",
+   "verdict": "PASS",
+   "evidence": "SCOPE 請求增加一個未授權 source ID；exit=64、stdout 空、stderr=SCOPE_MISMATCH，未輸出候選路徑或來源 bytes。",
+   "required_repair": "無。"
+  },
+  {
+   "id": "SEC-CALLER-MINT",
+   "spec_ref": "§01.2; §02.A; §04.N1; Workorder 第2/4/8項",
+   "severity": "P0",
+   "verdict": "FAIL",
+   "evidence": "產品套件 native_entry.py 匯出可 import 的 _mint_test_context 與 _mint_isolated_context。前者由 caller 指定 descriptor path，只要求 TEMP 非空且路徑不在 _TRUST_ROOT 下；後者接受 caller descriptor_payload 與 isolated_root，root 可由 caller 控制的 TEMP 決定，解析後簽入 process HMAC。caller 因而可自造 allowed root、sources、RequiredSet、authority、evidence、revocation refs，再把 minted TrustedContext 傳給 read_sources。",
+   "required_repair": "把 mint 能力移出生產 package 至隔離測試套件；生產環境不得 import 或呼叫任何可讓 caller 建立 TrustedContext 的 API，並讓 read_sources 只接受由部署信任根產生的不可偽造 context。"
+  },
+  {
+   "id": "SEC-REVOCATION-FAIL-OPEN",
+   "spec_ref": "§02.A authority; §02.F LIVE_REVALIDATE; §04.RETURN; §06.3 N01",
+   "severity": "P0",
+   "verdict": "FAIL",
+   "evidence": "revalidate_trusted_context 發現撤權檔 hash 改變後，只拒絕 state 為 CLOSED、REVOKED 或 EXPIRED；改變後若是 {}、未知 state 或其他無法證明仍有效之文件，現行程式會接受並繼續。此為 fail-open。實際 private revocation 路徑亦無法由 Checker 讀取，故其當期真值仍不能獨立確認。",
+   "required_repair": "任何撤權文件缺失、hash 改變、格式不明、state 未知或查詢不完整均應拒絕內容；只有固定 pin 的權威回應明確證明 grant 仍有效時才可放行。"
+  },
+  {
+   "id": "ROOT-ACL-CONTENT-UNCHECKED",
+   "spec_ref": "§02.A trusted context/ACL; §04.ROOT; §06.3 N01/N02",
+   "severity": "P1",
+   "verdict": "FAIL",
+   "evidence": "root._read_acl 對 path 執行 icacls，僅以 returncode 判成功；stdout 雖被 decode 後回傳，validate_path_security 卻直接丟棄結果。未解析或核對可修改 descriptor、祖先、source、evidence 的 principal，不能證明不存在不可信 writer。祖先 reparse 檢查及同 handle final path/file identity 檢查本身存在。",
+   "required_repair": "驗證 SDDL／ACL 的允許 writer 集合，或以受信 directory handle 和 OS 權限證明 descriptor、祖先、來源及證據不可由 untrusted caller 改寫。"
+  },
+  {
+   "id": "TRUST-RIGHTS-EVIDENCE-LIMITED",
+   "spec_ref": "§02.A; §04.ROOT; §04.RETURN; §06.3 N01",
+   "severity": "P1",
+   "verdict": "NOT_VERIFIED",
+   "evidence": "envelope 的權限 evidence 與 revocation 引用可由非秘密 hash 分帳，但 Checker 無法讀取 C:\\Users\\user\\.hgk-owner\\window.json 驗證當期 revocation state；因此不能宣稱此次 Owner 授權、撤權狀態與 Return 前重驗已由獨立 Checker 全部核實。",
+   "required_repair": "提供可獨立讀取且不洩密的權威 revocation／owner evidence 驗證通道或受控原始證據，並重做 ROOT、RETURN 及接收前時序驗證。"
+  },
+  {
+   "id": "TRUST-PIN-WORKORDER-CONFLICT",
+   "spec_ref": "§02.A code/context pin; Workorder 第1.4項",
+   "severity": "P1",
+   "verdict": "HOLD",
+   "evidence": "實際 descriptor 為 3612 bytes、SHA b8759ca7f5c213024c4046db07494cabb355d39d051b0082ff043845e9fb45e0，候選與 candidate_freeze.json 採用此值；Workorder 卻寫 3606 bytes、SHA 2a4a77e964d2d3bcbc7029bd95e5927120844d485aa70afd7bdc9e810dcbf238。",
+   "required_repair": "由權威 Owner 發出唯一的 descriptor pin，修正 Workorder；不得只為消除文檔衝突而改動已 freeze 候選。"
+  },
+  {
+   "id": "N05-NO-WRITE-EVIDENCE-INSUFFICIENT",
+   "spec_ref": "§04.N; §06.3 N05",
+   "severity": "P1",
+   "verdict": "NOT_VERIFIED",
+   "evidence": "run_ops_r4.py 對 W 與來源樹只比較 size+mtime_ns，沒有每個受影響檔的內容 hash，也沒有 OS write/process monitor。未涵蓋 TEMP、cache、registry、network、child process；並排除 20_DEV/.tmp_tests、40_OPS/ops_r4_*、ops_run_* 與 lane_*，其中 .tmp_tests 於 recorder 時序中會被建立。前後 digest 相同只足以說 bounded metadata 未變。",
+   "required_repair": "提供涵蓋 W、來源樹、TEMP、cache、registry、bytecode、network 與 child process 的 OS 級寫入觀測，或等價的 principal/path/effect 證據；不得將未觀測範圍記為 PASS。"
+  },
+  {
+   "id": "N08-NATIVE-OFF-NOT-VERIFIED",
+   "spec_ref": "§06.3 N08; §06.4; §06.5",
+   "severity": "P1",
+   "verdict": "NOT_VERIFIED",
+   "evidence": "test_native_off.py 的 docstring 明示無法證明所有 dynamic/transitive routes，真正 Native/OPS 冷啟仍是 NOT_VERIFIED。現有材料沒有受權隔離產品環境的冷啟 raw、完整 dependency closure、config/env/alias/child-process/network 觀測及真合法來源同契約結果。",
+   "required_repair": "在受權隔離環境以 Native 冷啟實際執行四 Op，保存 CLI、dependency/config/env、child process、network、trace 與真實 baseline 的 raw evidence；不足時維持 NOT_VERIFIED。"
+  },
+  {
+   "id": "SAME-CANDIDATE-INDEPENDENT-ACCEPTANCE",
+   "spec_ref": "§06.5; §06.3 N09",
+   "severity": "P1",
+   "verdict": "NOT_VERIFIED",
+   "evidence": "candidate_digest 已獨立重算一致，但沒有獨立驗收者對同一 freeze 產生完整 current Case raw、expected/observed/FirstFail、principal、session、Writer isolation 與判定記錄。40_OPS/lane_probe_execute_20261125.json 僅證明 lane/model 回應 nonce，並自述不是 acceptance。",
+   "required_repair": "由隔離責任人對同一 24 檔 freeze 執行並保存完整 acceptance evidence；不得用 Maker 自述、作者 fixture 或歷史測試數替代。"
+  },
+  {
+   "id": "N06-INDEPENDENT-PROBE-NOT-EXECUTED",
+   "spec_ref": "§06.3 N06; §06.4",
+   "severity": "P1",
+   "verdict": "NOT_VERIFIED",
+   "evidence": "test_contract_probe.py 靜態看有獨立 validator 且不 import Maker serializer 作 oracle，但沒有現行 raw 測試輸出；本 Checker 無法執行，因配置的 Python venv binary 不存在且 py launcher 無可用 Python。歷史測試數未計入。",
+   "required_repair": "提供可用執行環境與同一 freeze 的 probe stdout/stderr/exit/raw，證明 v2 roundtrip、tuple、R/M、錯型、duplicate key、unknown normative 與 receiver 時效拒絕。"
+  },
+  {
+   "id": "AUTH-BEFORE-SOURCE-BYTES",
+   "spec_ref": "§02.A; §04.ROOT; §04.D; Workorder CLI",
+   "severity": "P2",
+   "verdict": "PASS",
+   "evidence": "正式 CLI 先 resolve_context_for_current_principal，再讀 stdin；read_sources 在開源頭前先驗 context、scope、source mapping、evidence、request pin 與 span。讀取後另有 RETURN 前重驗，未在失敗時釋出 partial content。",
+   "required_repair": "無；此判定不抵銷 SEC-CALLER-MINT 的信任邊界缺陷。"
+  },
+  {
+   "id": "STATIC-TRACEBACK-CONTENT-LEAK",
+   "spec_ref": "§02.E; §04.D; §04.N1",
+   "severity": "P2",
+   "verdict": "PASS",
+   "evidence": "已檢查的 CLI 與錯誤序列化路徑捕捉一般例外，輸出固定碼或 v2 typed error，未發現直接 print traceback、私有 authority、ACL/owner 或未授權 bytes 的明確路徑；未知錯誤收斂為 UNKNOWN_RECONCILE_REQUIRED。此為靜態檢查，不宣稱動態不存在其他外洩路徑。",
+   "required_repair": "無靜態阻斷項；仍應在獨立錯型、秘密 marker 與 subprocess failure 探針中保存 stderr/stdout raw。"
+  }
+ ],
+ "verdict_counts": {
+  "PASS": 8,
+  "FAIL": 3,
+  "NOT_VERIFIED": 5,
+  "HOLD": 2
+ },
+ "report_text": "**1. ORACLE 清單**\n\n以下 oracle 在讀取候選碼前，已依指定正文與 Workorder 固定；正文與 Workorder 衝突時以正文為準。\n\n1. **v2 envelope 必填集合**：`wire_version, subject, original_wave, bid, spec_version, candidate_digest, scope, source_manifest, entries, errors, write_set, preimage, fin_order, extensions`。\n   - `wire_version=\"SST.B0.SourceReadSet/2\"`；`subject=\"SST/SQS-THC/PH01/E00\"`；`original_wave=\"P1-W00M\"`；`bid=0`，型別為 integer，bool 不接受。\n   - `scope={scope_id:string,source_ids:string[],purpose:string,consumer_ids:string[]}`；不得空、null 或 wildcard，`source_ids` 必須精確等於本次請求集合。\n   - `source_manifest={inherited_sha:string,verification:\"VERIFIED\"|\"UNVERIFIED\",evidence_ref:string|null}`；繼承 SHA 固定為 `2012a28f630f4e28d60309de0bb5734ce138b18c677445a475c670f1d9f4245e`。\n   - `write_set=[]`、`preimage=\"N/A\"`、`fin_order=\"DENY\"`、`extensions={}`；只有 `extensions` 容許非規範擴充，不能修補必填語義。\n   - 每個請求的 `source_id` 必須恰有一個 entry 或一個 fatal error，不能漏件、重複或同時出现。\n\n2. **entry 必填集合與型別**：`source_ref, sha, byte_length, encoding, clause_span, clause_sha, original_id, child_id, polarity, requiredness, owner, provenance, required_fields, observed, missing, authority, acl_epoch, rights_epoch`。\n   - `source_ref={source_id:string,namespace:string,locator:string,source_version:string}`，四欄非空；`locator` 為可信映射取得且可重開的絕對本地來源。\n   - `sha`、`clause_sha`、`usage_evidence_sha`、`value_sha` 等 SHA 均為 64 位小寫 hex。\n   - `byte_length` 與 span 分量為非負／正整數且拒絕 bool；`clause_span=[a,b]` 為 1-based inclusive；`encoding` 為 `UTF-8` 或 Owner 明示且支持的嚴格編碼。\n   - `clause_sha` 對物理 raw clause bytes 含終止符計算；`observed.value_sha` 對 value 的 exact UTF-8 bytes 計算，不加換行、不正規化。\n   - `child_id` 為非空 string 或 null；`provenance={requirement_ref,requirement_sha,requirement_span,rule_ref,rule_sha}`。\n   - `required_fields` 是原來源 RequiredSet 的 R，不得以空集合冒充未知；`observed` 的值物件為 `{value:string,source_sha:hex,span:[a,b],value_sha:hex}`。\n   - `missing` 是 `{field:string,reason:\"ABSENT\"|\"UNVERIFIED\"|\"FORMAT_UNSUPPORTED\"|\"AMBIGUOUS\",source_ref:string}[]`，每欄一筆。\n   - `acl_epoch/rights_epoch` 為非空 string 或 null；真 provider 提供的 epoch 不得降成 null。\n\n3. **authority 為 14 欄**：`source_owner, usage_evidence_ref, usage_evidence_sha, os_principal, verification_method, rights_check_ref, checked_at, valid_from, expires_at, revocation_check_ref, epoch_strategy, epoch_provider_ref, epoch_evidence_ref, disclosure`。\n   - 除 `expires_at`、`epoch_provider_ref`、`epoch_evidence_ref` 可為 null 外，其餘欄非空；三個時間欄依 RFC3339。\n   - `epoch_strategy` 只能是 `PROVIDER_VERSIONED` 或 `LIVE_REVALIDATE`；`disclosure` 只能是 `LOCAL_ONLY` 或 `APPROVED_CONSUMER`。\n   - Workorder 所稱「13 欄」與正文明列的 14 欄衝突，本判定採正文 14 欄。\n\n4. **SourceError 型別**：`{source_id:string,op:\"ROOT\"|\"BYTES\"|\"FIELDS\"|\"RETURN\",code:string,first_fail:string,affected_locator:string|null,retryable:boolean,attempt:1|2,resume:string}`。只有已授權來源可另含 `expected_sha/observed_sha`。\n\n5. **exit 條件**：\n   - `0`：本次全部非空請求來源成功、所有 M 為空且無 errors；不表示產品驗收 PASS。\n   - `2`：存在合法 entry 但有 M 或來源級 errors，或全數來源級拒絕；stdout 必須完整分帳，stderr 只能有非秘密摘要。\n   - `64`：invocation、配置格式或可信 context 不成立，必須在讀取來源內容前拒絕；stdout 空，stderr 只有固定 FirstFail 碼。\n   - `70`：未知內部狀態或未分類錯誤；不得輸出可能部分授權的內容，必須先 reconcile。\n\n6. **FirstFail 次序**：invocation／context → ROOT／rights → BYTES → FIELDS → RETURN／receiver → unknown／reconcile。權利必須先於來源 bytes；來源內容文件中的文字不能擴張權限。\n\n7. **R/P/M 不變量**：R 是原來源 `required_fields`，P 是 `keys(observed)`，M 是 R−P。R、P、M 不得有重複；P 不得含 R 外欄；M 與 P 分離且完整分帳 R；集合以 Unicode code point 升序比較。caller 不得自行替換 R、authority 或宣稱 `verified=true`。\n\n8. **可信 context 必驗項**：固定 descriptor locator、部署常數 SHA 與 byte length；實際 OS token／principal；明確 allowed roots；source ID、namespace、version、expected SHA、RequiredSet、Owner／usage evidence／revocation refs、用途、consumer、時效；descriptor 及祖先不得經 reparse 或任意換版；ROOT、RETURN、接收前均需權利重驗。不得由 request、cwd、任意環境變數或 source.parent 決定 root／pin，也不得以 caller 傳入的 dict、私有 constructor、Python 型別或 `trusted=True` 代替信任鏈。\n\n9. **freeze 算法**：按 UTF-8 relative POSIX path byte-order 排序；每個實際程式／測試／規則檔計算 raw SHA256；manifest 每行是 `path<TAB>sha<TAB>byte_length<LF>`；對完整 manifest bytes 再算 SHA256 即 `candidate_digest`。不得循 symlink、使用 git blob、暫存或測試產出代替，排除清單必須精確明列。\n\n10. **不可寫入義務**：SOURCE_READ 只能暫態回傳；產品不得寫檔案、ledger、cache、checkpoint、bytecode、日誌、registry 或網路，也不得繼承 DEV/FIN 效果。工程 recorder 的寫入須另行標明 principal、path、effect，不能當成產品無寫證據。\n\n11. **Native OFF 與獨立驗收**：Native OFF 須有冷啟、隔離環境、dependency/config/env/child-process/network 及 transitive wrapper 證據；不能隔離或 trace 不足時只能是 `NOT_VERIFIED`。獨立 probe 必須自行依正文建 validator，不可 import Maker serializer 作 oracle，且須有同 freeze 的實際 raw 執行結果。\n\n**2. FINDINGS JSON**\n\n以下即為實測與靜態核驗的逐條判定；未執行項均明列，不以歷史 `59/22` 作現行結果。\n\n```json\n[\n  {\n    \"id\": \"FREEZE-DIGEST\",\n    \"spec_ref\": \"§02.A code candidate; §06.4\",\n    \"severity\": \"P2\",\n    \"verdict\": \"PASS\",\n    \"evidence\": \"依候選列出的 24 檔逐一重算 raw SHA256 與 byte length，重建 2468-byte manifest，其 SHA256 為 7a4711ad76d4693bd6ca318fd3915c619cda36824ba794da62906c5b0569f6f3；24 檔內容與 candidate_freeze.json 全部相符。\",\n    \"required_repair\": \"無。\"\n  },\n  {\n    \"id\": \"POS-REAL-SOURCES\",\n    \"spec_ref\": \"§02.F; §02.R; §04.BYTES; §04.FIELDS; §06.3 N01/N03/N04\",\n    \"severity\": \"P2\",\n    \"verdict\": \"PASS\",\n    \"evidence\": \"POS 由產品 CLI 對兩份 envelope 所指真原件實跑，exit=0、stdout=5429 bytes/SHA 37694dae72fdc39a24d59d8db0376f004657f52f1271ae90aaed414245612f00、stderr 空。SST.ALL.W0.BLUEPRINT 為 457294 bytes/SHA dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1、span [572,579]、clause SHA 77132f0636e30b0cf8d5df1ae3438228b18d847d718e5ffbf5c56825229f9bf6；SST.W0M.MAIN 為 311983 bytes/SHA 5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96、span [295,307]、clause SHA 4f0db2cb1d7c740eaf3b5a1de6be4517c951fe654010aeb43100104d13dfbaf5。兩值均由原件物理 span 重算；value_sha 均為 78a231eaa93d64fed87001426970d5133e89847b3f7668e514d6b0f259798dab。R=P=[\\\"read\\\"]、M=[]，envelope 14 欄、entry 18 欄、authority 14 欄，write_set=[]、preimage=N/A、fin_order=DENY、extensions={}。\",\n    \"required_repair\": \"無；此 PASS 僅涵蓋真來源讀取、byte/clause/value 與 v2 幾何。\"\n  },\n  {\n    \"id\": \"NEG-PIN\",\n    \"spec_ref\": \"§02.A expected_sha; §04.D; §06.3 N03\",\n    \"severity\": \"P2\",\n    \"verdict\": \"PASS\",\n    \"evidence\": \"PIN 請求只把第一來源 expected_sha 改為零值；exit=2，stdout=3383 bytes/SHA 64e941bf8b957db0ec184846cd7ac7035964c434aeb2aab3ce9a2b55504f13b4，stderr=SOURCE_PIN_MISMATCH，stdout 為一個成功 entry 加一個 BYTES error 的合法分帳。\",\n    \"required_repair\": \"無。\"\n  },\n  {\n    \"id\": \"NEG-SPAN\",\n    \"spec_ref\": \"§04.BYTES; §04.D; §06.3 N03\",\n    \"severity\": \"P2\",\n    \"verdict\": \"PASS\",\n    \"evidence\": \"SPAN 的實際行為為 exit=2、stdout=871 bytes/SHA 15c136cb，stderr=SPAN_INVALID/SHA d8243bf0；越界 span 未產生以為合法的內容。\",\n    \"required_repair\": \"無，限已觀察之 exit 與固定碼。\"\n  },\n  {\n    \"id\": \"NEG-SPAN-SINGLE-MUTATION\",\n    \"spec_ref\": \"§06.0 第2項; §06.3\",\n    \"severity\": \"P1\",\n    \"verdict\": \"HOLD\",\n    \"evidence\": \"SPAN 請求同時移除第一來源並把其餘來源 span 從 [295,307] 改為 [99999,100000]，不是從同一 POS 僅改一項；因此其拒絕成立，但不足以單獨證明 SPAN FirstFail 的單變異隔離。\",\n    \"required_repair\": \"以完整合法 POS baseline 複製後，只改一個來源的 clause_span，重跑並保存 raw。\"\n  },\n  {\n    \"id\": \"NEG-EFFECT\",\n    \"spec_ref\": \"§02.E; §04.D; §06.2/§06.3 N05\",\n    \"severity\": \"P2\",\n    \"verdict\": \"PASS\",\n    \"evidence\": \"EFFECT 請求只增加一個 write_set path；exit=64、stdout 空、stderr=EFFECT_DENIED，符合讀取前拒絕與不得繼承 DEV effect。\",\n    \"required_repair\": \"無。\"\n  },\n  {\n    \"id\": \"NEG-SCOPE\",\n    \"spec_ref\": \"§02.A; §02.E; §04.D\",\n    \"severity\": \"P2\",\n    \"verdict\": \"PASS\",\n    \"evidence\": \"SCOPE 請求增加一個未授權 source ID；exit=64、stdout 空、stderr=SCOPE_MISMATCH，未輸出候選路徑或來源 bytes。\",\n    \"required_repair\": \"無。\"\n  },\n  {\n    \"id\": \"SEC-CALLER-MINT\",\n    \"spec_ref\": \"§01.2; §02.A; §04.N1; Workorder 第2/4/8項\",\n    \"severity\": \"P0\",\n    \"verdict\": \"FAIL\",\n    \"evidence\": \"產品套件 native_entry.py 匯出可 import 的 _mint_test_context 與 _mint_isolated_context。前者由 caller 指定 descriptor path，只要求 TEMP 非空且路徑不在 _TRUST_ROOT 下；後者接受 caller descriptor_payload 與 isolated_root，root 可由 caller 控制的 TEMP 決定，解析後簽入 process HMAC。caller 因而可自造 allowed root、sources、RequiredSet、authority、evidence、revocation refs，再把 minted TrustedContext 傳給 read_sources。\",\n    \"required_repair\": \"把 mint 能力移出生產 package 至隔離測試套件；生產環境不得 import 或呼叫任何可讓 caller 建立 TrustedContext 的 API，並讓 read_sources 只接受由部署信任根產生的不可偽造 context。\"\n  },\n  {\n    \"id\": \"SEC-REVOCATION-FAIL-OPEN\",\n    \"spec_ref\": \"§02.A authority; §02.F LIVE_REVALIDATE; §04.RETURN; §06.3 N01\",\n    \"severity\": \"P0\",\n    \"verdict\": \"FAIL\",\n    \"evidence\": \"revalidate_trusted_context 發現撤權檔 hash 改變後，只拒絕 state 為 CLOSED、REVOKED 或 EXPIRED；改變後若是 {}、未知 state 或其他無法證明仍有效之文件，現行程式會接受並繼續。此為 fail-open。實際 private revocation 路徑亦無法由 Checker 讀取，故其當期真值仍不能獨立確認。\",\n    \"required_repair\": \"任何撤權文件缺失、hash 改變、格式不明、state 未知或查詢不完整均應拒絕內容；只有固定 pin 的權威回應明確證明 grant 仍有效時才可放行。\"\n  },\n  {\n    \"id\": \"ROOT-ACL-CONTENT-UNCHECKED\",\n    \"spec_ref\": \"§02.A trusted context/ACL; §04.ROOT; §06.3 N01/N02\",\n    \"severity\": \"P1\",\n    \"verdict\": \"FAIL\",\n    \"evidence\": \"root._read_acl 對 path 執行 icacls，僅以 returncode 判成功；stdout 雖被 decode 後回傳，validate_path_security 卻直接丟棄結果。未解析或核對可修改 descriptor、祖先、source、evidence 的 principal，不能證明不存在不可信 writer。祖先 reparse 檢查及同 handle final path/file identity 檢查本身存在。\",\n    \"required_repair\": \"驗證 SDDL／ACL 的允許 writer 集合，或以受信 directory handle 和 OS 權限證明 descriptor、祖先、來源及證據不可由 untrusted caller 改寫。\"\n  },\n  {\n    \"id\": \"TRUST-RIGHTS-EVIDENCE-LIMITED\",\n    \"spec_ref\": \"§02.A; §04.ROOT; §04.RETURN; §06.3 N01\",\n    \"severity\": \"P1\",\n    \"verdict\": \"NOT_VERIFIED\",\n    \"evidence\": \"envelope 的權限 evidence 與 revocation 引用可由非秘密 hash 分帳，但 Checker 無法讀取 C:\\\\Users\\\\user\\\\.hgk-owner\\\\window.json 驗證當期 revocation state；因此不能宣稱此次 Owner 授權、撤權狀態與 Return 前重驗已由獨立 Checker 全部核實。\",\n    \"required_repair\": \"提供可獨立讀取且不洩密的權威 revocation／owner evidence 驗證通道或受控原始證據，並重做 ROOT、RETURN 及接收前時序驗證。\"\n  },\n  {\n    \"id\": \"TRUST-PIN-WORKORDER-CONFLICT\",\n    \"spec_ref\": \"§02.A code/context pin; Workorder 第1.4項\",\n    \"severity\": \"P1\",\n    \"verdict\": \"HOLD\",\n    \"evidence\": \"實際 descriptor 為 3612 bytes、SHA b8759ca7f5c213024c4046db07494cabb355d39d051b0082ff043845e9fb45e0，候選與 candidate_freeze.json 採用此值；Workorder 卻寫 3606 bytes、SHA 2a4a77e964d2d3bcbc7029bd95e5927120844d485aa70afd7bdc9e810dcbf238。\",\n    \"required_repair\": \"由權威 Owner 發出唯一的 descriptor pin，修正 Workorder；不得只為消除文檔衝突而改動已 freeze 候選。\"\n  },\n  {\n    \"id\": \"N05-NO-WRITE-EVIDENCE-INSUFFICIENT\",\n    \"spec_ref\": \"§04.N; §06.3 N05\",\n    \"severity\": \"P1\",\n    \"verdict\": \"NOT_VERIFIED\",\n    \"evidence\": \"run_ops_r4.py 對 W 與來源樹只比較 size+mtime_ns，沒有每個受影響檔的內容 hash，也沒有 OS write/process monitor。未涵蓋 TEMP、cache、registry、network、child process；並排除 20_DEV/.tmp_tests、40_OPS/ops_r4_*、ops_run_* 與 lane_*，其中 .tmp_tests 於 recorder 時序中會被建立。前後 digest 相同只足以說 bounded metadata 未變。\",\n    \"required_repair\": \"提供涵蓋 W、來源樹、TEMP、cache、registry、bytecode、network 與 child process 的 OS 級寫入觀測，或等價的 principal/path/effect 證據；不得將未觀測範圍記為 PASS。\"\n  },\n  {\n    \"id\": \"N08-NATIVE-OFF-NOT-VERIFIED\",\n    \"spec_ref\": \"§06.3 N08; §06.4; §06.5\",\n    \"severity\": \"P1\",\n    \"verdict\": \"NOT_VERIFIED\",\n    \"evidence\": \"test_native_off.py 的 docstring 明示無法證明所有 dynamic/transitive routes，真正 Native/OPS 冷啟仍是 NOT_VERIFIED。現有材料沒有受權隔離產品環境的冷啟 raw、完整 dependency closure、config/env/alias/child-process/network 觀測及真合法來源同契約結果。\",\n    \"required_repair\": \"在受權隔離環境以 Native 冷啟實際執行四 Op，保存 CLI、dependency/config/env、child process、network、trace 與真實 baseline 的 raw evidence；不足時維持 NOT_VERIFIED。\"\n  },\n  {\n    \"id\": \"SAME-CANDIDATE-INDEPENDENT-ACCEPTANCE\",\n    \"spec_ref\": \"§06.5; §06.3 N09\",\n    \"severity\": \"P1\",\n    \"verdict\": \"NOT_VERIFIED\",\n    \"evidence\": \"candidate_digest 已獨立重算一致，但沒有獨立驗收者對同一 freeze 產生完整 current Case raw、expected/observed/FirstFail、principal、session、Writer isolation 與判定記錄。40_OPS/lane_probe_execute_20261125.json 僅證明 lane/model 回應 nonce，並自述不是 acceptance。\",\n    \"required_repair\": \"由隔離責任人對同一 24 檔 freeze 執行並保存完整 acceptance evidence；不得用 Maker 自述、作者 fixture 或歷史測試數替代。\"\n  },\n  {\n    \"id\": \"N06-INDEPENDENT-PROBE-NOT-EXECUTED\",\n    \"spec_ref\": \"§06.3 N06; §06.4\",\n    \"severity\": \"P1\",\n    \"verdict\": \"NOT_VERIFIED\",\n    \"evidence\": \"test_contract_probe.py 靜態看有獨立 validator 且不 import Maker serializer 作 oracle，但沒有現行 raw 測試輸出；本 Checker 無法執行，因配置的 Python venv binary 不存在且 py launcher 無可用 Python。歷史測試數未計入。\",\n    \"required_repair\": \"提供可用執行環境與同一 freeze 的 probe stdout/stderr/exit/raw，證明 v2 roundtrip、tuple、R/M、錯型、duplicate key、unknown normative 與 receiver 時效拒絕。\"\n  },\n  {\n    \"id\": \"AUTH-BEFORE-SOURCE-BYTES\",\n    \"spec_ref\": \"§02.A; §04.ROOT; §04.D; Workorder CLI\",\n    \"severity\": \"P2\",\n    \"verdict\": \"PASS\",\n    \"evidence\": \"正式 CLI 先 resolve_context_for_current_principal，再讀 stdin；read_sources 在開源頭前先驗 context、scope、source mapping、evidence、request pin 與 span。讀取後另有 RETURN 前重驗，未在失敗時釋出 partial content。\",\n    \"required_repair\": \"無；此判定不抵銷 SEC-CALLER-MINT 的信任邊界缺陷。\"\n  },\n  {\n    \"id\": \"STATIC-TRACEBACK-CONTENT-LEAK\",\n    \"spec_ref\": \"§02.E; §04.D; §04.N1\",\n    \"severity\": \"P2\",\n    \"verdict\": \"PASS\",\n    \"evidence\": \"已檢查的 CLI 與錯誤序列化路徑捕捉一般例外，輸出固定碼或 v2 typed error，未發現直接 print traceback、私有 authority、ACL/owner 或未授權 bytes 的明確路徑；未知錯誤收斂為 UNKNOWN_RECONCILE_REQUIRED。此為靜態檢查，不宣稱動態不存在其他外洩路徑。\",\n    \"required_repair\": \"無靜態阻斷項；仍應在獨立錯型、秘密 marker 與 subprocess failure 探針中保存 stderr/stdout raw。\"\n  }\n]\n```\n\n**3. B0_CORE_ACCEPTED 五條件**\n\n1. **真核心產品實跑：成立。** 產品 CLI 已對兩份真原件完成讀取，exit 0；候選 digest、raw SHA、byte length、clause SHA/span、observed value SHA 與 R/P/M 均可重算相符。\n2. **安全負例：不成立。** PIN、SPAN、EFFECT、SCOPE 的既有 exit 與固定碼符合，但 caller 可 mint trusted context 與撤權未知狀態 fail-open 已直接違反安全契約；SPAN 亦不是單變異。\n3. **Native OFF：不成立。** 現有證據只到 `NOT_VERIFIED`，缺少受權隔離冷啟、完整 dependency closure、config/env、child-process、network 與 transitive route 實證。\n4. **同候選獨立驗收：不成立。** freeze 身份獨立一致，但沒有同 24 檔候選的 current 獨立 acceptance run；nonce 回應不是驗收。\n5. **獨立契約探針：不成立。** 獨立 validator 原始碼存在，但未提供現行執行 raw，且本輪無法啟動 Python；不能記 PASS。\n\n因此本輪不得授予 `B0_CORE_ACCEPTED`。候選可保留為「真來源核心讀取已實跑，但安全與獨立驗收未通過」的工程候選。\n\nNONCE=B0R4-CHK-31d7e4"
+}
