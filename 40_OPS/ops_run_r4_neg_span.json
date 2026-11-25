@@ -1,0 +1,81 @@
+{
+ "schema": "SST-B0-OPS-RUN/1",
+ "label": "B0-R4-neg_span",
+ "generated_at": "2026-11-25T12:59:53+0800",
+ "command": {
+  "argv": [
+   "C:\\Users\\user\\AppData\\Local\\hermes\\installs\\0d1790b230609f8c\\environments\\2e40a7b72ed941c691e747bed9c9928f\\venv\\Scripts\\python.exe",
+   "-B",
+   "-m",
+   "b0_reader.cli",
+   "read",
+   "--request-json",
+   "-"
+  ],
+  "cwd": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\20_DEV",
+  "python": "C:\\Users\\user\\AppData\\Local\\hermes\\installs\\0d1790b230609f8c\\environments\\2e40a7b72ed941c691e747bed9c9928f\\venv\\Scripts\\python.exe",
+  "python_version": "3.14.9 (main, Oct 21 2026, 17:48:58) [MSC v.1944 64 bit (AMD64)]",
+  "product_module_root": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\20_DEV\\b0_reader"
+ },
+ "request": {
+  "path": "40_OPS\\b0_read_neg_span_2026-11-25.json",
+  "bytes": 340,
+  "sha256": "05f7380c71d98f48a1182bcbe44cc3ee297bd44b2e62a97f7c815f4b45a93c31"
+ },
+ "actual": {
+  "exit": 64,
+  "seconds": 0.268,
+  "stdout_bytes": 0,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_bytes": 21,
+  "stderr_sha256": "d88be9f3a10e6b6f8eb1ee2471b4b352c1bbc29dcfdbec7c35a0fccf56b5b922",
+  "stdout_raw": "40_OPS\\ops_run_r4_neg_span.raw\\stdout.txt",
+  "stderr_raw": "40_OPS\\ops_run_r4_neg_span.raw\\stderr.txt",
+  "stdout_truncated_for_report": "",
+  "stderr_text": "TRUST_CONTEXT_UNBOUND"
+ },
+ "product_write_set": [],
+ "no_write": {
+  "before_digests": {
+   "W_tree": "4d25f742408dfc9d7378514746bf6d32b4167e1fa0f164c7b224c7e3fad9c636",
+   "source_dir": "61e8cee9c934f7c09d476fb5afe67af49fa5c6688f35c323e7a581df7b30a912"
+  },
+  "after_digests": {
+   "W_tree": "f9395c3f4793daac5b4f998b6d19921894f4bc2436be3fe3ba21a31caae9b18e",
+   "source_dir": "61e8cee9c934f7c09d476fb5afe67af49fa5c6688f35c323e7a581df7b30a912"
+  },
+  "diff": {
+   "W_tree": {
+    "added": [
+     "40_OPS/lane_logs_execute_20261125/attempt-13352-1795577931-1-stderr.txt",
+     "40_OPS/lane_logs_execute_20261125/attempt-13352-1795577931-1-stdout.txt",
+     "40_OPS/lane_probe_execute_20261125.json",
+     "40_OPS/lane_probe_execute_20261125.json.attempts.ndjson",
+     "40_OPS/ops_run_r4_neg_pin.json",
+     "40_OPS/ops_run_r4_neg_pin.raw/stderr.txt",
+     "40_OPS/ops_run_r4_neg_pin.raw/stdout.txt",
+     "40_OPS/ops_run_r4_neg_span.raw/stderr.txt",
+     "40_OPS/ops_run_r4_neg_span.raw/stdout.txt",
+     "40_OPS/ops_run_r4_pos1.json",
+     "40_OPS/ops_run_r4_pos1.raw/stderr.txt",
+     "40_OPS/ops_run_r4_pos1.raw/stdout.txt",
+     "40_OPS/ops_run_r4_pos2.json",
+     "40_OPS/ops_run_r4_pos2.raw/stderr.txt",
+     "40_OPS/ops_run_r4_pos2.raw/stdout.txt"
+    ],
+    "removed": [],
+    "changed": [],
+    "clean": false
+   },
+   "source_dir": {
+    "added": [],
+    "removed": [],
+    "changed": [],
+    "clean": true
+   }
+  },
+  "verdict": "WRITE_OR_DRIFT_OBSERVED",
+  "watch_note": "W tree and the K source root are compared by size+mtime_ns; this is a bounded observation, not a whole-disk guarantee."
+ },
+ "finished_at": "2026-11-25T12:59:43+0800"
+}

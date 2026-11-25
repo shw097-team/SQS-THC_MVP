@@ -243,6 +243,85 @@ class ProductReadTests(unittest.TestCase):
                     {"RIGHTS_UNVERIFIED", "RIGHTS_EXPIRED"},
                 )
 
+    def test_R1_live_window_must_be_the_window_the_receipt_was_issued_for(self) -> None:
+        """R1.1: OPEN is not enough - the live window must be the receipt's window.
+
+        Three single mutations, each from a valid baseline: a different window id,
+        a window without identifiers, and a receipt that cannot bind any window.
+        """
+
+        self.harness.add_source("S1", raw_baseline())
+        context = self.harness.resolve()
+        now = int(datetime.now(timezone.utc).timestamp())
+        base = {
+            "schema": "OwnerSigningWindow@1",
+            "task_id": "SST_PLP_PH01_W0_B0_SOURCE_READ_AUTH",
+            "scope": ["b0_source_read_authority", "sqs_thc_ph01_e00"],
+            "expires_at": now + 600,
+            "max_ops": 100,
+            "ops_used": 0,
+            "effect_class_ceiling": "READ_ONLY_PROBE",
+            "state": "OPEN",
+            "window_id": "WIN-test-0001",
+            "owner_fingerprint": "test-fingerprint",
+        }
+        for mutation in (
+            {**base, "window_id": "WIN-someone-else"},
+            {**base, "owner_fingerprint": "other-fingerprint"},
+            {k: v for k, v in base.items() if k not in {"window_id", "owner_fingerprint"}},
+        ):
+            with self.subTest(mutation=sorted(mutation)):
+                self.harness.set_owner_window(mutation)
+                with self.assertRaises(TrustContextError) as raised:
+                    revalidate_trusted_context(context)
+                self.assertEqual(raised.exception.code, "RIGHTS_UNVERIFIED")
+                self.harness._set_owner_state("OPEN")
+
+    def test_R1_receipt_without_window_identity_cannot_authorise(self) -> None:
+        """R1.1: an unverifiable receipt binding fails closed instead of being assumed valid."""
+
+        self.harness.add_source("S1", raw_baseline())
+        self.harness.authorization.write_text(
+            '{"kind":"isolated-test-authorization"}\n', encoding="utf-8"
+        )
+        with self.assertRaises(TrustContextError) as raised:
+            self.harness.resolve()
+        self.assertEqual(raised.exception.code, "RIGHTS_UNVERIFIED")
+
+    def test_N07_source_read_budget_reports_unknown_and_keeps_siblings(self) -> None:
+        """N07/R1.3: a source that exceeds the content-read cap is reported UNKNOWN,
+        not silently truncated, and its siblings still report independently."""
+
+        import b0_reader.return_ as b0_return
+
+        self.harness.add_source("S1", raw_baseline())
+        self.harness.add_source("S2", raw_baseline())
+        context = self.harness.resolve()
+        request = self.harness.request(context)
+        original_read_one = b0_return._read_one
+
+        def slow_s1(request_source: Any, trusted: Any, ctx: Any, *, attempt: int = 1) -> Any:
+            if trusted.source_id == "S1":
+                time.sleep(6.0)
+            return original_read_one(request_source, trusted, ctx, attempt=attempt)
+
+        with patch.object(b0_return, "_read_one", side_effect=slow_s1), patch.object(
+            b0_return, "SOURCE_READ_LIMIT_SECONDS", 4.0
+        ):
+            envelope, exit_code = read_sources(request, trusted_context=context)
+
+        self.assertEqual(exit_code, 2)
+        self.assertEqual([error["source_id"] for error in envelope["errors"]], ["S1"])
+        self.assertEqual(envelope["errors"][0]["code"], "UNKNOWN_RECONCILE_REQUIRED")
+        self.assertEqual(envelope["errors"][0]["op"], "BYTES")
+        self.assertEqual(
+            [entry["source_ref"]["source_id"] for entry in envelope["entries"]], ["S2"]
+        )
+        # The abandoned read still holds its handle until it finishes; the result is
+        # UNKNOWN either way, and the source must be readable again afterwards.
+        time.sleep(3.5)
+        self.assertEqual(self.harness.sources["S1"].source.read_bytes(), raw_baseline())
+
     def test_N01_valid_open_revocation_window_is_accepted(self) -> None:
         context, _, _ = self._baseline()
         self.assertEqual(revalidate_trusted_context(context), context)

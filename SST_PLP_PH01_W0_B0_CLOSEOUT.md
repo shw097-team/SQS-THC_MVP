@@ -121,7 +121,7 @@
 | `B0_SPEC_READY` | 成立 |
 | `B0_ENGINEERING_CANDIDATE` | **成立**（真寫權、preimage、diff、同候選 freeze、132 tests OK） |
 | `B0_PRODUCT_EXECUTED` | **成立**（真來源四 Op＋四個單變異真 NEG、raw／exit／無寫齊） |
-| `B0_CORE_ACCEPTED` | **不成立**（Native OFF 的 network／transitive tracing 為 `NOT_VERIFIED`；同候選獨立驗收待第二輪判定） |
+| `B0_CORE_ACCEPTED` | **不成立**（候選已更新為 8d4248a7…，OPS 待重跑）（Native OFF 的 network／transitive tracing 為 `NOT_VERIFIED`；同候選獨立驗收待第二輪判定） |
 | `B0_COMPLETE` | **不成立**（無真 B1/B2/B3 接收） |
 | `B1_CONTRACT_COMPATIBLE / CONSUMER_NOT_YET_EXECUTED` | 探針成立；**已由真接收取代**（見 §8.1） |
 | `B1_INPUT_READY` | **成立**（B1 真接收 ACCEPTED、readback 見 §8.1） |
@@ -202,3 +202,42 @@ CORE_ACCEPTED 五條件（Checker 原話）：真核心產品實跑＝成立；�
 ### 8.3 發布位元組一致性（T3）
 
 問題：`dist` clone `core.autocrlf=true` 使 GitHub blob 為 LF、本地候選為 CRLF，raw bytes 與候選不一致。處置：新增 `.gitattributes`（`* -text`）並 `git add --renormalize`，commit `1563775`；實測 `native_entry.py`／`return_.py`／`root.py`／`CLOSEOUT.md` 的 **HEAD blob 與工作檔 byte-equal**。
+
+## 9｜R1 共用安全閉合（本輪實作，OPS 待重新授權後重跑）
+
+### 9.1 R1.1 撤權／信任邊界（SEC-REVOCATION-FAIL-OPEN）
+
+新增（`20_DEV/b0_reader/native_entry.py`）：
+
+- `_pinned_receipt(context)`：以 descriptor 的 `authorization_ref` 讀入 Owner 簽署收據，並要求其 raw SHA 等於 `authorization_sha`，否則不得使用。
+- `_window_matches_receipt(window, receipt)`：live 窗口必須是**收據所指的那一個窗口**——`window_id` 與 `owner_fingerprint` 皆必填且必須相等；收據缺這兩個識別即視為不可核實（fail closed），不再只憑 `state=OPEN`＋到期上限。
+- `_revocation_error` 內對 `OwnerSigningWindow@1` 先做上述綁定，再走原有 schema／task／scope／ceiling／到期（≤ descriptor `expires_at`）檢查。
+
+新增單變異負例（`20_DEV/tests/test_product_read.py`，均從有效 baseline 只改一項）：
+
+| 變異 | 期望 |
+|---|---|
+| live 窗口 `window_id` 換成別的窗口 | `RIGHTS_UNVERIFIED` |
+| live 窗口 `owner_fingerprint` 換掉 | `RIGHTS_UNVERIFIED` |
+| live 窗口缺 `window_id`／`owner_fingerprint` | `RIGHTS_UNVERIFIED` |
+| 收據本身缺窗口識別（無法綁定） | `RIGHTS_UNVERIFIED`（連 resolve 都不成立） |
+
+測試 fixture 同步：`tests/trust_fixture.py` 的收據與 live 窗口現在都帶 `WIN-test-0001` / `test-fingerprint`，因此嚴格路徑在測試中同樣被執行，不是只在正式環境生效。
+
+### 9.2 R1.3 N07 每源 30 秒上限
+
+新增（`20_DEV/b0_reader/return_.py`）：
+
+- `SOURCE_READ_LIMIT_SECONDS = 30.0`、`_read_with_budget(...)`：每個來源的讀取在獨立 daemon 執行緒中進行，超過上限即回該源 `BYTES / UNKNOWN_RECONCILE_REQUIRED`（**不是**靜默截斷），兄弟來源不受影響。
+- 被放棄的讀取仍持有其 handle 直到該執行緒結束；結果一律 UNKNOWN，重入前必須 reconcile（r4 §04.R）。
+- 負例 `test_N07_source_read_budget_reports_unknown_and_keeps_siblings`：S1 逾時 → error 僅 S1、`entries=[S2]`、exit=2；執行緒結束後來源可再次讀取（handle 已釋放）。
+
+### 9.3 現況與缺口（照實）
+
+- 全套測試：**135 案 OK**（原 132＋本輪 3 案）。
+- 新候選 freeze：**`8d4248a7428dc035ee75f4ed7199f75ad3f2fd2e54f2a9e22cd3d79155a9dd19`**（25 檔，manifest 2,570 B）。
+- Owner 視窗 `WIN-2ffca679906c` 已於 `2026-11-25T20:11:29+08:00` 到期（`remaining_s=0`、`usable=false`）。因此：
+  - 產品 POS／四 NEG 尚未對**新候選**重跑；
+  - Native OFF v2（正常 baseline vs 隔離 OFF、觀測器自測、W 樹快照比對）已實作但**未執行**；
+  - `B0_CORE_ACCEPTED` **不成立**，直到上述真跑與同候選獨立判定完成。
+- 恢復：Owner 以原機制重開視窗（同 task／scope／6h／12 ops）→ 更新 descriptor 的 `authorization_sha`／`expires_at` 與 `native_entry` 的 `EXPECTED_DESCRIPTOR_*` → 重 freeze → 跑 `40_OPS/run_ops_r4.py`（POS＋四 NEG）與 `40_OPS/native_off_r4.py` → 分離 Checker 同候選判定。

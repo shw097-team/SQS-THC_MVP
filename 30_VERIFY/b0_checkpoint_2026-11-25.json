@@ -1,0 +1,153 @@
+{
+ "schema": "SST-B0-CHECKPOINT/1",
+ "generated_at": "2026-11-25T19:58:12+0800",
+ "subject": "SST/SQS-THC/PH01/E00",
+ "original_wave": "P1-W00M",
+ "bid": 0,
+ "resume_pointer": {
+  "spec_root": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\SST_PLP_PH01_W0_B0_執行控制小包\\B0_NATIVE_FIRST_2026-11-25_r4_CODEX_FINAL",
+  "spec_body_sha256": "582a54048d8b63e37be3d803c829a12ffe164be72963f026cea1a1b6183345d9",
+  "workorder": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\20_DEV\\WORKORDER_B0_DEV_r4_2026-11-25.md",
+  "workorder_sha256": "8731e28c721e43a7d4564fd7f3696fb111daf1a4ce5e611224350aa29ad2f264",
+  "descriptor": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\00_PREFLIGHT\\B0_READ_CONTEXT_2026-11-25_r4.json",
+  "descriptor_sha256": "14fa622c93f288952db8c00508cfaa7c8c468581c3b568b2486bf68e1bf8d691",
+  "required_sets": [
+   {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\00_PREFLIGHT\\required_set_req12_read_all_2026-11-25.json",
+    "sha256": "50ca45c106bb58fd8a3bfdf1cfaf7400fd3a06d1f95cea7f1fe8c6166eda4764"
+   },
+   {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\00_PREFLIGHT\\required_set_req12_read_w0m_2026-11-25.json",
+    "sha256": "bc7afa530677746b8c681fc32109041a04e1fd1e7fc201c375d8edff34e6615c"
+   }
+  ],
+  "dev0_baseline": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\40_OPS\\dev0_baseline_20261125.json",
+  "docs": [
+   "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\SST_PLP_PH01_W0_B0_CLOSEOUT.md",
+   "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\SST_PLP_PH01_W0_B0_HANDOFF.md"
+  ]
+ },
+ "lanes": {
+  "commander": {
+   "engine": "HERMES",
+   "version": "Hermes Agent v0.23.3 (2026.9.24) stable local caafe5389ae5",
+   "provider": "opencode-go",
+   "model": "deepseek-v4.1-flash"
+  },
+  "execute": {
+   "engine": "codex-cli 0.169.0-alpha.11.1",
+   "sha256": "094d4db493de22025712cc5963854e7654b7c97f4cee795e3e986270a0f4f6b4",
+   "codex_home": "C:\\Users\\user\\AppData\\Local\\HG-KSEOS\\codex-hermes",
+   "receipt": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\40_OPS\\lane_probe_execute_20261125.json",
+   "ok": true,
+   "served_arm": "opencode-go/deepseek-v4.1-flash",
+   "usage_receipt_ok": true
+  },
+  "verify_security": {
+   "engine": "codex-cli 0.169.0-alpha.11.1",
+   "receipt": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\30_VERIFY\\lane_probe_verify_20261125.json",
+   "ok": true,
+   "served_arm": "opencode-go/deepseek-v4.1-flash",
+   "usage_receipt_ok": true
+  },
+  "relay": {
+   "port": 10101,
+   "restarted_by": "start-hgk-hermes.ps1 -Action StartOpenCodex",
+   "health": "200 opencodex 2.11.0 pid 22028"
+  },
+  "front_door": {
+   "port": 10100,
+   "state": "DOWN",
+   "note": "sealed launcher path only; not used by hgk-lane-dispatch transport (receipt front_door_port=None)",
+   "helper_missing": "C:\\Projects\\Agent_Workspace\\FHS_NEXT\\HG-KSEOS\\scripts\\start-hgk-exec-frontdoor.ps1",
+   "declared_python_missing": "C:\\projects\\Agent_Workspace\\HG-KSEOS\\.venv\\Scripts\\python.exe"
+  },
+  "sod_note": "三車道同模型（owner order）→ model-axis SoD ABSENT；served 已證、lane ADMITTED 未獨立證明（歷史 ERR_LANE_NOT_ADMITTED 未變更）"
+ },
+ "rights": {
+  "authorization_ref": "C:\\Projects\\Agent_Workspace\\FHS_NEXT_Workspace\\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\\owner_ws\\artifacts\\OWNER_WINDOW.json",
+  "window_id": "WIN-e083f8bbc461",
+  "expires_at": "2026-11-24T22:19:50+08:00",
+  "measured": "remaining_s=0 broker_alive=false usable=false ops_used=0",
+  "state": "EXPIRED",
+  "consequence": "產品對真來源必回 RIGHTS_EXPIRED；POS/HOLD 需 Owner 本人在原視窗重開",
+  "owner_renew_cmd": "C:\\Projects\\Agent_Workspace\\FHS\\HG-KSEOS\\.venv\\Scripts\\python.exe C:\\Projects\\Agent_Workspace\\FHS_NEXT\\owner_envelope\\code\\owner_window.py open --task SST_PLP_PH01_W0_B0_SOURCE_READ_AUTH --ttl-hours 8 --max-ops 12 --scope b0_source_read_authority,sqs_thc_ph01_e00 --effect-ceiling READ_ONLY_PROBE --workspace \"C:\\Projects\\Agent_Workspace\\FHS_NEXT_Workspace\\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\\owner_ws\""
+ },
+ "status": {
+  "freeze": "5ec38e9c1835dba89c5755acd2f2c720aadd9193dd96d08d0a1fe7ddfa36c456 (25 files)",
+  "tests": "132 OK (279s) after revocation-binding fix",
+  "b0_engineering_candidate": true,
+  "b0_product_executed": true,
+  "b0_core_accepted": false,
+  "b0_complete": false,
+  "interrupted": [
+   "checker round2 on freeze 1257f5ee (killed 15:59 for shutdown; no receipt, CLOSEOUT 5.2 empty)",
+   "github incremental publish: dist/SQS-THC_MVP has 73 staged changes, NOT committed/pushed (origin/main still c502db00e16a)"
+  ],
+  "owner_window": "WIN-2ffca679906c remaining_s≈8357 at 17:50, broker_alive=false (broker not needed for reads)",
+  "pending_after_reboot": [
+   "start relay 10101",
+   "renew owner window if expired",
+   "rerun 132-test suite",
+   "rerun 5 OPS runs",
+   "rerun checker round2",
+   "update CLOSEOUT 5.2",
+   "commit+push dist clone and read back"
+  ],
+  "phase": "published; checker round2 (17:55) still running; CORE_ACCEPTED still false",
+  "publish": {
+   "remote_main": "34bcc49da604e6f8d741d67769bb380a2272fb41",
+   "commits": [
+    "a24aef2",
+    "e2b191b",
+    "e78c724",
+    "1563775",
+    "34bcc49"
+   ],
+   "blobs": 99
+  },
+  "relay": "restarted 2026-11-25T17:52 pid 12872, /healthz 200",
+  "ops_final": "40_OPS/ops_r4_h_* (POS exit0 5429B; SOURCE_PIN_MISMATCH/SPAN_INVALID/EFFECT_DENIED/SCOPE_MISMATCH; all NO_PRODUCT_WRITE_OBSERVED)",
+  "checker_round2": "narrow run ok=true: PASS mint/seal, PASS ACL, PASS POS+NEG codes; FAIL revocation pinning; freeze recompute NOT_VERIFIED (sandbox blocked python)",
+  "fix_after_checker": "owner-window expiry must not exceed descriptor expires_at; 132 tests OK; POS+NEG re-run",
+  "holds": [
+   "Native OFF network/transitive NOT_VERIFIED",
+   "no real B1/B2/B3 consumer",
+   "provider epoch absent",
+   "manifest UNVERIFIED",
+   "P0-W00M rights not located",
+   "revocation fix not independently re-checked",
+   "lane credential posture gate missing",
+   "3 lanes same model (owner order)"
+  ],
+  "b1_b2_b3_acceptance": {
+   "verdict": "ACCEPTED",
+   "snapshot_sha": "82640619aa80",
+   "receipts": "60_B1/receipts/*_receipt_r4_2026-11-25.json",
+   "tests": "60_B1 15 OK",
+   "scope": "B1 owns own rights entry; no maker serializer reuse"
+  },
+  "native_off": {
+   "file": "40_OPS/native_off_r4.json",
+   "verdict": "NATIVE_OFF_OBSERVED_NO_EXTERNAL_DEPENDENCY",
+   "children": 0,
+   "external_tcp": 0,
+   "same_stable_projection": true,
+   "not_proven": [
+    "transitive imports",
+    "kernel-level writes",
+    "post-window network"
+   ]
+  },
+  "b1_input_ready": true,
+  "b1_technically_ready": false,
+  "next": [
+   "independent re-check of freeze 5ec38e9c on the 3 security items + Native OFF evidence",
+   "B1 RepoRoot/BASE/Kernel/FDA evidence before B1_TECHNICALLY_READY",
+   "B2 ToolReadSet and B3 ledger remain unbuilt",
+   "owner window expires 2026-11-25T20:11:29+08:00; renew via the original window for further real reads"
+  ]
+ },
+ "state": "EXTENDED_THIS_PASS",
+ "resume_doc": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\SST_PLP_PH01_W0_B0_RESUME_2026-11-25.md"
+}

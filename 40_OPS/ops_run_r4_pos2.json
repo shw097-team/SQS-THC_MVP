@@ -1,0 +1,75 @@
+{
+ "schema": "SST-B0-OPS-RUN/1",
+ "label": "B0-R4-pos2",
+ "generated_at": "2026-11-25T12:59:11+0800",
+ "command": {
+  "argv": [
+   "C:\\Users\\user\\AppData\\Local\\hermes\\installs\\0d1790b230609f8c\\environments\\2e40a7b72ed941c691e747bed9c9928f\\venv\\Scripts\\python.exe",
+   "-B",
+   "-m",
+   "b0_reader.cli",
+   "read",
+   "--request-json",
+   "-"
+  ],
+  "cwd": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\20_DEV",
+  "python": "C:\\Users\\user\\AppData\\Local\\hermes\\installs\\0d1790b230609f8c\\environments\\2e40a7b72ed941c691e747bed9c9928f\\venv\\Scripts\\python.exe",
+  "python_version": "3.14.9 (main, Oct 21 2026, 17:48:58) [MSC v.1944 64 bit (AMD64)]",
+  "product_module_root": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\20_DEV\\b0_reader"
+ },
+ "request": {
+  "path": "40_OPS\\b0_read_request_2026-11-25.json",
+  "bytes": 478,
+  "sha256": "0d681d2a47dbccd091edb5dee6f1734361abb2bc576865fab6b8f4460b86e00c"
+ },
+ "actual": {
+  "exit": 0,
+  "seconds": 0.498,
+  "stdout_bytes": 5429,
+  "stdout_sha256": "c24a2fb83e9349f6a61ac5094e736b9f7e01e7d9b6e1b5c754256ed89578babb",
+  "stderr_bytes": 0,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stdout_raw": "40_OPS\\ops_run_r4_pos2.raw\\stdout.txt",
+  "stderr_raw": "40_OPS\\ops_run_r4_pos2.raw\\stderr.txt",
+  "stdout_truncated_for_report": "{\"wire_version\":\"SST.B0.SourceReadSet/2\",\"subject\":\"SST/SQS-THC/PH01/E00\",\"original_wave\":\"P1-W00M\",\"bid\":0,\"spec_version\":\"2026-11-25_r4_Native-first\",\"candidate_digest\":\"d98ae726e8883910219ca283d3c2a331966017fc2644f1ca363403ae426f0ce5\",\"scope\":{\"scope_id\":\"SQS-THC-PH01-E00-B0-SOURCE-READ\",\"source_ids\":[\"SST.ALL.W0.BLUEPRINT\",\"SST.W0M.MAIN\"],\"purpose\":\"B0 SOURCE_READ under SST_PLP_PH01_W0_B0_SOURCE_READ_AUTH\",\"consumer_ids\":[\"B1\",\"B2\",\"B3\"]},\"source_manifest\":{\"inherited_sha\":\"2012a28f630f4e28d60309de0bb5734ce138b18c677445a475c670f1d9f4245e\",\"verification\":\"UNVERIFIED\",\"evidence_ref\":null},\"write_set\":[],\"preimage\":\"N/A\",\"fin_order\":\"DENY\",\"extensions\":{},\"entries\":[{\"source_ref\":{\"source_id\":\"SST.ALL.W0.BLUEPRINT\",\"namespace\":\"SST/SQS-THC/PH01/P1-W00M\",\"locator\":\"C:\\\\Projects\\\\Agent_Workspace\\\\知識庫\\\\SQS\\\\【1】SST_PLP_PH01-04\\\\SST_PLP_PH01_W0_B0-B8\\\\藍圖\\\\SST_PLP_PH01_W0_全批次藍圖.md\",\"source_version\":\"2026-11-24_r2\"},\"sha\":\"dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1\",\"byte_length\":457294,\"encoding\":\"UTF-8\",\"clause_span\":[572,579],\"clause_sha\":\"77132f0636e30b0cf8d5df1ae3438228b18d847d718e5ffbf5c56825229f9bf6\",\"original_id\":\"REQ-12\",\"child_id\":\"REQ-12::AUTHOR-SPLIT-01\",\"polarity\":\"POSITIVE_READ_AND_DEV_DENY\",\"requiredness\":\"AUTHOR_SPLIT_UNRATIFIED\",\"owner\":\"PR-07\",\"provenance\":{\"requirement_ref\":\"C:\\\\Projects\\\\Agent_Workspace\\\\知識庫\\\\SQS\\\\【1】SST_PLP_PH01-04\\\\SST_PLP_PH01_W0_B0-B8\\\\藍圖\\\\SST_PLP_PH01_W0_全批次藍圖.md\",\"requirement_sha\":\"dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1\",\"requirement_span\":[572,579],\"rule_ref\":\"C:\\\\Projects\\\\Agent_Workspace\\\\SQS-THC_MVP_Workspace\\\\00_PREFLIGHT\\\\required_set_req12_read_all_2026-11-25.json\",\"rule_sha\":\"50ca45c106bb58fd8a3bfdf1cfaf7400fd3a06d1f95cea7f1fe8c6166eda4764\"},\"required_fields\":[\"read\"],\"observed\":{\"read\":{\"value\":\"READ 只讀合法來源，不能繼承 DEV 效應。\",\"source_sha\":\"dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1\",\"span\":[573,573],\"value_sha\":\"78a231eaa93d64fed87001426970d5133e89847b3f7668e514d6b0f259798dab\"}},\"missing\":[],\"authority\":{\"source_owner\":\"SST Owner (single human OWNER, KB author)\",\"usage_evidence_ref\":\"C:\\\\Projects\\\\Agent_Workspace\\\\FHS_NEXT_Workspace\\\\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\\\\owner_ws\\\\artifacts\\\\OWNER_WINDOW.json\",\"usage_evidence_sha\":\"e750066a430da8a7c479efa9687d5aa2377964dbab51fdd20e144c6303edd28a\",\"os_principal\":\"DESKTOP-57EO414\\\\user\",\"verification_method\":\"LIVE_REVALIDATE_OWNER_WINDOW_OS_TOKEN\",\"rights_check_ref\":\"C:\\\\Projects\\\\Agent_Workspace\\\\FHS_NEXT_Workspace\\\\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\\\\owner_ws\\\\artifacts\\\\OWNER_WINDOW.json\",\"checked_at\":\"2026-11-25T12:59:01+08:00\",\"valid_from\":\"2026-11-25T12:11:29+08:00\",\"expires_at\":\"2026-11-25T20:11:29+08:00\",\"revocation_check_ref\":\"C:\\\\Users\\\\user\\\\.hgk-owner\\\\window.json#state\",\"epoch_strategy\":\"LIVE_REVALIDATE\",\"epoch_provider_ref\":null,\"epoch_evidence_ref\":null,\"disclosure\":\"LOCAL_ONLY\"},\"acl_epoch\":null,\"rights_epoch\":null},{\"source_ref\":{\"source_id\":\"SST.W0M.MAIN\",\"namespace\":\"SST/SQS-THC/PH01/P1-W00M\",\"locator\":\"C:\\\\Projects\\\\Agent_Workspace\\\\知識庫\\\\SQS\\\\【1】SST_PLP_PH01-04\\\\SST_PLP_PH01_WM\\\\SST_PLP_PH01_ALL_WNM_2026-11-24_r2\\\\SST_PLP_PH01_W0M_實質正文.md\",\"source_version\":\"2026-11-24_r2\"},\"sha\":\"5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96\",\"byte_length\":311983,\"encoding\":\"UTF-8\",\"clause_span\":[295,307],\"clause_sha\":\"4f0db2cb1d7c740eaf3b5a1de6be4517c951fe654010aeb43100104d13dfbaf5\",\"original_id\":\"REQ-12\",\"child_id\":\"REQ-12::AUTHOR-SPLIT-01\",\"polarity\":\"POSITIVE_READ_AND_DEV_DENY\",\"requiredness\":\"AUTHOR_SPLIT_UNRATIFIED\",\"owner\":\"PR-07\",\"provenance\":{\"requirement_ref\":\"C:\\\\Projects\\\\Agent_Workspace\\\\知識庫\\\\SQS\\\\【1】SST_PLP_PH01-04\\\\SST_PLP_PH01_WM\\\\SST_PLP_PH01_ALL_WNM_2026-11-24_r2\\\\SST_PLP_PH01_W0M_實質正文.md\",\"requirement_sha\":\"5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96\",\"requirement_span\":[295,307],\"rule_r",
+  "stderr_text": ""
+ },
+ "product_write_set": [],
+ "no_write": {
+  "before_digests": {
+   "W_tree": "4d25f742408dfc9d7378514746bf6d32b4167e1fa0f164c7b224c7e3fad9c636",
+   "source_dir": "61e8cee9c934f7c09d476fb5afe67af49fa5c6688f35c323e7a581df7b30a912"
+  },
+  "after_digests": {
+   "W_tree": "2ed32a0abaa2f9e630846ac7bafeb9606162b960e9c83003fef948762945f770",
+   "source_dir": "61e8cee9c934f7c09d476fb5afe67af49fa5c6688f35c323e7a581df7b30a912"
+  },
+  "diff": {
+   "W_tree": {
+    "added": [
+     "40_OPS/lane_logs_execute_20261125/attempt-13352-1795577931-1-stderr.txt",
+     "40_OPS/lane_logs_execute_20261125/attempt-13352-1795577931-1-stdout.txt",
+     "40_OPS/lane_probe_execute_20261125.json",
+     "40_OPS/lane_probe_execute_20261125.json.attempts.ndjson",
+     "40_OPS/ops_run_r4_pos1.json",
+     "40_OPS/ops_run_r4_pos1.raw/stderr.txt",
+     "40_OPS/ops_run_r4_pos1.raw/stdout.txt",
+     "40_OPS/ops_run_r4_pos2.raw/stderr.txt",
+     "40_OPS/ops_run_r4_pos2.raw/stdout.txt"
+    ],
+    "removed": [],
+    "changed": [],
+    "clean": false
+   },
+   "source_dir": {
+    "added": [],
+    "removed": [],
+    "changed": [],
+    "clean": true
+   }
+  },
+  "verdict": "WRITE_OR_DRIFT_OBSERVED",
+  "watch_note": "W tree and the K source root are compared by size+mtime_ns; this is a bounded observation, not a whole-disk guarantee."
+ },
+ "finished_at": "2026-11-25T12:59:01+0800"
+}

@@ -10,6 +10,7 @@ import hashlib
 import json
 import os
 import stat
+import threading
 import time
 from collections.abc import Mapping
 from datetime import datetime
@@ -605,6 +606,45 @@ class _FatalResult(dict[str, Any]):
         self.code = code
 
 
+
+SOURCE_READ_LIMIT_SECONDS = 30.0
+
+
+def _read_with_budget(
+    request_source: Mapping[str, Any],
+    trusted: TrustedSource,
+    context: TrustedContext,
+) -> tuple[dict[str, Any] | None, dict[str, Any] | None]:
+    """Run one source read under the 30 s content-read cap (r4 §04.0).
+
+    A read still running when the budget expires is abandoned in a daemon thread
+    and reported as UNKNOWN for that source: the handle state of an abandoned read
+    cannot be proven clean from here, so r4 §04.R requires reconcile before any
+    re-entry. Sibling sources continue independently.
+    """
+
+    outcome: dict[str, Any] = {}
+
+    def work() -> None:
+        try:
+            outcome["value"] = _read_one(request_source, trusted, context)
+        except BaseException as exc:  # pragma: no cover - surfaced below
+            outcome["exception"] = exc
+
+    worker = threading.Thread(
+        target=work,
+        name=f"b0-read-{trusted.source_id}",
+        daemon=True,
+    )
+    worker.start()
+    worker.join(SOURCE_READ_LIMIT_SECONDS)
+    if worker.is_alive():
+        return None, _error(trusted.source_id, "BYTES", "UNKNOWN_RECONCILE_REQUIRED")
+    if "exception" in outcome:
+        raise outcome["exception"]
+    return outcome.get("value", (None, None))
+
+
 def read_sources(
     request: Mapping[str, Any],
     *,
@@ -625,7 +665,7 @@ def read_sources(
         trusted = context.source(request_source["source_id"])
         if trusted is None:
             return {}, 64
-        entry, error = _read_one(request_source, trusted, context)
+        entry, error = _read_with_budget(request_source, trusted, context)
         if error is not None:
             errors.append(error)
         elif entry is not None:

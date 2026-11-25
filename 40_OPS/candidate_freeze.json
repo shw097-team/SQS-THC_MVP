@@ -24,7 +24,7 @@
    "file": "00_PREFLIGHT/required_set_req12_read_w0m_2026-11-25.json"
   }
  ],
- "candidate_digest": "5ec38e9c1835dba89c5755acd2f2c720aadd9193dd96d08d0a1fe7ddfa36c456",
+ "candidate_digest": "8d4248a7428dc035ee75f4ed7199f75ad3f2fd2e54f2a9e22cd3d79155a9dd19",
  "manifest_bytes": 2570,
  "file_count": 25,
  "files": {
@@ -69,16 +69,16 @@
    "bytes": 7696
   },
   "20_DEV/b0_reader/native_entry.py": {
-   "sha256": "fff751348f9994f94f007655c020846eefaec6609275e6d2a51f066a66ba0f0e",
-   "bytes": 21094
+   "sha256": "fedf163a1161bb74983a3343b161d016b276232bb68960b71da0299eada62994",
+   "bytes": 22484
   },
   "20_DEV/b0_reader/requiredset.py": {
    "sha256": "c1ccd04e03beb72e912b4634ad0bbd0674a8e572b5477745775373b773daa1ae",
    "bytes": 9135
   },
   "20_DEV/b0_reader/return_.py": {
-   "sha256": "dc7c873e769d7891a1cfcbff1a6affacb38caac9b69d7f18ca861e8256518a32",
-   "bytes": 21394
+   "sha256": "97e82c8e6e39d77f4824df5038839e0dd235abc09ca04fe27418518f9c97ce37",
+   "bytes": 22725
   },
   "20_DEV/b0_reader/root.py": {
    "sha256": "0d4fa2362724d8966f261bf54efa09f444ed8c241cc19606afdacd6dcbf79e6e",
@@ -117,16 +117,16 @@
    "bytes": 12295
   },
   "20_DEV/tests/test_product_read.py": {
-   "sha256": "feebaf4a8b6d6bc45fd72c93a6399fbeab682ed9577d035ef269451e2007a221",
-   "bytes": 30507
+   "sha256": "c969dc0d2f303f9211b0e7697ca6e766c4f7f18127f486c2b001ab949946ff4c",
+   "bytes": 35231
   },
   "20_DEV/tests/test_windows_security.py": {
    "sha256": "cf47519e5660d342be2f1c19ea5d2dd326d76425a59846f21e5cc002def50e39",
    "bytes": 12789
   },
   "20_DEV/tests/trust_fixture.py": {
-   "sha256": "4c31e6be33119dfafd74795f10418413a8e7e77624a97579ed7397ecbddba0e3",
-   "bytes": 12699
+   "sha256": "c4db3fac39c7d0b76210b54e298b5fc4548cf6e03e3604ef57f0d2d93a0c255f",
+   "bytes": 13346
   }
  },
  "excluded": "reports (30_VERIFY, 40_OPS evidence, CLOSEOUT/HANDOFF), __pycache__, .tmp_tests, non-.py/.json siblings, symlinks"

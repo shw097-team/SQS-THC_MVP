@@ -515,6 +515,36 @@ def _owner_window_is_valid(
         return False
 
 
+def _pinned_receipt(context: TrustedContext) -> dict[str, Any] | None:
+    """Load the owner-signed receipt this descriptor was built against (hash-pinned)."""
+
+    try:
+        payload = read_optional_file(context.authorization_ref)
+    except (WinIOError, OSError):
+        return None
+    if payload is None or hashlib.sha256(payload).hexdigest() != context.authorization_sha:
+        return None
+    try:
+        document = _descriptor_json(payload)
+    except TrustContextError:
+        return None
+    return document
+
+
+def _window_matches_receipt(window: Mapping[str, Any], receipt: Mapping[str, Any]) -> bool:
+    """The live window must be the very window the receipt was issued for.
+
+    Both identifiers are required: a receipt without them cannot bind a live window,
+    so it is treated as unverifiable rather than assumed valid.
+    """
+
+    window_id = receipt.get("window_id")
+    fingerprint = receipt.get("owner_fingerprint")
+    if not is_nonempty_str(window_id) or not is_nonempty_str(fingerprint):
+        return False
+    return window.get("window_id") == window_id and window.get("owner_fingerprint") == fingerprint
+
+
 def _revocation_error(
     context: TrustedContext,
     payload: bytes,
@@ -547,6 +577,10 @@ def _revocation_error(
         max_expiry = int(_parse_rfc3339(context.expires_at).timestamp())
     except (TrustContextError, ValueError, OverflowError):
         max_expiry = None
+    if document.get("schema") == _OWNER_WINDOW_SCHEMA:
+        receipt = _pinned_receipt(context)
+        if receipt is None or not _window_matches_receipt(document, receipt):
+            return "RIGHTS_UNVERIFIED"
     if _owner_window_is_valid(payload, now=now, max_expiry=max_expiry):
         return None
     expires_at = document.get("expires_at")

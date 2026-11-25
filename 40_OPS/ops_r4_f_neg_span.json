@@ -1,0 +1,70 @@
+{
+ "schema": "SST-B0-OPS-RUN/1",
+ "label": "B0-R4-F-neg_span",
+ "generated_at": "2026-11-25T15:25:33+0800",
+ "command": {
+  "argv": [
+   "C:\\Users\\user\\AppData\\Local\\hermes\\installs\\0d1790b230609f8c\\environments\\2e40a7b72ed941c691e747bed9c9928f\\venv\\Scripts\\python.exe",
+   "-B",
+   "-m",
+   "b0_reader.cli",
+   "read",
+   "--request-json",
+   "-"
+  ],
+  "cwd": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\20_DEV",
+  "python": "C:\\Users\\user\\AppData\\Local\\hermes\\installs\\0d1790b230609f8c\\environments\\2e40a7b72ed941c691e747bed9c9928f\\venv\\Scripts\\python.exe",
+  "python_version": "3.14.9 (main, Oct 21 2026, 17:48:58) [MSC v.1944 64 bit (AMD64)]",
+  "product_module_root": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\20_DEV\\b0_reader"
+ },
+ "request": {
+  "path": "40_OPS\\b0_read_neg_span_single_2026-11-25.json",
+  "bytes": 483,
+  "sha256": "0ae780e4509fb5a5082eb146cc4e662aa1a57491e9eb32cb1a92217f0a0f8169"
+ },
+ "actual": {
+  "exit": 2,
+  "seconds": 5.85,
+  "stdout_bytes": 3247,
+  "stdout_sha256": "eca0c860f4b624c0f9f549d7f08e137a8ca7ca5babfb8320246cb5605b3ca705",
+  "stderr_bytes": 12,
+  "stderr_sha256": "d8243bf004ee1fad80353788fbd638cfffb4aa2b2f3e3def855ab70845ff8237",
+  "stdout_raw": "40_OPS\\ops_r4_f_neg_span.raw\\stdout.txt",
+  "stderr_raw": "40_OPS\\ops_r4_f_neg_span.raw\\stderr.txt",
+  "stdout_truncated_for_report": "{\"wire_version\":\"SST.B0.SourceReadSet/2\",\"subject\":\"SST/SQS-THC/PH01/E00\",\"original_wave\":\"P1-W00M\",\"bid\":0,\"spec_version\":\"2026-11-25_r4_Native-first\",\"candidate_digest\":\"ab4bcc1abc507c8d27ba05657116c23a2d88fef7b818f77111668d6f77bc90f4\",\"scope\":{\"scope_id\":\"SQS-THC-PH01-E00-B0-SOURCE-READ\",\"source_ids\":[\"SST.ALL.W0.BLUEPRINT\",\"SST.W0M.MAIN\"],\"purpose\":\"B0 SOURCE_READ under SST_PLP_PH01_W0_B0_SOURCE_READ_AUTH\",\"consumer_ids\":[\"B1\",\"B2\",\"B3\"]},\"source_manifest\":{\"inherited_sha\":\"2012a28f630f4e28d60309de0bb5734ce138b18c677445a475c670f1d9f4245e\",\"verification\":\"UNVERIFIED\",\"evidence_ref\":null},\"write_set\":[],\"preimage\":\"N/A\",\"fin_order\":\"DENY\",\"extensions\":{},\"entries\":[{\"source_ref\":{\"source_id\":\"SST.ALL.W0.BLUEPRINT\",\"namespace\":\"SST/SQS-THC/PH01/P1-W00M\",\"locator\":\"C:\\\\Projects\\\\Agent_Workspace\\\\知識庫\\\\SQS\\\\【1】SST_PLP_PH01-04\\\\SST_PLP_PH01_W0_B0-B8\\\\藍圖\\\\SST_PLP_PH01_W0_全批次藍圖.md\",\"source_version\":\"2026-11-24_r2\"},\"sha\":\"dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1\",\"byte_length\":457294,\"encoding\":\"UTF-8\",\"clause_span\":[572,579],\"clause_sha\":\"77132f0636e30b0cf8d5df1ae3438228b18d847d718e5ffbf5c56825229f9bf6\",\"original_id\":\"REQ-12\",\"child_id\":\"REQ-12::AUTHOR-SPLIT-01\",\"polarity\":\"POSITIVE_READ_AND_DEV_DENY\",\"requiredness\":\"AUTHOR_SPLIT_UNRATIFIED\",\"owner\":\"PR-07\",\"provenance\":{\"requirement_ref\":\"C:\\\\Projects\\\\Agent_Workspace\\\\知識庫\\\\SQS\\\\【1】SST_PLP_PH01-04\\\\SST_PLP_PH01_W0_B0-B8\\\\藍圖\\\\SST_PLP_PH01_W0_全批次藍圖.md\",\"requirement_sha\":\"dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1\",\"requirement_span\":[572,579],\"rule_ref\":\"C:\\\\Projects\\\\Agent_Workspace\\\\SQS-THC_MVP_Workspace\\\\00_PREFLIGHT\\\\required_set_req12_read_all_2026-11-25.json\",\"rule_sha\":\"50ca45c106bb58fd8a3bfdf1cfaf7400fd3a06d1f95cea7f1fe8c6166eda4764\"},\"required_fields\":[\"read\"],\"observed\":{\"read\":{\"value\":\"READ 只讀合法來源，不能繼承 DEV 效應。\",\"source_sha\":\"dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1\",\"span\":[573,573],\"value_sha\":\"78a231eaa93d64fed87001426970d5133e89847b3f7668e514d6b0f259798dab\"}},\"missing\":[],\"authority\":{\"source_owner\":\"SST Owner (single human OWNER, KB author)\",\"usage_evidence_ref\":\"C:\\\\Projects\\\\Agent_Workspace\\\\FHS_NEXT_Workspace\\\\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\\\\owner_ws\\\\artifacts\\\\OWNER_WINDOW.json\",\"usage_evidence_sha\":\"e750066a430da8a7c479efa9687d5aa2377964dbab51fdd20e144c6303edd28a\",\"os_principal\":\"DESKTOP-57EO414\\\\user\",\"verification_method\":\"LIVE_REVALIDATE_OWNER_WINDOW_OS_TOKEN\",\"rights_check_ref\":\"C:\\\\Projects\\\\Agent_Workspace\\\\FHS_NEXT_Workspace\\\\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\\\\owner_ws\\\\artifacts\\\\OWNER_WINDOW.json\",\"checked_at\":\"2026-11-25T15:25:23+08:00\",\"valid_from\":\"2026-11-25T12:11:29+08:00\",\"expires_at\":\"2026-11-25T20:11:29+08:00\",\"revocation_check_ref\":\"C:\\\\Users\\\\user\\\\.hgk-owner\\\\window.json#state\",\"epoch_strategy\":\"LIVE_REVALIDATE\",\"epoch_provider_ref\":null,\"epoch_evidence_ref\":null,\"disclosure\":\"LOCAL_ONLY\"},\"acl_epoch\":null,\"rights_epoch\":null}],\"errors\":[{\"source_id\":\"SST.W0M.MAIN\",\"op\":\"BYTES\",\"code\":\"SPAN_INVALID\",\"first_fail\":\"SPAN_INVALID\",\"affected_locator\":null,\"retryable\":false,\"attempt\":1,\"resume\":\"修正可信來源或權利後建立新 attempt\"}]}",
+  "stderr_text": "SPAN_INVALID"
+ },
+ "product_write_set": [],
+ "no_write": {
+  "before_digests": {
+   "W_tree": "76be73669cdac6b8a377da1a7aaf26013a0c57d87b19492a623aa253115d9153",
+   "source_dir": "61e8cee9c934f7c09d476fb5afe67af49fa5c6688f35c323e7a581df7b30a912"
+  },
+  "after_digests": {
+   "W_tree": "76be73669cdac6b8a377da1a7aaf26013a0c57d87b19492a623aa253115d9153",
+   "source_dir": "61e8cee9c934f7c09d476fb5afe67af49fa5c6688f35c323e7a581df7b30a912"
+  },
+  "diff": {
+   "W_tree": {
+    "added": [],
+    "removed": [],
+    "changed": [],
+    "clean": true
+   },
+   "source_dir": {
+    "added": [],
+    "removed": [],
+    "changed": [],
+    "clean": true
+   }
+  },
+  "verdict": "NO_PRODUCT_WRITE_OBSERVED",
+  "watch_note": "W tree compared by size+mtime_ns+raw sha256 (content); the K source root by size+mtime_ns; this is a bounded observation, not a whole-disk guarantee.",
+  "not_covered": [
+   "OS-level write/process monitoring (ETW, ProcMon) not available to this recorder",
+   "registry, network egress, bytecode in other interpreters, child processes",
+   "TEMP/cache trees outside the two watched roots"
+  ]
+ },
+ "finished_at": "2026-11-25T15:25:23+0800"
+}

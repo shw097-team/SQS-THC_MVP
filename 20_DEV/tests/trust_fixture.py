@@ -69,7 +69,8 @@ class IsolatedProductHarness:
         self.owner = self.root / "owner-window.json"
         self.authorization = self.root / "authorization.json"
         self.authorization.write_text(
-            '{"kind":"isolated-test-authorization"}\n',
+            '{"kind":"isolated-test-authorization","window_id":"WIN-test-0001",'
+            '"owner_fingerprint":"test-fingerprint"}\n',
             encoding="utf-8",
         )
         self._set_owner_state("OPEN")
@@ -136,6 +137,8 @@ class IsolatedProductHarness:
                 "ops_used": 0,
                 "effect_class_ceiling": "READ_ONLY_PROBE",
                 "state": state,
+                "window_id": "WIN-test-0001",
+                "owner_fingerprint": "test-fingerprint",
             }
         elif state == "EXPIRED":
             payload = {
@@ -150,6 +153,8 @@ class IsolatedProductHarness:
                 "ops_used": 0,
                 "effect_class_ceiling": "READ_ONLY_PROBE",
                 "state": "OPEN",
+                "window_id": "WIN-test-0001",
+                "owner_fingerprint": "test-fingerprint",
             }
         else:
             payload = {"state": state}
