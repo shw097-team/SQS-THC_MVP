@@ -609,6 +609,47 @@ class _FatalResult(dict[str, Any]):
 
 SOURCE_READ_LIMIT_SECONDS = 30.0
 
+# A read that outlives its budget is abandoned, not cancelled: its handle may still be
+# open inside the worker thread, so re-entering the same source from this process would
+# read underneath an unproven state. r4 §04.R requires reconcile first, so every
+# abandoned source is quarantined until `reconcile_source` confirms it finished.
+_QUARANTINE: dict[str, dict[str, Any]] = {}
+
+
+def _source_key(trusted: "TrustedSource") -> str:
+    return f"{trusted.source_id}|{trusted.locator}|{trusted.expected_sha}"
+
+
+def quarantine_state() -> dict[str, dict[str, Any]]:
+    """Current per-source quarantine entries (evidence for callers and checkers)."""
+
+    return {key: dict(value) for key, value in _QUARANTINE.items()}
+
+
+def reconcile_source(key: str) -> bool:
+    """Clear one quarantine entry (exact key) once its abandoned worker terminated.
+
+    The key is the opaque identifier from `quarantine_state()`; clearing by source_id
+    alone would let one source instance's reconcile silently release another instance's
+    abandoned read. While the worker is alive the abandoned read may still hold its
+    handle, so the entry stays and this returns False.
+    """
+
+    entry = _QUARANTINE.get(key)
+    if entry is None:
+        return False
+    worker = entry.get("worker")
+    if worker is not None and worker.is_alive():
+        return False
+    _QUARANTINE.pop(key, None)
+    return True
+
+
+def quarantine_keys(source_id: str) -> list[str]:
+    """Quarantine keys belonging to one source_id (all pin/版本 instances)."""
+
+    return [key for key in _QUARANTINE if key.split("|", 1)[0] == source_id]
+
 
 def _read_with_budget(
     request_source: Mapping[str, Any],
@@ -622,6 +663,15 @@ def _read_with_budget(
     cannot be proven clean from here, so r4 §04.R requires reconcile before any
     re-entry. Sibling sources continue independently.
     """
+
+    key = _source_key(trusted)
+    if key in _QUARANTINE:
+        error = _error(trusted.source_id, "BYTES", "UNKNOWN_RECONCILE_REQUIRED")
+        error["resume"] = (
+            "前次讀取逾時被放棄，該源在 reconcile 前不得重入；先確認該讀取已結束、"
+            "handle 已釋放且無副作用，再呼叫 reconcile_source()"
+        )
+        return None, error
 
     outcome: dict[str, Any] = {}
 
@@ -639,7 +689,21 @@ def _read_with_budget(
     worker.start()
     worker.join(SOURCE_READ_LIMIT_SECONDS)
     if worker.is_alive():
-        return None, _error(trusted.source_id, "BYTES", "UNKNOWN_RECONCILE_REQUIRED")
+        _QUARANTINE[key] = {
+            "source_id": trusted.source_id,
+            "locator": trusted.locator,
+            "expected_sha": trusted.expected_sha,
+            "thread": worker.name,
+            "worker": worker,
+            "limit_seconds": SOURCE_READ_LIMIT_SECONDS,
+            "reason": "read exceeded the per-source budget and was abandoned",
+        }
+        error = _error(trusted.source_id, "BYTES", "UNKNOWN_RECONCILE_REQUIRED")
+        error["resume"] = (
+            "前次讀取逾時被放棄，該源在 reconcile 前不得重入；先確認該讀取已結束、"
+            "handle 已釋放且無副作用，再呼叫 reconcile_source()"
+        )
+        return None, error
     if "exception" in outcome:
         raise outcome["exception"]
     return outcome.get("value", (None, None))

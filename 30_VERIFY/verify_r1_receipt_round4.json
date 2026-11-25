@@ -1,0 +1,84 @@
+{
+  "checker": "VERIFY_SECURITY",
+  "candidate_digest_recomputed": "21cdf0ae365c946133f2e02bd5c7ff7108f92422ae737f1470584616f554ab67",
+  "candidate_digest_matches": true,
+  "items": [
+    {
+      "id": "R1.1",
+      "verdict": "FAIL",
+      "reason": "Revocation validation does not require every receipt to be parsed as live revocation evidence. `_revocation_error` returns `None` when the supplied bytes hash to the independently pinned authorization or context SHA, before checking `state=OPEN`, schema, window identity, or expiry. The readable, hash-pinned authorization document lacks `state`; substituting those exact bytes under the revocation reference would therefore skip those checks. Existing tests cover mismatched or missing window identity but not receipt-byte substitution. The current revocation file contents were not observed.",
+      "evidence": [
+        "00_PREFLIGHT/B0_READ_CONTEXT_2026-11-25_r4.json:10",
+        "20_DEV/b0_reader/native_entry.py:518",
+        "20_DEV/b0_reader/native_entry.py:556",
+        "20_DEV/b0_reader/native_entry.py:561",
+        "20_DEV/b0_reader/native_entry.py:566",
+        "20_DEV/b0_reader/native_entry.py:582",
+        "20_DEV/tests/test_product_read.py:246",
+        "20_DEV/tests/test_product_read.py:280"
+      ]
+    },
+    {
+      "id": "R1.2",
+      "verdict": "HOLD",
+      "reason": "Distinct normal and isolated OFF runs are recorded with a proven observer and identical stable projections. The OFF TCP list and product-write snapshots are clean, while `not_proven` honestly records transitive imports, kernel or external writes, and post-sampling network. However, child filtering discards every process named `icacls`, `icacls.exe`, `attrib.exe`, or `whoami.exe` before checking its executable path or arguments. The dependency sweep therefore cannot establish that allowed-name child processes remained read-only.",
+      "evidence": [
+        "40_OPS/native_off_r4.py:41",
+        "40_OPS/native_off_r4.py:265",
+        "40_OPS/native_off_r4.py:268",
+        "40_OPS/native_off_r4.json:17",
+        "40_OPS/native_off_r4.json:37",
+        "40_OPS/native_off_r4.json:715",
+        "40_OPS/native_off_r4.json:722"
+      ]
+    },
+    {
+      "id": "R1.3",
+      "verdict": "PASS",
+      "reason": "The per-source read uses a 30-second budget. A timed-out read is abandoned, recorded under the exact source, locator, and SHA key, and reported as `UNKNOWN_RECONCILE_REQUIRED`; re-entry is refused while that key is quarantined. Reconciliation requires that exact key and refuses while the abandoned worker remains alive. Source handles are closed in `finally`, and sibling sources continue independently.",
+      "evidence": [
+        "20_DEV/b0_reader/return_.py:610",
+        "20_DEV/b0_reader/return_.py:619",
+        "20_DEV/b0_reader/return_.py:629",
+        "20_DEV/b0_reader/return_.py:642",
+        "20_DEV/b0_reader/return_.py:654",
+        "20_DEV/b0_reader/return_.py:668",
+        "20_DEV/b0_reader/return_.py:691",
+        "20_DEV/b0_reader/return_.py:701",
+        "20_DEV/tests/test_product_read.py:291",
+        "20_DEV/tests/test_product_read.py:333"
+      ]
+    },
+    {
+      "id": "R2",
+      "verdict": "PASS",
+      "reason": "Independent manifest recomputation matched the frozen 25-file candidate, its 2,570 manifest bytes, every per-file digest and length, and candidate digest `21cdf0ae365c946133f2e02bd5c7ff7108f92422ae737f1470584616f554ab67`. The descriptor, authorization hash, and five operation records match their cited artifacts and raw outputs: positive exit 0, pin mismatch exit 2, span invalid exit 2, effect denied exit 64, and scope mismatch exit 64. The successful validation envelopes bind the recomputed candidate digest.",
+      "evidence": [
+        "40_OPS/candidate_freeze.json:27",
+        "40_OPS/ops_r4_r4_pos.json:25",
+        "40_OPS/ops_r4_r4_neg_pin.json:25",
+        "40_OPS/ops_r4_r4_neg_span.json:25",
+        "40_OPS/ops_r4_r4_neg_effect.json:25",
+        "40_OPS/ops_r4_r4_neg_scope.json:25"
+      ]
+    }
+  ],
+  "defects": [
+    {
+      "id": "C-R1-03",
+      "severity": "P1",
+      "where": "20_DEV/b0_reader/native_entry.py:556",
+      "what": "`_revocation_error()` accepts bytes whose SHA matches the authorization or context hash and returns success before parsing revocation state, schema, window binding, or expiry.",
+      "why_it_matters": "A readable, hash-pinned authorization document that has no `state` field can be substituted under the revocation reference and bypass the required fail-closed live-window validation, so independent security acceptance must be rejected."
+    },
+    {
+      "id": "C-R1-04",
+      "severity": "P2",
+      "where": "40_OPS/native_off_r4.py:41",
+      "what": "The observation recorder suppresses child processes by basename alone for `icacls`, `icacls.exe`, `attrib.exe`, and `whoami.exe` without evaluating their executable path or arguments.",
+      "why_it_matters": "The Native OFF dependency sweep cannot prove that side effects hidden under an allowed process name did not occur, so its conclusion remains on hold pending path- and argument-bearing evidence."
+    }
+  ],
+  "independent_acceptance": "REJECTED",
+  "notes_path": "30_VERIFY/verify_r1_notes.md"
+}

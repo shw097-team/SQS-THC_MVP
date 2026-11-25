@@ -106,3 +106,19 @@ python -B -m b1_consumer.cli receive \
 - `B2`／`B3` 只換 `--context b2_receive_context_2026-11-25.json`／`b3_receive_context_2026-11-25.json`，其可信權利入口與判定各自獨立（不可互代）。
 - 收據欄位：`consumer_id`、`verifier_version`、`snapshot_sha`、`candidate_digest`、`accepted[]`（source_id／sha／clause_sha／R／P／M）、`rejected[]`、`errors[]`、`rights{receipt_sha,state_sha,window_id}`、`verdict`。
 - 負例測試：`cd W/60_B1 && python -B -m unittest discover -s tests`（15 案）。
+
+## 9｜B0 核心證據與 B1 入站前置（2026-11-25 20:26 後）
+
+- 受檢候選：`dfc87f1800efb69db9185c67402608990bcba9d731d4a782a70ba8a31fe043c3`（25 檔）；真 POS envelope 內 `candidate_digest` 與之一致。
+- 真來源：`SST.ALL.W0.BLUEPRINT` raw `dd37a40b…`、clause `77132f06…`；`SST.W0M.MAIN` raw `5670990d…`、clause `4f0db2cb…`；兩者 `R=["read"]`、`P=["read"]`、`M=[]`。
+- 權利鏈（B1 需自行重驗，不可沿用 B0 結論）：Owner 收據 `…/owner_ws/artifacts/OWNER_WINDOW.json`（raw `8f61f584…`，window `WIN-7769f20a712c`，`owner_fingerprint=412b351937be72a1`，到期 `2026-11-26T02:26:58+08:00`）＋ live `~/.hgk-owner/window.json`（`state=OPEN`）；B0 於 ROOT／RETURN 皆重驗，B1 需以自己的入口重驗同樣兩項。
+- Native OFF：`40_OPS/native_off_r4.json`（`NATIVE_OFF_EQUIVALENT_NO_DEPENDENCY`，子進程僅 `icacls`／venv redirector、外部 TCP 0、W 樹無寫）。
+- 交接邊界不變：B1 自身 RepoRoot／commit／BASE／五 Kernel／FDA 仍由 B1 取證；B0 不以核心態代發 B1 效果授權。
+
+## 10｜最終交接（候選 f3fa76ea…）
+
+- **B0 狀態**：`B0_CORE_ACCEPTED` 成立（第五輪獨立 Checker `ACCEPTED`，四項全 PASS、缺陷 []）；`B0_COMPLETE` 成立並附 §14.3 明列殘餘。
+- **本候選真輸出**：`40_OPS/ops_r4_r5_pos.raw/stdout.txt`（exit 0、5,429 B、2 entries、`M=[]`、`candidate_digest=f3fa76ea…`）。
+- **三端接收**：B1／B2／B3 各 `ACCEPTED`，收據 `60_B1/receipts/b{1,2,3}_receipt_r5_2026-11-25.json`；context 已同步至本候選 digest 與新收據 hash `8f61f584…`。
+- **B1 仍需自取**：RepoRoot／固定 commit／BASE／五 Kernel／FDA 與其效果授權；B2 的 `ToolReadSet`、B3 的 ledger 亦未建。B0 結案不代發任何 B1 效果授權。
+- **可重跑入口**：`cd W/60_B1 && python -B -m b1_consumer.cli receive --envelope ../40_OPS/ops_r4_r5_pos.raw/stdout.txt --context b1_receive_context_2026-11-25.json --out receipts/b1_receipt_r5_2026-11-25.json`（B2／B3 換 context）。

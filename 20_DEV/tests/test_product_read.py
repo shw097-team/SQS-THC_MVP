@@ -288,6 +288,20 @@ class ProductReadTests(unittest.TestCase):
             self.harness.resolve()
         self.assertEqual(raised.exception.code, "RIGHTS_UNVERIFIED")
 
+    def test_R1_pinned_receipt_bytes_cannot_substitute_for_revocation_state(self) -> None:
+        """R1.1/C-R1-03: immutable issuance bytes are not live revocation evidence.
+
+        Swapping the hash-pinned authorization document in as the revocation file must
+        fail closed instead of skipping state/schema/window/expiry validation.
+        """
+
+        self.harness.add_source("S1", raw_baseline())
+        context = self.harness.resolve()
+        self.harness.set_owner_window(self.harness.authorization.read_bytes())
+        with self.assertRaises(TrustContextError) as raised:
+            revalidate_trusted_context(context)
+        self.assertEqual(raised.exception.code, "RIGHTS_UNVERIFIED")
+
     def test_N07_source_read_budget_reports_unknown_and_keeps_siblings(self) -> None:
         """N07/R1.3: a source that exceeds the content-read cap is reported UNKNOWN,
         not silently truncated, and its siblings still report independently."""
@@ -299,9 +313,11 @@ class ProductReadTests(unittest.TestCase):
         context = self.harness.resolve()
         request = self.harness.request(context)
         original_read_one = b0_return._read_one
+        calls = {"S1": 0}
 
         def slow_s1(request_source: Any, trusted: Any, ctx: Any, *, attempt: int = 1) -> Any:
             if trusted.source_id == "S1":
+                calls["S1"] += 1
                 time.sleep(6.0)
             return original_read_one(request_source, trusted, ctx, attempt=attempt)
 
@@ -321,6 +337,81 @@ class ProductReadTests(unittest.TestCase):
         # UNKNOWN either way, and the source must be readable again afterwards.
         time.sleep(3.5)
         self.assertEqual(self.harness.sources["S1"].source.read_bytes(), raw_baseline())
+        for key in b0_return.quarantine_keys("S1"):
+            for entry in [b0_return.quarantine_state()[key]]:
+                entry["worker"].join(timeout=20)
+            self.assertTrue(b0_return.reconcile_source(key))
+        self.assertFalse(b0_return.quarantine_keys("S1"))
+        self.assertEqual(calls["S1"], 1)
+
+    def test_N07_timed_out_source_is_quarantined_until_reconciled(self) -> None:
+        """N07/R1.3 (C-R1-01): no re-entry into a source whose read was abandoned.
+
+        The first call abandons the read; the second call must refuse *without*
+        invoking the reader again, and only a reconcile may re-open it.
+        """
+
+        import b0_reader.return_ as b0_return
+
+        self.harness.add_source("S1", raw_baseline())
+        self.harness.add_source("S2", raw_baseline())
+        context = self.harness.resolve()
+        request = self.harness.request(context)
+        original_read_one = b0_return._read_one
+        calls = {"S1": 0}
+
+        def slow_s1(request_source: Any, trusted: Any, ctx: Any, *, attempt: int = 1) -> Any:
+            if trusted.source_id == "S1":
+                calls["S1"] += 1
+                time.sleep(6.0)
+            return original_read_one(request_source, trusted, ctx, attempt=attempt)
+
+        try:
+            with patch.object(b0_return, "_read_one", side_effect=slow_s1), patch.object(
+                b0_return, "SOURCE_READ_LIMIT_SECONDS", 4.0
+            ):
+                first, first_exit = read_sources(request, trusted_context=context)
+            self.assertEqual(first_exit, 2)
+            self.assertEqual(
+                [e["code"] for e in first["errors"]], ["UNKNOWN_RECONCILE_REQUIRED"]
+            )
+            self.assertEqual(calls["S1"], 1)
+            self.assertTrue(b0_return.quarantine_state())
+
+            # the gate: reconcile is refused while the abandoned worker is still alive
+            keys = b0_return.quarantine_keys("S1")
+            self.assertEqual(len(keys), 1)
+            key = keys[0]
+            self.assertFalse(b0_return.reconcile_source(key))
+            self.assertEqual(b0_return.quarantine_keys("S1"), [key])
+
+            # second attempt: refused before any reader work happens
+            second, second_exit = read_sources(request, trusted_context=context)
+            self.assertEqual(second_exit, 2)
+            self.assertEqual(
+                [e["code"] for e in second["errors"]], ["UNKNOWN_RECONCILE_REQUIRED"]
+            )
+            self.assertEqual(calls["S1"], 1, "quarantined source must not be re-entered")
+            self.assertEqual(
+                [entry["source_ref"]["source_id"] for entry in second["entries"]], ["S2"]
+            )
+
+            # after the worker terminates reconcile succeeds and the source may be read again
+            b0_return.quarantine_state()[key]["worker"].join(timeout=20)
+            self.assertTrue(b0_return.reconcile_source(key))
+            self.assertEqual(b0_return.quarantine_keys("S1"), [])
+            self.assertFalse(b0_return.quarantine_state())
+            with patch.object(b0_return, "_read_one", side_effect=slow_s1):
+                third, third_exit = read_sources(request, trusted_context=context)
+            self.assertEqual(third_exit, 0)
+            self.assertEqual(len(third["entries"]), 2)
+            self.assertEqual(calls["S1"], 2)
+        finally:
+            for leftover in b0_return.quarantine_keys("S1"):
+                entry = b0_return.quarantine_state().get(leftover)
+                if entry and entry.get("worker"):
+                    entry["worker"].join(timeout=20)
+                b0_return.reconcile_source(leftover)
 
     def test_N01_valid_open_revocation_window_is_accepted(self) -> None:
         context, _, _ = self._baseline()

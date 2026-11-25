@@ -1,0 +1,76 @@
+{
+  "checker": "VERIFY_SECURITY",
+  "candidate_digest_recomputed": "f3fa76eaa1c083af39c88610492a5fcad482dc5b5bbb7eb9a79e2234c8dca49e",
+  "candidate_digest_matches": true,
+  "items": [
+    {
+      "id": "R1.1",
+      "verdict": "PASS",
+      "reason": "The pinned receipt is hash-verified; its required window_id and owner_fingerprint must match the live Owner window; revocation bytes independently require OPEN state, the correct schema, exact scope, identity, and unexpired authority; and descriptor, principal, references, and revocation are revalidated without a hash shortcut. The selected R5 positive run confirms the resulting authority succeeds. Tests were not dynamically rerun because the configured Python wrapper resolves to a missing packaged interpreter; the verdict follows direct source tracing and verified recorded execution evidence.",
+      "evidence": [
+        "20_DEV/b0_reader/native_entry.py:518",
+        "20_DEV/b0_reader/native_entry.py:534",
+        "20_DEV/b0_reader/native_entry.py:548",
+        "20_DEV/b0_reader/native_entry.py:630",
+        "20_DEV/tests/test_product_read.py:246",
+        "20_DEV/tests/test_product_read.py:280",
+        "20_DEV/tests/test_product_read.py:291",
+        "40_OPS/ops_r4_r5_pos.json:26"
+      ]
+    },
+    {
+      "id": "R1.2",
+      "verdict": "PASS",
+      "reason": "The observer self-test demonstrated trusted child-process and TCP visibility. Baseline and native-OFF executions both exited 0 with identical stable projections bound to the current candidate, no TCP observations, clean write snapshots, no foreign children, and paired path/command evidence. The record explicitly limits its claim by documenting transitive imports, kernel or external writes, and post-sampling network activity as not proven.",
+      "evidence": [
+        "40_OPS/native_off_r4.py:278",
+        "40_OPS/native_off_r4.py:320",
+        "40_OPS/native_off_r4.py:376",
+        "40_OPS/native_off_r4.json:29",
+        "40_OPS/native_off_r4.json:36",
+        "40_OPS/native_off_r4.json:82",
+        "40_OPS/native_off_r4.json:544",
+        "40_OPS/native_off_r4.json:894",
+        "40_OPS/native_off_r4.json:905",
+        "40_OPS/native_off_r4.json:910"
+      ]
+    },
+    {
+      "id": "R1.3",
+      "verdict": "PASS",
+      "reason": "The per-source content-read budget is 30 seconds. A timed-out read returns UNKNOWN_RECONCILE_REQUIRED, is quarantined under source_id, locator, and expected_sha, and remains blocked until that exact key is reconciled after its worker terminates. Reader and root handles are closed in finally blocks, and sibling sources continue independently. Tests were not dynamically rerun because the configured Python wrapper resolves to a missing packaged interpreter; direct tracing and the recorded tests establish the required behavior.",
+      "evidence": [
+        "20_DEV/b0_reader/return_.py:557",
+        "20_DEV/b0_reader/return_.py:610",
+        "20_DEV/b0_reader/return_.py:619",
+        "20_DEV/b0_reader/return_.py:629",
+        "20_DEV/b0_reader/return_.py:654",
+        "20_DEV/b0_reader/return_.py:728",
+        "20_DEV/tests/test_product_read.py:305",
+        "20_DEV/tests/test_product_read.py:347"
+      ]
+    },
+    {
+      "id": "R2",
+      "verdict": "PASS",
+      "reason": "The manifest independently reproduced 25 files and 2,570 manifest bytes with candidate digest f3fa76eaa1c083af39c88610492a5fcad482dc5b5bbb7eb9a79e2234c8dca49e and no file-hash mismatch. The descriptor matches its fixed SHA and byte length, its authorization digest and expiry match the Owner window, and sandbox ACL inspection found the required files readable with no sandbox write grant. The five selected R5 runs match the required exits and first failures; positive, pin, and span envelopes bind the current candidate, while effect and scope correctly emit no envelope.",
+      "evidence": [
+        "40_OPS/candidate_freeze.json:27",
+        "40_OPS/candidate_freeze.json:28",
+        "00_PREFLIGHT/B0_READ_CONTEXT_2026-11-25_r4.json:5",
+        "00_PREFLIGHT/B0_READ_CONTEXT_2026-11-25_r4.json:8",
+        "20_DEV/b0_reader/native_entry.py:36",
+        "20_DEV/b0_reader/native_entry.py:39",
+        "40_OPS/ops_r4_r5_pos.json:26",
+        "40_OPS/ops_r4_r5_neg_pin.json:26",
+        "40_OPS/ops_r4_r5_neg_span.json:26",
+        "40_OPS/ops_r4_r5_neg_effect.json:26",
+        "40_OPS/ops_r4_r5_neg_scope.json:26"
+      ]
+    }
+  ],
+  "defects": [],
+  "independent_acceptance": "ACCEPTED",
+  "notes_path": "30_VERIFY/verify_r1_notes.md",
+  "nonce": "NONCE=B0R1-CHK5-c417d2"
+}

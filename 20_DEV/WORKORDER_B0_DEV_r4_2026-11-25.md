@@ -123,3 +123,11 @@ b6a1d4f16eaed26d1deefa882bc0ebf5aabc01c9687a825fa2f85eb009d8e6db    64  RUN_TEST
 3) 與正文衝突或未實作項目（逐條，含原因）
 4) 已知限制／HOLD（例如無 junction 建置權）
 ```
+
+## 1.5｜2026-11-25 20:26 後（R1／R2 差額）
+
+1. **Owner 授權續期**：新窗口 `WIN-7769f20a712c`（Owner 本人口令，6h、12 ops、`READ_ONLY_PROBE`、scope `b0_source_read_authority,sqs_thc_ph01_e00`）。收據 raw SHA `8f61f584006fdeea19dbd312b0c3d6f94f89229f7ff0bc6c5c8d811701d6a0ff`（930 B）。descriptor 的 `authorization_sha`／`expires_at`／`valid_from` 及**每源** `usage_evidence_sha` 皆重綁到本收據，descriptor 現為 3,846 B／`c57518c457c5c3c9a4bf52f0a5ade422aed624249ff1e79e055e8d52f84f6dea`；`native_entry.EXPECTED_DESCRIPTOR_*` 同步。
+2. **撤權綁定（R1.1）**：`native_entry._pinned_receipt`／`_window_matches_receipt`，live 窗口必須與 pinned 收據同 `window_id`＋`owner_fingerprint`，無法綁定即 `RIGHTS_UNVERIFIED`。
+3. **每源 30 秒上限與隔離（R1.3／C-R1-01）**：`return_.SOURCE_READ_LIMIT_SECONDS=30.0`、`_read_with_budget`；逾時源寫入 `_QUARANTINE`，**reconcile 前不得重入**（連 reader 都不呼叫），`quarantine_state()`／`reconcile_source()` 提供狀態與解除。跨進程仍以新進程重驗（CLI 每次新進程），此限制已在 CLOSEOUT 註明。
+4. **ACL：Checker 唯讀可讀性**：`00_PREFLIGHT` 對 `DESKTOP-57EO414\CodexSandboxUsers` 授與 `(OI)(CI)(RX)`，檔層再加 `(R)`；**未給任何寫入權**，`root.py` 的 sealed 檢查仍以「broad principal 不得有寫入權」為準，產品 POS 重跑 exit 0 未受影響。目的：解除前兩輪 Checker 只能讀 22/25 檔的證據可讀性缺口。
+5. **檔案寫入集**：新增／修改 `20_DEV/b0_reader/{native_entry.py,return_.py}`、`20_DEV/tests/{test_product_read.py,trust_fixture.py,test_native_off.py}`、`40_OPS/{native_off_r4.py,candidate_freeze.json}`、`00_PREFLIGHT/B0_READ_CONTEXT_2026-11-25_r4.json`（ACL 另記於第 4 項，非內容變更）。

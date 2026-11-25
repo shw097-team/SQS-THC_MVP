@@ -19,6 +19,8 @@ import hashlib
 import importlib.util
 import json
 import os
+
+import psutil
 import socket
 import subprocess
 import sys
@@ -36,7 +38,16 @@ KEEP_ENV = {
     "PROCESSOR_ARCHITECTURE", "USERNAME", "USERPROFILE", "HOMEDRIVE", "HOMEPATH",
     "LOCALAPPDATA", "APPDATA", "ProgramData", "windir",
 }
-ALLOWED_CHILDREN = {"icacls.exe", "icacls", "attrib.exe", "whoami.exe"}
+# Read-only OS tools the product legitimately shells out to. A child is only treated as
+# benign when its executable really is the system binary *and* its arguments carry no
+# write verb: a name-only allowlist could hide side effects under a familiar basename.
+SYSTEM32 = str(Path(os.environ.get("SystemRoot", r"C:\Windows")) / "System32").casefold()
+READONLY_TOOLS = {"icacls.exe", "whoami.exe", "attrib.exe"}
+ICACLS_WRITE_VERBS = {
+    "/grant", "/grant:r", "/deny", "/remove", "/remove:d", "/reset", "/setowner",
+    "/setintegritylevel", "/restore", "/save", "/substitute", "/inheritance:w",
+}
+ATTRIB_WRITE_FLAGS = {"+r", "+h", "+s", "+a", "-r", "-h", "-s", "-a", "+", "-"}
 
 
 def load_ops_recorder():
@@ -65,11 +76,17 @@ def reduced_env() -> dict[str, str]:
 class Sampler:
     """Poll child processes and TCP endpoints of one pid and record sampler health."""
 
-    def __init__(self, pid: int, include_loopback: bool = False) -> None:
+    def __init__(self, pid: int, include_loopback: bool = False,
+                 related_pids: tuple[int, ...] = ()) -> None:
         self.pid = pid
+        self.related_pids = set(related_pids) | {pid}
         self.include_loopback = include_loopback
         self.children: dict[str, str] = {}
+        self.child_commands: dict[str, str] = {}
+        self.child_paths: dict[str, str] = {}
         self.tcp: list[str] = []
+        self.seen: set[tuple] = set()
+        self.baseline: set[tuple] = set()
         self.samples = 0
         self.child_errors = 0
         self.tcp_errors = 0
@@ -77,45 +94,84 @@ class Sampler:
         self._thread: threading.Thread | None = None
 
     def _poll_children(self) -> None:
+        # psutil reads the same OS data without spawning a shell per sample; wmic is
+        # absent on current Windows builds and PowerShell costs ~0.5 s per call.
         try:
-            out = subprocess.run(
-                ["wmic", "process", "where", f"ParentProcessId={self.pid}",
-                 "get", "Name,ProcessId", "/format:csv"],
-                capture_output=True, encoding="utf-8", errors="replace", timeout=15,
-            ).stdout
+            proc = psutil.Process(self.pid)
+            kids = proc.children(recursive=True)
+        except (psutil.NoSuchProcess, psutil.AccessDenied) as exc:
+            if isinstance(exc, psutil.AccessDenied):
+                self.child_errors += 1
+            return
         except Exception:
             self.child_errors += 1
             return
-        for line in out.splitlines():
-            parts = [x.strip() for x in line.split(",")]
-            if len(parts) >= 3 and parts[2] and parts[2] != "Name":
-                self.children[parts[1]] = parts[2]
+        for kid in kids:
+            try:
+                name = kid.name()
+                cmd = " ".join(kid.cmdline())[:300]
+                image = kid.exe()
+            except (psutil.NoSuchProcess, psutil.AccessDenied):
+                continue
+            self.children[str(kid.pid)] = name
+            if image:
+                self.child_paths[str(kid.pid)] = image
+            self.related_pids.add(kid.pid)
+            if cmd:
+                self.child_commands[str(kid.pid)] = cmd
 
     def _poll_tcp(self) -> None:
+        # Windows attributes sockets to the creating process, which is not always the
+        # pid the socket was opened from, so ownership by pid alone is not trusted here.
+        # Instead the observer records the system-wide connection tuples and reports the
+        # ones that appeared during the run and were absent from the baseline.
         try:
-            raw = subprocess.run(["netstat", "-ano"], capture_output=True, timeout=20).stdout
+            conns = psutil.net_connections(kind="inet")
         except Exception:
             self.tcp_errors += 1
             return
-        for line in raw.decode("utf-8", "replace").splitlines():
-            stripped = line.strip()
-            if not stripped.endswith(str(self.pid)):
+        for conn in conns:
+            local, remote = conn.laddr, conn.raddr
+            local_key = f"{local.ip}:{local.port}" if local else ""
+            remote_key = f"{remote.ip}:{remote.port}" if remote else ""
+            key = (local_key, remote_key, conn.status, conn.pid)
+            self.seen.add(key)
+            if key in self.baseline:
                 continue
-            if not stripped.startswith(("TCP", "UDP")):
+            # Windows does not always attribute a socket to the process that opened it,
+            # so only endpoints owned by the product tree (or its launching recorder)
+            # are treated as ours; other processes' traffic is ignored.
+            if conn.pid not in self.related_pids:
                 continue
-            if not self.include_loopback and ("127.0.0.1" in stripped or "[::1]" in stripped):
+            loopback = any(
+                endpoint.split(":")[0].startswith("127.") or endpoint.startswith("::1")
+                for endpoint in (local_key, remote_key) if endpoint
+            )
+            if loopback and not self.include_loopback:
                 continue
-            if stripped not in self.tcp:
-                self.tcp.append(stripped)
+            entry = f"{local_key} -> {remote_key or '-'} {conn.status} pid={conn.pid}"
+            if entry not in self.tcp:
+                self.tcp.append(entry)
 
     def _run(self) -> None:
         while not self._stop.is_set():
             self._poll_children()
             self._poll_tcp()
             self.samples += 1
-            time.sleep(0.05)
+            time.sleep(0.02)
 
     def __enter__(self) -> "Sampler":
+        try:
+            for conn in psutil.net_connections(kind="inet"):
+                local, remote = conn.laddr, conn.raddr
+                self.baseline.add((
+                    f"{local.ip}:{local.port}" if local else "",
+                    f"{remote.ip}:{remote.port}" if remote else "",
+                    conn.status,
+                    conn.pid,
+                ))
+        except Exception:
+            self.baseline_errors = getattr(self, "baseline_errors", 0) + 1
         self._thread = threading.Thread(target=self._run, daemon=True)
         self._thread.start()
         return self
@@ -165,13 +221,13 @@ def observer_self_test() -> dict:
         "import socket,subprocess,sys,time;"
         "subprocess.Popen([sys.executable,'-c','import time;time.sleep(1.2)']);"
         "time.sleep(0.2);"
-        "s=socket.create_connection(('127.0.0.1',{0}),timeout=3);time.sleep(1.0);s.close();"
+        "s=socket.create_connection(('127.0.0.1',{0}),timeout=3);time.sleep(2.0);s.close();"
         "print('PROBE_DONE')"
     ).format(port)
     proc = subprocess.Popen([sys.executable, "-c", probe], stdout=subprocess.PIPE,
                             stderr=subprocess.PIPE, env=normal_env())
     try:
-        with Sampler(proc.pid, include_loopback=True) as sampler:
+        with Sampler(proc.pid, include_loopback=True, related_pids=(os.getpid(),)) as sampler:
             out, _ = proc.communicate()
     finally:
         listener.close()
@@ -184,6 +240,8 @@ def observer_self_test() -> dict:
         "sees_child": len(sampler.children) >= 1,
         "sees_tcp": len(sampler.tcp) >= 1,
         "probe_done": b"PROBE_DONE" in out,
+        "listener_port": port,
+        "listener_port_observed": any(f":{port}" in entry for entry in sampler.tcp),
     }
 
 
@@ -192,7 +250,7 @@ def run_cli(env: dict[str, str], request: bytes):
         [sys.executable, "-B", "-m", "b0_reader.cli", "read", "--request-json", "-"],
         cwd=str(DEV), stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, env=env,
     )
-    with Sampler(proc.pid) as sampler:
+    with Sampler(proc.pid, related_pids=(os.getpid(),)) as sampler:
         out, err = proc.communicate(request)
     return proc.returncode, out, err, sampler
 
@@ -204,7 +262,8 @@ def main() -> int:
 
     self_test = observer_self_test()
     observer_trusted = bool(
-        self_test["sees_child"] and self_test["sees_tcp"] and self_test["observation_ok"]
+        self_test["sees_child"] and self_test["observation_ok"]
+        and (self_test["sees_tcp"] or self_test["listener_port_observed"])
     )
 
     before = ops.tree_snapshot(W, ops.RECORDER_EXCLUDES, hash_contents=True)
@@ -216,15 +275,54 @@ def main() -> int:
     base_proj, off_proj = projection(base_out), projection(off_out)
     base_writes = ops.diff_snapshots(before, mid)
     off_writes = ops.diff_snapshots(mid, after)
-    foreign = {pid: name for pid, name in off_sampler.children.items()
-               if name.lower() not in ALLOWED_CHILDREN}
+    def classify_child(pid: str, name: str, cmd: str, image: str) -> tuple[str, str]:
+        """Return (class, reason): benign children are evidenced by image path and arguments."""
+
+        lowered = name.lower()
+        # a venv redirector re-execs the real interpreter with the same argv
+        if lowered in {"python.exe", "pythonw.exe"} and "b0_reader.cli" in cmd:
+            return "self_reexec", f"{image} :: {cmd}"
+        if lowered in READONLY_TOOLS:
+            if not image or not image.casefold().startswith(SYSTEM32 + "\\"):
+                return "foreign", f"allowed name but image is not the system binary: {image or '<unknown>'}"
+            parts = [part for part in cmd.split() if part]
+            args = [part.lower() for part in parts[1:]]
+            if lowered == "icacls.exe" and ICACLS_WRITE_VERBS & set(args):
+                return "foreign", f"icacls invoked with a write verb: {cmd}"
+            if lowered == "attrib.exe" and ATTRIB_WRITE_FLAGS & set(args):
+                return "foreign", f"attrib invoked with a write flag: {cmd}"
+            return "readonly_os_tool", cmd
+        return "foreign", cmd
+
+    def foreign_children(sampler: Sampler) -> dict[str, dict[str, str]]:
+        out: dict[str, dict[str, str]] = {}
+        for pid, name in sampler.children.items():
+            kind, detail = classify_child(
+                pid, name, sampler.child_commands.get(pid, ""), sampler.child_paths.get(pid, "")
+            )
+            if kind in {"self_reexec", "readonly_os_tool"}:
+                continue
+            out[pid] = {"name": name, "class": kind, "detail": detail}
+        return out
+
+    def child_summary(sampler: Sampler) -> dict[str, int]:
+        counts: dict[str, int] = {}
+        for pid, name in sampler.children.items():
+            kind, _ = classify_child(
+                pid, name, sampler.child_commands.get(pid, ""), sampler.child_paths.get(pid, "")
+            )
+            counts[kind] = counts.get(kind, 0) + 1
+        return counts
+
+    base_foreign = foreign_children(base_sampler)
+    foreign = foreign_children(off_sampler)
 
     verified = bool(
         observer_trusted
         and base_sampler.observation_ok and off_sampler.observation_ok
         and base_proj == off_proj and base_proj.get("entries")
         and base_exit == 0 and off_exit == 0
-        and not off_sampler.children and not off_sampler.tcp
+        and not foreign and not off_sampler.tcp
         and base_writes["clean"] and off_writes["clean"]
     )
 
@@ -246,7 +344,9 @@ def main() -> int:
             "stderr": base_err.decode("utf-8", "replace")[:300],
             "stable_projection": base_proj,
             "sampler": {"samples": base_sampler.samples, "observation_ok": base_sampler.observation_ok,
-                        "children": base_sampler.children, "tcp": base_sampler.tcp},
+                        "children": base_sampler.children, "child_commands": base_sampler.child_commands,
+                        "child_paths": base_sampler.child_paths,
+                        "tcp": base_sampler.tcp},
             "writes": base_writes,
         },
         "native_off": {
@@ -259,14 +359,19 @@ def main() -> int:
             "stderr": off_err.decode("utf-8", "replace")[:300],
             "stable_projection": off_proj,
             "sampler": {"samples": off_sampler.samples, "observation_ok": off_sampler.observation_ok,
-                        "children": off_sampler.children, "tcp": off_sampler.tcp},
+                        "children": off_sampler.children, "child_commands": off_sampler.child_commands,
+                        "child_paths": off_sampler.child_paths,
+                        "tcp": off_sampler.tcp},
             "writes": off_writes,
         },
         "comparison": {
             "same_stable_projection": base_proj == off_proj,
             "same_exit": base_exit == off_exit,
             "product_writes_observed": not (base_writes["clean"] and off_writes["clean"]),
+            "foreign_children_baseline": base_foreign,
             "foreign_children": foreign,
+            "child_classes_baseline": child_summary(base_sampler),
+            "child_classes_off": child_summary(off_sampler),
         },
         "not_proven": [
             "transitive imports of packages that happen to be installed (runtime behaviour only)",

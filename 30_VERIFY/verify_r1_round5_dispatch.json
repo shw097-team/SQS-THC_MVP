@@ -1,0 +1,216 @@
+{
+  "schema": "HGK-LANE-RESOLUTION/1",
+  "lane": "VERIFY_SECURITY",
+  "role": "checker",
+  "role_binding_source": null,
+  "engine": "codex-cli",
+  "codex_executable": "C:\\Users\\user\\AppData\\Local\\OpenAI\\Codex\\bin\\c38161ad8494f88c\\codex.exe",
+  "codex_home": "C:\\Users\\user\\AppData\\Local\\HG-KSEOS\\codex-hermes",
+  "relay_base": "http://127.0.0.1:10101/v1",
+  "codex_home_is_declared_lane_home": true,
+  "human_home_transport_acknowledged": false,
+  "skipped_arms": [],
+  "transport": "opencodex relay via per-invocation -c openai_base_url (no config mutation)",
+  "transport_target": "http://127.0.0.1:10101/v1",
+  "front_door_port": null,
+  "front_door_note": "the lane-scoped pool door (10103 VERIFY_SECURITY / 10105 EXECUTE) carries the hop and ledgers every decision; the sealed single-model 10100 door is unchanged and unused; None here means direct to the relay on 10101",
+  "sandbox": "read-only",
+  "sandbox_by_role_default": "read-only",
+  "sandbox_escalation_authorised": false,
+  "cwd": "C:/Projects/Agent_Workspace/SQS-THC_MVP_Workspace",
+  "side_effect_note": "no write access granted by the sandbox mode",
+  "receipt_binding": "usage rows appended after this attempt started (byte offset bound)",
+  "pool": "C:\\Projects\\Agent_Workspace\\FHS_NEXT\\HG-KSEOS\\config\\lane-route-slots.candidate.json",
+  "candidates_considered": [
+    3
+  ],
+  "mode": "pinned_primary",
+  "unguarded_escalation_acknowledged": false,
+  "inject_429_first": false,
+  "identity_gate": {
+    "state": "enforced",
+    "lane_home": "C:\\Users\\user\\AppData\\Local\\HG-KSEOS\\codex-hermes",
+    "relay_home": "C:\\Users\\user\\AppData\\Local\\HG-KSEOS\\opencodex-hermes",
+    "arms": [
+      {
+        "rank": 1,
+        "provider": "openai-codex",
+        "model": "gpt-6.1-sol",
+        "requirement": "relay_pool",
+        "ok": true,
+        "detail": "non-empty refreshable credential present in codex-accounts.json"
+      },
+      {
+        "rank": 2,
+        "provider": "opencode-go",
+        "model": "mimo-v2.6-flash",
+        "requirement": "none",
+        "ok": true,
+        "detail": "key-auth arm: no human-attended identity"
+      },
+      {
+        "rank": 3,
+        "provider": "opencode-go",
+        "model": "deepseek-v4.1-flash",
+        "requirement": "none",
+        "ok": true,
+        "detail": "key-auth arm: no human-attended identity"
+      },
+      {
+        "rank": 4,
+        "provider": "nvidia",
+        "model": "deepseek-ai/deepseek-v4.1-flash",
+        "requirement": "none",
+        "ok": true,
+        "detail": "key-auth arm: no human-attended identity"
+      }
+    ],
+    "degraded": false,
+    "required_arm": "opencode-go/deepseek-v4.1-flash"
+  },
+  "authorization": {
+    "checked": false
+  },
+  "subject_mutation": {
+    "state": "not_guarded"
+  },
+  "attempt_log_dir": "C:/Projects/Agent_Workspace/SQS-THC_MVP_Workspace/30_VERIFY/verify_r1_round5_dispatch.json.logs",
+  "output_dir_policy": {
+    "mode": "explicit-path",
+    "derived": null,
+    "existing": false
+  },
+  "repair_precondition": {
+    "checked": false
+  },
+  "remote_write_precheck": {
+    "mode": "DETECTION_ONLY",
+    "ran": false
+  },
+  "attempts": [
+    {
+      "rank": 3,
+      "provider": "opencode-go",
+      "model": "deepseek-v4.1-flash",
+      "transport_model": "opencode-go/deepseek-v4.1-flash",
+      "sandbox": "read-only",
+      "reasoning_effort": null,
+      "exit": 0,
+      "timed_out": false,
+      "seconds": 538.4,
+      "nonce_present": true,
+      "nonce_present_raw_stdout": true,
+      "nonce_present_anywhere": true,
+      "nonce_in_agent_message": true,
+      "producer": {
+        "script_sha256": "56eeb988db9e48744b131c616103dccebbbd8153674d9f5241aea9a148a4fbe7",
+        "git_head": null,
+        "schema": "HGK-LANE-DISPATCH-PRODUCER/1"
+      },
+      "nonce_source": "item.completed/agent_message",
+      "usage_rows_after_offset": 42,
+      "usage_offset": 42460036,
+      "usage_provider": "opencode-go",
+      "usage_model": "deepseek-v4.1-flash",
+      "usage_status": 200,
+      "usage_receipt_ok": true,
+      "usage_receipt_reason": "",
+      "usage_ledger_rewritten": false,
+      "usage_rows_shape_invalid": 0,
+      "usage_rows_undecodable": 0,
+      "carrier_lines_undecodable": 0,
+      "carrier_lines_surrogate": 0,
+      "credential_posture": {
+        "verdict": "INCONCLUSIVE",
+        "decision": "WARN_CONTINUE",
+        "reason": "posture gate not found: C:\\Projects\\Agent_Workspace\\FHS_NEXT\\HG-KSEOS\\scripts\\gcm-containment\\lane_credential_posture.py",
+        "prompt_capable_helper": null,
+        "origin": null,
+        "git_terminal_prompt": "0"
+      },
+      "attempt_log_dir": "C:/Projects/Agent_Workspace/SQS-THC_MVP_Workspace/30_VERIFY/verify_r1_round5_dispatch.json.logs",
+      "stdout_byte_exact": true,
+      "stdout_path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\30_VERIFY\\verify_r1_round5_dispatch.json.logs\\attempt-2184-1795615352-3-stdout.txt",
+      "stdout_bytes": 957770,
+      "stdout_sha256": "0b5f83d569561396ea647c6a446ece1e5e4082da34a3f7d9de6b6d392e4f94ac",
+      "stderr_byte_exact": true,
+      "stderr_path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\30_VERIFY\\verify_r1_round5_dispatch.json.logs\\attempt-2184-1795615352-3-stderr.txt",
+      "stderr_bytes": 170,
+      "stderr_sha256": "c7c28d5ee5ea7d2a281c086a705052b125f6bbf654a3554a6fe6cd5c646de619",
+      "stdout_tail": "0_OPS/ops_r4_r5_neg_scope.json:26\\\"\\n      ]\\n    }\\n  ],\\n  \\\"defects\\\": [],\\n  \\\"independent_acceptance\\\": \\\"ACCEPTED\\\",\\n  \\\"notes_path\\\": \\\"30_VERIFY/verify_r1_notes.md\\\",\\n  \\\"nonce\\\": \\\"NONCE=B0R1-CHK5-c417d2\\\"\\n}\\n```\"}}\n{\"type\":\"turn.completed\",\"usage\":{\"input_tokens\":2006885,\"cached_input_tokens\":1673344,\"cache_write_input_tokens\":0,\"output_tokens\":35335,\"reasoning_output_tokens\":10719}}\n",
+      "stderr_tail": "Reading additional input from stdin...\n2026-11-25T14:02:33.464115Z ERROR codex_api::endpoint::responses_websocket: failed to connect to Responses WebSocket stage=Unknown\n"
+    }
+  ],
+  "used_rank": 3,
+  "used_transport_model": "opencode-go/deepseek-v4.1-flash",
+  "used_seconds": 538.4,
+  "generated_utc": "2026-11-25T14:11:31.933819+00:00",
+  "assignment_posture": {
+    "enforced": false,
+    "posture": {
+      "ok": true,
+      "arms": [
+        "gpt-6.1-sol",
+        "nvidia/deepseek-ai/deepseek-v4.1-flash",
+        "openai-codex/gpt-6.1-sol",
+        "opencode-go/deepseek-v4.1-flash",
+        "opencode-go/mimo-v2.6-flash"
+      ],
+      "revision": 44,
+      "role": "VERIFY_SECURITY",
+      "authority": "owner-order-20261031-allpass-verify-sol",
+      "explicit_only_arms": [
+        "nvidia/deepseek-ai/deepseek-v4.1-flash",
+        "opencode-go/deepseek-v4.1-flash",
+        "opencode-go/mimo-v2.6-flash"
+      ],
+      "explicit_only_source": "supply_selector.arms[*].automatic_selection == false",
+      "shape": "role",
+      "primary_arms": [
+        "gpt-6.1-sol",
+        "openai-codex/gpt-6.1-sol"
+      ],
+      "primary_source": "assigned_provider/assigned_model + declared transport_model only",
+      "fallback_arms": [
+        "nvidia/deepseek-ai/deepseek-v4.1-flash",
+        "opencode-go/deepseek-v4.1-flash",
+        "opencode-go/mimo-v2.6-flash"
+      ],
+      "declared_fallbacks": [],
+      "fallbacks_declared": false,
+      "alternates_are_operator_selectable": false
+    },
+    "arms_outside_assignment": []
+  },
+  "producer": {
+    "script_sha256": "56eeb988db9e48744b131c616103dccebbbd8153674d9f5241aea9a148a4fbe7",
+    "git_head": null,
+    "schema": "HGK-LANE-DISPATCH-PRODUCER/1"
+  },
+  "comparison_policy": "compare two receipts ONLY when producer.script_sha256 is equal; tools/compare_lane_receipts.py refuses otherwise (TT-R20-9)",
+  "selection_filter": {
+    "required_arm": "opencode-go/deepseek-v4.1-flash",
+    "candidates_before": [
+      "openai-codex/gpt-6.1-sol",
+      "opencode-go/mimo-v2.6-flash",
+      "opencode-go/deepseek-v4.1-flash",
+      "nvidia/deepseek-ai/deepseek-v4.1-flash"
+    ],
+    "candidates_after": [
+      "opencode-go/deepseek-v4.1-flash"
+    ],
+    "why": "selection constrained by --require-arm (alias-equivalent), not only judged after the call"
+  },
+  "served_arm_assigned": true,
+  "claim_ceiling": "a pass here proves the Codex-CLI lane served this turn through the relay with a matching usage receipt; it is not an acceptance of any subject",
+  "ok": true,
+  "identity_source": "relay-usage",
+  "completion_evidence": {
+    "checked": false
+  },
+  "usage_receipt_ok": true,
+  "usage_rows_shape_invalid": 0,
+  "usage_rows_undecodable": 0,
+  "required_arm": "opencode-go/deepseek-v4.1-flash",
+  "served_arm": "opencode-go/deepseek-v4.1-flash"
+}

@@ -75,11 +75,11 @@
  },
  "status": {
   "freeze": "5ec38e9c1835dba89c5755acd2f2c720aadd9193dd96d08d0a1fe7ddfa36c456 (25 files)",
-  "tests": "132 OK (279s) after revocation-binding fix",
+  "tests": "137 OK",
   "b0_engineering_candidate": true,
   "b0_product_executed": true,
-  "b0_core_accepted": false,
-  "b0_complete": false,
+  "b0_core_accepted": true,
+  "b0_complete": true,
   "interrupted": [
    "checker round2 on freeze 1257f5ee (killed 15:59 for shutdown; no receipt, CLOSEOUT 5.2 empty)",
    "github incremental publish: dist/SQS-THC_MVP has 73 staged changes, NOT committed/pushed (origin/main still c502db00e16a)"
@@ -127,18 +127,7 @@
    "tests": "60_B1 15 OK",
    "scope": "B1 owns own rights entry; no maker serializer reuse"
   },
-  "native_off": {
-   "file": "40_OPS/native_off_r4.json",
-   "verdict": "NATIVE_OFF_OBSERVED_NO_EXTERNAL_DEPENDENCY",
-   "children": 0,
-   "external_tcp": 0,
-   "same_stable_projection": true,
-   "not_proven": [
-    "transitive imports",
-    "kernel-level writes",
-    "post-window network"
-   ]
-  },
+  "native_off": "NATIVE_OFF_EQUIVALENT_NO_DEPENDENCY",
   "b1_input_ready": true,
   "b1_technically_ready": false,
   "next": [
@@ -146,8 +135,25 @@
    "B1 RepoRoot/BASE/Kernel/FDA evidence before B1_TECHNICALLY_READY",
    "B2 ToolReadSet and B3 ledger remain unbuilt",
    "owner window expires 2026-11-25T20:11:29+08:00; renew via the original window for further real reads"
+  ],
+  "candidate_digest": "f3fa76eaa1c083af39c88610492a5fcad482dc5b5bbb7eb9a79e2234c8dca49e",
+  "b1_ready_execute": false,
+  "independent_acceptance": {
+   "receipt": "30_VERIFY/verify_r1_receipt.json",
+   "verdict": "ACCEPTED",
+   "round": 5,
+   "nonce": "B0R1-CHK5-c417d2",
+   "defects": []
+  },
+  "ops": "40_OPS/ops_r4_r5_*",
+  "handoff": "B1/B2/B3 ACCEPTED on ops_r4_r5_pos",
+  "residual": [
+   "native-off not_proven (transitive/kernel/sampling-window)",
+   "quarantine is process-local per §03.N",
+   "CodexSandboxUsers RX on 00_PREFLIGHT",
+   "owner window expires 2026-11-26T02:26:58+08:00"
   ]
  },
- "state": "EXTENDED_THIS_PASS",
+ "state": "B0_COMPLETE",
  "resume_doc": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\SST_PLP_PH01_W0_B0_RESUME_2026-11-25.md"
 }

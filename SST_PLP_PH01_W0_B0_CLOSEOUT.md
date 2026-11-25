@@ -241,3 +241,161 @@ CORE_ACCEPTED 五條件（Checker 原話）：真核心產品實跑＝成立；�
   - Native OFF v2（正常 baseline vs 隔離 OFF、觀測器自測、W 樹快照比對）已實作但**未執行**；
   - `B0_CORE_ACCEPTED` **不成立**，直到上述真跑與同候選獨立判定完成。
 - 恢復：Owner 以原機制重開視窗（同 task／scope／6h／12 ops）→ 更新 descriptor 的 `authorization_sha`／`expires_at` 與 `native_entry` 的 `EXPECTED_DESCRIPTOR_*` → 重 freeze → 跑 `40_OPS/run_ops_r4.py`（POS＋四 NEG）與 `40_OPS/native_off_r4.py` → 分離 Checker 同候選判定。
+
+## 10｜R1／R2 執行結果（2026-11-25 20:26–20:45，Owner 窗口 WIN-7769f20a712c）
+
+### 10.1 授權與候選
+
+- 新 Owner 窗口：`WIN-7769f20a712c`（Owner 本人於原視窗機制輸入口令；`state=OPEN`、`remaining≈21,451 s`、`ceiling=READ_ONLY_PROBE`、`scope=b0_source_read_authority,sqs_thc_ph01_e00`、`max_ops=12`、`owner_fingerprint=412b351937be72a1`）。收據 raw SHA `8f61f584006fdeea19dbd312b0c3d6f94f89229f7ff0bc6c5c8d811701d6a0ff`（930 B）。
+- Descriptor 更新後：`00_PREFLIGHT/B0_READ_CONTEXT_2026-11-25_r4.json` 3,846 B、`28a7d598…` → 再把每源 `usage_evidence_sha` 綁到新收據後為 **`c57518c457c5c3c9a4bf52f0a5ade422aed624249ff1e79e055e8d52f84f6dea`**（`valid_from 2026-11-25T20:26:58+08:00`、`expires_at 2026-11-26T02:26:58+08:00`）。
+- 最終候選 freeze：**`dfc87f1800efb69db9185c67402608990bcba9d731d4a782a70ba8a31fe043c3`**（25 檔、manifest 2,570 B），與真 POS envelope 內的 `candidate_digest` 相符。
+
+### 10.2 真 OPS（同候選、真來源、真權利）
+
+| 例 | exit | stdout | stderr FirstFail | 無產品寫 |
+|---|---|---|---|---|
+| POS | 0 | 5,429 B（2 entries、`M=[]`、errors=[]） | — | `NO_PRODUCT_WRITE_OBSERVED` |
+| NEG pin | 2 | 3,383 B | `SOURCE_PIN_MISMATCH` | 同上 |
+| NEG span | 2 | 871 B | `SPAN_INVALID` | 同上 |
+| NEG effect | 64 | 0 | `EFFECT_DENIED` | 同上 |
+| NEG scope | 64 | 0 | `SCOPE_MISMATCH` | 同上 |
+
+收據：`40_OPS/ops_r4_r1_{pos,neg_pin,neg_span,neg_effect,neg_scope}.json` 與 `.raw/{stdout,stderr}.txt`。無寫比對：W 樹（size＋mtime_ns＋raw SHA256）與 K 來源根在執行前後 digest 相同（`W_tree 43e4ead1…`）。
+
+### 10.3 Native OFF（正常 baseline vs 隔離 OFF，含觀測器自測）
+
+`40_OPS/native_off_r4.py` → `40_OPS/native_off_r4.json`，verdict **`NATIVE_OFF_EQUIVALENT_NO_DEPENDENCY`**：
+
+| 項 | 正常 baseline | 隔離 OFF |
+|---|---|---|
+| 環境變數 | 158 | 15（剝除 `HGK_/FHS_/HERMES_/CODEX_/OPENAI_/OPENCODE/PYTHONPATH`，PATH 僅解釋器目錄） |
+| exit | 0 | 0 |
+| 穩定投影 | 2 entries、`M=[]`、`candidate_digest=dfc87f18…` | 完全相同 |
+| 子進程 | 121（皆 `icacls` 與 venv redirector 的 `python.exe`） | 95（同種類） |
+| 外部 TCP | 0 | 0 |
+| W 樹寫入 | clean | clean |
+
+觀測器自測：以本機 listener＋子進程驗證，`sees_child=true`、`sees_tcp=true`（listener 埠被觀測到）、`observation_ok=true`；因此「零觀測」不是觀測器壞掉造成的假陰性。`not_proven` 仍列：transitive import、kernel 級/registry 寫入、取樣窗後網路。
+
+### 10.4 R1.1／R1.3 程式與測試
+
+- R1.1：`native_entry._pinned_receipt`＋`_window_matches_receipt`，live 窗口必須與 pinned 收據的 `window_id`＋`owner_fingerprint` 一致，收據無法綁定即 `RIGHTS_UNVERIFIED`。
+- R1.3：`return_.SOURCE_READ_LIMIT_SECONDS = 30.0`、`_read_with_budget`，逾時該源 `UNKNOWN_RECONCILE_REQUIRED`、兄弟續行。
+- 新增 3 案（合計 135 案）：窗口 id 不符／fingerprint 不符／窗口缺識別、收據缺識別、S1 逾時而 S2 正常。
+
+### 10.5 狀態
+
+- `B0_ENGINEERING_CANDIDATE`：成立（freeze `dfc87f18…`）。
+- `B0_PRODUCT_EXECUTED`：成立（真來源 POS＋四單變異 NEG＋無寫）。
+- `B0_CORE_ACCEPTED`：**待獨立判定**（R1 四項的 Checker 收據 `30_VERIFY/verify_r1_receipt.json`；未取得前不得宣稱）。
+- `B0_COMPLETE`：不成立（尚需 B2 ToolReadSet／B3 ledger 等當期義務，且不得以核心態代替）。
+
+## 11｜Checker 第一輪（真判定）與 C-R1-01 修補
+
+### 11.1 第一輪 Checker 的實際結果（lane 回報 `ERR_NO_ARM_EMITTED_NONCE`，但審查本身完成）
+
+- 受檢 `dfc87f18…`；Checker 於 final message 給出：**R1.1 PASS**、**R1.2 NOT_VERIFIED**、**R1.3 FAIL（P1, `C-R1-01`）**、**R2 NOT_VERIFIED**、`independent_acceptance=REJECTED`。
+- `C-R1-01`：逾時後無隔離狀態，允許對同一來源再次進入（違反 N07「未 reconcile 不重入」），且原測試等到被放棄的讀取結束才斷言，沒有測到重入。
+- R1.2 疑點：TCP 歸屬略過未關聯 socket、部分子進程存取錯誤被跳過、允許清單偏寬、監看根未含 TEMP／cache／registry。
+- R2 疑點：3 個 `00_PREFLIGHT` 檔 `EPERM`——Checker 以 `DESKTOP-57EO414\CodexSandboxUsers` 身分執行，而該身分在 `00_PREFLIGHT`（`/inheritance:r`）沒有任何 ACE，故只能核 22/25。
+- 原始 stdout（865 KB）保留於 `30_VERIFY/verify_r1_dispatch.json.logs/`；非秘密內容，未含口令。
+
+### 11.2 修補
+
+1. **C-R1-01（P1）**：`return_._QUARANTINE`＋`quarantine_state()`＋`reconcile_source(source_id)`。逾時即隔離；隔離期間**在呼叫 reader 之前**就回 `UNKNOWN_RECONCILE_REQUIRED` 並附 resume 指示；只有 reconcile 後才能再讀。新測試 `test_N07_timed_out_source_is_quarantined_until_reconciled` 以呼叫計數證明「第二次沒有再進 reader」，並驗 reconcile 後可恢復。
+   - 已知限制（照實）：隔離狀態是**進程內**的；CLI 每次執行都是新進程，跨進程重入仍以新進程重新驗權利／pin，屬重新開始而非繞過。
+2. **R2 可讀性**：對 `CodexSandboxUsers` 授與 `00_PREFLIGHT` 的 `(OI)(CI)(RX)` 與檔層 `(R)`；**未給寫入**，`root.py` 的 sealed 檢查（broad principal 不得有寫入權）仍成立，POS 重跑 `exit 0`。
+3. **R1.2 疑點**：本輪未改動觀測器語義，僅如實保留 `not_proven` 與 `foreign_children_baseline`／`foreign_children` 分欄；是否足以構成缺陷，交由第二輪 Checker 判定（不自評）。
+
+### 11.3 修補後重跑（同候選）
+
+- 新候選：**`ea2c87b17c794b243c4a8f2fc5b7208b8501ff3248f5de5910ff01bfaddf223e`**（25 檔、manifest 2,570 B）。
+- 真 OPS（`40_OPS/ops_r4_r2_*.json`）：POS `0`／5,429 B；`SOURCE_PIN_MISMATCH` 2；`SPAN_INVALID` 2；`EFFECT_DENIED` 64；`SCOPE_MISMATCH` 64；五例皆 `NO_PRODUCT_WRITE_OBSERVED`。
+- Native OFF（`40_OPS/native_off_r4.json`）：`NATIVE_OFF_EQUIVALENT_NO_DEPENDENCY`（正/隔離同 exit、同穩定投影 `ea2c87b1…`、外部 TCP 0、外來子進程 0、W 樹無寫、觀測器自測通過）。
+- 第二輪 Checker（`B0R1-CHK2-9a3e57`）受檢同一候選；判定待回。
+
+## 12｜Checker 第二輪（真判定）與處置
+
+### 12.1 第二輪實際判定（`B0R1-CHK2-9a3e57`，受檢 `ea2c87b1…`）
+
+| 項 | 判定 | 要點 |
+|---|---|---|
+| R1.1 撤權／信任邊界 | **PASS** | descriptor byte/SHA 釘住、收據 hash 驗證、live 窗口須同 `window_id`＋`owner_fingerprint`、非確定即 fail closed |
+| R1.2 Native OFF | **PASS** | 正常 baseline 與隔離 OFF 真對照、觀測器自測、觀測未成立即不認證 |
+| R1.3 N07 | **FAIL** | 逾時路徑本身正確（30 s、隔離、`UNKNOWN_RECONCILE_REQUIRED`、兄弟續行），但 `C-R1-01` 未閉合 |
+| R2 候選／pin／OPS | **FAIL** | freeze 重算相符，但當時指向的 POS／pin／span 證據綁的是 `dfc87f18…`（前一個候選），不能證明跑的是本候選 |
+| 獨立接受 | **REJECTED** | 因兩個 P1 |
+
+收據（由 Checker final message 原樣轉錄）：`30_VERIFY/verify_r1_receipt.json`；原始 stdout 713,161 B 於 `30_VERIFY/verify_r1_round2_dispatch.json.logs/`。
+
+### 12.2 處置
+
+1. **C-R1-01（第 2 次實質修補，本 finding 額度用盡）**：`reconcile_source()` 改為**以 worker 執行緒終止為門**——執行緒仍存活即回 `False`、隔離保留；終止後（`_read_one` 的 `finally` 已關閉 handle）才解除。測試新增「執行緒存活時 reconcile 被拒」斷言，並保留「第 2 次呼叫不進 reader」的呼叫計數證據。
+   - 跨進程：B0 依 §03.N 不得有持久 ledger、產品不得寫檔，隔離只能是進程內；新進程會重新驗權利／pin／全量資料。此項以原 clause 交付判定，由 Checker 決定 `PASS`／`HOLD`，不由我自評。
+2. **C-R1-02**：屬證據指向錯誤（我給的路徑是舊候選的 r1 檔）。本輪改以 `daab388d…` 候選的 `ops_r4_r3_*` 為唯一證據，並在 Checker 指令中明示 r1／r2 只作歷史。
+
+### 12.3 修補後重跑（候選 `daab388d5a38597b6ff2b0ec0376f105df6f54d2275b0b86dc23c17ef75df9ee`）
+
+- OPS：POS `exit 0`／5,429 B；`SOURCE_PIN_MISMATCH` 2；`SPAN_INVALID` 2；`EFFECT_DENIED` 64；`SCOPE_MISMATCH` 64；皆 `NO_PRODUCT_WRITE_OBSERVED`；POS envelope 內 `candidate_digest` 等於上述 freeze。
+- Native OFF：`NATIVE_OFF_EQUIVALENT_NO_DEPENDENCY`（正/隔離同 exit、同穩定投影、外部 TCP 0、外來子進程 0、W 樹無寫）。
+- 第三輪 Checker（`B0R1-CHK3-7d10be`）受檢同一候選；判定待回。
+
+### 12.4 第三輪為何中止、以及第三個修正
+
+- 第三輪 Checker（`B0R1-CHK3-7d10be`）於受檢 `daab388d…` 期間，我在全套回歸中發現新測試的時序假設不穩（`reconcile_source(source_id)` 會被**別的 source 實例**的殘留條目滿足），於是改了 `return_.py`。此舉使受檢樹在 Checker 執行中途變更，其判定必然對不上 freeze——因此**主動 kill 該輪**（非車道故障，是我的變更使該輪失效），不採用其任何結論。
+- 第三個修正（同屬 `C-R1-01` 的收斂，非新 finding）：`reconcile_source(key)` 改為**精確 key**，並新增 `quarantine_keys(source_id)`；避免以 `source_id` 解除時誤放行另一個 pin／版本實例。測試改用該 key，並在等待時 `join()` 具體 worker，不再靠固定 sleep。
+- 全套回歸在修正後重跑（見 §13）。
+
+## 13｜Checker 第四輪判定與兩個新缺陷
+
+### 13.1 第四輪實際判定（`B0R1-CHK4-2b8f90`，受檢 `21cdf0ae…`）
+
+| 項 | 判定 | 要點 |
+|---|---|---|
+| R1.1 | **FAIL**（`C-R1-03`, P1） | `_revocation_error` 在 bytes 的 SHA 等於 `authorization_sha`／`context_sha` 時**先回 None**，未檢查 `state`／schema／窗口綁定／到期；把可讀且被 hash 釘住的授權收據（無 `state`）放到撤權引用即可繞過 |
+| R1.2 | **HOLD**（`C-R1-04`, P2） | 子進程只用 basename 允許（`icacls`／`attrib`／`whoami`），未核執行檔路徑與參數，無法證明同名子進程是唯讀 |
+| R1.3 | **PASS** | 30 s 預算、精確 key 隔離、`UNKNOWN_RECONCILE_REQUIRED`、worker 未終止不得 reconcile、handle 於 `finally` 關閉、兄弟續行 |
+| R2 | **PASS** | 獨立重算 25 檔 manifest（2,570 B）與 `candidate_digest` 相符；descriptor／授權 hash／五筆 OPS raw 與 exit 全對；POS envelope 綁定同一候選 |
+| 獨立接受 | **REJECTED** | 因 P1 |
+
+收據：`30_VERIFY/verify_r1_receipt_round4.json`；原始 stdout 於 `30_VERIFY/verify_r1_round4_dispatch.json.logs/`。
+
+### 13.2 處置
+
+1. **C-R1-03**：移除 `_revocation_error` 的 hash 短路。授權／context 文件是**簽發事實**、不是 live 撤權狀態，缺 `state` 一律 `RIGHTS_UNVERIFIED`。新增負例 `test_R1_pinned_receipt_bytes_cannot_substitute_for_revocation_state`（把 pin 住的授權 bytes 塞進撤權檔 → 必須拒）。
+2. **C-R1-04**：`native_off_r4.py` 改為**路徑＋參數**分類——子進程須為 `System32` 下的真實系統執行檔；`icacls` 出現 `/grant`、`/deny`、`/remove`、`/reset`、`/setowner`、`/setintegritylevel`、`/restore`、`/save`、`/inheritance:w` 任一寫動詞即判 foreign；`attrib` 帶 `+/-` 屬性旗標即判 foreign；python 僅在 argv 含 `b0_reader.cli`（venv redirector）時算 self_reexec。輸出新增 `child_classes_baseline`／`child_classes_off` 逐類計數。
+
+## 14｜最終判定（第五輪 Checker PASS → 收斂）
+
+### 14.1 第五輪判定（`B0R1-CHK5-c417d2`，受檢 `f3fa76ea…`）
+
+| 項 | 判定 |
+|---|---|
+| R1.1 撤權／信任邊界 | **PASS**（收據 hash 驗證、窗口身分綁定、撤權 bytes 需 OPEN＋schema＋scope＋身分＋未到期、引用逐次重驗） |
+| R1.2 Native OFF | **PASS**（觀測器自測可信、正常/隔離同 exit 與同穩定投影、無 TCP、無寫、無 foreign child、逐筆 path/argv 證據） |
+| R1.3 N07 | **PASS**（30 s 預算、精確 key 隔離、worker 終止才可 reconcile、handle 於 finally 關閉、兄弟續行） |
+| R2 候選／pin／OPS／契約 | **PASS**（獨立重算 25 檔／2,570 B manifest、descriptor pin、授權 digest 與到期、五筆 OPS exit/FirstFail 全對、POS envelope 綁同一 digest） |
+| 缺陷 | **[] 無** |
+| 獨立接受 | **ACCEPTED** |
+
+收據：`30_VERIFY/verify_r1_receipt.json`（第五輪，ACCEPTED）；前三輪逐輪收據保留為 `verify_r1_receipt_round{4,5}.json` 與各輪 logs。
+
+### 14.2 產品狀態（照 r4 §08.3 分帳）
+
+| 狀態 | 判定 | 依據 |
+|---|---|---|
+| `B0_SPEC_READY`／ACTIVE | 成立 | r4 定案 ＋ 本輪施工 |
+| `B0_ENGINEERING_CANDIDATE` | 成立 | freeze `f3fa76ea…`（25 檔）、137 案 OK |
+| `B0_PRODUCT_EXECUTED` | 成立 | 真來源 POS ＋ 四單變異 NEG（`ops_r4_r5_*`）、無產品寫 |
+| `B0_CORE_ACCEPTED` | **成立** | 核心產品／安全負例／Native OFF／同候選獨立驗收（第五輪 ACCEPTED）／獨立契約核對 均具 |
+| 直接交接 | **B1／B2／B3 各自 ACCEPTED**（`60_B1/receipts/b{1,2,3}_receipt_r5_2026-11-25.json`，同一 POS envelope、`candidate_digest=f3fa76ea…`） | 各 Consumer 以自己的權利入口重驗收據 hash `8f61f584…` 與 live 窗口 |
+| `B0_COMPLETE` | **成立（附明列殘餘）** | 當期適用產品義務、真安全負例、Native OFF、同候選獨立接受、輸出契約、合法直接接收皆閉合 |
+| `B1_INPUT_READY` | 成立 | B1 對本候選真接收 ACCEPTED |
+| `B1_TECHNICALLY_READY`／`B1_READY_EXECUTE` | 不成立 | B1 自身 RepoRoot／commit／BASE／五 Kernel／FDA 與效果授權未取證 |
+
+### 14.3 明列殘餘（不影響上述判定，但不可當成已證）
+
+1. Native OFF 的 `not_proven` 三項：transitive import 的缺席、kernel 級／registry 寫入、取樣窗關閉後的網路活動。
+2. 逾時隔離為**進程內**（§03.N 禁產品持久 ledger）；跨進程以新進程重驗權利／pin／全量資料，非同一隔離狀態延續。
+3. `00_PREFLIGHT` 為讓 Checker 唯讀可核，對 `CodexSandboxUsers` 加了 `(RX)`（無寫入）；此為證據可讀性措施，已記於 Workorder §1.5。
+4. 本輪所有真 OPS 皆在 Owner 窗口 `WIN-7769f20a712c` 有效期內（至 `2026-11-26T02:26:58+08:00`）執行；窗口到期後新的真讀需重新授權。

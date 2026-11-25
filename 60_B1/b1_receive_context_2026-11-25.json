@@ -1,9 +1,9 @@
 {
- "candidate_digest": "5ec38e9c1835dba89c5755acd2f2c720aadd9193dd96d08d0a1fe7ddfa36c456",
+ "candidate_digest": "f3fa76eaa1c083af39c88610492a5fcad482dc5b5bbb7eb9a79e2234c8dca49e",
  "consumer_id": "B1",
  "context_version": "B1ReceiveContext/1",
  "rights_receipt_ref": "C:\\Projects\\Agent_Workspace\\FHS_NEXT_Workspace\\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\\owner_ws\\artifacts\\OWNER_WINDOW.json",
- "rights_receipt_sha": "e750066a430da8a7c479efa9687d5aa2377964dbab51fdd20e144c6303edd28a",
+ "rights_receipt_sha": "8f61f584006fdeea19dbd312b0c3d6f94f89229f7ff0bc6c5c8d811701d6a0ff",
  "rights_scope": [
   "b0_source_read_authority",
   "sqs_thc_ph01_e00"

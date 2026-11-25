@@ -34,9 +34,9 @@ EXPECTED_DESCRIPTOR_PATH = (
     r"\00_PREFLIGHT\B0_READ_CONTEXT_2026-11-25_r4.json"
 )
 EXPECTED_DESCRIPTOR_SHA = (
-    "b8759ca7f5c213024c4046db07494cabb355d39d051b0082ff043845e9fb45e0"
+    "c57518c457c5c3c9a4bf52f0a5ade422aed624249ff1e79e055e8d52f84f6dea"
 )
-EXPECTED_DESCRIPTOR_BYTES = 3612
+EXPECTED_DESCRIPTOR_BYTES = 3846
 CONTEXT_VERSION = "B0TrustedContext/1"
 
 _TRUST_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
@@ -553,12 +553,9 @@ def _revocation_error(
 ) -> str | None:
     """Classify revocation evidence; every non-definitive result is unknown."""
 
-    evidence_sha = hashlib.sha256(payload).hexdigest()
-    if evidence_sha in {
-        context.authorization_sha,
-        context.context_sha,
-    }:
-        return None
+    # A hash-pinned authorization/context document is *immutable issuance evidence*, not
+    # live revocation state: it carries no window state, so letting its bytes satisfy the
+    # revocation check would skip state/schema/window/expiry validation (C-R1-03).
     try:
         document = _revocation_json(payload)
     except TrustContextError:

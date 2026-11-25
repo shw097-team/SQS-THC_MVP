@@ -1,0 +1,52 @@
+{
+ "schema": "SST.B1.RECEIPT/1",
+ "consumer_id": "B2",
+ "verifier_version": "b1-consumer/1.0.0",
+ "received_at": "2026-11-25T22:12:05.672100+08:00",
+ "subject": "SST/SQS-THC/PH01/E00",
+ "scope_id": "SQS-THC-PH01-E00-B0-SOURCE-READ",
+ "spec_version": "2026-11-25_r4_Native-first",
+ "candidate_digest": "f3fa76eaa1c083af39c88610492a5fcad482dc5b5bbb7eb9a79e2234c8dca49e",
+ "wire_version": "SST.B0.SourceReadSet/2",
+ "rights": {
+  "receipt_ref": "C:\\Projects\\Agent_Workspace\\FHS_NEXT_Workspace\\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\\owner_ws\\artifacts\\OWNER_WINDOW.json",
+  "receipt_sha": "8f61f584006fdeea19dbd312b0c3d6f94f89229f7ff0bc6c5c8d811701d6a0ff",
+  "state_ref": "C:\\Users\\user\\.hgk-owner\\window.json",
+  "state_sha": "db9a8ea2a536310094f6d03edea6543a0b3652a3d58466e3dc723705f5089e09",
+  "window_id": "WIN-7769f20a712c",
+  "task_id": "SST_PLP_PH01_W0_B0_SOURCE_READ_AUTH"
+ },
+ "accepted": [
+  {
+   "source_id": "SST.ALL.W0.BLUEPRINT",
+   "sha": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
+   "clause_sha": "77132f0636e30b0cf8d5df1ae3438228b18d847d718e5ffbf5c56825229f9bf6",
+   "R": [
+    "read"
+   ],
+   "P": [
+    "read"
+   ],
+   "M": [],
+   "authority_epoch_strategy": "LIVE_REVALIDATE"
+  },
+  {
+   "source_id": "SST.W0M.MAIN",
+   "sha": "5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96",
+   "clause_sha": "4f0db2cb1d7c740eaf3b5a1de6be4517c951fe654010aeb43100104d13dfbaf5",
+   "R": [
+    "read"
+   ],
+   "P": [
+    "read"
+   ],
+   "M": [],
+   "authority_epoch_strategy": "LIVE_REVALIDATE"
+  }
+ ],
+ "rejected": [],
+ "errors": [],
+ "snapshot_sha": "645c73891006f6dd255272b579b3808394e5c7ce2915bf8595a9501d19017119",
+ "first_fail": null,
+ "verdict": "ACCEPTED"
+}

@@ -1,0 +1,70 @@
+{
+ "schema": "SST-B0-OPS-RUN/1",
+ "label": "B0-R3-neg_span",
+ "generated_at": "2026-11-25T21:14:12+0800",
+ "command": {
+  "argv": [
+   "C:\\Users\\user\\AppData\\Local\\hermes\\installs\\0d1790b230609f8c\\environments\\2e40a7b72ed941c691e747bed9c9928f\\venv\\Scripts\\python.exe",
+   "-B",
+   "-m",
+   "b0_reader.cli",
+   "read",
+   "--request-json",
+   "-"
+  ],
+  "cwd": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\20_DEV",
+  "python": "C:\\Users\\user\\AppData\\Local\\hermes\\installs\\0d1790b230609f8c\\environments\\2e40a7b72ed941c691e747bed9c9928f\\venv\\Scripts\\python.exe",
+  "python_version": "3.14.9 (main, Oct 21 2026, 17:48:58) [MSC v.1944 64 bit (AMD64)]",
+  "product_module_root": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\20_DEV\\b0_reader"
+ },
+ "request": {
+  "path": "40_OPS\\b0_read_neg_span_2026-11-25.json",
+  "bytes": 340,
+  "sha256": "05f7380c71d98f48a1182bcbe44cc3ee297bd44b2e62a97f7c815f4b45a93c31"
+ },
+ "actual": {
+  "exit": 2,
+  "seconds": 4.402,
+  "stdout_bytes": 871,
+  "stdout_sha256": "9b0e371e897341c6f14450a47b07825e239ea106a0cc65fb198c015d93f2c08e",
+  "stderr_bytes": 12,
+  "stderr_sha256": "d8243bf004ee1fad80353788fbd638cfffb4aa2b2f3e3def855ab70845ff8237",
+  "stdout_raw": "40_OPS\\ops_r4_r3_neg_span.raw\\stdout.txt",
+  "stderr_raw": "40_OPS\\ops_r4_r3_neg_span.raw\\stderr.txt",
+  "stdout_truncated_for_report": "{\"wire_version\":\"SST.B0.SourceReadSet/2\",\"subject\":\"SST/SQS-THC/PH01/E00\",\"original_wave\":\"P1-W00M\",\"bid\":0,\"spec_version\":\"2026-11-25_r4_Native-first\",\"candidate_digest\":\"daab388d5a38597b6ff2b0ec0376f105df6f54d2275b0b86dc23c17ef75df9ee\",\"scope\":{\"scope_id\":\"SQS-THC-PH01-E00-B0-SOURCE-READ\",\"source_ids\":[\"SST.W0M.MAIN\"],\"purpose\":\"B0 SOURCE_READ under SST_PLP_PH01_W0_B0_SOURCE_READ_AUTH\",\"consumer_ids\":[\"B1\",\"B2\",\"B3\"]},\"source_manifest\":{\"inherited_sha\":\"2012a28f630f4e28d60309de0bb5734ce138b18c677445a475c670f1d9f4245e\",\"verification\":\"UNVERIFIED\",\"evidence_ref\":null},\"write_set\":[],\"preimage\":\"N/A\",\"fin_order\":\"DENY\",\"extensions\":{},\"entries\":[],\"errors\":[{\"source_id\":\"SST.W0M.MAIN\",\"op\":\"BYTES\",\"code\":\"SPAN_INVALID\",\"first_fail\":\"SPAN_INVALID\",\"affected_locator\":null,\"retryable\":false,\"attempt\":1,\"resume\":\"修正可信來源或權利後建立新 attempt\"}]}",
+  "stderr_text": "SPAN_INVALID"
+ },
+ "product_write_set": [],
+ "no_write": {
+  "before_digests": {
+   "W_tree": "f7389b1ec3043f7ef5e64e97ebc41aaa987f5ad3249ac33b4200cf9e90ca6d34",
+   "source_dir": "61e8cee9c934f7c09d476fb5afe67af49fa5c6688f35c323e7a581df7b30a912"
+  },
+  "after_digests": {
+   "W_tree": "f7389b1ec3043f7ef5e64e97ebc41aaa987f5ad3249ac33b4200cf9e90ca6d34",
+   "source_dir": "61e8cee9c934f7c09d476fb5afe67af49fa5c6688f35c323e7a581df7b30a912"
+  },
+  "diff": {
+   "W_tree": {
+    "added": [],
+    "removed": [],
+    "changed": [],
+    "clean": true
+   },
+   "source_dir": {
+    "added": [],
+    "removed": [],
+    "changed": [],
+    "clean": true
+   }
+  },
+  "verdict": "NO_PRODUCT_WRITE_OBSERVED",
+  "watch_note": "W tree compared by size+mtime_ns+raw sha256 (content); the K source root by size+mtime_ns; this is a bounded observation, not a whole-disk guarantee.",
+  "not_covered": [
+   "OS-level write/process monitoring (ETW, ProcMon) not available to this recorder",
+   "registry, network egress, bytecode in other interpreters, child processes",
+   "TEMP/cache trees outside the two watched roots"
+  ]
+ },
+ "finished_at": "2026-11-25T21:14:01+0800"
+}
