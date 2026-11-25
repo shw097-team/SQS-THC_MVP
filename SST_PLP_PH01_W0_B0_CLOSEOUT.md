@@ -139,3 +139,18 @@
 **停止／重試紀錄**：無 `PARK_UNTIL_DELTA`；每 finding 修補次數 ≤2（F1–F4 一次；R1–R3 一次；測試遷移一次）；一次 lane timeout（`ERR_LANE_ALL_ROUTES_EXHAUSTED`，因 writer 反覆嘗試被 policy 阻擋的 PowerShell，已改以 python／icacls 直接呼叫後恢復）；無盲重試；`RIGHTS_DENIED` 類不入 retry 集合。
 
 **LastGood**：`40_OPS/dev0_baseline_20261125.json` 的 83 檔基線與公開倉 `shw097-team/SQS-THC_MVP@c502db00e16a`（前輪工程候選）。本輪未覆寫任何歷史證據。
+
+## 7｜公開交付（增量上推，2026-11-25 18:41 +08:00）
+
+| 項 | 實際 |
+|---|---|
+| repo | `https://github.com/shw097-team/SQS-THC_MVP`（既有公開庫，增量更新，未改 visibility、未 force） |
+| 前後 commit | `c502db00e16a6d47187de56c6c967bccfbaf540e` → **`a24aef29dabf7d15cf02c2c0e6f19c3bf8c8cfc1`**（`c502db0..a24aef2 HEAD -> main`） |
+| 變更 | 55 個檔案（35 新增＋15 修改＋其餘）；tree 82 entries／71 blobs（`git/trees/main?recursive=1` 實查） |
+| 推送方式 | `git push` 以 `http.extraheader` 注入權杖（只在子進程 env；未入 argv、remote URL、log 或檔案）；`git ls-remote` 先行驗證 exit 0 |
+| staging | `W/dist/SQS-THC_MVP`（隔離工作樹，以 `origin/main` 為基線）；`W` 本身無 `.git` |
+| 讀回 | remote `main` SHA 與 local HEAD **逐字相同**；`CLOSEOUT.md`／`README.md`／`20_DEV/tests/trust_fixture.py` 的 raw 下載 sha256 與本地**完全相同**；`HANDOFF.md`／`native_entry.py`／`candidate_freeze.json` 僅 CRLF↔LF 差異（正規化後 byte 相同） |
+| secrets／PII／散布檢查 | 62 個變更檔以 8 條樣式（ghp_/github_pat_/sk-/oc_sk_/AKIA/PRIVATE KEY/Bearer/passphrase 指派）掃描 **0 命中**；未含口令信封、權杖、Owner 私鑰、知識庫正文、lane 派工收據／logs、`30_VERIFY/b0_checkpoint*` |
+| 公開版本邊界 | 只放工程候選、真跑 raw（含 1 行規格引用字串）、findings 與兩份 MD；`authorization_ref` 等以本地 locator＋SHA 表示 |
+
+**這不是金融 Release、不是產品驗收、不是 R18 發布**；`FIN_ORDER=DENY` 不變。

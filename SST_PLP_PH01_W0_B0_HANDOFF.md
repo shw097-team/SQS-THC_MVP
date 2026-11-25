@@ -92,3 +92,8 @@ stdout= 一個 UTF-8 JSON object（SST.B0.SourceReadSet/2）或空（exit 64/70�
 - 部署 descriptor：`W/00_PREFLIGHT/B0_READ_CONTEXT_2026-11-25_r4.json`，3,612 bytes，SHA256 `b8759ca7f5c213024c4046db07494cabb355d39d051b0082ff043845e9fb45e0`，`native_entry.py` 內固定常數。
 - 該目錄 ACL 已收緊（只授 `DESKTOP-57EO414\user`、`SYSTEM`、`Administrators`）；`require_sealed` 只套 descriptor 與其直屬父目錄，祖先仍做 reparse／identity。日後搬動 descriptor 或改 ACL，產品會 fail closed（`TRUST_CONTEXT_UNBOUND`／`PATH_IDENTITY_UNVERIFIED`），並需重 freeze。
 - 來源檔（K）不要求 sealed；其安全由「當次 OS token 讀取權＋同 handle 身份＋讀後 hash／identity 複核」承擔。此分界為刻意設計，不得為求綠燈互換。
+
+## 7｜公開交付讀回
+
+- repo `https://github.com/shw097-team/SQS-THC_MVP`，commit `a24aef29dabf7d15cf02c2c0e6f19c3bf8c8cfc1`（前 `c502db00e16a`）。
+- 兩份公開 MD：`SST_PLP_PH01_W0_B0_CLOSEOUT.md`、`SST_PLP_PH01_W0_B0_HANDOFF.md`（本檔）；僅放工程候選與真跑 raw，`authorization_ref` 等以本地 locator＋SHA 表示。
