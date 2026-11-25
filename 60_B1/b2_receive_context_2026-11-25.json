@@ -1,0 +1,19 @@
+{
+ "candidate_digest": "5ec38e9c1835dba89c5755acd2f2c720aadd9193dd96d08d0a1fe7ddfa36c456",
+ "consumer_id": "B2",
+ "context_version": "B1ReceiveContext/1",
+ "rights_receipt_ref": "C:\\Projects\\Agent_Workspace\\FHS_NEXT_Workspace\\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\\owner_ws\\artifacts\\OWNER_WINDOW.json",
+ "rights_receipt_sha": "e750066a430da8a7c479efa9687d5aa2377964dbab51fdd20e144c6303edd28a",
+ "rights_scope": [
+  "b0_source_read_authority",
+  "sqs_thc_ph01_e00"
+ ],
+ "rights_state_ref": "C:\\Users\\user\\.hgk-owner\\window.json",
+ "rights_task_id": "SST_PLP_PH01_W0_B0_SOURCE_READ_AUTH",
+ "scope_id": "SQS-THC-PH01-E00-B0-SOURCE-READ",
+ "source_ids": [
+  "SST.ALL.W0.BLUEPRINT",
+  "SST.W0M.MAIN"
+ ],
+ "verifier_version": "b1-consumer/1.0.0"
+}

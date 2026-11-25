@@ -60,9 +60,9 @@ stdout= 一個 UTF-8 JSON object（SST.B0.SourceReadSet/2）或空（exit 64/70�
 
 | Consumer | 必驗（不得由 B0 代做） | 本次實況 |
 |---|---|---|
-| **B1** | 共同 envelope、`source_ref`/`sha`/`authority` 必有、`acl_epoch`／`rights_epoch` 欄存在可 null、原 R/P/M 與 tuple、自身 RepoRoot/commit/BASE/Kernel/FDA | B0 輸出已可被獨立 probe 判定 `CONTRACT_COMPATIBLE`；**無真 B1 接收** → `B1_INPUT_READY` 不成立 |
-| **B2** | 同上；Q1–Q4 自身 requiredness 不由 B0 推論 | 同上；未執行 B2 接收 |
-| **B3** | 同上＋`missing` 必有；另需 B2 `ToolReadSet`；只有其合法 Writer 可持久 ledger | 同上；未執行 B3 接收 |
+| **B1** | 共同 envelope、`source_ref`/`sha`/`authority` 必有、`acl_epoch`／`rights_epoch` 欄存在可 null、原 R/P/M 與 tuple、自身 RepoRoot/commit/BASE/Kernel/FDA | **已真接收 ACCEPTED**（`60_B1/receipts/b1_receipt_r4_2026-11-25.json`，`snapshot_sha=82640619aa80…`）；B1 自身技術前置仍未取證 |
+| **B2** | 同上；Q1–Q4 自身 requiredness 不由 B0 推論 | **已真接收 ACCEPTED**（`b2_receipt_r4_2026-11-25.json`，同 snapshot）；Q1–Q4 未建 |
+| **B3** | 同上＋`missing` 必有；另需 B2 `ToolReadSet`；只有其合法 Writer 可持久 ledger | **已真接收 ACCEPTED**（`b3_receipt_r4_2026-11-25.json`，同 snapshot）；ToolReadSet／ledger 未建 |
 
 接收演算法（`§03.2` 六步）仍是唯一路徑：鎖 envelope → exact tuple／scope／pin → 用自身可信權利入口重驗 usage／身份／時效／撤權（有 provider epoch 比 current，否則 live revalidate）→ 從原 RequiredSetSpec 重取 R 比對 P/M → 只取真正需要且齊全的 entry → 回傳含 consumer_id、驗證器/version、accepted/rejected、FirstFail 的**真結果**。**聊天 ACK 不算**。
 
@@ -92,3 +92,17 @@ stdout= 一個 UTF-8 JSON object（SST.B0.SourceReadSet/2）或空（exit 64/70�
 - 部署 descriptor：`W/00_PREFLIGHT/B0_READ_CONTEXT_2026-11-25_r4.json`，3,612 bytes，SHA256 `b8759ca7f5c213024c4046db07494cabb355d39d051b0082ff043845e9fb45e0`，`native_entry.py` 內固定常數。
 - 該目錄 ACL 已收緊（只授 `DESKTOP-57EO414\user`、`SYSTEM`、`Administrators`）；`require_sealed` 只套 descriptor 與其直屬父目錄，祖先仍做 reparse／identity。日後搬動 descriptor 或改 ACL，產品會 fail closed（`TRUST_CONTEXT_UNBOUND`／`PATH_IDENTITY_UNVERIFIED`），並需重 freeze。
 - 來源檔（K）不要求 sealed；其安全由「當次 OS token 讀取權＋同 handle 身份＋讀後 hash／identity 複核」承擔。此分界為刻意設計，不得為求綠燈互換。
+
+## 8｜B1/B2/B3 真實接收入口（可重跑）
+
+```text
+cd W/60_B1
+python -B -m b1_consumer.cli receive \
+  --envelope ../40_OPS/ops_r4_h_pos.raw/stdout.txt \
+  --context b1_receive_context_2026-11-25.json \
+  --out receipts/b1_receipt_r4_2026-11-25.json
+```
+
+- `B2`／`B3` 只換 `--context b2_receive_context_2026-11-25.json`／`b3_receive_context_2026-11-25.json`，其可信權利入口與判定各自獨立（不可互代）。
+- 收據欄位：`consumer_id`、`verifier_version`、`snapshot_sha`、`candidate_digest`、`accepted[]`（source_id／sha／clause_sha／R／P／M）、`rejected[]`、`errors[]`、`rights{receipt_sha,state_sha,window_id}`、`verdict`。
+- 負例測試：`cd W/60_B1 && python -B -m unittest discover -s tests`（15 案）。

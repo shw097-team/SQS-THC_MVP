@@ -123,15 +123,17 @@
 | `B0_PRODUCT_EXECUTED` | **成立**（真來源四 Op＋四個單變異真 NEG、raw／exit／無寫齊） |
 | `B0_CORE_ACCEPTED` | **不成立**（Native OFF 的 network／transitive tracing 為 `NOT_VERIFIED`；同候選獨立驗收待第二輪判定） |
 | `B0_COMPLETE` | **不成立**（無真 B1/B2/B3 接收） |
-| `B1_CONTRACT_COMPATIBLE / CONSUMER_NOT_YET_EXECUTED` | 成立（僅獨立探針） |
-| `B1_INPUT_READY`／`B1_READY_EXECUTE` | 不成立 |
+| `B1_CONTRACT_COMPATIBLE / CONSUMER_NOT_YET_EXECUTED` | 探針成立；**已由真接收取代**（見 §8.1） |
+| `B1_INPUT_READY` | **成立**（B1 真接收 ACCEPTED、readback 見 §8.1） |
+| `B1_TECHNICALLY_READY`（非 canonical） | 不成立（B1 自身 RepoRoot／BASE／五 Kernel／FDA 未取證） |
+| `B1_READY_EXECUTE` | 不成立 |
 
 **未閉合項（含責任與恢復條件）**
 
 | # | 項 | 受影 | 責任 | 恢復條件 |
 |---|---|---|---|---|
-| H1 | Native OFF 缺 network／transitive child-process tracing | N08、`B0_CORE_ACCEPTED` | 工程（受權工具） | 提供可用的進程／連線觀測（ETW／ProcMon 級），同候選冷啟重跑；不得以「沒看到」代替 |
-| H2 | 無真 B1/B2/B3 Consumer | 正式交接、`B0_COMPLETE` | B1/B2/B3 Owner | 有真 Consumer 後以同 freeze／pin／當前權利接收並 readback |
+| H1 | Native OFF **已補**：子進程 0、外部 TCP 0、穩定投影相同（§8.2）；仍缺 transitive import 與 kernel 級寫入證據 | N08、`B0_CORE_ACCEPTED` | 工程（受權工具） | 需 ETW／ProcMon 級 trace 才能把 `NOT_VERIFIED` 轉 PASS |
+| H2 | B1/B2/B3 最小真實接收**已成立**（§8.1）；仍缺 B1 自身技術前置與正式效果授權 | `B0_COMPLETE`、`B1_READY_EXECUTE` | B1 Owner | 取 B1 RepoRoot／BASE／Kernel／FDA 實證後再評 |
 | H3 | 無 provider-versioned epoch 服務 | `EPOCH_STALE` 真路徑 | Source/Data Owner | 提供真版本化 epoch；現行一律 `LIVE_REVALIDATE` |
 | H4 | 繼承 SourceManifest 原件未取得 | `source_manifest=UNVERIFIED` | 原持有人 | 提供 `2012a28f…` 同 bytes 原件與法位 |
 | H5 | P0-W00M 當期來源／權利成果未定位 | 其他正式來源接受 | Source/Data Owner | 提供當期 source／scope／用途／撤權／時效證據 |
@@ -171,3 +173,32 @@
 CORE_ACCEPTED 五條件（Checker 原話）：真核心產品實跑＝成立；安全負例＝**不成立**；Native OFF＝不成立；同候選獨立驗收＝不成立；獨立契約探針＝成立。
 
 **對該 FAIL 的處置（同日 19:47）**：`_owner_window_is_valid` 增加 `max_expiry` 上限，改由 **descriptor 自身 `expires_at`** 綁定——任何自稱更晚到期的視窗一律拒（攻擊面：換一份有效期更長的視窗來延長權利）。改後重跑：**132 tests OK（279 s）**、POS 與四個 NEG 全部重跑（`40_OPS/ops_r4_h_*`）、新 `candidate_digest=5ec38e9c1835dba89c5755acd2f2c720aadd9193dd96d08d0a1fe7ddfa36c456`（25 檔，產品與 Commander 重算一致）。此為**我方修補，尚無獨立複核**，故安全負例仍記不成立。
+
+## 8｜本輪差額補強（2026-11-25 19:52–20:05）
+
+### 8.1 B1／B2／B3 最小真實 v2 接收（新增，非探針）
+
+- 入口：`60_B1/b1_consumer`（`python -B -m b1_consumer.cli receive --envelope <file|-> --context <ctx> --out <receipt>`），**不 import B0 maker 的 serializer**，型別／集合／錯誤規則依 r4 §02.F／§03.2 自行重寫。
+- 各 Consumer 自己的可信權利入口：`rights_receipt_ref`＋`rights_receipt_sha`（Owner 簽署收據，hash-pinned）＋`rights_state_ref`（live owner window）——要求 `window_id` 相同、`state=OPEN`、且 **window 到期 ≤ 收據到期**；任一不符即 `RIGHTS_UNVERIFIED`／`RIGHTS_REVOKED`／`RIGHTS_EXPIRED`。
+- 真接收結果（同一份真 B0 輸出 `snapshot_sha=82640619aa80…`）：
+
+| Consumer | 收據 | verdict | accepted | window |
+|---|---|---|---|---|
+| B1 | `60_B1/receipts/b1_receipt_r4_2026-11-25.json` | **ACCEPTED** | 2 個 entry（M 皆空） | `WIN-2ffca679906c` |
+| B2 | `60_B1/receipts/b2_receipt_r4_2026-11-25.json` | **ACCEPTED** | 2 | 同 |
+| B3 | `60_B1/receipts/b3_receipt_r4_2026-11-25.json` | **ACCEPTED** | 2 | 同 |
+
+- 負例：`60_B1/tests/test_b1_consumer.py` **15 案 OK**——錯 wire_version、BOM、重複 source_id、錯 candidate_digest、被改的 entry sha（破壞 observed 出處）、R/P/M 分割破壞、非法 epoch_strategy、consumer 未在 scope、未知 source、收據 hash 變更、window CLOSED、window_id 不同、window 到期超出收據、已到期。
+- 邊界：B1 的 **自身技術前置（RepoRoot／BASE／五 Kernel／FDA）未取證**，故 `B1_TECHNICALLY_READY` **不成立**；`B1_INPUT_READY` 成立。
+
+### 8.2 Native OFF 實測（H1 部分閉合）
+
+`40_OPS/native_off_r4.py` → `40_OPS/native_off_r4.json`：
+
+- 環境：只留 15 個 OS 變數，`PATH` 僅解釋器目錄，剝除 `HGK_*`／`FHS_*`／`HERMES_*`／`CODEX_*`／`OPENAI_*`／`OPENCODE*`／`PYTHONPATH`。
+- 結果：`exit=0`、5,429 bytes、**穩定投影與正常執行完全相同**（兩個 entry 的 sha／clause／R/P/M 一致）；**子進程 0、外部 TCP 0**；verdict `NATIVE_OFF_OBSERVED_NO_EXTERNAL_DEPENDENCY`。
+- 未證（如實）：transitive import 的缺席證明、kernel 級檔案／registry 寫入、取樣窗後的網路活動。`native_off_r4.json.not_proven` 已列。
+
+### 8.3 發布位元組一致性（T3）
+
+問題：`dist` clone `core.autocrlf=true` 使 GitHub blob 為 LF、本地候選為 CRLF，raw bytes 與候選不一致。處置：新增 `.gitattributes`（`* -text`）並 `git add --renormalize`，commit `1563775`；實測 `native_entry.py`／`return_.py`／`root.py`／`CLOSEOUT.md` 的 **HEAD blob 與工作檔 byte-equal**。

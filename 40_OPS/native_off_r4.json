@@ -1,0 +1,106 @@
+{
+ "schema": "SST-B0-NATIVE-OFF/1",
+ "generated_at": "2026-11-25T19:56:57+0800",
+ "command": {
+  "argv": [
+   "C:\\Users\\user\\AppData\\Local\\hermes\\installs\\0d1790b230609f8c\\environments\\2e40a7b72ed941c691e747bed9c9928f\\venv\\Scripts\\python.exe",
+   "-B",
+   "-m",
+   "b0_reader.cli",
+   "read",
+   "--request-json",
+   "-"
+  ],
+  "cwd": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\20_DEV"
+ },
+ "environment": {
+  "keys_visible_to_child": [
+   "APPDATA",
+   "COMSPEC",
+   "HOMEDRIVE",
+   "HOMEPATH",
+   "LOCALAPPDATA",
+   "NUMBER_OF_PROCESSORS",
+   "PATH",
+   "PATHEXT",
+   "PROCESSOR_ARCHITECTURE",
+   "PYTHONDONTWRITEBYTECODE",
+   "SYSTEMROOT",
+   "TEMP",
+   "TMP",
+   "USERNAME",
+   "USERPROFILE"
+  ],
+  "stripped_prefixes": [
+   "HGK_",
+   "FHS_",
+   "HERMES_",
+   "CODEX_",
+   "OPENAI_",
+   "OPENCODE",
+   "PYTHONPATH"
+  ],
+  "note": "no HGK_/FHS_/HERMES_/CODEX_/OPENAI_/PYTHONPATH variables; PATH is the interpreter dir only"
+ },
+ "run1": {
+  "exit": 0,
+  "stdout_bytes": 5429,
+  "stdout_sha256": "b920ef6b427a1a5f087a3124330177904c4f745890c698bbbf4b204bb65e8b4d",
+  "stderr": "",
+  "seconds": 8.556
+ },
+ "run2_sampled": {
+  "exit": 0,
+  "stdout_sha256": "2dd9e3e85221bc2b05d303a69b03de90d5d57eed73c715b9c1587d1ab3f7536d",
+  "stderr": "",
+  "child_processes": {},
+  "external_tcp_endpoints": []
+ },
+ "comparison": {
+  "baseline_stdout_sha_prefix": "4004f208fb29",
+  "raw_stdout_sha_changes_per_run": "authority.checked_at is a timestamp, so raw bytes differ by design",
+  "stable_projection_run1": {
+   "wire_version": "SST.B0.SourceReadSet/2",
+   "candidate_digest": "5ec38e9c1835dba89c5755acd2f2c720aadd9193dd96d08d0a1fe7ddfa36c456",
+   "entries": [
+    {
+     "sid": "SST.ALL.W0.BLUEPRINT",
+     "sha": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
+     "clause": "77132f0636e30b0cf8d5df1ae3438228b18d847d718e5ffbf5c56825229f9bf6",
+     "R": [
+      "read"
+     ],
+     "P": [
+      "read"
+     ],
+     "M": []
+    },
+    {
+     "sid": "SST.W0M.MAIN",
+     "sha": "5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96",
+     "clause": "4f0db2cb1d7c740eaf3b5a1de6be4517c951fe654010aeb43100104d13dfbaf5",
+     "R": [
+      "read"
+     ],
+     "P": [
+      "read"
+     ],
+     "M": []
+    }
+   ],
+   "errors": []
+  },
+  "same_stable_projection": true,
+  "children_total": 0,
+  "children_seen": {},
+  "children_allowed_os_tools": [],
+  "children_foreign": {},
+  "external_tcp_observed": 0
+ },
+ "not_proven": [
+  "transitive imports of absent services (only the runtime behaviour is observed)",
+  "kernel-level file/registry writes outside the watched roots",
+  "network activity after the sampling window"
+ ],
+ "verdict": "NATIVE_OFF_OBSERVED_NO_EXTERNAL_DEPENDENCY"
+}

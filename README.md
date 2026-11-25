@@ -14,7 +14,8 @@ v2 wire `SST.B0.SourceReadSet/2`、四個 Op（ROOT／BYTES／FIELDS／RETURN）
 | `B0_PRODUCT_EXECUTED` | 成立（真來源 POS exit 0；四個單變異 NEG 各回專屬碼；無產品寫入） |
 | `B0_CORE_ACCEPTED` | **不成立**（Native OFF 的 network／transitive tracing 為 NOT_VERIFIED；真 Consumer 接收未發生） |
 | `B0_COMPLETE` | **不成立**（無真 B1/B2/B3 接收） |
-| `B1_CONTRACT_COMPATIBLE / CONSUMER_NOT_YET_EXECUTED` | 成立（僅獨立契約探針） |
+| `B1_INPUT_READY` | **成立**（B1/B2/B3 各自真接收 ACCEPTED，收據見 `60_B1/receipts/`） |
+| `B1_TECHNICALLY_READY`（非 canonical） | 不成立（B1 自身 RepoRoot／BASE／Kernel／FDA 未取證） |
 
 - 候選 freeze：`candidate_digest = 5ec38e9c1835dba89c5755acd2f2c720aadd9193dd96d08d0a1fe7ddfa36c456`（25 檔；`40_OPS/candidate_freeze.json`）
 - 產品 CLI：`python -B -m b0_reader.cli read --request-json -`（stdin 收 `B0ReadRequest/2`，stdout 一個 v2 JSON）
@@ -28,7 +29,8 @@ v2 wire `SST.B0.SourceReadSet/2`、四個 Op（ROOT／BYTES／FIELDS／RETURN）
 | `20_DEV/tests/` | 10 檔 132 案：原始 14 主案＋8 補充群、N01–N09、真 junction／share 競態、獨立契約探針、Native OFF、`trust_fixture.py`（測試專用信任夾具；生產 package 內無 mint API） |
 | `00_PREFLIGHT/` | 可信 descriptor、兩份 RequiredSetSpec（真來源 pin 與真條文 span）、來源 pin 證據、預檢 |
 | `30_VERIFY/` | 兩輪獨立 checker（分離 session）findings 與 lane 收據 |
-| `40_OPS/` | DEV-0 基線、freeze 工具與結果、真跑 raw（POS／四 NEG）、無寫比對錄製器 |
+| `40_OPS/` | DEV-0 基線、freeze 工具與結果、真跑 raw（POS／四 NEG）、無寫比對錄製器、Native OFF 實測 |
+| `60_B1/` | B1 最小真實 v2 Consumer（`b1_consumer`）、B2／B3 context、真接收收據與 15 案負例 |
 | `SST_PLP_PH01_W0_B0_CLOSEOUT.md` | CLOSEOUT（真缺陷清單、OPS raw、狀態、未閉合項與恢復條件） |
 | `SST_PLP_PH01_W0_B0_HANDOFF.md` | HANDOFF（B1/B2/B3 接口、entry 真值、信任錨與 ACL 分界） |
 
