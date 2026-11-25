@@ -20,18 +20,18 @@ stdout= 一個 UTF-8 JSON object（SST.B0.SourceReadSet/2）或空（exit 64/70�
 | 可信 context 解析 | `b0_reader.native_entry.resolve_context_for_current_principal()` → principal `DESKTOP-57EO414\user`、兩來源、`valid_from 2026-11-25T12:11:29+08:00`、`expires_at 2026-11-25T20:11:29+08:00` |
 | 部署 descriptor | `W/00_PREFLIGHT/B0_READ_CONTEXT_2026-11-25_r4.json`，3,612 bytes，SHA256 `b8759ca7f5c213024c4046db07494cabb355d39d051b0082ff043845e9fb45e0`（`native_entry.py` 內固定常數；不接受 `--context`／env／cwd 決定） |
 | 程式 API | `b0_reader.return_.read_sources(request, *, trusted_context) -> (envelope, exit_code)`（`trusted_context` 只能由受權內部接線建立） |
-| 候選 freeze | `candidate_digest=1257f5ee18fbd52c86ef71ae406b33919104bf1452801794af73551b04c0ca1b`（25 檔；Commander 與產品獨立重算一致） |
+| 候選 freeze | `candidate_digest=5ec38e9c1835dba89c5755acd2f2c720aadd9193dd96d08d0a1fe7ddfa36c456`（25 檔；Commander 與產品獨立重算一致） |
 | request 範本 | `W/40_OPS/b0_read_request_2026-11-25.json`（`request_digest=0d681d2a47dbccd091edb5dee6f1734361abb2bc576865fab6b8f4460b86e00c`） |
 
 ## 2｜本次真輸出的 v2 內容（B1/B2/B3 可直接比對）
 
-實跑 raw：`40_OPS/ops_r4_g_pos.raw/stdout.txt`（5,429 bytes），exit 0；`40_OPS/ops_r4_g_pos.json` 記 argv／cwd／exit／無寫。
+實跑 raw：`40_OPS/ops_r4_h_pos.raw/stdout.txt`（5,429 bytes），exit 0；`40_OPS/ops_r4_h_pos.json` 記 argv／cwd／exit／無寫。
 
 | 欄 | 值 |
 |---|---|
 | `wire_version` | `SST.B0.SourceReadSet/2` |
 | `subject/original_wave/bid` | `SST/SQS-THC/PH01/E00`／`P1-W00M`／`0`（integer） |
-| `spec_version` / `candidate_digest` | `2026-11-25_r4_Native-first` / `1257f5ee18fbd52c86ef71ae406b33919104bf1452801794af73551b04c0ca1b` |
+| `spec_version` / `candidate_digest` | `2026-11-25_r4_Native-first` / `5ec38e9c1835dba89c5755acd2f2c720aadd9193dd96d08d0a1fe7ddfa36c456` |
 | `scope` | `scope_id=SQS-THC-PH01-E00-B0-SOURCE-READ`、`source_ids=[SST.ALL.W0.BLUEPRINT, SST.W0M.MAIN]`、`consumer_ids=[B1,B2,B3]`、purpose 固定字串 |
 | `source_manifest` | `inherited_sha=2012a28f630f4e28d60309de0bb5734ce138b18c677445a475c670f1d9f4245e`、`verification=UNVERIFIED`、`evidence_ref=null`（原件未取得，不得當 ratified） |
 | `write_set`/`preimage`/`fin_order` | `[]`／`"N/A"`／`"DENY"` |
@@ -92,8 +92,3 @@ stdout= 一個 UTF-8 JSON object（SST.B0.SourceReadSet/2）或空（exit 64/70�
 - 部署 descriptor：`W/00_PREFLIGHT/B0_READ_CONTEXT_2026-11-25_r4.json`，3,612 bytes，SHA256 `b8759ca7f5c213024c4046db07494cabb355d39d051b0082ff043845e9fb45e0`，`native_entry.py` 內固定常數。
 - 該目錄 ACL 已收緊（只授 `DESKTOP-57EO414\user`、`SYSTEM`、`Administrators`）；`require_sealed` 只套 descriptor 與其直屬父目錄，祖先仍做 reparse／identity。日後搬動 descriptor 或改 ACL，產品會 fail closed（`TRUST_CONTEXT_UNBOUND`／`PATH_IDENTITY_UNVERIFIED`），並需重 freeze。
 - 來源檔（K）不要求 sealed；其安全由「當次 OS token 讀取權＋同 handle 身份＋讀後 hash／identity 複核」承擔。此分界為刻意設計，不得為求綠燈互換。
-
-## 7｜公開交付讀回
-
-- repo `https://github.com/shw097-team/SQS-THC_MVP`，commit `a24aef29dabf7d15cf02c2c0e6f19c3bf8c8cfc1`（前 `c502db00e16a`）。
-- 兩份公開 MD：`SST_PLP_PH01_W0_B0_CLOSEOUT.md`、`SST_PLP_PH01_W0_B0_HANDOFF.md`（本檔）；僅放工程候選與真跑 raw，`authorization_ref` 等以本地 locator＋SHA 表示。

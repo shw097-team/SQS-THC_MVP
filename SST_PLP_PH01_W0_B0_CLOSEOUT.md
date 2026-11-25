@@ -14,7 +14,7 @@
 | 六件配套 | 依 `00_唯一交付入口_2026-11-25_r4.md` §02 逐件實測，六件 raw SHA 全符（`4bff0829…`／`5de45ee2…`／`f7f0219c…`／`7dfadccb…`／`1daca528…`） |
 | 版本關係 | r4 取代 r3 候選與 r2 明列舊載體；r3／r2 原 bytes 保留 LastGood，未改 |
 | 工程寫入根 W | `C:\Projects\Agent_Workspace\SQS-THC_MVP_Workspace`；**無 `.git`**，local HEAD=`NONE`、dirty=`N/A`，以逐檔 raw SHA preimage 代替 |
-| 候選 freeze | `40_OPS/candidate_freeze.json`：**25 檔**，manifest 2,570 bytes，`candidate_digest=1257f5ee18fbd52c86ef71ae406b33919104bf1452801794af73551b04c0ca1b`；Commander 以 `40_OPS/freeze_candidate.py` 獨立重算，與產品 envelope 內 `candidate_digest` **逐字相同** |
+| 候選 freeze | `40_OPS/candidate_freeze.json`：**25 檔**，manifest 2,570 bytes，`candidate_digest=5ec38e9c1835dba89c5755acd2f2c720aadd9193dd96d08d0a1fe7ddfa36c456`；Commander 以 `40_OPS/freeze_candidate.py` 獨立重算，與產品 envelope 內 `candidate_digest` **逐字相同** |
 | DEV-0 基線 | `40_OPS/dev0_baseline_20261125.json`（83 檔、tree digest `0bc2cdead7b8…`、寫權實測 OK、Python 3.14.9） |
 | WriteSet | `20_DEV/WORKORDER_B0_DEV_r4_2026-11-25.md` §1（既有 13 檔 preimage 全列）＋§1.2 新增檔＋§1.4 受影變更（含 host ACL 收緊記錄） |
 
@@ -103,7 +103,10 @@
 | 嘗試 | 時間 | 結果 |
 |---|---|---|
 | 第一次 | 15:36 派工，15:59 由 Commander 主動終止（關機指令） | 無回覆、無收據 |
-| 第二次 | 17:55 重派（relay 已重啟、Owner 視窗仍有效） | 至本檔發布時仍在執行（`codex` 子進程存活、relay usage 持續 200、無 policy 阻擋），**未回覆** |
+| 第二次 | 17:55 重派（含「跑 132 案全套」指示） | **50 分後 lane timeout**：`ERR_LANE_ALL_ROUTES_EXHAUSTED`、`timed_out_arms=[opencode-go/deepseek-v4.1-flash]`、`ok=false`；期間 relay usage 持續 200、0 次 policy 阻擋 → 屬長回合超時，非拒絕 |
+| 第三次 | 19:00 窄版重派（限 12 分／25 次工具呼叫，**不跑測試**，只核 5 項） | 收據 `30_VERIFY/verify_r4_round2b_receipt.json`；結果見下 |
+
+（第三次回覆後補入逐條 verdict。若第三次仍未回覆，則本節即為「三次均未取得獨立判定」的如實紀錄，`B0_CORE_ACCEPTED` 維持不成立。）
 
 因此：**第二輪獨立判定仍未取得**，`B0_CORE_ACCEPTED` 照實不成立。第一輪三項 FAIL（`SEC-CALLER-MINT`／`SEC-REVOCATION-FAIL-OPEN`／`ROOT-ACL-CONTENT-UNCHECKED`）的修補是**我方自述＋132 案測試釘住**，不是獨立判定。
 
@@ -154,3 +157,17 @@
 | 公開版本邊界 | 只放工程候選、真跑 raw（含 1 行規格引用字串）、findings 與兩份 MD；`authorization_ref` 等以本地 locator＋SHA 表示 |
 
 **這不是金融 Release、不是產品驗收、不是 R18 發布**；`FIN_ORDER=DENY` 不變。
+
+**第三次（窄版）實際回覆（19:20，`ok=true`、served arm 正確、`usage_receipt_ok=true`）**
+
+| 受檢項 | Checker 判定 | 內容 |
+|---|---|---|
+| freeze 重算 | `NOT_VERIFIED` | 沙箱阻擋指定 python 與 3 份 `00_PREFLIGHT` 檔；PowerShell 可讀的 22/25 檔 SHA256＋bytes **全相符** |
+| caller mint／seal | `PASS` | `_mint*` 已不存在；sealer 未匯出；`_verify_context` 以 HMAC 比對，caller 自造 context 無法通過 |
+| 撤權 fail-closed | **`FAIL`** | 缺固定撤權 pin：hash 改變後若內容仍是有效 `OPEN` 視窗，`_owner_window_is_valid` 會回 True → 可繞過 |
+| ACL 解析／sealed | `PASS` | `icacls` 真解析；broad write 在 descriptor 與直屬父目錄 fail closed；祖先不套 sealed 為刻意設計 |
+| POS／四個 NEG | `PASS` | POS exit 0、5,429 B、stderr 空；`SOURCE_PIN_MISMATCH`(2)／`SPAN_INVALID`(2)／`EFFECT_DENIED`(64)／`SCOPE_MISMATCH`(64)；`dd37a40b…`／`77132f06…`／`5670990d…`／`4f0db2cb…` 全符，raw stdout SHA `4004f208…` |
+
+CORE_ACCEPTED 五條件（Checker 原話）：真核心產品實跑＝成立；安全負例＝**不成立**；Native OFF＝不成立；同候選獨立驗收＝不成立；獨立契約探針＝成立。
+
+**對該 FAIL 的處置（同日 19:47）**：`_owner_window_is_valid` 增加 `max_expiry` 上限，改由 **descriptor 自身 `expires_at`** 綁定——任何自稱更晚到期的視窗一律拒（攻擊面：換一份有效期更長的視窗來延長權利）。改後重跑：**132 tests OK（279 s）**、POS 與四個 NEG 全部重跑（`40_OPS/ops_r4_h_*`）、新 `candidate_digest=5ec38e9c1835dba89c5755acd2f2c720aadd9193dd96d08d0a1fe7ddfa36c456`（25 檔，產品與 Commander 重算一致）。此為**我方修補，尚無獨立複核**，故安全負例仍記不成立。

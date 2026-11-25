@@ -24,7 +24,7 @@
    "file": "00_PREFLIGHT/required_set_req12_read_w0m_2026-11-25.json"
   }
  ],
- "candidate_digest": "1257f5ee18fbd52c86ef71ae406b33919104bf1452801794af73551b04c0ca1b",
+ "candidate_digest": "5ec38e9c1835dba89c5755acd2f2c720aadd9193dd96d08d0a1fe7ddfa36c456",
  "manifest_bytes": 2570,
  "file_count": 25,
  "files": {
@@ -69,8 +69,8 @@
    "bytes": 7696
   },
   "20_DEV/b0_reader/native_entry.py": {
-   "sha256": "1c494192d207b2e69f51da2b861dea01692e8c994e548934e73af25715b2ac8b",
-   "bytes": 20521
+   "sha256": "fff751348f9994f94f007655c020846eefaec6609275e6d2a51f066a66ba0f0e",
+   "bytes": 21094
   },
   "20_DEV/b0_reader/requiredset.py": {
    "sha256": "c1ccd04e03beb72e912b4634ad0bbd0674a8e572b5477745775373b773daa1ae",

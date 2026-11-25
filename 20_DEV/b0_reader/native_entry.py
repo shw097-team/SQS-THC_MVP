@@ -26,6 +26,7 @@ from .winio import (
     WinIOError,
     current_principal,
     map_open_error,
+    read_optional_file,
 )
 
 EXPECTED_DESCRIPTOR_PATH = (
@@ -465,8 +466,14 @@ def _owner_window_is_valid(
     payload: bytes,
     *,
     now: datetime,
+    max_expiry: int | None = None,
 ) -> bool:
-    """Return true only for a complete, current, exact-scope OPEN window."""
+    """Return true only for a complete, current, exact-scope OPEN window.
+
+    When ``max_expiry`` is supplied (the descriptor's own expiry), a live window
+    that claims a later expiry is refused: a swapped window cannot extend rights
+    beyond what the deployment descriptor pinned.
+    """
 
     try:
         document = _revocation_json(payload)
@@ -501,6 +508,8 @@ def _owner_window_is_valid(
             or ops_used >= max_ops
         ):
             return False
+        if max_expiry is not None and expires_at > int(max_expiry):
+            return False
         return int(now.timestamp()) < expires_at
     except (TrustContextError, OverflowError, OSError, ValueError):
         return False
@@ -534,7 +543,11 @@ def _revocation_error(
         return "RIGHTS_EXPIRED"
     if normalized != "OPEN":
         return "RIGHTS_UNVERIFIED"
-    if _owner_window_is_valid(payload, now=now):
+    try:
+        max_expiry = int(_parse_rfc3339(context.expires_at).timestamp())
+    except (TrustContextError, ValueError, OverflowError):
+        max_expiry = None
+    if _owner_window_is_valid(payload, now=now, max_expiry=max_expiry):
         return None
     expires_at = document.get("expires_at")
     if type(expires_at) is int and int(now.timestamp()) >= expires_at:

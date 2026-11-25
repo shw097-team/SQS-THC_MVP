@@ -16,7 +16,7 @@ v2 wire `SST.B0.SourceReadSet/2`、四個 Op（ROOT／BYTES／FIELDS／RETURN）
 | `B0_COMPLETE` | **不成立**（無真 B1/B2/B3 接收） |
 | `B1_CONTRACT_COMPATIBLE / CONSUMER_NOT_YET_EXECUTED` | 成立（僅獨立契約探針） |
 
-- 候選 freeze：`candidate_digest = 1257f5ee18fbd52c86ef71ae406b33919104bf1452801794af73551b04c0ca1b`（25 檔；`40_OPS/candidate_freeze.json`）
+- 候選 freeze：`candidate_digest = 5ec38e9c1835dba89c5755acd2f2c720aadd9193dd96d08d0a1fe7ddfa36c456`（25 檔；`40_OPS/candidate_freeze.json`）
 - 產品 CLI：`python -B -m b0_reader.cli read --request-json -`（stdin 收 `B0ReadRequest/2`，stdout 一個 v2 JSON）
 - 可信 descriptor：`00_PREFLIGHT/B0_READ_CONTEXT_2026-11-25_r4.json`，SHA256 `b8759ca7f5c213024c4046db07494cabb355d39d051b0082ff043845e9fb45e0`，3,612 bytes（`native_entry.py` 內固定 pin）
 

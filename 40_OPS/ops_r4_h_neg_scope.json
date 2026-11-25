@@ -1,0 +1,70 @@
+{
+ "schema": "SST-B0-OPS-RUN/1",
+ "label": "B0-R4-H-neg_scope",
+ "generated_at": "2026-11-25T19:05:17+0800",
+ "command": {
+  "argv": [
+   "C:\\Users\\user\\AppData\\Local\\hermes\\installs\\0d1790b230609f8c\\environments\\2e40a7b72ed941c691e747bed9c9928f\\venv\\Scripts\\python.exe",
+   "-B",
+   "-m",
+   "b0_reader.cli",
+   "read",
+   "--request-json",
+   "-"
+  ],
+  "cwd": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\20_DEV",
+  "python": "C:\\Users\\user\\AppData\\Local\\hermes\\installs\\0d1790b230609f8c\\environments\\2e40a7b72ed941c691e747bed9c9928f\\venv\\Scripts\\python.exe",
+  "python_version": "3.14.9 (main, Oct 21 2026, 17:48:58) [MSC v.1944 64 bit (AMD64)]",
+  "product_module_root": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\20_DEV\\b0_reader"
+ },
+ "request": {
+  "path": "40_OPS\\b0_read_neg_scope_2026-11-25.json",
+  "bytes": 615,
+  "sha256": "779c4aa4b1dd07eddb08d6799f52a5a3b57bdf6fb40d56ba0a65f9699e981396"
+ },
+ "actual": {
+  "exit": 64,
+  "seconds": 4.389,
+  "stdout_bytes": 0,
+  "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_bytes": 14,
+  "stderr_sha256": "17d124731076a22e09b05b2f952afdad4ed9b227359f1297fcb0b39ac6578129",
+  "stdout_raw": "40_OPS\\ops_r4_h_neg_scope.raw\\stdout.txt",
+  "stderr_raw": "40_OPS\\ops_r4_h_neg_scope.raw\\stderr.txt",
+  "stdout_truncated_for_report": "",
+  "stderr_text": "SCOPE_MISMATCH"
+ },
+ "product_write_set": [],
+ "no_write": {
+  "before_digests": {
+   "W_tree": "bbac924a2dfa641700868f8856fa9f69343d40af93ffbaa742c54c9c08538b9c",
+   "source_dir": "61e8cee9c934f7c09d476fb5afe67af49fa5c6688f35c323e7a581df7b30a912"
+  },
+  "after_digests": {
+   "W_tree": "bbac924a2dfa641700868f8856fa9f69343d40af93ffbaa742c54c9c08538b9c",
+   "source_dir": "61e8cee9c934f7c09d476fb5afe67af49fa5c6688f35c323e7a581df7b30a912"
+  },
+  "diff": {
+   "W_tree": {
+    "added": [],
+    "removed": [],
+    "changed": [],
+    "clean": true
+   },
+   "source_dir": {
+    "added": [],
+    "removed": [],
+    "changed": [],
+    "clean": true
+   }
+  },
+  "verdict": "NO_PRODUCT_WRITE_OBSERVED",
+  "watch_note": "W tree compared by size+mtime_ns+raw sha256 (content); the K source root by size+mtime_ns; this is a bounded observation, not a whole-disk guarantee.",
+  "not_covered": [
+   "OS-level write/process monitoring (ETW, ProcMon) not available to this recorder",
+   "registry, network egress, bytecode in other interpreters, child processes",
+   "TEMP/cache trees outside the two watched roots"
+  ]
+ },
+ "finished_at": "2026-11-25T19:05:06+0800"
+}
