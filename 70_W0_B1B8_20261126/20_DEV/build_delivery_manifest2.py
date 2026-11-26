@@ -48,6 +48,13 @@ def main() -> int:
         cur[k] = m[-1] if m else None
 
     def classify(f: str) -> str:
+        if f in ("60_CLOSEOUT/SST_PLP_PH01_W0_CLOSEOUT.md",
+                 "60_CLOSEOUT/SST_PLP_PH01_W0_HANDOFF.md",
+                 "NEW_SESSION_BOOTSTRAP.md"):
+            return "CURRENT_CLOSEOUT"
+        if f.startswith("90_EXTERNAL_INPUTS/"):
+            return ("MAKER_RECORD" if f.endswith("STATUS.md")
+                    else "CANDIDATE_EXTERNAL_UNRATIFIED")
         if f.startswith("20_DEV/"):
             return "CODE_AUTHORITATIVE"
         if f.startswith("00_PREFLIGHT/"):
@@ -96,11 +103,19 @@ def main() -> int:
         "root": W,
         "promotion_state": {
             "promoted_to_primary": [],
-            "reason": ("no batch has completed acceptance. B1 closed the 11 round-3 items but the "
-                       "separated checker still returns B1_ACCEPTED = NO (Owner decisions D-1…D-4 "
-                       "outstanding, 5 kernel NEGs oracle-blocked, 1 scope-gap HOLD). B2 was "
-                       "re-executed with real class mutations and awaits its separated verdict. "
-                       "Promotion without acceptance is not permitted."),
+            "reason": ("no batch has completed acceptance. B1: separated checker returns "
+                       "B1_ACCEPTED = NO across rounds 4 and 5 (Owner decisions D-1…D-4 outstanding, "
+                       "5 kernel NEGs oracle-blocked, 1 scope-gap HOLD). B2: five separated rounds, "
+                       "final B2_ACCEPTED = NO — no product execution, 15 HOLDs (9 spec-mutation "
+                       "unimplemented, 6 oracle-unbound), parent/carrier not ratified. B3: parse "
+                       "only. Promotion without original-domain acceptance is not permitted, and a "
+                       "fresh Maker verdict is not acceptance."),
+            "promotion_audit_this_session": {
+                "items_eligible": [], "items_promoted": [],
+                "explanation": ("nothing reached acceptance, so nothing was eligible; no accepted "
+                                "object was filed into a discard or candidate layer. The two "
+                                "CANDIDATE_NOT_RATIFIED files under 00_PREFLIGHT are locator "
+                                "bindings awaiting Owner decision D-1, not accepted artefacts.")},
             "candidate_layer_holders": ["00_PREFLIGHT/b1_locator_bindings.json",
                                         "00_PREFLIGHT/b1_source_allowlist.json"],
             "publish_channel": ("W/dist/SQS-THC_MVP (clone of shw097-team/SQS-THC_MVP); the wave "
@@ -111,6 +126,22 @@ def main() -> int:
                 "spec-owner resolution or recorded waiver for slot mapping (D-3) and the kernel oracle (D-4)",
                 "consumer receipt (ReadyAccept)",
                 "this manifest entry flipped to PRIMARY with the acceptance receipt sha"],
+        },
+        "layer_legend": {
+            "CODE_AUTHORITATIVE": "source under 20_DEV (the Maker's executable definition)",
+            "CURRENT_RECEIPT": "the receipt the wave currently stands on, per batch",
+            "FREEZE_RECORD": "candidate freeze (artefact bytes+sha+candidate_digest)",
+            "CHECKER_RECORD_IMMUTABLE": "separated verifier verdict; never rewritten",
+            "MAKER_RECORD": "prompt, run log, maker diagnostic",
+            "SUPERSEDED_RECEIPT": "earlier receipt, retained on purpose (audit trail)",
+            "CURRENT_CLOSEOUT": "the closeout/handoff in force",
+            "SUPERSEDED_CLOSEOUT": "earlier closeout revision, retained",
+            "CANDIDATE_NOT_RATIFIED": "input the Owner has not ratified (locator bindings)",
+            "CANDIDATE_EXTERNAL_UNRATIFIED": "external SPEC candidate from another worker, not adopted",
+            "LASTGOOD_HISTORY": "last known-good copy of a batch closeout",
+            "AUTHORITATIVE_INPUT": "preflight input that is authoritative as read",
+            "DERIVED_SUMMARY": "derived summary, not evidence",
+            "MANIFEST_SELF": "this file",
         },
         "current_pointers": cur,
         "layer_counts": layers,

@@ -1,10 +1,15 @@
 {
  "schema": "SST.PH01.W0.B1B8.DELIVERY_MANIFEST@2",
- "generated_at": "2026-11-26T16:06:46+08:00",
+ "generated_at": "2026-11-26T19:43:42+08:00",
  "root": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\70_W0_B1B8_20261126",
  "promotion_state": {
   "promoted_to_primary": [],
-  "reason": "no batch has completed acceptance. B1 closed the 11 round-3 items but the separated checker still returns B1_ACCEPTED = NO (Owner decisions D-1…D-4 outstanding, 5 kernel NEGs oracle-blocked, 1 scope-gap HOLD). B2 was re-executed with real class mutations and awaits its separated verdict. Promotion without acceptance is not permitted.",
+  "reason": "no batch has completed acceptance. B1: separated checker returns B1_ACCEPTED = NO across rounds 4 and 5 (Owner decisions D-1…D-4 outstanding, 5 kernel NEGs oracle-blocked, 1 scope-gap HOLD). B2: five separated rounds, final B2_ACCEPTED = NO — no product execution, 15 HOLDs (9 spec-mutation unimplemented, 6 oracle-unbound), parent/carrier not ratified. B3: parse only. Promotion without original-domain acceptance is not permitted, and a fresh Maker verdict is not acceptance.",
+  "promotion_audit_this_session": {
+   "items_eligible": [],
+   "items_promoted": [],
+   "explanation": "nothing reached acceptance, so nothing was eligible; no accepted object was filed into a discard or candidate layer. The two CANDIDATE_NOT_RATIFIED files under 00_PREFLIGHT are locator bindings awaiting Owner decision D-1, not accepted artefacts."
+  },
   "candidate_layer_holders": [
    "00_PREFLIGHT/b1_locator_bindings.json",
    "00_PREFLIGHT/b1_source_allowlist.json"
@@ -17,6 +22,22 @@
    "consumer receipt (ReadyAccept)",
    "this manifest entry flipped to PRIMARY with the acceptance receipt sha"
   ]
+ },
+ "layer_legend": {
+  "CODE_AUTHORITATIVE": "source under 20_DEV (the Maker's executable definition)",
+  "CURRENT_RECEIPT": "the receipt the wave currently stands on, per batch",
+  "FREEZE_RECORD": "candidate freeze (artefact bytes+sha+candidate_digest)",
+  "CHECKER_RECORD_IMMUTABLE": "separated verifier verdict; never rewritten",
+  "MAKER_RECORD": "prompt, run log, maker diagnostic",
+  "SUPERSEDED_RECEIPT": "earlier receipt, retained on purpose (audit trail)",
+  "CURRENT_CLOSEOUT": "the closeout/handoff in force",
+  "SUPERSEDED_CLOSEOUT": "earlier closeout revision, retained",
+  "CANDIDATE_NOT_RATIFIED": "input the Owner has not ratified (locator bindings)",
+  "CANDIDATE_EXTERNAL_UNRATIFIED": "external SPEC candidate from another worker, not adopted",
+  "LASTGOOD_HISTORY": "last known-good copy of a batch closeout",
+  "AUTHORITATIVE_INPUT": "preflight input that is authoritative as read",
+  "DERIVED_SUMMARY": "derived summary, not evidence",
+  "MANIFEST_SELF": "this file"
  },
  "current_pointers": {
   "b1_run": "40_OPS/b1_run_20261126T141840.json",
@@ -38,13 +59,14 @@
   "CODE_AUTHORITATIVE": 18,
   "FREEZE_RECORD": 8,
   "CHECKER_RECORD_IMMUTABLE": 10,
-  "MAKER_RECORD": 15,
+  "MAKER_RECORD": 16,
   "SUPERSEDED_RECEIPT": 86,
   "CURRENT_RECEIPT": 6,
   "DERIVED_SUMMARY": 1,
   "SUPERSEDED_CLOSEOUT": 10,
-  "CURRENT_CLOSEOUT": 3,
+  "CURRENT_CLOSEOUT": 6,
   "LASTGOOD_HISTORY": 1,
+  "CANDIDATE_EXTERNAL_UNRATIFIED": 36,
   "MANIFEST_SELF": 1
  },
  "artefacts": [
@@ -176,10 +198,10 @@
   },
   {
    "path": "20_DEV/build_delivery_manifest2.py",
-   "bytes": 5988,
-   "raw_sha256": "08e05d6c97311121b1e3091c1ffa9a21e177929a9f63f7f372d65f20643bbbf0",
+   "bytes": 8196,
+   "raw_sha256": "923c59f8543253c0816a8a300ae7e37638e7bd3b9f286ba43846bc12b09fefd2",
    "layer": "CODE_AUTHORITATIVE",
-   "mtime": "2026-11-26T15:09:01+08:00"
+   "mtime": "2026-11-26T19:43:42+08:00"
   },
   {
    "path": "20_DEV/make_b2_freeze.py",
@@ -1176,11 +1198,291 @@
    "mtime": "2026-11-26T12:22:20+08:00"
   },
   {
+   "path": "60_CLOSEOUT/SST_PLP_PH01_W0_CLOSEOUT.md",
+   "bytes": 9843,
+   "raw_sha256": "683f28d494d44fcc44223778405442369346203ade9aa0db1d47917c749b6e97",
+   "layer": "CURRENT_CLOSEOUT",
+   "mtime": "2026-11-26T19:42:21+08:00"
+  },
+  {
+   "path": "60_CLOSEOUT/SST_PLP_PH01_W0_HANDOFF.md",
+   "bytes": 6489,
+   "raw_sha256": "f3cdf3a1ed7e55c6f5e36a7e3ede715648fc7813260668f7d1abe7b1cb1a15d7",
+   "layer": "CURRENT_CLOSEOUT",
+   "mtime": "2026-11-26T19:42:45+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/00_唯一交付入口_W0_B1-B2_2026-11-26_r5_FEASIBILITY_DELTA_CANDIDATE.md",
+   "bytes": 9083,
+   "raw_sha256": "aff55ec6bbc63584349a0b4e40a6930df2adbaa12c38602dfd813aaa81af4686",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:18:51+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/SST_PLP_PH01_W0_B1_執行控制小包_實質正文_2026-11-26_r5_FEASIBILITY_DELTA_CANDIDATE.md",
+   "bytes": 262382,
+   "raw_sha256": "f47c1cd767d216dbaf2ff64d8ddbff5cc259686547fe5852571748ab3bb58e35",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:18:42+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/SST_PLP_PH01_W0_B1_執行控制小包_證據型附錄_2026-11-26_r5_FEASIBILITY_DELTA_CANDIDATE.md",
+   "bytes": 25857,
+   "raw_sha256": "ba5a6dd285ab448064b33a1e443d8c2f01046d6fbf65c1ed6732a3cde7b670f3",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:18:51+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/SST_PLP_PH01_W0_B2_執行控制小包_實質正文_2026-11-26_r5_FEASIBILITY_DELTA_CANDIDATE.md",
+   "bytes": 12517791,
+   "raw_sha256": "40ad8ab9e396e1a533ab4a746a6360c7155f501351b8fc54b31702de692f2421",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:18:42+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/SST_PLP_PH01_W0_B2_執行控制小包_證據型附錄_2026-11-26_r5_FEASIBILITY_DELTA_CANDIDATE.md",
+   "bytes": 26857,
+   "raw_sha256": "ca8857dfc1aa738ab44f08d7be86654a69e03d40a6f116203a48b05e0a52576a",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:18:51+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/B1_parsed.json",
+   "bytes": 96790,
+   "raw_sha256": "385efdac1673d1a46145988e072573658d4a3650733d952f5f27ec922bf49b6c",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:01:59+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/B1_unit_index.json",
+   "bytes": 19862,
+   "raw_sha256": "fdfbdd78d41f117f6cb67aedf9f5a2244d55407dbdd27d42206db5c31579d288",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:10:46+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/B2_parsed.json",
+   "bytes": 6482596,
+   "raw_sha256": "421e2d98ede7b40a58c775e4a0ec3fff45eee62fe2519d1a2844b574a21abe9e",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:01:59+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/B2_unit_index.json",
+   "bytes": 1136554,
+   "raw_sha256": "95778a94287add2cd961b8f12a6139ba3c90fdbe52d91fb9245da810cfb8b4e7",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:11:11+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/callable_catalogue.json",
+   "bytes": 28037,
+   "raw_sha256": "ebde7105997f35a23321fe625251c61d5859ad67474958383e40fea90d7ae714",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:11:11+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/change_map.json",
+   "bytes": 1928,
+   "raw_sha256": "96de0008ff3a1ffac1ef99d31a0134493ac9fb97c14aa0292b15f86f11c20821",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:18:51+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/current_evidence_summary.json",
+   "bytes": 1577,
+   "raw_sha256": "2e287e0568e0a27e3841690d21621577276bea1ec6c85db9fd55138c46c85ea1",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:18:51+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/current_pointers_snapshot.json",
+   "bytes": 765,
+   "raw_sha256": "53b319b2f6b9c29df57610a4de91e5d6ca1bb3f94009e5b57673fd349fab449d",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:11:11+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/discussion_coverage.json",
+   "bytes": 1643,
+   "raw_sha256": "a77a2b95fde307c9838311e50283a5f65082654ceaed65300d9913cd3adbce0d",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:11:11+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/evidence_manifest.tsv",
+   "bytes": 2725,
+   "raw_sha256": "8b9bffbebd74ade050f997f44b9da5a0e7068c0d3a87e4cc2ec80a3c01f5533f",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:18:51+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/finalize.py",
+   "bytes": 24265,
+   "raw_sha256": "dd9677527f0e0d61d2c0348bcbf06718d8fe3651922d1406e4e5edde34873cfe",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:18:42+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/finding_account.json",
+   "bytes": 5369,
+   "raw_sha256": "a7521456b4e1cafc3eb902e3d2a8dedf1786580f8441c657fb04bad12ac4b813",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:11:11+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/inspect_sources.py",
+   "bytes": 2194,
+   "raw_sha256": "48d823f47ca38b8156d7e77d99800f053dcb5edd9e4cd97f5b497dbf8d2aa656",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:01:58+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/inverse_map.json",
+   "bytes": 4042726,
+   "raw_sha256": "604bce4ede01f0a5f97040027c81185b4e5eb8e3982e0e2095e9a5807770a443",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:18:51+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/missing_sources.json",
+   "bytes": 1407,
+   "raw_sha256": "8c2e71e4fe18bc46a2712c59498cb67bc7894f0141764407a9a19d585785843c",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:11:11+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/original_source_spans.json",
+   "bytes": 64426,
+   "raw_sha256": "54cb7c3ca6b43435f1f2510004552754b9a47aa0f72955e93743864416a2fcce",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:18:42+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/parent_matches.json",
+   "bytes": 1549,
+   "raw_sha256": "ccc6fe3394e4e81c4874674e0fa2f607e7c2a452bf3951430eff62ff30011d35",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:02:58+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/product_freeze_readback.json",
+   "bytes": 4423,
+   "raw_sha256": "16a48f70f4f82696323ae5fb0abde232424bcb221e0516ed880482c41095c188",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:11:11+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/reconstruct.py",
+   "bytes": 38890,
+   "raw_sha256": "b7e0b9927765ad1d80637a8b57badfa31b966572042736bc0e9a40dd2645be30",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:10:45+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/repo_baseline/30_VERIFY/verify_r1_receipt_round5.json",
+   "bytes": 4629,
+   "raw_sha256": "a4b0a35df7349d19b47120b15f5931f706fbd6bf1d02f54afeb04269cbb971f2",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:10:46+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/repo_baseline/60_B1/b1_consumer/receiver.py",
+   "bytes": 16569,
+   "raw_sha256": "8bdebc2bc7e325bcb855f3fe226539ef70be0277881a0378be0f7565ca38fa98",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:10:46+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/repo_baseline/70_W0_B1B8_20261126/40_OPS/b1_checker_round5_verdict.md",
+   "bytes": 7455,
+   "raw_sha256": "d27e7142222a709e207da774666510af6f99eab09973625221a848f39bdff687",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:10:46+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/repo_baseline/70_W0_B1B8_20261126/40_OPS/b2_checker_round5_verdict.md",
+   "bytes": 12952,
+   "raw_sha256": "49c9d8db7cb95b8d3251665283b60a9b5ac25a3186b4c770998dbc2e908aeae7",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:10:46+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/repo_baseline/70_W0_B1B8_20261126/DELIVERY_MANIFEST.json",
+   "bytes": 41052,
+   "raw_sha256": "4ef7a65ccbfefd8a206feb320b16c9c3fccae58daa2b32b87fe0a5cdb1cfe191",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:10:46+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/repo_state.json",
+   "bytes": 277,
+   "raw_sha256": "476c6200844ad340d0d7e99dff36f043e5082c8bf4baf3e47e26f6cafad2c762",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:11:11+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/self_check.json",
+   "bytes": 5565,
+   "raw_sha256": "5a7d01318c5c370a09fb9478729aa265e6b9eb823d5504283cfe1c67519f6944",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:18:51+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/self_check_run.log",
+   "bytes": 5565,
+   "raw_sha256": "5a7d01318c5c370a09fb9478729aa265e6b9eb823d5504283cfe1c67519f6944",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:18:51+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/source_inventory.json",
+   "bytes": 22140,
+   "raw_sha256": "e058374516123e8a7fc1a9cf0f76a73341999089cce4583598a6348362293914",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:01:59+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/source_ledger.json",
+   "bytes": 17814,
+   "raw_sha256": "01ade808d1b88dc981cbf44862ab966a8973586a42eafbe97c3238bfeb42e1f1",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:18:42+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/_evidence/verify_candidate.py",
+   "bytes": 15288,
+   "raw_sha256": "22ffe5be02a7ee7af057a71057d929c2b6571764910466c57c8c598920bf8690",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:15:17+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/GPT_WORK_CANDIDATE/candidate_manifest.tsv",
+   "bytes": 678,
+   "raw_sha256": "3353bd12f2fee26781a341b87f3d9c000cbc9f3bc85c52a57a1eaf71fed01211",
+   "layer": "CANDIDATE_EXTERNAL_UNRATIFIED",
+   "mtime": "2026-11-26T19:18:51+08:00"
+  },
+  {
+   "path": "90_EXTERNAL_INPUTS/spec_delta_r5_2026-11-26_r5_CANDIDATE/STATUS.md",
+   "bytes": 970,
+   "raw_sha256": "b0b424d5e7d55c8f5d9e3beb85ce1e561e8237318e54b3d628afc6ef66a892e5",
+   "layer": "MAKER_RECORD",
+   "mtime": "2026-11-26T19:41:22+08:00"
+  },
+  {
    "path": "DELIVERY_MANIFEST.json",
-   "bytes": 39601,
-   "raw_sha256": "4d0c2fbdc1bff222caa428c8c6f0cb64f4d524595473646f197e5e2e9a2304c7",
+   "bytes": 54795,
+   "raw_sha256": "6d7e340737b9f803d007d8ce983b8e5b115d173de863856deeef2caf2c60a172",
    "layer": "MANIFEST_SELF",
-   "mtime": "2026-11-26T15:48:12+08:00"
+   "mtime": "2026-11-26T19:41:39+08:00"
+  },
+  {
+   "path": "NEW_SESSION_BOOTSTRAP.md",
+   "bytes": 2726,
+   "raw_sha256": "0f3053fed2b395b4586900a7b5f2573a64692a8553bb11ebb6d7ace6e67b7954",
+   "layer": "CURRENT_CLOSEOUT",
+   "mtime": "2026-11-26T19:42:57+08:00"
   }
  ]
 }
