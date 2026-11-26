@@ -176,6 +176,91 @@ def check_h1_route(u: dict) -> dict:
     return {"decision": "SOURCE_BOUND_VERIFIED", **rec}
 
 
+
+# ---- original-mapping verification (T2: the Unit carries resolved_source_ref + direct_parent_ref) ----
+REF = re.compile(r"^(?P<path>.+?)@(?P<sha>[0-9a-f]{64}):L(?P<a>\d+)[–\-]L?(?P<b>\d+)$")
+LOCATOR_FIXES = (("W0_B0-m\\", "W0_B0-B8\\"), ("PHASE 00~04", "PHASE 01~04"))
+
+
+def _slice(raw: bytes, a: int, b: int):
+    lines, pos = [], 0
+    while pos < len(raw):
+        nl = raw.find(b"\n", pos)
+        cr = raw.find(b"\r", pos)
+        if nl == -1 and cr == -1:
+            lines.append((pos, len(raw)))
+            break
+        if cr != -1 and (nl == -1 or cr < nl):
+            end = cr + 2 if raw[cr:cr + 2] == b"\r\n" else cr + 1
+            lines.append((pos, end))
+        else:
+            lines.append((pos, nl + 1))
+        pos = lines[-1][1]
+    if a < 1 or b < a or b > len(lines):
+        return None
+    return raw[lines[a - 1][0]:lines[b - 1][1]]
+
+
+def _resolve(ref: str):
+    m = REF.match(ref or "")
+    if not m:
+        return None
+    d = m.groupdict()
+    d["a"], d["b"] = int(d["a"]), int(d["b"])
+    return d
+
+
+def check_pinned_mapping(u: dict) -> dict:
+    """The unit's own resolved_source_ref + direct_parent_ref + direct_clause_sha, recomputed."""
+    dp = _resolve(u.get("direct_parent_ref"))
+    rs = _resolve(u.get("resolved_source_ref"))
+    rec = {"direct_parent_ref": u.get("direct_parent_ref"),
+           "resolved_source_ref": u.get("resolved_source_ref")}
+    if not dp or not rs:
+        return {"decision": "REF_NOT_PARSEABLE", **rec}
+    # resolved source: identity + span in range
+    rp = rs["path"]
+    if not os.path.isfile(rp):
+        for a, b in LOCATOR_FIXES:
+            rp = rp.replace(a, b)
+    if not os.path.isfile(rp):
+        return {"decision": "RESOLVED_SOURCE_ABSENT", **rec, "tried": rp}
+    raw = open(rp, "rb").read()
+    rec["resolved_sha_match"] = hashlib.sha256(raw).hexdigest() == rs["sha"]
+    rec["resolved_span"] = [rs["a"], rs["b"]]
+    if not rec["resolved_sha_match"]:
+        return {"decision": "RESOLVED_SOURCE_CHANGED", **rec}
+    if _slice(raw, rs["a"], rs["b"]) is None:
+        return {"decision": "RESOLVED_SPAN_OUT_OF_RANGE", **rec}
+    # direct parent: identity + the declared clause sha
+    dpp = dp["path"]
+    rec["locator_binding"] = None
+    if not os.path.isfile(dpp):
+        for a, b in LOCATOR_FIXES:
+            cand = dpp.replace(a, b)
+            if os.path.isfile(cand):
+                dpp = cand
+                rec["locator_binding"] = {"declared": dp["path"], "resolved": cand,
+                                          "basis": "directory-name drift only; identity is the SHA",
+                                          "ratification": "CANDIDATE_NOT_RATIFIED"}
+                break
+    if not os.path.isfile(dpp):
+        return {"decision": "DIRECT_PARENT_ABSENT", **rec}
+    praw = open(dpp, "rb").read()
+    rec["direct_sha_match"] = hashlib.sha256(praw).hexdigest() == dp["sha"]
+    if not rec["direct_sha_match"]:
+        return {"decision": "DIRECT_PARENT_CHANGED", **rec}
+    sl = _slice(praw, dp["a"], dp["b"])
+    if sl is None:
+        return {"decision": "DIRECT_SPAN_OUT_OF_RANGE", **rec}
+    rec["direct_clause_sha_observed"] = hashlib.sha256(sl).hexdigest()
+    rec["direct_clause_sha_expected"] = u.get("direct_clause_sha")
+    rec["clause_text_head"] = sl[:120].decode("utf-8", "replace")
+    if rec["direct_clause_sha_observed"] != u.get("direct_clause_sha"):
+        return {"decision": "DIRECT_CLAUSE_SHA_MISMATCH", **rec}
+    return {"decision": "SOURCE_BOUND_VERIFIED", **rec}
+
+
 def main() -> int:
     spec = W.load("B3")
     ulist = [u for u in W.units(spec["text"]) if u.get("unit_id")]
@@ -236,13 +321,9 @@ def main() -> int:
         elif kind in ("DOC_BRIDGE", "H1_ROUTE", "CHILD_ROUTE", "BEHAVIOR_ROUTE"):
             if kind == "DOC_BRIDGE":
                 chk = check_doc_bridge(u)
-            elif kind in ("H1_ROUTE", "CHILD_ROUTE"):
-                # the leading integer is NOT a line number in the pinned blueprint (PLP-00 sits at
-                # line 1606, not 528), so this carrier mapping is unresolved: refuse to claim a check
-                chk = {"decision": "MAPPING_UNRESOLVED",
-                       "detail": "payload's leading integer is not a line number in the pinned "
-                                 "blueprint; the row->carrier mapping must come from the original "
-                                 "B3 Reader"}
+            elif kind in ("H1_ROUTE", "CHILD_ROUTE", "BEHAVIOR_ROUTE",
+                          "AUTHORITY_SEAM", "RECOVERY"):
+                chk = check_pinned_mapping(u)
             else:
                 chk = {"decision": "NO_GENERIC_CHECK",
                        "detail": "BEHAVIOR_ROUTE carries no source pin; it needs the original "
@@ -256,8 +337,15 @@ def main() -> int:
                        reason="source pinned by the unit's own payload (file + sha + span) and "
                               "recomputed; a semantic Oracle is still the original Reader's")
         elif kind in ("AUTHORITY_SEAM", "RECOVERY"):
-            rec.update(verdict="NOT_EXECUTED",
-                       reason="requires the original authority seam / recovery fixture")
+            chk = check_pinned_mapping(u)
+            rec.update(verdict=("PASS_SOURCE_BOUND" if chk["decision"] == "SOURCE_BOUND_VERIFIED"
+                                else ("HOLD" if chk["decision"] in
+                                      ("RESOLVED_SOURCE_CHANGED", "DIRECT_PARENT_CHANGED",
+                                       "DIRECT_CLAUSE_SHA_MISMATCH")
+                                      else "NOT_EXECUTED")),
+                       actual={"source_check": chk},
+                       reason="the unit's own resolved_source_ref + direct_parent_ref + "
+                              "direct_clause_sha, recomputed from the pinned files")
         else:
             rec.update(verdict="NOT_EXECUTED", reason=f"unknown kind {kind!r}")
 
