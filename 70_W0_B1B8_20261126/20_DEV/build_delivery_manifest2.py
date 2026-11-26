@@ -37,6 +37,7 @@ def main() -> int:
             "b1_freeze": r"^40_OPS/b1_candidate_freeze_",
             "b2_parse": r"^40_OPS/b2_parse_", "b2_trs": r"^40_OPS/b2_toolreadset_",
             "b2_tqaep": r"^40_OPS/b2_tqaep_", "b2_freeze": r"^40_OPS/b2_candidate_freeze_",
+            "b3_parse": r"^40_OPS/b3_parse_",
             "b1_closeout": r"^60_CLOSEOUT/.*B1_CLOSEOUT_rev\d+\.md$",
             "b1_handoff": r"^60_CLOSEOUT/.*B1_HANDOFF",
             "b2_closeout": r"^60_CLOSEOUT/.*B2_CLOSEOUT",
@@ -59,14 +60,18 @@ def main() -> int:
             return "MAKER_RECORD"
         if re.search(r"^40_OPS/.*_candidate_freeze_", f):
             return "FREEZE_RECORD"
+        if f == "DELIVERY_MANIFEST.json":
+            return "MANIFEST_SELF"
+        if re.search(r"^40_OPS/b\d_summary\.json$", f):
+            return "DERIVED_SUMMARY"
         if re.search(r"^60_CLOSEOUT/.*_rev1\.md$", f):
             return "LASTGOOD_HISTORY"
         if f in (cur["b1_closeout"], cur["b1_handoff"], cur["b2_closeout"], cur["session"]):
             return "CURRENT_CLOSEOUT"
         if f in (cur["b1_run"], cur["b1_tqaep"], cur["b2_parse"], cur["b2_trs"],
-                 cur["b2_tqaep"], cur["b1_freeze"], cur["b2_freeze"]):
+                 cur["b2_tqaep"], cur["b1_freeze"], cur["b2_freeze"], cur["b3_parse"]):
             return "CURRENT_RECEIPT"
-        if re.search(r"^40_OPS/(b1_run|b1_tqaep|b2_parse|b2_toolreadset|b2_tqaep|"
+        if re.search(r"^40_OPS/(b1_run|b1_tqaep|b2_parse|b2_toolreadset|b2_tqaep|b3_parse|"
                      r"b1_candidate_freeze|b2_candidate_freeze)_", f):
             return "SUPERSEDED_RECEIPT"
         if f.startswith("60_CLOSEOUT/"):
