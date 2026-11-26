@@ -145,7 +145,7 @@ def main() -> int:
                 orig_cmp_fail += 0 if orig_cmp else 1
         else:
             _oref = S.parse_ref(u.get("original_source_ref") or "")
-            if _oref.get("kind") == "FILE" and _oref["sha"] == ORIG_SHA and orig_lines:
+            if _oref.get("sha") == ORIG_SHA and orig_lines:
                 _txt = chr(10).join(orig_lines[_oref["a"] - 1:_oref["b"]])
                 _cols = [str(x).strip() for x in (u.get("source_payload") or []) if str(x).strip()]
                 orig_cmp = bool(_cols) and all(c in _txt for c in _cols)

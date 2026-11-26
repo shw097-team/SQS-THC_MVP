@@ -38,6 +38,9 @@ def main():
         p = os.path.join(WAVE, rel)
         arts.append({"path": rel, "bytes": os.path.getsize(p), "raw_sha256": sha_file(p)})
     arts.sort(key=lambda a: a["path"])
+    tq_doc = json.load(open(os.path.join(WAVE, tq), encoding="utf-8"))
+    claim = tq_doc.get("claim_ceiling")
+    not_claimed = (tq_doc.get("claim_scope") or {}).get("not_supported") or []
     digest = sha_bytes("".join(f"{a['raw_sha256']}  {a['path']}\n" for a in arts).rstrip("\n").encode())
     doc = {
         "schema": "SST.W0.B2.CANDIDATE_FREEZE/1",
@@ -48,13 +51,12 @@ def main():
         "candidate_digest": digest,
         "candidate_digest_rule": ("sha256 over the LF-joined '<sha>  <path>' lines of artefacts "
                                   "SORTED by path, no trailing LF (two spaces)"),
-        "claim_ceiling": "ROW_PAYLOAD_PROVENANCE_AND_CLAUSE_IDENTITY",
+        "claim_ceiling": claim,
         "effect": "SOURCE_READ", "write_set": [], "preimage": "N/A", "fin_order": "DENY",
         "supersedes": "40_OPS/b2_candidate_freeze_20261126T141949.json",
-        "not_claimed": ["B2 acceptance/completion", "independent requiredness for 1,385 Q rows",
-                        "9 HARD §06 mutations that are not HARD-loss",
-                        "54 TECH_ROUTE mutations (field unnamed by §06)",
-                        "tool availability/pin/licence (B5)"],
+        "not_claimed": ["B2 acceptance/completion"] + not_claimed,
+        "claim_source": "copied from the TQAEP receipt at freeze time (single source, no drift)",
+        "neg_holds": {k: v for k, v in (tq_doc.get("tally") or {}).items() if "HOLD" in k},
     }
     p = os.path.join(OUT, f"b2_candidate_freeze_round{rnd}.json")
     with open(p, "w", encoding="utf-8", newline="\n") as f:

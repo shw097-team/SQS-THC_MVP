@@ -1,6 +1,6 @@
 {
  "schema": "SST.PH01.W0.B2.TQAEP@2",
- "generated_at": "2026-11-26T15:32:35+08:00",
+ "generated_at": "2026-11-26T15:47:35+08:00",
  "subject": "SST/SQS-THC/PH01/E00",
  "original_wave": "P1-W00M",
  "bid": "B2",
@@ -38,7 +38,7 @@
  },
  "original_source_comparison": {
   "rule": "every non-empty payload column must occur verbatim in the cited original source line (Q rows: carrier 463dcf33… at q_row.carrier_line; others: dd37a40b… span)",
-  "compared": 1385,
+  "compared": 1465,
   "coarse_rule_mismatches": 897,
   "status": "DIAGNOSTIC_ONLY_NOT_A_GATE",
   "note": "mismatches are dominated by formatting differences between the payload cells and the carrier table row; the Maker does not claim provenance on this basis",
@@ -97,7 +97,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -141,7 +141,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -183,7 +183,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -225,7 +225,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -267,7 +267,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -309,7 +309,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -351,7 +351,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -393,7 +393,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -435,7 +435,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -477,7 +477,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -521,7 +521,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -563,7 +563,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -607,7 +607,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -651,7 +651,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -695,7 +695,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -739,7 +739,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -783,7 +783,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -827,7 +827,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -871,7 +871,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -914,7 +914,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -957,7 +957,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -1000,7 +1000,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -1051,7 +1051,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -1102,7 +1102,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -1145,7 +1145,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -1188,7 +1188,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -1231,7 +1231,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -1293,7 +1293,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -1355,7 +1355,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -1417,7 +1417,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -1479,7 +1479,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -1541,7 +1541,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -1603,7 +1603,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -1665,7 +1665,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -1727,7 +1727,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -1789,7 +1789,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -1851,7 +1851,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -1913,7 +1913,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -1975,7 +1975,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -2037,7 +2037,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -2099,7 +2099,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -2161,7 +2161,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -2223,7 +2223,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -2285,7 +2285,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -2347,7 +2347,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -2409,7 +2409,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -2471,7 +2471,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -2533,7 +2533,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -2595,7 +2595,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -2657,7 +2657,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -2719,7 +2719,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -2781,7 +2781,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -2843,7 +2843,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -2905,7 +2905,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -2967,7 +2967,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -3029,7 +3029,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -3091,7 +3091,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -3153,7 +3153,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -3215,7 +3215,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -3277,7 +3277,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -3339,7 +3339,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -3401,7 +3401,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -3463,7 +3463,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -3525,7 +3525,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -3587,7 +3587,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -3649,7 +3649,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -3711,7 +3711,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -3773,7 +3773,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -3835,7 +3835,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -3897,7 +3897,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -3959,7 +3959,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -4021,7 +4021,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -4083,7 +4083,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -4145,7 +4145,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -4207,7 +4207,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -4269,7 +4269,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -4331,7 +4331,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -4393,7 +4393,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -4455,7 +4455,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null
@@ -4517,7 +4517,7 @@
     "quadrant_signals": null,
     "clause_identity": "REPRODUCED",
     "clause_reference": "direct_parent_ref",
-    "original_source_columns_present": null
+    "original_source_columns_present": true
    },
    "expected": "NONE_IF_VALID",
    "first_fail": null

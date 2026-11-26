@@ -11,7 +11,7 @@
 |---|---|
 | 上游知識庫位置 | **被重新編排**：B1–B8 SPEC 已移入 `W0_B1-B8_NATIVE_FIRST_2026-11-26_r4_HERMES_FINAL\SST_PLP_PH01_W0_B1-B8_執行控制小包\`。B1/B2 的 raw sha **未變**（`13294cad…` / `140de5bc…`），故以 **sha 認身分**、不再以路徑深度找檔；`b1_reader` 與 `b2_semantics` 已改為 by-sha 定位 |
 | B1 | 修完 round-3 的 11 項中 10 項（第 3 項措辭於 round 4 判 PARTIAL）、再修 round-4 指出的 5 項 Maker 缺陷中的 4 項；**round 4 判 `B1_ACCEPTED = NO`**；已 freeze round-5 候選並送 round 5（本次 SESSION 內未取回 verdict） |
-| B2 | **round-1 Checker 10 項缺陷已全部重做（round-2 候選）**：`direct_clause_sha` **1,465/1,465 可重現**（規則＝`direct_parent_ref` + a..b 含第 b 行 LF；round-1 指出 Maker 用了錯的 ref）；歷史 **72 = HARD 16 + E00_TECH 2 + TECH_ROUTE 54** 可重現、**54 = TECH_ROUTE**；requiredness 改標 `VERBATIM_ONLY`（1,385）／route N/A（54）並撤回「0 不一致＝證據」；象限承認兩訊號共線、改用 disjoint `source_row` 區間佐證；namespace NEG 改為丟／偽 namespace 且 naive 命中共 1,385；STATE_CONFLICT 改宣告式互斥＋合法共存探針；carrier 1,385 列以 sha 重綁。NEG 終態 **PASS 1,396／PASS_INTERPRETED 54／HOLD_SPEC_MUTATION_UNIMPLEMENTED 9／HOLD_ORACLE_UNBOUND 6／FAIL 0**（round-3 verdict 後再修 8 項） |
+| B2 | **round-1 Checker 10 項缺陷已全部重做（round-2 候選）**：`direct_clause_sha` **1,465/1,465 可重現**（規則＝`direct_parent_ref` + a..b 含第 b 行 LF；round-1 指出 Maker 用了錯的 ref）；歷史 **72 = HARD 16 + E00_TECH 2 + TECH_ROUTE 54** 可重現、**54 = TECH_ROUTE**；requiredness 改標 `VERBATIM_ONLY`（1,385）／route N/A（54）並撤回「0 不一致＝證據」；象限承認兩訊號共線、改用 disjoint `source_row` 區間佐證；namespace NEG 改為丟／偽 namespace 且 naive 命中共 1,385；STATE_CONFLICT 改宣告式互斥＋合法共存探針；carrier 1,385 列以 sha 重綁。NEG 終態 **PASS 1,396／PASS_INTERPRETED 54／HOLD_SPEC_MUTATION_UNIMPLEMENTED 9／HOLD_ORACLE_UNBOUND 6／FAIL 0**（round-3／round-4 兩輪判讀後共修 16 項 Maker 缺陷；E00 為 **2 執行／6 HOLD**，總 HOLD 15） |
 | B3 | 只做 **DEV-1 parse**（`B3.PARSE@1`，claim ceiling `CENSUS_AND_PIN_ONLY`）：365 Unit、payload pin 365/365、§06 752 案（365 POS／387 NEG）、case_id 雙向 join 0 落差 |
 | B4–B8 | **未開工**（見 §5） |
 | 發布 | 見 §6 |
@@ -29,11 +29,12 @@
 | B1 TQAEP | `40_OPS/b1_tqaep_20261126T141842.json` | `821f3e61…`（41,636 B） |
 | B1 checker round 4 | `40_OPS/b1_checker_round4_verdict.md` | `B1_ACCEPTED = NO`（9/11 PASS，item 3 PARTIAL） |
 | B1 checker round 5 | `40_OPS/b1_checker_round5_verdict.md` | 4/5 round-4 defects PASS；第 5 項（manifest 過期）判 FAIL，但該 manifest 已於 verdict 之後重建（現與 freeze 0 落差）。`B1_ACCEPTED` 仍 **NO** |
-| B2 freeze | `40_OPS/b2_candidate_freeze_round4.json` | digest `1dabe8cf…` |
-| B2 ToolReadSet@2 | `40_OPS/b2_toolreadset_20261126T153100.json` | `ef70347e…`（3,142,007 B） |
-| B2 TQAEP@2 | `40_OPS/b2_tqaep_20261126T153235.json` | `a1c66c6a…`（3,005,422 B） |
-| B2 checker | `40_OPS/b2_checker_round3_verdict.md` | **7 PASS / 3 PARTIAL / 8 新缺陷；`B2_ACCEPTED = NO`**（clause 1,465/1,465、digest、72/54、2,930 case 皆由其 Node 實作獨立重算通過） |
+| B2 freeze | `40_OPS/b2_candidate_freeze_round5.json` | digest `c7a12bcc…`（claim 由 TQAEP 複製，不再硬寫） |
+| B2 ToolReadSet@2 | `40_OPS/b2_toolreadset_20261126T154724.json` | `402d2b08…`（3,264,972 B） |
+| B2 TQAEP@2 | `40_OPS/b2_tqaep_20261126T154735.json` | 見 manifest（claim `ROW_PAYLOAD_PIN_INTEGRITY_AND_CLAUSE_SPAN_IDENTITY`） |
+| B2 checker r3 | `40_OPS/b2_checker_round3_verdict.md` | **7 PASS / 3 PARTIAL / 8 新缺陷；`B2_ACCEPTED = NO`**（clause 1,465/1,465、digest、72/54、2,930 case 皆由其 Node 實作獨立重算通過） |
 | B3 parse | `40_OPS/b3_parse_20261126T142325.json` | `6dff324f…` |
+| B2 checker r4 | `40_OPS/b2_checker_round4_verdict.md` | **原10項 8 PASS／2 PARTIAL；新8項 6 PASS／2 PARTIAL；10 新缺陷；`B2_ACCEPTED = NO`** |
 | 交付索引 | `DELIVERY_MANIFEST.json` | 由 `20_DEV/build_delivery_manifest2.py` 重建（@2） |
 
 r1 的 `b1_run_…130421` / `b1_tqaep_…130423` / `b2_*_…122128` / `b2_tqaep_…131157` 一律 `SUPERSEDED_RECEIPT`，只作歷史。
@@ -76,6 +77,8 @@ r1 的 `b1_run_…130421` / `b1_tqaep_…130423` / `b2_*_…122128` / `b2_tqaep_
 | D-2 | allow-list 是否納入 `tests/test_fda_*.py`；mirror carrier 地位 | B1 `BASE-018`、EOL 觀察 | Owner 決；不可由 Maker 擴張 |
 | D-3 | 七槽 slot↔artefact 映射（`slot_reference_counts=0`） | 7 FDA POS（`CARRIER_LEVEL_ONLY`） | 提供 slot 級來源 |
 | D-4 | 五 Kernel NEG 語意 oracle | 5 案 | 原 Domain Owner 受保護欄位 oracle |
+| TT-UP-1 | **上游** SPEC §06：9 個 HARD NEG 的 mutation 文字寫 `ABI_UNBOUND`／`MAKER_SELF_ATTEST`／`PIT_LOOKAHEAD`，expected 卻一律 `TOOL_REQUIREDNESS_HOLD` | 9 列 HOLD | 原 SPEC Owner 修 §06 或改 expected 名 |
+| TT-UP-2 | **上游** `q_row.evidence_line` 全體較 `original_source_ref` 行號多 664（1,385/1,385） | 任何用 evidence_line 定位的下游 | 原 SPEC/生成器修正；本輪未使用該欄 |
 | D-5 | B2 parent 重綁（`d95c8ac6…`）追認 | B2 全部 1,465 列 | Owner 追認 rebind（同一手法亦用於 carrier `463dcf33…`） |
 | ~~D-6~~ | **已由 Maker 收斂**：round-1 指出 clause 規則為「`direct_parent_ref`＋含第 b 行 LF」，重算 1,465/1,465 成立 → 不需 Owner 裁決；僅需 round-2 Checker 獨立確認 | B2 clause 身分 | — |
 | ~~D-7~~ | **已由 Maker 收斂**：72 = 16 HARD＋2 E00（`*_UNBOUND` 哨兵）＋54 ROUTE，可由未修改舊程式重現 → 不需 Owner 說明；但**不得**再以 72/54 當「無工具」計數 | B5 導入分母 | — |
@@ -112,6 +115,7 @@ r1 的 `b1_run_…130421` / `b1_tqaep_…130423` / `b2_*_…122128` / `b2_tqaep_
 | 6 | **proxy 探針抓到 substring 缺陷**：`SELECTED` ⊂ `NOT_SELECTED`，合法 `DEFER_NOFIT+NOT_SELECTED` 被誤判衝突 | 連續 4 輪（1→3→2→0 後再現） | 以子字串比對 token | 改 `_state_tokens` 精確 token 比對；`contradicting_state` 同步改；無對照者改判 HOLD | 已解，8 個 probe 全對 |
 | 7 | 前景 `timeout=900s` 超過 600 上限 → 被轉背景 | 1 | 工具上限 | 改背景＋notify | 已解 |
 | 8 | round-2 checker 跑了 7 分鐘仍無 verdict | 1 | 正常長跑（round 1 約 45 分） | 因候選已被 round-3 取代而 kill，改派 round-3 | 已重派（`proc_22d2120961bb`，5 分心跳） |
+| 10 | round-4 verdict 指出 8 個 Maker 缺陷＋2 個上游 | 10 項各 1 次 | freeze 硬寫舊 claim（與 TQAEP 不一致）、provenance 診斷只收 `kind==FILE` 漏 80 列、`Apache Arrow` 誤判授權、Q 列 TR 自比、`clean_no_version` 混入 Q、`disjoint` 硬編碼、probe 把 maker pair 當證據 | 逐項修；freeze 改由 TQAEP 複製 claim／not_claimed／neg_holds；授權加產品名排除；上游兩項列 TT 不自行改 SPEC | 已修；round-5 checker 已派（`proc_39e3a07accfa`） |
 | 9 | round-3 verdict 指出 8 個新缺陷（371 Q 列 requiredness 自比、E00 3/2 數字為狀態數而非列數、licence 把 `UNBOUND` 當授權、Q pin 取到 need 句、provenance claim 超額、分母 864 vs 1,014、namespace 只取 last segment、POS 未含 clause） | 8 項各 1 次 | Maker 語意與詞彙不統一；其中 licence 與 pin 是**真的錯**（會污染 B5） | 逐項修並以探針驗；`UNBOUND` 不再當授權、Q pin 改 `NOT_EVALUATED_Q_ROW`、claim 降級、namespace 改 `endswith` 判丟／偽並保留 unknown→`[]` | 已修；round-4 checker 已派（`proc_4b1d8309a37f`） |
 
 **自我判定的問題**：#6 屬同一根因的**第 5 次**修補，已超出「每 finding 最多 2 次實質修補」的規則。本輪之所以仍修，是因為探針暴露的是**程式缺陷**（substring）而非 oracle 語意分歧；但若 round-3 Checker 仍判此 gate 不可靠，Maker **不再迭代**，直接記 `HOLD_ORACLE_UNBOUND` 並要求原 Domain Owner 提供互斥關係表。

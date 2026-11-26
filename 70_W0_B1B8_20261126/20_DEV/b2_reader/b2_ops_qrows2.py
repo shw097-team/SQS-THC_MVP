@@ -51,7 +51,10 @@ def main() -> int:
             "requiredness_row": req_row,
             "requiredness_independent": req_ind,
             "requiredness_rule": req_rule,
-            "requiredness_agree": req_row == req_ind,
+            "requiredness_applicable": k in ("HARD", "E00_TECH"),
+            "requiredness_check_mode": ("RULE_CROSS_FIELD" if k in ("HARD", "E00_TECH")
+                                       else ("N/A_ROUTE" if k == "TECH_ROUTE" else "VERBATIM_ONLY")),
+            "requiredness_agree": ((req_row == req_ind) if k in ("HARD", "E00_TECH") else None),
             "payload_sha": u.get("payload_sha"),
             "original_source_ref": u.get("original_source_ref"),
             "direct_clause_sha": u.get("direct_clause_sha"),
@@ -87,7 +90,12 @@ def main() -> int:
         # CJK neighbours are word characters, so  never fires; use explicit letter guards instead.
         lic = re.search(r"(?<![A-Za-z])(MIT|Apache|BSD|proprietary|GPL|MPL|ISC|PSF|Unlicense)"
                         r"(?![A-Za-z])", joined, re.I)
-        rec["licence_state"] = "DECLARED" if lic else "TOKEN_ABSENT"
+        # "Apache Arrow"/"Apache Spark"/"Apache Kafka" are product names, not licences (round-4)
+        ctx = re.search(r"(Apache)\s+(Arrow|Spark|Kafka|Beam|Airflow)", joined, re.I)
+        if lic and ctx and lic.group(1).lower() == "apache":
+            rec["licence_state"] = "TOOL_NAME_ONLY"
+        else:
+            rec["licence_state"] = "DECLARED" if lic else "TOKEN_ABSENT"
         rec["licence_token"] = lic.group(0) if lic else None
         rec["lock_state"] = "UNBOUND"          # no transitive lock artifact is bound in B2
 
@@ -163,9 +171,12 @@ def main() -> int:
         "historical_54": {"measured": len(no_col5), "reproduces_54": len(no_col5) == 54,
                           "by_kind": dict(collections.Counter(u["kind"] for u in no_col5)),
                           "note": "the old TQAEP counted rows with no pin column: exactly TECH_ROUTE"},
-        "clean_no_version_count": {"measured": len(clean_no_version),
+        "clean_no_version_count": {"measured": sum(1 for r in clean_no_version
+                                                   if r["pin_state"] != "NOT_EVALUATED_Q_ROW"),
                                    "by_kind": dict(collections.Counter(r["kind"]
-                                                                       for r in clean_no_version))},
+                                                  for r in clean_no_version
+                                                  if r["pin_state"] != "NOT_EVALUATED_Q_ROW")),
+                                   "excluded": "NOT_EVALUATED_Q_ROW is not a version verdict"},
         "conclusion": ("both historical numbers are TRUE and reproducible from the same SPEC plus "
                        "the pinned old predicate: 72 = 16 HARD + 2 E00_TECH + 54 TECH_ROUTE, and 54 "
                        "= TECH_ROUTE exactly. They measure 'no usable pin text', not 'no tool' and "
@@ -213,7 +224,15 @@ def main() -> int:
                          if u.get("kind") == "Q_SOURCE_ROW" and (u.get("q_row") or {}).get("full_key", "")
                          .startswith("R3-REGISTRY-" + qn))]
                 for qn in ("Q1", "Q2", "Q3", "Q4")},
-            "source_row_ranges_disjoint": True,
+            "source_row_ranges_disjoint": (lambda r: all(
+                r[a][1] < r[b][0] for a, b in (("Q1", "Q2"), ("Q2", "Q3"), ("Q3", "Q4"))))(
+                {qn: [min((u["q_row"] or {}).get("source_row", 0) for u in us
+                          if u.get("kind") == "Q_SOURCE_ROW"
+                          and (u.get("q_row") or {}).get("full_key", "").startswith("R3-REGISTRY-" + qn)),
+                     max((u["q_row"] or {}).get("source_row", 0) for u in us
+                         if u.get("kind") == "Q_SOURCE_ROW"
+                         and (u.get("q_row") or {}).get("full_key", "").startswith("R3-REGISTRY-" + qn))]
+                 for qn in ("Q1", "Q2", "Q3", "Q4")}),
             "non_q_rows": len(rows) - sum(q_counts.values()),
             "rule": "quadrant from the key's namespace prefix, corroborated by disjoint q_row.source_row "
                     "ranges; the 80 non-Q rows are HARD 18 + E00_TECH 8 + TECH_ROUTE 54",
@@ -225,8 +244,9 @@ def main() -> int:
             "row_vs_independent_disagreements": [
                 {"unit_id": r["unit_id"], "row": r["requiredness_row"],
                  "independent": r["requiredness_independent"]}
-                for r in rows if not r["requiredness_agree"]][:40],
-            "disagreement_count": sum(1 for r in rows if not r["requiredness_agree"]),
+                for r in rows if r["requiredness_agree"] is False][:40],
+            "disagreement_count": sum(1 for r in rows if r["requiredness_agree"] is False),
+            "checked_rows": sum(1 for r in rows if r["requiredness_applicable"]),
             "check_mode": {
                 "HARD": "RULE_CROSS_FIELD (payload column 1 vs the unit's own input_rule)",
                 "E00_TECH": "RULE_CROSS_FIELD (payload column 2 vs the unit's own input_rule)",

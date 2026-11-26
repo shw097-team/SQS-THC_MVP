@@ -1,6 +1,6 @@
 {
  "schema": "SST.PH01.W0.B1B8.DELIVERY_MANIFEST@2",
- "generated_at": "2026-11-26T15:33:13+08:00",
+ "generated_at": "2026-11-26T15:48:12+08:00",
  "root": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\70_W0_B1B8_20261126",
  "promotion_state": {
   "promoted_to_primary": [],
@@ -23,9 +23,9 @@
   "b1_tqaep": "40_OPS/b1_tqaep_20261126T141842.json",
   "b1_freeze": "40_OPS/b1_candidate_freeze_20261126T141853.json",
   "b2_parse": "40_OPS/b2_parse_20261126T121931.json",
-  "b2_trs": "40_OPS/b2_toolreadset_20261126T153100.json",
-  "b2_tqaep": "40_OPS/b2_tqaep_20261126T153235.json",
-  "b2_freeze": "40_OPS/b2_candidate_freeze_round4.json",
+  "b2_trs": "40_OPS/b2_toolreadset_20261126T154724.json",
+  "b2_tqaep": "40_OPS/b2_tqaep_20261126T154735.json",
+  "b2_freeze": "40_OPS/b2_candidate_freeze_round5.json",
   "b3_parse": "40_OPS/b3_parse_20261126T142325.json",
   "b1_closeout": "60_CLOSEOUT/SST_PLP_PH01_W0_B1_CLOSEOUT_rev8.md",
   "b1_handoff": "60_CLOSEOUT/SST_PLP_PH01_W0_B1_HANDOFF_rev3.md",
@@ -36,10 +36,10 @@
   "AUTHORITATIVE_INPUT": 1,
   "CANDIDATE_NOT_RATIFIED": 2,
   "CODE_AUTHORITATIVE": 18,
-  "FREEZE_RECORD": 6,
-  "CHECKER_RECORD_IMMUTABLE": 8,
-  "MAKER_RECORD": 13,
-  "SUPERSEDED_RECEIPT": 80,
+  "FREEZE_RECORD": 7,
+  "CHECKER_RECORD_IMMUTABLE": 9,
+  "MAKER_RECORD": 15,
+  "SUPERSEDED_RECEIPT": 82,
   "CURRENT_RECEIPT": 6,
   "DERIVED_SUMMARY": 1,
   "SUPERSEDED_CLOSEOUT": 10,
@@ -113,10 +113,10 @@
   },
   {
    "path": "20_DEV/b2_gate_probe.py",
-   "bytes": 4577,
-   "raw_sha256": "5092f7296bf99810862da9aaa3880cb9c40efdcac688f2083a3795cb037ee9e2",
+   "bytes": 4825,
+   "raw_sha256": "96f63708d1c70fec380f69a6aaea7b1b4720769e3f03a842672600d51cee5c93",
    "layer": "CODE_AUTHORITATIVE",
-   "mtime": "2026-11-26T15:07:09+08:00"
+   "mtime": "2026-11-26T15:47:08+08:00"
   },
   {
    "path": "20_DEV/b2_reader/b2_ops_qrows.py",
@@ -127,10 +127,10 @@
   },
   {
    "path": "20_DEV/b2_reader/b2_ops_qrows2.py",
-   "bytes": 16325,
-   "raw_sha256": "4426772363997ff3eec4f7abd98af60e3b95fef38247a7ee78486af4c23bb49f",
+   "bytes": 17948,
+   "raw_sha256": "7604b437dd0ee9aabb4ef1814d5bba569ff5f10d7b78419452ca9bcd9b102f7a",
    "layer": "CODE_AUTHORITATIVE",
-   "mtime": "2026-11-26T15:30:46+08:00"
+   "mtime": "2026-11-26T15:47:08+08:00"
   },
   {
    "path": "20_DEV/b2_reader/b2_ops_tqaep.py",
@@ -141,10 +141,10 @@
   },
   {
    "path": "20_DEV/b2_reader/b2_ops_tqaep2.py",
-   "bytes": 19756,
-   "raw_sha256": "a7f1505b70ccc6083046f3f0f44685ef38ca346cc74316803f0656f431c86334",
+   "bytes": 19728,
+   "raw_sha256": "962a23b002498e588759424c72a014dc8ba84f3e2735ffcc81791ccdc1c3c47c",
    "layer": "CODE_AUTHORITATIVE",
-   "mtime": "2026-11-26T15:32:25+08:00"
+   "mtime": "2026-11-26T15:46:52+08:00"
   },
   {
    "path": "20_DEV/b2_reader/b2_parse.py",
@@ -183,10 +183,10 @@
   },
   {
    "path": "20_DEV/make_b2_freeze.py",
-   "bytes": 2803,
-   "raw_sha256": "7f435398bfbd0a33d8a32cabb3b9f7e5ffe98e227edbbddefbf324698a0fd1b6",
+   "bytes": 2904,
+   "raw_sha256": "77fa1b3fe22b2a88669a77a9caa7e69e6b086eb7305b41661e75c3c682529b85",
    "layer": "CODE_AUTHORITATIVE",
-   "mtime": "2026-11-26T14:57:18+08:00"
+   "mtime": "2026-11-26T15:46:52+08:00"
   },
   {
    "path": "20_DEV/w0_spec.py",
@@ -609,6 +609,13 @@
    "mtime": "2026-11-26T15:32:48+08:00"
   },
   {
+   "path": "40_OPS/b2_candidate_freeze_round5.json",
+   "bytes": 2313,
+   "raw_sha256": "2e9512f692a2595324f973de70da66cadc154ef9818bfdda3585c8bb5e3b9d85",
+   "layer": "FREEZE_RECORD",
+   "mtime": "2026-11-26T15:47:41+08:00"
+  },
+  {
    "path": "40_OPS/b2_checker_round1_run.log",
    "bytes": 279014,
    "raw_sha256": "041a6f0ed2679b93580e728b0784983cb25f047f1165be9171184904c3ffb4e1",
@@ -652,17 +659,31 @@
   },
   {
    "path": "40_OPS/b2_checker_round4_run.log",
-   "bytes": 53099,
-   "raw_sha256": "e1baeeb9e083932f83c67cc2bd0363dc11f8d15f881974a521d2f5eb6ae717ab",
+   "bytes": 186581,
+   "raw_sha256": "36aa96a19cbdf90050e0b084848af1c54c95b2b3fc3292742215e7464e478099",
    "layer": "MAKER_RECORD",
-   "mtime": "2026-11-26T15:33:13+08:00"
+   "mtime": "2026-11-26T15:46:19+08:00"
+  },
+  {
+   "path": "40_OPS/b2_checker_round4_verdict.md",
+   "bytes": 13500,
+   "raw_sha256": "35780a1482ceef65e9c15624ff07a7d7b3a10020757a6aeee0242992a721cb02",
+   "layer": "CHECKER_RECORD_IMMUTABLE",
+   "mtime": "2026-11-26T15:46:19+08:00"
+  },
+  {
+   "path": "40_OPS/b2_checker_round5_run.log",
+   "bytes": 34648,
+   "raw_sha256": "0104c4107813fd3eaafd47a77a777839209bfe30fed95d996a18ef3188cc6042",
+   "layer": "MAKER_RECORD",
+   "mtime": "2026-11-26T15:48:09+08:00"
   },
   {
    "path": "40_OPS/b2_gate_probe.json",
-   "bytes": 3414,
-   "raw_sha256": "887af87ebe3850941b2ff15d6b177fcc84b17d7daa001eab07b403452a348203",
+   "bytes": 3272,
+   "raw_sha256": "b45fb6b8db29694109c8102578f3a59320add1fc7ec4bd59643120f7c5310c88",
    "layer": "MAKER_RECORD",
-   "mtime": "2026-11-26T15:30:50+08:00"
+   "mtime": "2026-11-26T15:47:08+08:00"
   },
   {
    "path": "40_OPS/b2_parse_20261126T121931.json",
@@ -822,8 +843,15 @@
    "path": "40_OPS/b2_toolreadset_20261126T153100.json",
    "bytes": 3142007,
    "raw_sha256": "ef70347e3c2d2efe3efe2c19985cf8734bed41d9a7cd55c5e6e3bb43edf3d837",
-   "layer": "CURRENT_RECEIPT",
+   "layer": "SUPERSEDED_RECEIPT",
    "mtime": "2026-11-26T15:31:00+08:00"
+  },
+  {
+   "path": "40_OPS/b2_toolreadset_20261126T154724.json",
+   "bytes": 3264972,
+   "raw_sha256": "402d2b085a383be04dc21a8c435472a0f8a0e7ae9c9acc0107aca20a0a068c94",
+   "layer": "CURRENT_RECEIPT",
+   "mtime": "2026-11-26T15:47:24+08:00"
   },
   {
    "path": "40_OPS/b2_tqaep_20261126T131157.json",
@@ -941,8 +969,15 @@
    "path": "40_OPS/b2_tqaep_20261126T153235.json",
    "bytes": 3005291,
    "raw_sha256": "329af00319776143526d5aff7630a9f592f3a16e74d21f17f3ab9ea4fb33178f",
-   "layer": "CURRENT_RECEIPT",
+   "layer": "SUPERSEDED_RECEIPT",
    "mtime": "2026-11-26T15:32:35+08:00"
+  },
+  {
+   "path": "40_OPS/b2_tqaep_20261126T154735.json",
+   "bytes": 3005291,
+   "raw_sha256": "c25ba0de68dc86bc283e3141bd08713c87a49405b8c2759842d2af41ebd3c00a",
+   "layer": "CURRENT_RECEIPT",
+   "mtime": "2026-11-26T15:47:35+08:00"
   },
   {
    "path": "40_OPS/b3_parse_20261126T142325.json",
@@ -980,6 +1015,13 @@
    "mtime": "2026-11-26T15:32:53+08:00"
   },
   {
+   "path": "40_OPS/checker_b2_round5_prompt.md",
+   "bytes": 6653,
+   "raw_sha256": "d5858566777b6d5d0e2178c7bb5d397f48f52531cba0acac59ebfd26b3d15535",
+   "layer": "MAKER_RECORD",
+   "mtime": "2026-11-26T15:47:54+08:00"
+  },
+  {
    "path": "40_OPS/checker_round4_prompt.md",
    "bytes": 4257,
    "raw_sha256": "e3daba743a07579b31f5882d226c1303bee95deb21cf1dc8d193989601b26176",
@@ -1002,10 +1044,10 @@
   },
   {
    "path": "60_CLOSEOUT/SST_PLP_PH01_W0_B1B8_SESSION_CLOSEOUT_HANDOFF_2026-11-26_r2.md",
-   "bytes": 14671,
-   "raw_sha256": "2f71ede168cfd5930c8614767a9c29fc85a56b8598b6bc1d0c4fced0abb0331b",
+   "bytes": 15946,
+   "raw_sha256": "cffc14bdb71dcd627915304a4094b8abf423bc3ba9a22accdc629dbf2aa9ffe8",
    "layer": "CURRENT_CLOSEOUT",
-   "mtime": "2026-11-26T15:33:13+08:00"
+   "mtime": "2026-11-26T15:48:11+08:00"
   },
   {
    "path": "60_CLOSEOUT/SST_PLP_PH01_W0_B1_CLOSEOUT.md",
@@ -1093,10 +1135,10 @@
   },
   {
    "path": "DELIVERY_MANIFEST.json",
-   "bytes": 35066,
-   "raw_sha256": "54a78a5e57e82ecb63215d700fbb04874ce1ebcfaf6123162f37b51ddaeac21c",
+   "bytes": 38180,
+   "raw_sha256": "3732b7585cdd3a7911897e4ca7598c75cdff8fa8b6f86c5ff61512a58077d200",
    "layer": "MANIFEST_SELF",
-   "mtime": "2026-11-26T15:09:06+08:00"
+   "mtime": "2026-11-26T15:33:13+08:00"
   }
  ]
 }

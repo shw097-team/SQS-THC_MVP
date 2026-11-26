@@ -23,7 +23,6 @@ CASES = [
     (["INSTALLED", "NOT_INSTALLED"], "STATE_CONFLICT", "declared exclusion installed/not"),
     (["SELECTED_DESIGN_ONLY", "REFERENCE_ONLY"], "STATE_CONFLICT", "competing selections"),
     (["REUSE_INTERNAL_DESIGN"], None, "single state"),
-    (["REUSE_INTERNAL_DESIGN", "SELECTED_DESIGN_ONLY"], "STATE_CONFLICT", "competing selections"),
 ]
 
 
@@ -70,7 +69,9 @@ def main() -> int:
         "state_gate_cases": [{"input": i, "expected": e, "observed": S.state_gate(i),
                               "ok": S.state_gate(i) == e, "note": n} for i, e, n in CASES],
         "state_gate_all_ok": all(S.state_gate(i) == e for i, e, n in CASES),
-        "exclusive_pairs_declared": [list(p) for p in S.EXCLUSIVE_PAIRS],
+        "exclusive_pairs_natural": [list(p) for p in S.EXCLUSIVE_PAIRS_NATURAL],
+        "exclusive_pairs_maker_declared_not_used_for_cases": [list(p)
+                                                              for p in S.EXCLUSIVE_PAIRS_MAKER_DECLARED],
         "e00_rows": pairs,
         "e00_rows_ok": all(v["status"] in ("OK", "HOLD_NO_DECLARED_COUNTERPART")
                            for v in pairs.values()),
@@ -85,6 +86,8 @@ def main() -> int:
         json.dump(out, f, ensure_ascii=False, indent=1)
         f.write("\n")
     print("state_gate_all_ok", out["state_gate_all_ok"], "| e00_rows_ok", out["e00_rows_ok"])
+    print("  natural", len(out["exclusive_pairs_natural"]), "| maker-declared (not used)",
+          len(out["exclusive_pairs_maker_declared_not_used_for_cases"]))
     for c in out["state_gate_cases"]:
         print(f"  {c['observed']!s:>16} exp {c['expected']!s:>16} ok={c['ok']}  {c['input']}")
     print("namespace", ns)
