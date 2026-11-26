@@ -58,6 +58,8 @@ def main() -> int:
             return "CHECKER_RECORD_IMMUTABLE"
         if re.search(r"^40_OPS/.*(checker.*_prompt\.md|checker.*_run\.log)$", f):
             return "MAKER_RECORD"
+        if re.search(r"^40_OPS/.*_gate_probe\.json$", f):
+            return "MAKER_RECORD"
         if re.search(r"^40_OPS/.*_candidate_freeze_", f):
             return "FREEZE_RECORD"
         if f == "DELIVERY_MANIFEST.json":

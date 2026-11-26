@@ -204,19 +204,25 @@ def main() -> int:
                 observed = arms[0]["first_fail"] if ok else None
                 extra = {"arms": arms, "spec_mutation_under_specified": "change one protected field"}
                 verdict = ("PASS_INTERPRETED" if ok else "FAIL")
-        else:  # STATE_CONFLICT — mutate to the row's declared counterpart
+        else:  # STATE_CONFLICT — mutate to the row's declared counterpart, token-matched
             state = req_row
             pair = S.contradicting_state(state)
-            mutation = {"states": [state, pair],
-                        "why": "the row's own disposition replaced by its declared counterpart"}
-            observed = S.state_gate([state, pair])
-            baseline = S.state_gate([state])
-            coexist = S.state_gate(["INSTALLED", "ENABLED"])
-            ok = (pair is not None and observed == "STATE_CONFLICT" and baseline is None
-                  and coexist is None)
-            extra = {"legal_coexistence_probe": {"INSTALLED+ENABLED": coexist},
-                     "contradicting_state": pair}
-            verdict = "PASS" if ok else "FAIL"
+            if pair is None:
+                verdict = "HOLD_SPEC_MUTATION_UNIMPLEMENTED"
+                extra = {"spec_mutation": spec_mut,
+                         "why": "no declared exclusion mentions this row's disposition tokens, so a "
+                                "contradiction cannot be formed without inventing a relation"}
+                baseline = None
+            else:
+                mutation = {"states": [state, pair],
+                            "why": "the row's own disposition plus its declared counterpart"}
+                observed = S.state_gate([state, pair])
+                baseline = S.state_gate([state])
+                coexist = S.state_gate(["INSTALLED", "ENABLED"])
+                ok = (observed == "STATE_CONFLICT" and baseline is None and coexist is None)
+                extra = {"legal_coexistence_probe": {"INSTALLED+ENABLED": coexist},
+                         "contradicting_state": pair}
+                verdict = "PASS" if ok else "FAIL"
 
         neg_rec = {"case_id": pol_neg, "unit_id": uid, "kind": k, "polarity": "NEG",
                    "class": cls, "expected": expected, "spec_mutation": spec_mut[:160],

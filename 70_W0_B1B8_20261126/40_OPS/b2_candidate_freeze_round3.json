@@ -3,8 +3,8 @@
  "batch": "B2",
  "subject": "SST/SQS-THC/PH01/E00",
  "original_wave": "P1-W00M",
- "frozen_at": "2026-11-26T14:57:24+08:00",
- "round": 2,
+ "frozen_at": "2026-11-26T15:07:19+08:00",
+ "round": 3,
  "artefacts": [
   {
    "path": "20_DEV/b2_reader/b2_ops_qrows2.py",
@@ -13,8 +13,8 @@
   },
   {
    "path": "20_DEV/b2_reader/b2_ops_tqaep2.py",
-   "bytes": 15485,
-   "raw_sha256": "4bccb77343fe7cb702beaa4ba35768d98acd08b0b59be96f66470aecbd84463e"
+   "bytes": 15879,
+   "raw_sha256": "c59cbc6a01cc339374838eb98a634bbe06bd8c08a4809ff98b67860df4d4ffcc"
   },
   {
    "path": "20_DEV/b2_reader/b2_parse.py",
@@ -23,21 +23,21 @@
   },
   {
    "path": "20_DEV/b2_reader/b2_semantics.py",
-   "bytes": 15571,
-   "raw_sha256": "a30cc2c5dfedfe3324d61c2785d17135e61ffac68e182414d6441eb11415325b"
+   "bytes": 15724,
+   "raw_sha256": "e57b54c18b94190281bbf4830429faa4d6d29db3a8f55742d58744220f5d7be0"
   },
   {
-   "path": "40_OPS/b2_toolreadset_20261126T145652.json",
+   "path": "40_OPS/b2_toolreadset_20261126T150645.json",
    "bytes": 3046004,
-   "raw_sha256": "21be4dc99bb1e9b6bcab446cd6aa5d0606e568e042c09b86c27b1c9386928c5d"
+   "raw_sha256": "590f1ff9d3b62f99a8dd301888d09bda5f4cea60f86edef876f4439ce7458ef5"
   },
   {
-   "path": "40_OPS/b2_tqaep_20261126T145701.json",
-   "bytes": 2853468,
-   "raw_sha256": "0ebd88fbd44bc3e8c7fce677fc38d5591f0e994643f85313996ea6475d0eef43"
+   "path": "40_OPS/b2_tqaep_20261126T150657.json",
+   "bytes": 2852830,
+   "raw_sha256": "6a42149040678951b91fa6ac5d3a4d05af3872b6367cbc56e6c877eabf0d77e1"
   }
  ],
- "candidate_digest": "cbaeeb8111c9567628674b00b30f287f48494cbf2dba9872e312c0923a43cd6a",
+ "candidate_digest": "c669fe557dfab826da5514dbe6b7aa28ff9ff6cc41fcc3580052ca82b696de05",
  "candidate_digest_rule": "sha256 over the LF-joined '<sha>  <path>' lines of artefacts SORTED by path, no trailing LF (two spaces)",
  "claim_ceiling": "ROW_PAYLOAD_PROVENANCE_AND_CLAUSE_IDENTITY",
  "effect": "SOURCE_READ",

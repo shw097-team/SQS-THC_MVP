@@ -118,7 +118,7 @@ def carrier_index() -> dict[str, str]:
     """sha256 -> path for the wider PH01-04 tree.
 
     The batch library (KBASE) only holds the W0_B0-B8 package, but Q rows cite a carrier document
-    that lives one level up (…\PHASE 01~04\藍圖\實質正文\), so carrier resolution needs its own walk.
+    that lives one level up (…/PHASE 01~04/藍圖/實質正文/), so carrier resolution needs its own walk.
     Still sha-first: the declared path in the SPEC says 'PHASE 00~04' and is stale.
     """
     global _CARRIER_CACHE
@@ -327,18 +327,17 @@ def requiredness_gate(declared: str, independent: str, claimed_enable: bool) -> 
 
 
 def contradicting_state(state: str) -> str | None:
-    """The row's counterpart disposition, for a single-field contradiction that a correct gate must
-    refuse. Returns None when the row declares no counterpart (then the mutation is not defined and
-    the case must not be counted as executed)."""
-    s = (state or "").upper()
-    for a, b in (("NOT_SELECTED", "SELECTED"), ("NOT_INSTALLED", "INSTALLED"),
-                 ("NOT_VERIFIED", "VERIFIED"), ("DISABLED", "ENABLED"),
-                 ("DEFER_NOFIT", "SELECTED_DESIGN_ONLY"), ("DEFER_WITH_TRIGGER", "SELECTED_DESIGN_ONLY"),
-                 ("REFERENCE_ONLY", "SELECTED_DESIGN_ONLY"), ("EVAL_ONLY", "SELECTED_DESIGN_ONLY"),
-                 ("REUSE_INTERNAL_DESIGN", "SELECTED_DESIGN_ONLY")):
-        if a in s:
+    """The row's counterpart for a declared exclusion, matched on TOKENS (never substrings).
+
+    Returns None when no declared exclusion mentions any of the row's tokens: then the §06 mutation
+    has no counterpart in this gate and the case must be reported HOLD_SPEC_MUTATION_UNIMPLEMENTED
+    rather than invented.
+    """
+    toks = _state_tokens([state])
+    for a, b in EXCLUSIVE_PAIRS:
+        if a in toks:
             return b
-        if b in s and a not in s:
+        if b in toks:
             return a
     return None
 
@@ -349,14 +348,29 @@ SELECTION_CLASS = {"HARD", "SOFT", "CONDITIONAL", "EVAL_ONLY", "OPTIONAL", "DEFE
                    "NOT_INSTALLED_NOT_BOUND"}
 
 
-def state_gate(states: list[str]) -> str | None:
-    """Conflict only on a declared mutual-exclusion relation, or on two competing selections.
+def _state_tokens(states: list[str]) -> set[str]:
+    """Tokenise on anything that is not [A-Z0-9_].
 
-    Deliberately NOT "any two distinct states": INSTALLED+ENABLED is legal coexistence and is used
-    as the probe that keeps this gate from being trivially true.
+    Substring matching was a real defect: "SELECTED" is a substring of "NOT_SELECTED", so the pair
+    (SELECTED, NOT_SELECTED) fired on a single legal token. Tokens are compared for equality only.
     """
-    s = [x for x in states if x]
+    toks: set[str] = set()
+    for s in states:
+        for t in re.split(r"[^A-Z0-9_]+", (s or "").upper()):
+            if t:
+                toks.add(t)
+    return toks
+
+
+def state_gate(states: list[str]) -> str | None:
+    """Conflict only on a declared mutual-exclusion relation.
+
+    Deliberately NOT "any two distinct states": INSTALLED+ENABLED is legal coexistence and
+    DEFER_NOFIT+NOT_SELECTED is a legal compound; both are probe cases that keep this gate from
+    being trivially true.
+    """
+    toks = _state_tokens(states)
     for a, b in EXCLUSIVE_PAIRS:
-        if any(a in x for x in s) and any(b in x for x in s):
+        if a in toks and b in toks:
             return "STATE_CONFLICT"
     return None

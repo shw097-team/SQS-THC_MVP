@@ -1,6 +1,6 @@
 {
  "schema": "SST.PH01.W0.B2.TQAEP@2",
- "generated_at": "2026-11-26T14:57:01+08:00",
+ "generated_at": "2026-11-26T15:06:57+08:00",
  "subject": "SST/SQS-THC/PH01/E00",
  "original_wave": "P1-W00M",
  "bid": "B2",
@@ -61,8 +61,8 @@
  },
  "tally": {
   "POS_PASS": 1465,
-  "NEG_PASS": 1402,
-  "NEG_HOLD_SPEC_MUTATION_UNIMPLEMENTED": 9,
+  "NEG_PASS": 1397,
+  "NEG_HOLD_SPEC_MUTATION_UNIMPLEMENTED": 14,
   "NEG_PASS_INTERPRETED": 54
  },
  "cases": [
@@ -855,22 +855,13 @@
    "class": "STATE_CONFLICT",
    "expected": "STATE_CONFLICT",
    "spec_mutation": "翻轉原DesignSelection/擅啟用",
-   "observed_first_fail": "STATE_CONFLICT",
-   "mutation": {
-    "states": [
-     "SELECTED_OPTIONAL_DISABLED",
-     "NOT_SELECTED"
-    ],
-    "why": "the row's own disposition replaced by its declared counterpart"
-   },
+   "observed_first_fail": null,
+   "mutation": {},
    "baseline_first_fail": null,
    "spec_expected_matches_class": true,
-   "verdict": "PASS",
-   "first_fail": "STATE_CONFLICT",
-   "legal_coexistence_probe": {
-    "INSTALLED+ENABLED": null
-   },
-   "contradicting_state": "NOT_SELECTED"
+   "verdict": "HOLD_SPEC_MUTATION_UNIMPLEMENTED",
+   "first_fail": null,
+   "why": "no declared exclusion mentions this row's disposition tokens, so a contradiction cannot be formed without inventing a relation"
   },
   {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-002",
@@ -905,22 +896,13 @@
    "class": "STATE_CONFLICT",
    "expected": "STATE_CONFLICT",
    "spec_mutation": "翻轉原DesignSelection/擅啟用",
-   "observed_first_fail": "STATE_CONFLICT",
-   "mutation": {
-    "states": [
-     "SELECTED_OPTIONAL_DISABLED",
-     "NOT_SELECTED"
-    ],
-    "why": "the row's own disposition replaced by its declared counterpart"
-   },
+   "observed_first_fail": null,
+   "mutation": {},
    "baseline_first_fail": null,
    "spec_expected_matches_class": true,
-   "verdict": "PASS",
-   "first_fail": "STATE_CONFLICT",
-   "legal_coexistence_probe": {
-    "INSTALLED+ENABLED": null
-   },
-   "contradicting_state": "NOT_SELECTED"
+   "verdict": "HOLD_SPEC_MUTATION_UNIMPLEMENTED",
+   "first_fail": null,
+   "why": "no declared exclusion mentions this row's disposition tokens, so a contradiction cannot be formed without inventing a relation"
   },
   {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-003",
@@ -955,22 +937,13 @@
    "class": "STATE_CONFLICT",
    "expected": "STATE_CONFLICT",
    "spec_mutation": "翻轉原DesignSelection/擅啟用",
-   "observed_first_fail": "STATE_CONFLICT",
-   "mutation": {
-    "states": [
-     "SELECTED_OPTIONAL_DISABLED",
-     "NOT_SELECTED"
-    ],
-    "why": "the row's own disposition replaced by its declared counterpart"
-   },
+   "observed_first_fail": null,
+   "mutation": {},
    "baseline_first_fail": null,
    "spec_expected_matches_class": true,
-   "verdict": "PASS",
-   "first_fail": "STATE_CONFLICT",
-   "legal_coexistence_probe": {
-    "INSTALLED+ENABLED": null
-   },
-   "contradicting_state": "NOT_SELECTED"
+   "verdict": "HOLD_SPEC_MUTATION_UNIMPLEMENTED",
+   "first_fail": null,
+   "why": "no declared exclusion mentions this row's disposition tokens, so a contradiction cannot be formed without inventing a relation"
   },
   {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-004",
@@ -1011,7 +984,7 @@
      "DEFER_NOFIT",
      "SELECTED_DESIGN_ONLY"
     ],
-    "why": "the row's own disposition replaced by its declared counterpart"
+    "why": "the row's own disposition plus its declared counterpart"
    },
    "baseline_first_fail": null,
    "spec_expected_matches_class": true,
@@ -1061,7 +1034,7 @@
      "REFERENCE_ONLY",
      "SELECTED_DESIGN_ONLY"
     ],
-    "why": "the row's own disposition replaced by its declared counterpart"
+    "why": "the row's own disposition plus its declared counterpart"
    },
    "baseline_first_fail": null,
    "spec_expected_matches_class": true,
@@ -1105,22 +1078,13 @@
    "class": "STATE_CONFLICT",
    "expected": "STATE_CONFLICT",
    "spec_mutation": "翻轉原DesignSelection/擅啟用",
-   "observed_first_fail": "STATE_CONFLICT",
-   "mutation": {
-    "states": [
-     "SELECTED_DOCUMENT_ADAPTER",
-     "NOT_SELECTED"
-    ],
-    "why": "the row's own disposition replaced by its declared counterpart"
-   },
+   "observed_first_fail": null,
+   "mutation": {},
    "baseline_first_fail": null,
    "spec_expected_matches_class": true,
-   "verdict": "PASS",
-   "first_fail": "STATE_CONFLICT",
-   "legal_coexistence_probe": {
-    "INSTALLED+ENABLED": null
-   },
-   "contradicting_state": "NOT_SELECTED"
+   "verdict": "HOLD_SPEC_MUTATION_UNIMPLEMENTED",
+   "first_fail": null,
+   "why": "no declared exclusion mentions this row's disposition tokens, so a contradiction cannot be formed without inventing a relation"
   },
   {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-007",
@@ -1155,22 +1119,13 @@
    "class": "STATE_CONFLICT",
    "expected": "STATE_CONFLICT",
    "spec_mutation": "翻轉原DesignSelection/擅啟用",
-   "observed_first_fail": "STATE_CONFLICT",
-   "mutation": {
-    "states": [
-     "SELECTED_DOCUMENT_ADAPTER",
-     "NOT_SELECTED"
-    ],
-    "why": "the row's own disposition replaced by its declared counterpart"
-   },
+   "observed_first_fail": null,
+   "mutation": {},
    "baseline_first_fail": null,
    "spec_expected_matches_class": true,
-   "verdict": "PASS",
-   "first_fail": "STATE_CONFLICT",
-   "legal_coexistence_probe": {
-    "INSTALLED+ENABLED": null
-   },
-   "contradicting_state": "NOT_SELECTED"
+   "verdict": "HOLD_SPEC_MUTATION_UNIMPLEMENTED",
+   "first_fail": null,
+   "why": "no declared exclusion mentions this row's disposition tokens, so a contradiction cannot be formed without inventing a relation"
   },
   {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-008",
@@ -1211,7 +1166,7 @@
      "REUSE_INTERNAL_DESIGN",
      "SELECTED_DESIGN_ONLY"
     ],
-    "why": "the row's own disposition replaced by its declared counterpart"
+    "why": "the row's own disposition plus its declared counterpart"
    },
    "baseline_first_fail": null,
    "spec_expected_matches_class": true,
