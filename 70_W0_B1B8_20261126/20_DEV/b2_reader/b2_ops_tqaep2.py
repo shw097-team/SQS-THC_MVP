@@ -80,8 +80,10 @@ def main() -> int:
     us = S.units(t)
     cases = S.case_table(t)
     by_key = {u["key"]: u for u in us}
+    parent_p, parent_info = S.parent_path()
+    parent_text = open(parent_p, encoding="utf-8").read() if parent_p else None
 
-    # tail index over Q rows: a tail-only join would be ambiguous, which is the point
+    # tail index over Q rows: a tail-only join would resolve, which is the point of the NEG
     tail_index: dict[str, list[str]] = collections.defaultdict(list)
     q_index: dict[str, list[str]] = collections.defaultdict(list)
     for u in us:
@@ -109,16 +111,31 @@ def main() -> int:
         req_ok = (req_row == req_ind) if requ_applicable else True
         qa = S.q_of(u) if k == "Q_SOURCE_ROW" else None
         q_ok = bool(qa and qa["agree"]) if k == "Q_SOURCE_ROW" else True
+        # clause identity, from direct_parent_ref under the explicit span rule
+        pref = S.parse_ref(u.get("direct_parent_ref") or "")
+        clause_repro = None
+        if pref.get("kind") == "FILE" and parent_text and pref["sha"] == S.PARENT_SHA:
+            cl = S.clause_sha(parent_text, pref["a"], pref["b"])
+            clause_repro = bool([1 for v in (cl.get("candidates") or {}).values()
+                                 if v == u.get("direct_clause_sha")])
         pos_ok = pin_ok and mand_ok and req_ok and q_ok
         pos_rec = {"case_id": pol_pos, "unit_id": uid, "kind": k,
                    "polarity": "POS", "verdict": "PASS" if pos_ok else "FAIL",
                    "observed": {"payload_pin": pin_ok, "mandatory_fields": mand_ok,
                                 "missing": mand_miss,
                                 "requiredness_row": req_row,
-                                "requiredness_independent": req_ind, "requiredness_rule": req_rule,
-                                "requiredness_agree": req_ok,
-                                "quadrant": (qa or {}).get("q"), "quadrant_agree": q_ok,
-                                "clause_identity": (u.get("_clause") or "UNBOUND_RULE")},
+                                "requiredness_independent": req_ind,
+                                "requiredness_rule": req_rule,
+                                "requiredness_applicable": requ_applicable,
+                                "requiredness_reason": requ_reason,
+                                "requiredness_checked": requ_applicable,
+                                "requiredness_agree": (req_row == req_ind) if requ_applicable else None,
+                                "quadrant": (qa or {}).get("q"),
+                                "quadrant_signals": (qa or {}).get("votes"),
+                                "clause_identity": ("REPRODUCED" if clause_repro else
+                                                    ("UNREPRODUCED" if clause_repro is False
+                                                     else "NOT_ATTEMPTED")),
+                                "clause_reference": "direct_parent_ref"},
                    "expected": (c_pos or {}).get("expected"),
                    "first_fail": None if pos_ok else "B2_POS_ROW_OR_REQUIREDNESS"}
         out_cases.append(pos_rec)
@@ -127,44 +144,85 @@ def main() -> int:
         # ---------------- NEG
         expected = (c_neg or {}).get("expected") or CLASS[k]
         cls = CLASS[k]
+        spec_mut = ((c_neg or {}).get("mutation") or "").strip()
         observed, mutation, baseline = None, {}, None
+        baseline_name = "baseline_first_fail"
+        extra: dict = {}
+        verdict = "FAIL"
         if cls == "NAMESPACE_JOIN_DENY":
-            tail = "::".join((u.get("key") or "").split("::")[1:])
-            naive = S.suffix_lookup(tail, {k2: 1 for k2 in q_index})
-            mutation = {"selector": {"suffix": tail}, "naive_suffix_matches": len(naive),
-                        "naive_examples": naive[:3],
-                        "why": "join on the tail of the key, which drops the Q-namespace identity"}
-            baseline = len(S.join_rows({"key": u["key"]}, q_index))
+            full = u["key"]
+            tail = full.split("::", 1)[1]
+            naive = S.namespace_blind_lookup(tail, q_index, tail_index)
+            baseline = len(S.join_rows({"key": full}, q_index, tail_index))
+            baseline_name = "baseline_rows"
             try:
-                S.join_rows({"suffix": tail}, q_index)
+                S.join_rows({"key": tail}, q_index, tail_index)
                 observed = None
             except S.OracleError as e:
                 observed = str(e)
-            ok = (observed == "NAMESPACE_JOIN_DENY" and baseline == 1 and len(naive) >= 1)
+            forged = "WRONG-NS::" + tail
+            try:
+                S.join_rows({"key": forged}, q_index, tail_index)
+                forged_res = None
+            except S.OracleError as e:
+                forged_res = str(e)
+            mutation = {"namespace_dropped": {"key": tail}, "namespace_forged": {"key": forged},
+                        "naive_namespace_blind_matches": len(naive), "naive_examples": naive[:3],
+                        "why": "two single-field namespace mutations: drop the namespace, forge one"}
+            extra = {"namespace_forged_first_fail": forged_res}
+            ok = (observed == "NAMESPACE_JOIN_DENY" and forged_res == "NAMESPACE_JOIN_DENY"
+                  and baseline == 1 and len(naive) >= 1)
+            verdict = "PASS" if ok else "FAIL"
         elif cls == "TOOL_REQUIREDNESS_HOLD":
             if k == "HARD":
-                mutation = {"declared_requiredness": "EVAL_ONLY", "why": "原 HARD 被删除"}
-                observed = S.requiredness_gate("EVAL_ONLY", req_ind, False)
-            else:
-                mutation = {"declared_requiredness": "HARD", "claimed_enable": True,
-                            "why": "route-only row 被當 HARD 啟用"}
-                observed = S.requiredness_gate("HARD", req_ind, True)
-            baseline = S.requiredness_gate(req_row, req_ind, False)
-            ok = (observed == "TOOL_REQUIREDNESS_HOLD" and baseline is None)
-        else:  # STATE_CONFLICT
+                if "原 HARD 被删除" in spec_mut or not spec_mut:
+                    mutation = {"declared_requiredness": "EVAL_ONLY", "why": "原 HARD 被删除"}
+                    observed = S.requiredness_gate("EVAL_ONLY", req_ind, False)
+                    baseline = S.requiredness_gate(req_row, req_ind, False)
+                    ok = (observed == "TOOL_REQUIREDNESS_HOLD" and baseline is None)
+                    verdict = "PASS" if ok else "FAIL"
+                else:
+                    verdict = "HOLD_SPEC_MUTATION_UNIMPLEMENTED"
+                    extra = {"spec_mutation": spec_mut,
+                             "why": "the §06 mutation for this row is not HARD-loss; its own text "
+                                    "names a different code than the TOOL_REQUIREDNESS_HOLD this "
+                                    "case expects, so implementing it would require an oracle the "
+                                    "Maker may not invent"}
+                    baseline = None
+            else:  # TECH_ROUTE: §06 says "change one protected field" (under-specified) -> two arms
+                arms = []
+                for name, declared, enable in (("requiredness_only", "HARD", False),
+                                               ("enablement_only", "ROUTE_ONLY", True)):
+                    arms.append({"arm": name, "first_fail":
+                                 S.requiredness_gate(declared, req_ind, enable)})
+                baseline = S.requiredness_gate(req_row, req_ind, False)
+                ok = (baseline is None and all(a["first_fail"] == "TOOL_REQUIREDNESS_HOLD"
+                                               for a in arms))
+                mutation = {"arms": [{"declared_requiredness": "HARD"},
+                                     {"claimed_enable": True}],
+                            "note": "two single-field arms; the §06 text does not name the field"}
+                observed = arms[0]["first_fail"] if ok else None
+                extra = {"arms": arms, "spec_mutation_under_specified": "change one protected field"}
+                verdict = ("PASS_INTERPRETED" if ok else "FAIL")
+        else:  # STATE_CONFLICT — mutate to the row's declared counterpart
             state = req_row
-            mutation = {"states": [state, "ENABLED"], "why": "同一 row 兩個互斥處置狀態"}
-            observed = S.state_gate([state, "ENABLED"])
+            pair = S.contradicting_state(state)
+            mutation = {"states": [state, pair],
+                        "why": "the row's own disposition replaced by its declared counterpart"}
+            observed = S.state_gate([state, pair])
             baseline = S.state_gate([state])
-            ok = (observed == "STATE_CONFLICT" and baseline is None)
+            coexist = S.state_gate(["INSTALLED", "ENABLED"])
+            ok = (pair is not None and observed == "STATE_CONFLICT" and baseline is None
+                  and coexist is None)
+            extra = {"legal_coexistence_probe": {"INSTALLED+ENABLED": coexist},
+                     "contradicting_state": pair}
+            verdict = "PASS" if ok else "FAIL"
 
         neg_rec = {"case_id": pol_neg, "unit_id": uid, "kind": k, "polarity": "NEG",
-                   "class": cls, "expected": expected, "observed_first_fail": observed,
-                   "mutation": mutation, "baseline_first_fail": baseline,
-                   "spec_expected_matches_class": expected == cls,
-                   "verdict": ("PASS" if ok and expected == cls else
-                               ("PASS_SPEC_EXPECTATION_DEVIATES" if ok else "FAIL")),
-                   "first_fail": observed}
+                   "class": cls, "expected": expected, "spec_mutation": spec_mut[:160],
+                   "observed_first_fail": observed, "mutation": mutation,
+                   baseline_name: baseline, "spec_expected_matches_class": expected == cls,
+                   "verdict": verdict, "first_fail": observed, **extra}
         out_cases.append(neg_rec)
         tally["NEG_" + neg_rec["verdict"]] += 1
 
@@ -181,10 +239,21 @@ def main() -> int:
         "generated_at": datetime.datetime.now().astimezone().isoformat(timespec="seconds"),
         "subject": "SST/SQS-THC/PH01/E00", "original_wave": "P1-W00M", "bid": "B2",
         "effect": "SOURCE_READ", "write_set": [], "preimage": "N/A", "fin_order": "DENY",
-        "claim_ceiling": "ROW_SEMANTICS_AND_CLASS_MUTATION",
-        "not_claimed": ["clause-level identity (generator clause-sha rule unbound)",
-                        "tool availability", "licence/lock state", "B5 tool selection",
-                        "any execution or installation"],
+        "claim_ceiling": "ROW_PAYLOAD_PROVENANCE_AND_CLAUSE_IDENTITY",
+        "claim_scope": {
+            "supported": ["ROW_PAYLOAD_AND_PROVENANCE_IDENTITY (per-unit payload_sha recomputation)",
+                          "CLAUSE_SPAN_IDENTITY (direct_parent_ref, lines a..b incl. line-b LF)",
+                          "QUADRANT_CENSUS (key prefix, corroborated by disjoint source_row ranges)",
+                          "CASE_CENSUS_2930 (no orphan, none missing)",
+                          "CLASS_MUTATION_NS_JOIN (namespace dropped / forged, non-vacuous)",
+                          "HARD_DELETION_MUTATION (9 of 18 HARD rows whose §06 mutation is HARD-loss)",
+                          "STATE_CONFLICT on a declared exclusion relation, with a legal-coexistence probe"],
+            "not_supported": ["independent requiredness (1,385 Q rows are VERBATIM_ONLY, 54 route N/A)",
+                              "9 HARD §06 mutations that are not HARD-loss",
+                              "54 TECH_ROUTE mutations: §06 does not name the protected field",
+                              "tool availability / pin / licence / lock (B5 duty)",
+                              "any B2 acceptance, completion or product execution"]},
+        "parent_source": parent_info,
         "spec": {"path": spec["path"], "bytes": spec["bytes"], "raw_sha256": spec["raw_sha256"],
                  "pin_match": spec["pin_match"]},
         "census": {"units": len(us), "cases": len(out_cases),

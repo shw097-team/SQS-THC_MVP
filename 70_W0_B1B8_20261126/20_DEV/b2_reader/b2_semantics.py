@@ -89,6 +89,7 @@ def case_table(t: str) -> dict[str, dict]:
 
 # ---------------------------------------------------------------- parent source (by sha)
 _PARENT_CACHE: dict | None = None
+_CARRIER_CACHE: dict | None = None
 
 
 def parent_index() -> dict[str, str]:
@@ -110,6 +111,34 @@ def parent_index() -> dict[str, str]:
             except Exception:
                 continue
     _PARENT_CACHE = idx
+    return idx
+
+
+def carrier_index() -> dict[str, str]:
+    """sha256 -> path for the wider PH01-04 tree.
+
+    The batch library (KBASE) only holds the W0_B0-B8 package, but Q rows cite a carrier document
+    that lives one level up (…\PHASE 01~04\藍圖\實質正文\), so carrier resolution needs its own walk.
+    Still sha-first: the declared path in the SPEC says 'PHASE 00~04' and is stale.
+    """
+    global _CARRIER_CACHE
+    if _CARRIER_CACHE is not None:
+        return _CARRIER_CACHE
+    idx: dict[str, str] = {}
+    root = os.path.dirname(KBASE)
+    for dp, dn, fn in os.walk(root, onerror=lambda e: None, followlinks=False):
+        dn[:] = [d for d in dn if d not in {".git", "__pycache__"}]
+        for f in fn:
+            if not f.endswith(".md"):
+                continue
+            p = os.path.join(dp, f)
+            try:
+                if os.path.getsize(p) > 12_000_000:
+                    continue
+                idx.setdefault(sha(open(p, "rb").read()), p)
+            except Exception:
+                continue
+    _CARRIER_CACHE = idx
     return idx
 
 
@@ -164,12 +193,33 @@ def parse_ref(ref: str) -> dict:
     if m:
         return {"kind": "FILE", "path": m.group(1), "sha": m.group(2),
                 "a": int(m.group(3)), "b": int(m.group(4))}
+    m = re.match(r"^(.+?)@([0-9a-f]{64}):L(\d+)$", ref or "")     # single-line carrier citation
+    if m:
+        n = int(m.group(3))
+        return {"kind": "FILE", "path": m.group(1), "sha": m.group(2), "a": n, "b": n}
     return {"kind": "UNPARSED", "raw": ref}
 
 
 # ---------------------------------------------------------------- row semantics
-STATE_TOKENS = ("SELECTED_OPTIONAL_DISABLED", "SELECTED_DESIGN_ONLY", "INSTALLED", "ENABLED",
-                "NOT_INSTALLED_NOT_BOUND", "DISABLED")
+REQ_TOKENS = {"HARD", "EVAL_ONLY", "OPTIONAL", "DEFER_WITH_TRIGGER", "DEFER_NOFIT",
+              "REFERENCE_ONLY", "NOT_SELECTED", "SELECTED_OPTIONAL_DISABLED",
+              "SELECTED_DESIGN_ONLY", "SELECTED_DOCUMENT_ADAPTER", "SOFT", "CONDITIONAL"}
+
+# states that cannot hold at the same time. Coexistence of INSTALLED with ENABLED is legal and is
+# used as the discrimination probe: a gate that flags "any two distinct states" would fail it.
+EXCLUSIVE_PAIRS = (("ENABLED", "DISABLED"), ("SELECTED", "NOT_SELECTED"),
+                   ("INSTALLED", "NOT_INSTALLED"), ("BOUND", "UNBOUND"),
+                   ("VERIFIED", "NOT_VERIFIED"), ("APPROVED", "REJECTED"),
+                   ("REUSE_INTERNAL_DESIGN", "SELECTED_DESIGN_ONLY"),
+                   ("DEFER_NOFIT", "SELECTED_DESIGN_ONLY"),
+                   ("REFERENCE_ONLY", "SELECTED_DESIGN_ONLY"),
+                   ("HARD", "EVAL_ONLY"))
+
+
+def clause_rule_note() -> str:
+    return ("direct_clause_sha = sha256 of the UTF-8 bytes of the DIRECT PARENT's lines a..b "
+            "inclusive, including the LF terminator of line b (parent is LF-only). "
+            "`original_source_ref` is a different reference and must not be used for this check.")
 
 
 def norm_req(s: str) -> str:
@@ -237,24 +287,35 @@ class OracleError(Exception):
     pass
 
 
-def join_rows(selector: dict, index: dict[str, list[dict]]) -> list[dict]:
-    """A join that is only legal on the full namespace-qualified identity.
+def join_rows(selector: dict, index: dict[str, list[dict]],
+              tail_index: dict[str, list[str]] | None = None) -> list[dict]:
+    """A join that is only legal on a full, existing, namespace-qualified identity.
 
-    A suffix/tail selector is refused even when it would resolve to exactly one row: the namespace
-    is part of the identity, not a decoration that happens to be unique today.
+    Differences from the first attempt (which the round-1 checker rejected as selector-shape-only):
+    a key that is not present but whose TAIL resolves elsewhere is denied with NAMESPACE_JOIN_DENY,
+    so dropping or forging the namespace is refused on identity grounds rather than on argument
+    shape. An unknown key with no tail collision returns [] (not a denial).
     """
     if set(selector) != {"key"}:
         raise OracleError("NAMESPACE_JOIN_DENY")
     key = selector["key"]
-    if key.count("::") < 1 or not re.match(r"^[A-Za-z0-9_.\-]+::", key):
+    if key in index:
+        rows = index[key]
+        if len(rows) != 1:
+            raise OracleError("STATE_CONFLICT")          # duplicate identity, not a join
+        return rows
+    tail = key.split("::")[-1]
+    hits = tail_index.get(tail) if tail_index is not None else [
+        k for k in index if k.split("::")[-1] == tail]
+    if hits:
         raise OracleError("NAMESPACE_JOIN_DENY")
-    return index.get(key, [])
+    return []
 
 
-def suffix_lookup(suffix: str, index: dict[str, list[str]]) -> list[str]:
-    """What a naive implementation would do: match on the tail of the key. Used only to prove
-    that the refusal above is not vacuous."""
-    return [k for k in index if k.endswith("::" + suffix) or k.endswith(suffix)]
+def namespace_blind_lookup(key: str, index: dict[str, list[dict]],
+                           tail_index: dict[str, list[str]]) -> list[str]:
+    """What a tail-only implementation would do. Used to prove a refusal is not vacuous."""
+    return list(tail_index.get(key.split("::")[-1], []))
 
 
 def requiredness_gate(declared: str, independent: str, claimed_enable: bool) -> str | None:
@@ -265,8 +326,37 @@ def requiredness_gate(declared: str, independent: str, claimed_enable: bool) -> 
     return None
 
 
+def contradicting_state(state: str) -> str | None:
+    """The row's counterpart disposition, for a single-field contradiction that a correct gate must
+    refuse. Returns None when the row declares no counterpart (then the mutation is not defined and
+    the case must not be counted as executed)."""
+    s = (state or "").upper()
+    for a, b in (("NOT_SELECTED", "SELECTED"), ("NOT_INSTALLED", "INSTALLED"),
+                 ("NOT_VERIFIED", "VERIFIED"), ("DISABLED", "ENABLED"),
+                 ("DEFER_NOFIT", "SELECTED_DESIGN_ONLY"), ("DEFER_WITH_TRIGGER", "SELECTED_DESIGN_ONLY"),
+                 ("REFERENCE_ONLY", "SELECTED_DESIGN_ONLY"), ("EVAL_ONLY", "SELECTED_DESIGN_ONLY"),
+                 ("REUSE_INTERNAL_DESIGN", "SELECTED_DESIGN_ONLY")):
+        if a in s:
+            return b
+        if b in s and a not in s:
+            return a
+    return None
+
+
+SELECTION_CLASS = {"HARD", "SOFT", "CONDITIONAL", "EVAL_ONLY", "OPTIONAL", "DEFER_NOFIT",
+                   "DEFER_WITH_TRIGGER", "REFERENCE_ONLY", "NOT_SELECTED", "SELECTED_OPTIONAL_DISABLED",
+                   "SELECTED_DESIGN_ONLY", "SELECTED_DOCUMENT_ADAPTER", "REUSE_INTERNAL_DESIGN",
+                   "NOT_INSTALLED_NOT_BOUND"}
+
+
 def state_gate(states: list[str]) -> str | None:
-    distinct = {s for s in states if s}
-    if len(distinct) > 1:
-        return "STATE_CONFLICT"
+    """Conflict only on a declared mutual-exclusion relation, or on two competing selections.
+
+    Deliberately NOT "any two distinct states": INSTALLED+ENABLED is legal coexistence and is used
+    as the probe that keeps this gate from being trivially true.
+    """
+    s = [x for x in states if x]
+    for a, b in EXCLUSIVE_PAIRS:
+        if any(a in x for x in s) and any(b in x for x in s):
+            return "STATE_CONFLICT"
     return None

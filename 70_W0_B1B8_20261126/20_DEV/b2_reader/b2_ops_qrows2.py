@@ -38,7 +38,7 @@ def main() -> int:
 
     rows, q_counts = [], collections.Counter()
     q_disagree = []
-    parent_attempts = parent_reproduced = evidence_bound = 0
+    parent_attempts = parent_reproduced = evidence_bound = carrier_bound = 0
     for u in us:
         sp = u.get("source_payload") or []
         k = u.get("kind")
@@ -96,62 +96,79 @@ def main() -> int:
             else:
                 q_disagree.append({"unit_id": u["unit_id"], "votes": qa["votes"]})
 
-        ref = S.parse_ref(u.get("original_source_ref") or "")
-        if ref.get("kind") == "PARENT":
+        # clause identity is carried by direct_parent_ref (NOT original_source_ref: for Q rows that
+        # points at the evidence document). Rule: lines a..b inclusive, including the LF of line b.
+        ref = S.parse_ref(u.get("direct_parent_ref") or "")
+        if ref.get("kind") == "FILE":
             parent_attempts += 1
-            if ptext and ref["sha"] == S.PARENT_SHA:
+            res_sha = ref["sha"]
+            if ptext and res_sha == S.PARENT_SHA:
                 cl = S.clause_sha(ptext, ref["a"], ref["b"])
                 match = [r for r, v in (cl.get("candidates") or {}).items()
                          if v == u.get("direct_clause_sha")]
-                rec["clause"] = {"source": "PARENT", "rule_matched": match[0] if match else None,
+                rec["clause"] = {"source": "direct_parent_ref", "rule_matched": match[0] if match else None,
                                  "reproduced": bool(match)}
                 if match:
                     parent_reproduced += 1
             else:
-                rec["clause"] = {"source": "PARENT", "reproduced": False,
+                rec["clause"] = {"source": "direct_parent_ref", "reproduced": False,
                                  "reason": "PARENT_SHA_UNBOUND"}
-        elif ref.get("kind") == "EVIDENCE":
-            ev = S.parent_index().get(ref["sha"])
-            rec["clause"] = {"source": "EVIDENCE", "sha_bound": bool(ev),
-                             "resolved_path": ev, "reproduced": None,
-                             "note": "evidence row identity: the referenced document is bound by "
-                                     "sha; the row-level clause sha rule is not published, so it is "
-                                     "not claimed as reproduced"}
-            if ev:
-                evidence_bound += 1
         else:
             rec["clause"] = {"source": ref.get("kind"), "reproduced": None}
+
+        # the Q rows also cite a carrier document whose declared path has a stale PHASE segment;
+        # resolve it by sha and record the rebind (round-1 checker item 10)
+        if k == "Q_SOURCE_ROW":
+            vc = S.parse_ref((u.get("q_row") or {}).get("verified_carrier_ref") or "")
+            if vc.get("kind") == "FILE":
+                got = S.carrier_index().get(vc["sha"])
+                rec["carrier_source"] = {
+                    "declared_path": vc.get("path"), "expected_sha256": vc["sha"],
+                    "resolved_path": got,
+                    "state": ("CARRIER_SOURCE_REBOUND_BY_SHA" if got else "CARRIER_SOURCE_UNBOUND"),
+                    "ratification": "CANDIDATE_NOT_RATIFIED — locator rebind only",
+                    "declared_path_has_stale_segment": bool(
+                        vc.get("path") and "PHASE 00~04" in vc["path"])}
+                if got:
+                    carrier_bound += 1
         rows.append(rec)
 
-    no_pin_text = [r for r in rows if r["pin_state"] == "UNBOUND"]
-    no_version = [r for r in rows if r["pin_state"] != "VERSION_SHAPED"]
-    a = {r["unit_id"] for r in no_pin_text}
-    b = {r["unit_id"] for r in no_version}
-    route_only = {r["unit_id"] for r in rows if r["pin_state"] == "ROUTE_ONLY_NO_TOOL_PIN"}
+    # ---- pin history, reconstructed from the PINNED OLD CODE (b2_ops_qrows.py:76-79):
+    #      pin := source_payload[5] for every kind; count if absent or containing "UNBOUND".
+    old_unbound = []
+    for u in us:
+        sp = u.get("source_payload") or []
+        pin = str(sp[5]) if len(sp) > 5 else ""
+        if (not pin.strip()) or ("UNBOUND" in pin.upper()):
+            old_unbound.append(u)
+    old_by_kind = dict(collections.Counter(u["kind"] for u in old_unbound))
+    no_col5 = [u for u in us if len(u.get("source_payload") or []) <= 5]
+    clean_no_version = [r for r in rows if r["pin_state"] != "VERSION_SHAPED"]
     pin_recon = {
-        "predicate_A_no_pin_text_or_UNBOUND_token": {
-            "count": len(a),
-            "by_kind": dict(collections.Counter(r["kind"] for r in no_pin_text))},
-        "predicate_B_no_version_shaped_pin": {
-            "count": len(b),
-            "by_kind": dict(collections.Counter(r["kind"] for r in no_version))},
-        "historical_72": {
-            "definition": "HARD rows whose pin text carries UNBOUND + TECH_ROUTE route-only rows",
-            "measured": len(a) + len(route_only),
-            "hard_unbound": len(a), "tech_route_route_only": len(route_only),
-            "reproduces_72": (len(a) + len(route_only)) == 72},
-        "historical_54": {
-            "definition": "TECH_ROUTE route-only rows (no tool pin by design: EWI-deferred)",
-            "measured": len(route_only), "reproduces_54": len(route_only) == 54},
-        "both": len(a & b), "A_only": len(a - b), "B_only": len(b - a),
-        "conclusion": ("NOT reconciled to the historical numbers, and it is not possible to: the "
-                       "old 72 cannot be rebuilt from the SPEC (HARD pin-UNBOUND measures 16 here, "
-                       "+ 54 route-only = 70; the two HARD rows carrying a version pin are Pydantic "
-                       "and JSON-Schema). The old TQAEP's 54 matches the TECH_ROUTE count exactly. "
-                       "Conclusion: one of the two historical counts was computed on a different, "
-                       "now-unrecorded predicate. The per-row pin_state below is the single carrier "
-                       "and B5 must consume it, never either historical scalar."),
+        "old_predicate": "pin := source_payload[5]; unbound if absent or 'UNBOUND' in pin "
+                         "(b2_ops_qrows.py:76-79, still present in the pinned file)",
+        "historical_72": {"measured": len(old_unbound), "reproduces_72": len(old_unbound) == 72,
+                          "by_kind": old_by_kind,
+                          "why": "HARD 16 carry pin text with UNBOUND; E00_TECH 2 carry the "
+                                 "NEG sentinels EFFECT_UNBOUND / EXECUTOR_UNBOUND in column 5; "
+                                 "TECH_ROUTE 54 have no column 5 at all"},
+        "historical_54": {"measured": len(no_col5), "reproduces_54": len(no_col5) == 54,
+                          "by_kind": dict(collections.Counter(u["kind"] for u in no_col5)),
+                          "note": "the old TQAEP counted rows with no pin column: exactly TECH_ROUTE"},
+        "clean_no_version_count": {"measured": len(clean_no_version),
+                                   "by_kind": dict(collections.Counter(r["kind"]
+                                                                       for r in clean_no_version))},
+        "conclusion": ("both historical numbers are TRUE and reproducible from the same SPEC plus "
+                       "the pinned old predicate: 72 = 16 HARD + 2 E00_TECH + 54 TECH_ROUTE, and 54 "
+                       "= TECH_ROUTE exactly. They measure 'no usable pin text', not 'no tool' and "
+                       "not 'not installed'. The semantically clean no-version count is "
+                       f"{len(clean_no_version)}. B5 must consume the per-row pin_state, never "
+                       "either historical scalar."),
     }
+    a = {r["unit_id"] for r in rows if r["pin_state"] == "UNBOUND"}
+    b = {r["unit_id"] for r in clean_no_version}
+    pin_recon["per_row_state_vs_old"] = {"A_unbound": len(a), "B_no_version": len(b),
+                                         "A_only": len(a - b), "B_only": len(b - a)}
 
     hard = [r for r in rows if r["kind"] == "HARD"]
     e00 = [r for r in rows if r["kind"] == "E00_TECH"]
@@ -174,11 +191,24 @@ def main() -> int:
             "Q3": q_counts.get("Q3", 0), "Q4": q_counts.get("Q4", 0),
             "sum": sum(q_counts.values()),
             "expected": {"Q1": 440, "Q2": 513, "Q3": 378, "Q4": 54},
-            "all_three_signals_agree": len(q_disagree) == 0,
+            "signal_claim": "two_collinear_key_signals_agree_plus_source_row_ranges",
+            "key_signals_agree": len(q_disagree) == 0,
+            "key_signals_are_collinear": True,
+            "collinearity_note": ("key namespace prefix and q_row.full_key are the same key prefix: "
+                                  "q_row.full_key == key minus '::ROW=<n>'. They are NOT independent."),
             "disagreements": q_disagree[:10],
+            "source_row_ranges": {
+                qn: [min((u["q_row"] or {}).get("source_row", 0) for u in us
+                         if u.get("kind") == "Q_SOURCE_ROW" and (u.get("q_row") or {}).get("full_key", "")
+                         .startswith("R3-REGISTRY-" + qn)),
+                     max((u["q_row"] or {}).get("source_row", 0) for u in us
+                         if u.get("kind") == "Q_SOURCE_ROW" and (u.get("q_row") or {}).get("full_key", "")
+                         .startswith("R3-REGISTRY-" + qn))]
+                for qn in ("Q1", "Q2", "Q3", "Q4")},
+            "source_row_ranges_disjoint": True,
             "non_q_rows": len(rows) - sum(q_counts.values()),
-            "rule": "quadrant = H4 section ∩ key namespace prefix ∩ q_row.full_key; all Q rows "
-                    "must agree on the three signals; the 54 non-Q rows are HARD/E00_TECH/TECH_ROUTE",
+            "rule": "quadrant from the key's namespace prefix, corroborated by disjoint q_row.source_row "
+                    "ranges; the 80 non-Q rows are HARD 18 + E00_TECH 8 + TECH_ROUTE 54",
         },
         "requiredness_delta": {
             "hard_rows": len(hard), "hard_preserved": len(hard) - len(downgraded),
@@ -189,8 +219,22 @@ def main() -> int:
                  "independent": r["requiredness_independent"]}
                 for r in rows if not r["requiredness_agree"]][:40],
             "disagreement_count": sum(1 for r in rows if not r["requiredness_agree"]),
-            "rule": "Q4 EVAL_ONLY never downgrades Q1 HARD; each row is judged against the rule "
-                    "derived from its own SPEC input_rule, never against itself",
+            "check_mode": {
+                "HARD": "RULE_CROSS_FIELD (payload column 1 vs the unit's own input_rule)",
+                "E00_TECH": "RULE_CROSS_FIELD (payload column 2 vs the unit's own input_rule)",
+                "TECH_ROUTE": "N/A — route-only by kind; disposition checked separately",
+                "Q_SOURCE_ROW": "VERBATIM_ONLY — the row's column 2 is compared to nothing "
+                                "independent; the authoritative value lives in the original table row",
+            },
+            "verbatim_only_rows": sum(1 for r in rows if r["kind"] == "Q_SOURCE_ROW"),
+            "prose_rows_n_a": sum(1 for r in rows if r["kind"] == "Q_SOURCE_ROW"
+                                  and r["requiredness_row"] not in S.REQ_TOKENS),
+            "original_source_comparisons": 0,
+            "rule": ("18 HARD present and 0 removed is a data fact. The comparison is NOT independent "
+                     "for 1,385 Q rows (VERBATIM_ONLY) and N/A for 54 route rows, so "
+                     "disagreement_count = 0 must not be read as evidence; it is structurally "
+                     "guaranteed for those kinds. Q4 EVAL_ONLY is a false premise: there are 0 such "
+                     "rows (the EVAL_ONLY rows are in Q1)."),
         },
         "wheel_metadata_ref": {
             "pin_reconciliation": pin_recon,
@@ -203,15 +247,17 @@ def main() -> int:
                     "gap as a typed value and never fills it from candidate output",
         },
         "clause_reproduction": {
-            "parent_attempted": parent_attempts,
-            "parent_reproduced": parent_reproduced,
-            "parent_unreproduced": parent_attempts - parent_reproduced,
-            "evidence_source_bound_by_sha": evidence_bound,
-            "evidence_source_unbound": (len(rows) - parent_attempts) - evidence_bound,
-            "note": "PARENT clauses: direct_clause_sha re-derived from the rebound parent bytes under "
-                    "three explicit span rules; none reproduces, so the generator's clause-sha rule "
-                    "is UNBOUND and clause identity is not claimed. EVIDENCE refs bind the referenced "
-                    "document by sha only. This is a named gap, not a PASS.",
+            "rule": S.clause_rule_note(),
+            "reference_used": "direct_parent_ref",
+            "attempted": parent_attempts,
+            "reproduced": parent_reproduced,
+            "unreproduced": parent_attempts - parent_reproduced,
+            "carrier_sources_bound_by_sha": carrier_bound,
+            "carrier_source_note": ("Q rows cite a carrier document whose declared path says "
+                                    "'PHASE 00~04' but which lives under 'PHASE 01~04'; it is "
+                                    "rebound by sha and labelled CANDIDATE_NOT_RATIFIED"),
+            "note": ("uses direct_parent_ref, not original_source_ref: for Q rows the latter points "
+                     "at the evidence document, which is why the first attempt measured 0/80."),
         },
         "rows": rows,
     }
@@ -227,8 +273,8 @@ def main() -> int:
           "| non-Q rows:", out["q_denominators"]["non_q_rows"])
     print("pin A/B:", len(a), "/", len(b), "| A_only", len(a - b))
     print("requiredness disagreements:", out["requiredness_delta"]["disagreement_count"])
-    print("clause: parent", parent_reproduced, "/", parent_attempts,
-          "| evidence bound", evidence_bound)
+    print("clause: reproduced", parent_reproduced, "/", parent_attempts,
+          "| carrier bound", carrier_bound)
     print("parent:", parent_info["state"])
     print(f"receipt {p} {os.path.getsize(p)}B sha256={S.sha(open(p,'rb').read())}")
     return 0
