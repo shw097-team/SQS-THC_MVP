@@ -46,7 +46,9 @@ def main() -> int:
                               os.path.getsize(p)))
     # explicit extras: files that the scope filter above cannot see (sub-directory or no "r5" in the name)
     for rel in ("40_OPS/b3_draft/SourceChildLedger.draft.v2.json",
-                "40_OPS/m01_boundary_grep_receipt.json"):
+                "40_OPS/m01_boundary_grep_receipt.json",
+                "40_OPS/local_only_register.json",
+                "40_OPS/B0_READER_PIN_DELTA.md"):
         p = os.path.join(R, rel.replace("/", os.sep))
         if os.path.isfile(p):
             artefacts.append((rel, sha(p), os.path.getsize(p)))
