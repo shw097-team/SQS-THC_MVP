@@ -66,12 +66,17 @@ def main() -> int:
             joined = str(sp[0]) if sp else ""
             pin_txt = joined
         elif k == "Q_SOURCE_ROW":
-            pin_txt = str(sp[3]) if len(sp) > 3 else ""
+            # A Q row is a tool-registry row, but which column carries the pin is not published; the
+            # text in column 3 is a need/slot sentence, not a pin (round-3 defect 4). Not evaluated.
+            pin_txt = ""
         has_version = bool(VERSION_RE.search(pin_txt))
         if k == "TECH_ROUTE":
             rec["pin_state"] = ("ROUTE_ONLY_NO_TOOL_PIN"     # route row: EWI-deferred, no tool pin
                                 if "後延" in (u.get("input_rule") or "") or "EVAL_ONLY" in pin_txt
                                 else ("VERSION_SHAPED" if has_version else "UNBOUND"))
+        elif k == "Q_SOURCE_ROW":
+            rec["pin_state"] = "NOT_EVALUATED_Q_ROW"
+            rec["pin_gap"] = "which source column carries the tool pin is not published; B5 must not read"
         else:
             rec["pin_state"] = ("VERSION_SHAPED" if has_version else
                                 ("UNBOUND" if ("UNBOUND" in pin_txt.upper()
@@ -79,8 +84,11 @@ def main() -> int:
                                  else "TEXT_WITHOUT_VERSION"))
         joined = " ".join(str(x) for x in sp)
         rec["pin_text"] = pin_txt
-        rec["licence_state"] = ("DECLARED" if re.search(r"MIT|Apache|BSD|proprietary|UNBOUND",
-                                                        joined, re.I) else "UNBOUND")
+        # CJK neighbours are word characters, so  never fires; use explicit letter guards instead.
+        lic = re.search(r"(?<![A-Za-z])(MIT|Apache|BSD|proprietary|GPL|MPL|ISC|PSF|Unlicense)"
+                        r"(?![A-Za-z])", joined, re.I)
+        rec["licence_state"] = "DECLARED" if lic else "TOKEN_ABSENT"
+        rec["licence_token"] = lic.group(0) if lic else None
         rec["lock_state"] = "UNBOUND"          # no transitive lock artifact is bound in B2
 
         if k == "Q_SOURCE_ROW":

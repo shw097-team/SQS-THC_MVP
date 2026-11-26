@@ -36,18 +36,19 @@ CLASS = {"Q_SOURCE_ROW": "NAMESPACE_JOIN_DENY", "HARD": "TOOL_REQUIREDNESS_HOLD"
          "TECH_ROUTE": "TOOL_REQUIREDNESS_HOLD", "E00_TECH": "STATE_CONFLICT"}
 
 
-REQ_TOKENS = {"HARD", "EVAL_ONLY", "OPTIONAL", "DEFER_WITH_TRIGGER", "DEFER_NOFIT",
-              "REFERENCE_ONLY", "NOT_SELECTED", "SELECTED_OPTIONAL_DISABLED",
-              "SELECTED_DESIGN_ONLY", "SELECTED_DOCUMENT_ADAPTER"}
+REQ_TOKENS = S.REQ_TOKENS
 
 
 def requiredness_applicable(u: dict, req_row: str) -> tuple[bool, str]:
+    """Independent requiredness exists only where a payload column can be cross-checked against the
+    unit's own rule. Every Q row is VERBATIM_ONLY (its authoritative value is the parent table row,
+    which the Maker cannot read as an independent second source), and route rows are N/A by kind."""
     k = u.get("kind")
     if k == "TECH_ROUTE":
         return (False, "route-only by kind: the row carries a disposition, not a requiredness")
-    if k == "Q_SOURCE_ROW" and req_row not in REQ_TOKENS:
-        return (False, "the original source column is prose, not a requiredness token; the "
-                       "authoritative value lives in the parent table row")
+    if k == "Q_SOURCE_ROW":
+        return (False, "VERBATIM_ONLY: the row's column is transcribed from the parent table; there "
+                       "is no second independent source inside this kit, so it is not checked")
     return (True, "")
 
 
@@ -83,13 +84,27 @@ def main() -> int:
     parent_p, parent_info = S.parent_path()
     parent_text = open(parent_p, encoding="utf-8").read() if parent_p else None
 
-    # tail index over Q rows: a tail-only join would resolve, which is the point of the NEG
+    # original-source cross-check (round-3 defect 5): compare each row's payload columns against the
+    # ORIGINAL source line it cites -- the carrier for Q rows, the all-blueprint for the rest. Bounded
+    # rule: every non-empty payload column must occur verbatim in the cited line.
+    CARRIER_SHA = "463dcf33a668a9daa8f0bbf447c7dacc4c3d602bc53fa7e4866844ffbbc4b3e1"
+    ORIG_SHA = "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1"
+    _cp = S.carrier_index().get(CARRIER_SHA)
+    carrier_lines = open(_cp, encoding="utf-8").read().splitlines() if _cp else []
+    _op = S.parent_index().get(ORIG_SHA)
+    orig_lines = open(_op, encoding="utf-8").read().splitlines() if _op else []
+    orig_cmp_n = orig_cmp_fail = 0
+
+    # Join indexes: ONLY Q rows are joinable by row identity, and the tail key is everything after the
+    # Q-namespace, so dropping the namespace still resolves to exactly one Q row (the mutation is then
+    # caught on identity) while a non-Q key can never resolve through the Q index.
     tail_index: dict[str, list[str]] = collections.defaultdict(list)
     q_index: dict[str, list[str]] = collections.defaultdict(list)
     for u in us:
+        if u.get("kind") != "Q_SOURCE_ROW":
+            continue
         q_index[u["key"]].append(u["unit_id"])
-        if u.get("kind") == "Q_SOURCE_ROW":
-            tail_index[(u.get("key") or "").split("::")[-1]].append(u["key"])
+        tail_index["::".join((u["key"] or "").split("::")[1:])].append(u["key"])
 
     out_cases = []
     tally = collections.Counter()
@@ -118,7 +133,28 @@ def main() -> int:
             cl = S.clause_sha(parent_text, pref["a"], pref["b"])
             clause_repro = bool([1 for v in (cl.get("candidates") or {}).values()
                                  if v == u.get("direct_clause_sha")])
-        pos_ok = pin_ok and mand_ok and req_ok and q_ok
+        orig_cmp = None
+        if k == "Q_SOURCE_ROW":
+            _raw = (u.get("q_row") or {}).get("carrier_line")
+            _ln = int(re.sub(r"[^0-9]", "", str(_raw)) or 0) if _raw else 0
+            if isinstance(_ln, int) and 0 < _ln <= len(carrier_lines):
+                _line = carrier_lines[_ln - 1]
+                _cols = [str(x).strip() for x in (u.get("source_payload") or []) if str(x).strip()]
+                orig_cmp = bool(_cols) and all(c in _line for c in _cols)
+                orig_cmp_n += 1
+                orig_cmp_fail += 0 if orig_cmp else 1
+        else:
+            _oref = S.parse_ref(u.get("original_source_ref") or "")
+            if _oref.get("kind") == "FILE" and _oref["sha"] == ORIG_SHA and orig_lines:
+                _txt = chr(10).join(orig_lines[_oref["a"] - 1:_oref["b"]])
+                _cols = [str(x).strip() for x in (u.get("source_payload") or []) if str(x).strip()]
+                orig_cmp = bool(_cols) and all(c in _txt for c in _cols)
+                orig_cmp_n += 1
+                orig_cmp_fail += 0 if orig_cmp else 1
+        # orig_cmp is a DIAGNOSTIC, not a gate: the Maker's coarse rule (column substring presence)
+        # disagrees with 897 rows on formatting alone, so it cannot decide POS. Provenance value
+        # equality is carried by the independent checker's re-derivation, not by this receipt.
+        pos_ok = (pin_ok and mand_ok and req_ok and q_ok and clause_repro is not False)
         pos_rec = {"case_id": pol_pos, "unit_id": uid, "kind": k,
                    "polarity": "POS", "verdict": "PASS" if pos_ok else "FAIL",
                    "observed": {"payload_pin": pin_ok, "mandatory_fields": mand_ok,
@@ -135,7 +171,8 @@ def main() -> int:
                                 "clause_identity": ("REPRODUCED" if clause_repro else
                                                     ("UNREPRODUCED" if clause_repro is False
                                                      else "NOT_ATTEMPTED")),
-                                "clause_reference": "direct_parent_ref"},
+                                "clause_reference": "direct_parent_ref",
+                                "original_source_columns_present": orig_cmp},
                    "expected": (c_pos or {}).get("expected"),
                    "first_fail": None if pos_ok else "B2_POS_ROW_OR_REQUIREDNESS"}
         out_cases.append(pos_rec)
@@ -151,7 +188,7 @@ def main() -> int:
         verdict = "FAIL"
         if cls == "NAMESPACE_JOIN_DENY":
             full = u["key"]
-            tail = full.split("::", 1)[1]
+            tail = "::".join(full.split("::")[1:])
             naive = S.namespace_blind_lookup(tail, q_index, tail_index)
             baseline = len(S.join_rows({"key": full}, q_index, tail_index))
             baseline_name = "baseline_rows"
@@ -204,14 +241,18 @@ def main() -> int:
                 observed = arms[0]["first_fail"] if ok else None
                 extra = {"arms": arms, "spec_mutation_under_specified": "change one protected field"}
                 verdict = ("PASS_INTERPRETED" if ok else "FAIL")
-        else:  # STATE_CONFLICT — mutate to the row's declared counterpart, token-matched
-            state = req_row
+        else:  # STATE_CONFLICT — the row's DISPOSITION column is the state, not its requiredness
+            _sp = u.get("source_payload") or []
+            state = str(_sp[2]) if len(_sp) > 2 else req_row
             pair = S.contradicting_state(state)
             if pair is None:
-                verdict = "HOLD_SPEC_MUTATION_UNIMPLEMENTED"
+                verdict = "HOLD_ORACLE_UNBOUND"
                 extra = {"spec_mutation": spec_mut,
-                         "why": "no declared exclusion mentions this row's disposition tokens, so a "
-                                "contradiction cannot be formed without inventing a relation"}
+                         "why": "no NATURAL exclusion covers this row's disposition tokens; the only "
+                                "candidate relations are Maker-declared and absent from the SPEC, so "
+                                "the oracle is owed by the design-selection owner (E02/E05/PIPD)",
+                         "oracle_owner": "E02/E05/PIPD design-selection owner; R17/OriginalConsumer "
+                                         "for the requiredness-class relation"}
                 baseline = None
             else:
                 mutation = {"states": [state, pair],
@@ -245,21 +286,33 @@ def main() -> int:
         "generated_at": datetime.datetime.now().astimezone().isoformat(timespec="seconds"),
         "subject": "SST/SQS-THC/PH01/E00", "original_wave": "P1-W00M", "bid": "B2",
         "effect": "SOURCE_READ", "write_set": [], "preimage": "N/A", "fin_order": "DENY",
-        "claim_ceiling": "ROW_PAYLOAD_PROVENANCE_AND_CLAUSE_IDENTITY",
+        "claim_ceiling": "ROW_PAYLOAD_PIN_INTEGRITY_AND_CLAUSE_SPAN_IDENTITY",
         "claim_scope": {
-            "supported": ["ROW_PAYLOAD_AND_PROVENANCE_IDENTITY (per-unit payload_sha recomputation)",
+            "supported": ["ROW_PAYLOAD_PIN_INTEGRITY (per-unit payload_sha recomputation against the SPEC cell)",
                           "CLAUSE_SPAN_IDENTITY (direct_parent_ref, lines a..b incl. line-b LF)",
                           "QUADRANT_CENSUS (key prefix, corroborated by disjoint source_row ranges)",
                           "CASE_CENSUS_2930 (no orphan, none missing)",
                           "CLASS_MUTATION_NS_JOIN (namespace dropped / forged, non-vacuous)",
                           "HARD_DELETION_MUTATION (9 of 18 HARD rows whose §06 mutation is HARD-loss)",
-                          "STATE_CONFLICT on a declared exclusion relation, with a legal-coexistence probe"],
-            "not_supported": ["independent requiredness (1,385 Q rows are VERBATIM_ONLY, 54 route N/A)",
+                          "STATE_CONFLICT on a NATURAL exclusion relation, 2 of 8 E00 rows executed "
+                          "(6 HOLD_ORACLE_UNBOUND), with legal-coexistence probes"],
+            "not_supported": ["provenance: value equality with the original source was NOT re-derived by "
+                              "this receipt (original_source_comparison is a diagnostic, not a gate)",
+                              "independent requiredness (all 1,385 Q rows VERBATIM_ONLY, 54 route N/A)",
                               "9 HARD §06 mutations that are not HARD-loss",
                               "54 TECH_ROUTE mutations: §06 does not name the protected field",
                               "tool availability / pin / licence / lock (B5 duty)",
                               "any B2 acceptance, completion or product execution"]},
         "parent_source": parent_info,
+        "original_source_comparison": {
+            "rule": "every non-empty payload column must occur verbatim in the cited original source "
+                    "line (Q rows: carrier 463dcf33… at q_row.carrier_line; others: dd37a40b… span)",
+            "compared": orig_cmp_n, "coarse_rule_mismatches": orig_cmp_fail,
+            "status": "DIAGNOSTIC_ONLY_NOT_A_GATE",
+            "note": "mismatches are dominated by formatting differences between the payload cells and "
+                    "the carrier table row; the Maker does not claim provenance on this basis",
+            "scope": "column-substring presence, not semantic equality",
+        },
         "spec": {"path": spec["path"], "bytes": spec["bytes"], "raw_sha256": spec["raw_sha256"],
                  "pin_match": spec["pin_match"]},
         "census": {"units": len(us), "cases": len(out_cases),

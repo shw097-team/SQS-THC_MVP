@@ -3,18 +3,18 @@
  "batch": "B2",
  "subject": "SST/SQS-THC/PH01/E00",
  "original_wave": "P1-W00M",
- "frozen_at": "2026-11-26T15:07:19+08:00",
- "round": 3,
+ "frozen_at": "2026-11-26T15:32:48+08:00",
+ "round": 4,
  "artefacts": [
   {
    "path": "20_DEV/b2_reader/b2_ops_qrows2.py",
-   "bytes": 15761,
-   "raw_sha256": "08e0ed21896cd2df0cfcf8a18483db4b4922f8118ccc5c2aea38b5a54148c045"
+   "bytes": 16325,
+   "raw_sha256": "4426772363997ff3eec4f7abd98af60e3b95fef38247a7ee78486af4c23bb49f"
   },
   {
    "path": "20_DEV/b2_reader/b2_ops_tqaep2.py",
-   "bytes": 15879,
-   "raw_sha256": "c59cbc6a01cc339374838eb98a634bbe06bd8c08a4809ff98b67860df4d4ffcc"
+   "bytes": 19756,
+   "raw_sha256": "a7f1505b70ccc6083046f3f0f44685ef38ca346cc74316803f0656f431c86334"
   },
   {
    "path": "20_DEV/b2_reader/b2_parse.py",
@@ -23,21 +23,21 @@
   },
   {
    "path": "20_DEV/b2_reader/b2_semantics.py",
-   "bytes": 15724,
-   "raw_sha256": "e57b54c18b94190281bbf4830429faa4d6d29db3a8f55742d58744220f5d7be0"
+   "bytes": 16464,
+   "raw_sha256": "a92bbef5431aa80d4932fab812efbc1c7ac815e5eed6ffb4f2d6f7f5b3a2e720"
   },
   {
-   "path": "40_OPS/b2_toolreadset_20261126T150645.json",
-   "bytes": 3046004,
-   "raw_sha256": "590f1ff9d3b62f99a8dd301888d09bda5f4cea60f86edef876f4439ce7458ef5"
+   "path": "40_OPS/b2_toolreadset_20261126T153100.json",
+   "bytes": 3142007,
+   "raw_sha256": "ef70347e3c2d2efe3efe2c19985cf8734bed41d9a7cd55c5e6e3bb43edf3d837"
   },
   {
-   "path": "40_OPS/b2_tqaep_20261126T150657.json",
-   "bytes": 2852830,
-   "raw_sha256": "6a42149040678951b91fa6ac5d3a4d05af3872b6367cbc56e6c877eabf0d77e1"
+   "path": "40_OPS/b2_tqaep_20261126T153235.json",
+   "bytes": 3005291,
+   "raw_sha256": "329af00319776143526d5aff7630a9f592f3a16e74d21f17f3ab9ea4fb33178f"
   }
  ],
- "candidate_digest": "c669fe557dfab826da5514dbe6b7aa28ff9ff6cc41fcc3580052ca82b696de05",
+ "candidate_digest": "1dabe8cf59bbd2807f690fd1125291afc0bd845d97e09811d745e73286bd7b2b",
  "candidate_digest_rule": "sha256 over the LF-joined '<sha>  <path>' lines of artefacts SORTED by path, no trailing LF (two spaces)",
  "claim_ceiling": "ROW_PAYLOAD_PROVENANCE_AND_CLAUSE_IDENTITY",
  "effect": "SOURCE_READ",

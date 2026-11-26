@@ -11,7 +11,7 @@
 |---|---|
 | 上游知識庫位置 | **被重新編排**：B1–B8 SPEC 已移入 `W0_B1-B8_NATIVE_FIRST_2026-11-26_r4_HERMES_FINAL\SST_PLP_PH01_W0_B1-B8_執行控制小包\`。B1/B2 的 raw sha **未變**（`13294cad…` / `140de5bc…`），故以 **sha 認身分**、不再以路徑深度找檔；`b1_reader` 與 `b2_semantics` 已改為 by-sha 定位 |
 | B1 | 修完 round-3 的 11 項中 10 項（第 3 項措辭於 round 4 判 PARTIAL）、再修 round-4 指出的 5 項 Maker 缺陷中的 4 項；**round 4 判 `B1_ACCEPTED = NO`**；已 freeze round-5 候選並送 round 5（本次 SESSION 內未取回 verdict） |
-| B2 | **round-1 Checker 10 項缺陷已全部重做（round-2 候選）**：`direct_clause_sha` **1,465/1,465 可重現**（規則＝`direct_parent_ref` + a..b 含第 b 行 LF；round-1 指出 Maker 用了錯的 ref）；歷史 **72 = HARD 16 + E00_TECH 2 + TECH_ROUTE 54** 可重現、**54 = TECH_ROUTE**；requiredness 改標 `VERBATIM_ONLY`（1,385）／route N/A（54）並撤回「0 不一致＝證據」；象限承認兩訊號共線、改用 disjoint `source_row` 區間佐證；namespace NEG 改為丟／偽 namespace 且 naive 命中共 1,385；STATE_CONFLICT 改宣告式互斥＋合法共存探針；carrier 1,385 列以 sha 重綁。NEG 終態 **PASS 1,397／PASS_INTERPRETED 54／HOLD_SPEC_MUTATION_UNIMPLEMENTED 14／FAIL 0** |
+| B2 | **round-1 Checker 10 項缺陷已全部重做（round-2 候選）**：`direct_clause_sha` **1,465/1,465 可重現**（規則＝`direct_parent_ref` + a..b 含第 b 行 LF；round-1 指出 Maker 用了錯的 ref）；歷史 **72 = HARD 16 + E00_TECH 2 + TECH_ROUTE 54** 可重現、**54 = TECH_ROUTE**；requiredness 改標 `VERBATIM_ONLY`（1,385）／route N/A（54）並撤回「0 不一致＝證據」；象限承認兩訊號共線、改用 disjoint `source_row` 區間佐證；namespace NEG 改為丟／偽 namespace 且 naive 命中共 1,385；STATE_CONFLICT 改宣告式互斥＋合法共存探針；carrier 1,385 列以 sha 重綁。NEG 終態 **PASS 1,396／PASS_INTERPRETED 54／HOLD_SPEC_MUTATION_UNIMPLEMENTED 9／HOLD_ORACLE_UNBOUND 6／FAIL 0**（round-3 verdict 後再修 8 項） |
 | B3 | 只做 **DEV-1 parse**（`B3.PARSE@1`，claim ceiling `CENSUS_AND_PIN_ONLY`）：365 Unit、payload pin 365/365、§06 752 案（365 POS／387 NEG）、case_id 雙向 join 0 落差 |
 | B4–B8 | **未開工**（見 §5） |
 | 發布 | 見 §6 |
@@ -29,9 +29,10 @@
 | B1 TQAEP | `40_OPS/b1_tqaep_20261126T141842.json` | `821f3e61…`（41,636 B） |
 | B1 checker round 4 | `40_OPS/b1_checker_round4_verdict.md` | `B1_ACCEPTED = NO`（9/11 PASS，item 3 PARTIAL） |
 | B1 checker round 5 | `40_OPS/b1_checker_round5_verdict.md` | 4/5 round-4 defects PASS；第 5 項（manifest 過期）判 FAIL，但該 manifest 已於 verdict 之後重建（現與 freeze 0 落差）。`B1_ACCEPTED` 仍 **NO** |
-| B2 freeze | `40_OPS/b2_candidate_freeze_round3.json` | digest `c669fe55…` |
-| B2 ToolReadSet@2 | `40_OPS/b2_toolreadset_20261126T150645.json` | `590f1ff9…`（3,046,004 B） |
-| B2 TQAEP@2 | `40_OPS/b2_tqaep_20261126T150657.json` | `6a421490…`（2,852,830 B） |
+| B2 freeze | `40_OPS/b2_candidate_freeze_round4.json` | digest `1dabe8cf…` |
+| B2 ToolReadSet@2 | `40_OPS/b2_toolreadset_20261126T153100.json` | `ef70347e…`（3,142,007 B） |
+| B2 TQAEP@2 | `40_OPS/b2_tqaep_20261126T153235.json` | `a1c66c6a…`（3,005,422 B） |
+| B2 checker | `40_OPS/b2_checker_round3_verdict.md` | **7 PASS / 3 PARTIAL / 8 新缺陷；`B2_ACCEPTED = NO`**（clause 1,465/1,465、digest、72/54、2,930 case 皆由其 Node 實作獨立重算通過） |
 | B3 parse | `40_OPS/b3_parse_20261126T142325.json` | `6dff324f…` |
 | 交付索引 | `DELIVERY_MANIFEST.json` | 由 `20_DEV/build_delivery_manifest2.py` 重建（@2） |
 
@@ -62,7 +63,7 @@ r1 的 `b1_run_…130421` / `b1_tqaep_…130423` / `b2_*_…122128` / `b2_tqaep_
 - **NEG 保真**：namespace 案改為丟掉／偽造 namespace 的**身分**變異（naive 尾碼實作確實命中共 1,385，非空轉）；HARD 僅 9 列其 §06 mutation 為 HARD-loss 者以單欄變異執行，其餘 9 列改判 `HOLD_SPEC_MUTATION_UNIMPLEMENTED`（§06 mutation 文字與其期望碼不同，Maker 不得自造 oracle）；54 route 列改兩個單欄 arm 且降級為 `PASS_INTERPRETED`（§06 未指名欄位）；STATE_CONFLICT 改以**宣告式互斥關係 + token 相等**判定（先前 substring 版本會把 `NOT_SELECTED` 誤觸 `SELECTED`，屬真缺陷），並以 `INSTALLED+ENABLED`／`DEFER_NOFIT+NOT_SELECTED` 兩個合法輸入作反向探針。8 列 E00 中 3 列有宣告式對照可執行、2 列無（`SELECTED_DOCUMENT_ADAPTER`／`SELECTED_OPTIONAL_DISABLED`）→ 後者列 HOLD 不發明關係；連同 9 列 HARD 合計 14 列 HOLD。
 - **gate 診斷**：`20_DEV/b2_gate_probe.py` → `40_OPS/b2_gate_probe.json`（8 個 state_gate probe 全對、3 列 E00 對照成立、5 個 namespace probe 全部 `baseline_rows=1／namespace_dropped=NAMESPACE_JOIN_DENY／naive_matches≥1`）。此為 Maker 診斷，不是接受。
 - **carrier 已綁**：1,385 列引用 `463dcf33…`（`SST_PLP_共用實質正文_工具合約_…r2.md`，實際在 `PHASE 01~04\藍圖\實質正文\`，宣告路徑寫 `PHASE 00~04`）→ `CARRIER_SOURCE_REBOUND_BY_SHA`／`CANDIDATE_NOT_RATIFIED`。
-- `claim_ceiling` = `ROW_PAYLOAD_PROVENANCE_AND_CLAUSE_IDENTITY`，並在收據內列 `not_supported`（獨立 requiredness、9 列 HARD 非-loss mutation、54 列未指名 mutation、工具可用性、任何接受）。
+- `claim_ceiling` = **`ROW_PAYLOAD_PIN_INTEGRITY_AND_CLAUSE_SPAN_IDENTITY`**（round-3 判定 `PROVENANCE` 超額後降級）：收據只證 payload pin 與 clause span 身分，**不證**與原來源的值相等；原本來源比對降為 `DIAGNOSTIC_ONLY_NOT_A_GATE`（`coarse_rule_mismatches` 明列）。`not_supported` 亦列明：獨立 requiredness（1,385 Q 全 `VERBATIM_ONLY`、54 route N/A）、9 列 HARD 非-loss mutation、54 列未指名 mutation、工具可用性、任何接受。
 - `B2_ACCEPTED`：**不成立**（round-3 分離 Checker 已派、verdict 未取回；Maker 不自封）。
 
 ---
@@ -111,6 +112,7 @@ r1 的 `b1_run_…130421` / `b1_tqaep_…130423` / `b2_*_…122128` / `b2_tqaep_
 | 6 | **proxy 探針抓到 substring 缺陷**：`SELECTED` ⊂ `NOT_SELECTED`，合法 `DEFER_NOFIT+NOT_SELECTED` 被誤判衝突 | 連續 4 輪（1→3→2→0 後再現） | 以子字串比對 token | 改 `_state_tokens` 精確 token 比對；`contradicting_state` 同步改；無對照者改判 HOLD | 已解，8 個 probe 全對 |
 | 7 | 前景 `timeout=900s` 超過 600 上限 → 被轉背景 | 1 | 工具上限 | 改背景＋notify | 已解 |
 | 8 | round-2 checker 跑了 7 分鐘仍無 verdict | 1 | 正常長跑（round 1 約 45 分） | 因候選已被 round-3 取代而 kill，改派 round-3 | 已重派（`proc_22d2120961bb`，5 分心跳） |
+| 9 | round-3 verdict 指出 8 個新缺陷（371 Q 列 requiredness 自比、E00 3/2 數字為狀態數而非列數、licence 把 `UNBOUND` 當授權、Q pin 取到 need 句、provenance claim 超額、分母 864 vs 1,014、namespace 只取 last segment、POS 未含 clause） | 8 項各 1 次 | Maker 語意與詞彙不統一；其中 licence 與 pin 是**真的錯**（會污染 B5） | 逐項修並以探針驗；`UNBOUND` 不再當授權、Q pin 改 `NOT_EVALUATED_Q_ROW`、claim 降級、namespace 改 `endswith` 判丟／偽並保留 unknown→`[]` | 已修；round-4 checker 已派（`proc_4b1d8309a37f`） |
 
 **自我判定的問題**：#6 屬同一根因的**第 5 次**修補，已超出「每 finding 最多 2 次實質修補」的規則。本輪之所以仍修，是因為探針暴露的是**程式缺陷**（substring）而非 oracle 語意分歧；但若 round-3 Checker 仍判此 gate 不可靠，Maker **不再迭代**，直接記 `HOLD_ORACLE_UNBOUND` 並要求原 Domain Owner 提供互斥關係表。
 

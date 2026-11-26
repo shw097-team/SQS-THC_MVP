@@ -207,13 +207,17 @@ REQ_TOKENS = {"HARD", "EVAL_ONLY", "OPTIONAL", "DEFER_WITH_TRIGGER", "DEFER_NOFI
 
 # states that cannot hold at the same time. Coexistence of INSTALLED with ENABLED is legal and is
 # used as the discrimination probe: a gate that flags "any two distinct states" would fail it.
-EXCLUSIVE_PAIRS = (("ENABLED", "DISABLED"), ("SELECTED", "NOT_SELECTED"),
-                   ("INSTALLED", "NOT_INSTALLED"), ("BOUND", "UNBOUND"),
-                   ("VERIFIED", "NOT_VERIFIED"), ("APPROVED", "REJECTED"),
-                   ("REUSE_INTERNAL_DESIGN", "SELECTED_DESIGN_ONLY"),
-                   ("DEFER_NOFIT", "SELECTED_DESIGN_ONLY"),
-                   ("REFERENCE_ONLY", "SELECTED_DESIGN_ONLY"),
-                   ("HARD", "EVAL_ONLY"))
+# Two ownership classes. NATURAL pairs are self-evident mutual exclusions; MAKER_DECLARED pairs were
+# inferred by the Maker from the design-selection vocabulary and are NOT in the SPEC, so a case that
+# would need one of them must be reported HOLD_ORACLE_UNBOUND, not executed.
+EXCLUSIVE_PAIRS_NATURAL = (("SELECTED", "NOT_SELECTED"), ("INSTALLED", "NOT_INSTALLED"),
+                           ("ENABLED", "DISABLED"), ("BOUND", "UNBOUND"),
+                           ("VERIFIED", "NOT_VERIFIED"), ("APPROVED", "REJECTED"),
+                           ("HARD", "EVAL_ONLY"))
+EXCLUSIVE_PAIRS_MAKER_DECLARED = (("REUSE_INTERNAL_DESIGN", "SELECTED_DESIGN_ONLY"),
+                                  ("DEFER_NOFIT", "SELECTED_DESIGN_ONLY"),
+                                  ("REFERENCE_ONLY", "SELECTED_DESIGN_ONLY"))
+EXCLUSIVE_PAIRS = EXCLUSIVE_PAIRS_NATURAL + EXCLUSIVE_PAIRS_MAKER_DECLARED
 
 
 def clause_rule_note() -> str:
@@ -304,18 +308,22 @@ def join_rows(selector: dict, index: dict[str, list[dict]],
         if len(rows) != 1:
             raise OracleError("STATE_CONFLICT")          # duplicate identity, not a join
         return rows
-    tail = key.split("::")[-1]
-    hits = tail_index.get(tail) if tail_index is not None else [
-        k for k in index if k.split("::")[-1] == tail]
-    if hits:
+    # Not an existing full key. If some indexed key ENDS WITH the presented key (namespace dropped) or
+    # the presented key ends with a namespace-stripped indexed key (namespace forged), the caller has
+    # tampered with the identity -> deny. Nothing matching at all is simply an unknown key.
+    if any(k.endswith(key) for k in index):
         raise OracleError("NAMESPACE_JOIN_DENY")
+    if "::" in key:
+        stripped = key.split("::", 1)[1]
+        if any(k.endswith(stripped) for k in index):
+            raise OracleError("NAMESPACE_JOIN_DENY")
     return []
 
 
 def namespace_blind_lookup(key: str, index: dict[str, list[dict]],
                            tail_index: dict[str, list[str]]) -> list[str]:
     """What a tail-only implementation would do. Used to prove a refusal is not vacuous."""
-    return list(tail_index.get(key.split("::")[-1], []))
+    return [k for k in index if k.endswith(key) or key.endswith(k)]
 
 
 def requiredness_gate(declared: str, independent: str, claimed_enable: bool) -> str | None:
@@ -327,14 +335,13 @@ def requiredness_gate(declared: str, independent: str, claimed_enable: bool) -> 
 
 
 def contradicting_state(state: str) -> str | None:
-    """The row's counterpart for a declared exclusion, matched on TOKENS (never substrings).
+    """The row's counterpart for a NATURAL exclusion, matched on tokens.
 
-    Returns None when no declared exclusion mentions any of the row's tokens: then the §06 mutation
-    has no counterpart in this gate and the case must be reported HOLD_SPEC_MUTATION_UNIMPLEMENTED
-    rather than invented.
+    Maker-declared pairs are deliberately excluded: a row whose only counterpart would come from
+    them must be reported HOLD_ORACLE_UNBOUND (the design-selection owner owes that relation).
     """
     toks = _state_tokens([state])
-    for a, b in EXCLUSIVE_PAIRS:
+    for a, b in EXCLUSIVE_PAIRS_NATURAL:
         if a in toks:
             return b
         if b in toks:
