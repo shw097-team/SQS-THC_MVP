@@ -3,18 +3,28 @@
  "batch": "B2",
  "subject": "SST/SQS-THC/PH01/E00",
  "original_wave": "P1-W00M",
- "frozen_at": "2026-11-26T15:47:41+08:00",
- "round": 5,
+ "frozen_at": "2026-11-26T16:06:28+08:00",
+ "round": 6,
  "artefacts": [
   {
+   "path": "20_DEV/b2_gate_probe.py",
+   "bytes": 5738,
+   "raw_sha256": "a3c6ff3e7492ff0cf61a5abc093cdf0f7816b10b8c12d77f2f05f9bc02543c80"
+  },
+  {
+   "path": "20_DEV/b2_reader/b2_ops_qrows.py",
+   "bytes": 5680,
+   "raw_sha256": "b9bad6a11e6e9fed3bf733ed1e6aa52bdc223267a3275245502792fa5143dc90"
+  },
+  {
    "path": "20_DEV/b2_reader/b2_ops_qrows2.py",
-   "bytes": 17948,
-   "raw_sha256": "7604b437dd0ee9aabb4ef1814d5bba569ff5f10d7b78419452ca9bcd9b102f7a"
+   "bytes": 18068,
+   "raw_sha256": "19f78c1d7d1c30756b8d72324eb6c7eff82291aaa9d28e1ca7aa4236d449385a"
   },
   {
    "path": "20_DEV/b2_reader/b2_ops_tqaep2.py",
-   "bytes": 19728,
-   "raw_sha256": "962a23b002498e588759424c72a014dc8ba84f3e2735ffcc81791ccdc1c3c47c"
+   "bytes": 19756,
+   "raw_sha256": "b62b346e6e875b3f2778ddb012a83fa329b0c3d4e1e9e2dec5380b1d1428be42"
   },
   {
    "path": "20_DEV/b2_reader/b2_parse.py",
@@ -23,28 +33,33 @@
   },
   {
    "path": "20_DEV/b2_reader/b2_semantics.py",
-   "bytes": 16464,
-   "raw_sha256": "a92bbef5431aa80d4932fab812efbc1c7ac815e5eed6ffb4f2d6f7f5b3a2e720"
+   "bytes": 16873,
+   "raw_sha256": "91cca6e730d31876151f2eee08d9cf62b26ce8c61bb1983cccdbcd5048fcf48c"
   },
   {
-   "path": "40_OPS/b2_toolreadset_20261126T154724.json",
-   "bytes": 3264972,
-   "raw_sha256": "402d2b085a383be04dc21a8c435472a0f8a0e7ae9c9acc0107aca20a0a068c94"
+   "path": "40_OPS/b2_gate_probe.json",
+   "bytes": 4032,
+   "raw_sha256": "397088f53156b9192292a16b910e8a84ed005d1c4e7f013c359dee66bd0ec7f4"
   },
   {
-   "path": "40_OPS/b2_tqaep_20261126T154735.json",
+   "path": "40_OPS/b2_toolreadset_20261126T160603.json",
+   "bytes": 3264963,
+   "raw_sha256": "3cd9efdc42a35c89ff996eff5ab5641597525204fc37d8a743d18d274818279b"
+  },
+  {
+   "path": "40_OPS/b2_tqaep_20261126T160627.json",
    "bytes": 3005291,
-   "raw_sha256": "c25ba0de68dc86bc283e3141bd08713c87a49405b8c2759842d2af41ebd3c00a"
+   "raw_sha256": "d24815e81d453fa869bf812927a23d9202e3a652d030e0d9577afdcd8a3d1a20"
   }
  ],
- "candidate_digest": "c7a12bcc9f312b700502c13f25ac0c08b2f5c9975bdc4a9db369cad8490c2800",
+ "candidate_digest": "913a76c5b58d83cfc0826003a185f5ce236214cef639cc31386c004e06fd8f17",
  "candidate_digest_rule": "sha256 over the LF-joined '<sha>  <path>' lines of artefacts SORTED by path, no trailing LF (two spaces)",
  "claim_ceiling": "ROW_PAYLOAD_PIN_INTEGRITY_AND_CLAUSE_SPAN_IDENTITY",
  "effect": "SOURCE_READ",
  "write_set": [],
  "preimage": "N/A",
  "fin_order": "DENY",
- "supersedes": "40_OPS/b2_candidate_freeze_20261126T141949.json",
+ "supersedes": "40_OPS/b2_candidate_freeze_round4.json",
  "not_claimed": [
   "B2 acceptance/completion",
   "provenance: value equality with the original source was NOT re-derived by this receipt (original_source_comparison is a diagnostic, not a gate)",

@@ -15,7 +15,7 @@ no requiredness/namespace/state semantics. This version replaces it:
   Every NEG also evaluates the *baseline* through the same oracle; a mutation that the baseline
   already fails is not evidence.
 
-Not claimed: clause-level identity (the generator's clause-sha rule is unbound), tool availability,
+Not claimed: semantic clause identity (only span+sha identity) (the generator's clause-sha rule is unbound), tool availability,
 licence/lock, B5 selection, any execution.
 """
 from __future__ import annotations

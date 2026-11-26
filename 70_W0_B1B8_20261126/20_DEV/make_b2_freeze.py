@@ -34,6 +34,9 @@ def main():
                 "20_DEV/b2_reader/b2_parse.py",
                 "20_DEV/b2_reader/b2_ops_qrows2.py",
                 "20_DEV/b2_reader/b2_ops_tqaep2.py",
+                "20_DEV/b2_gate_probe.py",
+                "20_DEV/b2_reader/b2_ops_qrows.py",   # the pinned old oracle for 72/54
+                "40_OPS/b2_gate_probe.json",
                 trs, tq):
         p = os.path.join(WAVE, rel)
         arts.append({"path": rel, "bytes": os.path.getsize(p), "raw_sha256": sha_file(p)})
@@ -53,7 +56,7 @@ def main():
                                   "SORTED by path, no trailing LF (two spaces)"),
         "claim_ceiling": claim,
         "effect": "SOURCE_READ", "write_set": [], "preimage": "N/A", "fin_order": "DENY",
-        "supersedes": "40_OPS/b2_candidate_freeze_20261126T141949.json",
+        "supersedes": "40_OPS/b2_candidate_freeze_round4.json",
         "not_claimed": ["B2 acceptance/completion"] + not_claimed,
         "claim_source": "copied from the TQAEP receipt at freeze time (single source, no drift)",
         "neg_holds": {k: v for k, v in (tq_doc.get("tally") or {}).items() if "HOLD" in k},

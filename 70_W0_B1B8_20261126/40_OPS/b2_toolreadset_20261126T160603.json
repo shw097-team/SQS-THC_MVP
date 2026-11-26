@@ -1,6 +1,6 @@
 {
  "schema": "SST.PH01.W0.B2.ToolReadSet@2",
- "generated_at": "2026-11-26T15:47:24+08:00",
+ "generated_at": "2026-11-26T16:06:03+08:00",
  "subject": "SST/SQS-THC/PH01/E00",
  "original_wave": "P1-W00M",
  "bid": 2,
@@ -119,18 +119,16 @@
     },
     "excluded": "NOT_EVALUATED_Q_ROW is not a version verdict"
    },
-   "conclusion": "both historical numbers are TRUE and reproducible from the same SPEC plus the pinned old predicate: 72 = 16 HARD + 2 E00_TECH + 54 TECH_ROUTE, and 54 = TECH_ROUTE exactly. They measure 'no usable pin text', not 'no tool' and not 'not installed'. The semantically clean no-version count is 1460. B5 must consume the per-row pin_state, never either historical scalar.",
+   "conclusion": "both historical numbers are TRUE and reproducible from the same SPEC plus the pinned old predicate: 72 = 16 HARD + 2 E00_TECH + 54 TECH_ROUTE, and 54 = TECH_ROUTE exactly. They measure 'no usable pin text', not 'no tool' and not 'not installed'. The semantically clean no-version count is 75. B5 must consume the per-row pin_state, never either historical scalar.",
    "per_row_state_vs_old": {
     "A_unbound": 16,
-    "B_no_version": 1460,
-    "A_only": 0,
-    "B_only": 1444
+    "B_no_version": 75,
+    "B_no_version_note": "excludes NOT_EVALUATED_Q_ROW"
    }
   },
   "typed_gaps": {
    "pin_unbound": 16,
-   "lock_unbound": 1465,
-   "licence_unbound": 0
+   "lock_unbound": 1465
   },
   "note": "pin/licence/lock/first_probe per tool is B5's selection duty; B2 records the gap as a typed value and never fills it from candidate output"
  },

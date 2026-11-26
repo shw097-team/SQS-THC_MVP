@@ -3,7 +3,7 @@
 
 Changes from @1 (whose receipt claimed PAYLOAD_INTEGRITY_ONLY only):
 
-* quadrant census cross-checked on three independent signals (H4 section, key namespace prefix,
+* quadrant census cross-checked on two COLLINEAR key signals (declared as collinear) (H4 section, key namespace prefix,
   q_row.full_key);
 * the two conflicting "unbound pin" counts (72 in ToolReadSet@1, 54 in the old TQAEP) are
   reconciled by naming both predicates and the exact set difference;
@@ -181,13 +181,15 @@ def main() -> int:
                        "the pinned old predicate: 72 = 16 HARD + 2 E00_TECH + 54 TECH_ROUTE, and 54 "
                        "= TECH_ROUTE exactly. They measure 'no usable pin text', not 'no tool' and "
                        "not 'not installed'. The semantically clean no-version count is "
-                       f"{len(clean_no_version)}. B5 must consume the per-row pin_state, never "
+                       f"{sum(1 for r in clean_no_version if r['pin_state'] != 'NOT_EVALUATED_Q_ROW')}"
+                       ". B5 must consume the per-row pin_state, never "
                        "either historical scalar."),
     }
     a = {r["unit_id"] for r in rows if r["pin_state"] == "UNBOUND"}
     b = {r["unit_id"] for r in clean_no_version}
-    pin_recon["per_row_state_vs_old"] = {"A_unbound": len(a), "B_no_version": len(b),
-                                         "A_only": len(a - b), "B_only": len(b - a)}
+    pin_recon["per_row_state_vs_old"] = {"A_unbound": len(a), "B_no_version": len(b) - sum(1 for r in clean_no_version
+                                 if r["pin_state"] == "NOT_EVALUATED_Q_ROW"),
+                             "B_no_version_note": "excludes NOT_EVALUATED_Q_ROW"}
 
     hard = [r for r in rows if r["kind"] == "HARD"]
     e00 = [r for r in rows if r["kind"] == "E00_TECH"]
@@ -269,7 +271,6 @@ def main() -> int:
             "typed_gaps": {
                 "pin_unbound": sum(1 for r in rows if r["pin_state"] == "UNBOUND"),
                 "lock_unbound": sum(1 for r in rows if r["lock_state"] == "UNBOUND"),
-                "licence_unbound": sum(1 for r in rows if r["licence_state"] == "UNBOUND"),
             },
             "note": "pin/licence/lock/first_probe per tool is B5's selection duty; B2 records the "
                     "gap as a typed value and never fills it from candidate output",

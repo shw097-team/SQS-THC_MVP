@@ -21,7 +21,8 @@ CASES = [
     (["DEFER_NOFIT", "NOT_SELECTED"], None, "legal compound: a deferral implies not-selected"),
     (["INSTALLED", "ENABLED"], None, "legal coexistence: the probe that keeps the gate from being true"),
     (["INSTALLED", "NOT_INSTALLED"], "STATE_CONFLICT", "declared exclusion installed/not"),
-    (["SELECTED_DESIGN_ONLY", "REFERENCE_ONLY"], "STATE_CONFLICT", "competing selections"),
+    (["SELECTED_DESIGN_ONLY", "REFERENCE_ONLY"], None,
+     "maker-declared relation: NOT a gate relation, so the NATURAL gate must stay silent"),
     (["REUSE_INTERNAL_DESIGN"], None, "single state"),
 ]
 
@@ -57,15 +58,23 @@ def main() -> int:
             got = None
         except S.OracleError as e:
             got = str(e)
+        dropped = "::".join(u["key"].split("::")[1:])
         ns.append({"unit_id": u["unit_id"],
                    "baseline_rows": len(S.join_rows({"key": u["key"]}, idx, tail)),
                    "namespace_dropped": got,
-                   "naive_matches": len(S.namespace_blind_lookup(u["key"], idx, tail))})
+                   "naive_matches_on_dropped_key": len(S.namespace_blind_lookup(dropped, idx, tail)),
+                   "naive_note": "lookup is performed on the NAMESPACE-DROPPED key, so a hit is not "
+                                 "a self-comparison"})
 
     out = {
         "schema": "SST.W0.B2.GATE_PROBE/1",
         "why": "the STATE_CONFLICT oracle and the namespace oracle each needed more than two repair "
                "cycles; this probe records whether the relation is declared or fitted",
+        "state_gate_with_maker_pair_diagnostic": [
+            {"input": ["REUSE_INTERNAL_DESIGN", "SELECTED_DESIGN_ONLY"],
+             "natural": S.state_gate(["REUSE_INTERNAL_DESIGN", "SELECTED_DESIGN_ONLY"]),
+             "with_maker_pairs": S.state_gate_with_maker_pairs(["REUSE_INTERNAL_DESIGN",
+                                                               "SELECTED_DESIGN_ONLY"])}],
         "state_gate_cases": [{"input": i, "expected": e, "observed": S.state_gate(i),
                               "ok": S.state_gate(i) == e, "note": n} for i, e, n in CASES],
         "state_gate_all_ok": all(S.state_gate(i) == e for i, e, n in CASES),
@@ -75,9 +84,12 @@ def main() -> int:
         "e00_rows": pairs,
         "e00_rows_ok": all(v["status"] in ("OK", "HOLD_NO_DECLARED_COUNTERPART")
                            for v in pairs.values()),
-        "e00_rows_with_declared_counterpart": sum(1 for v in pairs.values() if v["status"] == "OK"),
-        "e00_rows_hold_no_counterpart": sum(1 for v in pairs.values()
-                                           if v["status"] == "HOLD_NO_DECLARED_COUNTERPART"),
+        "e00_distinct_states_with_counterpart": sum(1 for v in pairs.values() if v["status"] == "OK"),
+        "e00_distinct_states_hold": sum(1 for v in pairs.values()
+                                        if v["status"] == "HOLD_NO_DECLARED_COUNTERPART"),
+        "e00_units_with_counterpart": None,   # filled from the TQAEP tally below
+        "note": "the 8 E00 NEG cases are 2 executed / 6 HOLD_ORACLE_UNBOUND per the frozen TQAEP; "
+                "the keys above are distinct STATES, not rows",
         "namespace_probe": ns,
         "claim": "MAKER_DIAGNOSTIC_ONLY — not an acceptance, not a substitute for the checker",
     }

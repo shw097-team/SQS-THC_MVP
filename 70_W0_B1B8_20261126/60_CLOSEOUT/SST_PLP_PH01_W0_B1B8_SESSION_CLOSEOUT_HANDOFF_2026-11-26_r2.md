@@ -29,11 +29,12 @@
 | B1 TQAEP | `40_OPS/b1_tqaep_20261126T141842.json` | `821f3e61…`（41,636 B） |
 | B1 checker round 4 | `40_OPS/b1_checker_round4_verdict.md` | `B1_ACCEPTED = NO`（9/11 PASS，item 3 PARTIAL） |
 | B1 checker round 5 | `40_OPS/b1_checker_round5_verdict.md` | 4/5 round-4 defects PASS；第 5 項（manifest 過期）判 FAIL，但該 manifest 已於 verdict 之後重建（現與 freeze 0 落差）。`B1_ACCEPTED` 仍 **NO** |
-| B2 freeze | `40_OPS/b2_candidate_freeze_round5.json` | digest `c7a12bcc…`（claim 由 TQAEP 複製，不再硬寫） |
-| B2 ToolReadSet@2 | `40_OPS/b2_toolreadset_20261126T154724.json` | `402d2b08…`（3,264,972 B） |
+| B2 freeze | `40_OPS/b2_candidate_freeze_round6.json` | digest `913a76c5…`（9 件：含 probe 與舊 oracle；claim 由 TQAEP 複製） |
+| B2 ToolReadSet@2 | `40_OPS/b2_toolreadset_20261126T160603.json` | 見 manifest（licence 三態、Q pin 不評估、clean 75） |
 | B2 TQAEP@2 | `40_OPS/b2_tqaep_20261126T154735.json` | 見 manifest（claim `ROW_PAYLOAD_PIN_INTEGRITY_AND_CLAUSE_SPAN_IDENTITY`） |
 | B2 checker r3 | `40_OPS/b2_checker_round3_verdict.md` | **7 PASS / 3 PARTIAL / 8 新缺陷；`B2_ACCEPTED = NO`**（clause 1,465/1,465、digest、72/54、2,930 case 皆由其 Node 實作獨立重算通過） |
 | B3 parse | `40_OPS/b3_parse_20261126T142325.json` | `6dff324f…` |
+| B2 checker r5 | `40_OPS/b2_checker_round5_verdict.md` | **原10項全 PASS；round-4 十項 6 PASS／3 PARTIAL／2 FAIL；9 新缺陷（1 HIGH 敘述、1 HIGH gate 仍含 maker pair）；`B2_ACCEPTED = NO`** |
 | B2 checker r4 | `40_OPS/b2_checker_round4_verdict.md` | **原10項 8 PASS／2 PARTIAL；新8項 6 PASS／2 PARTIAL；10 新缺陷；`B2_ACCEPTED = NO`** |
 | 交付索引 | `DELIVERY_MANIFEST.json` | 由 `20_DEV/build_delivery_manifest2.py` 重建（@2） |
 
@@ -54,15 +55,15 @@ r1 的 `b1_run_…130421` / `b1_tqaep_…130423` / `b2_*_…122128` / `b2_tqaep_
 
 ---
 
-## 3｜B2 真實狀態（round-2 候選；round-1 Checker 十項已重做）
+## 3｜B2 真實狀態（round-6 候選；Checker 已跑 5 輪：原 10 項全 PASS、round-4 的 10 項 6 PASS／3 PARTIAL／2 FAIL 後已修）
 
-- `b2_ops_tqaep2.py`：2,930 案，**POS 1,465 PASS；NEG 1,397 PASS ＋ 54 PASS_INTERPRETED ＋ 14 HOLD_SPEC_MUTATION_UNIMPLEMENTED ＋ 0 FAIL**。SPEC §06 期望分布 1,385／72／8 仍完全一致，`orphans 0 / missing 0`。
+- `b2_ops_tqaep2.py`：2,930 案，**POS 1,465 PASS；NEG 1,396 PASS ＋ 54 PASS_INTERPRETED ＋ 9 HOLD_SPEC_MUTATION_UNIMPLEMENTED ＋ 6 HOLD_ORACLE_UNBOUND ＋ 0 FAIL**。SPEC §06 期望分布 1,385／72／8 仍完全一致，`orphans 0 / missing 0`。
 - **clause 身分已可重現 1,465/1,465**：round-1 指出 Maker 用了錯的 ref（`original_source_ref` 對 Q 列指向證據文件）。正確規則＝`direct_parent_ref`，取父檔第 a..b 行（**含第 b 行 LF**）的 UTF-8 bytes SHA；`direct_parent_ref` 於 `b2_semantics.clause_rule_note()` 明寫。
-- **歷史純量已對帳**：72 = HARD 16 ＋ E00_TECH 2（欄 5 內含 `*_UNBOUND` 哨兵）＋ TECH_ROUTE 54（無欄 5）；54 = TECH_ROUTE 恰等。兩者皆可由 SPEC ＋ 未修改的舊程式 `b2_ops_qrows.py`（`pin := sp[5]`）重現，屬「無可用 pin 文字」，不是「無工具」；語意乾淨的 no-version 計數另為 1,407。
+- **歷史純量已對帳**：72 = HARD 16 ＋ E00_TECH 2（欄 5 內含 `*_UNBOUND` 哨兵）＋ TECH_ROUTE 54（無欄 5）；54 = TECH_ROUTE 恰等。兩者皆可由 SPEC ＋ 未修改的舊程式 `b2_ops_qrows.py`（`pin := sp[5]`）重現，屬「無可用 pin 文字」，不是「無工具」；語意乾淨的 no-version 計數另為 **75**（16 HARD＋5 E00＋54 route，排除 `NOT_EVALUATED_Q_ROW`）。
 - **requiredness 已按檢查意見撤回主張**：1,385 Q 列標 `VERBATIM_ONLY`（原表行才是權威，Maker 不比對自身）、54 route 列 N/A、僅 HARD/E00 為 `RULE_CROSS_FIELD`；`disagreement_count = 0` 不再當證據；`Q4 EVAL_ONLY` 更正為「0 列，EVAL_ONLY 在 Q1」。
 - **象限**：承認 `key` 前綴與 `q_row.full_key` **共線**（同一前綴），改以 disjoint `source_row` 區間（233–672／680–1192／1200–1577／1585–1638）作額外訊號；非 Q 列 80 = 18+8+54。
-- **NEG 保真**：namespace 案改為丟掉／偽造 namespace 的**身分**變異（naive 尾碼實作確實命中共 1,385，非空轉）；HARD 僅 9 列其 §06 mutation 為 HARD-loss 者以單欄變異執行，其餘 9 列改判 `HOLD_SPEC_MUTATION_UNIMPLEMENTED`（§06 mutation 文字與其期望碼不同，Maker 不得自造 oracle）；54 route 列改兩個單欄 arm 且降級為 `PASS_INTERPRETED`（§06 未指名欄位）；STATE_CONFLICT 改以**宣告式互斥關係 + token 相等**判定（先前 substring 版本會把 `NOT_SELECTED` 誤觸 `SELECTED`，屬真缺陷），並以 `INSTALLED+ENABLED`／`DEFER_NOFIT+NOT_SELECTED` 兩個合法輸入作反向探針。8 列 E00 中 3 列有宣告式對照可執行、2 列無（`SELECTED_DOCUMENT_ADAPTER`／`SELECTED_OPTIONAL_DISABLED`）→ 後者列 HOLD 不發明關係；連同 9 列 HARD 合計 14 列 HOLD。
-- **gate 診斷**：`20_DEV/b2_gate_probe.py` → `40_OPS/b2_gate_probe.json`（8 個 state_gate probe 全對、3 列 E00 對照成立、5 個 namespace probe 全部 `baseline_rows=1／namespace_dropped=NAMESPACE_JOIN_DENY／naive_matches≥1`）。此為 Maker 診斷，不是接受。
+- **NEG 保真**：namespace 案改為丟掉／偽造 namespace 的**身分**變異（naive 尾碼實作確實命中共 1,385，非空轉）；HARD 僅 9 列其 §06 mutation 為 HARD-loss 者以單欄變異執行，其餘 9 列改判 `HOLD_SPEC_MUTATION_UNIMPLEMENTED`（§06 mutation 文字與其期望碼不同，Maker 不得自造 oracle）；54 route 列改兩個單欄 arm 且降級為 `PASS_INTERPRETED`（§06 未指名欄位）；STATE_CONFLICT 改以**宣告式互斥關係 + token 相等**判定（先前 substring 版本會把 `NOT_SELECTED` 誤觸 `SELECTED`，屬真缺陷），並以 `INSTALLED+ENABLED`／`DEFER_NOFIT+NOT_SELECTED` 兩個合法輸入作反向探針。8 列 E00：**2 列執行（U0022/U0023，`NOT_SELECTED→SELECTED` 屬自然互斥）／6 列 `HOLD_ORACLE_UNBOUND`**；Maker 宣告的設計選擇互斥（`REUSE_INTERNAL_DESIGN`／`DEFER_NOFIT`／`REFERENCE_ONLY ↔ SELECTED_DESIGN_ONLY`）**不進入執行路徑**，只作診斷；連同 9 列 HARD 合計 **15 列 HOLD**。
+- **gate 診斷**：`20_DEV/b2_gate_probe.py` → `40_OPS/b2_gate_probe.json`（7 個 state_gate 案全對、5 個 distinct E00 state 中 2 有自然對照、3 個 namespace probe 全部 `baseline_rows=1／namespace_dropped=NAMESPACE_JOIN_DENY／naive(dropped key)≥1`）。此為 Maker 診斷，不是接受。
 - **carrier 已綁**：1,385 列引用 `463dcf33…`（`SST_PLP_共用實質正文_工具合約_…r2.md`，實際在 `PHASE 01~04\藍圖\實質正文\`，宣告路徑寫 `PHASE 00~04`）→ `CARRIER_SOURCE_REBOUND_BY_SHA`／`CANDIDATE_NOT_RATIFIED`。
 - `claim_ceiling` = **`ROW_PAYLOAD_PIN_INTEGRITY_AND_CLAUSE_SPAN_IDENTITY`**（round-3 判定 `PROVENANCE` 超額後降級）：收據只證 payload pin 與 clause span 身分，**不證**與原來源的值相等；原本來源比對降為 `DIAGNOSTIC_ONLY_NOT_A_GATE`（`coarse_rule_mismatches` 明列）。`not_supported` 亦列明：獨立 requiredness（1,385 Q 全 `VERBATIM_ONLY`、54 route N/A）、9 列 HARD 非-loss mutation、54 列未指名 mutation、工具可用性、任何接受。
 - `B2_ACCEPTED`：**不成立**（round-3 分離 Checker 已派、verdict 未取回；Maker 不自封）。
@@ -121,6 +122,12 @@ r1 的 `b1_run_…130421` / `b1_tqaep_…130423` / `b2_*_…122128` / `b2_tqaep_
 **自我判定的問題**：#6 屬同一根因的**第 5 次**修補，已超出「每 finding 最多 2 次實質修補」的規則。本輪之所以仍修，是因為探針暴露的是**程式缺陷**（substring）而非 oracle 語意分歧；但若 round-3 Checker 仍判此 gate 不可靠，Maker **不再迭代**，直接記 `HOLD_ORACLE_UNBOUND` 並要求原 Domain Owner 提供互斥關係表。
 
 ---
+
+## 7.1｜B2 停止迭代的決定（依既定規則）
+
+round-5 verdict 之後，Maker 已修完其餘 9 項（gate 執行路徑限 NATURAL、`licence_unbound` 死指標移除、`clean_no_version` 文字與數值統一為 75、probe 改名與 naive 改以「去 namespace 的 key」查、freeze 綁 probe／舊 oracle／supersedes 指 round-4、closeout 內文數字全部對齊 1,396／9／6／75）。
+
+**不再開第 6 輪 Checker**：round-5 判 `B2_ACCEPTED = NO` 的理由（無 product execution、15 個 HOLD、parent/carrier 未 ratified、Q requiredness 非獨立）不是文件缺陷，再跑一輪不會改變它們。B2 以「窄 claim ＋ 15 具名 HOLD ＋ 2 上游 TT」收束，接受與否屬 Owner／原 Domain Reader 的權位，不由 Maker 迴圈推進。
 
 ## 8｜本次踩到的坑（已寫進程式）
 

@@ -217,7 +217,7 @@ EXCLUSIVE_PAIRS_NATURAL = (("SELECTED", "NOT_SELECTED"), ("INSTALLED", "NOT_INST
 EXCLUSIVE_PAIRS_MAKER_DECLARED = (("REUSE_INTERNAL_DESIGN", "SELECTED_DESIGN_ONLY"),
                                   ("DEFER_NOFIT", "SELECTED_DESIGN_ONLY"),
                                   ("REFERENCE_ONLY", "SELECTED_DESIGN_ONLY"))
-EXCLUSIVE_PAIRS = EXCLUSIVE_PAIRS_NATURAL + EXCLUSIVE_PAIRS_MAKER_DECLARED
+EXCLUSIVE_PAIRS = EXCLUSIVE_PAIRS_NATURAL   # execution relation: NATURAL only (round-5)
 
 
 def clause_rule_note() -> str:
@@ -273,7 +273,7 @@ def q_of(u: dict) -> dict:
     """Quadrant attribution from the two data-derived identity signals.
 
     The B2 SPEC has no per-quadrant section (H3 is per KIND), so the section vote is not
-    available; the namespace prefix and q_row.full_key are independent carriers of the same
+    available; the namespace prefix and q_row.full_key are collinear carriers (the same key prefix; declared as such) of the same
     original table position and must agree exactly.
     """
     kp = re.search(r"Q([1-4])", (u.get("key") or "").split("::")[0])
@@ -367,6 +367,15 @@ def _state_tokens(states: list[str]) -> set[str]:
             if t:
                 toks.add(t)
     return toks
+
+
+def state_gate_with_maker_pairs(states: list[str]) -> str | None:
+    """Diagnostic only: what the gate WOULD say if the Maker-declared pairs were admitted."""
+    toks = _state_tokens(states)
+    for a, b in EXCLUSIVE_PAIRS_NATURAL + EXCLUSIVE_PAIRS_MAKER_DECLARED:
+        if a in toks and b in toks:
+            return "STATE_CONFLICT"
+    return None
 
 
 def state_gate(states: list[str]) -> str | None:
