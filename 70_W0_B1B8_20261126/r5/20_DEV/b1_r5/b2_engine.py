@@ -478,12 +478,40 @@ def op_meta(units: list[dict]) -> dict:
             "summary": {"units": len(entries), "collected": 0, "not_executed": len(entries)}}
 
 
+
+def _now() -> str:
+    import time
+    return time.strftime("%Y-%m-%dT%H:%M:%S%z")
+
+
+def _rights_ref() -> str:
+    """The owner receipt + window actually in force, not a prose constant."""
+    import hashlib
+    import os as _os
+    win = _os.path.expanduser("~/.hgk-owner/window.json")
+    rec = (r"C:\Projects\Agent_Workspace\FHS_NEXT_Workspace"
+           r"\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\owner_ws\artifacts\OWNER_WINDOW.json")
+    try:
+        wid = json.load(open(win, encoding="utf-8")).get("window_id")
+        sha = hashlib.sha256(open(rec, "rb").read()).hexdigest()
+        return f"OWNER_WINDOW:{wid}:receipt_sha256={sha}:READ_ONLY_PROBE"
+    except Exception:
+        return "OWNER_WINDOW_UNBOUND"
+
+
 def receiver(consumer_id: str, tool_readset: dict) -> dict:
     """Minimal B3/B5 receiver: validates its own mandatory fields, emits 13 columns."""
     mandatory = CONSUMERS[consumer_id]
     receipts, refused = [], []
     for ent in tool_readset["entries"]:
-        missing = [m for m in mandatory if ent.get(m) in (None, "", [], {})]
+        # per-field emptiness: an empty LIST is a legal value for "missing" (nothing missing),
+        # while None means the field was never established
+        def _absent(field):
+            v = ent.get(field, None)
+            if field == "missing":
+                return v is None
+            return v in (None, "", {})
+        missing = [m for m in mandatory if _absent(m)]
         # a derived-but-unknown requiredness is not an acceptable value: it would let a
         # row through on a field whose original content was never established
         if ent.get("requiredness") == "UNKNOWN" and "requiredness" not in missing:
@@ -497,13 +525,14 @@ def receiver(consumer_id: str, tool_readset: dict) -> dict:
             "subject": "SST/SQS-THC/PH01/E00",
             "scope_id": (ent.get("tool_key") or ent.get("key", "")).split("::")[0],
             "spec_version": "2026-11-26_r5_Native-first_CODEX_FINAL",
-            "candidate_digest": "3c816deb8fc216eae831dddfac396217d5b224fc7575c03415ef9f08ebbfa046",
+            "candidate_digest": tool_readset.get("carrier_sha256",
+                                                 "3c816deb8fc216eae831dddfac396217d5b224fc7575c03415ef9f08ebbfa046"),
             "source_id": ent.get("tool_key") or ent.get("key", ""),
             "sha": ent.get("payload_sha") or "",
-            "rights_check_ref": "owner_allowlist+b1_locator_bindings (SOURCE_READ, no product write)",
+            "rights_check_ref": _rights_ref(),
             "decision": "REJECT" if missing else "ACCEPT_FOR_DRAFT",
             "first_fail": "MANDATORY_FIELD_MISSING" if missing else None,
-            "checked_at": None,
+            "checked_at": _now(),
             "checked_values": {"requiredness": ent.get("requiredness"),
                                "source_row": ent.get("source_row"),
                                "kind": ent.get("kind"),

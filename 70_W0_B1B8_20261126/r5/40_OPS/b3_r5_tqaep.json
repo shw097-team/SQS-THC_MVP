@@ -1,7 +1,7 @@
 {
  "schema": "SST.PH01.W0.B3.TQAEP@1",
  "spec_b3_sha256": "a1d759c7157c4ca8d34acb3f0730b74f653baaa86eb5c3c4302837d0df6deac1",
- "generated_at": "2026-11-26T23:14:33+0800",
+ "generated_at": "2026-11-26T23:57:36+0800",
  "expected_case_count": 752,
  "case_count": 752,
  "verdict_counts": {
@@ -19,6 +19,12 @@
   {
    "arm": "NAMESPACE_JOIN_DENY",
    "mutation": "R3-REGISTRY-Q1::ECP_TECH43::TECH-01::ROW=233 -> R3-REGISTRY-Q9::ECP_TECH43::TECH-01::ROW=233",
+   "observed_errors": [
+    "NAMESPACE_JOIN_DENY"
+   ],
+   "observed_row_missing": [
+    "namespace"
+   ],
    "pass": true
   },
   {

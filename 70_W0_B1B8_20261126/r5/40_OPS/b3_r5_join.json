@@ -3,8 +3,8 @@
  "inputs": {
   "tool_readset": {
    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\70_W0_B1B8_20261126\\40_OPS\\b2_r5_tool_readset.json",
-   "sha256": "4789edaa28acafdacaf2eca01570854b5bb2b964313f6c95c6744a5ee5411e4a",
-   "bytes": 514074
+   "sha256": "d4e75a3b4ac8eb7fd5932cc3c37fa2487f11d01e78c23f1ddf7774b66ad7cee3",
+   "bytes": 704302
   },
   "source_side": {
    "kind": "READSET",
@@ -35,6 +35,12 @@
   {
    "arm": "NAMESPACE_JOIN_DENY",
    "mutation": "R3-REGISTRY-Q1::ECP_TECH43::TECH-01::ROW=233 -> R3-REGISTRY-Q9::ECP_TECH43::TECH-01::ROW=233",
+   "observed_errors": [
+    "NAMESPACE_JOIN_DENY"
+   ],
+   "observed_row_missing": [
+    "namespace"
+   ],
    "pass": true
   },
   {
@@ -53,52 +59,5 @@
  ],
  "errors": [],
  "effect": "SOURCE_READ+IN_MEMORY_TRANSFORM",
- "fin_order": "DENY",
- "b0_inbound_probe": {
-  "status": "RESOLVED_BY_OWNER_AUTHORISED_RENEWAL",
-  "product_run": {
-   "command": "python -B -m b0_reader.cli read --request-json - < b0req2.json",
-   "exit": 0,
-   "stderr": "",
-   "wire_version": "SST.B0.SourceReadSet/2",
-   "entries": 1,
-   "errors": 0,
-   "write_set": [],
-   "fin_order": "DENY",
-   "entry": {
-    "source_id": "SST.ALL.W0.BLUEPRINT",
-    "sha": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
-    "bytes": 457294,
-    "clause_span": [
-     572,
-     579
-    ],
-    "clause_sha": "77132f0636e30b0cf8d5df1ae3438228b18d847d718e5ffbf5c56825229f9bf6",
-    "R": [
-     "read"
-    ],
-    "M": []
-   },
-   "captured_artifact": {
-    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\70_W0_B1B8_20261126\\40_OPS\\b0_r5_sourcereadset.json",
-    "sha256": "bdb2a03f079412434f5de11247a7a73b015d96440b00d6bc04dd6d0e05da8d0e",
-    "bytes": 3028,
-    "note": "engineering recorder copy; the product itself wrote nothing"
-   }
-  },
-  "gates_cleared_in_order": [
-   "OWNER signing window (tkinter, passphrase entered by the owner, agent never saw it)",
-   "scope must match the reader's exact tuple order b0_source_read_authority,sqs_thc_ph01_e00",
-   "descriptor rights interval renewed to the window's interval",
-   "descriptor authorization_sha + every source usage_evidence_sha re-pointed to the receipt of the window in force",
-   "descriptor file placed under 00_PREFLIGHT with a sealed ACL (no broad-principal write)",
-   "reader pin EXPECTED_DESCRIPTOR_PATH/SHA/BYTES updated"
-  ],
-  "owner_authorisation": "user message: 採用此候選並換 pin (2026-11-26)",
-  "deltas_recorded": {
-   "descriptor": "00_PREFLIGHT/B0_READ_CONTEXT_2026-11-26.json sha 2064685af26f6706ff7d6adfa1f764398e45d9ed4e89b3671f5ae70cbae3aacd 3582B",
-   "reader_pin": "20_DEV/b0_reader/native_entry.py EXPECTED_DESCRIPTOR_* updated",
-   "consequence": "B0's earlier verified candidate does not cover the modified reader; this delta needs its own freeze and separated verification"
-  }
- }
+ "fin_order": "DENY"
 }

@@ -18,7 +18,9 @@ OUT = os.path.join(R, "60_CLOSEOUT")
 
 FREEZE = json.load(open(os.path.join(OPS, "b1b2_r5_candidate_freeze.json"), encoding="utf-8"))
 B1T = json.load(open(os.path.join(OPS, "b1_r5_tqaep.json"), encoding="utf-8"))
+B1C = B1T["verdict_counts"]
 B2T = json.load(open(os.path.join(OPS, "b2_r5_tqaep.json"), encoding="utf-8"))
+B2C = B2T["verdict_counts"]
 RUN = json.load(open(os.path.join(OPS, "b1_r5_run_all.json"), encoding="utf-8"))
 EDGE = json.load(open(os.path.join(OPS, "b1_r5_edge_sec.json"), encoding="utf-8"))
 RECV = json.load(open(os.path.join(OPS, "b2_r5_receivers.json"), encoding="utf-8"))
@@ -228,7 +230,7 @@ COMBINED_C = COMMON_HEAD + f"""
 | B2 | {B2T['case_count']} | {counts_line(B2V)} | **NO** |
 
 **ACCEPT 的含義**：round3 接受的是「報告無高報」，不是批次接受。`B1_ACCEPTED`／`B2_ACCEPTED`
-仍為 NO，因為 6/12/5（B1）與 1,545（B2）個案仍 HOLD／PARTIAL／FIXTURE_ONLY，且原 Oracle／
+仍為 NO，因為 B1 尚有 {B1C.get("HOLD",0)} HOLD／{B1C.get("PARTIAL",0)} PARTIAL／{B1C.get("FIXTURE_ONLY",0)} FIXTURE_ONLY、B2 尚有 {B2C.get("HOLD",0)} HOLD，且原 Oracle／
 讀權（D-1…D-5、TT-UP-1/2、E00、ROUTE）未具。
 
 - 凍結候選 manifest：`{CAND_MANIFEST}`（{FREEZE['candidate_manifest']['artefacts']} artefacts）
@@ -267,6 +269,9 @@ D-1…D-5、TT-UP-1/2、6 E00、54 ROUTE。沒有原 Reader／原 Owner 的裁�
 | **B3 JOIN（真 ReadSet）** | 1,465 列：**atoms_ready 1,369**、atoms_held 96（原為 0／1,465） |
 | **B3 draft v2** | `40_OPS/b3_draft/SourceChildLedger.draft.v2.json` {B3D['bytes']:,} B、sha `{B3D['sha256'][:12]}`、preimage ABSENT、single_file、postimage verified；舊 draft 保留未覆寫 |
 | **B2 META** | 18 HARD：{MET['counts'].get('COLLECTED',0)} 取得官方 metadata（pydantic 2.14.4／jsonschema 4.26.0，PyPI JSON＋回應 SHA 釘定）、{MET['counts'].get('VERSION_UNBOUND',0)} pin UNBOUND、{MET['counts'].get('NOT_A_DISTRIBUTION',0)} 非發行物；未安裝、未選型 |
+| **B0→B1/B2/B3 真接收** | `40_OPS/r5_consumer_receipts.json`：B1/B2/B3 各自先固定獨立 ExpectedSet 再讀 envelope，三端 **ACCEPT**，各 13 欄齊、`checked_at` 為實跑時刻、`rights_check_ref` 為當次視窗＋收據 SHA（非常數） |
+| **接收反例自測** | `40_OPS/r5_consumer_selftest.json`：11/11（1 POS baseline＋10 單變異全拒：wire／raw／span／clause／value／authority／effect／purpose／membership／required-set） |
+| **B3 三拒絕臂** | 全部走真 callable：`NAMESPACE_JOIN_DENY`（送入真 JOIN，未宣告 namespace 拒）、`DUPLICATE_ATOM_DENY`、`TOOL_REQUIREDNESS_HOLD` |
 | **M-01 受界處置** | `40_OPS/m01_boundary_grep_receipt.json` sha `{M01[:12]}`：事件記錄、非授權所得隔離、FDA 證據只由 16/16 allow-list 依 SHA 重建、事件後未再廣域 grep |
 
 **結論**：B3 的技術／施工准入在 B2 側已具（ToolReadSet 1,465 真物件），在 B0 側被具名阻斷——

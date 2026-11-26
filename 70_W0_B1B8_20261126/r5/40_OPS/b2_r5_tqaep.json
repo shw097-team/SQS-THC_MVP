@@ -4,7 +4,7 @@
  "spec_b2_sha256": "1a11f0cf022a31a67ea35bc9dc50b627d7542c8f5589e63d1dec5dacec40b2f4",
  "expected_unit_set_sha256": "d54bdd4a5a1a6b6b48177465729222749da7e15873e78ffb7e5bbc8c3f8634e8",
  "expected_case_set_sha256": "30592c711efbd312df8005ad156038798311019cab349f912ee758b097266dd5",
- "generated_at": "2026-11-26T22:50:31+0800",
+ "generated_at": "2026-11-26T23:56:08+0800",
  "case_count": 2930,
  "expected_case_count": 2930,
  "orphan_case_ids": [],
@@ -157,8 +157,8 @@
    ]
   },
   "B5": {
-   "accepted": 0,
-   "rejected": 1465,
+   "accepted": 4,
+   "rejected": 1461,
    "mandatory_fields": [
     "tool_key",
     "source_row",
@@ -39935,6 +39935,6 @@
    "note": "a route may not restate a different requiredness"
   }
  },
- "elapsed_s": 1.1,
+ "elapsed_s": 1.8,
  "claim_ceiling": "HOLD/PARTIAL are never PASS; tool admission stays with B5/R17"
 }

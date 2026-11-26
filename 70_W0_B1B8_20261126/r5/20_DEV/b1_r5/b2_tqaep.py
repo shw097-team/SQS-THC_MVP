@@ -159,24 +159,50 @@ def main() -> int:
     for c in cases.values():
         counts[c["verdict"]] = counts.get(c["verdict"], 0) + 1
 
+    # bind the metadata that was actually collected (official registry, pinned response)
+    meta_map = {}
+    _mp = os.path.join(OUT_DIR, "b2_r5_meta.json")
+    if os.path.isfile(_mp):
+        for r in json.load(open(_mp, encoding="utf-8"))["entries"]:
+            meta_map[r["tool_id"]] = r
+
+    def _tid(key: str):
+        mm = re.findall(r"TECH-\d+", key or "")
+        return mm[-1] if mm else None
+
+    def _meta_for(key: str):
+        r = meta_map.get(_tid(key) or "")
+        if r and r.get("decision") == "COLLECTED":
+            m = r["metadata"]
+            return ({"distribution": m["distribution"], "version": m["version"],
+                     "license_expression": m["license_expression"], "license": m["license"],
+                     "provenance": m["provenance"]},
+                    None)
+        if r:
+            return (None, {"field": "metadata",
+                           "reason": "UNVERIFIED" if r["decision"] == "VERSION_UNBOUND" else "FORMAT_UNSUPPORTED",
+                           "detail": (r["missing"][0]["detail"] if r.get("missing") else r["decision"])})
+        return (None, {"field": "metadata", "reason": "UNVERIFIED",
+                       "detail": "no official metadata record for this tool key"})
+
     trs_entries = []
     for e in qres["entries"]:
         trs_entries.append({
             "tool_key": e["key"], "source_row": e.get("carrier_row"),
             "requiredness": e.get("requiredness"),
             "payload_sha": e.get("payload_sha_expected"),
-            "metadata": None, "kind": "Q_SOURCE_ROW",
+            "metadata": _meta_for(e["key"])[0], "kind": "Q_SOURCE_ROW",
             "applicability_evidence": (e.get("requiredness_basis")
                                        if e.get("requiredness") == "NOT_APPLICABLE" else None),
-            "missing": e.get("missing", []) if e["decision"] != "VERIFIED" else []})
+            "missing": ((e.get("missing", []) if e["decision"] != "VERIFIED" else [])
+                        + ([_meta_for(e["key"])[1]] if _meta_for(e["key"])[1] else []))})
     for u in hard + e00 + route:
         req, basis = B.derive_requiredness(u)
         trs_entries.append({
             "tool_key": u["key"], "source_row": None, "requiredness": req,
-            "payload_sha": u.get("payload_sha"), "metadata": None, "kind": u["kind"],
+            "payload_sha": u.get("payload_sha"), "metadata": _meta_for(u["key"])[0], "kind": u["kind"],
             "applicability_evidence": basis if req == "NOT_APPLICABLE" else None,
-            "missing": [{"field": "metadata", "reason": "UNVERIFIED",
-                         "detail": "no official metadata collected in this run"}]})
+            "missing": ([_meta_for(u["key"])[1]] if _meta_for(u["key"])[1] else [])})
     trs = {"entries": trs_entries, "namespace": qres["namespaces"],
            "union_expected": 1465, "union_emitted": len(trs_entries)}
     receivers = {cid: B.receiver(cid, trs) for cid in ("B3", "B5")}

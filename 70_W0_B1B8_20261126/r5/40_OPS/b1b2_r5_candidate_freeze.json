@@ -1,12 +1,12 @@
 {
  "schema": "SST.PH01.W0.B1B2.CANDIDATE_FREEZE@5",
- "frozen_at": "2026-11-26T23:38:16+0800",
+ "frozen_at": "2026-11-26T23:58:14+0800",
  "spec_manifest_sha256": "3c816deb8fc216eae831dddfac396217d5b224fc7575c03415ef9f08ebbfa046",
  "candidate_manifest": {
   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\70_W0_B1B8_20261126\\40_OPS\\b1b2_r5_CANDIDATE_MANIFEST.tsv",
-  "sha256": "d4753294626d8d24a046570dbc091d4fb5e8a0ee6b6a784aff8f21e72be0e82d",
-  "bytes": 3489,
-  "artefacts": 35
+  "sha256": "eb18720df2fe4b09c17ed33bfaa031f2d743d7571205d62dfa462b15d7ce01d2",
+  "bytes": 3797,
+  "artefacts": 38
  },
  "inputs": {
   "repo_root": "C:\\Projects\\Agent_Workspace\\SQS-THC",
@@ -57,8 +57,8 @@
      ]
     },
     "B5": {
-     "accepted": 0,
-     "rejected": 1465,
+     "accepted": 4,
+     "rejected": 1461,
      "mandatory_fields": [
       "tool_key",
       "source_row",

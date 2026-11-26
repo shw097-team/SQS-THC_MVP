@@ -1,0 +1,28 @@
+{
+ "schema": "SST.PH01.W0.B1B2.LOCAL_ONLY_REGISTER@2",
+ "generated_at": "2026-11-26T23:58:28+0800",
+ "rule": "verbatim source-clause text stays local; hashes and structure may be published",
+ "excluded": [
+  {
+   "path": "40_OPS/b0_r5_sourcereadset.json",
+   "sha256": "bdb2a03f079412434f5de11247a7a73b015d96440b00d6bc04dd6d0e05da8d0e",
+   "bytes": 3028,
+   "reason": "carries the observed clause value verbatim from K"
+  }
+ ],
+ "included_with_note": [
+  {
+   "path": "40_OPS/b3_draft/SourceChildLedger.draft.v2.json",
+   "sha256": "f08ec1896cf5c92d67c16a7e5dc23adb03dbbfe5f9ddd4ed91e909373dc61e5e",
+   "bytes": 315375,
+   "reason": "contains atom keys, requiredness and payload hashes only; no source text, so it is publishable"
+  }
+ ],
+ "private_artifacts_not_published": [
+  {
+   "path": "00_PREFLIGHT/B0_READ_CONTEXT_2026-11-26.json",
+   "reason": "owner-signed trust root descriptor; sha 2064685a… is referenced but the bytes stay private"
+  }
+ ],
+ "pin_delta_reproduction": "see 40_OPS/B0_READER_PIN_DELTA.md"
+}

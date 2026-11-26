@@ -81,6 +81,9 @@ def load_source_side() -> dict:
 def join(tool_readset: dict, source_side: dict) -> dict:
     rows, errors = [], []
     seen_atoms = set()
+    # the declared registry namespaces, taken from the producer's own declaration
+    declared_ns = set((tool_readset.get("namespace") or {}).keys()) or {
+        "R3-REGISTRY-Q1", "R3-REGISTRY-Q2", "R3-REGISTRY-Q3", "R3-REGISTRY-Q4"}
     for e in tool_readset["entries"]:
         key = e["tool_key"]
         # a tool key may omit its registry namespace; do not invent one
@@ -90,6 +93,12 @@ def join(tool_readset: dict, source_side: dict) -> dict:
                "requiredness": e.get("requiredness"),
                "payload_sha": e.get("payload_sha"),
                "b0_side": source_side["kind"], "missing": []}
+        if key.startswith("R3-REGISTRY-") and ns not in declared_ns:
+            errors.append({"code": "NAMESPACE_JOIN_DENY", "atom": key,
+                           "declared": sorted(declared_ns), "retryable": False})
+            row["missing"].append({"field": "namespace", "reason": "AMBIGUOUS",
+                                   "detail": f"namespace {ns!r} is not one of the declared "
+                                             f"registry namespaces"})
         if e.get("requiredness") in (None, "UNKNOWN"):
             row["missing"].append({"field": "requiredness", "reason": "UNVERIFIED",
                                    "detail": "producer emitted no classifiable requiredness"})
@@ -137,10 +146,18 @@ def neg_arms(tool_readset: dict) -> list:
     sample = tool_readset["entries"][0]["tool_key"]
     tail = sample.split("::", 1)[1]
     forged = f"R3-REGISTRY-Q9::{tail}"
-    arms.append({"arm": "NAMESPACE_JOIN_DENY",
-                 "mutation": f"{sample} -> {forged}",
-                 "pass": forged.split("::")[0] not in ("R3-REGISTRY-Q1", "R3-REGISTRY-Q2",
-                                                       "R3-REGISTRY-Q3", "R3-REGISTRY-Q4")})
+    # the mutation must travel through the real JOIN callable, not a string-set test
+    forged_entry = json.loads(json.dumps(tool_readset["entries"][0]))
+    forged_entry["tool_key"] = forged
+    jn = join({"entries": [forged_entry], "union_expected": 1},
+              {"kind": "ABSENT", "sources": {}})
+    arm_errors = [e["code"] for e in jn["errors"]]
+    row_holds = jn["rows"][0]["missing"] if jn["rows"] else []
+    arms.append({"arm": "NAMESPACE_JOIN_DENY", "mutation": f"{sample} -> {forged}",
+                 "observed_errors": arm_errors,
+                 "observed_row_missing": [m.get("field") for m in row_holds],
+                 "pass": ("NAMESPACE_JOIN_DENY" in arm_errors
+                          or any(m.get("field") == "namespace" for m in row_holds))})
     # (b) duplicate atom
     dup = {"entries": [tool_readset["entries"][0], dict(tool_readset["entries"][0])],
            "union_expected": 2}

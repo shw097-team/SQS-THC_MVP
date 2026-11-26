@@ -2,27 +2,7 @@
  "schema": "SST.PH01.W0.B1B8.DELIVERY_MANIFEST@2",
  "generated_at": "2026-11-26T19:43:42+08:00",
  "root": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\70_W0_B1B8_20261126",
- "promotion_state": {
-  "promoted_to_primary": [],
-  "reason": "no batch has completed acceptance. B1: separated checker returns B1_ACCEPTED = NO across rounds 4 and 5 (Owner decisions D-1…D-4 outstanding, 5 kernel NEGs oracle-blocked, 1 scope-gap HOLD). B2: five separated rounds, final B2_ACCEPTED = NO — no product execution, 15 HOLDs (9 spec-mutation unimplemented, 6 oracle-unbound), parent/carrier not ratified. B3: parse only. Promotion without original-domain acceptance is not permitted, and a fresh Maker verdict is not acceptance.",
-  "promotion_audit_this_session": {
-   "items_eligible": [],
-   "items_promoted": [],
-   "explanation": "nothing reached acceptance, so nothing was eligible; no accepted object was filed into a discard or candidate layer. The two CANDIDATE_NOT_RATIFIED files under 00_PREFLIGHT are locator bindings awaiting Owner decision D-1, not accepted artefacts."
-  },
-  "candidate_layer_holders": [
-   "00_PREFLIGHT/b1_locator_bindings.json",
-   "00_PREFLIGHT/b1_source_allowlist.json"
-  ],
-  "publish_channel": "W/dist/SQS-THC_MVP (clone of shw097-team/SQS-THC_MVP); the wave root itself is not a git repository",
-  "to_promote_a_batch_requires": [
-   "separated checker PASS on a frozen candidate",
-   "owner ratification of the three locator bindings (D-1) and the carrier/mirror scope (D-2)",
-   "spec-owner resolution or recorded waiver for slot mapping (D-3) and the kernel oracle (D-4)",
-   "consumer receipt (ReadyAccept)",
-   "this manifest entry flipped to PRIMARY with the acceptance receipt sha"
-  ]
- },
+ "promotion_state": "CURRENT_CANDIDATE",
  "layer_legend": {
   "CODE_AUTHORITATIVE": "source under 20_DEV (the Maker's executable definition)",
   "CURRENT_RECEIPT": "the receipt the wave currently stands on, per batch",
@@ -40,18 +20,32 @@
   "MANIFEST_SELF": "this file"
  },
  "current_pointers": {
-  "b1_run": "40_OPS/b1_run_20261126T141840.json",
-  "b1_tqaep": "40_OPS/b1_tqaep_20261126T141842.json",
-  "b1_freeze": "40_OPS/b1_candidate_freeze_20261126T141853.json",
+  "b1_run": "40_OPS/b1_r5_run_all.json",
+  "b1_tqaep": "40_OPS/b1_r5_tqaep.json",
+  "b1_edge_sec": "40_OPS/b1_r5_edge_sec.json",
+  "b1_freeze": "40_OPS/b1b2_r5_candidate_freeze.json",
   "b2_parse": "40_OPS/b2_parse_20261126T121931.json",
-  "b2_trs": "40_OPS/b2_toolreadset_20261126T160603.json",
-  "b2_tqaep": "40_OPS/b2_tqaep_20261126T160627.json",
-  "b2_freeze": "40_OPS/b2_candidate_freeze_round6.json",
-  "b3_parse": "40_OPS/b3_parse_20261126T142325.json",
-  "b1_closeout": "60_CLOSEOUT/SST_PLP_PH01_W0_B1_CLOSEOUT_rev8.md",
-  "b1_handoff": "60_CLOSEOUT/SST_PLP_PH01_W0_B1_HANDOFF_rev3.md",
-  "b2_closeout": "60_CLOSEOUT/SST_PLP_PH01_W0_B2_CLOSEOUT_HANDOFF_rev1.md",
-  "session": "60_CLOSEOUT/SST_PLP_PH01_W0_B1B8_SESSION_CLOSEOUT_HANDOFF_2026-11-26_r2.md"
+  "b2_trs": "40_OPS/b2_r5_tool_readset.json",
+  "b2_tqaep": "40_OPS/b2_r5_tqaep.json",
+  "b2_meta": "40_OPS/b2_r5_meta.json",
+  "b2_freeze": "40_OPS/b1b2_r5_candidate_freeze.json",
+  "b3_join": "40_OPS/b3_r5_join.json",
+  "b3_tqaep": "40_OPS/b3_r5_tqaep.json",
+  "b3_draft": "40_OPS/b3_draft/SourceChildLedger.draft.v2.json",
+  "b0_readset": "40_OPS/b0_r5_sourcereadset.json",
+  "checker": "40_OPS/b1b2_checker_r5_verdict_round4.md",
+  "m01_receipt": "40_OPS/m01_boundary_grep_receipt.json",
+  "candidate_manifest": "40_OPS/b1b2_r5_CANDIDATE_MANIFEST.tsv",
+  "b1_closeout": "60_CLOSEOUT/SST_PLP_PH01_W0_B1_CLOSEOUT_r5.md",
+  "b1_handoff": "60_CLOSEOUT/SST_PLP_PH01_W0_B1_HANDOFF_r5.md",
+  "b2_closeout": "60_CLOSEOUT/SST_PLP_PH01_W0_B2_CLOSEOUT_r5.md",
+  "b2_handoff": "60_CLOSEOUT/SST_PLP_PH01_W0_B2_HANDOFF_r5.md",
+  "session_closeout": "60_CLOSEOUT/SST_PLP_PH01_W0_B1-B2_CLOSEOUT_r5.md",
+  "session_handoff": "60_CLOSEOUT/SST_PLP_PH01_W0_B1-B2_HANDOFF_r5.md",
+  "owner_decision_list": "60_CLOSEOUT/SST_PLP_PH01_W0_B1-B2_OWNER_DECISION_LIST_r5.md",
+  "consumer_receipts": "40_OPS/r5_consumer_receipts.json",
+  "consumer_selftest": "40_OPS/r5_consumer_selftest.json",
+  "publish_record": "40_OPS/b1b2_r5_publish_record.json"
  },
  "layer_counts": {
   "AUTHORITATIVE_INPUT": 1,
@@ -1484,5 +1478,28 @@
    "layer": "CURRENT_CLOSEOUT",
    "mtime": "2026-11-26T19:42:57+08:00"
   }
- ]
+ ],
+ "pointer_history": [
+  {
+   "switched_at": "2026-11-26T23:35:55+0800",
+   "authority": "separated read-only Checker verdict ACCEPT / 0 mandatory (40_OPS/b1b2_checker_r5_verdict_round4.md)",
+   "previous": {
+    "b1_run": "40_OPS/b1_run_20261126T141840.json",
+    "b1_tqaep": "40_OPS/b1_tqaep_20261126T141842.json",
+    "b1_freeze": "40_OPS/b1_candidate_freeze_20261126T141853.json",
+    "b2_parse": "40_OPS/b2_parse_20261126T121931.json",
+    "b2_trs": "40_OPS/b2_toolreadset_20261126T160603.json",
+    "b2_tqaep": "40_OPS/b2_tqaep_20261126T160627.json",
+    "b2_freeze": "40_OPS/b2_candidate_freeze_round6.json",
+    "b3_parse": "40_OPS/b3_parse_20261126T142325.json",
+    "b1_closeout": "60_CLOSEOUT/SST_PLP_PH01_W0_B1_CLOSEOUT_rev8.md",
+    "b1_handoff": "60_CLOSEOUT/SST_PLP_PH01_W0_B1_HANDOFF_rev3.md",
+    "b2_closeout": "60_CLOSEOUT/SST_PLP_PH01_W0_B2_CLOSEOUT_HANDOFF_rev1.md",
+    "session": "60_CLOSEOUT/SST_PLP_PH01_W0_B1B8_SESSION_CLOSEOUT_HANDOFF_2026-11-26_r2.md"
+   },
+   "scope": "engineering delivery pointers only; this is NOT product acceptance, NOT B1_ACCEPTED/B2_ACCEPTED, FIN_ORDER stays DENY"
+  }
+ ],
+ "promotion_note": "current_pointers now designate the r5 engineering candidate (separated checker round 4 ACCEPT, consumer self-test 11/11). CURRENT_CANDIDATE is not ACCEPTED_PRIMARY: B1_ACCEPTED/B2_ACCEPTED still require the original-domain decisions listed in 60_CLOSEOUT/...OWNER_DECISION_LIST_r5.md",
+ "updated_at": "2026-11-26T23:58:28+0800"
 }
