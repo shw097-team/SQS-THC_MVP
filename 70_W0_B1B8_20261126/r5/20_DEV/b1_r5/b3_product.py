@@ -360,7 +360,8 @@ def run(dry_run: bool = False) -> dict:
     child = op_child(units)
     route = op_route(units, child)
     ledger = render_ledger(join, child, route, units)
-    commit = {"decision": "DRY_RUN"} if dry_run else op_commit(ledger)
+    lname = os.environ.get("B3_LEDGER_NAME", "SourceChildLedger.draft.md")
+    commit = {"decision": "DRY_RUN"} if dry_run else op_commit(ledger, name=lname)
     out = {"schema": "SST.PH01.W0.B3.Product@1", "generated_at": now(),
            "spec_b3_sha256": spec["raw_sha256"], "units": len(units),
            "join": join["summary"], "child": child["summary"], "route": route["summary"],

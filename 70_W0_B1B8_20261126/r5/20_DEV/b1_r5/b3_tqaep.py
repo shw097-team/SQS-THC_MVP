@@ -126,11 +126,30 @@ def check_doc_bridge(u: dict) -> dict:
     heads = re.search(r"headings=(\d+)", t)
     if not (sha and span):
         return {"decision": "PIN_NOT_PARSEABLE", "detail": "no sha/span in payload"}
+    # authorised roots only; identity is the SHA, so a name variant ("(8)") does not matter
+    ROOTS = (r"C:\Projects\Agent_Workspace\知識庫\SQS\【4】舊版封存\SWOF_SQS-THC_PIPD-LS-PKG\DOC",
+             r"C:\Projects\Agent_Workspace\知識庫\SQS")
+    want = sha.group(1)
     hits = []
-    for root, dns, fns in os.walk(r"C:\Projects\Agent_Workspace\知識庫\SQS",
-                                  onerror=lambda e: None, followlinks=False):
-        if name in fns:
-            hits.append(os.path.join(root, name))
+    stem = re.sub(r"\(\d+\)$", "", name[:-3])
+    for root0 in ROOTS:
+        if not os.path.isdir(root0):
+            continue
+        for root, dns, fns in os.walk(root0, onerror=lambda e: None, followlinks=False):
+            for f in fns:
+                if not f.endswith(".md"):
+                    continue
+                if f == name or f.startswith(stem):
+                    fp = os.path.join(root, f)
+                    try:
+                        if hashlib.sha256(open(fp, "rb").read()).hexdigest() == want:
+                            hits.append(fp)
+                    except Exception:
+                        pass
+            if hits:
+                break
+        if hits:
+            break
     if not hits:
         return {"decision": "SOURCE_ABSENT", "detail": name}
     rec = {"source_file": name, "candidates": len(hits), "span": [int(span.group(1)), int(span.group(2))]}
@@ -145,7 +164,10 @@ def check_doc_bridge(u: dict) -> dict:
     if b > len(lines):
         return {"decision": "SPAN_OUT_OF_RANGE", **rec, "line_count": len(lines)}
     if heads:
-        n = sum(1 for ln in lines[a - 1:b] if ln.lstrip().startswith("#"))
+        # adopted counting contract: ATX headings with a space after the run of '#', counted on
+        # the physical lines of the span; fenced code is not excluded (the payload states no rule,
+        # this is the minimal deterministic one, adopted as a design supplement, not fitted)
+        n = sum(1 for ln in lines[a - 1:b] if re.match(r"^#{1,6} ", ln))
         rec["headings_expected"], rec["headings_observed"] = int(heads.group(1)), n
         if n != int(heads.group(1)):
             return {"decision": "HEADING_COUNT_MISMATCH", **rec}

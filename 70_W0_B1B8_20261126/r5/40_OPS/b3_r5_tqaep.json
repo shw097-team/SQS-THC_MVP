@@ -1,14 +1,13 @@
 {
  "schema": "SST.PH01.W0.B3.TQAEP@1",
  "spec_b3_sha256": "a1d759c7157c4ca8d34acb3f0730b74f653baaa86eb5c3c4302837d0df6deac1",
- "generated_at": "2026-11-27T00:39:56+0800",
+ "generated_at": "2026-11-27T01:07:04+0800",
  "expected_case_count": 752,
  "case_count": 752,
  "verdict_counts": {
-  "PASS_SOURCE_BOUND": 636,
-  "NOT_EXECUTED": 60,
-  "PASS_REFUSAL": 44,
-  "HOLD": 12
+  "PASS_SOURCE_BOUND": 688,
+  "HOLD": 20,
+  "PASS_REFUSAL": 44
  },
  "join": {
   "rows": 1465,
@@ -2890,11 +2889,19 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-00",
    "unit_id": "B3.U0012",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "HOLD",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-00(8).md"
+     "decision": "HEADING_COUNT_MISMATCH",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-00(8).md",
+     "candidates": 1,
+     "span": [
+      1,
+      5408
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-00.md",
+     "headings_expected": 85,
+     "headings_observed": 105
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -2903,11 +2910,20 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-01",
    "unit_id": "B3.U0013",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-01(9).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-01(9).md",
+     "candidates": 1,
+     "span": [
+      1,
+      15017
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-01.md",
+     "headings_expected": 182,
+     "headings_observed": 182,
+     "line_count": 15017
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -2916,11 +2932,20 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-02",
    "unit_id": "B3.U0014",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-02(5).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-02(5).md",
+     "candidates": 1,
+     "span": [
+      1,
+      13910
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-02.md",
+     "headings_expected": 204,
+     "headings_observed": 204,
+     "line_count": 13910
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -2929,11 +2954,20 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-03",
    "unit_id": "B3.U0015",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-03(5).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-03(5).md",
+     "candidates": 1,
+     "span": [
+      1,
+      6575
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-03.md",
+     "headings_expected": 61,
+     "headings_observed": 61,
+     "line_count": 6575
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -2942,11 +2976,20 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-04",
    "unit_id": "B3.U0016",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-04(8).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-04(8).md",
+     "candidates": 1,
+     "span": [
+      1,
+      8728
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-04.md",
+     "headings_expected": 248,
+     "headings_observed": 248,
+     "line_count": 8728
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -2955,11 +2998,20 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-05",
    "unit_id": "B3.U0017",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-05(7).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-05(7).md",
+     "candidates": 1,
+     "span": [
+      1,
+      4084
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-05.md",
+     "headings_expected": 245,
+     "headings_observed": 245,
+     "line_count": 4084
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -2968,11 +3020,20 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-06",
    "unit_id": "B3.U0018",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-06(5).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-06(5).md",
+     "candidates": 1,
+     "span": [
+      1,
+      2795
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-06.md",
+     "headings_expected": 138,
+     "headings_observed": 138,
+     "line_count": 2795
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -2981,11 +3042,20 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-07",
    "unit_id": "B3.U0019",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-07(4).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-07(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      7502
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-07.md",
+     "headings_expected": 88,
+     "headings_observed": 88,
+     "line_count": 7502
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -2994,11 +3064,20 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-08",
    "unit_id": "B3.U0020",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-08(4).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-08(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      4053
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-08.md",
+     "headings_expected": 141,
+     "headings_observed": 141,
+     "line_count": 4053
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -3007,11 +3086,20 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-09",
    "unit_id": "B3.U0021",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-09(4).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-09(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      1648
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-09.md",
+     "headings_expected": 69,
+     "headings_observed": 69,
+     "line_count": 1648
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -3020,11 +3108,20 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-10",
    "unit_id": "B3.U0022",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-10(4).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-10(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      9660
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-10.md",
+     "headings_expected": 101,
+     "headings_observed": 101,
+     "line_count": 9660
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -3033,11 +3130,20 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-11",
    "unit_id": "B3.U0023",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-11(4).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-11(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      6155
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-11.md",
+     "headings_expected": 116,
+     "headings_observed": 116,
+     "line_count": 6155
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -3046,11 +3152,19 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-12",
    "unit_id": "B3.U0024",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "HOLD",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-12(4).md"
+     "decision": "HEADING_COUNT_MISMATCH",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-12(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      5015
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-12.md",
+     "headings_expected": 144,
+     "headings_observed": 149
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -3059,11 +3173,20 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-13",
    "unit_id": "B3.U0025",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-13(5).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-13(5).md",
+     "candidates": 1,
+     "span": [
+      1,
+      5863
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-13.md",
+     "headings_expected": 111,
+     "headings_observed": 111,
+     "line_count": 5863
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -3072,11 +3195,20 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-14",
    "unit_id": "B3.U0026",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-14(4).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-14(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      4489
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-14.md",
+     "headings_expected": 86,
+     "headings_observed": 86,
+     "line_count": 4489
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -3085,11 +3217,20 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-15",
    "unit_id": "B3.U0027",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-15(5).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-15(5).md",
+     "candidates": 1,
+     "span": [
+      1,
+      5121
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-15.md",
+     "headings_expected": 114,
+     "headings_observed": 114,
+     "line_count": 5121
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -3098,11 +3239,20 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-16",
    "unit_id": "B3.U0028",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-16(4).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-16(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      13217
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-16.md",
+     "headings_expected": 140,
+     "headings_observed": 140,
+     "line_count": 13217
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -3111,11 +3261,20 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-17",
    "unit_id": "B3.U0029",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-17(7).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-17(7).md",
+     "candidates": 1,
+     "span": [
+      1,
+      7354
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-17.md",
+     "headings_expected": 126,
+     "headings_observed": 126,
+     "line_count": 7354
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -3124,11 +3283,19 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-18",
    "unit_id": "B3.U0030",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "HOLD",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-18(5).md"
+     "decision": "HEADING_COUNT_MISMATCH",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-18(5).md",
+     "candidates": 1,
+     "span": [
+      1,
+      2668
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-18.md",
+     "headings_expected": 92,
+     "headings_observed": 127
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -3137,11 +3304,20 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-19",
    "unit_id": "B3.U0031",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-19(8).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-19(8).md",
+     "candidates": 1,
+     "span": [
+      1,
+      5564
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-19.md",
+     "headings_expected": 182,
+     "headings_observed": 182,
+     "line_count": 5564
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -3150,11 +3326,19 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-20",
    "unit_id": "B3.U0032",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "HOLD",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-20(4).md"
+     "decision": "HEADING_COUNT_MISMATCH",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-20(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      48894
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-20.md",
+     "headings_expected": 179,
+     "headings_observed": 181
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -3163,11 +3347,20 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-21",
    "unit_id": "B3.U0033",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-21(4).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-21(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      9856
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-21.md",
+     "headings_expected": 196,
+     "headings_observed": 196,
+     "line_count": 9856
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -3176,11 +3369,19 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-22",
    "unit_id": "B3.U0034",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "HOLD",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-22(4).md"
+     "decision": "HEADING_COUNT_MISMATCH",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-22(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      8350
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-22.md",
+     "headings_expected": 129,
+     "headings_observed": 149
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -3189,11 +3390,20 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-23",
    "unit_id": "B3.U0035",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-23(4).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-23(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      4652
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-23.md",
+     "headings_expected": 93,
+     "headings_observed": 93,
+     "line_count": 4652
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -3202,11 +3412,20 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-24",
    "unit_id": "B3.U0036",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-24(3).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-24(3).md",
+     "candidates": 1,
+     "span": [
+      1,
+      7790
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-24.md",
+     "headings_expected": 177,
+     "headings_observed": 177,
+     "line_count": 7790
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -3215,11 +3434,20 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-25",
    "unit_id": "B3.U0037",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-25(4).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-25(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      2690
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-25.md",
+     "headings_expected": 175,
+     "headings_observed": 175,
+     "line_count": 2690
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -3228,11 +3456,20 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-26",
    "unit_id": "B3.U0038",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-26(4).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-26(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      3857
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-26.md",
+     "headings_expected": 334,
+     "headings_observed": 334,
+     "line_count": 3857
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -3241,11 +3478,20 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-27",
    "unit_id": "B3.U0039",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-27(4).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-27(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      2759
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-27.md",
+     "headings_expected": 131,
+     "headings_observed": 131,
+     "line_count": 2759
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -3254,11 +3500,19 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-28",
    "unit_id": "B3.U0040",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "HOLD",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-28(4).md"
+     "decision": "HEADING_COUNT_MISMATCH",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-28(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      5688
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-28.md",
+     "headings_expected": 166,
+     "headings_observed": 169
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -3267,11 +3521,20 @@
    "case_id": "B3.NEG.PIPD-LS-PKG_DOC-29",
    "unit_id": "B3.U0041",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-29(3).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-29(3).md",
+     "candidates": 1,
+     "span": [
+      1,
+      12393
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-29.md",
+     "headings_expected": 286,
+     "headings_observed": 286,
+     "line_count": 12393
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -8399,10 +8662,10 @@
    "case_id": "B3.NEG.SQS-ENG_DOC-09",
    "unit_id": "B3.U0051",
    "kind": "DOC_BRIDGE",
-   "verdict": "HOLD",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "HEADING_COUNT_MISMATCH",
+     "decision": "SOURCE_BOUND_VERIFIED",
      "source_file": "SQS-THC_工程開發文檔_DOC-09_2026-08-04_r2.md",
      "candidates": 1,
      "span": [
@@ -8411,7 +8674,8 @@
      ],
      "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【2】資料庫\\【1】SQS-THC\\【1】SQS-THC_工程開發文檔\\SQS-THC_工程開發文檔_DOC-09_2026-08-04_r2.md",
      "headings_expected": 780,
-     "headings_observed": 800
+     "headings_observed": 780,
+     "line_count": 23577
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -8442,10 +8706,10 @@
    "case_id": "B3.NEG.SQS-ENG_DOC-11",
    "unit_id": "B3.U0053",
    "kind": "DOC_BRIDGE",
-   "verdict": "HOLD",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "HEADING_COUNT_MISMATCH",
+     "decision": "SOURCE_BOUND_VERIFIED",
      "source_file": "SQS-THC_工程開發文檔_DOC-11_2026-08-04_r2.md",
      "candidates": 1,
      "span": [
@@ -8454,7 +8718,8 @@
      ],
      "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【2】資料庫\\【1】SQS-THC\\【1】SQS-THC_工程開發文檔\\SQS-THC_工程開發文檔_DOC-11_2026-08-04_r2.md",
      "headings_expected": 303,
-     "headings_observed": 304
+     "headings_observed": 303,
+     "line_count": 16959
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12401,11 +12666,19 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-00",
    "unit_id": "B3.U0012",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "HOLD",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-00(8).md"
+     "decision": "HEADING_COUNT_MISMATCH",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-00(8).md",
+     "candidates": 1,
+     "span": [
+      1,
+      5408
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-00.md",
+     "headings_expected": 85,
+     "headings_observed": 105
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12414,11 +12687,20 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-01",
    "unit_id": "B3.U0013",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-01(9).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-01(9).md",
+     "candidates": 1,
+     "span": [
+      1,
+      15017
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-01.md",
+     "headings_expected": 182,
+     "headings_observed": 182,
+     "line_count": 15017
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12427,11 +12709,20 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-02",
    "unit_id": "B3.U0014",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-02(5).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-02(5).md",
+     "candidates": 1,
+     "span": [
+      1,
+      13910
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-02.md",
+     "headings_expected": 204,
+     "headings_observed": 204,
+     "line_count": 13910
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12440,11 +12731,20 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-03",
    "unit_id": "B3.U0015",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-03(5).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-03(5).md",
+     "candidates": 1,
+     "span": [
+      1,
+      6575
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-03.md",
+     "headings_expected": 61,
+     "headings_observed": 61,
+     "line_count": 6575
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12453,11 +12753,20 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-04",
    "unit_id": "B3.U0016",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-04(8).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-04(8).md",
+     "candidates": 1,
+     "span": [
+      1,
+      8728
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-04.md",
+     "headings_expected": 248,
+     "headings_observed": 248,
+     "line_count": 8728
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12466,11 +12775,20 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-05",
    "unit_id": "B3.U0017",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-05(7).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-05(7).md",
+     "candidates": 1,
+     "span": [
+      1,
+      4084
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-05.md",
+     "headings_expected": 245,
+     "headings_observed": 245,
+     "line_count": 4084
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12479,11 +12797,20 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-06",
    "unit_id": "B3.U0018",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-06(5).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-06(5).md",
+     "candidates": 1,
+     "span": [
+      1,
+      2795
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-06.md",
+     "headings_expected": 138,
+     "headings_observed": 138,
+     "line_count": 2795
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12492,11 +12819,20 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-07",
    "unit_id": "B3.U0019",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-07(4).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-07(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      7502
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-07.md",
+     "headings_expected": 88,
+     "headings_observed": 88,
+     "line_count": 7502
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12505,11 +12841,20 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-08",
    "unit_id": "B3.U0020",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-08(4).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-08(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      4053
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-08.md",
+     "headings_expected": 141,
+     "headings_observed": 141,
+     "line_count": 4053
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12518,11 +12863,20 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-09",
    "unit_id": "B3.U0021",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-09(4).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-09(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      1648
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-09.md",
+     "headings_expected": 69,
+     "headings_observed": 69,
+     "line_count": 1648
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12531,11 +12885,20 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-10",
    "unit_id": "B3.U0022",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-10(4).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-10(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      9660
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-10.md",
+     "headings_expected": 101,
+     "headings_observed": 101,
+     "line_count": 9660
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12544,11 +12907,20 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-11",
    "unit_id": "B3.U0023",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-11(4).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-11(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      6155
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-11.md",
+     "headings_expected": 116,
+     "headings_observed": 116,
+     "line_count": 6155
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12557,11 +12929,19 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-12",
    "unit_id": "B3.U0024",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "HOLD",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-12(4).md"
+     "decision": "HEADING_COUNT_MISMATCH",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-12(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      5015
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-12.md",
+     "headings_expected": 144,
+     "headings_observed": 149
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12570,11 +12950,20 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-13",
    "unit_id": "B3.U0025",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-13(5).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-13(5).md",
+     "candidates": 1,
+     "span": [
+      1,
+      5863
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-13.md",
+     "headings_expected": 111,
+     "headings_observed": 111,
+     "line_count": 5863
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12583,11 +12972,20 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-14",
    "unit_id": "B3.U0026",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-14(4).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-14(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      4489
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-14.md",
+     "headings_expected": 86,
+     "headings_observed": 86,
+     "line_count": 4489
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12596,11 +12994,20 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-15",
    "unit_id": "B3.U0027",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-15(5).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-15(5).md",
+     "candidates": 1,
+     "span": [
+      1,
+      5121
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-15.md",
+     "headings_expected": 114,
+     "headings_observed": 114,
+     "line_count": 5121
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12609,11 +13016,20 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-16",
    "unit_id": "B3.U0028",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-16(4).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-16(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      13217
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-16.md",
+     "headings_expected": 140,
+     "headings_observed": 140,
+     "line_count": 13217
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12622,11 +13038,20 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-17",
    "unit_id": "B3.U0029",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-17(7).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-17(7).md",
+     "candidates": 1,
+     "span": [
+      1,
+      7354
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-17.md",
+     "headings_expected": 126,
+     "headings_observed": 126,
+     "line_count": 7354
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12635,11 +13060,19 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-18",
    "unit_id": "B3.U0030",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "HOLD",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-18(5).md"
+     "decision": "HEADING_COUNT_MISMATCH",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-18(5).md",
+     "candidates": 1,
+     "span": [
+      1,
+      2668
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-18.md",
+     "headings_expected": 92,
+     "headings_observed": 127
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12648,11 +13081,20 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-19",
    "unit_id": "B3.U0031",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-19(8).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-19(8).md",
+     "candidates": 1,
+     "span": [
+      1,
+      5564
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-19.md",
+     "headings_expected": 182,
+     "headings_observed": 182,
+     "line_count": 5564
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12661,11 +13103,19 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-20",
    "unit_id": "B3.U0032",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "HOLD",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-20(4).md"
+     "decision": "HEADING_COUNT_MISMATCH",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-20(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      48894
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-20.md",
+     "headings_expected": 179,
+     "headings_observed": 181
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12674,11 +13124,20 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-21",
    "unit_id": "B3.U0033",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-21(4).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-21(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      9856
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-21.md",
+     "headings_expected": 196,
+     "headings_observed": 196,
+     "line_count": 9856
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12687,11 +13146,19 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-22",
    "unit_id": "B3.U0034",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "HOLD",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-22(4).md"
+     "decision": "HEADING_COUNT_MISMATCH",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-22(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      8350
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-22.md",
+     "headings_expected": 129,
+     "headings_observed": 149
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12700,11 +13167,20 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-23",
    "unit_id": "B3.U0035",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-23(4).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-23(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      4652
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-23.md",
+     "headings_expected": 93,
+     "headings_observed": 93,
+     "line_count": 4652
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12713,11 +13189,20 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-24",
    "unit_id": "B3.U0036",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-24(3).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-24(3).md",
+     "candidates": 1,
+     "span": [
+      1,
+      7790
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-24.md",
+     "headings_expected": 177,
+     "headings_observed": 177,
+     "line_count": 7790
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12726,11 +13211,20 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-25",
    "unit_id": "B3.U0037",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-25(4).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-25(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      2690
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-25.md",
+     "headings_expected": 175,
+     "headings_observed": 175,
+     "line_count": 2690
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12739,11 +13233,20 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-26",
    "unit_id": "B3.U0038",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-26(4).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-26(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      3857
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-26.md",
+     "headings_expected": 334,
+     "headings_observed": 334,
+     "line_count": 3857
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12752,11 +13255,20 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-27",
    "unit_id": "B3.U0039",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-27(4).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-27(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      2759
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-27.md",
+     "headings_expected": 131,
+     "headings_observed": 131,
+     "line_count": 2759
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12765,11 +13277,19 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-28",
    "unit_id": "B3.U0040",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "HOLD",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-28(4).md"
+     "decision": "HEADING_COUNT_MISMATCH",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-28(4).md",
+     "candidates": 1,
+     "span": [
+      1,
+      5688
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-28.md",
+     "headings_expected": 166,
+     "headings_observed": 169
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -12778,11 +13298,20 @@
    "case_id": "B3.POS.PIPD-LS-PKG_DOC-29",
    "unit_id": "B3.U0041",
    "kind": "DOC_BRIDGE",
-   "verdict": "NOT_EXECUTED",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "SOURCE_ABSENT",
-     "detail": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-29(3).md"
+     "decision": "SOURCE_BOUND_VERIFIED",
+     "source_file": "SWOF_SQS-THC_PIPD-LS-PKG_DOC-29(3).md",
+     "candidates": 1,
+     "span": [
+      1,
+      12393
+     ],
+     "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【4】舊版封存\\SWOF_SQS-THC_PIPD-LS-PKG\\DOC\\SWOF_SQS-THC_PIPD-LS-PKG_DOC-29.md",
+     "headings_expected": 286,
+     "headings_observed": 286,
+     "line_count": 12393
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -18152,10 +18681,10 @@
    "case_id": "B3.POS.SQS-ENG_DOC-09",
    "unit_id": "B3.U0051",
    "kind": "DOC_BRIDGE",
-   "verdict": "HOLD",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "HEADING_COUNT_MISMATCH",
+     "decision": "SOURCE_BOUND_VERIFIED",
      "source_file": "SQS-THC_工程開發文檔_DOC-09_2026-08-04_r2.md",
      "candidates": 1,
      "span": [
@@ -18164,7 +18693,8 @@
      ],
      "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【2】資料庫\\【1】SQS-THC\\【1】SQS-THC_工程開發文檔\\SQS-THC_工程開發文檔_DOC-09_2026-08-04_r2.md",
      "headings_expected": 780,
-     "headings_observed": 800
+     "headings_observed": 780,
+     "line_count": 23577
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"
@@ -18195,10 +18725,10 @@
    "case_id": "B3.POS.SQS-ENG_DOC-11",
    "unit_id": "B3.U0053",
    "kind": "DOC_BRIDGE",
-   "verdict": "HOLD",
+   "verdict": "PASS_SOURCE_BOUND",
    "actual": {
     "source_check": {
-     "decision": "HEADING_COUNT_MISMATCH",
+     "decision": "SOURCE_BOUND_VERIFIED",
      "source_file": "SQS-THC_工程開發文檔_DOC-11_2026-08-04_r2.md",
      "candidates": 1,
      "span": [
@@ -18207,7 +18737,8 @@
      ],
      "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【2】資料庫\\【1】SQS-THC\\【1】SQS-THC_工程開發文檔\\SQS-THC_工程開發文檔_DOC-11_2026-08-04_r2.md",
      "headings_expected": 303,
-     "headings_observed": 304
+     "headings_observed": 303,
+     "line_count": 16959
     }
    },
    "reason": "source pinned by the unit's own payload (file + sha + span) and recomputed; a semantic Oracle is still the original Reader's"

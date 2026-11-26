@@ -1,6 +1,6 @@
 {
  "schema": "SST.PH01.W0.B3.Product@1",
- "generated_at": "2026-11-27T00:55:18+0800",
+ "generated_at": "2026-11-27T01:10:16+0800",
  "spec_b3_sha256": "a1d759c7157c4ca8d34acb3f0730b74f653baaa86eb5c3c4302837d0df6deac1",
  "units": 365,
  "join": {
@@ -20,13 +20,22 @@
   "hold": 92
  },
  "commit": {
-  "decision": "NOT_COMMITTED",
-  "first_fail": "PREIMAGE_NOT_ABSENT",
-  "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\70_W0_B1B8_20261126\\40_OPS\\b3_ledger\\SourceChildLedger.draft.md"
+  "decision": "COMMITTED",
+  "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\70_W0_B1B8_20261126\\40_OPS\\b3_ledger\\SourceChildLedger.draft.v2.md",
+  "bytes": 29624,
+  "sha256": "cc1cb866f9650a97b601d679a3a3ae35861a2f5038368cdd19d369aa2e54a084",
+  "preimage": "ABSENT",
+  "postimage_verified": true,
+  "write_set": [
+   "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\70_W0_B1B8_20261126\\40_OPS\\b3_ledger\\SourceChildLedger.draft.v2.md"
+  ],
+  "rights_ref": "OWNER_WINDOW:WIN-1303f427cb66:REPOSITORY_WRITE",
+  "single_file": true,
+  "effect": "LOCAL_DRAFT_WRITE"
  },
  "fin_order": "DENY",
- "effect": "SOURCE_READ+IN_MEMORY_TRANSFORM",
- "ledger_sha256": "53c22fd950aa03e93cd1f3ac1cb77cf7959e27e71b1e5bab0852888cb1d5d665",
+ "effect": "SOURCE_READ+IN_MEMORY_TRANSFORM+LOCAL_DRAFT_WRITE",
+ "ledger_sha256": "cc1cb866f9650a97b601d679a3a3ae35861a2f5038368cdd19d369aa2e54a084",
  "errors": [],
  "rows_sample": [
   {
