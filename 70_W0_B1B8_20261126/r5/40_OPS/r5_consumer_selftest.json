@@ -1,6 +1,6 @@
 {
  "schema": "SST.PH01.W0.B1B2.ConsumerSelftest@1",
- "generated_at": "2026-11-26T23:57:11+0800",
+ "generated_at": "2026-11-27T00:28:02+0800",
  "arms": [
   {
    "arm": "BASELINE_POS",

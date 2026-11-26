@@ -107,6 +107,75 @@ def check_child_unit(u: dict) -> dict:
     return rec
 
 
+
+# ---- generic source-bound checks for the remaining kinds (T4: 686 was not one bucket) ----
+BLUEPRINT = (r"C:\Projects\Agent_Workspace\知識庫\SQS\【1】SST_PLP_PH01-04"
+             r"\PHASE 01~04\藍圖\實質正文\SST_PLP_PH01_藍圖_2026-11-23_r2.md")
+BLUEPRINT_SHA = "9d6c7a5e950dd54e77c34270467ef7316ce5cdd3dec3c25d044481ffb7c29043"
+
+
+def check_doc_bridge(u: dict) -> dict:
+    """DOC_BRIDGE carries `file` / `sha` / `L1-Ln` / `headings=N` in its own payload."""
+    t = _payload_text(u)
+    m = re.search(r"`([^`]+\.md)`", t)
+    if not m:
+        return {"decision": "PIN_NOT_PARSEABLE", "detail": "no source file in payload"}
+    name = m.group(1)
+    sha = re.search(r"`([0-9a-f]{64})`", t)
+    span = re.search(r"`L(\d+)-L(\d+)`", t)
+    heads = re.search(r"headings=(\d+)", t)
+    if not (sha and span):
+        return {"decision": "PIN_NOT_PARSEABLE", "detail": "no sha/span in payload"}
+    hits = []
+    for root, dns, fns in os.walk(r"C:\Projects\Agent_Workspace\知識庫\SQS",
+                                  onerror=lambda e: None, followlinks=False):
+        if name in fns:
+            hits.append(os.path.join(root, name))
+    if not hits:
+        return {"decision": "SOURCE_ABSENT", "detail": name}
+    rec = {"source_file": name, "candidates": len(hits), "span": [int(span.group(1)), int(span.group(2))]}
+    for h in hits:
+        if hashlib.sha256(open(h, "rb").read()).hexdigest() == sha.group(1):
+            rec["resolved"] = h
+            break
+    if "resolved" not in rec:
+        return {"decision": "SOURCE_CHANGED", **rec}
+    lines = open(rec["resolved"], "rb").read().decode("utf-8", "replace").splitlines()
+    a, b = rec["span"]
+    if b > len(lines):
+        return {"decision": "SPAN_OUT_OF_RANGE", **rec, "line_count": len(lines)}
+    if heads:
+        n = sum(1 for ln in lines[a - 1:b] if ln.lstrip().startswith("#"))
+        rec["headings_expected"], rec["headings_observed"] = int(heads.group(1)), n
+        if n != int(heads.group(1)):
+            return {"decision": "HEADING_COUNT_MISMATCH", **rec}
+    rec["line_count"] = len(lines)
+    return {"decision": "SOURCE_BOUND_VERIFIED", **rec}
+
+
+def check_h1_route(u: dict) -> dict:
+    """H1_ROUTE rows begin with the carrier line number and carry the atom id."""
+    t = _payload_text(u)
+    parts = [x.strip() for x in t.split("／")]
+    m = re.match(r"^(\d+)\b", parts[0]) if parts else None
+    atom = u["key"]
+    if not m:
+        return {"decision": "PIN_NOT_PARSEABLE", "detail": "no leading line number"}
+    n = int(m.group(1))
+    if not os.path.isfile(BLUEPRINT):
+        return {"decision": "SOURCE_ABSENT", "detail": BLUEPRINT}
+    raw = open(BLUEPRINT, "rb").read()
+    if hashlib.sha256(raw).hexdigest() != BLUEPRINT_SHA:
+        return {"decision": "SOURCE_CHANGED", "detail": "blueprint sha differs from the pin"}
+    lines = raw.decode("utf-8", "replace").splitlines()
+    if n < 1 or n > len(lines):
+        return {"decision": "SPAN_OUT_OF_RANGE", "line": n, "line_count": len(lines)}
+    rec = {"line": n, "line_text_head": lines[n - 1][:120]}
+    if atom not in "\n".join(lines[max(0, n - 2):n + 2]):
+        return {"decision": "SPAN_LACKS_ID", **rec}
+    return {"decision": "SOURCE_BOUND_VERIFIED", **rec}
+
+
 def main() -> int:
     spec = W.load("B3")
     ulist = [u for u in W.units(spec["text"]) if u.get("unit_id")]
@@ -165,9 +234,27 @@ def main() -> int:
                                       "unit's own pin; the atomic Oracle registry is unbound, so "
                                       "this is a SOURCE-BOUND PASS, not a semantic PASS")
         elif kind in ("DOC_BRIDGE", "H1_ROUTE", "CHILD_ROUTE", "BEHAVIOR_ROUTE"):
-            rec.update(verdict="NOT_EXECUTED",
-                       reason="requires the original B3 Reader / document bridge source; the "
-                              "projection is not derivable from the tool read set alone")
+            if kind == "DOC_BRIDGE":
+                chk = check_doc_bridge(u)
+            elif kind in ("H1_ROUTE", "CHILD_ROUTE"):
+                # the leading integer is NOT a line number in the pinned blueprint (PLP-00 sits at
+                # line 1606, not 528), so this carrier mapping is unresolved: refuse to claim a check
+                chk = {"decision": "MAPPING_UNRESOLVED",
+                       "detail": "payload's leading integer is not a line number in the pinned "
+                                 "blueprint; the row->carrier mapping must come from the original "
+                                 "B3 Reader"}
+            else:
+                chk = {"decision": "NO_GENERIC_CHECK",
+                       "detail": "BEHAVIOR_ROUTE carries no source pin; it needs the original "
+                                 "behaviour fixture"}
+            rec.update(verdict=("PASS_SOURCE_BOUND" if chk["decision"] == "SOURCE_BOUND_VERIFIED"
+                                else ("HOLD" if chk["decision"] in
+                                      ("SOURCE_CHANGED", "SPAN_OUT_OF_RANGE",
+                                       "HEADING_COUNT_MISMATCH")
+                                      else "NOT_EXECUTED")),
+                       actual={"source_check": chk},
+                       reason="source pinned by the unit's own payload (file + sha + span) and "
+                              "recomputed; a semantic Oracle is still the original Reader's")
         elif kind in ("AUTHORITY_SEAM", "RECOVERY"):
             rec.update(verdict="NOT_EXECUTED",
                        reason="requires the original authority seam / recovery fixture")

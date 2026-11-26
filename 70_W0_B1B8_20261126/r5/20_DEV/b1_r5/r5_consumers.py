@@ -58,7 +58,9 @@ def rights_ref() -> tuple[str, bool]:
         w = json.load(open(WINDOW, encoding="utf-8"))
         rs = sha_file(RECEIPT)
         ok = (w.get("state") == "OPEN" and int(w.get("expires_at", 0)) > int(time.time())
-              and "b0_source_read_authority" in (w.get("scope") or []))
+              and "b0_source_read_authority" in (w.get("scope") or [])
+              and w.get("effect_class_ceiling") in ("READ_ONLY_PROBE", "REPOSITORY_WRITE",
+                                                    "HOST_OPERATIONS", "USER_DATA_EFFECT"))
         return f"OWNER_WINDOW:{w.get('window_id')}:receipt_sha256={rs}", ok
     except Exception:
         return "OWNER_WINDOW_UNBOUND", False
@@ -91,11 +93,14 @@ def receive(consumer: str, env: dict, env_bytes: bytes) -> dict:
     rec = {"consumer_id": consumer, "validator_name": vname, "validator_version": vver,
            "subject": env.get("subject"), "scope_id": env.get("scope", {}).get("scope_id"),
            "spec_version": env.get("spec_version"),
-           "candidate_digest": hashlib.sha256(env_bytes).hexdigest(),
+           # the producer's own freeze digest; the envelope hash is recorded separately
+           "candidate_digest": env.get("candidate_digest"),
            "source_id": exp["source_id"], "sha": None, "rights_check_ref": None,
            "decision": None, "first_fail": None, "checked_at": now(),
            "expected_set": {k: exp[k] for k in ("source_id", "sha", "clause_span", "required_fields", "purpose", "consumer_use")},
-           "envelope_sha256": hashlib.sha256(env_bytes).hexdigest()}
+           "envelope_sha256": hashlib.sha256(env_bytes).hexdigest(),
+           "producer_spec_version": env.get("spec_version"),
+           "source_manifest": env.get("source_manifest")}
 
     def fail(code: str) -> dict:
         rec["decision"], rec["first_fail"] = "REJECT", code
@@ -112,6 +117,8 @@ def receive(consumer: str, env: dict, env_bytes: bytes) -> dict:
         return fail("ENVELOPE_CARRIES_ERRORS")
     if env.get("write_set") != [] or env.get("fin_order") != "DENY":
         return fail("EFFECT_CLAIM_INVALID")
+    if not env.get("candidate_digest"):
+        return fail("PRODUCER_FREEZE_UNBOUND")
 
     # 2 own scope / purpose / consumer membership
     sc = env.get("scope") or {}

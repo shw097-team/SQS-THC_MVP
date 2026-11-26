@@ -1,11 +1,11 @@
 {
  "schema": "SST.PH01.W0.B1B2.CANDIDATE_FREEZE@5",
- "frozen_at": "2026-11-27T00:00:26+0800",
+ "frozen_at": "2026-11-27T00:28:19+0800",
  "spec_manifest_sha256": "3c816deb8fc216eae831dddfac396217d5b224fc7575c03415ef9f08ebbfa046",
  "candidate_manifest": {
   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\70_W0_B1B8_20261126\\40_OPS\\b1b2_r5_CANDIDATE_MANIFEST.tsv",
-  "sha256": "486cf7ca052e69e4ce19db7c6d3e459e1a1ac87914560f0909cfb82a1c05ebf5",
-  "bytes": 3999,
+  "sha256": "96d1342db3d394351f34974186035d9f58af33a1e53e8985fe5b51c319cf31f4",
+  "bytes": 4000,
   "artefacts": 40
  },
  "inputs": {

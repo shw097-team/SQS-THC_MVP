@@ -1,6 +1,6 @@
 {
  "schema": "SST.PH01.W0.B1B2.ConsumerReceipts@1",
- "generated_at": "2026-11-26T23:56:55+0800",
+ "generated_at": "2026-11-27T00:28:02+0800",
  "envelope": {
   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\70_W0_B1B8_20261126\\40_OPS\\b0_r5_sourcereadset.json",
   "sha256": "bdb2a03f079412434f5de11247a7a73b015d96440b00d6bc04dd6d0e05da8d0e",
@@ -15,13 +15,13 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "scope_id": "SQS-THC-PH01-E00-B0-SOURCE-READ",
    "spec_version": "2026-11-25_r4_Native-first",
-   "candidate_digest": "bdb2a03f079412434f5de11247a7a73b015d96440b00d6bc04dd6d0e05da8d0e",
+   "candidate_digest": "f40a7652fe21aa84adb54e6fd42e5b6bd34bf8ca0ca46ad746423c3fda20d17f",
    "source_id": "SST.ALL.W0.BLUEPRINT",
    "sha": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
    "rights_check_ref": "OWNER_WINDOW:WIN-4e2dff74d227:receipt_sha256=93cbfea799ab01eb5bc4e3d0307ca0b87c0823f0766822e5eea0e243800f8b43",
    "decision": "ACCEPT",
    "first_fail": null,
-   "checked_at": "2026-11-26T23:56:55+0800",
+   "checked_at": "2026-11-27T00:28:02+0800",
    "expected_set": {
     "source_id": "SST.ALL.W0.BLUEPRINT",
     "sha": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
@@ -36,6 +36,12 @@
     "consumer_use": "B1 REPO/BASE/FDA/ROOTS source read"
    },
    "envelope_sha256": "bdb2a03f079412434f5de11247a7a73b015d96440b00d6bc04dd6d0e05da8d0e",
+   "producer_spec_version": "2026-11-25_r4_Native-first",
+   "source_manifest": {
+    "inherited_sha": "2012a28f630f4e28d60309de0bb5734ce138b18c677445a475c670f1d9f4245e",
+    "verification": "UNVERIFIED",
+    "evidence_ref": null
+   },
    "authority_checked": {
     "source_owner": "SST Owner (single human OWNER, KB author)",
     "usage_evidence_ref": "C:\\Projects\\Agent_Workspace\\FHS_NEXT_Workspace\\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\\owner_ws\\artifacts\\OWNER_WINDOW.json",
@@ -60,13 +66,13 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "scope_id": "SQS-THC-PH01-E00-B0-SOURCE-READ",
    "spec_version": "2026-11-25_r4_Native-first",
-   "candidate_digest": "bdb2a03f079412434f5de11247a7a73b015d96440b00d6bc04dd6d0e05da8d0e",
+   "candidate_digest": "f40a7652fe21aa84adb54e6fd42e5b6bd34bf8ca0ca46ad746423c3fda20d17f",
    "source_id": "SST.ALL.W0.BLUEPRINT",
    "sha": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
    "rights_check_ref": "OWNER_WINDOW:WIN-4e2dff74d227:receipt_sha256=93cbfea799ab01eb5bc4e3d0307ca0b87c0823f0766822e5eea0e243800f8b43",
    "decision": "ACCEPT",
    "first_fail": null,
-   "checked_at": "2026-11-26T23:56:55+0800",
+   "checked_at": "2026-11-27T00:28:02+0800",
    "expected_set": {
     "source_id": "SST.ALL.W0.BLUEPRINT",
     "sha": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
@@ -81,6 +87,12 @@
     "consumer_use": "B2 QROWS/HARD/META/RETURN source read"
    },
    "envelope_sha256": "bdb2a03f079412434f5de11247a7a73b015d96440b00d6bc04dd6d0e05da8d0e",
+   "producer_spec_version": "2026-11-25_r4_Native-first",
+   "source_manifest": {
+    "inherited_sha": "2012a28f630f4e28d60309de0bb5734ce138b18c677445a475c670f1d9f4245e",
+    "verification": "UNVERIFIED",
+    "evidence_ref": null
+   },
    "authority_checked": {
     "source_owner": "SST Owner (single human OWNER, KB author)",
     "usage_evidence_ref": "C:\\Projects\\Agent_Workspace\\FHS_NEXT_Workspace\\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\\owner_ws\\artifacts\\OWNER_WINDOW.json",
@@ -105,13 +117,13 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "scope_id": "SQS-THC-PH01-E00-B0-SOURCE-READ",
    "spec_version": "2026-11-25_r4_Native-first",
-   "candidate_digest": "bdb2a03f079412434f5de11247a7a73b015d96440b00d6bc04dd6d0e05da8d0e",
+   "candidate_digest": "f40a7652fe21aa84adb54e6fd42e5b6bd34bf8ca0ca46ad746423c3fda20d17f",
    "source_id": "SST.ALL.W0.BLUEPRINT",
    "sha": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
    "rights_check_ref": "OWNER_WINDOW:WIN-4e2dff74d227:receipt_sha256=93cbfea799ab01eb5bc4e3d0307ca0b87c0823f0766822e5eea0e243800f8b43",
    "decision": "ACCEPT",
    "first_fail": null,
-   "checked_at": "2026-11-26T23:56:55+0800",
+   "checked_at": "2026-11-27T00:28:02+0800",
    "expected_set": {
     "source_id": "SST.ALL.W0.BLUEPRINT",
     "sha": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
@@ -126,6 +138,12 @@
     "consumer_use": "B3 JOIN/CHILD/ROUTE source read"
    },
    "envelope_sha256": "bdb2a03f079412434f5de11247a7a73b015d96440b00d6bc04dd6d0e05da8d0e",
+   "producer_spec_version": "2026-11-25_r4_Native-first",
+   "source_manifest": {
+    "inherited_sha": "2012a28f630f4e28d60309de0bb5734ce138b18c677445a475c670f1d9f4245e",
+    "verification": "UNVERIFIED",
+    "evidence_ref": null
+   },
    "authority_checked": {
     "source_owner": "SST Owner (single human OWNER, KB author)",
     "usage_evidence_ref": "C:\\Projects\\Agent_Workspace\\FHS_NEXT_Workspace\\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\\owner_ws\\artifacts\\OWNER_WINDOW.json",

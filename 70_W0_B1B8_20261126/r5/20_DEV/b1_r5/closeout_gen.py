@@ -260,7 +260,7 @@ D-1…D-5、TT-UP-1/2、6 E00、54 ROUTE。沒有原 Reader／原 Owner 的裁�
 | JOIN 真跑 | 1,465 列全部 join；atoms_ready {B3J["ledger"]["atoms_ready"]}、atoms_held {B3J["ledger"]["atoms_held"]} |
 | 原拒絕 | 三個 arm 全成立：同尾異 namespace、重複 atom、requiredness UNKNOWN |
 | COMMIT | `40_OPS/b3_draft/SourceChildLedger.draft.json` 407,447 B，preimage=ABSENT，readback 相符 |
-| B3 TQAEP | 752 案：{B3C.get('PASS_SOURCE_BOUND',0)} PASS_SOURCE_BOUND（11 CHILD＋11 PROTECTED 之來源 SHA＋span＋id 全核）、{B3C.get('PASS_REFUSAL',0)} PASS_REFUSAL、{B3C.get('HOLD',0)} HOLD、{B3C.get('NOT_EXECUTED',0)} NOT_EXECUTED（需原 Reader） |
+| B3 TQAEP | 752 案：{B3C.get('PASS_SOURCE_BOUND',0)} PASS_SOURCE_BOUND（11 CHILD＋11 PROTECTED＋112 DOC_BRIDGE：逐案以自身 payload 釘的 file＋SHA＋span 重算，DOC_BRIDGE 另核 heading 數）、{B3C.get('PASS_REFUSAL',0)} PASS_REFUSAL、{B3C.get('HOLD',0)} HOLD、{B3C.get('NOT_EXECUTED',0)} NOT_EXECUTED（需原 Reader） |
 | B0 入站（第 1 層） | OWNER 視窗已由本人開啟：`WIN-90b52ba73008`、task `..._B0_SOURCE_READ_AUTH`、ceiling `READ_ONLY_PROBE`、到期 2026-11-27T01:02:30 |
 | B0 入站（第 2 層） | descriptor 權利區間過期 → **已由 Owner 授權續期**：`00_PREFLIGHT/B0_READ_CONTEXT_2026-11-26.json` `2064685a…`（3,582 B） |
 | B0 入站（第 3 層） | 路徑身分需 sealed ACL → 已置於 `00_PREFLIGHT` 並複製原檔的 `CodexSandboxUsers:(R)` 明確 ACE，無 broad-principal 寫權 |
