@@ -41,7 +41,7 @@
   "b2_closeout": "60_CLOSEOUT/SST_PLP_PH01_W0_B2_CLOSEOUT_r5.md",
   "b2_handoff": "60_CLOSEOUT/SST_PLP_PH01_W0_B2_HANDOFF_r5.md",
   "session_closeout": "60_CLOSEOUT/SST_PLP_PH01_W0_B1-B2_CLOSEOUT_r5.md",
-  "session_handoff": "60_CLOSEOUT/SST_PLP_PH01_W0_B1-B2_HANDOFF_r5.md",
+  "session_handoff": "60_CLOSEOUT/SESSION_HANDOFF_2026-11-27_B1-B2.md",
   "owner_decision_list": "60_CLOSEOUT/SST_PLP_PH01_W0_B1-B2_OWNER_DECISION_LIST_r5.md",
   "consumer_receipts": "40_OPS/r5_consumer_receipts.json",
   "consumer_selftest": "40_OPS/r5_consumer_selftest.json",
@@ -1519,5 +1519,18 @@
    "NOT W0_COMPLETE"
   ]
  },
- "next_phase_entry": "60_CLOSEOUT/SST_PLP_PH01_W0_B1-B2_CONVERGENCE_HANDOFF_INPUT.md"
+ "next_phase_entry": "60_CLOSEOUT/SST_PLP_PH01_W0_B1-B2_CONVERGENCE_HANDOFF_INPUT.md",
+ "layers_ref": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\90_ARCHIVE\\LAYERS.json",
+ "hygiene": {
+  "done_at": "2026-11-27T01:26:52+0800",
+  "moved_to_history": 129,
+  "deleted_scratch": [
+   "__pycache__",
+   "*.pyc",
+   "%TEMP% probes"
+  ],
+  "candidate_tree_mb": 33,
+  "archive_mb": 135,
+  "note": "no pointer target was moved; 32/32 pointers resolve before and after"
+ }
 }

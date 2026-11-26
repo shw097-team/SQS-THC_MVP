@@ -68,4 +68,4 @@ B3 的 636 案已由各 Unit 自帶的 `resolved_source_ref` ＋ `direct_parent_
 - **未發布**：`40_OPS/b0_r5_sourcereadset.json`（含原條文逐字），依 `LOCAL_ONLY` 留本地，remote 只記其 sha256（見 `40_OPS/LOCAL_ONLY_EXCLUSIONS.json`）
 - 憑證：以受管 `extraheader` 一次性注入，未寫入 git config、未出現在 argv/URL/log/commit
 - 發布 ≠ 接受：`B1_ACCEPTED`／`B2_ACCEPTED`／`W0_COMPLETE`／`W1 ReadyExecute` 仍未成立，`FIN_ORDER=DENY`
-- 更新時間：2026-11-27T01:10:16+0800
+- 更新時間：2026-11-27T01:26:25+0800
