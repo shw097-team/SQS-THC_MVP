@@ -1,0 +1,2502 @@
+{
+ "schema": "SST.PH01.W0.B3.TypedFixtures@1",
+ "generated_at": "2026-11-27T01:16:50+0800",
+ "kinds": {
+  "BEHAVIOR_ROUTE": {
+   "count": 73,
+   "fixtures": [
+    {
+     "unit_id": "B3.U0275",
+     "atom": "F:F01",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "bd34f04865561c0890c88e4eb95c9189a68e2d7a7ac3a999adb424941a13162b",
+      "payload_sha": "ccd19cc9312f228f3ffc081f3a3d389b40ee6e771e788d939e568bfdae115bad"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L2407–2428",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L723–723"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "bd34f04865561c0890c88e4eb95c9189a68e2d7a7ac3a999adb424941a13162b",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0276",
+     "atom": "F:F02",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "e5b1df256819de35f3b403ecc43449b3b96b71cc4f4bb93eba3b8160828cfac9",
+      "payload_sha": "bf9bb1ca9bb4099ffbdf88d67700becf8301926aed7724bca3a9a630641e0616"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L2429–2450",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L724–724"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "e5b1df256819de35f3b403ecc43449b3b96b71cc4f4bb93eba3b8160828cfac9",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0277",
+     "atom": "F:F03",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "c4805de7721a4351324ed80abdc5fd8212c5b3222bcbb9e53511ed585cce37e3",
+      "payload_sha": "bc2a708e3fa84f40a7696910862bfc787a0eedd590595b94c69a0a70ed8b3c2f"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L2451–2472",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L725–725"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "c4805de7721a4351324ed80abdc5fd8212c5b3222bcbb9e53511ed585cce37e3",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0278",
+     "atom": "F:F04",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "c648b5525f8cb061d72138b9344de703de368adfa344d86935d973ab331c7695",
+      "payload_sha": "6b92bf1addf65fe2bb9a1aa6d3615c53dcfdef37d547f30d33a5bb98eb42137c"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L2473–2494",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L726–726"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "c648b5525f8cb061d72138b9344de703de368adfa344d86935d973ab331c7695",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0279",
+     "atom": "F:F05",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "a7729267ec345352f2cb74b15830a8c48c9be5e94702a11d4d5b417b6d1c74a2",
+      "payload_sha": "fc632be145038b8981d0fb82bc1499c0d922378f4c68b03bc7f1ad45010a27e1"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L2495–2516",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L727–727"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "a7729267ec345352f2cb74b15830a8c48c9be5e94702a11d4d5b417b6d1c74a2",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0280",
+     "atom": "F:F06",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "5d4f995947b6ab8f5e9056618543f56717ff315ef36b209496707e5114edbe6d",
+      "payload_sha": "56afef6c934316d0f598c0e46591f7060b6e410a1936be2bd5999c6edf4aa288"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L2517–2538",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L728–728"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "5d4f995947b6ab8f5e9056618543f56717ff315ef36b209496707e5114edbe6d",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0281",
+     "atom": "F:F07",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "0a4f8605bcad9b6f687c67aed1c905246b2d59302ec8e8c2167f3a6e42e1ab82",
+      "payload_sha": "5337dd71ae74e99adaba0cc5e4f715b14f000d8e6fc3cef408466e2e5a6ce1cd"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L2539–2560",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L729–729"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "0a4f8605bcad9b6f687c67aed1c905246b2d59302ec8e8c2167f3a6e42e1ab82",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0282",
+     "atom": "F:F08",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "b4ca969471713a9b2c3539c6541c13912153bbce2aa1bf7b12c63a9fff3eb883",
+      "payload_sha": "e776c1d7306ab179c81e24f66859c0aaa0070b75cd9c85f2e32722bd675dd349"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L2561–2582",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L730–730"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "b4ca969471713a9b2c3539c6541c13912153bbce2aa1bf7b12c63a9fff3eb883",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0283",
+     "atom": "F:F09",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "ef097b62ec687445c3c42aab51f1d8658888717de388c67c78b25ddacd7ba359",
+      "payload_sha": "81829ef87f69acd88218baa4e659c74059777f85368c59a0740f4d1042237a5a"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L2583–2604",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L731–731"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "ef097b62ec687445c3c42aab51f1d8658888717de388c67c78b25ddacd7ba359",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0284",
+     "atom": "F:F10",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "f8f1014a1a0c0ef9632fe8e1c500893b4d6f4e74f909806d56a80c9deefcc682",
+      "payload_sha": "187b1629363543aa1c88caef6399ab36c1a2e924d82449462dd334aaa4a59975"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L2605–2626",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L732–732"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "f8f1014a1a0c0ef9632fe8e1c500893b4d6f4e74f909806d56a80c9deefcc682",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0285",
+     "atom": "F:F11",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "ac6ca1da98c34fcf410b4fc17e894a5c476d77ea18d363123f392d5e40bd65e8",
+      "payload_sha": "e7010d3f8e362b7442785eb1b8fc37d046dec3531a4b3ab1115ab2174ec3f5b2"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L2627–2648",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L733–733"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "ac6ca1da98c34fcf410b4fc17e894a5c476d77ea18d363123f392d5e40bd65e8",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0286",
+     "atom": "F:F12",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "5a2e2b77479c5c6c5d60587c59fd61201db03289973cb4820e54cf02677e3ef5",
+      "payload_sha": "c6a895ba15c6d9e89a167782db161b751d47019bfd92ded0348ada6de5598340"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L2649–2670",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L734–734"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "5a2e2b77479c5c6c5d60587c59fd61201db03289973cb4820e54cf02677e3ef5",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0287",
+     "atom": "F:F13",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "e2553db2e6d44084b2ee743cd028aab892ae461266c0c84b769df927e4743af3",
+      "payload_sha": "356e889c2b98b32b0015261bf3bdcdd0ecf27dc1032ac3844652b6f2316a4e33"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L2671–2692",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L735–735"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "e2553db2e6d44084b2ee743cd028aab892ae461266c0c84b769df927e4743af3",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0288",
+     "atom": "F:F14",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "87c06046c19c217319021be6d74a63bcc6e283951b5f07e6a4c76e2476450a63",
+      "payload_sha": "018f7892e0412c7b385603ea0755429fed5a7d62f3da9b06a8c631d53cf85a18"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L2693–2714",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L736–736"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "87c06046c19c217319021be6d74a63bcc6e283951b5f07e6a4c76e2476450a63",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0289",
+     "atom": "F:F15",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "f359ea32746c4e4d7505fa0d73149c65a6c0cb9605b9c20e33d16fc5947e1171",
+      "payload_sha": "dbd677328d5ec77688eb505c217df5067c6a10e342d070db1f116e253297f1a4"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L2715–2736",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L737–737"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "f359ea32746c4e4d7505fa0d73149c65a6c0cb9605b9c20e33d16fc5947e1171",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0290",
+     "atom": "F:F16",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "352052540ca0fc0e7b3dfcc58d0cb1fa262c636c9c24ced625fdc1664153e947",
+      "payload_sha": "b48e76012b7eabf172303d55800f363ff3d7e82f38ff1acc2fea93a0741afce4"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L2737–2758",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L738–738"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "352052540ca0fc0e7b3dfcc58d0cb1fa262c636c9c24ced625fdc1664153e947",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0291",
+     "atom": "REQ:REQ-01",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "1b718aa19ce78dcce634e411bf1a1395c286b0e0dc536cf1ea0dc94e0077b28d",
+      "payload_sha": "d419697bb71de7b99b0f5a4523b3f7850ea5b214552766505aaadbef1dae236c"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L2759–2780",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L744–744"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "1b718aa19ce78dcce634e411bf1a1395c286b0e0dc536cf1ea0dc94e0077b28d",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0292",
+     "atom": "REQ:REQ-02",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "3753bc1dd1fc19eecf826bfb7cd78d2f7353b9ff873fdd86484d23def6251bb6",
+      "payload_sha": "83d83249560241df1b090cd8a7e884c3be592da5fb0566d1de22f1bfb63a5a6b"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L2781–2802",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L745–745"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "3753bc1dd1fc19eecf826bfb7cd78d2f7353b9ff873fdd86484d23def6251bb6",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0293",
+     "atom": "REQ:REQ-03",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "b34e1bae5f17e36df3a442dd2a9be8fd44f7e836f4336e9194037b952d5d2296",
+      "payload_sha": "4b35b124005456cc1c75c89f81afeec1e77e7c496ab07afefa42084d4a8ad3e5"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L2803–2824",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L746–746"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "b34e1bae5f17e36df3a442dd2a9be8fd44f7e836f4336e9194037b952d5d2296",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0294",
+     "atom": "REQ:REQ-04",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "ef0ee90d13704aad7a70cd7591a540a18c13cd5379ac736f585bd6650f5bbb41",
+      "payload_sha": "2559a7219a4b895997ef91c89434aaf60e2092002a166df21d45416d60fe81cd"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L2825–2846",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L747–747"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "ef0ee90d13704aad7a70cd7591a540a18c13cd5379ac736f585bd6650f5bbb41",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0295",
+     "atom": "REQ:REQ-05",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "d0c06882c1263155c62d4c33e4e3809bef4d6bfba4a2160be9e213c02239488c",
+      "payload_sha": "aa42da11f94e4606fade0933db28f2f62fefeaf5c9751be352dffd836dca784b"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L2847–2868",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L748–748"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "d0c06882c1263155c62d4c33e4e3809bef4d6bfba4a2160be9e213c02239488c",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0296",
+     "atom": "REQ:REQ-06",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "f36c658ca67384d100964c32584ef4b1c6424cb783e2e3cce1933834f8fca7f3",
+      "payload_sha": "ebc980795324cfbbeac50bca0f5a7a45d7389637d5795b38fdc0edd068f40fce"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L2869–2890",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L749–749"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "f36c658ca67384d100964c32584ef4b1c6424cb783e2e3cce1933834f8fca7f3",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0297",
+     "atom": "REQ:REQ-07",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "82b072c655ee34088d66586c5ee117f26108ae5cd20c18f2c0fbc14f5ae4dbed",
+      "payload_sha": "f434f685fc79c2146883c897fc9dace43ad493514a6dac9723ff85bacf6b4be8"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L2891–2912",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L750–750"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "82b072c655ee34088d66586c5ee117f26108ae5cd20c18f2c0fbc14f5ae4dbed",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0298",
+     "atom": "REQ:REQ-08",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "a1854ecdc93c63ebf72958b916256af3cf7581876a115fcc0e9d27911a0b8751",
+      "payload_sha": "395c15cde3071f4d1ca03b1f06a6569b030f670ccf410ff6283434f700ceca9b"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L2913–2934",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L751–751"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "a1854ecdc93c63ebf72958b916256af3cf7581876a115fcc0e9d27911a0b8751",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0299",
+     "atom": "REQ:REQ-09",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "2fd6f7098e5bbbc5ef1a615f65e23330d0876958392253e77260096d50b9361f",
+      "payload_sha": "03cee37449d232ddadb91e249a4a78eece987fa557df33d92b652924500826de"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L2935–2956",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L752–752"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "2fd6f7098e5bbbc5ef1a615f65e23330d0876958392253e77260096d50b9361f",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0300",
+     "atom": "REQ:REQ-10",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "fbe1596df6d6a9f606410d4777ab4c2e373df76cbe656a2fec768cd992ff8e37",
+      "payload_sha": "30bb9431462e250a1b49cdc2b19d7e1765babf3fd663ef549b90cd46d3ccc3a5"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L2957–2978",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L753–753"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "fbe1596df6d6a9f606410d4777ab4c2e373df76cbe656a2fec768cd992ff8e37",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0301",
+     "atom": "REQ:REQ-11",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "5b5ecf10413e2d80e979bb1eb20c813811380c3a4bb3d8b55e10fb1b37c2dc73",
+      "payload_sha": "4e97b34de0fd1239fdeb77b20bb720dc8c3f467c78c4606d61fa44c7bcaa341f"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L2979–3000",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L754–754"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "5b5ecf10413e2d80e979bb1eb20c813811380c3a4bb3d8b55e10fb1b37c2dc73",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0302",
+     "atom": "REQ:REQ-12",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "955b4db06d3e6e5b30e47b925896f6c2ca3f478f56439580bcc78daa3c6c1805",
+      "payload_sha": "fce3c855132f0bf14c7e5378d2b22785b2a860d999f620f9a8f87e73004e06ae"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3001–3022",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L755–755"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "955b4db06d3e6e5b30e47b925896f6c2ca3f478f56439580bcc78daa3c6c1805",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0303",
+     "atom": "REQ:REQ-13",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "d3aba06d89f068f4e9f7710609e973d2310c52973b2021a501b0811b9c30b00d",
+      "payload_sha": "968414770658d5a9e4d6b46a05254fb4972b849d0b5ef22335974bfcbd1878bf"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3023–3044",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L756–756"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "d3aba06d89f068f4e9f7710609e973d2310c52973b2021a501b0811b9c30b00d",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0304",
+     "atom": "REQ:REQ-14",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "9c71e5567e7d4bdbe49eef87fad893adab5756bd5f4a12164906f8d06dc8c401",
+      "payload_sha": "b24cfdbd34de3c94d04952a372f6c91f76f3b342a44481d4615fe45e6ac15159"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3045–3066",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L757–757"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "9c71e5567e7d4bdbe49eef87fad893adab5756bd5f4a12164906f8d06dc8c401",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0305",
+     "atom": "REQ:REQ-15",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "2981226d615f7f281896f7c0463e94e23a7cb0ac9d357b8f46605a36e29c7d96",
+      "payload_sha": "cbc1146d51cb738b0ead9474e638b8b827ae6dcf1376013bc5e4121b520c0925"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3067–3088",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L758–758"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "2981226d615f7f281896f7c0463e94e23a7cb0ac9d357b8f46605a36e29c7d96",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0306",
+     "atom": "REQ:REQ-16",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "42c125cb45c4734b80a131dc90df2cf2fb2c47ac8c9eb467b52cf94caa4a834f",
+      "payload_sha": "a62358b48af113c65fb5a9632a9fed386627123f62e9e6e5751bb7d41a493141"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3089–3110",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L759–759"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "42c125cb45c4734b80a131dc90df2cf2fb2c47ac8c9eb467b52cf94caa4a834f",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0307",
+     "atom": "REQ:REQ-17",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "ffb04209a96e07ae6f84fed2537022e9cb9d5664e6345820838dd9006c546f9c",
+      "payload_sha": "d8c09eeb86af647980905fe575a6fb49520df70980362f6d756929f69a1a92f5"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3111–3132",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L760–760"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "ffb04209a96e07ae6f84fed2537022e9cb9d5664e6345820838dd9006c546f9c",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0308",
+     "atom": "REQ:REQ-18",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "b2cbe8c421be9432f5cccb9fc200efe7a8d2f8ba254c71349ad192df32a58dbf",
+      "payload_sha": "3c5ebbb776bf51e3eb8b8251207149b74db0834fea8aa20a67e8c4d71d2942ee"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3133–3154",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L761–761"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "b2cbe8c421be9432f5cccb9fc200efe7a8d2f8ba254c71349ad192df32a58dbf",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0309",
+     "atom": "CAP:CAP-FIN",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "ced56854cfbe0d64c7811e7f37a2b0849e8e36e77d7e0227b9392ab1a1230919",
+      "payload_sha": "535de06eb11e40af2f9f4749ef16936f8ed5c9e2fa55588f216f3e859f903d79"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3155–3171",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L806–806"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "ced56854cfbe0d64c7811e7f37a2b0849e8e36e77d7e0227b9392ab1a1230919",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0310",
+     "atom": "CAP:CAP-TIME",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "5851da14bdb04630d0df7588615771e10a6d903200f6abcb6af85a4c24eaa4c6",
+      "payload_sha": "e099bb9edee082da5f4feb2492902e35d033055f544011d4cb7cfe60126e85fa"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3172–3188",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L807–807"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "5851da14bdb04630d0df7588615771e10a6d903200f6abcb6af85a4c24eaa4c6",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0311",
+     "atom": "CAP:CAP-RIGHTS",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "8cf6dbe23508024d005452bd02262fee20c494c9a28dbda7c5aa8a69b9956898",
+      "payload_sha": "7a6e3cb87631d7b456b8641cf8bd75b91e67618ae388306293873d2f94e472da"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3189–3205",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L808–808"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "8cf6dbe23508024d005452bd02262fee20c494c9a28dbda7c5aa8a69b9956898",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0312",
+     "atom": "CAP:CAP-SEARCH",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "f3af04c8893f45fe6af13b44dd4629f0b9b16ad30da4f9cac60fce4ec1cd7771",
+      "payload_sha": "043aae28b931ccf93f97c641b01204cac34cf322181a421ad3f36614bf810a29"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3206–3222",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L809–809"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "f3af04c8893f45fe6af13b44dd4629f0b9b16ad30da4f9cac60fce4ec1cd7771",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0313",
+     "atom": "CAP:CAP-REPLAY",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "b6128c4ef89d6a4e2fe10ba000bac6449b56cc1724736ec61115ca227b1a2d17",
+      "payload_sha": "f768d3d8bc14a79d65144b6d45449c8de13ee234a95e7af0aa59e63f0a356314"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3223–3239",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L810–810"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "b6128c4ef89d6a4e2fe10ba000bac6449b56cc1724736ec61115ca227b1a2d17",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0314",
+     "atom": "CAP:CAP-RUNTIME",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "117281281b5e0f2fd63ac2871a865a5b42bc9d4c24e83a9d7597ece4140fb4d3",
+      "payload_sha": "8859505fcdea91170e85a018ad7e9f886c3cc649e9c9c516cbeb621205a2cf35"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3240–3256",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L811–811"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "117281281b5e0f2fd63ac2871a865a5b42bc9d4c24e83a9d7597ece4140fb4d3",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0315",
+     "atom": "CAP:CAP-DEV",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "91f188586e6a6f077a67e83c447cb277759b05b6d3c3b91794b5cf374c4a486b",
+      "payload_sha": "c1d4aecf9311cf39a69225b793ec7ccda32105ad172d4a79b86b8e494e43cf02"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3257–3273",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L812–812"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "91f188586e6a6f077a67e83c447cb277759b05b6d3c3b91794b5cf374c4a486b",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0316",
+     "atom": "CAP:CAP-CONTRACT",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "9b1335dd539d5b5a0347b9d01e799405c90ea38b9c36b79821b8674a0f7c1baa",
+      "payload_sha": "31b50d35bd9763d00c3d30dd91972ac03b35b1e907f4e3f35dad0ae60f898ce3"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3274–3290",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L813–813"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "9b1335dd539d5b5a0347b9d01e799405c90ea38b9c36b79821b8674a0f7c1baa",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0317",
+     "atom": "CAP:CAP-TEST",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "662b29faede5b6914c16f2f863ac5a857ecbc6b4cd77bfe84a67d3719d742665",
+      "payload_sha": "46990576334d9d140ccc2e85e68d0e708603eb7d5da60210ff969276082cb442"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3291–3307",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L814–814"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "662b29faede5b6914c16f2f863ac5a857ecbc6b4cd77bfe84a67d3719d742665",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0318",
+     "atom": "CAP:CAP-UX",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "a1518cccc8e0f46bbc898cc53d78167af7f3e986db11d1657dddf2d8dfcaf6be",
+      "payload_sha": "740b26c1452e873d2a9b48e0445775326184d4c612c4fc189d8944e0e435f0d9"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3308–3324",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L815–815"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "a1518cccc8e0f46bbc898cc53d78167af7f3e986db11d1657dddf2d8dfcaf6be",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0319",
+     "atom": "CAP:CAP-OPS",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "63e2eefff50300f21d26ac0af8186bf19686d335b2090a6e707a18c7a0556803",
+      "payload_sha": "3451a42a6bb690bcfa3d0c4c5cc382bca2fc242705be22cb65532369d4c94e1e"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3325–3341",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L816–816"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "63e2eefff50300f21d26ac0af8186bf19686d335b2090a6e707a18c7a0556803",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0320",
+     "atom": "CAP:CAP-METHOD",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "14c77003c1b368719953b961056d944908f5137cc230997ca415b7d758014fd1",
+      "payload_sha": "8ed217feb7c3446ac2204012e50ab9b1d7a212e4352d61eaf332dc70c0705ff5"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3342–3358",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L817–817"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "14c77003c1b368719953b961056d944908f5137cc230997ca415b7d758014fd1",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0321",
+     "atom": "CAP:CAP-GUI",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "a03f79ebb2cfba557a20c9a5407e60ea258e8ed35f7af0b686b24331aa468881",
+      "payload_sha": "d8fd8559090f01bf73db822acaf085fcc8d5a782e606fe021de43ca6a0a463d6"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3359–3375",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L818–818"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "a03f79ebb2cfba557a20c9a5407e60ea258e8ed35f7af0b686b24331aa468881",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0322",
+     "atom": "CAP:CAP-XSCOMP",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "b63566057eb91723d265c26cbe75a81e4e71db4507ff9b85402d583d179b2dcc",
+      "payload_sha": "23c7c3759e9b9b0796d40d54fc503927a557c8b9332e2b4d7e8d91cc7bffbfea"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3376–3392",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L819–819"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "b63566057eb91723d265c26cbe75a81e4e71db4507ff9b85402d583d179b2dcc",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0323",
+     "atom": "CAP:CAP-RISK",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "207acce0febd8de980e88aa8e99460c1ea53409bd9dbd6894b6e640b228c9ed4",
+      "payload_sha": "faffa67290232cad8fa4a6f3515aaafaf2f84d08fad178befb9b68906afee224"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3393–3409",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L820–820"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "207acce0febd8de980e88aa8e99460c1ea53409bd9dbd6894b6e640b228c9ed4",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0324",
+     "atom": "CAP:CAP-FACT",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "0995867b020732af25d21e0ae5c692801a5936651187d40c41d33c77a7829a6c",
+      "payload_sha": "3db4a48fd5302d2827a0efb5a9cd86149ad7df1ad202e3c98c45dd5aad1252e6"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3410–3426",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L821–821"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "0995867b020732af25d21e0ae5c692801a5936651187d40c41d33c77a7829a6c",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0325",
+     "atom": "CAP:CAP-SHARED",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "712ae1d9cc0471f99850724099caf73ead9f7337678a992c3a9d807960beffe7",
+      "payload_sha": "2dc3713c9e981a4fe3bd04bb2ef6a7c96cd2a690874d6f85b2d8c4c63c9fbc5d"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3427–3443",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L822–822"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "712ae1d9cc0471f99850724099caf73ead9f7337678a992c3a9d807960beffe7",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0326",
+     "atom": "CAP:CAP-DELIVERY",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "88158ee85ddcb242c481e4391a5094a1d7b48fa2bcc91e739336c01fd3084844",
+      "payload_sha": "bd262e9e42fe9825ae99ef032319fe81890321fe7670a85f6c9cde5ee2c71853"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3444–3460",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L823–823"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "88158ee85ddcb242c481e4391a5094a1d7b48fa2bcc91e739336c01fd3084844",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0327",
+     "atom": "SKILL:SK-T01",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "e27936b5331326e6a66be1072dcecfeb90d403db934a746c2a7e76904c083aec",
+      "payload_sha": "f78a13f7bd2d236c002acec2c82e1f9eff122d9fe141581958a749ee7489ca7e"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3461–3477",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L828–828"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "e27936b5331326e6a66be1072dcecfeb90d403db934a746c2a7e76904c083aec",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0328",
+     "atom": "SKILL:SK-T02",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "2c2bf76942bbdc26a4ecbdcced3643392cd2d750233592121bdf7f6e98d23d35",
+      "payload_sha": "89ecbf6895f796a02f57ab81f6323cd127e8d1bd12778421705bf1683e106710"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3478–3494",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L829–829"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "2c2bf76942bbdc26a4ecbdcced3643392cd2d750233592121bdf7f6e98d23d35",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0329",
+     "atom": "SKILL:SK-T03",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "2a49377a6e0b8eb00d57c5bbf7516d30ef9faae0190cbe41e39838694978f67e",
+      "payload_sha": "4cc93bd1b83244936c35be26e1b47b82a8534d3eef9177f339dd4d59c1f6ae8c"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3495–3511",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L830–830"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "2a49377a6e0b8eb00d57c5bbf7516d30ef9faae0190cbe41e39838694978f67e",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0330",
+     "atom": "SKILL:SK-T04",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "a742f3224f825557cd69f1b5d70544ed9be6bdb161067298c3ca76888c6dc465",
+      "payload_sha": "7b843aa3a1b103a2dbe4f6a3583198d4dce23d7e20a37cc6132672601b8c1215"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3512–3528",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L831–831"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "a742f3224f825557cd69f1b5d70544ed9be6bdb161067298c3ca76888c6dc465",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0331",
+     "atom": "SKILL:SK-T05",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "45b62da1d7a6774bbcf946f04f4f60b8e805e575acd45808f4c5f54da80957a7",
+      "payload_sha": "e4a49feef3b3196a5eded4f5ff5cb367e52275a72a10260666753b14dc188ce6"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3529–3545",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L832–832"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "45b62da1d7a6774bbcf946f04f4f60b8e805e575acd45808f4c5f54da80957a7",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0332",
+     "atom": "SKILL:SK-T06",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "22fa57ad94df76da928e62d5701103d605e5900912df2cddfbc06bdd9d38313f",
+      "payload_sha": "8d742ba0c8775d660c3bedb0472711ce6243158930ff3b1a51d5d6525b24804e"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3546–3562",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L833–833"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "22fa57ad94df76da928e62d5701103d605e5900912df2cddfbc06bdd9d38313f",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0333",
+     "atom": "SKILL:SK-T07",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "4d184157fb45432cbf6f7607112647e26bab59a0392ad590ccf1b7e9eb3188f3",
+      "payload_sha": "ff9ba982680a9f084db5115d3e2b635971c28f03be555e670109ad01bb867b72"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3563–3579",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L834–834"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "4d184157fb45432cbf6f7607112647e26bab59a0392ad590ccf1b7e9eb3188f3",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0334",
+     "atom": "SKILL:SK-T08",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "e8817ba3b9158972c959d6097fbb24c26cdd7bc468bcd1fa966db3cce8a29f64",
+      "payload_sha": "0ac8572f82e7f7d3147014af62b3377c0dac9bf849750652da292a404a952f87"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3580–3596",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L835–835"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "e8817ba3b9158972c959d6097fbb24c26cdd7bc468bcd1fa966db3cce8a29f64",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0335",
+     "atom": "SKILL:SK-T09",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "4c828bc3af018900bfe49efe8227f8eeff007ef8f6ab861938fa20b7538327e3",
+      "payload_sha": "73f825149ac57dc02c71d84e7d1e00b87bc4427732cb41de81f55c1aa9c95dda"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3597–3613",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L836–836"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "4c828bc3af018900bfe49efe8227f8eeff007ef8f6ab861938fa20b7538327e3",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0336",
+     "atom": "SKILL:SK-T10",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "32091a6c1b1af3e90d4c0ede698f96f9c61b51a0e40a81e92a5cead50e90cd8f",
+      "payload_sha": "43ba2f681e03c33358355beefa6fe2b82a4d5cca28d1d519015d10581946e9de"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3614–3630",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L837–837"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "32091a6c1b1af3e90d4c0ede698f96f9c61b51a0e40a81e92a5cead50e90cd8f",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0337",
+     "atom": "SKILL:SK-T11",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "a83560aa096a8d31c5e6a3355ca21b2b016a4c971e68712fb23186b8549cd926",
+      "payload_sha": "fac6f0815ad81f16831afa6ff40e02f8fc551fc090aa9ac75dfe87dc4f581032"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3631–3647",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L838–838"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "a83560aa096a8d31c5e6a3355ca21b2b016a4c971e68712fb23186b8549cd926",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0338",
+     "atom": "SKILL:SK-T12",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "2ad53b36645b73c5af36fdb7544e769551f325df6dd43bd14aa72edbb6ba9dae",
+      "payload_sha": "80bf4f5289e1393a269402b7d7be168cb51cdb54b24ae028b63c7cdb9691b94d"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3648–3664",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L839–839"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "2ad53b36645b73c5af36fdb7544e769551f325df6dd43bd14aa72edbb6ba9dae",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0339",
+     "atom": "SKILL:SK-T13",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "61812632bc2975286c88f4ef9865999e0708124464b6428bd10d5b7ec1dc40e0",
+      "payload_sha": "8554ce91c7e79eff2ce7b763d93421948eff5c828d3cb493bb975256439eb33a"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3665–3681",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L840–840"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "61812632bc2975286c88f4ef9865999e0708124464b6428bd10d5b7ec1dc40e0",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0340",
+     "atom": "SKILL:SK-T14",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "d98fa7840cef364bc8e7ad46500ed82b3575d1d85d06cc36f783fe35d8e411ca",
+      "payload_sha": "5432180acaa346d63818a772b6e0cd73d924905235f0c976655eb853f6bad9bb"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3682–3698",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L841–841"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "d98fa7840cef364bc8e7ad46500ed82b3575d1d85d06cc36f783fe35d8e411ca",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0341",
+     "atom": "SKILL:SK-T15",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "009de85f8fc556791d76a0831235211f3ed4b1c483754c94b98460a447b8145d",
+      "payload_sha": "88c478c0bc9708a7043eaebd9d8423cfb36b94f25d99e43f7dd2f79bb616ebf9"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3699–3715",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L842–842"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "009de85f8fc556791d76a0831235211f3ed4b1c483754c94b98460a447b8145d",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0342",
+     "atom": "SKILL:EC-T01",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "766e92b32b0c1f0b6cd0808f02ca43d3766e4312d6b1b44d585f523c2b36f680",
+      "payload_sha": "669eef371260b40001d8aced366034caaf835a05afbce97287bce3dd83edcdf9"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3716–3732",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L843–843"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "766e92b32b0c1f0b6cd0808f02ca43d3766e4312d6b1b44d585f523c2b36f680",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0343",
+     "atom": "SKILL:EC-T02",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "4e96d89b92c4f7cc9d77e4fd7af8960a07700aa9f19858b5af378b6b0c2105f1",
+      "payload_sha": "4907be322b14f37ec96cdbcea493d6fb03922555d5c417f345c97ead96e8c607"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3733–3749",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L844–844"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "4e96d89b92c4f7cc9d77e4fd7af8960a07700aa9f19858b5af378b6b0c2105f1",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0344",
+     "atom": "SKILL:EC-T03",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "ceb662beb289d4c16c51c9675f8e4696ed6f7f0a067d06a052b703977c5094ba",
+      "payload_sha": "47dfea5561b86d70c57eda4e481b89df4609ea50e7a591fac6263f8c9dcaee8d"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3750–3766",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L845–845"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "ceb662beb289d4c16c51c9675f8e4696ed6f7f0a067d06a052b703977c5094ba",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0345",
+     "atom": "SKILL:EC-T04",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "f17261d43d0a996f98516f25c2d83a5515bbebddf3ea368410d448eb01e52bf2",
+      "payload_sha": "e010742907dde0e9d63903129041e08fbd3d6628cb3395aabb2baf0adfe0370f"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3767–3783",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L846–846"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "f17261d43d0a996f98516f25c2d83a5515bbebddf3ea368410d448eb01e52bf2",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0346",
+     "atom": "SKILL:EC-T05",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "e091df06875cf4656d77edc16aad4fa5327e5313ded77cdd9f10950cde5065a3",
+      "payload_sha": "05c77dfcc0f9afa0c65771729e9ea9e6eee0df79dc41250b28a00497f6c49291"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3784–3800",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L847–847"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "e091df06875cf4656d77edc16aad4fa5327e5313ded77cdd9f10950cde5065a3",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0347",
+     "atom": "SKILL:EC-T06",
+     "kind": "BEHAVIOR_ROUTE",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "9cc74446280aa3b1910137d55713bbb798bd1a8b27aae59b75f5e9726409cac6",
+      "payload_sha": "7e08fc71b8afc02c80aaf290f2cde7305321cb8d42c5b4c401b2e91bb3d36ad0"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L3801–3817",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L848–848"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "9cc74446280aa3b1910137d55713bbb798bd1a8b27aae59b75f5e9726409cac6",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    }
+   ]
+  },
+  "AUTHORITY_SEAM": {
+   "count": 5,
+   "fixtures": [
+    {
+     "unit_id": "B3.U0361",
+     "atom": "SEAM:S1 Source/Intent/Profile",
+     "kind": "AUTHORITY_SEAM",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B4",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "9c87dff832af2b35e5d284ddae168cc4454639652de64f3f20be4e32e8d84d42",
+      "payload_sha": "02a92658e923163e6b0acc8bcb9eb0892f2d56ba6c5d296550288c53d695886c"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L4448–4466",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L767–767"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "9c87dff832af2b35e5d284ddae168cc4454639652de64f3f20be4e32e8d84d42",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0362",
+     "atom": "SEAM:S2 PI→PD/ECP/TQAEP",
+     "kind": "AUTHORITY_SEAM",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B4",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "3484ae806ed7470e5bd9e8b0e72afb38b48d4c9bf4f45e5fb8003414ec29395d",
+      "payload_sha": "c0f355965c094622b37fab737f61662eb9871d6c59c4c9d14c122d19b380ea87"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L4467–4485",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L768–768"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "3484ae806ed7470e5bd9e8b0e72afb38b48d4c9bf4f45e5fb8003414ec29395d",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0363",
+     "atom": "SEAM:S3 Plan/Policy→HGK",
+     "kind": "AUTHORITY_SEAM",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B4",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "11e55620dd9d2cbc1fc9cca32b6921d8e60a9cbfd20de9297fca66b3d11c1c22",
+      "payload_sha": "c4773d79898e6fc50ed167302a35308093e10891f1b5864fda4b6622eddb7618"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L4486–4504",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L769–769"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "11e55620dd9d2cbc1fc9cca32b6921d8e60a9cbfd20de9297fca66b3d11c1c22",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0364",
+     "atom": "SEAM:S4 Work→Hermes/Codex→World",
+     "kind": "AUTHORITY_SEAM",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B4",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "478e9a92b5a8d4c5973d595565721590dda9e1f17fca34dd1f05b072549d80a9",
+      "payload_sha": "fc6caf27da4be2f31c66172597a48341daa647ba2cbcc8c0abbc805df486f132"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L4505–4523",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L770–770"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "478e9a92b5a8d4c5973d595565721590dda9e1f17fca34dd1f05b072549d80a9",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0365",
+     "atom": "SEAM:S5 Raw/Oracle→Checker/Publisher",
+     "kind": "AUTHORITY_SEAM",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B4",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "82c81f30a64a4a1d26d892a97b2d5f3cd59733e9f6080f1aa85660c9526a376f",
+      "payload_sha": "fcdb900fbdf7db933e215833f4e6cd145e7fb3b8db65488948d68c84edb5b27f"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L4524–4718",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L771–771"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "82c81f30a64a4a1d26d892a97b2d5f3cd59733e9f6080f1aa85660c9526a376f",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    }
+   ]
+  },
+  "RECOVERY": {
+   "count": 2,
+   "fixtures": [
+    {
+     "unit_id": "B3.U0359",
+     "atom": "F14.MIN_STOP",
+     "kind": "RECOVERY",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "eb582885326a86b0a879ab1eeb7df8eb36187f40ae262c2b314e6a8dc6a02da5",
+      "payload_sha": "c4c8550e14768f61f188e1d40eca8d469db81eef2ba8ceb529ab6d582f9e2a93"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L4418–4431",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L775–775"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "eb582885326a86b0a879ab1eeb7df8eb36187f40ae262c2b314e6a8dc6a02da5",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    },
+    {
+     "unit_id": "B3.U0360",
+     "atom": "F14.FULL_DURABLE",
+     "kind": "RECOVERY",
+     "PH": "PH01",
+     "W": "E00",
+     "B": "B7",
+     "owner": null,
+     "reader": "ORIGINAL_READER_UNBOUND",
+     "polarity": "NOT_DECLARED_IN_PAYLOAD",
+     "protected_field": {
+      "direct_clause_sha": "cfa36c2867e92d9009e6db16180119d7acb02625fe5cefc00008d118bc1c6d13",
+      "payload_sha": "83a3f00120b3495c46736c22eab4a40f6721718a590fd42e04761ae1ef43503a"
+     },
+     "expected_set": {
+      "direct_parent_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md@b996055b89564f276a36d1127a361936e7542f02545921e820190f3ba6a68be3:L4432–4447",
+      "resolved_source_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md@dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1:L776–778"
+     },
+     "trigger": "case-level invocation of the B3 ROUTE entry",
+     "first_fail": null,
+     "source_evidence": {
+      "decision": "SOURCE_BOUND_VERIFIED",
+      "clause_sha_observed": "cfa36c2867e92d9009e6db16180119d7acb02625fe5cefc00008d118bc1c6d13",
+      "binding": {
+       "declared": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-m\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "resolved": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_B0-B8_藍圖\\SST_PLP_PH01_W0_B3_藍圖_實質正文_2026-11-24_r2.md",
+       "ratification": "CANDIDATE_NOT_RATIFIED"
+      }
+     },
+     "fixture_ceiling": "TYPED_SKELETON_NOT_SEMANTIC_ORACLE"
+    }
+   ]
+  }
+ },
+ "claim_ceiling": "typed skeleton bound to verified source evidence; the semantic Oracle and the original Reader are still unbound, so no case is called a semantic PASS on the strength of these fixtures"
+}

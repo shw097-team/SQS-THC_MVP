@@ -50,8 +50,20 @@ def sha_bytes(b: bytes) -> str:
     return hashlib.sha256(b).hexdigest()
 
 
+_CACHE: dict[str, bytes] = {}
+
+
+def read_bytes(p: str) -> bytes:
+    """One read per file per process: the mutation loop re-verifies the same sources."""
+    b = _CACHE.get(p)
+    if b is None:
+        b = open(p, "rb").read()
+        _CACHE[p] = b
+    return b
+
+
 def sha_file(p: str) -> str:
-    return sha_bytes(open(p, "rb").read())
+    return sha_bytes(read_bytes(p))
 
 
 def window_state() -> dict:
@@ -121,7 +133,7 @@ def verify_mapping(unit: dict) -> dict:
         return {**out, "decision": "RESOLVED_SOURCE_ABSENT"}
     if sha_file(rp) != rs["sha"]:
         return {**out, "decision": "RESOLVED_SOURCE_CHANGED"}
-    if _slice(open(rp, "rb").read(), rs["a"], rs["b"]) is None:
+    if _slice(read_bytes(rp), rs["a"], rs["b"]) is None:
         return {**out, "decision": "RESOLVED_SPAN_OUT_OF_RANGE"}
     dpp = dp["path"]
     if not os.path.isfile(dpp):
@@ -134,7 +146,7 @@ def verify_mapping(unit: dict) -> dict:
                 break
     if not os.path.isfile(dpp):
         return {**out, "decision": "DIRECT_PARENT_ABSENT"}
-    praw = open(dpp, "rb").read()
+    praw = read_bytes(dpp)
     if sha_bytes(praw) != dp["sha"]:
         return {**out, "decision": "DIRECT_PARENT_CHANGED"}
     sl = _slice(praw, dp["a"], dp["b"])
@@ -171,7 +183,7 @@ def doc_bridge(unit: dict) -> dict:
             break
     if cand is None:
         return {"decision": "SOURCE_ABSENT", "document": name}
-    raw = open(cand, "rb").read()
+    raw = read_bytes(cand)
     a, b = int(span.group(1)), int(span.group(2))
     sl = _slice(raw, a, b)
     if sl is None:
