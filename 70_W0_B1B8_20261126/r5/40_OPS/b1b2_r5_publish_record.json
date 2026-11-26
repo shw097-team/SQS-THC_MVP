@@ -3,9 +3,9 @@
  "published_at": "2026-11-26T23:38:02+0800",
  "repo": "https://github.com/shw097-team/SQS-THC_MVP",
  "branch": "main",
- "remote_head": "8d49a7858f58247f3ab725fb4c33f8628bd51afe",
+ "remote_head": "8a4aa0dfc6e50237b8c88b9d34163dc53e249383",
  "previous_head": "3630a2b361a67f2fb236433d38134aecef088e83",
- "files": 169,
+ "files": 175,
  "path": "70_W0_B1B8_20261126/r5/",
  "excluded_local_only": [
   "40_OPS/b0_r5_sourcereadset.json"
@@ -23,5 +23,13 @@
  "head_after_verdict_commit": "8d49a7858f58247f3ab725fb4c33f8628bd51afe",
  "readback_2": "ls-remote origin refs/heads/main == git rev-parse HEAD == 8d49a78 after the second push (48d1e6c..8d49a78)",
  "lag_note": "the six documents cite the commit that introduced their publication block (48d1e6c); the branch head advanced once more to carry this record, so a document can never cite the very commit that contains it. No further push is made to chase that sha.",
- "verified_at": "2026-11-26T23:39:01+0800"
+ "verified_at": "2026-11-27T00:00:05+0800",
+ "commits": [
+  "48d1e6c0dbdb0f5724432bc722c817f50c7ce5b4",
+  "8d49a7858f58247f3ab725fb4c33f8628bd51afe",
+  "3efff96946856757ee0ee206b3cc2a8c13320e3b",
+  "8a4aa0dfc6e50237b8c88b9d34163dc53e249383"
+ ],
+ "frozen_manifest": "4d7ff9108f4330347f221436155a5d9bf4981632a022d9bf30a545ea7987db32",
+ "readback_3": "ls-remote refs/heads/main == rev-parse HEAD == 8a4aa0d; working tree clean"
 }

@@ -1,7 +1,7 @@
 {
  "schema": "SST.PH01.W0.B3.TQAEP@1",
  "spec_b3_sha256": "a1d759c7157c4ca8d34acb3f0730b74f653baaa86eb5c3c4302837d0df6deac1",
- "generated_at": "2026-11-26T23:57:36+0800",
+ "generated_at": "2026-11-27T00:00:25+0800",
  "expected_case_count": 752,
  "case_count": 752,
  "verdict_counts": {
@@ -41,7 +41,7 @@
    "pass": true
   }
  ],
- "b0_block": "B0 SourceReadSet/2 not supplied: the OWNER signing window on disk is scoped to B1-B8 construction and expired; the reader fails closed with TRUST_CONTEXT_UNBOUND",
+ "b0_block": "B0 SourceReadSet/2 supplied as a real value (SST.B0.SourceReadSet/2, spec_version 2026-11-25_r4_Native-first); the JOIN ran against it, and 96 held atoms are unresolved tool keys or unclassifiable requiredness; the 686 NOT_EXECUTED cases still need the original B3 Reader",
  "cases": {
   "B3.NEG.CAP_CAP-CONTRACT": {
    "case_id": "B3.NEG.CAP_CAP-CONTRACT",

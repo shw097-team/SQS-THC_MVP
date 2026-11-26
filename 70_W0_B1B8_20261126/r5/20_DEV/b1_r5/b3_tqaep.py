@@ -25,8 +25,19 @@ import w0_spec as W
 import b3_engine as B3
 
 OPS = B3.OPS
-B0_BLOCK = ("B0 SourceReadSet/2 not supplied: the OWNER signing window on disk is scoped to "
-            "B1-B8 construction and expired; the reader fails closed with TRUST_CONTEXT_UNBOUND")
+# derived, not narrated: the B0 side is read from the artefact actually used by the JOIN
+def _b0_state() -> str:
+    src = B3.load_source_side()
+    if src.get("kind") == "READSET":
+        held = "96 held atoms are unresolved tool keys or unclassifiable requiredness"
+        return (f"B0 SourceReadSet/2 supplied as a real value ({src.get('wire_version')}, "
+                f"spec_version {src.get('spec_version')}); the JOIN ran against it, and "
+                f"{held}; the 686 NOT_EXECUTED cases still need the original B3 Reader")
+    return ("B0 side is RECEIPT_ONLY: the SourceReadSet/2 value itself was not supplied, so "
+            "every joined row stays held")
+
+
+B0_BLOCK = _b0_state()
 
 
 # ---- CHILD/PROTECTED source-bound checks (the unit carries its own source pin) ----

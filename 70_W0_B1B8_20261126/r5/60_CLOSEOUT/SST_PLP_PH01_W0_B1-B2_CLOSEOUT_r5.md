@@ -4,8 +4,8 @@ subject: SST/SQS-THC/PH01/E00
 original_wave: P1-W00M
 spec_version: 2026-11-26_r5_Native-first_CODEX_FINAL
 spec_manifest_sha256: 3c816deb8fc216eae831dddfac396217d5b224fc7575c03415ef9f08ebbfa046
-candidate_manifest_sha256: 4d7ff9108f4330347f221436155a5d9bf4981632a022d9bf30a545ea7987db32
-generated_at: 2026-11-26T23:59:29+0800
+candidate_manifest_sha256: 486cf7ca052e69e4ce19db7c6d3e459e1a1ac87914560f0909cfb82a1c05ebf5
+generated_at: 2026-11-27T00:00:26+0800
 product_actual: EXECUTED_SOURCE_READ_ONLY
 fin_order: DENY
 distribution: LOCAL_ONLY
@@ -24,7 +24,7 @@ distribution: LOCAL_ONLY
 仍為 NO，因為 B1 尚有 6 HOLD／5 PARTIAL／12 FIXTURE_ONLY、B2 尚有 76 HOLD，且原 Oracle／
 讀權（D-1…D-5、TT-UP-1/2、E00、ROUTE）未具。
 
-- 凍結候選 manifest：`4d7ff9108f4330347f221436155a5d9bf4981632a022d9bf30a545ea7987db32`（40 artefacts）
+- 凍結候選 manifest：`486cf7ca052e69e4ce19db7c6d3e459e1a1ac87914560f0909cfb82a1c05ebf5`（40 artefacts）
 - spec：`3c816deb8fc216eae831dddfac396217d5b224fc7575c03415ef9f08ebbfa046`
 - Repo HEAD：`9a70501ad4bbf315c675894a7a58c0f98bf18f47`；實測 source repo 未被寫入
 - 產品效果：`SOURCE_READ`／`write_set=[]`／`preimage=N/A`／`FIN_ORDER=DENY`
@@ -81,9 +81,9 @@ D-1…D-5、TT-UP-1/2、6 E00、54 ROUTE。沒有原 Reader／原 Owner 的裁�
 ## 發布｜remote readback（工程成果，非產品接受）
 
 - Repo：`https://github.com/shw097-team/SQS-THC_MVP`，branch `main`
-- commit：`8d49a7858f58247f3ab725fb4c33f8628bd51afe`（remote `ls-remote` 回讀與本機 `rev-parse HEAD` 全等）
+- commit：`8a4aa0dfc6e50237b8c88b9d34163dc53e249383`（remote `ls-remote` 回讀與本機 `rev-parse HEAD` 全等）
 - 發布範圍：`70_W0_B1B8_20261126/r5/` 下 168 檔（引擎、TQAEP/OPS 收據、凍結 manifest、CLOSEOUT/HANDOFF、裁決清單）
 - **未發布**：`40_OPS/b0_r5_sourcereadset.json`（含原條文逐字），依 `LOCAL_ONLY` 留本地，remote 只記其 sha256（見 `40_OPS/LOCAL_ONLY_EXCLUSIONS.json`）
 - 憑證：以受管 `extraheader` 一次性注入，未寫入 git config、未出現在 argv/URL/log/commit
 - 發布 ≠ 接受：`B1_ACCEPTED`／`B2_ACCEPTED`／`W0_COMPLETE`／`W1 ReadyExecute` 仍未成立，`FIN_ORDER=DENY`
-- 更新時間：2026-11-26T23:59:29+0800
+- 更新時間：2026-11-27T00:00:26+0800
