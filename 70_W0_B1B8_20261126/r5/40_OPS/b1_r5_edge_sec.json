@@ -1,0 +1,122 @@
+{
+ "schema": "SST.PH01.W0.B1.EDGE_SEC@5",
+ "cases": [
+  {
+   "id": "SEC.CONTEXT_OVERRIDE",
+   "expect_exit": 64,
+   "observed": {
+    "exit": 64,
+    "stdout_len": 2,
+    "stdout_is_single_json_object": true,
+    "stdout_bom": false,
+    "stderr": "{\"code\": \"CALLER_CONTEXT_OVERRIDE_FORBIDDEN\", \"first_fail\": \"--context\", \"detail\": \"caller may not supply or override trusted context\"}"
+   },
+   "pass": true
+  },
+  {
+   "id": "SEC.REPO_OUTSIDE_ALLOWLIST",
+   "expect_exit": 64,
+   "observed": {
+    "exit": 64,
+    "stdout_len": 2,
+    "stdout_is_single_json_object": true,
+    "stdout_bom": false,
+    "stderr": "{\"code\": \"REPO_ROOT_NOT_AUTHORIZED\", \"first_fail\": \"REPO_ROOT_NOT_IN_ALLOWLIST\", \"detail\": \"C:/Windows\"}"
+   },
+   "pass": true
+  },
+  {
+   "id": "SEC.OUT_OUTSIDE_W",
+   "expect_exit": 64,
+   "observed": {
+    "exit": 64,
+    "stdout_len": 2,
+    "stdout_is_single_json_object": true,
+    "stdout_bom": false,
+    "stderr": "{\"code\": \"OUT_PATH_NOT_UNDER_W\", \"first_fail\": \"C:\\\\Users\\\\user\\\\escaped.json\", \"detail\": \"engineering recorder may only write inside W\"}"
+   },
+   "pass": true
+  },
+  {
+   "id": "SEC.UNKNOWN_COMMIT",
+   "expect_exit": 2,
+   "observed": {
+    "exit": 2,
+    "stdout_len": 2,
+    "stdout_is_single_json_object": true,
+    "stdout_bom": false,
+    "stderr": "{\"code\": \"COMMIT_UNRESOLVED\", \"first_fail\": \"COMMIT_UNRESOLVED\", \"detail\": \"0489ac84a390a7172c6cce8322caefeb66b8942c\"}"
+   },
+   "pass": true
+  },
+  {
+   "id": "SEC.EMPTY_REQUEST_REFUSED",
+   "expect_exit": 64,
+   "observed": {
+    "exit": 64,
+    "stdout_len": 2,
+    "stdout_is_single_json_object": true,
+    "stdout_bom": false,
+    "stderr": "{\"code\": \"EMPTY_REQUEST\", \"first_fail\": \"EMPTY_UNIT_SELECTION\", \"detail\": \"a requested key set that matches nothing is refused, not reported as a vacuous success\"}"
+   },
+   "pass": true
+  },
+  {
+   "id": "SEC.UNKNOWN_ARG",
+   "expect_exit": 64,
+   "observed": {
+    "exit": 64,
+    "stdout_len": 2,
+    "stdout_is_single_json_object": true,
+    "stdout_bom": false,
+    "stderr": "{\"code\": \"BAD_INVOCATION\", \"first_fail\": \"--bogus-flag\", \"detail\": \"unknown argument\"}"
+   },
+   "pass": true
+  },
+  {
+   "id": "SEC.FDA_DENY_INVARIANT_OUTPUT",
+   "expect_exit": 0,
+   "observed": {
+    "exit": 2,
+    "stdout_len": 14583,
+    "stdout_is_single_json_object": true,
+    "stdout_bom": false,
+    "stderr": ""
+   },
+   "pass": true
+  },
+  {
+   "id": "SEC.NO_WRITE_TO_SOURCE_REPO",
+   "expect": "head+status unchanged",
+   "before": {
+    "head": "9a70501ad4bbf315c675894a7a58c0f98bf18f47",
+    "status_sha256": "59a313ed990e43a7b470df83a2ddf390b3b931be81ce56d0583e3f986d0ea2e3",
+    "status_lines": 132
+   },
+   "after": {
+    "head": "9a70501ad4bbf315c675894a7a58c0f98bf18f47",
+    "status_sha256": "59a313ed990e43a7b470df83a2ddf390b3b931be81ce56d0583e3f986d0ea2e3",
+    "status_lines": 132
+   },
+   "pass": true
+  },
+  {
+   "id": "SEC.PRODUCT_EFFECT_INVARIANTS",
+   "observed": {
+    "effect_is_source_read": true,
+    "write_set_empty": true,
+    "preimage_na": true,
+    "fin_order_deny": true,
+    "gui_not_started": true,
+    "lease_not_acquired": true,
+    "broker_not_contacted": true,
+    "no_allowed_effect_pos": true
+   },
+   "pass": true
+  }
+ ],
+ "counts": {
+  "pass": 9,
+  "fail": 0
+ }
+}

@@ -1,0 +1,55 @@
+{
+ "schema": "SST.W0.B2.CANDIDATE_FREEZE/1",
+ "batch": "B2",
+ "subject": "SST/SQS-THC/PH01/E00",
+ "original_wave": "P1-W00M",
+ "frozen_at": "2026-11-26T14:57:24+08:00",
+ "round": 2,
+ "artefacts": [
+  {
+   "path": "20_DEV/b2_reader/b2_ops_qrows2.py",
+   "bytes": 15761,
+   "raw_sha256": "08e0ed21896cd2df0cfcf8a18483db4b4922f8118ccc5c2aea38b5a54148c045"
+  },
+  {
+   "path": "20_DEV/b2_reader/b2_ops_tqaep2.py",
+   "bytes": 15485,
+   "raw_sha256": "4bccb77343fe7cb702beaa4ba35768d98acd08b0b59be96f66470aecbd84463e"
+  },
+  {
+   "path": "20_DEV/b2_reader/b2_parse.py",
+   "bytes": 4533,
+   "raw_sha256": "ae2c0208512698f8b04fb8c4206dd807cdb025180cef05cb92400f260c11ba23"
+  },
+  {
+   "path": "20_DEV/b2_reader/b2_semantics.py",
+   "bytes": 15571,
+   "raw_sha256": "a30cc2c5dfedfe3324d61c2785d17135e61ffac68e182414d6441eb11415325b"
+  },
+  {
+   "path": "40_OPS/b2_toolreadset_20261126T145652.json",
+   "bytes": 3046004,
+   "raw_sha256": "21be4dc99bb1e9b6bcab446cd6aa5d0606e568e042c09b86c27b1c9386928c5d"
+  },
+  {
+   "path": "40_OPS/b2_tqaep_20261126T145701.json",
+   "bytes": 2853468,
+   "raw_sha256": "0ebd88fbd44bc3e8c7fce677fc38d5591f0e994643f85313996ea6475d0eef43"
+  }
+ ],
+ "candidate_digest": "cbaeeb8111c9567628674b00b30f287f48494cbf2dba9872e312c0923a43cd6a",
+ "candidate_digest_rule": "sha256 over the LF-joined '<sha>  <path>' lines of artefacts SORTED by path, no trailing LF (two spaces)",
+ "claim_ceiling": "ROW_PAYLOAD_PROVENANCE_AND_CLAUSE_IDENTITY",
+ "effect": "SOURCE_READ",
+ "write_set": [],
+ "preimage": "N/A",
+ "fin_order": "DENY",
+ "supersedes": "40_OPS/b2_candidate_freeze_20261126T141949.json",
+ "not_claimed": [
+  "B2 acceptance/completion",
+  "independent requiredness for 1,385 Q rows",
+  "9 HARD §06 mutations that are not HARD-loss",
+  "54 TECH_ROUTE mutations (field unnamed by §06)",
+  "tool availability/pin/licence (B5)"
+ ]
+}

@@ -1,0 +1,32 @@
+---
+artifact_kind: BATCH_CLOSEOUT_HANDOFF
+subject: SST/SQS-THC/PH01/E00
+original_wave: P1-W00M
+spec_version: 2026-11-26_r5_Native-first_CODEX_FINAL
+spec_manifest_sha256: 3c816deb8fc216eae831dddfac396217d5b224fc7575c03415ef9f08ebbfa046
+candidate_manifest_sha256: ef9449a5a7eb9d6bff51f050ac6d452f877b9e3cf4659de412fac6b851b2dad6
+generated_at: 2026-11-26T23:35:47+0800
+product_actual: EXECUTED_SOURCE_READ_ONLY
+fin_order: DENY
+distribution: LOCAL_ONLY
+---
+
+# W0-B2｜HANDOFF（r5 產品層）
+
+## 01｜producer 輸出
+
+| 欄 | 值／規則 |
+|---|---|
+| ToolReadSet | union 1,465；Q 列 1,385 逐列 verbatim 驗證通過 |
+| RequirednessDelta | requiredness = **UNKNOWN**（positional payload 無宣告欄位），不得推測填值 |
+| WheelMetadataRef | `NOT_EXECUTED`（無官方 metadata 讀權） |
+
+## 02｜consumer 義務
+
+- B3：`requiredness` 為 UNKNOWN 即拒（已實測 0 收 / 1,465 拒）。
+- B5：`metadata` 未具即拒；工具名不得當 license／ABI／選型。
+- 接收結果是 draft readiness，不是 ACK。
+
+## 03｜未具
+
+`B2_ACCEPTED=NO`；D-5、TT-UP-1、6 E00、54 ROUTE 未閉合；未安裝任何工具。

@@ -1,0 +1,80 @@
+{
+ "schema": "SST.PH01.W0.B1B2.CANDIDATE_FREEZE@5",
+ "frozen_at": "2026-11-26T23:35:47+0800",
+ "spec_manifest_sha256": "3c816deb8fc216eae831dddfac396217d5b224fc7575c03415ef9f08ebbfa046",
+ "candidate_manifest": {
+  "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\70_W0_B1B8_20261126\\40_OPS\\b1b2_r5_CANDIDATE_MANIFEST.tsv",
+  "sha256": "ef9449a5a7eb9d6bff51f050ac6d452f877b9e3cf4659de412fac6b851b2dad6",
+  "bytes": 3286,
+  "artefacts": 33
+ },
+ "inputs": {
+  "repo_root": "C:\\Projects\\Agent_Workspace\\SQS-THC",
+  "repo_head": "9a70501ad4bbf315c675894a7a58c0f98bf18f47",
+  "repo_remote": null,
+  "carrier_sha256": "463dcf33a668a9daa8f0bbf447c7dacc4c3d602bc53fa7e4866844ffbbc4b3e1",
+  "fda_carrier_root": "C:\\Projects\\Agent_Workspace\\FHS\\Fabric\\FABRIC\\fabric-desktop-automation",
+  "allowlist_sha256": "de92bd2cde3ff8a763c718e48b510a1650d3f03d3aba7e9ef544b09bf02ae1ed",
+  "locators_sha256": "a8025e2faae502f0f959a1e375367d9c8dcee243b10ad7138e80acd284d983f9"
+ },
+ "product_actual": {
+  "B1": {
+   "cases": 60,
+   "verdicts": {
+    "PASS": 32,
+    "FIXTURE_ONLY": 12,
+    "HOLD": 6,
+    "PARTIAL": 5,
+    "PASS_EVIDENCE": 5
+   },
+   "edge_sec": {
+    "pass": 9,
+    "fail": 0
+   },
+   "effect": "SOURCE_READ",
+   "write_set": [],
+   "preimage": "N/A",
+   "fin_order": "DENY"
+  },
+  "B2": {
+   "cases": 2930,
+   "verdicts": {
+    "PASS": 2854,
+    "HOLD": 76
+   },
+   "qrows_verified": 1385,
+   "receivers": {
+    "B3": {
+     "accepted": 1351,
+     "rejected": 114,
+     "mandatory_fields": [
+      "tool_key",
+      "source_row",
+      "requiredness"
+     ],
+     "reject_reasons": [
+      "MANDATORY_FIELD_MISSING"
+     ]
+    },
+    "B5": {
+     "accepted": 0,
+     "rejected": 1465,
+     "mandatory_fields": [
+      "tool_key",
+      "source_row",
+      "metadata",
+      "missing"
+     ],
+     "reject_reasons": [
+      "MANDATORY_FIELD_MISSING"
+     ]
+    }
+   }
+  }
+ },
+ "runtime": {
+  "python": "3.14.9",
+  "git": "git version 2.56.1.windows.1",
+  "os_principal": "user"
+ }
+}

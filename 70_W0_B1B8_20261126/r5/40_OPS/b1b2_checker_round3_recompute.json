@@ -1,0 +1,191 @@
+{
+ "schema": "SST.PH01.W0.B1B2.CHECKER_RECOMPUTE@round3",
+ "checker_role": "separated_readonly_checker_round3",
+ "role_ceiling": "technical_countercheck_only; NOT_PROVIDER_INDEPENDENCE; no Owner/Reader acceptance",
+ "sod": {
+  "contexts_separated": true,
+  "model_axis_sod_established": false,
+  "note": "same model axis as Maker; separation is context/session only"
+ },
+ "generated_at": "2026-11-26T21:45:26+08:00",
+ "scope": {
+  "change_cone": [
+   "20_DEV/b1_r5/b1_engine.py",
+   "20_DEV/b1_r5/b1_cli.py",
+   "20_DEV/b1_r5/b1_tqaep.py",
+   "20_DEV/b1_r5/b2_engine.py",
+   "20_DEV/b1_r5/b2_tqaep.py",
+   "40_OPS/b1_r5_run_base.json",
+   "40_OPS/b1_r5_run_all.json",
+   "40_OPS/b1_r5_run_fda.json",
+   "40_OPS/b1_r5_tqaep.json",
+   "40_OPS/b2_r5_tqaep.json",
+   "40_OPS/b2_r5_receivers.json",
+   "40_OPS/b1b2_r5_CANDIDATE_MANIFEST.tsv",
+   "40_OPS/b1b2_r5_candidate_freeze.json"
+  ],
+  "readonly_confirmed": {
+   "method": "recomputed sha256 of all 20 manifest members after all checks",
+   "result": "IDENTICAL_TO_MANIFEST",
+   "files_written_by_checker": [
+    "40_OPS/b1b2_checker_round3_verdict.md",
+    "40_OPS/b1b2_checker_round3_recompute.json"
+   ],
+   "no_write_to": ["SQS-THC", "FHS", "知識庫", "spec_delta_r5"],
+   "no_network_gui_broker_lease": true
+  }
+ },
+ "oracle_policy": {
+  "own_parsers": ["UNIT_BEGIN json blocks", "R5_CASE_PARAMETERS json blocks", "16 original case table rows", "2930 B2 case table rows", "carrier registry rows", "compact-json sha256", "git cat-file / ls-tree (read only)"],
+  "maker_cli_used_as": "system_under_test_only (--op FDA, --op BASE, --op ALL)",
+  "maker_internal_functions_as_oracle": false,
+  "note": "b2_engine.op_qrows was invoked as the product under test on mutations the checker built itself; the expected value came from the pinned spec row, not from the product"
+ },
+ "checks": {
+  "C1_fda_read_control_data_bound": {
+   "code": {"file": "20_DEV/b1_r5/b1_engine.py", "lines": "472-492, 495-514, 526-592"},
+   "static": {
+    "guard_read_branch_calls_policy": "line 508 pol = fda_live_broker_policy()",
+    "sha_compare_before_return": "line 484 if sha256_bytes(raw) != a['raw_sha256']: raise EngineFault(SOURCE_CHANGED) -- happens before the live_broker scan (487-491) and before returning",
+    "payload_fields": "artefact_sha256 / artefact_line / artefact_bytes / artefact emitted at 511-512"
+   },
+   "dynamic": {
+    "A_real_bytes_real_pin": {"exit": 2, "decision": "ALLOW_READ_CONTROL", "artefact_sha256": "9406456db853e9e6597c30ed400240808c7b0c777dd49c34eb611bf4c863d6c4", "artefact_line": 24, "bytes": 11110},
+    "B_real_bytes_wrong_pin": {"exit": 2, "stdout": "{}", "stderr": "{\"code\":\"SOURCE_CHANGED\",\"first_fail\":\"SOURCE_CHANGED\",\"detail\":\"capability matrix does not match its pinned digest\"}", "read_control_emitted": false},
+    "harness_note": "scratch copy of the product with only the ALLOWLIST path redirected; inspected carrier bytes untouched; B flips the declared pin so bytes!=pin takes the same branch a byte drift would"
+   },
+   "independent_carrier_facts": {"sha256": "9406456db853e9e6597c30ed400240808c7b0c777dd49c34eb611bf4c863d6c4", "bytes": 11110, "live_broker_occurrences": 1, "line": 24, "text": "live_broker: DENY_ALWAYS"},
+   "pos_requirements": {"artefact_sha256_eq_policy_sha": true, "line_eq": true, "policy_value_DENY_ALWAYS": true, "three_arms_DENY": true, "order_path_reached_false": true},
+   "result": "PASS"
+  },
+  "C2_fda_op_live": {
+   "command": "python -B b1_cli.py --op FDA --repo C:/Projects/Agent_Workspace/SQS-THC",
+   "exit": 2,
+   "disposition": "PARTIAL_SPLIT_PER_KEY",
+   "artefacts_verified": "16/16",
+   "deny_control_has_sha_line": true,
+   "slots6_missing": [{"field": "slot_action_artefact_mapping", "reason": "UNVERIFIED"}, {"field": "allowed_effect_pos", "reason": "ABSENT"}],
+   "slot_static_hits": {"watch_ui": 0, "radar_signal": 0, "xs_compile": 0, "xs_backtest": 0, "at_simulated_order": 0, "broker_external_event_read": 0, "broker_live_submit": 0},
+   "independent_hit_recount": "checker's own scan of the 16 allow-listed carrier files: 0 hits for all 7 slot names (Maker notes claim xs_compile has a hit -> stale note)",
+   "effect": "SOURCE_READ", "write_set": [], "preimage": "N/A", "fin_order": "DENY",
+   "gui_started": false, "lease_acquired": false, "broker_contacted": false,
+   "result": "PASS"
+  },
+  "C3_run_base_frozen_vs_frozen_engine": {
+   "entries": 23, "kinds": {"BASE": 18, "KERNEL": 5}, "kind_FDA_present": false,
+   "statuses": {"ALLOWLIST_VERIFIED": 13, "TRACKED": 7, "DISK_BUT_UNTRACKED": 6, "TRACKED_CONTENT_MATCH": 5, "DISK_DIRECTORY": 3, "NOT_IN_OWNER_ALLOWLIST": 1},
+   "missing_targets": 10, "errors": 0, "disposition": "PARTIAL_SPLIT_PER_KEY",
+   "reproduction": "fresh --op BASE vs frozen json: 1 difference only (invocation.out)",
+   "sha256": "20dd226c6eeb1ba34574521cf9ac438681b7c9cdc3d697eaa8103fde85af4481",
+   "manifest_row_match": true,
+   "result": "PASS"
+  },
+  "C4_b1_tqaep": {
+   "cases": 60, "case_set_equals_spec": true, "expected_first_fail_vs_spec": "60/60 equal (checker parse of the 06 case table rows)",
+   "verdict_counts": {"PASS": 32, "PASS_EVIDENCE": 5, "PARTIAL": 5, "FIXTURE_ONLY": 12, "HOLD": 6},
+   "pass_partition": {"BASE.NEG": 18, "BASE.POS": 12, "FDA.POS": 1, "FDA.NEG": 1},
+   "base_neg": {
+    "n": 18,
+    "verdict_equals_arm1_only": true,
+    "proof_case": {"case": "B1.NEG.BASE-006", "arm2_pass": false, "arm2_statuses": ["DISK_DIRECTORY", "DISK_DIRECTORY", "DISK_DIRECTORY"], "verdict": "PASS", "added_safety_regression_failed": true},
+    "arm1_observed_all": ["BASE_ROW_MISSING"],
+    "arm1_not_vacuous": "every NEG key's paired POS case resolves >=1 declared target (1,1,3,1,2,3,1,1,1,3,1,1,1,1,1,1,3,4)"
+   },
+   "base_pos": {"pass": 12, "partial": 5, "hold": 1, "passed_targets_recomputed": 16, "recompute_mismatches": 0, "hold_case": "BASE-018 (NOT_IN_OWNER_ALLOWLIST -> D-2 HOLD)"},
+   "broker_case": {"pos": "read_control carries artefact_sha256/artefact_line and asserts policy DENY_ALWAYS + 3 arms DENY", "neg": "policy {value,line,sha256} present; 3 arms + unknown_action DENY/FIN_ORDER_DENY_ALWAYS; flip probe NO_CONNECTOR_PRESENT"},
+   "kernel_pos": "PASS_EVIDENCE only (D-4 semantics HOLD), not counted as PASS",
+   "result": "PASS"
+  },
+  "C5_b2_tqaep": {
+   "cases": 2930, "case_set_equals_spec": true, "units": 1465, "unit_counts": {"Q_SOURCE_ROW": 1385, "HARD": 18, "E00_TECH": 8, "TECH_ROUTE": 54},
+   "verdict_counts": {"HOLD": 1545, "PASS": 1385}, "recount_matches": true, "orphans": 0,
+   "spec_expected_distribution": {"NONE_IF_VALID": 1465, "NAMESPACE_JOIN_DENY": 1385, "TOOL_REQUIREDNESS_HOLD": 72, "STATE_CONFLICT": 8},
+   "pass_set_equals_expected_NAMESPACE_JOIN_DENY": true,
+   "q_pos_all_hold": true, "q_pos_n": 1465,
+   "hard_e00_route_all_hold": true, "hard_e00_route_n": 160,
+   "qrows": {"units": 1385, "verified": 1385, "not_verified": 0, "carrier_sha256": "463dcf33a668a9daa8f0bbf447c7dacc4c3d602bc53fa7e4866844ffbbc4b3e1", "carrier_bytes": 767859, "physical_lines": 2391, "indexed_rows": 1385},
+   "q_pos_identity_recomputed": {"sample": 8, "line_key_row_payloadsha_all_match": true},
+   "q_neg_mutation_reproduced_by_checker": {"sample_units": 7, "mutations": 13, "denied": 13, "alt_namespaces": ["R3-REGISTRY-Q4", "R3-REGISTRY-Q9"], "mismatch": 0},
+   "verdicts_absent": ["PASS_VERBATIM_ROW", "PASS_PRESERVED"],
+   "result": "PASS"
+  },
+  "C6_receivers": {
+   "B3": {"accepted": 0, "rejected": 1465, "mandatory_fields": ["tool_key", "source_row", "requiredness"]},
+   "B5": {"accepted": 0, "rejected": 1465, "mandatory_fields": ["tool_key", "source_row", "metadata", "missing"]},
+   "checked_values_requiredness_all_UNKNOWN": true,
+   "reject_reason_uniform": "MANDATORY_FIELD_MISSING",
+   "decisions": {"REJECT": 2930, "ACCEPT_FOR_DRAFT": 0},
+   "draft_written_as_ACK": false,
+   "receipt_missing_field_list_stored": false,
+   "unique_source_ids_per_receiver": 1465,
+   "result": "PASS (mechanism) / residual see N-07"
+  },
+  "C7_manifest_and_freeze": {
+   "manifest_rows": 20, "sha_and_bytes_all_match": true,
+   "manifest_sha256": "75660aa34b2b4e1b415c554d32c3e6e4daf7f0225f58349db133ed4b749db6dd", "manifest_bytes": 1970,
+   "freeze_receipt_manifest_binding_matches": true,
+   "freeze_receipt_absent_from_manifest": true,
+   "spec_manifest": {"rows": 4, "all_match": true, "manifest_sha256": "3c816deb8fc216eae831dddfac396217d5b224fc7575c03415ef9f08ebbfa046", "B1_body": "24e4f17a0f29627f53799200c93afc11a9bfb946d26958c9c5de557229f35c2c", "B2_body": "1a11f0cf022a31a67ea35bc9dc50b627d7542c8f5589e63d1dec5dacec40b2f4"},
+   "set_digests_recomputed": {"B1_units_30": "e0d3afa67d4b", "B1_cases_60": "910962c5ce5f", "B2_units_1465": "d54bdd4a5a1a", "B2_cases_2930": "30592c711efb"},
+   "result": "PASS (but one member is a pre-fix artefact -> N-08)"
+  },
+  "C8_run_fda_frozen_vs_frozen_engine": {
+   "frozen_sha256": "d88e12340c6c7780a8778f463f45b1e2d29c1343299b8c8bfd3c2df9dfd0784d",
+   "frozen_mtime_vs_engine_mtime": "21:17 vs 21:35 (frozen file is older than the frozen engine)",
+   "diff_fields": 13,
+   "differences": [
+    "disposition: frozen COMPLETE_NO_MISSING vs fresh PARTIAL_SPLIT_PER_KEY",
+    "fda.live_broker_policy: frozen is a literal string 'DENY_ALWAYS (submit/replace/cancel permanently refused)' vs fresh object {value,line,sha256}",
+    "deny_control.pos_deny_invariant: frozen has no artefact/artefact_sha256/artefact_line/artefact_bytes",
+    "fda.slots[6].missing: frozen 1 entry (allowed_effect_pos/ABSENT), fresh 2 entries (+ slot_action_artefact_mapping/UNVERIFIED)",
+    "invocation.repo path form"
+   ],
+   "verdict": "STALE_ARTEFACT -> new finding N-08"
+  },
+  "C9_new_defect_scan": {
+   "hold_counted_as_pass": false,
+   "partial_counted_into_pass": false,
+   "accepted_or_b1b2_accepted_claimed": false,
+   "unbound_oracle_written_as_product_acceptance": false,
+   "notes": [
+    "the only PASS families are bound to a pinned expectation: B1 BASE NEG -> spec BASE_ROW_MISSING; B2 Q NEG -> spec NAMESPACE_JOIN_DENY; B1 BASE POS -> identity recomputed from git/disk",
+    "ACCEPT/ACK strings in artefacts are only in claim_ceiling text and receiver notes ('never a product ACK'); zero ACCEPT_FOR_DRAFT receipts exist"
+   ]
+  }
+ },
+ "findings": [
+  {"id": "B1-F01", "prev": "PARTIAL", "now": "CLOSED", "anchor": "b1_engine.py:484-492,505-514; b1_tqaep.py:225-236", "basis": "read control re-reads pinned carrier bytes, refuses on digest mismatch (proved live), and the payload carries sha256/line/bytes; POS asserts sha==policy.sha, line==policy.line, DENY_ALWAYS and 3 denying arms"},
+  {"id": "B1-F02", "prev": "PARTIAL", "now": "CLOSED", "anchor": "b1_tqaep.py:147-197 (189-197)", "basis": "verdict = arm1 only; arm2 kept as added_safety_arm and now calls resolve_target(..., FOREIGN_COMMIT, ...); BASE-006 passes with arm2 pass=false"},
+  {"id": "B2-F1", "prev": "STILL OPEN", "now": "CLOSED", "anchor": "b2_tqaep.py:68-79", "basis": "all 1385 Q POS are HOLD with row identity kept as evidence only; PASS 1385 == exactly the spec's NAMESPACE_JOIN_DENY case set"},
+  {"id": "B2-F4", "prev": "PARTIAL", "now": "CLOSED", "anchor": "b2_engine.py:154-173, 252-255", "basis": "only labelled requiredness accepted; positional -> UNKNOWN; UNKNOWN forces receiver reject; 0 accepted / 1465 rejected on both receivers, 0 of the former 94 applicability rows accepted"},
+  {"id": "N-01", "prev": "STILL OPEN", "now": "CLOSED", "anchor": "40_OPS/b1_r5_run_base.json", "basis": "23 entries, 0 kind:FDA, byte-identical reproduction by the frozen engine except invocation.out"},
+  {"id": "N-02", "prev": "STILL OPEN", "now": "CLOSED", "anchor": "b1_engine.py:303-311", "basis": "ALLOWLIST_VERIFIED now computes pin_match against the allow-list raw_sha256 and flips to ALLOWLIST_PIN_MISMATCH; 13/13 targets pin_match=true and sha==pin"},
+  {"id": "N-03", "prev": "STILL OPEN", "now": "CLOSED", "anchor": "b1_cli.py:74-82; b1_engine.py:563-580", "basis": "fda missing (minus by-design ABSENT) is counted into the CLI disposition -> PARTIAL_SPLIT_PER_KEY; broker slot missing is now appended, keeping D-3 and adding allowed_effect_pos"},
+  {"id": "N-04", "prev": "STILL OPEN", "now": "CLOSED", "anchor": "b1_engine.py:588-590", "basis": "live_broker_policy block is built from the parsed policy object (value/line/sha256), not a literal"},
+  {"id": "N-05", "prev": "STILL OPEN", "now": "CLOSED", "anchor": "b2_tqaep.py:27-28; b2_engine.py:154-173", "basis": "one derivation path; HARD units now report UNKNOWN on both sides, the previous HARD-vs-UNKNOWN contradiction is gone"},
+  {"id": "N-06", "prev": "STILL OPEN", "now": "CLOSED", "anchor": "b2_engine.py:151-173", "basis": "token scan removed, so no column value is mis-labelled; all 1465 rows are UNKNOWN and refused (conservative; B3/B5 yield 0)"},
+  {"id": "N-07", "prev": "STILL OPEN", "now": "PARTIAL", "anchor": "b2_engine.py:256-273", "basis": "checked_values now stored (requiredness/source_row/kind), but the receipt still has no missing-field list and the ToolReadSet is not persisted, so per-row reject reason is not fully recomputable from delivered bytes"}
+ ],
+ "new_findings": [
+  {"id": "N-08", "mandatory": false, "severity": "P2", "anchor": "40_OPS/b1_r5_run_fda.json (manifest member, sha d88e1234…, mtime 21:17 < engine 21:35)", "fact": "the frozen standalone FDA receipt was produced by the pre-fix engine: it still self-reports disposition COMPLETE_NO_MISSING, its deny_control carries no artefact_sha256/line, and slots[6].missing holds only allowed_effect_pos. 13 fields differ from a fresh run of the frozen engine.", "why_not_mandatory": "not one of the three mandatory classes: no case verdict depends on it, HOLD/PARTIAL are not counted into PASS, and it claims completeness (not ACCEPT/ACK). The same defect as live product behaviour was rated non-mandatory (N-03) last round. The corrected FDA section is reproduced byte-identically inside b1_r5_run_all.json, so the product claim stays anchored.", "required_action": "regenerate b1_r5_run_fda.json with the frozen engine (or drop it from the manifest) before any Owner adoption; a delivered set containing both COMPLETE_NO_MISSING and PARTIAL_SPLIT_PER_KEY for the same op is self-contradicting"},
+  {"id": "N-09", "mandatory": false, "severity": "P3", "anchor": "b2_engine.py:186-210; b2_r5_tqaep.json .hard.summary", "fact": "op_hard still emits decision=PRESERVED for all 80 units and summary preserved:80 although every requiredness is UNKNOWN (per-entry requiredness_preserved=None)",
+  "required_action": "report preserved as 0/NOT_ESTABLISHED, or count only entries with a known requiredness"},
+  {"id": "N-10", "mandatory": false, "severity": "P3", "anchor": "40_OPS/b1b2_r5_MAKER_NOTES.md:12,17,48", "fact": "notes were not refreshed after the last run: they claim B2 verdicts PASS 1385 + PASS_VERBATIM_ROW 1385 + HOLD 160 (artefact: HOLD 1545 / PASS 1385) and that xs_compile has a carrier hit (checker scan and product output: 0)"},
+  {"id": "N-11", "mandatory": false, "severity": "P3", "anchor": "b1_tqaep.py:177-197; b1_r5_tqaep.json B1.NEG.BASE-006", "fact": "arm2 is marked added_safety_regression_failed for a case whose declared targets are directories (DISK_DIRECTORY), i.e. the arm2 oracle is not evaluable there rather than failed; verdict is unaffected"},
+  {"id": "N-12", "mandatory": false, "severity": "P3", "anchor": "b1_tqaep.py:188-190", "fact": "dead code: rec['arms'].append(arm2) is immediately overwritten by rec['arms'] = [arm1]"}
+ ],
+ "mandatory_findings": 0,
+ "verdict": "ACCEPT",
+ "not_verified": [
+  "the maker full TQAEP re-run itself (the artefacts are audited case by case against the checker's own oracle, not re-produced)",
+  "b1_r5_edge_sec.json 9/9 (outside this change cone)",
+  "semantic correctness of the D-1..D-5 / TT-UP / E00 / ROUTE gaps (Owner domain, unchanged)"
+ ],
+ "counts": {
+  "b1_cases": 60, "b1_pass": 32, "b1_pass_evidence": 5, "b1_partial": 5, "b1_fixture_only": 12, "b1_hold": 6,
+  "b2_cases": 2930, "b2_pass": 1385, "b2_hold": 1545,
+  "receivers": {"B3": [0, 1465], "B5": [0, 1465]},
+  "findings_closed": 10, "findings_partial": 1, "findings_open": 0,
+  "new_findings": 5, "new_mandatory": 0
+ }
+}

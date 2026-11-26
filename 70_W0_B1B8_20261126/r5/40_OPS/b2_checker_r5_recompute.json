@@ -1,0 +1,283 @@
+{
+ "A_manifest": {
+  "files": {
+   "SST_PLP_PH01_W0_B1_執行控制小包_實質正文_2026-11-26_r5_Native-first_CODEX_FINAL.md": {
+    "sha_expected": "24e4f17a0f29627f53799200c93afc11a9bfb946d26958c9c5de557229f35c2c",
+    "bytes_expected": 263939,
+    "sha_observed": "24e4f17a0f29627f53799200c93afc11a9bfb946d26958c9c5de557229f35c2c",
+    "bytes_observed": 263939,
+    "match": true
+   },
+   "SST_PLP_PH01_W0_B1_執行控制小包_證據型附錄_2026-11-26_r5_Native-first_CODEX_FINAL.md": {
+    "sha_expected": "c667f814f8b35130028a01fd9ba91e2a150f1c80fd7d5ae53ff390741acd8df2",
+    "bytes_expected": 26565,
+    "sha_observed": "c667f814f8b35130028a01fd9ba91e2a150f1c80fd7d5ae53ff390741acd8df2",
+    "bytes_observed": 26565,
+    "match": true
+   },
+   "SST_PLP_PH01_W0_B2_執行控制小包_實質正文_2026-11-26_r5_Native-first_CODEX_FINAL.md": {
+    "sha_expected": "1a11f0cf022a31a67ea35bc9dc50b627d7542c8f5589e63d1dec5dacec40b2f4",
+    "bytes_expected": 12549483,
+    "sha_observed": "1a11f0cf022a31a67ea35bc9dc50b627d7542c8f5589e63d1dec5dacec40b2f4",
+    "bytes_observed": 12549483,
+    "match": true
+   },
+   "SST_PLP_PH01_W0_B2_執行控制小包_證據型附錄_2026-11-26_r5_Native-first_CODEX_FINAL.md": {
+    "sha_expected": "9a16fd13cda1f956eeaf2d29604553337ed8dbf3943a3fe9efc07f3fb0a6e38d",
+    "bytes_expected": 27565,
+    "sha_observed": "9a16fd13cda1f956eeaf2d29604553337ed8dbf3943a3fe9efc07f3fb0a6e38d",
+    "bytes_observed": 27565,
+    "match": true
+   }
+  },
+  "all_match": true,
+  "count": 4
+ },
+ "B_unit_case_sets": {
+  "units": 1465,
+  "case_ids": 2930,
+  "case_params": 2930,
+  "unit_id_set_sha256": "d54bdd4a5a1a6b6b48177465729222749da7e15873e78ffb7e5bbc8c3f8634e8",
+  "unit_id_set_sha256_maker_claim": "d54bdd4a5a1a6b6b48177465729222749da7e15873e78ffb7e5bbc8c3f8634e8",
+  "case_id_set_sha256_from_units": "30592c711efbd312df8005ad156038798311019cab349f912ee758b097266dd5",
+  "case_id_set_sha256_from_case_params": "30592c711efbd312df8005ad156038798311019cab349f912ee758b097266dd5",
+  "case_id_set_sha256_maker_claim": "30592c711efbd312df8005ad156038798311019cab349f912ee758b097266dd5",
+  "kind_counts": {
+   "HARD": 18,
+   "E00_TECH": 8,
+   "TECH_ROUTE": 54,
+   "Q_SOURCE_ROW": 1385
+  },
+  "units_cases_not_in_case_table": [],
+  "case_params_not_in_units": [],
+  "unit_blocks_total": 1465,
+  "units_with_other_than_2_case_ids": []
+ },
+ "C_carrier": {
+  "path": "C:/Projects/Agent_Workspace/知識庫/SQS/【1】SST_PLP_PH01-04/PHASE 01~04/藍圖/實質正文/SST_PLP_共用實質正文_工具合約_2026-11-23_r2.md",
+  "sha256_observed": "463dcf33a668a9daa8f0bbf447c7dacc4c3d602bc53fa7e4866844ffbbc4b3e1",
+  "bytes_observed": 767859,
+  "sha256_claimed": "463dcf33a668a9daa8f0bbf447c7dacc4c3d602bc53fa7e4866844ffbbc4b3e1",
+  "bytes_claimed": 767859,
+  "physical_lines": 2391,
+  "registry_q_rows": 1385,
+  "namespace_counts": {
+   "R3-REGISTRY-Q1": 440,
+   "R3-REGISTRY-Q2": 513,
+   "R3-REGISTRY-Q3": 378,
+   "R3-REGISTRY-Q4": 54
+  },
+  "q_units": 1385,
+  "verified": 1385,
+  "mismatch": 0,
+  "missing": 0,
+  "mismatch_detail": [],
+  "missing_detail": [],
+  "distinct_lines_used": 1385,
+  "convention": "compact json ensure_ascii=False separators=(comma,colon) -> sha256 utf-8"
+ },
+ "D_tqaep": {
+  "case_count": 2930,
+  "cases_len": 2930,
+  "verdict_counts": {
+   "PASS": 2788,
+   "PASS_PRESERVED": 18,
+   "HOLD": 124
+  },
+  "verdict_counts_sum": 2930,
+  "verdict_x_kind": {
+   "Q_SOURCE_ROW|PASS": 2770,
+   "HARD|PASS_PRESERVED": 18,
+   "HARD|PASS": 18,
+   "E00_TECH|HOLD": 16,
+   "TECH_ROUTE|HOLD": 108
+  },
+  "orphan_case_ids": [],
+  "case_params_missing_in_tqaep": [],
+  "case_params_extra_in_tqaep": [],
+  "unit_id_mismatch": [],
+  "q_pos_pass": 1385,
+  "q_neg_pass": 1385,
+  "hard_pos_pass_preserved": 18,
+  "hard_neg_pass": 18,
+  "hard_neg_actual_distinct": 1,
+  "hard_pos_actual_distinct": 1,
+  "hold_total": 124,
+  "hold_x_kind": {
+   "E00_TECH": 16,
+   "TECH_ROUTE": 108
+  },
+  "pass_preserved_counted_in_pass_bucket": false,
+  "pass_preserved_defined_in_spec_body": "NO - string absent from B2 body; only maker docstring b2_tqaep.py:7",
+  "distinct_q_pos_notes": 1,
+  "spec_hard_neg_generic_mutation_rows": 9,
+  "spec_hard_neg_other_mutation_rows": 9,
+  "spec_hard_neg_other_examples": [
+   [
+    "B2.U0002",
+    "wrong type→ABI_UNBOUND；second writer→SECOND_CANONICAL_PI"
+   ],
+   [
+    "B2.U0003",
+    "unknown forbidden field→ABI_UNBOUND"
+   ],
+   [
+    "B2.U0004",
+    "maker self attest→MAKER_SELF_ATTEST"
+   ]
+  ]
+ },
+ "E_receivers": {
+  "B3": {
+   "accepted": 1385,
+   "rejected": 0,
+   "receipts": 1385,
+   "refused": 0,
+   "decisions": {
+    "ACCEPT_FOR_DRAFT": 1385
+   },
+   "source_ids_equal_q_key_set": true,
+   "sha_mismatch_vs_units": 0
+  },
+  "B5": {
+   "accepted": 0,
+   "rejected": 1385,
+   "receipts": 0,
+   "refused": 1385,
+   "decisions": {
+    "REJECT": 1385
+   },
+   "source_ids_equal_q_key_set": true
+  },
+  "b3_requiredness_field_non_requiredness": {
+   "total": 991,
+   "by_namespace": {
+    "R3-REGISTRY-Q1": 46,
+    "R3-REGISTRY-Q2": 513,
+    "R3-REGISTRY-Q3": 378,
+    "R3-REGISTRY-Q4": 54
+   },
+   "q1_only": 46,
+   "q1_examples": {
+    "`N_A`": 9,
+    "`REFERENCE/EVAL_ONLY`": 3,
+    "`EVAL_ONLY_COMPARATOR`": 3,
+    "`BASE_REQUIRED_AS_ADAPTER`": 2,
+    "`REUSE_INTERNAL_FIRST`": 2
+   }
+  },
+  "b3_malformed_requiredness_example": {
+   "raw": "`\\`DEFER_WITH_TRIGGER\\``",
+   "maker_derived": "\\`DEFER_WITH_TRIGGER\\"
+  },
+  "b3_received_units": 1385,
+  "union_required_by_spec_04R5": 1465,
+  "b3_b5_missing_units": 80
+ },
+ "F_claims": {
+  "claim_ceiling_text": "B2_ACCEPTED requires every applicable case to be PASS with the original oracle; HOLD/PASS_PRESERVED do not close it",
+  "maker_src_mentions_B2_ACCEPTED": true,
+  "maker_src_mentions_INSTALLED": false,
+  "tqaep_json_mentions_license": 0,
+  "tqaep_json_mentions_abi": 0,
+  "claims_b2_accepted_true": false,
+  "claims_tool_installed": false,
+  "claims_license_abi_verified": false,
+  "claims_b5_selection_complete": false,
+  "receivers_note": "ACCEPT_FOR_DRAFT is a receiver readiness state, never a product ACK",
+  "claim_ceiling_implies_product_oracle_pass": true
+ },
+ "findings": [
+  {
+   "id": "F-01",
+   "mandatory": true,
+   "severity": "HIGH",
+   "file_line": "20_DEV/b1_r5/b2_tqaep.py:68, :76, :91；40_OPS/b2_r5_tqaep.json case_count/verdict_counts",
+   "fact": "2,788 個產品 Case 被寫成 PASS（Q POS 1385／Q NEG 1385／HARD NEG 18），但同一 Case 在 spec 的 §06.0 列尾是 EXPECTED_NOT_OBSERVED，§05.R5_PARAMETERS/B2.U0081 是 actual=NOT_EXECUTED、runtime_baseline=UNBOUND_ORIGINAL_FIXTURE、carrier_result=EXACT_ORDERED_JSON_EQUAL_NOT_SEMANTIC_ACCEPTANCE；spec §06.0 明言本輪未執行產品 Case，§06.R5.1/4 規定文件 baseline 不是原 runtime fixture、只比自身不能 PASS，附錄 §03 亦言只證文件保全。",
+   "impact": "把文件層 carrier 定位結果記入 2,930 產品 Case 表並以 PASS 命名，宣稱 95.2% 產品案通過；超出 spec 自訂 ceiling ROW_PAYLOAD_PIN_INTEGRITY_AND_CLAUSE_SPAN_IDENTITY。"
+  },
+  {
+   "id": "F-02",
+   "mandatory": true,
+   "severity": "HIGH",
+   "file_line": "20_DEV/b1_r5/b2_engine.py:170-186（observed_requiredness = original_requiredness）；:176（payload_sha 只回填）",
+   "fact": "18 個 HARD POS 以 requiredness 自比（同一 source_payload 抽出的 token 當 observed）判 PRESERVED，再以未定義的 PASS_PRESERVED 記為 18 案；HARD 單元從未做 payload 逐欄核對，payload_sha 從未重算。§04.R5.MANDATORY 明列「自己欄自比均 HOLD」，V02 明列真 Oracle 未具逐 Case HOLD；PASS_PRESERVED 字串在 B2 正文出現 0 次。",
+   "impact": "18 案由應為 HOLD 變成非 HOLD，且 18 案 actual 完全相同（1 種），無逐 key 鑑別力；原始 HARD POS oracle（獨立原條文/原payload逐欄相等）完全未被檢驗。"
+  },
+  {
+   "id": "F-03",
+   "mandatory": true,
+   "severity": "HIGH",
+   "file_line": "20_DEV/b1_r5/b2_engine.py:194-201 guard_requiredness；20_DEV/b1_r5/b2_tqaep.py:90-92",
+   "fact": "18 個 HARD NEG 一律以常數 guard（HARD→OPTIONAL 恆 DENY，order 表寫死）判 PASS，18 案 actual 位元組完全相同；其中 9/18 的原 mutation 是「原 HARD 被删除或无权启用」，另 9/18 是相異 mutation（ABI_UNBOUND/SECOND_CANONICAL_PI、MAKER_SELF_ATTEST、PIT_LOOKAHEAD、TRACE_ORPHAN、NOT_RELEASED…），從未被施加。§06.R5.2 要求 NEG 跟原 mutation 全字串、多 sub-arm 分別單欄改；§06.R5.4 與 V02 禁止常數 gate。同一 9 個 non-loss key 的 POS 註記自承 inner→outer 映射為 HOLD（:88-89），NEG 卻宣 PASS 且 first_fail=TOOL_REQUIREDNESS_HOLD，正是 §06.R5.3 禁止的「內層錯誤硬轉同一 wrapper」。",
+   "impact": "18 案 PASS 無鑑別力且與自身 POS 的 HOLD 陳述互相矛盾；原 inner functional failure 未被驗證。"
+  },
+  {
+   "id": "F-04",
+   "mandatory": true,
+   "severity": "HIGH",
+   "file_line": "20_DEV/b1_r5/b2_tqaep.py:126；20_DEV/b1_r5/b2_engine.py:232-244",
+   "fact": "B3 的 mandatory 欄 requiredness 取 source_payload[2].strip('`')；獨立重算 991/1385 列的該欄不是 Q1 requiredness：Q2 513（REUSE_SELECTED 209／DEFER_WITH_TRIGGER 126／ADAPT_WHEEL 116／RESEARCH_ONLY 62）、Q3 378、Q4 54 為自由文字、Q1 另有 46 列非 requiredness（含 N_A 9）。receiver 只檢查非空即 ACCEPT_FOR_DRAFT，故 accepted=1385/rejected=0。值亦變形，例：原字串 `\\`DEFER_WITH_TRIGGER\\`` → 送出 \\`DEFER_WITH_TRIGGER\\。§01 明定 Q1 Requiredness／Q2 AdmissionDecision／Q3／Q4 四維度不能互蓋。",
+   "impact": "B3 的 1,385 個 ACCEPT_FOR_DRAFT 中至少 945（68%）以錯誤語義欄位通過 mandatory 檢查；B3「0 拒絕」是 receiver 檢查過鬆造成的假綠。"
+  },
+  {
+   "id": "F-05",
+   "mandatory": true,
+   "severity": "MED",
+   "file_line": "20_DEV/b1_r5/b2_tqaep.py:119-133",
+   "fact": "ToolReadSet 只由 qres（Q 1,385）建構後送 B3/B5；HARD 18＋E00 8＋TECH_ROUTE 54 = 80 個 key 從未進入任何 receiver。spec §04.R5 明定「1385＋HARD/E00/ROUTE union 精確等 1465」，§04.OPS RETURN 要把 ToolReadSet/RequirednessDelta/WheelMetadataRef 送 B3、B5。",
+   "impact": "B3 1385/0 與 B5 0/1385 只覆蓋必要集合的 94.5%；80 個未交付 key 既未計入拒絕、也未計入 missing/HOLD，接收完整性被高報。"
+  },
+  {
+   "id": "F-06",
+   "mandatory": false,
+   "severity": "MED",
+   "file_line": "20_DEV/b1_r5/b2_tqaep.py:73-79",
+   "fact": "Q NEG 原 mutation 為「僅改原列payload/Requiredness或跨namespace替換」（§06.0:105167）兩個 sub-arm；Maker 只施加 namespace 替換並取得 NAMESPACE_JOIN_DENY，payload/requiredness 變異臂未執行，違反 §06.R5.2「多個 sub-arm 必分別單欄改」。",
+   "impact": "1,385 個 Q NEG PASS 各只覆蓋一半宣告變異；PASS 的廣度大於實測範圍。"
+  },
+  {
+   "id": "F-07",
+   "mandatory": false,
+   "severity": "LOW",
+   "file_line": "40_OPS/b1b2_r5_candidate_freeze.json:57-61；40_OPS/b2_r5_tqaep.json receivers 區塊",
+   "fact": "b2_engine.py:252 與 receivers.json 均註明 ACCEPT_FOR_DRAFT 非產品 ACK，但 freeze 與 tqaep 的彙總只寫 accepted:1385 / rejected:0，未帶 draft 限定詞。",
+   "impact": "彙總層可能被讀成 B3 已接收；屬標示缺陷，非假 ACK。"
+  }
+ ],
+ "observations": [
+  "Table C 的 Q 原列機械核對是真的：1,385 列逐 key／row／physical line／compact-JSON SHA 全等，且 1,385 條 carrier 列 1:1 用盡、無重複 key。缺陷在 verdict 命名與 ceiling，不在這一步的算術。",
+  "PASS_PRESERVED 未被併入 PASS bucket（verdict_counts 分開），124 個 HOLD 亦未在任何處被寫成 PASS 或 N/A；HOLD 分佈 E00 16＋TECH_ROUTE 108 與 F04/F05 的保守立場一致。",
+  "B5 全拒方向正確（metadata 本輪未取得，Maker 亦未宣稱取得）；但 receiver 把空 list missing=[] 也視為 mandatory 缺欄（b2_engine.py:232），屬語義 bug，恰好不改變 REJECT 結果。",
+  "F 表四類禁止宣稱（B2_ACCEPTED／工具已安裝／license-ABI 已核／B5 選型完成）皆未出現；但 claim_ceiling 的措辭隱含 2,788 案係「with the original oracle」之 PASS，與 F-01 同一問題。"
+ ],
+ "verdict": {
+  "decision": "REJECT",
+  "mandatory_findings": 5,
+  "table_status": {
+   "A": "PASS",
+   "B": "PASS",
+   "C": "PASS",
+   "D": "FAIL",
+   "E": "FAIL",
+   "F": "PASS"
+  },
+  "checker": "separated read-only checker, distinct context from maker; same model axis, SoD not established",
+  "generated_at": "2026-11-26T21:20:00+08:00"
+ },
+ "scope": {
+  "spec_dir": "C:/Projects/Agent_Workspace/SQS-THC_MVP_Workspace/70_W0_B1B8_20261126/spec_delta_r5/CODEX_FINAL",
+  "carrier": "C:/Projects/Agent_Workspace/知識庫/SQS/【1】SST_PLP_PH01-04/PHASE 01~04/藍圖/實質正文/SST_PLP_共用實質正文_工具合約_2026-11-23_r2.md",
+  "maker_artifacts": [
+   "20_DEV/b1_r5/b2_engine.py",
+   "20_DEV/b1_r5/b2_tqaep.py",
+   "40_OPS/b2_r5_tqaep.json",
+   "40_OPS/b2_r5_receivers.json"
+  ],
+  "independent": "own parser; maker modules not imported; only deterministic stdlib parsing",
+  "write_set": [
+   "40_OPS/b2_checker_r5_verdict.md",
+   "40_OPS/b2_checker_r5_recompute.json"
+  ]
+ }
+}

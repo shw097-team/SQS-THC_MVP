@@ -1,0 +1,184 @@
+{
+ "schema": "SST.W0.B2.GATE_PROBE/1",
+ "why": "the STATE_CONFLICT oracle and the namespace oracle each needed more than two repair cycles; this probe records whether the relation is declared or fitted",
+ "state_gate_with_maker_pair_diagnostic": [
+  {
+   "input": [
+    "REUSE_INTERNAL_DESIGN",
+    "SELECTED_DESIGN_ONLY"
+   ],
+   "natural": null,
+   "with_maker_pairs": "STATE_CONFLICT"
+  }
+ ],
+ "state_gate_cases": [
+  {
+   "input": [
+    "HARD"
+   ],
+   "expected": null,
+   "observed": null,
+   "ok": true,
+   "note": "single selection state"
+  },
+  {
+   "input": [
+    "HARD",
+    "EVAL_ONLY"
+   ],
+   "expected": "STATE_CONFLICT",
+   "observed": "STATE_CONFLICT",
+   "ok": true,
+   "note": "declared exclusion HARD/EVAL_ONLY"
+  },
+  {
+   "input": [
+    "DEFER_NOFIT",
+    "NOT_SELECTED"
+   ],
+   "expected": null,
+   "observed": null,
+   "ok": true,
+   "note": "legal compound: a deferral implies not-selected"
+  },
+  {
+   "input": [
+    "INSTALLED",
+    "ENABLED"
+   ],
+   "expected": null,
+   "observed": null,
+   "ok": true,
+   "note": "legal coexistence: the probe that keeps the gate from being true"
+  },
+  {
+   "input": [
+    "INSTALLED",
+    "NOT_INSTALLED"
+   ],
+   "expected": "STATE_CONFLICT",
+   "observed": "STATE_CONFLICT",
+   "ok": true,
+   "note": "declared exclusion installed/not"
+  },
+  {
+   "input": [
+    "SELECTED_DESIGN_ONLY",
+    "REFERENCE_ONLY"
+   ],
+   "expected": null,
+   "observed": null,
+   "ok": true,
+   "note": "maker-declared relation: NOT a gate relation, so the NATURAL gate must stay silent"
+  },
+  {
+   "input": [
+    "REUSE_INTERNAL_DESIGN"
+   ],
+   "expected": null,
+   "observed": null,
+   "ok": true,
+   "note": "single state"
+  }
+ ],
+ "state_gate_all_ok": true,
+ "exclusive_pairs_natural": [
+  [
+   "SELECTED",
+   "NOT_SELECTED"
+  ],
+  [
+   "INSTALLED",
+   "NOT_INSTALLED"
+  ],
+  [
+   "ENABLED",
+   "DISABLED"
+  ],
+  [
+   "BOUND",
+   "UNBOUND"
+  ],
+  [
+   "VERIFIED",
+   "NOT_VERIFIED"
+  ],
+  [
+   "APPROVED",
+   "REJECTED"
+  ],
+  [
+   "HARD",
+   "EVAL_ONLY"
+  ]
+ ],
+ "exclusive_pairs_maker_declared_not_used_for_cases": [
+  [
+   "REUSE_INTERNAL_DESIGN",
+   "SELECTED_DESIGN_ONLY"
+  ],
+  [
+   "DEFER_NOFIT",
+   "SELECTED_DESIGN_ONLY"
+  ],
+  [
+   "REFERENCE_ONLY",
+   "SELECTED_DESIGN_ONLY"
+  ]
+ ],
+ "e00_rows": {
+  "DEFER_NOFIT / NOT_SELECTED": {
+   "contradicting_state": "SELECTED",
+   "baseline": null,
+   "mutated": "STATE_CONFLICT",
+   "status": "OK"
+  },
+  "REFERENCE_ONLY / NOT_SELECTED": {
+   "contradicting_state": "SELECTED",
+   "baseline": null,
+   "mutated": "STATE_CONFLICT",
+   "status": "OK"
+  },
+  "REUSE_INTERNAL_DESIGN": {
+   "contradicting_state": null,
+   "status": "HOLD_NO_DECLARED_COUNTERPART"
+  },
+  "SELECTED_DOCUMENT_ADAPTER": {
+   "contradicting_state": null,
+   "status": "HOLD_NO_DECLARED_COUNTERPART"
+  },
+  "SELECTED_OPTIONAL_DISABLED": {
+   "contradicting_state": null,
+   "status": "HOLD_NO_DECLARED_COUNTERPART"
+  }
+ },
+ "e00_rows_ok": true,
+ "e00_distinct_states_with_counterpart": 2,
+ "e00_distinct_states_hold": 3,
+ "e00_units_with_counterpart": null,
+ "note": "the 8 E00 NEG cases are 2 executed / 6 HOLD_ORACLE_UNBOUND per the frozen TQAEP; the keys above are distinct STATES, not rows",
+ "namespace_probe": [
+  {
+   "unit_id": "B2.U0081",
+   "baseline_rows": 1,
+   "namespace_dropped": "NAMESPACE_JOIN_DENY",
+   "naive_matches_on_dropped_key": 1,
+   "naive_note": "lookup is performed on the NAMESPACE-DROPPED key, so a hit is not a self-comparison"
+  },
+  {
+   "unit_id": "B2.U0581",
+   "baseline_rows": 1,
+   "namespace_dropped": "NAMESPACE_JOIN_DENY",
+   "naive_matches_on_dropped_key": 1,
+   "naive_note": "lookup is performed on the NAMESPACE-DROPPED key, so a hit is not a self-comparison"
+  },
+  {
+   "unit_id": "B2.U1465",
+   "baseline_rows": 1,
+   "namespace_dropped": "NAMESPACE_JOIN_DENY",
+   "naive_matches_on_dropped_key": 1,
+   "naive_note": "lookup is performed on the NAMESPACE-DROPPED key, so a hit is not a self-comparison"
+  }
+ ],
+ "claim": "MAKER_DIAGNOSTIC_ONLY — not an acceptance, not a substitute for the checker"
+}

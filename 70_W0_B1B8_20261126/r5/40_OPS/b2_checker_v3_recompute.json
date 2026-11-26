@@ -1,0 +1,175 @@
+{
+ "schema": "SST.PH01.W0.B2.CHECKER_RECOMPUTE@v3",
+ "role": "SEPARATED_READ_ONLY_CHECKER",
+ "generated_at": "2026-11-26T23:05:00+0800",
+ "separation": {
+  "context": "fresh checker context, no shared scratch with Maker",
+  "model_axis_sod": "NOT_ESTABLISHED",
+  "note": "same model family as the Maker; SoD is context/write-scope only, not model-diverse"
+ },
+ "write_scope": [
+  "40_OPS/b2_checker_v3_verdict.md",
+  "40_OPS/b2_checker_v3_recompute.json"
+ ],
+ "inputs_verified": {
+  "carrier": {
+   "path": "知識庫/SQS/【1】SST_PLP_PH01-04/PHASE 01~04/藍圖/實質正文/SST_PLP_共用實質正文_工具合約_2026-11-23_r2.md",
+   "sha256": "463dcf33a668a9daa8f0bbf447c7dacc4c3d602bc53fa7e4866844ffbbc4b3e1",
+   "bytes": 767859,
+   "match": true,
+   "physical_lines": 2391,
+   "indexed_registry_rows": 1385
+  },
+  "candidate_manifest": {
+   "path": "40_OPS/b1b2_r5_CANDIDATE_MANIFEST.tsv",
+   "declared_sha256": "f2f828b97ff9bb82c26e0ebfcb621e04fdd8544d2349bc770ced4bbd74e4dab9",
+   "observed_sha256": "f2f828b97ff9bb82c26e0ebfcb621e04fdd8544d2349bc770ced4bbd74e4dab9",
+   "bytes": 2174,
+   "members": 22,
+   "members_mismatched": 0
+  }
+ },
+ "item1_e00_design_selection": {
+  "method": "self-parsed carrier section '## TECH54具名設計合約' (carrier:1416) into 54 blocks; compared each E00 unit's source_payload design token against the carrier SelectedDesign, no Maker code executed",
+  "carrier_blocks_parsed": 54,
+  "e00_units": 8,
+  "comparison": [
+   {"unit": "B2.U0019", "key": "TECH-001", "unit_value": "SELECTED_OPTIONAL_DISABLED", "carrier_value": "SELECTED_OPTIONAL_DISABLED", "carrier_line": 1420, "equal": true, "maker_verdict": "PASS"},
+   {"unit": "B2.U0020", "key": "TECH-002", "unit_value": "SELECTED_OPTIONAL_DISABLED", "carrier_value": "SELECTED_OPTIONAL_DISABLED", "carrier_line": 1438, "equal": true, "maker_verdict": "PASS"},
+   {"unit": "B2.U0021", "key": "TECH-003", "unit_value": "SELECTED_OPTIONAL_DISABLED", "carrier_value": "SELECTED_OPTIONAL_DISABLED", "carrier_line": 1456, "equal": true, "maker_verdict": "PASS"},
+   {"unit": "B2.U0022", "key": "TECH-004", "unit_value": "DEFER_NOFIT / NOT_SELECTED", "carrier_value": "DEFER_NOFIT", "carrier_line": 1474, "equal": true, "leading_token_equal": true, "maker_verdict": "PASS"},
+   {"unit": "B2.U0023", "key": "TECH-005", "unit_value": "REFERENCE_ONLY / NOT_SELECTED", "carrier_value": "REFERENCE_ONLY", "carrier_line": 1492, "equal": true, "leading_token_equal": true, "maker_verdict": "PASS"},
+   {"unit": "B2.U0024", "key": "TECH-006", "unit_value": "SELECTED_DOCUMENT_ADAPTER", "carrier_value": "SELECTED_DOCUMENT_ADAPTER", "carrier_line": 1510, "equal": true, "maker_verdict": "PASS"},
+   {"unit": "B2.U0025", "key": "TECH-007", "unit_value": "SELECTED_DOCUMENT_ADAPTER", "carrier_value": "SELECTED_DOCUMENT_ADAPTER", "carrier_line": 1528, "equal": true, "maker_verdict": "PASS"},
+   {"unit": "B2.U0026", "key": "TECH-008", "unit_value": "REUSE_INTERNAL_DESIGN", "carrier_value": "REUSE_INTERNAL_DESIGN", "carrier_line": 1549, "equal": true, "maker_verdict": "HOLD"}
+  ],
+  "self_comparison_remaining": false,
+  "carrier_values_all_match": 8,
+  "maker_pass_hold": {"PASS": 7, "HOLD": 1},
+  "count_correct": false,
+  "false_hold": {
+   "unit": "B2.U0026",
+   "cause": "b2_engine.py:351-352 keeps only payload items containing 'SELECTED' / 'NOT_SELECTED'; a legitimate non-SELECTED design value (REUSE_INTERNAL_DESIGN) yields an empty selection list, which b2_engine.py:367 turns into DRIFT",
+   "artifact_self_contradiction": "b2_r5_tqaep.json case B2.POS.TOOL_R2_TECH54__TECH-008 records carrier_design_selection='REUSE_INTERNAL_DESIGN' while unit_design_selection=[]"
+  },
+  "spec_ceiling": {
+   "spec_file": "spec_delta_r5/CODEX_FINAL/SST_PLP_PH01_W0_B2_執行控制小包_實質正文_2026-11-26_r5_Native-first_CODEX_FINAL.md",
+   "f05_line": 61,
+   "delta_line": 427,
+   "text": "F05 E00 U0019~26: 八 typed DesignSelection 精確保留；2歷史證據/6 Oracle HOLD / §04.R5: 6 E00未具原Oracle保HOLD，其餘2只承舊證據原範圍，不重新宣產品執行",
+   "allowed_case_pass_max": 2,
+   "claimed_case_pass": 7,
+   "excess": 5
+  }
+ },
+ "item2_state_conflict": {
+  "guard_source": "b2_engine.py:380-390",
+  "guard_returns_state_conflict": true,
+  "both_branches": ["b2_engine.py:383 DISABLED->enabled", "b2_engine.py:387 any selection change"],
+  "tqaep_pass_condition": "b2_tqaep.py:125-126 requires guard decision DENY AND first_fail == STATE_CONFLICT",
+  "spec_declared_first_fail": {
+   "spec_lines": [105043, 105045, 105047, 105049, 105051, 105053, 105055, 105057],
+   "value": "STATE_CONFLICT",
+   "all_eight": true
+  },
+  "neg_cases": {"PASS": 8, "HOLD": 0, "FAIL": 0},
+  "verdict": "CLOSED"
+ },
+ "item3_hold_decomposition": {
+  "artifact_verdict_counts": {"PASS": 2839, "HOLD": 91, "FAIL": 0},
+  "recomputed_from_cases": {
+   "Q_POS_HOLD": 34,
+   "ROUTE_POS_HOLD": 39,
+   "ROUTE_NEG_HOLD": 17,
+   "E00_POS_HOLD": 1,
+   "sum": 91
+  },
+  "closeout_claims": {
+   "file": "60_CLOSEOUT/SST_PLP_PH01_W0_B2_CLOSEOUT_r5.md",
+   "lines": "53-59",
+   "q_pos": 34,
+   "route_and_e00": "described without a ROUTE NEG line item",
+   "e00_reason": "1 案之 carrier 無 SelectedDesign"
+  },
+  "mismatch": [
+   "the E00 HOLD cause is false: carrier:1549 carries SelectedDesign REUSE_INTERNAL_DESIGN and the artifact's own actual field records it",
+   "the 17 ROUTE NEG HOLDs (mutation no-op / non-derivable carrier value) are not itemised",
+   "notes line 114 repeats the same false E00 cause"
+  ],
+  "verdict": "PARTIAL"
+ },
+ "item4_source_defects": {
+  "declared_count": 22,
+  "declared_breakdown_by_checker": {"TECH_ROUTE": 21, "E00_TECH": 1},
+  "root_cause": "b2_engine.py:77 REQ_VOCAB holds only 6 base classes and lacks REFERENCE, EVAL_ONLY_*, DEFER_* and REUSE_*; b2_engine.py:336 then requires an exact membership test",
+  "samples": [
+   {"key": "TECH-004", "carrier_line": 406, "carrier_value": "REFERENCE/EVAL_ONLY", "route_text_first_field": "REFERENCE/EVAL_ONLY", "real_inconsistency": false, "why": "route POS field is verbatim equal; 'REFERENCE/EVAL_ONLY' is absent from REQ_VOCAB"},
+   {"key": "TECH-013", "carrier_line": 415, "carrier_value": "EVAL_ONLY_FOR_PROVIDER", "route_text_first_field": "EVAL_ONLY_FOR_PROVIDER", "real_inconsistency": false, "why": "verbatim equal; full string not in REQ_VOCAB"},
+   {"key": "TECH-019", "carrier_line": 421, "carrier_value": "EVAL_ONLY_WHEN_NEED", "route_text_first_field": "EVAL_ONLY_WHEN_NEED", "real_inconsistency": false, "why": "verbatim equal; spurious 'HARD' came from substring UNRELATED_HARD_GATE"},
+   {"key": "TECH-021", "carrier_line": 423, "carrier_value": "DEFER_UNTIL_GAP", "route_text_first_field": "DEFER_UNTIL_GAP", "real_inconsistency": false, "why": "verbatim equal; spurious 'HARD' from UNRELATED_HARD_GATE"},
+   {"key": "TECH-037", "carrier_line": 439, "carrier_value": "EVAL_ONLY_COMPARATOR", "route_text_first_field": "EVAL_ONLY_COMPARATOR", "real_inconsistency": false, "why": "verbatim equal; full string not in REQ_VOCAB"},
+   {"key": "TECH-053", "carrier_line": 455, "carrier_value": "DEFER_UNTIL_REPO", "route_text_first_field": "DEFER_UNTIL_REPO", "real_inconsistency": false, "why": "verbatim equal; spurious 'HARD' from UNRELATED_HARD_GATE"}
+  ],
+  "route_pos_field_equals_carrier_q1": 52,
+  "route_pos_field_equals_carrier_q1_of_54": true,
+  "two_non_exact": [
+   {"key": "TECH-040", "reason": "route unit source_payload == ['682'] (no route text at all)"},
+   {"key": "TECH-044", "reason": "route unit source_payload == ['686'] (no route text at all)"}
+  ],
+  "real_source_inconsistencies_found": 0,
+  "false_defects": 22,
+  "verdict": "MAKER_RULE_ERROR_NOT_SOURCE_DEFECT"
+ },
+ "item5_distribution": {
+  "rows_total": {"R3-REGISTRY-Q1": 440, "R3-REGISTRY-Q2": 513, "R3-REGISTRY-Q3": 378, "R3-REGISTRY-Q4": 54},
+  "rows_total_matches_carrier_headers": true,
+  "bucket_sum": {"R3-REGISTRY-Q1": 420, "R3-REGISTRY-Q2": 493, "R3-REGISTRY-Q3": 378, "R3-REGISTRY-Q4": 54},
+  "bucket_delta_vs_rows_total": {"R3-REGISTRY-Q1": 20, "R3-REGISTRY-Q2": 20, "R3-REGISTRY-Q3": 0, "R3-REGISTRY-Q4": 0},
+  "omitted_rows": 40,
+  "omitted_values": {"REFERENCE/EVAL_ONLY": 6, "EVAL_ONLY_COMPARATOR": 6, "EVAL_ONLY_RESEARCH": 4, "singletons_EVAL_ONLY_*_and_REFERENCE_*": 24},
+  "note": "the 8-key enumeration at b2_tqaep.py:195-199 cannot represent atom-prefix values, so the buckets do not partition rows_total",
+  "verdict": "PARTIAL"
+ },
+ "item6_receipt_evidence": {
+  "b3_accepted": 1351,
+  "b3_rejected": 114,
+  "not_applicable_receipts": 523,
+  "not_applicable_without_evidence": 0,
+  "checked_values_has_applicability_evidence": true,
+  "evidence_samples": {
+   "Q1_Q2_NA": "carrier index 2 holds the source's own not-applicable marker 'N_A'",
+   "Q3_Q4": "carrier:<section line> dimension=<dim> declares no Requiredness column"
+  },
+  "guard_source": ["b2_engine.py:457-458", "b2_tqaep.py:162-170"],
+  "verdict": "CLOSED"
+ },
+ "item7_manifest": {
+  "self_sha_match": true,
+  "members_checked": 22,
+  "members_sha_bytes_match": 22,
+  "freeze_receipt_in_manifest": false,
+  "freeze_receipt": "40_OPS/b1b2_r5_candidate_freeze.json",
+  "freeze_declares_candidate_manifest_sha": "f2f828b97ff9bb82c26e0ebfcb621e04fdd8544d2349bc770ced4bbd74e4dab9",
+  "unbound_cited_artefact": {
+   "path": "60_CLOSEOUT/SST_PLP_PH01_W0_B2_CLOSEOUT_r5.md",
+   "in_manifest": false,
+   "note": "the closeout quotes f2f828b9 but is not itself a manifest member, so its bytes are not bound by the frozen digest"
+  },
+  "verdict": "CLOSED_WITH_NOTE"
+ },
+ "item8_new_defects": {
+  "hold_counted_as_pass": false,
+  "source_defects_counted_as_pass": false,
+  "b2_accepted_claimed": false,
+  "new": [
+   {"id": "N-v3-01", "mandatory": true, "class": "case-level PASS on an oracle the pinned spec declares unbound", "detail": "7 E00 POS PASS against a spec ceiling of 2 (6 Oracle HOLD); the substitute oracle is the carrier design contract and the predicate is a single leading token, not the declared 原payload 逐欄相等; _lead() also splits compound strings contrary to 不拆複合字串", "files": ["b2_engine.py:348-368", "b2_tqaep.py:111-122", "spec B2:61", "spec B2:427", "spec B2:105042"]},
+   {"id": "N-v3-02", "mandatory": false, "severity": "HIGH", "detail": "all 22 source_defects are artefacts of a 6-item vocabulary test; 0 real source inconsistencies"},
+   {"id": "N-v3-03", "mandatory": false, "severity": "MEDIUM", "detail": "TECH-008 POS HOLD is false; carrier:1549 has SelectedDesign REUSE_INTERNAL_DESIGN"},
+   {"id": "N-v3-04", "mandatory": false, "severity": "MEDIUM", "detail": "empty route text is PRESERVED vacuously (b2_engine.py:338 'or not stated'); TECH-040/044 route payloads carry no route text"},
+   {"id": "N-v3-05", "mandatory": false, "severity": "LOW", "detail": "54 routes: TECH-040/044 Q1 cells are elided with '…', so Q1/Q2 disagree; resolve_tool_row returns AMBIGUOUS but op_hard surfaces it as CARRIER_ROW_ABSENT (b2_engine.py:210-213, 344-347)"},
+   {"id": "N-v3-06", "mandatory": false, "severity": "LOW", "detail": "Q3/Q4 (432) plus Q1/Q2 NA rows (91) are PASS with requiredness=NOT_APPLICABLE by design (b2_tqaep.py:70-75); pre-existing, evidence-backed, outside this change cone"}
+  ]
+ },
+ "verdict": "REJECT",
+ "mandatory_findings": 1
+}

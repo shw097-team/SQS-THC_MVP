@@ -1,0 +1,415 @@
+{
+ "receipt": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\70_W0_B1B8_20261126\\40_OPS\\b1_run_20261126T114524.json",
+ "receipt_sha256": "ce84f3b89fa2022889ece4a2221ae234c3db3921c489d1cf54c839e4247028ed",
+ "generated_at": "2026-11-26T11:45:23+08:00",
+ "repo": {
+  "root": "C:\\Projects\\Agent_Workspace\\SQS-THC",
+  "commit": "9a70501ad4bbf315c675894a7a58c0f98bf18f47",
+  "tree": "688de895b003c35da1b85c0c7926089a44e78855",
+  "branch": "main",
+  "dirty": true,
+  "status_entries": 132,
+  "remotes": [],
+  "remote_head": null,
+  "remote_state": "NO_REMOTE_CONFIGURED",
+  "git_version": "git version 2.56.1.windows.1"
+ },
+ "tree_entries": 295,
+ "spec": {
+  "path": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\W0_B1-B8_NATIVE_FIRST_2026-11-26_r4_HERMES_FINAL\\SST_PLP_PH01_W0_B1_執行控制小包_實質正文_2026-11-26_r4_Native-first_HERMES_FINAL.md",
+  "bytes": 185197,
+  "sha256": "13294cada156a2c0beb485bb940a316dd540173273c90dc721570604ca4a3753",
+  "units": 30,
+  "payload_pin_failures": []
+ },
+ "units": 30,
+ "cases": 60,
+ "verdict_counts": {
+  "OBSERVED_TRACKED_AT_HEAD": 11,
+  "OBSERVED_IN_WORKING_TREE_UNTRACKED": 5,
+  "PARTIAL_TRACKED_AND_OTHER": 1,
+  "OBSERVED_IN_FDA_CARRIER_COLLISION": 5,
+  "OBSERVED_ELSEWHERE_PATH_DIFFERS": 1,
+  "CARRIER_OBSERVED_AUTHORITY_COLLISION": 7
+ },
+ "kernels": [
+  {
+   "key": "KERNEL:fsdt",
+   "verdict": "OBSERVED_TRACKED_AT_HEAD",
+   "path": "src/kernel/fsdt/__init__.py",
+   "blob": "c21ec7b7af3e3b24590a6bfb901702ad251503b3",
+   "bytes": 8034,
+   "raw_sha256": "90a5f4d4e27aeafda82d15d439bbfa076cc4f55d70df6ee604b4602bad5598bb",
+   "public_symbols": [
+    "ADJUSTMENT_POLICY_ADJUSTED",
+    "ADJUSTMENT_POLICY_CORPORATE_ACTION_PENDING",
+    "ADJUSTMENT_POLICY_UNADJUSTED",
+    "AdjustmentAmbiguousError",
+    "CorporateActionAbstainError",
+    "CurrencyMismatchError",
+    "FSDTKernelError",
+    "FinancialClockInvalidError",
+    "FinancialContract",
+    "FinancialState",
+    "InstrumentIdentity",
+    "KERNEL_OWNER_ID",
+    "OwnerMismatchError",
+    "PriceQuantityValue",
+    "compute_value",
+    "normalize",
+    "pit_validate",
+    "validate_contract"
+   ]
+  },
+  {
+   "key": "KERNEL:temporal",
+   "verdict": "OBSERVED_TRACKED_AT_HEAD",
+   "path": "src/kernel/temporal/__init__.py",
+   "blob": "de8eeba8443fe8e2c62d960103e0e846210e7878",
+   "bytes": 5048,
+   "raw_sha256": "21e0150f8f97f1541e96b452b56571fa1518191a122fa5cf2f1af54ff9483a5d",
+   "public_symbols": [
+    "CalendarGapError",
+    "ClockOrderingError",
+    "FiveClockStamp",
+    "LookaheadError",
+    "PITRecord",
+    "StaleVersionError",
+    "TemporalError",
+    "TemporalState",
+    "TradingCalendar",
+    "bind_clocks",
+    "parse_iso",
+    "quality_pass",
+    "validate_calendar"
+   ]
+  },
+  {
+   "key": "KERNEL:knowledge",
+   "verdict": "OBSERVED_TRACKED_AT_HEAD",
+   "path": "src/kernel/knowledge/__init__.py",
+   "blob": "c9476a27102bf69e5bef4a0bdc212b01c2e973b7",
+   "bytes": 6722,
+   "raw_sha256": "ea1e13cd7df0cf81059364c7606be4c6c317d78e4a91d3a847c7219465e33da6",
+   "public_symbols": [
+    "BroadLocatorError",
+    "ContextEnvelope",
+    "ContextPoisoningError",
+    "KnowledgeChunk",
+    "KnowledgeError",
+    "KnowledgeState",
+    "MemoryAuthorityLeakError",
+    "MemoryCandidate",
+    "OWNER_ID",
+    "RetrievalUngroundedError",
+    "chunk",
+    "index_chunk",
+    "retrieve"
+   ]
+  },
+  {
+   "key": "KERNEL:harness",
+   "verdict": "OBSERVED_TRACKED_AT_HEAD",
+   "path": "src/kernel/harness/__init__.py",
+   "blob": "1be286eb1352e3539a64dd42b9828539a7f8eac5",
+   "bytes": 7253,
+   "raw_sha256": "288a2a0e474a05fd38b992de5801b0f8f01668741a67c90c0d0e6f6b37ffc27e",
+   "public_symbols": [
+    "AckMissingError",
+    "CircularDependencyError",
+    "DETERMINISTIC_STOP",
+    "EXPECTED_SCHEMA_VERSION",
+    "HARNESS_OWNER_ID",
+    "HUMAN_REVIEWED_POLICY",
+    "HandoffPacket",
+    "HandoffSchemaError",
+    "HarnessError",
+    "HarnessLoop",
+    "HarnessState",
+    "RetryExhaustedError",
+    "WorkOrderGraph",
+    "dispatch",
+    "handoff",
+    "merge_review",
+    "validate_graph"
+   ]
+  },
+  {
+   "key": "KERNEL:capability",
+   "verdict": "OBSERVED_TRACKED_AT_HEAD",
+   "path": "src/kernel/capability/__init__.py",
+   "blob": "43a3a23fc7c64a7bdffc5db8f7efc56edd502673",
+   "bytes": 4449,
+   "raw_sha256": "d2a143c5c970d8a5c2174f051871066fc04c0c9f5863ff4fac253f0cb9d68a41",
+   "public_symbols": [
+    "CapabilityError",
+    "CapabilitySlot",
+    "CapabilityState",
+    "ExportUnreadableError",
+    "FallbackNonequivalentError",
+    "NativeControlUnsuppressedError",
+    "ProviderUnqualifiedError",
+    "QualificationReceipt",
+    "ToolDecisionCard",
+    "designate",
+    "finalize",
+    "qualify"
+   ]
+  }
+ ],
+ "not_observed": [
+  {
+   "unit": "B1.U0001",
+   "key": "BASE-001",
+   "verdict": "OBSERVED_TRACKED_AT_HEAD",
+   "declared": [
+    "src/kernel/fsdt/__init__.py"
+   ]
+  },
+  {
+   "unit": "B1.U0002",
+   "key": "BASE-002",
+   "verdict": "OBSERVED_TRACKED_AT_HEAD",
+   "declared": [
+    "src/kernel/temporal/__init__.py"
+   ]
+  },
+  {
+   "unit": "B1.U0003",
+   "key": "BASE-003",
+   "verdict": "OBSERVED_TRACKED_AT_HEAD",
+   "declared": [
+    "src/kernel/knowledge/__init__.py"
+   ]
+  },
+  {
+   "unit": "B1.U0004",
+   "key": "BASE-004",
+   "verdict": "OBSERVED_TRACKED_AT_HEAD",
+   "declared": [
+    "src/kernel/harness/__init__.py"
+   ]
+  },
+  {
+   "unit": "B1.U0005",
+   "key": "BASE-005",
+   "verdict": "OBSERVED_TRACKED_AT_HEAD",
+   "declared": [
+    "src/kernel/capability/__init__.py"
+   ]
+  },
+  {
+   "unit": "B1.U0006",
+   "key": "BASE-006",
+   "verdict": "OBSERVED_IN_WORKING_TREE_UNTRACKED",
+   "declared": [
+    "agents/profiles/sqs-orchestrator",
+    "agents/profiles/sqs-data-analysis",
+    "agents/profiles/sqs-risk"
+   ]
+  },
+  {
+   "unit": "B1.U0007",
+   "key": "BASE-007",
+   "verdict": "OBSERVED_IN_WORKING_TREE_UNTRACKED",
+   "declared": [
+    "SQS/TWICT_RUNTIME_PACK_MANIFEST.yaml"
+   ]
+  },
+  {
+   "unit": "B1.U0008",
+   "key": "BASE-008",
+   "verdict": "OBSERVED_IN_WORKING_TREE_UNTRACKED",
+   "declared": [
+    "SQS_ENGINEERING_BASE_DISPOSITION.yaml",
+    "SQS_STACK_MANIFEST.yaml"
+   ]
+  },
+  {
+   "unit": "B1.U0009",
+   "key": "BASE-009",
+   "verdict": "PARTIAL_TRACKED_AND_OTHER",
+   "declared": [
+    "data_plane/config/*.yaml",
+    "src/backfill_daily.py",
+    "check_daily.py"
+   ]
+  },
+  {
+   "unit": "B1.U0010",
+   "key": "BASE-010",
+   "verdict": "OBSERVED_TRACKED_AT_HEAD",
+   "declared": [
+    "adapters/xq-read-watch.yaml"
+   ]
+  },
+  {
+   "unit": "B1.U0011",
+   "key": "BASE-011",
+   "verdict": "OBSERVED_IN_WORKING_TREE_UNTRACKED",
+   "declared": [
+    "adapters/fda-xq-globalwinner-route.yaml"
+   ]
+  },
+  {
+   "unit": "B1.U0012",
+   "key": "BASE-012",
+   "verdict": "OBSERVED_IN_WORKING_TREE_UNTRACKED",
+   "declared": [
+    "FABRIC/fabric-desktop-automation/TEAM.md",
+    "AGENTS.md",
+    "README.md"
+   ]
+  },
+  {
+   "unit": "B1.U0013",
+   "key": "BASE-013",
+   "verdict": "OBSERVED_IN_FDA_CARRIER_COLLISION",
+   "declared": [
+    "FABRIC/fabric-desktop-automation/FDA_DESKTOP_CAPABILITY_MATRIX.yaml"
+   ]
+  },
+  {
+   "unit": "B1.U0014",
+   "key": "BASE-014",
+   "verdict": "OBSERVED_IN_FDA_CARRIER_COLLISION",
+   "declared": [
+    "FABRIC/fabric-desktop-automation/fda_router.py"
+   ]
+  },
+  {
+   "unit": "B1.U0015",
+   "key": "BASE-015",
+   "verdict": "OBSERVED_IN_FDA_CARRIER_COLLISION",
+   "declared": [
+    "FABRIC/fabric-desktop-automation/fda_lease.py"
+   ]
+  },
+  {
+   "unit": "B1.U0016",
+   "key": "BASE-016",
+   "verdict": "OBSERVED_IN_FDA_CARRIER_COLLISION",
+   "declared": [
+    "FABRIC/fabric-desktop-automation/xq_native_adapter.py"
+   ]
+  },
+  {
+   "unit": "B1.U0017",
+   "key": "BASE-017",
+   "verdict": "OBSERVED_IN_FDA_CARRIER_COLLISION",
+   "declared": [
+    "FDA_EXECUTION_BINDING.json",
+    "governance/FDA_DEFERRED_SEMIAUTO_CONTRACT.yaml",
+    "FDA_INTEROP_DISPOSITION.yaml"
+   ]
+  },
+  {
+   "unit": "B1.U0018",
+   "key": "BASE-018",
+   "verdict": "OBSERVED_ELSEWHERE_PATH_DIFFERS",
+   "declared": [
+    "independent_checker.py",
+    "test_xq_build_drift.py",
+    "tests/test_fda_*",
+    "docs/FDA_USER_GUIDE.md"
+   ]
+  },
+  {
+   "unit": "B1.U0019",
+   "key": "KERNEL:fsdt",
+   "verdict": "OBSERVED_TRACKED_AT_HEAD",
+   "declared": [
+    "src/kernel/fsdt/__init__.py"
+   ]
+  },
+  {
+   "unit": "B1.U0020",
+   "key": "KERNEL:temporal",
+   "verdict": "OBSERVED_TRACKED_AT_HEAD",
+   "declared": [
+    "src/kernel/temporal/__init__.py"
+   ]
+  },
+  {
+   "unit": "B1.U0021",
+   "key": "KERNEL:knowledge",
+   "verdict": "OBSERVED_TRACKED_AT_HEAD",
+   "declared": [
+    "src/kernel/knowledge/__init__.py"
+   ]
+  },
+  {
+   "unit": "B1.U0022",
+   "key": "KERNEL:harness",
+   "verdict": "OBSERVED_TRACKED_AT_HEAD",
+   "declared": [
+    "src/kernel/harness/__init__.py"
+   ]
+  },
+  {
+   "unit": "B1.U0023",
+   "key": "KERNEL:capability",
+   "verdict": "OBSERVED_TRACKED_AT_HEAD",
+   "declared": [
+    "src/kernel/capability/__init__.py"
+   ]
+  },
+  {
+   "unit": "B1.U0024",
+   "key": "FDA:watch_ui",
+   "verdict": "CARRIER_OBSERVED_AUTHORITY_COLLISION",
+   "declared": []
+  },
+  {
+   "unit": "B1.U0025",
+   "key": "FDA:radar_signal",
+   "verdict": "CARRIER_OBSERVED_AUTHORITY_COLLISION",
+   "declared": [
+    "SignalID/時序"
+   ]
+  },
+  {
+   "unit": "B1.U0026",
+   "key": "FDA:xs_compile",
+   "verdict": "CARRIER_OBSERVED_AUTHORITY_COLLISION",
+   "declared": [
+    "ScriptSHA/diagnostic"
+   ]
+  },
+  {
+   "unit": "B1.U0027",
+   "key": "FDA:xs_backtest",
+   "verdict": "CARRIER_OBSERVED_AUTHORITY_COLLISION",
+   "declared": [
+    "PIT/Rule/Raw"
+   ]
+  },
+  {
+   "unit": "B1.U0028",
+   "key": "FDA:at_simulated_order",
+   "verdict": "CARRIER_OBSERVED_AUTHORITY_COLLISION",
+   "declared": []
+  },
+  {
+   "unit": "B1.U0029",
+   "key": "FDA:broker_external_event_read",
+   "verdict": "CARRIER_OBSERVED_AUTHORITY_COLLISION",
+   "declared": [
+    "BrokerSeq/Receipt/BoR"
+   ]
+  },
+  {
+   "unit": "B1.U0030",
+   "key": "FDA:broker_live_submit",
+   "verdict": "CARRIER_OBSERVED_AUTHORITY_COLLISION",
+   "declared": []
+  }
+ ],
+ "no_write": "NO_PRODUCT_WRITE_OBSERVED",
+ "roots": {
+  "edges": 20,
+  "status": [
+   "UNKNOWN"
+  ]
+ }
+}

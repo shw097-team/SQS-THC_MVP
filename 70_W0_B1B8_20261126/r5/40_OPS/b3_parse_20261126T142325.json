@@ -1,0 +1,49 @@
+{
+ "schema": "SST.PH01.W0.B3.PARSE@1",
+ "generated_at": "2026-11-26T14:23:25+08:00",
+ "subject": "SST/SQS-THC/PH01/E00",
+ "original_wave": "P1-W00M",
+ "bid": 3,
+ "effect": "SOURCE_READ",
+ "write_set": [],
+ "preimage": "N/A",
+ "claim_ceiling": "CENSUS_AND_PIN_ONLY",
+ "not_claimed": [
+  "B3 semantics",
+  "requiredness",
+  "clause identity",
+  "TQAEP execution",
+  "SourceChildLedger draft",
+  "any acceptance"
+ ],
+ "spec": {
+  "path": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\W0_B1-B8_NATIVE_FIRST_2026-11-26_r4_HERMES_FINAL\\SST_PLP_PH01_W0_B1-B8_執行控制小包\\SST_PLP_PH01_W0_B3_執行控制小包_實質正文_2026-11-26_r4_Native-first_HERMES_FINAL.md",
+  "bytes": 1573552,
+  "raw_sha256": "a1d759c7157c4ca8d34acb3f0730b74f653baaa86eb5c3c4302837d0df6deac1",
+  "expected_sha256": "a1d759c7157c4ca8d34acb3f0730b74f653baaa86eb5c3c4302837d0df6deac1",
+  "pin_match": true
+ },
+ "census": {
+  "units": 365,
+  "kinds": {
+   "CHILD": 11,
+   "DOC_BRIDGE": 92,
+   "H1_ROUTE": 81,
+   "CHILD_ROUTE": 90,
+   "BEHAVIOR_ROUTE": 73,
+   "PROTECTED": 11,
+   "RECOVERY": 2,
+   "AUTHORITY_SEAM": 5
+  },
+  "payload_pin_ok": 365,
+  "payload_pin_failures": []
+ },
+ "cases": {
+  "spec_case_rows": 752,
+  "pos": 365,
+  "neg": 387,
+  "unit_case_ids": 752,
+  "spec_minus_unit": [],
+  "unit_minus_spec": []
+ }
+}

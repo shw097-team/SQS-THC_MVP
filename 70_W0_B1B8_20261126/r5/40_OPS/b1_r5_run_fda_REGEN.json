@@ -1,0 +1,411 @@
+{
+ "schema": "SST.PH01.W0.B1.TypedResult@5",
+ "spec_version": "2026-11-26_r5_Native-first_CODEX_FINAL",
+ "subject": "SST/SQS-THC/PH01/E00",
+ "original_wave": "P1-W00M",
+ "bid": 1,
+ "op": "FDA",
+ "effect": "SOURCE_READ",
+ "write_set": [],
+ "preimage": "N/A",
+ "fin_order": "DENY",
+ "product_actual": "EXECUTED",
+ "trusted_context": {
+  "spec_version": "2026-11-26_r5_Native-first_CODEX_FINAL",
+  "spec_manifest_sha256": "3c816deb8fc216eae831dddfac396217d5b224fc7575c03415ef9f08ebbfa046",
+  "spec_manifest_bytes": 666,
+  "spec_b1_sha256": "24e4f17a0f29627f53799200c93afc11a9bfb946d26958c9c5de557229f35c2c",
+  "allowlist_ref": {
+   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\70_W0_B1B8_20261126\\00_PREFLIGHT\\b1_source_allowlist.json",
+   "sha256": "de92bd2cde3ff8a763c718e48b510a1650d3f03d3aba7e9ef544b09bf02ae1ed",
+   "owner_directive": "Owner 2026-11-26: allow both carriers as authorised read-only research; FABRIC/ is the engineering primary, Fabric-rebind-publish/ the mirror",
+   "scope_ceiling": "exactly the 16 artefact paths below; nothing else under FHS/ is in scope"
+  },
+  "locator_ref": {
+   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\70_W0_B1B8_20261126\\00_PREFLIGHT\\b1_locator_bindings.json",
+   "sha256": "a8025e2faae502f0f959a1e375367d9c8dcee243b10ad7138e80acd284d983f9",
+   "claim_ceiling": "LOCATOR_ONLY_NOT_SPEC_AMENDMENT"
+  },
+  "external_root": "C:\\Projects\\Agent_Workspace\\FHS\\Fabric\\FABRIC\\fabric-desktop-automation",
+  "purpose": "W0 B1 static source read for FDA slot/BASE evidence; no GUI, no execution, no install",
+  "consumer_ids": [
+   "B1",
+   "B4",
+   "B6"
+  ],
+  "effect": "SOURCE_READ",
+  "write_set": [],
+  "preimage": "N/A",
+  "fin_order": "DENY",
+  "os_principal": "user",
+  "trust_root_kind": "OWNER_AUTHORED_CONFIG_FILE",
+  "trust_root_residual": "no OS-token attestation; ReadyExecute host binding stays HOLD"
+ },
+ "fda": {
+  "carrier_root": "C:\\Projects\\Agent_Workspace\\FHS\\Fabric\\FABRIC\\fabric-desktop-automation",
+  "artefacts": [
+   {
+    "path": "FDA_DESKTOP_CAPABILITY_MATRIX.yaml",
+    "raw_sha256": "9406456db853e9e6597c30ed400240808c7b0c777dd49c34eb611bf4c863d6c4",
+    "bytes": 11110,
+    "observed": "RAW_SHA_MATCH",
+    "observed_sha256": "9406456db853e9e6597c30ed400240808c7b0c777dd49c34eb611bf4c863d6c4",
+    "observed_bytes": 11110
+   },
+   {
+    "path": "fda_router.py",
+    "raw_sha256": "c3d64650a6e0c6fd3d99b5236c30c4cb03b7621be9763299e335ac1c6ed95e6c",
+    "bytes": 1115,
+    "observed": "RAW_SHA_MATCH",
+    "observed_sha256": "c3d64650a6e0c6fd3d99b5236c30c4cb03b7621be9763299e335ac1c6ed95e6c",
+    "observed_bytes": 1115
+   },
+   {
+    "path": "fda_lease.py",
+    "raw_sha256": "856580b533b547a82772de8624c78792d669cb11bb9cb99551c7141a06594db2",
+    "bytes": 2510,
+    "observed": "RAW_SHA_MATCH",
+    "observed_sha256": "856580b533b547a82772de8624c78792d669cb11bb9cb99551c7141a06594db2",
+    "observed_bytes": 2510
+   },
+   {
+    "path": "xq_native_adapter.py",
+    "raw_sha256": "7655c411b5dfebd2da01364f665d82a5c31db7ad66ba2ce0521214401915ddc4",
+    "bytes": 6631,
+    "observed": "RAW_SHA_MATCH",
+    "observed_sha256": "7655c411b5dfebd2da01364f665d82a5c31db7ad66ba2ce0521214401915ddc4",
+    "observed_bytes": 6631
+   },
+   {
+    "path": "FDA_EXECUTION_BINDING.json",
+    "raw_sha256": "6a3269202d0dba0ba6c8bb0d6656e592dcda4042a0dc88e63fba732e3335b095",
+    "bytes": 3308,
+    "observed": "RAW_SHA_MATCH",
+    "observed_sha256": "6a3269202d0dba0ba6c8bb0d6656e592dcda4042a0dc88e63fba732e3335b095",
+    "observed_bytes": 3308
+   },
+   {
+    "path": "FDA_ASSET_REGISTRY.json",
+    "raw_sha256": "960c31939f094d6b23e441728bc55d784b3899bbfbb81a9b76038031b7d96dde",
+    "bytes": 4072,
+    "observed": "RAW_SHA_MATCH",
+    "observed_sha256": "960c31939f094d6b23e441728bc55d784b3899bbfbb81a9b76038031b7d96dde",
+    "observed_bytes": 4072
+   },
+   {
+    "path": "TEAM.md",
+    "raw_sha256": "1936a4651ef549cce50f5ecec9a45a712c7bf92adab0ffd12afa12ff3d43a311",
+    "bytes": 5768,
+    "observed": "RAW_SHA_MATCH",
+    "observed_sha256": "1936a4651ef549cce50f5ecec9a45a712c7bf92adab0ffd12afa12ff3d43a311",
+    "observed_bytes": 5768
+   },
+   {
+    "path": "AGENTS.md",
+    "raw_sha256": "b5257a3e5d06c5781911c4ffbed19bdccc82c763158053842ddc89dcbe6f9e1a",
+    "bytes": 3651,
+    "observed": "RAW_SHA_MATCH",
+    "observed_sha256": "b5257a3e5d06c5781911c4ffbed19bdccc82c763158053842ddc89dcbe6f9e1a",
+    "observed_bytes": 3651
+   },
+   {
+    "path": "README.md",
+    "raw_sha256": "aa3084bac9c01af17868582b04c3405b673a7e16947f9c0cbf3f972eef2a20a9",
+    "bytes": 4410,
+    "observed": "RAW_SHA_MATCH",
+    "observed_sha256": "aa3084bac9c01af17868582b04c3405b673a7e16947f9c0cbf3f972eef2a20a9",
+    "observed_bytes": 4410
+   },
+   {
+    "path": "docs/FDA_USER_GUIDE.md",
+    "raw_sha256": "21a3d22b26e499b1bad10dc7fb0235402b460c3138e0fd719e7791d120815ee5",
+    "bytes": 22327,
+    "observed": "RAW_SHA_MATCH",
+    "observed_sha256": "21a3d22b26e499b1bad10dc7fb0235402b460c3138e0fd719e7791d120815ee5",
+    "observed_bytes": 22327
+   },
+   {
+    "path": "governance/FDA_INTEROP_DISPOSITION.yaml",
+    "raw_sha256": "9fac4d255030443f8031a5bfe62d8e204698cf664ada2b06a65986f347c7ee5e",
+    "bytes": 3487,
+    "observed": "RAW_SHA_MATCH",
+    "observed_sha256": "9fac4d255030443f8031a5bfe62d8e204698cf664ada2b06a65986f347c7ee5e",
+    "observed_bytes": 3487
+   },
+   {
+    "path": "governance/FDA_DEFERRED_SEMIAUTO_CONTRACT.yaml",
+    "raw_sha256": "6e1c808e278592f2b4d75c6296b4b81d9e227a2f21e188c9594b18085bbf0f8f",
+    "bytes": 2995,
+    "observed": "RAW_SHA_MATCH",
+    "observed_sha256": "6e1c808e278592f2b4d75c6296b4b81d9e227a2f21e188c9594b18085bbf0f8f",
+    "observed_bytes": 2995
+   },
+   {
+    "path": "FDA_DIRECTORY_TREE.txt",
+    "raw_sha256": "b3b108fa5b154ab16bcda89f8ae8b79d34aca843857d95248f00d56f04c994e0",
+    "bytes": 2110,
+    "observed": "RAW_SHA_MATCH",
+    "observed_sha256": "b3b108fa5b154ab16bcda89f8ae8b79d34aca843857d95248f00d56f04c994e0",
+    "observed_bytes": 2110
+   },
+   {
+    "path": "FDA_FOLDER_REORGANIZATION_RECEIPT.json",
+    "raw_sha256": "b78987a5022b95ad30af868c7b996a238f44356c728585151dbecf219862082b",
+    "bytes": 751,
+    "observed": "RAW_SHA_MATCH",
+    "observed_sha256": "b78987a5022b95ad30af868c7b996a238f44356c728585151dbecf219862082b",
+    "observed_bytes": 751
+   },
+   {
+    "path": "independent_checker.py",
+    "raw_sha256": "9009713fd70392d64b84dcf0c1319adb5cfef51d260cd196c831c960f1bbe22e",
+    "bytes": 12617,
+    "observed": "RAW_SHA_MATCH",
+    "observed_sha256": "9009713fd70392d64b84dcf0c1319adb5cfef51d260cd196c831c960f1bbe22e",
+    "observed_bytes": 12617
+   },
+   {
+    "path": "test_xq_build_drift.py",
+    "raw_sha256": "cf234c66e389900b517d437a6d2ec4d69977104876fc4ab898a6f4df1aaf8eb9",
+    "bytes": 3215,
+    "observed": "RAW_SHA_MATCH",
+    "observed_sha256": "cf234c66e389900b517d437a6d2ec4d69977104876fc4ab898a6f4df1aaf8eb9",
+    "observed_bytes": 3215
+   }
+  ],
+  "artefacts_verified": 16,
+  "artefacts_total": 16,
+  "slots": [
+   {
+    "unit_id": "B1.U0024",
+    "key": "FDA:watch_ui",
+    "kind": "FDA",
+    "slot": "watch_ui",
+    "static_hits": [],
+    "hit_count": 0,
+    "evidence_class": "CARRIER_LEVEL_ONLY",
+    "owner": null,
+    "consumer": null,
+    "missing": [
+     {
+      "field": "slot_action_artefact_mapping",
+      "reason": "UNVERIFIED",
+      "detail": "D-3 open: no original slot->action->artefact M:N, no original typed schema/Reader/fixture; static carrier evidence only"
+     }
+    ],
+    "note": "no GUI, no lease, no broker, no install"
+   },
+   {
+    "unit_id": "B1.U0025",
+    "key": "FDA:radar_signal",
+    "kind": "FDA",
+    "slot": "radar_signal",
+    "static_hits": [],
+    "hit_count": 0,
+    "evidence_class": "CARRIER_LEVEL_ONLY",
+    "owner": null,
+    "consumer": null,
+    "missing": [
+     {
+      "field": "slot_action_artefact_mapping",
+      "reason": "UNVERIFIED",
+      "detail": "D-3 open: no original slot->action->artefact M:N, no original typed schema/Reader/fixture; static carrier evidence only"
+     }
+    ],
+    "note": "no GUI, no lease, no broker, no install"
+   },
+   {
+    "unit_id": "B1.U0026",
+    "key": "FDA:xs_compile",
+    "kind": "FDA",
+    "slot": "xs_compile",
+    "static_hits": [],
+    "hit_count": 0,
+    "evidence_class": "CARRIER_LEVEL_ONLY",
+    "owner": null,
+    "consumer": null,
+    "missing": [
+     {
+      "field": "slot_action_artefact_mapping",
+      "reason": "UNVERIFIED",
+      "detail": "D-3 open: no original slot->action->artefact M:N, no original typed schema/Reader/fixture; static carrier evidence only"
+     }
+    ],
+    "note": "no GUI, no lease, no broker, no install"
+   },
+   {
+    "unit_id": "B1.U0027",
+    "key": "FDA:xs_backtest",
+    "kind": "FDA",
+    "slot": "xs_backtest",
+    "static_hits": [],
+    "hit_count": 0,
+    "evidence_class": "CARRIER_LEVEL_ONLY",
+    "owner": null,
+    "consumer": null,
+    "missing": [
+     {
+      "field": "slot_action_artefact_mapping",
+      "reason": "UNVERIFIED",
+      "detail": "D-3 open: no original slot->action->artefact M:N, no original typed schema/Reader/fixture; static carrier evidence only"
+     }
+    ],
+    "note": "no GUI, no lease, no broker, no install"
+   },
+   {
+    "unit_id": "B1.U0028",
+    "key": "FDA:at_simulated_order",
+    "kind": "FDA",
+    "slot": "at_simulated_order",
+    "static_hits": [],
+    "hit_count": 0,
+    "evidence_class": "CARRIER_LEVEL_ONLY",
+    "owner": null,
+    "consumer": null,
+    "missing": [
+     {
+      "field": "slot_action_artefact_mapping",
+      "reason": "UNVERIFIED",
+      "detail": "D-3 open: no original slot->action->artefact M:N, no original typed schema/Reader/fixture; static carrier evidence only"
+     }
+    ],
+    "note": "no GUI, no lease, no broker, no install"
+   },
+   {
+    "unit_id": "B1.U0029",
+    "key": "FDA:broker_external_event_read",
+    "kind": "FDA",
+    "slot": "broker_external_event_read",
+    "static_hits": [],
+    "hit_count": 0,
+    "evidence_class": "CARRIER_LEVEL_ONLY",
+    "owner": null,
+    "consumer": null,
+    "missing": [
+     {
+      "field": "slot_action_artefact_mapping",
+      "reason": "UNVERIFIED",
+      "detail": "D-3 open: no original slot->action->artefact M:N, no original typed schema/Reader/fixture; static carrier evidence only"
+     }
+    ],
+    "note": "no GUI, no lease, no broker, no install"
+   },
+   {
+    "unit_id": "B1.U0030",
+    "key": "FDA:broker_live_submit",
+    "kind": "FDA",
+    "slot": "broker_live_submit",
+    "static_hits": [],
+    "hit_count": 0,
+    "evidence_class": "CARRIER_LEVEL_ONLY",
+    "owner": null,
+    "consumer": null,
+    "missing": [
+     {
+      "field": "slot_action_artefact_mapping",
+      "reason": "UNVERIFIED",
+      "detail": "D-3 open: no original slot->action->artefact M:N, no original typed schema/Reader/fixture; static carrier evidence only"
+     },
+     {
+      "field": "allowed_effect_pos",
+      "reason": "ABSENT",
+      "detail": "by design: live submission has no allowed-effect POS in W0"
+     }
+    ],
+    "note": "no GUI, no lease, no broker, no install",
+    "deny_control": {
+     "pos_deny_invariant": {
+      "action": "read",
+      "policy_value": "DENY_ALWAYS",
+      "order_path_reached": false,
+      "effect": "SOURCE_READ",
+      "decision": "ALLOW_READ_CONTROL",
+      "artefact": "FDA_DESKTOP_CAPABILITY_MATRIX.yaml",
+      "artefact_sha256": "9406456db853e9e6597c30ed400240808c7b0c777dd49c34eb611bf4c863d6c4",
+      "artefact_line": 24,
+      "artefact_bytes": 11110,
+      "reason": "read-only observation control anchored to the pinned carrier digest; does not reach any order path"
+     },
+     "allowed_effect_pos": null,
+     "neg_arms": [
+      {
+       "action": "submit",
+       "policy_value": "DENY_ALWAYS",
+       "order_path_reached": false,
+       "effect": "NONE",
+       "decision": "DENY",
+       "first_fail": "FIN_ORDER_DENY_ALWAYS",
+       "reason": "pinned carrier policy live_broker=DENY_ALWAYS"
+      },
+      {
+       "action": "replace",
+       "policy_value": "DENY_ALWAYS",
+       "order_path_reached": false,
+       "effect": "NONE",
+       "decision": "DENY",
+       "first_fail": "FIN_ORDER_DENY_ALWAYS",
+       "reason": "pinned carrier policy live_broker=DENY_ALWAYS"
+      },
+      {
+       "action": "cancel",
+       "policy_value": "DENY_ALWAYS",
+       "order_path_reached": false,
+       "effect": "NONE",
+       "decision": "DENY",
+       "first_fail": "FIN_ORDER_DENY_ALWAYS",
+       "reason": "pinned carrier policy live_broker=DENY_ALWAYS"
+      }
+     ],
+     "unknown_action": {
+      "action": "replace_all_orders",
+      "policy_value": "DENY_ALWAYS",
+      "order_path_reached": false,
+      "effect": "NONE",
+      "decision": "DENY",
+      "first_fail": "FIN_ORDER_DENY_ALWAYS",
+      "reason": "action is not in the admissible set {read}"
+     },
+     "policy": {
+      "value": "DENY_ALWAYS",
+      "line": 24,
+      "artefact": "FDA_DESKTOP_CAPABILITY_MATRIX.yaml",
+      "sha256": "9406456db853e9e6597c30ed400240808c7b0c777dd49c34eb611bf4c863d6c4",
+      "bytes": 11110
+     },
+     "policy_flip_probe": {
+      "action": "submit",
+      "policy_value": "ALLOW",
+      "order_path_reached": false,
+      "effect": "NONE",
+      "decision": "DENY",
+      "first_fail": "NO_CONNECTOR_PRESENT",
+      "reason": "policy would admit the effect but this process has no token, session, lease or broker client, so it still cannot be reached"
+     }
+    }
+   }
+  ],
+  "live_broker_policy": {
+   "value": "DENY_ALWAYS",
+   "artefact": "FDA_DESKTOP_CAPABILITY_MATRIX.yaml",
+   "line": 24,
+   "sha256": "9406456db853e9e6597c30ed400240808c7b0c777dd49c34eb611bf4c863d6c4",
+   "effect": "submit/replace/cancel refused for this run"
+  },
+  "gui_started": false,
+  "lease_acquired": false,
+  "broker_contacted": false
+ },
+ "spec_inputs": {
+  "b1_spec_sha256": "24e4f17a0f29627f53799200c93afc11a9bfb946d26958c9c5de557229f35c2c",
+  "b1_unit_count": 30,
+  "b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9"
+ },
+ "invocation": {
+  "op": "FDA",
+  "repo": "C:\\Projects\\Agent_Workspace\\SQS-THC",
+  "commit": null,
+  "units_source": "pinned_r5_spec",
+  "out": "../../40_OPS/b1_r5_run_fda_REGEN.json"
+ },
+ "disposition": "PARTIAL_SPLIT_PER_KEY"
+}

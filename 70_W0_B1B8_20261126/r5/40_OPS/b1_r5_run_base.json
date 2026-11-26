@@ -1,0 +1,1690 @@
+{
+ "schema": "SST.PH01.W0.B1.TypedResult@5",
+ "spec_version": "2026-11-26_r5_Native-first_CODEX_FINAL",
+ "subject": "SST/SQS-THC/PH01/E00",
+ "original_wave": "P1-W00M",
+ "bid": 1,
+ "op": "BASE",
+ "effect": "SOURCE_READ",
+ "write_set": [],
+ "preimage": "N/A",
+ "fin_order": "DENY",
+ "product_actual": "EXECUTED",
+ "trusted_context": {
+  "spec_version": "2026-11-26_r5_Native-first_CODEX_FINAL",
+  "spec_manifest_sha256": "3c816deb8fc216eae831dddfac396217d5b224fc7575c03415ef9f08ebbfa046",
+  "spec_manifest_bytes": 666,
+  "spec_b1_sha256": "24e4f17a0f29627f53799200c93afc11a9bfb946d26958c9c5de557229f35c2c",
+  "allowlist_ref": {
+   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\70_W0_B1B8_20261126\\00_PREFLIGHT\\b1_source_allowlist.json",
+   "sha256": "de92bd2cde3ff8a763c718e48b510a1650d3f03d3aba7e9ef544b09bf02ae1ed",
+   "owner_directive": "Owner 2026-11-26: allow both carriers as authorised read-only research; FABRIC/ is the engineering primary, Fabric-rebind-publish/ the mirror",
+   "scope_ceiling": "exactly the 16 artefact paths below; nothing else under FHS/ is in scope"
+  },
+  "locator_ref": {
+   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\70_W0_B1B8_20261126\\00_PREFLIGHT\\b1_locator_bindings.json",
+   "sha256": "a8025e2faae502f0f959a1e375367d9c8dcee243b10ad7138e80acd284d983f9",
+   "claim_ceiling": "LOCATOR_ONLY_NOT_SPEC_AMENDMENT"
+  },
+  "external_root": "C:\\Projects\\Agent_Workspace\\FHS\\Fabric\\FABRIC\\fabric-desktop-automation",
+  "purpose": "W0 B1 static source read for FDA slot/BASE evidence; no GUI, no execution, no install",
+  "consumer_ids": [
+   "B1",
+   "B4",
+   "B6"
+  ],
+  "effect": "SOURCE_READ",
+  "write_set": [],
+  "preimage": "N/A",
+  "fin_order": "DENY",
+  "os_principal": "user",
+  "trust_root_kind": "OWNER_AUTHORED_CONFIG_FILE",
+  "trust_root_residual": "no OS-token attestation; ReadyExecute host binding stays HOLD"
+ },
+ "repo": {
+  "repo_root": "C:/Projects/Agent_Workspace/SQS-THC",
+  "is_work_tree": true,
+  "local_head": "9a70501ad4bbf315c675894a7a58c0f98bf18f47",
+  "local_branch": "main",
+  "remote_url": null,
+  "remote_error": "error: No such remote 'origin'",
+  "dirty_tracked_files": 2,
+  "columns": "remote_commit / local_head / index / worktree are separate fields; a remote URL is never used as a local commit",
+  "git_version": "git version 2.56.1.windows.1"
+ },
+ "base": {
+  "entries": [
+   {
+    "unit_id": "B1.U0001",
+    "key": "BASE-001",
+    "kind": "BASE",
+    "owner": null,
+    "consumer": null,
+    "declared_verbatim": "SQS-THC/src/kernel/fsdt/__init__.py",
+    "targets": [
+     {
+      "resolution": "REPO_TREE",
+      "path": "src/kernel/fsdt/__init__.py",
+      "status": "TRACKED",
+      "commit": "9a70501ad4bbf315c675894a7a58c0f98bf18f47",
+      "blob": "c21ec7b7af3e3b24590a6bfb901702ad251503b3",
+      "mode": "100644",
+      "raw_sha256": "90a5f4d4e27aeafda82d15d439bbfa076cc4f55d70df6ee604b4602bad5598bb",
+      "bytes": 8034,
+      "declared": "SQS-THC/src/kernel/fsdt/__init__.py"
+     }
+    ],
+    "missing": []
+   },
+   {
+    "unit_id": "B1.U0002",
+    "key": "BASE-002",
+    "kind": "BASE",
+    "owner": null,
+    "consumer": null,
+    "declared_verbatim": "src/kernel/temporal/__init__.py",
+    "targets": [
+     {
+      "resolution": "REPO_TREE",
+      "path": "src/kernel/temporal/__init__.py",
+      "status": "TRACKED",
+      "commit": "9a70501ad4bbf315c675894a7a58c0f98bf18f47",
+      "blob": "de8eeba8443fe8e2c62d960103e0e846210e7878",
+      "mode": "100644",
+      "raw_sha256": "21e0150f8f97f1541e96b452b56571fa1518191a122fa5cf2f1af54ff9483a5d",
+      "bytes": 5048,
+      "declared": "src/kernel/temporal/__init__.py"
+     }
+    ],
+    "missing": []
+   },
+   {
+    "unit_id": "B1.U0003",
+    "key": "BASE-003",
+    "kind": "BASE",
+    "owner": null,
+    "consumer": null,
+    "declared_verbatim": "src/kernel/knowledge/__init__.py",
+    "targets": [
+     {
+      "resolution": "REPO_TREE",
+      "path": "src/kernel/knowledge/__init__.py",
+      "status": "TRACKED",
+      "commit": "9a70501ad4bbf315c675894a7a58c0f98bf18f47",
+      "blob": "c9476a27102bf69e5bef4a0bdc212b01c2e973b7",
+      "mode": "100644",
+      "raw_sha256": "ea1e13cd7df0cf81059364c7606be4c6c317d78e4a91d3a847c7219465e33da6",
+      "bytes": 6722,
+      "declared": "src/kernel/knowledge/__init__.py"
+     }
+    ],
+    "missing": []
+   },
+   {
+    "unit_id": "B1.U0004",
+    "key": "BASE-004",
+    "kind": "BASE",
+    "owner": null,
+    "consumer": null,
+    "declared_verbatim": "src/kernel/harness/__init__.py",
+    "targets": [
+     {
+      "resolution": "REPO_TREE",
+      "path": "src/kernel/harness/__init__.py",
+      "status": "TRACKED",
+      "commit": "9a70501ad4bbf315c675894a7a58c0f98bf18f47",
+      "blob": "1be286eb1352e3539a64dd42b9828539a7f8eac5",
+      "mode": "100644",
+      "raw_sha256": "288a2a0e474a05fd38b992de5801b0f8f01668741a67c90c0d0e6f6b37ffc27e",
+      "bytes": 7253,
+      "declared": "src/kernel/harness/__init__.py"
+     }
+    ],
+    "missing": []
+   },
+   {
+    "unit_id": "B1.U0005",
+    "key": "BASE-005",
+    "kind": "BASE",
+    "owner": null,
+    "consumer": null,
+    "declared_verbatim": "src/kernel/capability/__init__.py",
+    "targets": [
+     {
+      "resolution": "REPO_TREE",
+      "path": "src/kernel/capability/__init__.py",
+      "status": "TRACKED",
+      "commit": "9a70501ad4bbf315c675894a7a58c0f98bf18f47",
+      "blob": "43a3a23fc7c64a7bdffc5db8f7efc56edd502673",
+      "mode": "100644",
+      "raw_sha256": "d2a143c5c970d8a5c2174f051871066fc04c0c9f5863ff4fac253f0cb9d68a41",
+      "bytes": 4449,
+      "declared": "src/kernel/capability/__init__.py"
+     }
+    ],
+    "missing": []
+   },
+   {
+    "unit_id": "B1.U0006",
+    "key": "BASE-006",
+    "kind": "BASE",
+    "owner": null,
+    "consumer": null,
+    "declared_verbatim": "agents/profiles/sqs-{orchestrator,data-analysis,risk}",
+    "targets": [
+     {
+      "resolution": "REPO_TREE",
+      "path": "agents/profiles/sqs-orchestrator",
+      "status": "DISK_DIRECTORY",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "bytes": null,
+      "note": "declared target is a directory: no single raw SHA exists; profile identity must come from its own files, not a blob",
+      "children": [
+       "README.runtime-contract.md",
+       "SOUL.md",
+       "config.yaml",
+       "distribution.yaml",
+       "fixtures",
+       "mcp.json"
+      ],
+      "child_count": 6,
+      "declared": "agents/profiles/sqs-{orchestrator,data-analysis,risk}"
+     },
+     {
+      "resolution": "REPO_TREE",
+      "path": "agents/profiles/sqs-data-analysis",
+      "status": "DISK_DIRECTORY",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "bytes": null,
+      "note": "declared target is a directory: no single raw SHA exists; profile identity must come from its own files, not a blob",
+      "children": [
+       "README.runtime-contract.md",
+       "SOUL.md",
+       "config.yaml",
+       "distribution.yaml",
+       "fixtures",
+       "mcp.json"
+      ],
+      "child_count": 6,
+      "declared": "agents/profiles/sqs-{orchestrator,data-analysis,risk}"
+     },
+     {
+      "resolution": "REPO_TREE",
+      "path": "agents/profiles/sqs-risk",
+      "status": "DISK_DIRECTORY",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "bytes": null,
+      "note": "declared target is a directory: no single raw SHA exists; profile identity must come from its own files, not a blob",
+      "children": [
+       "README.runtime-contract.md",
+       "SOUL.md",
+       "config.yaml",
+       "distribution.yaml",
+       "fixtures",
+       "mcp.json"
+      ],
+      "child_count": 6,
+      "declared": "agents/profiles/sqs-{orchestrator,data-analysis,risk}"
+     }
+    ],
+    "missing": []
+   },
+   {
+    "unit_id": "B1.U0007",
+    "key": "BASE-007",
+    "kind": "BASE",
+    "owner": null,
+    "consumer": null,
+    "declared_verbatim": "SQS/TWICT_RUNTIME_PACK_MANIFEST.yaml",
+    "targets": [
+     {
+      "resolution": "REPO_TREE",
+      "path": "SQS/TWICT_RUNTIME_PACK_MANIFEST.yaml",
+      "status": "DISK_BUT_UNTRACKED",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "bytes": 1737,
+      "note": "untracked disk bytes never become a commit/blob",
+      "disk_sha256": "ec4245d5a5d57a525045f6c34b5a51371fd0942a89112db2d6c65222e7e75ca6",
+      "declared": "SQS/TWICT_RUNTIME_PACK_MANIFEST.yaml"
+     }
+    ],
+    "missing": []
+   },
+   {
+    "unit_id": "B1.U0008",
+    "key": "BASE-008",
+    "kind": "BASE",
+    "owner": null,
+    "consumer": null,
+    "declared_verbatim": "SQS_STACK_MANIFEST.yaml",
+    "targets": [
+     {
+      "resolution": "REPO_TREE",
+      "path": "SQS_ENGINEERING_BASE_DISPOSITION.yaml",
+      "status": "DISK_BUT_UNTRACKED",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "bytes": 8046,
+      "note": "untracked disk bytes never become a commit/blob",
+      "disk_sha256": "c973577ea0ad8dba35b28cdf94f204cc5c6cccf099a370fa00aa919c766933b5",
+      "declared": "SQS_ENGINEERING_BASE_DISPOSITION.yaml"
+     },
+     {
+      "resolution": "REPO_TREE",
+      "path": "SQS_STACK_MANIFEST.yaml",
+      "status": "DISK_BUT_UNTRACKED",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "bytes": 1713,
+      "note": "untracked disk bytes never become a commit/blob",
+      "disk_sha256": "6f5ea69c20216772b143008e904e96760221406175d1df1e19e7baed51298cbd",
+      "declared": "SQS_STACK_MANIFEST.yaml"
+     }
+    ],
+    "missing": []
+   },
+   {
+    "unit_id": "B1.U0009",
+    "key": "BASE-009",
+    "kind": "BASE",
+    "owner": null,
+    "consumer": null,
+    "declared_verbatim": "check_daily.py",
+    "targets": [
+     {
+      "resolution": "REPO_TREE_GLOB",
+      "path": "data_plane/config/*.yaml",
+      "status": "TRACKED",
+      "commit": "9a70501ad4bbf315c675894a7a58c0f98bf18f47",
+      "hits": [
+       "data_plane/config/data_policy.yaml",
+       "data_plane/config/provider_profile.yaml"
+      ],
+      "hit_count": 2,
+      "declared": "data_plane/config/*.yaml"
+     },
+     {
+      "resolution": "REPO_TREE",
+      "path": "data_plane/src/backfill_daily.py",
+      "status": "DISK_BUT_UNTRACKED",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "bytes": 24609,
+      "note": "untracked disk bytes never become a commit/blob",
+      "disk_sha256": "fc10f8021c94e7569d9652e9ee4664ac8758f5f8008399e2fe8c786ff0117bbd",
+      "declared": "src/backfill_daily.py",
+      "locator_binding": {
+       "declared_path": "src/backfill_daily.py",
+       "resolved_path": "C:\\Projects\\Agent_Workspace\\SQS-THC\\data_plane\\src\\backfill_daily.py",
+       "expected_raw_sha256": "fc10f8021c94e7569d9652e9ee4664ac8758f5f8008399e2fe8c786ff0117bbd",
+       "observed_disk_sha256": "fc10f8021c94e7569d9652e9ee4664ac8758f5f8008399e2fe8c786ff0117bbd",
+       "sha_match": true,
+       "resolved_path_matches_observed": true,
+       "ratification": "CANDIDATE_NOT_RATIFIED — closes the locator gap only; does not amend the SPEC path",
+       "binding_effect": "D-1 evidence closed for content identity only; SPEC declared path is not amended and the binding stays CANDIDATE_NOT_RATIFIED until the Repo/Source Owner adopts it"
+      }
+     },
+     {
+      "resolution": "REPO_TREE",
+      "path": "data_plane/src/check_daily.py",
+      "status": "DISK_BUT_UNTRACKED",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "bytes": 11197,
+      "note": "untracked disk bytes never become a commit/blob",
+      "disk_sha256": "06b25b72328bf9917100cf4b2eed70e229559a9d33e8129926f3ee01b29cfda5",
+      "declared": "check_daily.py",
+      "locator_binding": {
+       "declared_path": "check_daily.py",
+       "resolved_path": "C:\\Projects\\Agent_Workspace\\SQS-THC\\data_plane\\src\\check_daily.py",
+       "expected_raw_sha256": "06b25b72328bf9917100cf4b2eed70e229559a9d33e8129926f3ee01b29cfda5",
+       "observed_disk_sha256": "06b25b72328bf9917100cf4b2eed70e229559a9d33e8129926f3ee01b29cfda5",
+       "sha_match": true,
+       "resolved_path_matches_observed": true,
+       "ratification": "CANDIDATE_NOT_RATIFIED — closes the locator gap only; does not amend the SPEC path",
+       "binding_effect": "D-1 evidence closed for content identity only; SPEC declared path is not amended and the binding stays CANDIDATE_NOT_RATIFIED until the Repo/Source Owner adopts it"
+      }
+     }
+    ],
+    "missing": []
+   },
+   {
+    "unit_id": "B1.U0010",
+    "key": "BASE-010",
+    "kind": "BASE",
+    "owner": null,
+    "consumer": null,
+    "declared_verbatim": "adapters/xq-read-watch.yaml",
+    "targets": [
+     {
+      "resolution": "REPO_TREE",
+      "path": "adapters/xq-read-watch.yaml",
+      "status": "TRACKED",
+      "commit": "9a70501ad4bbf315c675894a7a58c0f98bf18f47",
+      "blob": "6750125803ddb868c704bfcfbfbed274797a395f",
+      "mode": "100644",
+      "raw_sha256": "84e3ac67d77ce76987e368a644e98be66ce1fe64e3e347d0acf1f7b6d721096a",
+      "bytes": 850,
+      "declared": "adapters/xq-read-watch.yaml"
+     }
+    ],
+    "missing": []
+   },
+   {
+    "unit_id": "B1.U0011",
+    "key": "BASE-011",
+    "kind": "BASE",
+    "owner": null,
+    "consumer": null,
+    "declared_verbatim": "adapters/fda-xq-globalwinner-route.yaml",
+    "targets": [
+     {
+      "resolution": "REPO_TREE",
+      "path": "adapters/fda-xq-globalwinner-route.yaml",
+      "status": "DISK_BUT_UNTRACKED",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "bytes": 3402,
+      "note": "untracked disk bytes never become a commit/blob",
+      "disk_sha256": "8f65c29f2b51975d1d81d512cab6bef36601db519ebd2b5aa231144ec3f15bb7",
+      "declared": "adapters/fda-xq-globalwinner-route.yaml"
+     }
+    ],
+    "missing": []
+   },
+   {
+    "unit_id": "B1.U0012",
+    "key": "BASE-012",
+    "kind": "BASE",
+    "owner": null,
+    "consumer": null,
+    "declared_verbatim": "FABRIC/fabric-desktop-automation/README.md",
+    "targets": [
+     {
+      "resolution": "EXTERNAL_CARRIER",
+      "path": "TEAM.md",
+      "status": "ALLOWLIST_VERIFIED",
+      "raw_sha256": "1936a4651ef549cce50f5ecec9a45a712c7bf92adab0ffd12afa12ff3d43a311",
+      "pinned_sha256": "1936a4651ef549cce50f5ecec9a45a712c7bf92adab0ffd12afa12ff3d43a311",
+      "pin_match": true,
+      "bytes": 5768,
+      "commit": null,
+      "note": "external carrier has its own Git identity; not a repo commit",
+      "declared": "FABRIC/fabric-desktop-automation/TEAM.md"
+     },
+     {
+      "resolution": "EXTERNAL_CARRIER",
+      "path": "AGENTS.md",
+      "status": "ALLOWLIST_VERIFIED",
+      "raw_sha256": "b5257a3e5d06c5781911c4ffbed19bdccc82c763158053842ddc89dcbe6f9e1a",
+      "pinned_sha256": "b5257a3e5d06c5781911c4ffbed19bdccc82c763158053842ddc89dcbe6f9e1a",
+      "pin_match": true,
+      "bytes": 3651,
+      "commit": null,
+      "note": "external carrier has its own Git identity; not a repo commit",
+      "declared": "FABRIC/fabric-desktop-automation/AGENTS.md"
+     },
+     {
+      "resolution": "EXTERNAL_CARRIER",
+      "path": "README.md",
+      "status": "ALLOWLIST_VERIFIED",
+      "raw_sha256": "aa3084bac9c01af17868582b04c3405b673a7e16947f9c0cbf3f972eef2a20a9",
+      "pinned_sha256": "aa3084bac9c01af17868582b04c3405b673a7e16947f9c0cbf3f972eef2a20a9",
+      "pin_match": true,
+      "bytes": 4410,
+      "commit": null,
+      "note": "external carrier has its own Git identity; not a repo commit",
+      "declared": "FABRIC/fabric-desktop-automation/README.md"
+     }
+    ],
+    "missing": []
+   },
+   {
+    "unit_id": "B1.U0013",
+    "key": "BASE-013",
+    "kind": "BASE",
+    "owner": null,
+    "consumer": null,
+    "declared_verbatim": "FABRIC/fabric-desktop-automation/FDA_DESKTOP_CAPABILITY_MATRIX.yaml",
+    "targets": [
+     {
+      "resolution": "EXTERNAL_CARRIER",
+      "path": "FDA_DESKTOP_CAPABILITY_MATRIX.yaml",
+      "status": "ALLOWLIST_VERIFIED",
+      "raw_sha256": "9406456db853e9e6597c30ed400240808c7b0c777dd49c34eb611bf4c863d6c4",
+      "pinned_sha256": "9406456db853e9e6597c30ed400240808c7b0c777dd49c34eb611bf4c863d6c4",
+      "pin_match": true,
+      "bytes": 11110,
+      "commit": null,
+      "note": "external carrier has its own Git identity; not a repo commit",
+      "declared": "FABRIC/fabric-desktop-automation/FDA_DESKTOP_CAPABILITY_MATRIX.yaml"
+     }
+    ],
+    "missing": []
+   },
+   {
+    "unit_id": "B1.U0014",
+    "key": "BASE-014",
+    "kind": "BASE",
+    "owner": null,
+    "consumer": null,
+    "declared_verbatim": "FABRIC/fabric-desktop-automation/fda_router.py",
+    "targets": [
+     {
+      "resolution": "EXTERNAL_CARRIER",
+      "path": "fda_router.py",
+      "status": "ALLOWLIST_VERIFIED",
+      "raw_sha256": "c3d64650a6e0c6fd3d99b5236c30c4cb03b7621be9763299e335ac1c6ed95e6c",
+      "pinned_sha256": "c3d64650a6e0c6fd3d99b5236c30c4cb03b7621be9763299e335ac1c6ed95e6c",
+      "pin_match": true,
+      "bytes": 1115,
+      "commit": null,
+      "note": "external carrier has its own Git identity; not a repo commit",
+      "declared": "FABRIC/fabric-desktop-automation/fda_router.py"
+     }
+    ],
+    "missing": []
+   },
+   {
+    "unit_id": "B1.U0015",
+    "key": "BASE-015",
+    "kind": "BASE",
+    "owner": null,
+    "consumer": null,
+    "declared_verbatim": "FABRIC/fabric-desktop-automation/fda_lease.py",
+    "targets": [
+     {
+      "resolution": "EXTERNAL_CARRIER",
+      "path": "fda_lease.py",
+      "status": "ALLOWLIST_VERIFIED",
+      "raw_sha256": "856580b533b547a82772de8624c78792d669cb11bb9cb99551c7141a06594db2",
+      "pinned_sha256": "856580b533b547a82772de8624c78792d669cb11bb9cb99551c7141a06594db2",
+      "pin_match": true,
+      "bytes": 2510,
+      "commit": null,
+      "note": "external carrier has its own Git identity; not a repo commit",
+      "declared": "FABRIC/fabric-desktop-automation/fda_lease.py"
+     }
+    ],
+    "missing": []
+   },
+   {
+    "unit_id": "B1.U0016",
+    "key": "BASE-016",
+    "kind": "BASE",
+    "owner": null,
+    "consumer": null,
+    "declared_verbatim": "FABRIC/fabric-desktop-automation/xq_native_adapter.py",
+    "targets": [
+     {
+      "resolution": "EXTERNAL_CARRIER",
+      "path": "xq_native_adapter.py",
+      "status": "ALLOWLIST_VERIFIED",
+      "raw_sha256": "7655c411b5dfebd2da01364f665d82a5c31db7ad66ba2ce0521214401915ddc4",
+      "pinned_sha256": "7655c411b5dfebd2da01364f665d82a5c31db7ad66ba2ce0521214401915ddc4",
+      "pin_match": true,
+      "bytes": 6631,
+      "commit": null,
+      "note": "external carrier has its own Git identity; not a repo commit",
+      "declared": "FABRIC/fabric-desktop-automation/xq_native_adapter.py"
+     }
+    ],
+    "missing": []
+   },
+   {
+    "unit_id": "B1.U0017",
+    "key": "BASE-017",
+    "kind": "BASE",
+    "owner": null,
+    "consumer": null,
+    "declared_verbatim": "FDA_INTEROP_DISPOSITION.yaml",
+    "targets": [
+     {
+      "resolution": "EXTERNAL_CARRIER",
+      "path": "FDA_EXECUTION_BINDING.json",
+      "status": "ALLOWLIST_VERIFIED",
+      "raw_sha256": "6a3269202d0dba0ba6c8bb0d6656e592dcda4042a0dc88e63fba732e3335b095",
+      "pinned_sha256": "6a3269202d0dba0ba6c8bb0d6656e592dcda4042a0dc88e63fba732e3335b095",
+      "pin_match": true,
+      "bytes": 3308,
+      "commit": null,
+      "note": "external carrier has its own Git identity; not a repo commit",
+      "declared": "FDA_EXECUTION_BINDING.json"
+     },
+     {
+      "resolution": "EXTERNAL_CARRIER",
+      "path": "governance/FDA_DEFERRED_SEMIAUTO_CONTRACT.yaml",
+      "status": "ALLOWLIST_VERIFIED",
+      "raw_sha256": "6e1c808e278592f2b4d75c6296b4b81d9e227a2f21e188c9594b18085bbf0f8f",
+      "pinned_sha256": "6e1c808e278592f2b4d75c6296b4b81d9e227a2f21e188c9594b18085bbf0f8f",
+      "pin_match": true,
+      "bytes": 2995,
+      "commit": null,
+      "note": "external carrier has its own Git identity; not a repo commit",
+      "declared": "governance/FDA_DEFERRED_SEMIAUTO_CONTRACT.yaml"
+     },
+     {
+      "resolution": "EXTERNAL_CARRIER",
+      "path": "governance/FDA_INTEROP_DISPOSITION.yaml",
+      "status": "ALLOWLIST_VERIFIED",
+      "raw_sha256": "9fac4d255030443f8031a5bfe62d8e204698cf664ada2b06a65986f347c7ee5e",
+      "pinned_sha256": "9fac4d255030443f8031a5bfe62d8e204698cf664ada2b06a65986f347c7ee5e",
+      "pin_match": true,
+      "bytes": 3487,
+      "commit": null,
+      "note": "external carrier has its own Git identity; not a repo commit",
+      "declared": "FDA_INTEROP_DISPOSITION.yaml"
+     }
+    ],
+    "missing": []
+   },
+   {
+    "unit_id": "B1.U0018",
+    "key": "BASE-018",
+    "kind": "BASE",
+    "owner": null,
+    "consumer": null,
+    "declared_verbatim": "docs/FDA_USER_GUIDE.md",
+    "targets": [
+     {
+      "resolution": "EXTERNAL_CARRIER",
+      "path": "independent_checker.py",
+      "status": "ALLOWLIST_VERIFIED",
+      "raw_sha256": "9009713fd70392d64b84dcf0c1319adb5cfef51d260cd196c831c960f1bbe22e",
+      "pinned_sha256": "9009713fd70392d64b84dcf0c1319adb5cfef51d260cd196c831c960f1bbe22e",
+      "pin_match": true,
+      "bytes": 12617,
+      "commit": null,
+      "note": "external carrier has its own Git identity; not a repo commit",
+      "declared": "independent_checker.py"
+     },
+     {
+      "resolution": "EXTERNAL_CARRIER",
+      "path": "test_xq_build_drift.py",
+      "status": "ALLOWLIST_VERIFIED",
+      "raw_sha256": "cf234c66e389900b517d437a6d2ec4d69977104876fc4ab898a6f4df1aaf8eb9",
+      "pinned_sha256": "cf234c66e389900b517d437a6d2ec4d69977104876fc4ab898a6f4df1aaf8eb9",
+      "pin_match": true,
+      "bytes": 3215,
+      "commit": null,
+      "note": "external carrier has its own Git identity; not a repo commit",
+      "declared": "test_xq_build_drift.py"
+     },
+     {
+      "resolution": "EXTERNAL_CARRIER_GLOB",
+      "path": "tests/test_fda_*.py",
+      "status": "NOT_IN_OWNER_ALLOWLIST",
+      "names_observed": [
+       "tests/test_fda_lease.py",
+       "tests/test_fda_router.py",
+       "tests/test_fda_router_integration.py",
+       "tests/test_fda_security.py"
+      ],
+      "hit_count": 4,
+      "in_allowlist": [],
+      "note": "D-2: existence of these names is observable, their bytes are NOT read without an owner-authorised read right",
+      "declared": "tests/test_fda_*"
+     },
+     {
+      "resolution": "EXTERNAL_CARRIER",
+      "path": "docs/FDA_USER_GUIDE.md",
+      "status": "ALLOWLIST_VERIFIED",
+      "raw_sha256": "21a3d22b26e499b1bad10dc7fb0235402b460c3138e0fd719e7791d120815ee5",
+      "pinned_sha256": "21a3d22b26e499b1bad10dc7fb0235402b460c3138e0fd719e7791d120815ee5",
+      "pin_match": true,
+      "bytes": 22327,
+      "commit": null,
+      "note": "external carrier has its own Git identity; not a repo commit",
+      "declared": "docs/FDA_USER_GUIDE.md"
+     }
+    ],
+    "missing": []
+   },
+   {
+    "unit_id": "B1.U0019",
+    "key": "KERNEL:fsdt",
+    "kind": "KERNEL",
+    "owner": null,
+    "consumer": null,
+    "declared_verbatim": null,
+    "targets": [
+     {
+      "declared": "commit d34dc903cca203140a6cc7453ae2f6c78dfd2e5b:src/kernel/fsdt/__init__.py",
+      "resolution": "REPO_TREE",
+      "path": "src/kernel/fsdt/__init__.py",
+      "pinned_commit": "d34dc903cca203140a6cc7453ae2f6c78dfd2e5b",
+      "pinned_commit_present_locally": false,
+      "observed_commit": "9a70501ad4bbf315c675894a7a58c0f98bf18f47",
+      "content_expected_sha256": "90a5f4d4e27aeafda82d15d439bbfa076cc4f55d70df6ee604b4602bad5598bb",
+      "commit": null,
+      "blob": "c21ec7b7af3e3b24590a6bfb901702ad251503b3",
+      "bytes": 8034,
+      "raw_sha256": "90a5f4d4e27aeafda82d15d439bbfa076cc4f55d70df6ee604b4602bad5598bb",
+      "content_identity": "RAW_SHA_MATCH_AT_LOCAL_HEAD",
+      "status": "TRACKED_CONTENT_MATCH",
+      "symbols": [
+       {
+        "name": "FinancialState",
+        "spec_span": [
+         14,
+         18
+        ],
+        "actual_span": [
+         14,
+         18
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "FSDTKernelError",
+        "spec_span": [
+         21,
+         24
+        ],
+        "actual_span": [
+         21,
+         24
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "CurrencyMismatchError",
+        "spec_span": [
+         27,
+         28
+        ],
+        "actual_span": [
+         27,
+         28
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "AdjustmentAmbiguousError",
+        "spec_span": [
+         31,
+         32
+        ],
+        "actual_span": [
+         31,
+         32
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "FinancialClockInvalidError",
+        "spec_span": [
+         35,
+         36
+        ],
+        "actual_span": [
+         35,
+         36
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "OwnerMismatchError",
+        "spec_span": [
+         39,
+         42
+        ],
+        "actual_span": [
+         39,
+         42
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "CorporateActionAbstainError",
+        "spec_span": [
+         45,
+         48
+        ],
+        "actual_span": [
+         45,
+         48
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "InstrumentIdentity",
+        "spec_span": [
+         52,
+         61
+        ],
+        "actual_span": [
+         52,
+         61
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "FinancialContract",
+        "spec_span": [
+         65,
+         75
+        ],
+        "actual_span": [
+         65,
+         75
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "PriceQuantityValue",
+        "spec_span": [
+         79,
+         90
+        ],
+        "actual_span": [
+         79,
+         90
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "validate_contract",
+        "spec_span": [
+         147,
+         164
+        ],
+        "actual_span": [
+         147,
+         164
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "normalize",
+        "spec_span": [
+         167,
+         189
+        ],
+        "actual_span": [
+         167,
+         189
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "pit_validate",
+        "spec_span": [
+         192,
+         212
+        ],
+        "actual_span": [
+         192,
+         212
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "compute_value",
+        "spec_span": [
+         215,
+         217
+        ],
+        "actual_span": [
+         215,
+         217
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       }
+      ],
+      "symbols_ok": 14,
+      "symbols_total": 14
+     }
+    ],
+    "missing": [
+     {
+      "field": "pinned_commit",
+      "reason": "UNVERIFIED",
+      "detail": "d34dc903cca203140a6cc7453ae2f6c78dfd2e5b is not in this repo's object database; content identity is carried by raw SHA at local HEAD only"
+     }
+    ]
+   },
+   {
+    "unit_id": "B1.U0020",
+    "key": "KERNEL:temporal",
+    "kind": "KERNEL",
+    "owner": null,
+    "consumer": null,
+    "declared_verbatim": null,
+    "targets": [
+     {
+      "declared": "commit d34dc903cca203140a6cc7453ae2f6c78dfd2e5b:src/kernel/temporal/__init__.py",
+      "resolution": "REPO_TREE",
+      "path": "src/kernel/temporal/__init__.py",
+      "pinned_commit": "d34dc903cca203140a6cc7453ae2f6c78dfd2e5b",
+      "pinned_commit_present_locally": false,
+      "observed_commit": "9a70501ad4bbf315c675894a7a58c0f98bf18f47",
+      "content_expected_sha256": "21e0150f8f97f1541e96b452b56571fa1518191a122fa5cf2f1af54ff9483a5d",
+      "commit": null,
+      "blob": "de8eeba8443fe8e2c62d960103e0e846210e7878",
+      "bytes": 5048,
+      "raw_sha256": "21e0150f8f97f1541e96b452b56571fa1518191a122fa5cf2f1af54ff9483a5d",
+      "content_identity": "RAW_SHA_MATCH_AT_LOCAL_HEAD",
+      "status": "TRACKED_CONTENT_MATCH",
+      "symbols": [
+       {
+        "name": "TemporalState",
+        "spec_span": [
+         14,
+         18
+        ],
+        "actual_span": [
+         14,
+         18
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "TemporalError",
+        "spec_span": [
+         21,
+         22
+        ],
+        "actual_span": [
+         21,
+         22
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "LookaheadError",
+        "spec_span": [
+         25,
+         26
+        ],
+        "actual_span": [
+         25,
+         26
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "CalendarGapError",
+        "spec_span": [
+         29,
+         30
+        ],
+        "actual_span": [
+         29,
+         30
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "ClockOrderingError",
+        "spec_span": [
+         33,
+         34
+        ],
+        "actual_span": [
+         33,
+         34
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "StaleVersionError",
+        "spec_span": [
+         37,
+         38
+        ],
+        "actual_span": [
+         37,
+         38
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "FiveClockStamp",
+        "spec_span": [
+         42,
+         52
+        ],
+        "actual_span": [
+         42,
+         52
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "TradingCalendar",
+        "spec_span": [
+         56,
+         62
+        ],
+        "actual_span": [
+         56,
+         62
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "PITRecord",
+        "spec_span": [
+         66,
+         78
+        ],
+        "actual_span": [
+         66,
+         78
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "parse_iso",
+        "spec_span": [
+         81,
+         82
+        ],
+        "actual_span": [
+         81,
+         82
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "bind_clocks",
+        "spec_span": [
+         98,
+         134
+        ],
+        "actual_span": [
+         98,
+         134
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "validate_calendar",
+        "spec_span": [
+         137,
+         157
+        ],
+        "actual_span": [
+         137,
+         157
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "quality_pass",
+        "spec_span": [
+         160,
+         162
+        ],
+        "actual_span": [
+         160,
+         162
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       }
+      ],
+      "symbols_ok": 13,
+      "symbols_total": 13
+     }
+    ],
+    "missing": [
+     {
+      "field": "pinned_commit",
+      "reason": "UNVERIFIED",
+      "detail": "d34dc903cca203140a6cc7453ae2f6c78dfd2e5b is not in this repo's object database; content identity is carried by raw SHA at local HEAD only"
+     }
+    ]
+   },
+   {
+    "unit_id": "B1.U0021",
+    "key": "KERNEL:knowledge",
+    "kind": "KERNEL",
+    "owner": null,
+    "consumer": null,
+    "declared_verbatim": null,
+    "targets": [
+     {
+      "declared": "commit d34dc903cca203140a6cc7453ae2f6c78dfd2e5b:src/kernel/knowledge/__init__.py",
+      "resolution": "REPO_TREE",
+      "path": "src/kernel/knowledge/__init__.py",
+      "pinned_commit": "d34dc903cca203140a6cc7453ae2f6c78dfd2e5b",
+      "pinned_commit_present_locally": false,
+      "observed_commit": "9a70501ad4bbf315c675894a7a58c0f98bf18f47",
+      "content_expected_sha256": "ea1e13cd7df0cf81059364c7606be4c6c317d78e4a91d3a847c7219465e33da6",
+      "commit": null,
+      "blob": "c9476a27102bf69e5bef4a0bdc212b01c2e973b7",
+      "bytes": 6722,
+      "raw_sha256": "ea1e13cd7df0cf81059364c7606be4c6c317d78e4a91d3a847c7219465e33da6",
+      "content_identity": "RAW_SHA_MATCH_AT_LOCAL_HEAD",
+      "status": "TRACKED_CONTENT_MATCH",
+      "symbols": [
+       {
+        "name": "KnowledgeState",
+        "spec_span": [
+         34,
+         38
+        ],
+        "actual_span": [
+         34,
+         38
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "KnowledgeError",
+        "spec_span": [
+         41,
+         42
+        ],
+        "actual_span": [
+         41,
+         42
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "BroadLocatorError",
+        "spec_span": [
+         45,
+         46
+        ],
+        "actual_span": [
+         45,
+         46
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "ContextPoisoningError",
+        "spec_span": [
+         49,
+         50
+        ],
+        "actual_span": [
+         49,
+         50
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "MemoryAuthorityLeakError",
+        "spec_span": [
+         53,
+         54
+        ],
+        "actual_span": [
+         53,
+         54
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "RetrievalUngroundedError",
+        "spec_span": [
+         57,
+         58
+        ],
+        "actual_span": [
+         57,
+         58
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "KnowledgeChunk",
+        "spec_span": [
+         62,
+         72
+        ],
+        "actual_span": [
+         62,
+         72
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "ContextEnvelope",
+        "spec_span": [
+         76,
+         85
+        ],
+        "actual_span": [
+         76,
+         85
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "MemoryCandidate",
+        "spec_span": [
+         89,
+         111
+        ],
+        "actual_span": [
+         89,
+         111
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "chunk",
+        "spec_span": [
+         133,
+         147
+        ],
+        "actual_span": [
+         133,
+         147
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "index_chunk",
+        "spec_span": [
+         150,
+         173
+        ],
+        "actual_span": [
+         150,
+         173
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "retrieve",
+        "spec_span": [
+         176,
+         193
+        ],
+        "actual_span": [
+         176,
+         193
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       }
+      ],
+      "symbols_ok": 12,
+      "symbols_total": 12
+     }
+    ],
+    "missing": [
+     {
+      "field": "pinned_commit",
+      "reason": "UNVERIFIED",
+      "detail": "d34dc903cca203140a6cc7453ae2f6c78dfd2e5b is not in this repo's object database; content identity is carried by raw SHA at local HEAD only"
+     }
+    ]
+   },
+   {
+    "unit_id": "B1.U0022",
+    "key": "KERNEL:harness",
+    "kind": "KERNEL",
+    "owner": null,
+    "consumer": null,
+    "declared_verbatim": null,
+    "targets": [
+     {
+      "declared": "commit d34dc903cca203140a6cc7453ae2f6c78dfd2e5b:src/kernel/harness/__init__.py",
+      "resolution": "REPO_TREE",
+      "path": "src/kernel/harness/__init__.py",
+      "pinned_commit": "d34dc903cca203140a6cc7453ae2f6c78dfd2e5b",
+      "pinned_commit_present_locally": false,
+      "observed_commit": "9a70501ad4bbf315c675894a7a58c0f98bf18f47",
+      "content_expected_sha256": "288a2a0e474a05fd38b992de5801b0f8f01668741a67c90c0d0e6f6b37ffc27e",
+      "commit": null,
+      "blob": "1be286eb1352e3539a64dd42b9828539a7f8eac5",
+      "bytes": 7253,
+      "raw_sha256": "288a2a0e474a05fd38b992de5801b0f8f01668741a67c90c0d0e6f6b37ffc27e",
+      "content_identity": "RAW_SHA_MATCH_AT_LOCAL_HEAD",
+      "status": "TRACKED_CONTENT_MATCH",
+      "symbols": [
+       {
+        "name": "HarnessState",
+        "spec_span": [
+         21,
+         25
+        ],
+        "actual_span": [
+         21,
+         25
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "HarnessError",
+        "spec_span": [
+         28,
+         29
+        ],
+        "actual_span": [
+         28,
+         29
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "HandoffSchemaError",
+        "spec_span": [
+         32,
+         33
+        ],
+        "actual_span": [
+         32,
+         33
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "CircularDependencyError",
+        "spec_span": [
+         36,
+         37
+        ],
+        "actual_span": [
+         36,
+         37
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "RetryExhaustedError",
+        "spec_span": [
+         40,
+         41
+        ],
+        "actual_span": [
+         40,
+         41
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "AckMissingError",
+        "spec_span": [
+         44,
+         45
+        ],
+        "actual_span": [
+         44,
+         45
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "HarnessLoop",
+        "spec_span": [
+         49,
+         60
+        ],
+        "actual_span": [
+         49,
+         60
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "WorkOrderGraph",
+        "spec_span": [
+         64,
+         74
+        ],
+        "actual_span": [
+         64,
+         74
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "HandoffPacket",
+        "spec_span": [
+         78,
+         88
+        ],
+        "actual_span": [
+         78,
+         88
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "validate_graph",
+        "spec_span": [
+         91,
+         111
+        ],
+        "actual_span": [
+         91,
+         111
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "dispatch",
+        "spec_span": [
+         114,
+         130
+        ],
+        "actual_span": [
+         114,
+         130
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "handoff",
+        "spec_span": [
+         133,
+         158
+        ],
+        "actual_span": [
+         133,
+         158
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "merge_review",
+        "spec_span": [
+         161,
+         177
+        ],
+        "actual_span": [
+         161,
+         177
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       }
+      ],
+      "symbols_ok": 13,
+      "symbols_total": 13
+     }
+    ],
+    "missing": [
+     {
+      "field": "pinned_commit",
+      "reason": "UNVERIFIED",
+      "detail": "d34dc903cca203140a6cc7453ae2f6c78dfd2e5b is not in this repo's object database; content identity is carried by raw SHA at local HEAD only"
+     }
+    ]
+   },
+   {
+    "unit_id": "B1.U0023",
+    "key": "KERNEL:capability",
+    "kind": "KERNEL",
+    "owner": null,
+    "consumer": null,
+    "declared_verbatim": null,
+    "targets": [
+     {
+      "declared": "commit d34dc903cca203140a6cc7453ae2f6c78dfd2e5b:src/kernel/capability/__init__.py",
+      "resolution": "REPO_TREE",
+      "path": "src/kernel/capability/__init__.py",
+      "pinned_commit": "d34dc903cca203140a6cc7453ae2f6c78dfd2e5b",
+      "pinned_commit_present_locally": false,
+      "observed_commit": "9a70501ad4bbf315c675894a7a58c0f98bf18f47",
+      "content_expected_sha256": "d2a143c5c970d8a5c2174f051871066fc04c0c9f5863ff4fac253f0cb9d68a41",
+      "commit": null,
+      "blob": "43a3a23fc7c64a7bdffc5db8f7efc56edd502673",
+      "bytes": 4449,
+      "raw_sha256": "d2a143c5c970d8a5c2174f051871066fc04c0c9f5863ff4fac253f0cb9d68a41",
+      "content_identity": "RAW_SHA_MATCH_AT_LOCAL_HEAD",
+      "status": "TRACKED_CONTENT_MATCH",
+      "symbols": [
+       {
+        "name": "CapabilityState",
+        "spec_span": [
+         12,
+         16
+        ],
+        "actual_span": [
+         12,
+         16
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "CapabilityError",
+        "spec_span": [
+         19,
+         20
+        ],
+        "actual_span": [
+         19,
+         20
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "ProviderUnqualifiedError",
+        "spec_span": [
+         23,
+         24
+        ],
+        "actual_span": [
+         23,
+         24
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "NativeControlUnsuppressedError",
+        "spec_span": [
+         27,
+         28
+        ],
+        "actual_span": [
+         27,
+         28
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "FallbackNonequivalentError",
+        "spec_span": [
+         31,
+         32
+        ],
+        "actual_span": [
+         31,
+         32
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "ExportUnreadableError",
+        "spec_span": [
+         35,
+         36
+        ],
+        "actual_span": [
+         35,
+         36
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "CapabilitySlot",
+        "spec_span": [
+         51,
+         60
+        ],
+        "actual_span": [
+         51,
+         60
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "ToolDecisionCard",
+        "spec_span": [
+         64,
+         74
+        ],
+        "actual_span": [
+         64,
+         74
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "QualificationReceipt",
+        "spec_span": [
+         78,
+         87
+        ],
+        "actual_span": [
+         78,
+         87
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "designate",
+        "spec_span": [
+         90,
+         108
+        ],
+        "actual_span": [
+         90,
+         108
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "qualify",
+        "spec_span": [
+         111,
+         122
+        ],
+        "actual_span": [
+         111,
+         122
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       },
+       {
+        "name": "finalize",
+        "spec_span": [
+         125,
+         137
+        ],
+        "actual_span": [
+         125,
+         137
+        ],
+        "match": true,
+        "kind": "EXACT_SPAN_MATCH"
+       }
+      ],
+      "symbols_ok": 12,
+      "symbols_total": 12
+     }
+    ],
+    "missing": [
+     {
+      "field": "pinned_commit",
+      "reason": "UNVERIFIED",
+      "detail": "d34dc903cca203140a6cc7453ae2f6c78dfd2e5b is not in this repo's object database; content identity is carried by raw SHA at local HEAD only"
+     }
+    ]
+   }
+  ],
+  "errors": [],
+  "read_set_summary": {
+   "units": 23,
+   "tracked_targets": 12,
+   "external_verified": 13,
+   "missing_targets": 10
+  }
+ },
+ "spec_inputs": {
+  "b1_spec_sha256": "24e4f17a0f29627f53799200c93afc11a9bfb946d26958c9c5de557229f35c2c",
+  "b1_unit_count": 30,
+  "b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9"
+ },
+ "invocation": {
+  "op": "BASE",
+  "repo": "C:/Projects/Agent_Workspace/SQS-THC",
+  "commit": null,
+  "units_source": "pinned_r5_spec",
+  "out": "../../40_OPS/b1_r5_run_base.json"
+ },
+ "disposition": "PARTIAL_SPLIT_PER_KEY"
+}

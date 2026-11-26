@@ -1,0 +1,438 @@
+{
+ "schema": "SST.PH01.W0.B2.CHECKER_V2_RECOMPUTE@1",
+ "generated_at": "2026-11-26T23:05:00+0800",
+ "checker_role": "SEPARATED_READONLY_CHECKER_SAME_MODEL_AXIS",
+ "sod_note": "context/session separation only; same model axis; SoD across model axis NOT established; not R16 independent verification",
+ "scope": "B2 v2 change cone only: D-5/TT-UP-2 field mapping + verdicts changed by it; R1-R3 closed items not re-adjudicated",
+ "no_maker_import": true,
+ "inputs": {
+  "carrier": {
+   "path": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\PHASE 01~04\\藍圖\\實質正文\\SST_PLP_共用實質正文_工具合約_2026-11-23_r2.md",
+   "sha256_observed": "463dcf33a668a9daa8f0bbf447c7dacc4c3d602bc53fa7e4866844ffbbc4b3e1",
+   "bytes_observed": 767859,
+   "declared_match": true,
+   "physical_lines": 2391
+  },
+  "spec_b2": {
+   "sha256_observed": "1a11f0cf022a31a67ea35bc9dc50b627d7542c8f5589e63d1dec5dacec40b2f4",
+   "tqaep_declared": "1a11f0cf022a31a67ea35bc9dc50b627d7542c8f5589e63d1dec5dacec40b2f4",
+   "final_spec_manifest_members_ok": "4/4"
+  },
+  "maker_artifacts": [
+   "20_DEV/b1_r5/b2_engine.py",
+   "20_DEV/b1_r5/b2_tqaep.py",
+   "40_OPS/b2_r5_tqaep.json",
+   "40_OPS/b2_r5_receivers.json",
+   "40_OPS/b1b2_r5_CANDIDATE_MANIFEST.tsv"
+  ]
+ },
+ "A_carrier_declaration": {
+  "line7_four_dimensions": true,
+  "line7_text": "Q1 Requiredness、Q2 AdmissionDecision、Q3 Kind applicability及Q4 Golden是四個不同維度，不能互蓋或相加當工具數",
+  "section_headers": {
+   "R3-REGISTRY-Q1": {
+    "line": 13,
+    "declared": 440,
+    "observed": 440
+   },
+   "R3-REGISTRY-Q2": {
+    "line": 457,
+    "declared": 513,
+    "observed": 513
+   },
+   "R3-REGISTRY-Q3": {
+    "line": 974,
+    "declared": 378,
+    "observed": 378
+   },
+   "R3-REGISTRY-Q4": {
+    "line": 1356,
+    "declared": 54,
+    "observed": 54
+   }
+  },
+  "rows_total": 1385,
+  "verdict": "PASS"
+ },
+ "B_payload_agreement": {
+  "q_units": 1385,
+  "payload_sha_equal": 1385,
+  "q_row_payload_equal": 1385,
+  "source_row_equal": 1385,
+  "carrier_line_exact": "1385/1385",
+  "payload_len_by_ns": {
+   "Q1": 9,
+   "Q2": 9,
+   "Q3": 8,
+   "Q4": 10
+  },
+  "q1_q2_paired_keys": 440,
+  "q1_q2_requiredness_disagreements": 0,
+  "q1_q2_raw_text_differences_only_truncation": [
+   "TOOL_R2_TECH54::TECH-040",
+   "TOOL_R2_TECH54::TECH-044"
+  ],
+  "verdict": "PASS"
+ },
+ "C_q3_q4_no_requiredness_column": {
+  "q3_fields": [
+   "kind×aspect",
+   "applicability",
+   "rationale",
+   "owner",
+   "PH/W",
+   "EXPECTED_NOT_OBSERVED",
+   "source_ref",
+   "M_EVID"
+  ],
+  "q4_fields": [
+   "gold_id",
+   "description",
+   "input",
+   "expected",
+   "neg",
+   "edge/sec",
+   "disposition",
+   "EXPECTED_NOT_OBSERVED",
+   "SWOF_ref",
+   "L1 anchor"
+  ],
+  "requiredness_like_scan": {
+   "Q3": {
+    "idx1": {
+     "CONDITIONAL": 94,
+     "note": "this is applicability, not requiredness"
+    }
+   },
+   "Q4": {}
+  },
+  "na_basis": "carrier:974 / carrier:1356 declare KindApplicability / Golden; no Requiredness column exists",
+  "sample_rows_checked": 20,
+  "verdict": "PASS"
+ },
+ "D_author_design_only_rule": {
+  "atoms": [
+   "HARD",
+   "SOFT",
+   "CONDITIONAL",
+   "OPTIONAL",
+   "EVAL_ONLY",
+   "REFERENCE"
+  ],
+  "index_scoped": true,
+  "classification_counts": {
+   "STRICT": 788,
+   "NA_MARKER": 91,
+   "PREFIX_ONLY": 40,
+   "UNBOUND": 34,
+   "NA_SECTION": 432
+  },
+  "prefix_only_rows_total": 40,
+  "prefix_only_values": [
+   "EVAL_ONLY_ADAPTER",
+   "EVAL_ONLY_AFTER_BASELINE",
+   "EVAL_ONLY_ALTERNATIVE",
+   "EVAL_ONLY_AS_FORMAT",
+   "EVAL_ONLY_COMPARATOR",
+   "EVAL_ONLY_CONDITIONAL",
+   "EVAL_ONLY_FOR_PROVIDER",
+   "EVAL_ONLY_OPTIONAL",
+   "EVAL_ONLY_RESEARCH",
+   "EVAL_ONLY_UNTIL_REPO",
+   "EVAL_ONLY_WHEN_GAP",
+   "EVAL_ONLY_WHEN_NEED",
+   "REFERENCE/EVAL_ONLY",
+   "REFERENCE_ONLY",
+   "REFERENCE_STANDARD"
+  ],
+  "prefix_only_keys": [
+   "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-004",
+   "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-005",
+   "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-013",
+   "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-014",
+   "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-016",
+   "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-019",
+   "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-022",
+   "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-027",
+   "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-028",
+   "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-030",
+   "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-035",
+   "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-036",
+   "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-037",
+   "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-039",
+   "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-041",
+   "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-042",
+   "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-043",
+   "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-045",
+   "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-047",
+   "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-049",
+   "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-004",
+   "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-005",
+   "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-013",
+   "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-014",
+   "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-016",
+   "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-019",
+   "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-022",
+   "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-027",
+   "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-028",
+   "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-030",
+   "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-035",
+   "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-036",
+   "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-037",
+   "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-039",
+   "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-041",
+   "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-042",
+   "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-043",
+   "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-045",
+   "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-047",
+   "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-049"
+  ],
+  "rejected_as_unknown_rows": 34,
+  "unknown_values": [
+   "**REUSE_INTERNAL_FIRST / GOVERNED_PAPER_SHADOW_ONLY**（現時本次 REPO/SESS…",
+   "**REUSE_INTERNAL_FIRST / GOVERNED_PA…",
+   "BASE_REQUIRED",
+   "BASE_REQUIRED_AS_ADAPTER",
+   "BASE_REQUIRED_AS_STUDY_SURFACE",
+   "BASE_REQUIRED_AUTHORITY",
+   "BASE_REQUIRED_LOGICAL",
+   "BLOCKED_REPO",
+   "DEFER_BY_DEFAULT",
+   "DEFER_UNTIL_GAP",
+   "DEFER_UNTIL_REPO",
+   "REUSE_EXISTING_PROVIDER_FIRST / FDA_FOR_PAPER_ONLY",
+   "REUSE_EXISTING_PROVIDER_FIRST / FDA_FO…",
+   "REUSE_INTERNAL_FIRST",
+   "REUSE_NATIVE_FIRST",
+   "REUSE_STD_TEST_FIRST"
+  ],
+  "unknown_reason_examples": {
+   "truncated_in_carrier": [
+    "REUSE_EXISTING_PROVIDER_FIRST / FDA_FO…",
+    "**REUSE_INTERNAL_FIRST / GOVERNED_PA…"
+   ]
+  },
+  "cannot_misclassify_other_columns": true,
+  "rule_effect": "value-vocabulary widening at a FIXED declared index; verbatim string preserved; NA markers excluded; 34 strategy values still HOLD",
+  "distribution_reporting_gap": {
+   "Q1_sum": 420,
+   "Q1_rows": 440,
+   "Q2_sum": 493,
+   "Q2_rows": 513,
+   "omitted": "the 40 prefix-only rows are absent from requiredness_distribution"
+  },
+  "verdict": "PASS_WITH_NOTE (non-mandatory; conservative and reversible)"
+ },
+ "E_verdict_recompute": {
+  "declared": {
+   "PASS": 2786,
+   "HOLD": 144,
+   "FAIL": 0
+  },
+  "recomputed_counts_equal_declared": true,
+  "by_kind": {
+   "Q_POS": {
+    "PASS": 1351,
+    "HOLD": 34
+   },
+   "Q_NEG": {
+    "PASS": 1385
+   },
+   "HARD_POS": {
+    "PASS": 18
+   },
+   "HARD_NEG": {
+    "PASS": 18
+   },
+   "E00_POS": {
+    "PASS": 7,
+    "HOLD": 1
+   },
+   "E00_NEG": {
+    "PASS": 7,
+    "HOLD": 1
+   },
+   "ROUTE_POS": {
+    "HOLD": 54
+   },
+   "ROUTE_NEG": {
+    "HOLD": 54
+   }
+  },
+  "hold_composition": {
+   "Q_unknown_requiredness": 34,
+   "ROUTE_both_sides": 108,
+   "E00_pair": 2,
+   "total": 144
+  },
+  "declared_hold_composition_in_closeout": {
+   "Q": 34,
+   "HARD": 18,
+   "E00": 8,
+   "ROUTE": 54,
+   "sum_written": 110,
+   "actual_mismatch": "HARD 18 are PASS; E00 contributes 2 not 8; ROUTE 108 not 54"
+  },
+  "q_pos_bound": "compact-JSON SHA of carrier payload == spec payload_sha AND key/row/line equal (1385/1385); requiredness read at declared index only",
+  "hard_pos": {
+   "match": "18/18 (carrier idx2 == unit input_rule statement)",
+   "payload_sha_recomputed": false,
+   "payload_sha_would_pass": "18/18 (compact(source_payload)==payload_sha)"
+  },
+  "e00_pos": {
+   "predicate_implemented": "source_payload contains SELECTED/NOT_SELECTED token",
+   "external_record_compared": null,
+   "payload_sha_recomputed": false,
+   "verdict": "SELF_REFERENTIAL"
+  },
+  "e00_neg_firstfail": {
+   "spec_expected": "STATE_CONFLICT",
+   "observed": {
+    "TOOL_REQUIREDNESS_HOLD": 3,
+    "DESIGN_SELECTION_DRIFT": 4,
+    "None(HOLD)": 1
+   },
+   "engine_contains_STATE_CONFLICT": false
+  },
+  "route_join": {
+   "declared": "54 unit 的 requiredness 陳述與其工具列交叉核對",
+   "observed": "0/54 joined; all HOLD 'carrier value not derivable'",
+   "correct_key_prefix": [
+    "R3-REGISTRY-Q1",
+    "R3-REGISTRY-Q2"
+   ],
+   "recomputed_with_correct_join": {
+    "consistent": 17,
+    "drift": 21,
+    "no_statement": 16
+   }
+  },
+  "verdict": "FAIL (counts reproduce; 14 E00 case verdicts unjustified)"
+ },
+ "F_receivers": {
+  "declared": {
+   "B3": [
+    1351,
+    114
+   ],
+   "B5": [
+    0,
+    1465
+   ]
+  },
+  "recomputed": {
+   "B3": {
+    "accepted": 1351,
+    "rejected": 114
+   },
+   "B3_reject_composition": {
+    "UNKNOWN_requiredness": 96,
+    "source_row_none": 18,
+    "source_row_none_total_in_114": 80
+   },
+   "B5": {
+    "accepted": 0,
+    "rejected": 1465
+   }
+  },
+  "na_receipts_accepted_by_B3": 523,
+  "receipt_fields_carry_applicability_evidence": false,
+  "decision_vocabulary": [
+   "ACCEPT_FOR_DRAFT",
+   "REJECT"
+  ],
+  "ack_present": false,
+  "verdict": "PASS_WITH_NOTE (numbers true; NA evidence not carried in receipt; all 80 non-Q entries structurally unusable at B3)"
+ },
+ "G_manifest": {
+  "sha256_observed": "902e579c456b603f813b8ac2010cf29dd383fcda84fa1cb3e155b064f2016333",
+  "declared": "902e579c456b603f813b8ac2010cf29dd383fcda84fa1cb3e155b064f2016333",
+  "bytes": 2174,
+  "members": 22,
+  "member_sha_bytes_mismatch": 0,
+  "freeze_receipt_in_manifest": false,
+  "maker_notes_stale_value": "9ac5be40…",
+  "verdict": "PASS (with stale reference in MAKER_NOTES §8)"
+ },
+ "H_forbidden_claims": {
+  "B2_ACCEPTED_claimed": false,
+  "tool_installed_claimed": false,
+  "license_abi_lock_claimed": false,
+  "ACK_written": false,
+  "NOT_APPLICABLE_counted_as_requiredness_pass": true,
+  "detail": "523 NA rows -> 1046 cases included in PASS 2786 via NA-derived POS+NEG paths; disclosed in requiredness_distribution and per-case note, not in the aggregate PASS number",
+  "verdict": "PASS_WITH_NOTE"
+ },
+ "findings": [
+  {
+   "id": "M-01",
+   "mandatory": true,
+   "severity": "HIGH",
+   "file_line": "20_DEV/b1_r5/b2_engine.py:298-304; 20_DEV/b1_r5/b2_tqaep.py:115-119",
+   "fact": "7 E00 POS PASS decided by presence of SELECTED/NOT_SELECTED inside the spec unit's own source_payload; no external record, no payload_sha check (available and equal 8/8); expected and observed are the same object"
+  },
+  {
+   "id": "M-02",
+   "mandatory": true,
+   "severity": "HIGH",
+   "file_line": "20_DEV/b1_r5/b2_engine.py:315-323; 20_DEV/b1_r5/b2_tqaep.py:120-124; spec 06.0 E00 NEG rows",
+   "fact": "7 E00 NEG PASS while first_fail != spec Expected FirstFail STATE_CONFLICT (observed TOOL_REQUIREDNESS_HOLD x3 / DESIGN_SELECTION_DRIFT x4); string STATE_CONFLICT appears 0 times in b2_engine.py/b2_tqaep.py"
+  },
+  {
+   "id": "M-03",
+   "mandatory": true,
+   "severity": "HIGH",
+   "file_line": "40_OPS/b1b2_r5_MAKER_NOTES.md:54; 60_CLOSEOUT/SST_PLP_PH01_W0_B2_CLOSEOUT_r5.md:57-60; 40_OPS/b2_r5_tqaep.json cases[*].verdict",
+   "fact": "Notes/closeout declare E00 (6/8 oracle unbound) and 18 HARD inside the 144 HOLD, but 14 E00 cases and 18 HARD cases carry verdict PASS; closeout's 110 decomposition (18 HARD+8 E00+54 ROUTE) does not match the artifact (108 ROUTE+2 E00)"
+  },
+  {
+   "id": "N-01",
+   "mandatory": false,
+   "severity": "HIGH",
+   "file_line": "20_DEV/b1_r5/b2_engine.py:252-254,285-294",
+   "fact": "TECH_ROUTE keys ('TOOL_R2_TECH54::TECH-xxx::ROUTE') carry no Q namespace, so carrier lookup always misses -> all 108 ROUTE cases HOLD with 'carrier value not derivable'; with the correct R3-REGISTRY-Q1 prefix all 54 join (17 consistent / 21 drift / 16 silent). Closeout §04 claims the cross-check ran"
+  },
+  {
+   "id": "N-02",
+   "mandatory": false,
+   "severity": "MED",
+   "file_line": "20_DEV/b1_r5/b2_engine.py:76-93; b2_r5_tqaep.json requiredness_distribution",
+   "fact": "AUTHOR_DESIGN_ONLY prefix rule admits 40 rows (20 per Q1/Q2) that the distribution dict omits (Q1 sums 420/440, Q2 493/513); rule is index-scoped so it cannot reclassify other columns (Q3 idx1 CONDITIONAL x94 untouched); 34 strategy values still HOLD"
+  },
+  {
+   "id": "N-03",
+   "mandatory": false,
+   "severity": "MED",
+   "file_line": "20_DEV/b1_r5/b2_engine.py:260-283",
+   "fact": "HARD POS compares unit input_rule text to carrier idx2 (two records, acceptable) but never verifies payload_sha although compact(source_payload)==payload_sha for 80/80 non-Q units; HARD NEG still a constant HARD->OPTIONAL gate for all 18 (carried over from v1 F-03, outside this cone)"
+  },
+  {
+   "id": "N-04",
+   "mandatory": false,
+   "severity": "MED",
+   "file_line": "40_OPS/b2_r5_receivers.json; 20_DEV/b1_r5/b2_engine.py:378-379",
+   "fact": "523 NOT_APPLICABLE rows are ACCEPT_FOR_DRAFT at B3 but the receipt has no applicability-evidence field (gate exists only in code); B3's 114 rejects = 96 UNKNOWN + 18 source_row-missing, and all 80 non-Q entries are structurally un-consumable at B3"
+  },
+  {
+   "id": "N-05",
+   "mandatory": false,
+   "severity": "LOW",
+   "file_line": "40_OPS/b1b2_r5_MAKER_NOTES.md:97; 60_CLOSEOUT/SST_PLP_PH01_W0_B2_CLOSEOUT_r5.md:70-72",
+   "fact": "Notes cite freeze manifest 9ac5be40… (actual 902e579c…); closeout §06 still states 'requiredness 全 UNKNOWN → 全拒；B2 需先補欄位映射（D-5）' contradicting §04's 1351/114"
+  },
+  {
+   "id": "N-06",
+   "mandatory": false,
+   "severity": "LOW",
+   "file_line": "20_DEV/b1_r5/b2_tqaep.py:88-93",
+   "fact": "Q NEG executes only the namespace arm of the declared two-sub-arm mutation; payload/Requiredness arm never run (carried over from v1 F-06)"
+  }
+ ],
+ "out_of_scope_carryover": [
+  "v1 F-01 file-level PASS naming",
+  "v1 F-03 constant HARD NEG gate",
+  "v1 F-06 Q NEG sub-arm"
+ ],
+ "mandatory_findings": 3,
+ "verdict": "REJECT"
+}

@@ -1,0 +1,30 @@
+{
+ "receipt": "M-01_BOUNDARY_GREP_DISPOSITION",
+ "issued_at": "2026-11-26T23:28:50+0800",
+ "event": {
+  "what": "an earlier recovery step ran a tree-wide grep over the FHS/FDA tree that went beyond the 16-file allow-list fixed by SPEC §02.R5.LOCATORS",
+  "status": "RECORDED, NOT RATIFIED",
+  "limitation": "the exact earlier command line and its hit list are not part of the current artefact set and are therefore not re-quoted; only the disposition is asserted"
+ },
+ "disposition": {
+  "1_record": "this receipt + the §03b row in the r5 CLOSEOUT",
+  "2_quarantine": "no finding resting on a file outside the allow-list is used in the current candidate: the FDA typed result enumerates only allow-listed artefacts",
+  "3_rebuild": "all FDA evidence was rebuilt from the pinned files by SHA",
+  "4_no_repeat": "no further tree-wide grep was executed after the event; the FDA op reports the exact artefact list it read"
+ },
+ "evidence": {
+  "fda_artefact": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\70_W0_B1B8_20261126\\40_OPS\\b1_r5_run_fda.json",
+  "artefacts_total": 16,
+  "artefacts_sha_match": 16,
+  "declared_total": 16,
+  "declared_verified": 16,
+  "slots_total": 7,
+  "slots_carrier_level_only": 7,
+  "note": "all 7 slots remain CARRIER_LEVEL_ONLY with hit_count 0: no original slot->action->artefact M:N exists in the readable evidence"
+ },
+ "not_done": [
+  "no retroactive ratification of out-of-scope hits",
+  "no allow-list expansion",
+  "no mirror consumption"
+ ]
+}

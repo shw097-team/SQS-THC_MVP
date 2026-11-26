@@ -1,0 +1,446 @@
+{
+ "schema": "SST.PH01.W0.B1.CHECKER_RECOMPUTE@5",
+ "checker": {
+  "separation": "separate session/context, read-only",
+  "model_axis_sod": "NOT_ESTABLISHED (same model family as Maker)",
+  "maker_modules_executed": false,
+  "inputs_read_only": true
+ },
+ "subject": {
+  "spec_b1_sha256": "24e4f17a0f29627f53799200c93afc11a9bfb946d26958c9c5de557229f35c2c",
+  "manifest_sha256": "3c816deb8fc216eae831dddfac396217d5b224fc7575c03415ef9f08ebbfa046",
+  "tqaep_generated_at": "2026-11-26T21:00:47+0800",
+  "repo_head": "9a70501ad4bbf315c675894a7a58c0f98bf18f47"
+ },
+ "checks": {
+  "A_manifest": {
+   "files": {
+    "SST_PLP_PH01_W0_B1_執行控制小包_實質正文_2026-11-26_r5_Native-first_CODEX_FINAL.md": {
+     "expected_sha256": "24e4f17a0f29627f53799200c93afc11a9bfb946d26958c9c5de557229f35c2c",
+     "observed_sha256": "24e4f17a0f29627f53799200c93afc11a9bfb946d26958c9c5de557229f35c2c",
+     "expected_bytes": 263939,
+     "observed_bytes": 263939,
+     "match": true
+    },
+    "SST_PLP_PH01_W0_B1_執行控制小包_證據型附錄_2026-11-26_r5_Native-first_CODEX_FINAL.md": {
+     "expected_sha256": "c667f814f8b35130028a01fd9ba91e2a150f1c80fd7d5ae53ff390741acd8df2",
+     "observed_sha256": "c667f814f8b35130028a01fd9ba91e2a150f1c80fd7d5ae53ff390741acd8df2",
+     "expected_bytes": 26565,
+     "observed_bytes": 26565,
+     "match": true
+    },
+    "SST_PLP_PH01_W0_B2_執行控制小包_實質正文_2026-11-26_r5_Native-first_CODEX_FINAL.md": {
+     "expected_sha256": "1a11f0cf022a31a67ea35bc9dc50b627d7542c8f5589e63d1dec5dacec40b2f4",
+     "observed_sha256": "1a11f0cf022a31a67ea35bc9dc50b627d7542c8f5589e63d1dec5dacec40b2f4",
+     "expected_bytes": 12549483,
+     "observed_bytes": 12549483,
+     "match": true
+    },
+    "SST_PLP_PH01_W0_B2_執行控制小包_證據型附錄_2026-11-26_r5_Native-first_CODEX_FINAL.md": {
+     "expected_sha256": "9a16fd13cda1f956eeaf2d29604553337ed8dbf3943a3fe9efc07f3fb0a6e38d",
+     "observed_sha256": "9a16fd13cda1f956eeaf2d29604553337ed8dbf3943a3fe9efc07f3fb0a6e38d",
+     "expected_bytes": 27565,
+     "observed_bytes": 27565,
+     "match": true
+    }
+   },
+   "matched": 4,
+   "total": 4,
+   "manifest_sha256": "3c816deb8fc216eae831dddfac396217d5b224fc7575c03415ef9f08ebbfa046"
+  },
+  "B_identity_sets": {
+   "unit_count": 30,
+   "case_count": 60,
+   "unit_digest_observed": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "unit_digest_expected": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "unit_match": true,
+   "case_digest_observed": "910962c5ce5faac737700f1921be3a6a513247d4e390d851d626b471a51b2110",
+   "case_digest_expected": "910962c5ce5faac737700f1921be3a6a513247d4e390d851d626b471a51b2110",
+   "case_match": true,
+   "kind_composition": {
+    "BASE": 18,
+    "KERNEL": 5,
+    "FDA": 7
+   },
+   "unit_case_ids_total": 60,
+   "table_minus_units": [],
+   "units_minus_table": [],
+   "digest_convention": "sha256 of '\\n'.join(sorted IDs) with NO trailing LF (spec appendix :100-101)"
+  },
+  "C_kernel": {
+   "raw_sha": {
+    "fsdt": {
+     "path": "src/kernel/fsdt/__init__.py",
+     "observed": "90a5f4d4e27aeafda82d15d439bbfa076cc4f55d70df6ee604b4602bad5598bb",
+     "expected": "90a5f4d4e27aeafda82d15d439bbfa076cc4f55d70df6ee604b4602bad5598bb",
+     "bytes": 8034,
+     "match": true
+    },
+    "temporal": {
+     "path": "src/kernel/temporal/__init__.py",
+     "observed": "21e0150f8f97f1541e96b452b56571fa1518191a122fa5cf2f1af54ff9483a5d",
+     "expected": "21e0150f8f97f1541e96b452b56571fa1518191a122fa5cf2f1af54ff9483a5d",
+     "bytes": 5048,
+     "match": true
+    },
+    "knowledge": {
+     "path": "src/kernel/knowledge/__init__.py",
+     "observed": "ea1e13cd7df0cf81059364c7606be4c6c317d78e4a91d3a847c7219465e33da6",
+     "expected": "ea1e13cd7df0cf81059364c7606be4c6c317d78e4a91d3a847c7219465e33da6",
+     "bytes": 6722,
+     "match": true
+    },
+    "harness": {
+     "path": "src/kernel/harness/__init__.py",
+     "observed": "288a2a0e474a05fd38b992de5801b0f8f01668741a67c90c0d0e6f6b37ffc27e",
+     "expected": "288a2a0e474a05fd38b992de5801b0f8f01668741a67c90c0d0e6f6b37ffc27e",
+     "bytes": 7253,
+     "match": true
+    },
+    "capability": {
+     "path": "src/kernel/capability/__init__.py",
+     "observed": "d2a143c5c970d8a5c2174f051871066fc04c0c9f5863ff4fac253f0cb9d68a41",
+     "expected": "d2a143c5c970d8a5c2174f051871066fc04c0c9f5863ff4fac253f0cb9d68a41",
+     "bytes": 4449,
+     "match": true
+    }
+   },
+   "spans": {
+    "total": 64,
+    "ok": 64,
+    "mismatches": []
+   },
+   "pinned_commit": "d34dc903cca203140a6cc7453ae2f6c78dfd2e5b",
+   "raw_matched": 5,
+   "pinned_commit_present_locally": false,
+   "local_head": ""
+  },
+  "D_fhs_locators": {
+   "files": {
+    "FDA_DESKTOP_CAPABILITY_MATRIX.yaml": {
+     "sha256": "9406456db853e9e6597c30ed400240808c7b0c777dd49c34eb611bf4c863d6c4",
+     "bytes": 11110,
+     "match": true
+    },
+    "fda_router.py": {
+     "sha256": "c3d64650a6e0c6fd3d99b5236c30c4cb03b7621be9763299e335ac1c6ed95e6c",
+     "bytes": 1115,
+     "match": true
+    },
+    "fda_lease.py": {
+     "sha256": "856580b533b547a82772de8624c78792d669cb11bb9cb99551c7141a06594db2",
+     "bytes": 2510,
+     "match": true
+    },
+    "xq_native_adapter.py": {
+     "sha256": "7655c411b5dfebd2da01364f665d82a5c31db7ad66ba2ce0521214401915ddc4",
+     "bytes": 6631,
+     "match": true
+    },
+    "FDA_EXECUTION_BINDING.json": {
+     "sha256": "6a3269202d0dba0ba6c8bb0d6656e592dcda4042a0dc88e63fba732e3335b095",
+     "bytes": 3308,
+     "match": true
+    },
+    "FDA_ASSET_REGISTRY.json": {
+     "sha256": "960c31939f094d6b23e441728bc55d784b3899bbfbb81a9b76038031b7d96dde",
+     "bytes": 4072,
+     "match": true
+    },
+    "TEAM.md": {
+     "sha256": "1936a4651ef549cce50f5ecec9a45a712c7bf92adab0ffd12afa12ff3d43a311",
+     "bytes": 5768,
+     "match": true
+    },
+    "AGENTS.md": {
+     "sha256": "b5257a3e5d06c5781911c4ffbed19bdccc82c763158053842ddc89dcbe6f9e1a",
+     "bytes": 3651,
+     "match": true
+    },
+    "README.md": {
+     "sha256": "aa3084bac9c01af17868582b04c3405b673a7e16947f9c0cbf3f972eef2a20a9",
+     "bytes": 4410,
+     "match": true
+    },
+    "docs/FDA_USER_GUIDE.md": {
+     "sha256": "21a3d22b26e499b1bad10dc7fb0235402b460c3138e0fd719e7791d120815ee5",
+     "bytes": 22327,
+     "match": true
+    },
+    "governance/FDA_INTEROP_DISPOSITION.yaml": {
+     "sha256": "9fac4d255030443f8031a5bfe62d8e204698cf664ada2b06a65986f347c7ee5e",
+     "bytes": 3487,
+     "match": true
+    },
+    "governance/FDA_DEFERRED_SEMIAUTO_CONTRACT.yaml": {
+     "sha256": "6e1c808e278592f2b4d75c6296b4b81d9e227a2f21e188c9594b18085bbf0f8f",
+     "bytes": 2995,
+     "match": true
+    },
+    "FDA_DIRECTORY_TREE.txt": {
+     "sha256": "b3b108fa5b154ab16bcda89f8ae8b79d34aca843857d95248f00d56f04c994e0",
+     "bytes": 2110,
+     "match": true
+    },
+    "FDA_FOLDER_REORGANIZATION_RECEIPT.json": {
+     "sha256": "b78987a5022b95ad30af868c7b996a238f44356c728585151dbecf219862082b",
+     "bytes": 751,
+     "match": true
+    },
+    "independent_checker.py": {
+     "sha256": "9009713fd70392d64b84dcf0c1319adb5cfef51d260cd196c831c960f1bbe22e",
+     "bytes": 12617,
+     "match": true
+    },
+    "test_xq_build_drift.py": {
+     "sha256": "cf234c66e389900b517d437a6d2ec4d69977104876fc4ab898a6f4df1aaf8eb9",
+     "bytes": 3215,
+     "match": true
+    }
+   },
+   "matched": 16,
+   "total": 16
+  },
+  "E_tqaep": {
+   "case_count_field": 60,
+   "cases_present": 60,
+   "set_equals_spec": true,
+   "expected_first_fail_mismatches": [],
+   "unit_id_mapping_errors": [],
+   "verdict_counts_declared": {
+    "PASS": 37,
+    "FIXTURE_ONLY": 12,
+    "HOLD": 6,
+    "PASS_EVIDENCE": 5
+   },
+   "verdict_counts_per_case": {
+    "PASS": 37,
+    "FIXTURE_ONLY": 12,
+    "HOLD": 6,
+    "PASS_EVIDENCE": 5
+   },
+   "verdict_counts_consistent": true,
+   "cases_with_arm_failures_marked_pass": [],
+   "hold_cases": [
+    "B1.NEG.KERNEL_capability",
+    "B1.NEG.KERNEL_fsdt",
+    "B1.NEG.KERNEL_harness",
+    "B1.NEG.KERNEL_knowledge",
+    "B1.NEG.KERNEL_temporal",
+    "B1.POS.BASE-018"
+   ],
+   "fixture_only_cases": [
+    "B1.NEG.FDA_at_simulated_order",
+    "B1.NEG.FDA_broker_external_event_read",
+    "B1.NEG.FDA_radar_signal",
+    "B1.NEG.FDA_watch_ui",
+    "B1.NEG.FDA_xs_backtest",
+    "B1.NEG.FDA_xs_compile",
+    "B1.POS.FDA_at_simulated_order",
+    "B1.POS.FDA_broker_external_event_read",
+    "B1.POS.FDA_radar_signal",
+    "B1.POS.FDA_watch_ui",
+    "B1.POS.FDA_xs_backtest",
+    "B1.POS.FDA_xs_compile"
+   ],
+   "hold_mislabelled_as_pass": [],
+   "fixture_only_counted_as_pass": [],
+   "pass_total": 37,
+   "pass_unsupported": {
+    "constant_oracle_broker_live_submit": [
+     "B1.POS.FDA_broker_live_submit",
+     "B1.NEG.FDA_broker_live_submit"
+    ],
+    "neg_arm2_selfauthored_oracle": [
+     "B1.NEG.BASE-001",
+     "B1.NEG.BASE-002",
+     "B1.NEG.BASE-003",
+     "B1.NEG.BASE-004",
+     "B1.NEG.BASE-005",
+     "B1.NEG.BASE-006",
+     "B1.NEG.BASE-007",
+     "B1.NEG.BASE-008",
+     "B1.NEG.BASE-009",
+     "B1.NEG.BASE-010",
+     "B1.NEG.BASE-011",
+     "B1.NEG.BASE-012",
+     "B1.NEG.BASE-013",
+     "B1.NEG.BASE-014",
+     "B1.NEG.BASE-015",
+     "B1.NEG.BASE-016",
+     "B1.NEG.BASE-017",
+     "B1.NEG.BASE-018"
+    ],
+    "pos_pass_without_identity": [
+     "B1.POS.BASE-006",
+     "B1.POS.BASE-007",
+     "B1.POS.BASE-008",
+     "B1.POS.BASE-009",
+     "B1.POS.BASE-011"
+    ]
+   },
+   "pass_unsupported_count": 25,
+   "read_layer_crosscheck": {
+    "external_carriers_rehashed": 0,
+    "mismatch": 0
+   }
+  },
+  "F_edge_sec": {
+   "counts": {
+    "pass": 9,
+    "fail": 0
+   },
+   "ids": [
+    "SEC.CONTEXT_OVERRIDE",
+    "SEC.REPO_OUTSIDE_ALLOWLIST",
+    "SEC.OUT_OUTSIDE_W",
+    "SEC.UNKNOWN_COMMIT",
+    "SEC.EMPTY_REQUEST_REFUSED",
+    "SEC.UNKNOWN_ARG",
+    "SEC.FDA_DENY_INVARIANT_OUTPUT",
+    "SEC.NO_WRITE_TO_SOURCE_REPO",
+    "SEC.PRODUCT_EFFECT_INVARIANTS"
+   ],
+   "exits": {
+    "SEC.CONTEXT_OVERRIDE": 64,
+    "SEC.REPO_OUTSIDE_ALLOWLIST": 64,
+    "SEC.OUT_OUTSIDE_W": 64,
+    "SEC.UNKNOWN_COMMIT": 2,
+    "SEC.EMPTY_REQUEST_REFUSED": 64,
+    "SEC.UNKNOWN_ARG": 64,
+    "SEC.FDA_DENY_INVARIANT_OUTPUT": 0,
+    "SEC.NO_WRITE_TO_SOURCE_REPO": null,
+    "SEC.PRODUCT_EFFECT_INVARIANTS": null
+   },
+   "notes": {
+    "constant_self_asserted": [
+     "SEC.FDA_DENY_INVARIANT_OUTPUT",
+     "SEC.PRODUCT_EFFECT_INVARIANTS"
+    ],
+    "loose_criterion": "b1_edge_sec.py:77 pass = exit in (0,2)"
+   }
+  },
+  "G_claims": {
+   "i_kernel_content_and_spans": {
+    "raw_matched": 5,
+    "of": 5,
+    "spans_ok": 64,
+    "spans_of": 64,
+    "commit_pin_verified": false
+   },
+   "ii_b2_qrows": {
+    "declared_verified": 1385,
+    "declared_not_verified": 0,
+    "sampled": 20,
+    "sampled_match": 20,
+    "carrier_sha_ok": true,
+    "exhaustive_recomputed": false
+   },
+   "iii_no_write_to_source_repo": {
+    "head": "",
+    "files_scanned": 20175,
+    "modified_after_2050": 0,
+    "git_index_mtime": "2026-10-15T18:31:53"
+   }
+  }
+ },
+ "findings": [
+  {
+   "id": "B1C-R5-F01",
+   "mandatory": true,
+   "severity": "P1",
+   "file_line": [
+    "20_DEV/b1_r5/b1_engine.py:467-483",
+    "20_DEV/b1_r5/b1_tqaep.py:203-216",
+    "spec …CODEX_FINAL.md:510"
+   ],
+   "fact": "broker_live_submit POS/NEG PASS rest on fda_deny_control(), a literal return dict; spec §04.R5 forbids using a constant to fake read-control success.",
+   "impact": "2 PASS invalid; B1_ACCEPTED must not count them."
+  },
+  {
+   "id": "B1C-R5-F02",
+   "mandatory": true,
+   "severity": "P1",
+   "file_line": [
+    "20_DEV/b1_r5/b1_tqaep.py:149-178",
+    "20_DEV/b1_r5/b1_tqaep.py:158-161",
+    "20_DEV/b1_r5/b1_tqaep.py:173-175"
+   ],
+   "fact": "All 18 NEG BASE PASS = arm1 AND arm2; arm2 uses a self-invented FirstFail (FOREIGN_AS_LOCAL_REFUSED, admitted 'corrected once') and a hardcoded commit unrelated to each unit's declared remote.",
+   "impact": "18 PASS invalid as original-oracle PASS; arm1 alone may stand."
+  },
+  {
+   "id": "B1C-R5-F03",
+   "mandatory": true,
+   "severity": "P2",
+   "file_line": [
+    "20_DEV/b1_r5/b1_tqaep.py:118-135"
+   ],
+   "fact": "BASE POS verdict is a status whitelist with no FAIL branch; B1.POS.BASE-006 passes with all identity fields null and 007/008/011 with DISK_BUT_UNTRACKED; run_all reports missing_targets=10 while 0 cases FAIL.",
+   "impact": "4 PASS (006/007/008/011) have no commit content identity and must be re-labelled; 009 has locator sha_match evidence but still no CommitPathSpan; POS arm has zero discriminating power."
+  },
+  {
+   "id": "B1C-R5-N04",
+   "mandatory": false,
+   "severity": "P3",
+   "file_line": [
+    "20_DEV/b1_r5/b1_tqaep.py:113-116",
+    "spec …CODEX_FINAL.md:2180-2190"
+   ],
+   "fact": "Per-case records lack the §06.0 rule-4 raw columns; oracle_domain truncated at 180 chars.",
+   "impact": "evidence binding thin; no acceptance impact alone."
+  },
+  {
+   "id": "B1C-R5-N05",
+   "mandatory": false,
+   "severity": "P3",
+   "file_line": [
+    "20_DEV/b1_r5/b1_edge_sec.py:75-77",
+    "20_DEV/b1_r5/b1_edge_sec.py:86-96",
+    "20_DEV/b1_r5/b1_engine.py:544",
+    "20_DEV/b1_r5/b1_engine.py:580"
+   ],
+   "fact": "2 of 9 edge cases assert hardcoded literals rather than observations; claim independently confirmed true by static import analysis (stdlib + git only).",
+   "impact": "evidence quality only."
+  },
+  {
+   "id": "B1C-R5-N06",
+   "mandatory": false,
+   "severity": "P3",
+   "file_line": [
+    "git: d34dc903… absent in local object DB"
+   ],
+   "fact": "kernel equivalence is content-level (raw SHA at local HEAD), not commit-level.",
+   "impact": "wording of acceptance must not claim the commit was verified."
+  },
+  {
+   "id": "B1C-R5-N07",
+   "mandatory": false,
+   "severity": "P3",
+   "file_line": [
+    "spec 附錄:100-101"
+   ],
+   "fact": "unit set digest pins IDs only; composition 18/5/7 verified separately by this checker.",
+   "impact": "none."
+  },
+  {
+   "id": "B1C-R5-N08",
+   "mandatory": false,
+   "severity": "P3",
+   "file_line": [
+    "20_DEV/b1_r5/b1_cli.py:6-9",
+    "20_DEV/b1_r5/b1_engine.py:590-592"
+   ],
+   "fact": "exit-2 semantics documented as partial success but used for a hard unknown-commit fault with empty stdout.",
+   "impact": "minor contract mismatch."
+  }
+ ],
+ "not_verified": [
+  "kernel pinned commit d34dc903… (absent from local object DB)",
+  "B2 1385/1385 exhaustive recompute (20-row sample only, 20/20 match)",
+  "Maker run execution itself (Maker modules not executed by checker)",
+  "git status line count 132 vs dirty_tracked_files 2 (read-only git scope)"
+ ],
+ "verdict": "REJECT",
+ "mandatory_findings": 3
+}
