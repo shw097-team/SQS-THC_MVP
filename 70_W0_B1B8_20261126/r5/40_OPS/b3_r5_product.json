@@ -1,12 +1,12 @@
 {
  "schema": "SST.PH01.W0.B3.Product@1",
- "generated_at": "2026-11-27T00:47:46+0800",
+ "generated_at": "2026-11-27T00:55:18+0800",
  "spec_b3_sha256": "a1d759c7157c4ca8d34acb3f0730b74f653baaa86eb5c3c4302837d0df6deac1",
  "units": 365,
  "join": {
   "rows": 365,
-  "ready": 0,
-  "held": 365,
+  "ready": 273,
+  "held": 92,
   "errors": 0
  },
  "child": {
@@ -21,12 +21,12 @@
  },
  "commit": {
   "decision": "NOT_COMMITTED",
-  "first_fail": "EFFECT_CLASS_INSUFFICIENT:READ_ONLY_PROBE<REPOSITORY_WRITE",
-  "note": "the Ops run in memory; the product write needs a window whose ceiling covers REPOSITORY_WRITE"
+  "first_fail": "PREIMAGE_NOT_ABSENT",
+  "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\70_W0_B1B8_20261126\\40_OPS\\b3_ledger\\SourceChildLedger.draft.md"
  },
  "fin_order": "DENY",
  "effect": "SOURCE_READ+IN_MEMORY_TRANSFORM",
- "ledger_sha256": "b3180ea7adc535b7e25d86ec84b4db444e3151268d99057217a60b4d79813753",
+ "ledger_sha256": "53c22fd950aa03e93cd1f3ac1cb77cf7959e27e71b1e5bab0852888cb1d5d665",
  "errors": [],
  "rows_sample": [
   {
@@ -35,13 +35,11 @@
    "kind": "CHILD",
    "namespace": null,
    "b0_side": "READSET",
-   "missing": [
-    {
-     "field": "tool_row",
-     "reason": "ABSENT",
-     "detail": "the key is not in the B2 tool read set"
-    }
-   ]
+   "tool_ids": [],
+   "tool_rows": 0,
+   "missing": [],
+   "tool_binding": "NOT_APPLICABLE_NO_TOOL_REF",
+   "source_check": "SOURCE_BOUND_VERIFIED"
   },
   {
    "unit_id": "B3.U0002",
@@ -49,13 +47,11 @@
    "kind": "CHILD",
    "namespace": null,
    "b0_side": "READSET",
-   "missing": [
-    {
-     "field": "tool_row",
-     "reason": "ABSENT",
-     "detail": "the key is not in the B2 tool read set"
-    }
-   ]
+   "tool_ids": [],
+   "tool_rows": 0,
+   "missing": [],
+   "tool_binding": "NOT_APPLICABLE_NO_TOOL_REF",
+   "source_check": "SOURCE_BOUND_VERIFIED"
   },
   {
    "unit_id": "B3.U0003",
@@ -63,13 +59,11 @@
    "kind": "CHILD",
    "namespace": null,
    "b0_side": "READSET",
-   "missing": [
-    {
-     "field": "tool_row",
-     "reason": "ABSENT",
-     "detail": "the key is not in the B2 tool read set"
-    }
-   ]
+   "tool_ids": [],
+   "tool_rows": 0,
+   "missing": [],
+   "tool_binding": "NOT_APPLICABLE_NO_TOOL_REF",
+   "source_check": "SOURCE_BOUND_VERIFIED"
   },
   {
    "unit_id": "B3.U0004",
@@ -77,13 +71,11 @@
    "kind": "CHILD",
    "namespace": null,
    "b0_side": "READSET",
-   "missing": [
-    {
-     "field": "tool_row",
-     "reason": "ABSENT",
-     "detail": "the key is not in the B2 tool read set"
-    }
-   ]
+   "tool_ids": [],
+   "tool_rows": 0,
+   "missing": [],
+   "tool_binding": "NOT_APPLICABLE_NO_TOOL_REF",
+   "source_check": "SOURCE_BOUND_VERIFIED"
   },
   {
    "unit_id": "B3.U0005",
@@ -91,13 +83,11 @@
    "kind": "CHILD",
    "namespace": null,
    "b0_side": "READSET",
-   "missing": [
-    {
-     "field": "tool_row",
-     "reason": "ABSENT",
-     "detail": "the key is not in the B2 tool read set"
-    }
-   ]
+   "tool_ids": [],
+   "tool_rows": 0,
+   "missing": [],
+   "tool_binding": "NOT_APPLICABLE_NO_TOOL_REF",
+   "source_check": "SOURCE_BOUND_VERIFIED"
   }
  ],
  "routes": [

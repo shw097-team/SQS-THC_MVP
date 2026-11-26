@@ -190,15 +190,26 @@ def op_join(units: list[dict], tool_readset: dict, source_side: dict) -> dict:
     seen = set()
     declared = set((tool_readset.get("namespace") or {}).keys()) or {
         "R3-REGISTRY-Q1", "R3-REGISTRY-Q2", "R3-REGISTRY-Q3", "R3-REGISTRY-Q4"}
-    index = {}
+    # B3 atoms and B2 rows are different key spaces (REQ-xx / PLP-xx vs R3-REGISTRY-..::ROW=n),
+    # so the relation is by TOOL ID: an atom that names a tool joins to that tool's rows.
+    by_tool, by_key = {}, {}
     for e in tool_readset.get("entries") or []:
-        index.setdefault(e.get("tool_key"), e)
+        by_key.setdefault(e.get("tool_key"), e)
+        for tid in re.findall(r"TECH-\d+", e.get("tool_key") or ""):
+            by_tool.setdefault(tid, []).append(e)
+
+    def tool_ids_of(u):
+        blob = json.dumps(u, ensure_ascii=False)
+        return sorted(set(re.findall(r"TECH-\d+", blob)))
     for u in units:
         key = u.get("key")
         ns = key.split("::")[0] if key.startswith("R3-REGISTRY-") else None
-        e = index.get(key)
+        tids = tool_ids_of(u)
+        rows_for = [r for tid in tids for r in by_tool.get(tid, [])]
+        e = by_key.get(key) or (rows_for[0] if rows_for else None)
         row = {"unit_id": u["unit_id"], "key": key, "kind": u.get("kind"),
-              "namespace": ns, "b0_side": source_side.get("kind"), "missing": []}
+               "namespace": ns, "b0_side": source_side.get("kind"),
+               "tool_ids": tids, "tool_rows": len(rows_for), "missing": []}
         if ns and ns not in declared:
             errors.append({"code": "NAMESPACE_JOIN_DENY", "key": key})
             row["missing"].append({"field": "namespace", "reason": "AMBIGUOUS"})
@@ -206,10 +217,12 @@ def op_join(units: list[dict], tool_readset: dict, source_side: dict) -> dict:
             errors.append({"code": "DUPLICATE_ATOM_DENY", "key": key})
             row["missing"].append({"field": "atom", "reason": "AMBIGUOUS"})
         seen.add(key)
-        if e is None:
+        if not tids and e is None:
+            row["tool_binding"] = "NOT_APPLICABLE_NO_TOOL_REF"
+        elif e is None:
             row["missing"].append({"field": "tool_row", "reason": "ABSENT",
-                                   "detail": "the key is not in the B2 tool read set"})
-        else:
+                                   "detail": f"the atom names {tids} but no B2 row carries it"})
+        if e is not None:
             row["requiredness"] = e.get("requiredness")
             if e.get("requiredness") in (None, "UNKNOWN"):
                 row["missing"].append({"field": "requiredness", "reason": "UNVERIFIED"})
@@ -220,6 +233,12 @@ def op_join(units: list[dict], tool_readset: dict, source_side: dict) -> dict:
                 pass  # metadata is a B5 concern; B3 does not require it
         if source_side.get("kind") != "READSET":
             row["missing"].append({"field": "b0_source_readset", "reason": "UNVERIFIED"})
+        # the atom's own source must verify, not just the envelope's presence
+        ev = doc_bridge(u) if u.get("kind") == "DOC_BRIDGE" else verify_mapping(u)
+        row["source_check"] = ev.get("decision")
+        if ev.get("decision") != "SOURCE_BOUND_VERIFIED":
+            row["missing"].append({"field": "source_verified", "reason": "UNVERIFIED",
+                                   "detail": ev.get("decision")})
         rows.append(row)
     return {"rows": rows, "errors": errors,
             "summary": {"rows": len(rows),
