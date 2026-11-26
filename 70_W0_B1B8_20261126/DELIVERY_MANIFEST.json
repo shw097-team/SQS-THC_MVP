@@ -51,7 +51,9 @@
   "b3_handoff": "60_CLOSEOUT/SST_PLP_PH01_W0_B3_HANDOFF.md",
   "b3_product": "40_OPS/b3_r5_product.json",
   "b3_typed_fixtures": "40_OPS/b3_r5_typed_fixtures.json",
-  "decision_list_5way": "60_CLOSEOUT/SST_PLP_PH01_W0_B1-B3_OWNER_DECISION_LIST_r5.md"
+  "decision_list_5way": "60_CLOSEOUT/SST_PLP_PH01_W0_B1-B3_OWNER_DECISION_LIST_r5.md",
+  "b3_neg_mutations": "40_OPS/b3_r5_neg_mutations.json",
+  "b3_neg_readme": "40_OPS/b3_r5_neg_mutations_READ_ME.md"
  },
  "layer_counts": {
   "AUTHORITATIVE_INPUT": 1,
@@ -1511,7 +1513,7 @@
  "phase_status": {
   "B1": "PARTIAL_PARK_UNTIL_DELTA",
   "B2": "PARTIAL_PARK_UNTIL_DELTA",
-  "B3": "RESEARCH_INPUT_ONLY_PRODUCT_PAUSED",
+  "B3": "RESEARCH_INPUT_ONLY_PRODUCT_PAUSED (NEG mutations executed: 44/44, 33 structural + 11 content)",
   "accepted": [
    "NOT B1_ACCEPTED",
    "NOT B2_ACCEPTED",
