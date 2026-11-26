@@ -1,0 +1,64 @@
+{
+ "schema": "SST.PH01.W0.B1.CandidateFreeze@1",
+ "batch": "B1",
+ "subject": "SST/SQS-THC/PH01/E00",
+ "original_wave": "P1-W00M",
+ "frozen_at": "2026-11-26T14:18:53+08:00",
+ "round": 5,
+ "artefacts": [
+  {
+   "path": "20_DEV/b1_reader/b1_cases.py",
+   "bytes": 23117,
+   "raw_sha256": "0f4601df2b70ce447def47d8b845ef965f81fb0334d11514a70737396dabd580"
+  },
+  {
+   "path": "20_DEV/b1_reader/b1_fda_static.py",
+   "bytes": 10404,
+   "raw_sha256": "c98cdb37a77ba0564b719eadc76004b9d669338a7371d17753958b89a6c9a22c"
+  },
+  {
+   "path": "20_DEV/b1_reader/b1_reader.py",
+   "bytes": 13813,
+   "raw_sha256": "ea20240e24c1e5f9d7e1f95623405e0f19a107c47d53976a9c9243a269256c84"
+  },
+  {
+   "path": "20_DEV/b1_reader/b1_reader2.py",
+   "bytes": 41527,
+   "raw_sha256": "4e5c2200860a1eb677de831e7310640f83bd1a4b816599b82006b292c2f11863"
+  },
+  {
+   "path": "20_DEV/b1_reader/run_b1.py",
+   "bytes": 6307,
+   "raw_sha256": "ad64cb05d4054b7dd8e874500bc5d9c2b5861750c41ec5e12f7ed493360d3853"
+  },
+  {
+   "path": "20_DEV/b1_reader/summarize_b1.py",
+   "bytes": 2883,
+   "raw_sha256": "16b810b97c55e38670069c577146577e3302248f7760775441cf33712155acca"
+  },
+  {
+   "path": "00_PREFLIGHT/b1_locator_bindings.json",
+   "bytes": 2502,
+   "raw_sha256": "a8025e2faae502f0f959a1e375367d9c8dcee243b10ad7138e80acd284d983f9"
+  },
+  {
+   "path": "00_PREFLIGHT/b1_source_allowlist.json",
+   "bytes": 3105,
+   "raw_sha256": "de92bd2cde3ff8a763c718e48b510a1650d3f03d3aba7e9ef544b09bf02ae1ed"
+  },
+  {
+   "path": "40_OPS/b1_run_20261126T141840.json",
+   "bytes": 127559,
+   "raw_sha256": "591808fafcaa78f24a2e5829447eeb0e350701ef7fb9a21c065fa64069a845ac"
+  },
+  {
+   "path": "40_OPS/b1_tqaep_20261126T141842.json",
+   "bytes": 41636,
+   "raw_sha256": "821f3e610ff7de13cc2c6da8666fb92cfac3ccc6921c18b6c757abf2708aaa35"
+  }
+ ],
+ "candidate_digest": "9666c7ed52eaab1b4edb8dad589fd6a8667fef71fef4c585b3690a20420ab63a",
+ "candidate_digest_rule": "sha256 over the newline-joined, lexicographically SORTED 'sha256<two spaces>path' lines",
+ "claim_ceiling": "ENGINEERING_CANDIDATE_FOR_INDEPENDENT_CHECK; not B1_ACCEPTED",
+ "supersedes": "round-4 candidate 68550cdd… (declaration-order digest; round-4 verdict: 9/11 PASS, item 3 PARTIAL, B1_ACCEPTED NO)"
+}
