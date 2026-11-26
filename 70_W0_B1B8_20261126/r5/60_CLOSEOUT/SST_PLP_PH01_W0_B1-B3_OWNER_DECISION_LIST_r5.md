@@ -59,3 +59,13 @@ B3 的 636 案已由各 Unit 自帶的 `resolved_source_ref` ＋ `direct_parent_
 ## 6｜結論
 
 「全部缺件等 OWNER 提供原資料」的說法**不成立**：第 1 類已自行完成、第 2／3 類是工程工時與設計補編、第 5 類由下游真使用驅動；只有第 4 類 6 項需要原權位。B1／B2 狀態維持 PARTIAL／PARK_UNTIL_DELTA，B3 為 SOURCE_BOUND 級（非 B3_ACCEPTED）。
+
+## 發布｜remote readback（工程成果，非產品接受）
+
+- Repo：`https://github.com/shw097-team/SQS-THC_MVP`，branch `main`
+- commit：`acad969e80d37ac4299a81a0bd068925c1020d92`（remote `ls-remote` 回讀與本機 `rev-parse HEAD` 全等）
+- 發布範圍：`70_W0_B1B8_20261126/r5/` 下 168 檔（引擎、TQAEP/OPS 收據、凍結 manifest、CLOSEOUT/HANDOFF、裁決清單）
+- **未發布**：`40_OPS/b0_r5_sourcereadset.json`（含原條文逐字），依 `LOCAL_ONLY` 留本地，remote 只記其 sha256（見 `40_OPS/LOCAL_ONLY_EXCLUSIONS.json`）
+- 憑證：以受管 `extraheader` 一次性注入，未寫入 git config、未出現在 argv/URL/log/commit
+- 發布 ≠ 接受：`B1_ACCEPTED`／`B2_ACCEPTED`／`W0_COMPLETE`／`W1 ReadyExecute` 仍未成立，`FIN_ORDER=DENY`
+- 更新時間：2026-11-27T00:47:47+0800

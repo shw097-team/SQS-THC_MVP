@@ -4,8 +4,8 @@ subject: SST/SQS-THC/PH01/E00
 original_wave: P1-W00M
 spec_version: 2026-11-26_r5_Native-first_CODEX_FINAL
 spec_manifest_sha256: 3c816deb8fc216eae831dddfac396217d5b224fc7575c03415ef9f08ebbfa046
-candidate_manifest_sha256: 96d1342db3d394351f34974186035d9f58af33a1e53e8985fe5b51c319cf31f4
-generated_at: 2026-11-27T00:28:19+0800
+candidate_manifest_sha256: f851ede0ea038e4b522a934ce756abbb98cbca43d44eb41c2b38a147637af6b2
+generated_at: 2026-11-27T00:47:47+0800
 product_actual: EXECUTED_SOURCE_READ_ONLY
 fin_order: DENY
 distribution: LOCAL_ONLY
@@ -21,7 +21,7 @@ distribution: LOCAL_ONLY
 | 案級分佈 | FIXTURE_ONLY 12、HOLD 6、PARTIAL 5、PASS 32、PASS_EVIDENCE 5 |
 | EDGE/SEC | 9 PASS / 0 FAIL |
 | **B1_ACCEPTED** | **NO** |
-| 凍結候選 | `b1b2_r5_CANDIDATE_MANIFEST.tsv` `96d1342db3d394351f34974186035d9f58af33a1e53e8985fe5b51c319cf31f4`（40 artefacts） |
+| 凍結候選 | `b1b2_r5_CANDIDATE_MANIFEST.tsv` `f851ede0ea038e4b522a934ce756abbb98cbca43d44eb41c2b38a147637af6b2`（42 artefacts） |
 
 拒絕理由（可核）：D-2（BASE-018 四測試無讀權）、D-4（五 Kernel 十條作者細規語義未核）、
 D-3（六 slot 的 M:N 未建立）、以及 5 個 BASE 案的 declared target 無身分（PARTIAL）。
@@ -103,4 +103,4 @@ manifest B 的 digest 差異可逐行核。Maker 與 Checker 同模型軸，mode
 - **未發布**：`40_OPS/b0_r5_sourcereadset.json`（含原條文逐字），依 `LOCAL_ONLY` 留本地，remote 只記其 sha256（見 `40_OPS/LOCAL_ONLY_EXCLUSIONS.json`）
 - 憑證：以受管 `extraheader` 一次性注入，未寫入 git config、未出現在 argv/URL/log/commit
 - 發布 ≠ 接受：`B1_ACCEPTED`／`B2_ACCEPTED`／`W0_COMPLETE`／`W1 ReadyExecute` 仍未成立，`FIN_ORDER=DENY`
-- 更新時間：2026-11-27T00:28:19+0800
+- 更新時間：2026-11-27T00:47:47+0800

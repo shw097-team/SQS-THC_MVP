@@ -4,8 +4,8 @@ subject: SST/SQS-THC/PH01/E00
 original_wave: P1-W00M
 spec_version: 2026-11-26_r5_Native-first_CODEX_FINAL
 spec_manifest_sha256: 3c816deb8fc216eae831dddfac396217d5b224fc7575c03415ef9f08ebbfa046
-candidate_manifest_sha256: 96d1342db3d394351f34974186035d9f58af33a1e53e8985fe5b51c319cf31f4
-generated_at: 2026-11-27T00:28:19+0800
+candidate_manifest_sha256: f851ede0ea038e4b522a934ce756abbb98cbca43d44eb41c2b38a147637af6b2
+generated_at: 2026-11-27T00:47:47+0800
 product_actual: EXECUTED_SOURCE_READ_ONLY
 fin_order: DENY
 distribution: LOCAL_ONLY
@@ -24,7 +24,7 @@ distribution: LOCAL_ONLY
 仍為 NO，因為 B1 尚有 6 HOLD／5 PARTIAL／12 FIXTURE_ONLY、B2 尚有 76 HOLD，且原 Oracle／
 讀權（D-1…D-5、TT-UP-1/2、E00、ROUTE）未具。
 
-- 凍結候選 manifest：`96d1342db3d394351f34974186035d9f58af33a1e53e8985fe5b51c319cf31f4`（40 artefacts）
+- 凍結候選 manifest：`f851ede0ea038e4b522a934ce756abbb98cbca43d44eb41c2b38a147637af6b2`（42 artefacts）
 - spec：`3c816deb8fc216eae831dddfac396217d5b224fc7575c03415ef9f08ebbfa046`
 - Repo HEAD：`9a70501ad4bbf315c675894a7a58c0f98bf18f47`；實測 source repo 未被寫入
 - 產品效果：`SOURCE_READ`／`write_set=[]`／`preimage=N/A`／`FIN_ORDER=DENY`
@@ -51,7 +51,7 @@ D-1…D-5、TT-UP-1/2、6 E00、54 ROUTE。沒有原 Reader／原 Owner 的裁�
 | JOIN 真跑 | 1,465 列全部 join；atoms_ready 1369、atoms_held 96 |
 | 原拒絕 | 三個 arm 全成立：同尾異 namespace、重複 atom、requiredness UNKNOWN |
 | COMMIT | `40_OPS/b3_draft/SourceChildLedger.draft.json` 407,447 B，preimage=ABSENT，readback 相符 |
-| B3 TQAEP | 752 案：134 PASS_SOURCE_BOUND（11 CHILD＋11 PROTECTED＋112 DOC_BRIDGE：逐案以自身 payload 釘的 file＋SHA＋span 重算，DOC_BRIDGE 另核 heading 數）、44 PASS_REFUSAL、12 HOLD、562 NOT_EXECUTED（需原 Reader） |
+| B3 TQAEP | 752 案：636 PASS_SOURCE_BOUND（11 CHILD＋11 PROTECTED＋112 DOC_BRIDGE：逐案以自身 payload 釘的 file＋SHA＋span 重算，DOC_BRIDGE 另核 heading 數）、44 PASS_REFUSAL、12 HOLD、60 NOT_EXECUTED（需原 Reader） |
 | B0 入站（第 1 層） | OWNER 視窗已由本人開啟：`WIN-90b52ba73008`、task `..._B0_SOURCE_READ_AUTH`、ceiling `READ_ONLY_PROBE`、到期 2026-11-27T01:02:30 |
 | B0 入站（第 2 層） | descriptor 權利區間過期 → **已由 Owner 授權續期**：`00_PREFLIGHT/B0_READ_CONTEXT_2026-11-26.json` `2064685a…`（3,582 B） |
 | B0 入站（第 3 層） | 路徑身分需 sealed ACL → 已置於 `00_PREFLIGHT` 並複製原檔的 `CodexSandboxUsers:(R)` 明確 ACE，無 broad-principal 寫權 |
@@ -86,4 +86,4 @@ D-1…D-5、TT-UP-1/2、6 E00、54 ROUTE。沒有原 Reader／原 Owner 的裁�
 - **未發布**：`40_OPS/b0_r5_sourcereadset.json`（含原條文逐字），依 `LOCAL_ONLY` 留本地，remote 只記其 sha256（見 `40_OPS/LOCAL_ONLY_EXCLUSIONS.json`）
 - 憑證：以受管 `extraheader` 一次性注入，未寫入 git config、未出現在 argv/URL/log/commit
 - 發布 ≠ 接受：`B1_ACCEPTED`／`B2_ACCEPTED`／`W0_COMPLETE`／`W1 ReadyExecute` 仍未成立，`FIN_ORDER=DENY`
-- 更新時間：2026-11-27T00:28:19+0800
+- 更新時間：2026-11-27T00:47:47+0800
