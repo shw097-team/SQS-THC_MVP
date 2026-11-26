@@ -1,6 +1,6 @@
 {
  "schema": "SST.PH01.W0.B1B8.DELIVERY_MANIFEST@2",
- "generated_at": "2026-11-26T14:30:10+08:00",
+ "generated_at": "2026-11-26T14:33:01+08:00",
  "root": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\70_W0_B1B8_20261126",
  "promotion_state": {
   "promoted_to_primary": [],
@@ -575,10 +575,10 @@
   },
   {
    "path": "40_OPS/b2_checker_round1_run.log",
-   "bytes": 200773,
-   "raw_sha256": "52a3de77f15deef9cc26680dc68f2c2bdd280cfa8fbd90e110bebd971b534716",
+   "bytes": 233128,
+   "raw_sha256": "8b74a8d9e7cae9ccbc4356cc2eabb262b13f1a4d0fd6d8c977052bca61ad57b7",
    "layer": "MAKER_RECORD",
-   "mtime": "2026-11-26T14:30:00+08:00"
+   "mtime": "2026-11-26T14:32:43+08:00"
   },
   {
    "path": "40_OPS/b2_parse_20261126T121931.json",
@@ -743,10 +743,10 @@
   },
   {
    "path": "60_CLOSEOUT/SST_PLP_PH01_W0_B1B8_SESSION_CLOSEOUT_HANDOFF_2026-11-26_r2.md",
-   "bytes": 9079,
-   "raw_sha256": "481abcb5652404899660ba8fc2ef9361d289a8aed23f9c5eee9052cca9d82386",
+   "bytes": 9306,
+   "raw_sha256": "0c2bf4f666cffe1bb15409816302910a1968ff59a3719cdf68561f29df0b0a1f",
    "layer": "CURRENT_CLOSEOUT",
-   "mtime": "2026-11-26T14:28:17+08:00"
+   "mtime": "2026-11-26T14:32:50+08:00"
   },
   {
    "path": "60_CLOSEOUT/SST_PLP_PH01_W0_B1_CLOSEOUT.md",
@@ -834,10 +834,10 @@
   },
   {
    "path": "DELIVERY_MANIFEST.json",
-   "bytes": 29393,
-   "raw_sha256": "4288dcc64dbf4e71d254574926f10df4f6198a312aa6556a87abe674c4ca6950",
+   "bytes": 29375,
+   "raw_sha256": "b675b6956c88864703d897ec29aec925f20789c822eb5fbfbce646efcce201c5",
    "layer": "MANIFEST_SELF",
-   "mtime": "2026-11-26T14:29:57+08:00"
+   "mtime": "2026-11-26T14:30:10+08:00"
   }
  ]
 }

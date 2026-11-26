@@ -28,7 +28,7 @@
 | B1 run | `40_OPS/b1_run_20261126T141840.json` | `591808fa…`（127,559 B） |
 | B1 TQAEP | `40_OPS/b1_tqaep_20261126T141842.json` | `821f3e61…`（41,636 B） |
 | B1 checker round 4 | `40_OPS/b1_checker_round4_verdict.md` | `B1_ACCEPTED = NO`（9/11 PASS，item 3 PARTIAL） |
-| B1 checker round 5 | `40_OPS/b1_checker_round5_verdict.md` | 本次 SESSION 未取回；`checker_round5_prompt.md` 已凍 |
+| B1 checker round 5 | `40_OPS/b1_checker_round5_verdict.md` | 4/5 round-4 defects PASS；第 5 項（manifest 過期）判 FAIL，但該 manifest 已於 verdict 之後重建（現與 freeze 0 落差）。`B1_ACCEPTED` 仍 **NO** |
 | B2 freeze | `40_OPS/b2_candidate_freeze_20261126T141949.json` | digest `095ddf25…` |
 | B2 ToolReadSet@2 | `40_OPS/b2_toolreadset_20261126T141706.json` | `450d30bd…`（2,649,780 B） |
 | B2 TQAEP@2 | `40_OPS/b2_tqaep_20261126T141735.json` | `eb75ddd0…`（2,071,976 B） |
@@ -93,7 +93,8 @@ r1 的 `b1_run_…130421` / `b1_tqaep_…130423` / `b2_*_…122128` / `b2_tqaep_
 ## 6｜發布
 
 - 通道：`W\dist\SQS-THC_MVP`（clone，origin `https://github.com/shw097-team/SQS-THC_MVP`），非 wave root。
-- 本次入庫內容與 commit 見 `50_PUBLISH/publish_receipt_r2.json`（本次新增）。只推可公開之工程候選（程式、收據、freeze、checker verdict、closeout），**明確標示未接受**；不推原始來源內容、不推憑證。
+- 已推兩個 commit：`892b659b`（45 檔：B1/B2/B3 code、current receipts、freeze、checker rounds 1–5、closeout）與 `93a4f21`（`DELIVERY_MANIFEST.json`＋round-5 verdict）。raw readback 與本地 byte 相同，`origin/main` 與本地 HEAD 相同。
+- 明標「candidates, not accepted」；未推 superseded receipts、run logs、原始來源內容、憑證。
 
 ---
 
