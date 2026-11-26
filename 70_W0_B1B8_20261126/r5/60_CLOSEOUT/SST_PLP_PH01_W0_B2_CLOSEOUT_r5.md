@@ -4,8 +4,8 @@ subject: SST/SQS-THC/PH01/E00
 original_wave: P1-W00M
 spec_version: 2026-11-26_r5_Native-first_CODEX_FINAL
 spec_manifest_sha256: 3c816deb8fc216eae831dddfac396217d5b224fc7575c03415ef9f08ebbfa046
-candidate_manifest_sha256: ef9449a5a7eb9d6bff51f050ac6d452f877b9e3cf4659de412fac6b851b2dad6
-generated_at: 2026-11-26T23:35:47+0800
+candidate_manifest_sha256: d4753294626d8d24a046570dbc091d4fb5e8a0ee6b6a784aff8f21e72be0e82d
+generated_at: 2026-11-26T23:38:16+0800
 product_actual: EXECUTED_SOURCE_READ_ONLY
 fin_order: DENY
 distribution: LOCAL_ONLY
@@ -20,7 +20,7 @@ distribution: LOCAL_ONLY
 | 產品實跑 | 是（2,930 案全部執行，orphan 0） |
 | 案級分佈 | HOLD 76、PASS 2854 |
 | **B2_ACCEPTED** | **NO** |
-| 凍結候選 | `ef9449a5a7eb9d6bff51f050ac6d452f877b9e3cf4659de412fac6b851b2dad6` |
+| 凍結候選 | `d4753294626d8d24a046570dbc091d4fb5e8a0ee6b6a784aff8f21e72be0e82d` |
 
 ## 02｜真輸入
 
@@ -72,3 +72,13 @@ distribution: LOCAL_ONLY
 ## 07｜未做
 
 未安裝／啟用任何產品工具、未做 B5 選型、未連網取 metadata、未宣 `B2_ACCEPTED`。
+
+## 發布｜remote readback（工程成果，非產品接受）
+
+- Repo：`https://github.com/shw097-team/SQS-THC_MVP`，branch `main`
+- commit：`48d1e6c0dbdb0f5724432bc722c817f50c7ce5b4`（remote `ls-remote` 回讀與本機 `rev-parse HEAD` 全等）
+- 發布範圍：`70_W0_B1B8_20261126/r5/` 下 168 檔（引擎、TQAEP/OPS 收據、凍結 manifest、CLOSEOUT/HANDOFF、裁決清單）
+- **未發布**：`40_OPS/b0_r5_sourcereadset.json`（含原條文逐字），依 `LOCAL_ONLY` 留本地，remote 只記其 sha256（見 `40_OPS/LOCAL_ONLY_EXCLUSIONS.json`）
+- 憑證：以受管 `extraheader` 一次性注入，未寫入 git config、未出現在 argv/URL/log/commit
+- 發布 ≠ 接受：`B1_ACCEPTED`／`B2_ACCEPTED`／`W0_COMPLETE`／`W1 ReadyExecute` 仍未成立，`FIN_ORDER=DENY`
+- 更新時間：2026-11-26T23:38:16+0800

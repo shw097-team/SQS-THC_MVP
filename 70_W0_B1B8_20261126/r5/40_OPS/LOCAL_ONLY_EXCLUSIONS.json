@@ -5,7 +5,7 @@
    "path": "40_OPS/b0_r5_sourcereadset.json",
    "sha256": "bdb2a03f079412434f5de11247a7a73b015d96440b00d6bc04dd6d0e05da8d0e",
    "bytes": 3028,
-   "reason": "embeds verbatim source-clause text from K; kept local per LOCAL_ONLY, published by hash only"
+   "reason": "embeds verbatim source-clause text from K; LOCAL_ONLY, published by hash only"
   }
  ]
 }

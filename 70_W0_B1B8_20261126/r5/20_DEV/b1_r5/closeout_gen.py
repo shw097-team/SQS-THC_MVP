@@ -366,8 +366,18 @@ def main() -> int:
         write("SST_PLP_PH01_W0_B1-B2_CLOSEOUT_r5.md", COMBINED_C),
         write("SST_PLP_PH01_W0_B1-B2_HANDOFF_r5.md", COMBINED_H),
     ]
+    append_publish_note(paths)
     print(json.dumps({"written": paths}, ensure_ascii=False, indent=1))
     return 0
+
+
+def append_publish_note(paths):
+    """Append the publication/readback block, so a regeneration keeps it."""
+    import subprocess
+    import sys
+    note = os.path.join(os.path.dirname(os.path.abspath(__file__)), "publish_note.py")
+    if os.path.isfile(note):
+        subprocess.run([sys.executable, "-B", note], check=False)
 
 
 if __name__ == "__main__":

@@ -1,0 +1,22 @@
+{
+ "schema": "SST.PH01.W0.B1B2.PUBLISH_RECORD@1",
+ "published_at": "2026-11-26T23:38:02+0800",
+ "repo": "https://github.com/shw097-team/SQS-THC_MVP",
+ "branch": "main",
+ "remote_head": "48d1e6c0dbdb0f5724432bc722c817f50c7ce5b4",
+ "previous_head": "3630a2b361a67f2fb236433d38134aecef088e83",
+ "files": 169,
+ "path": "70_W0_B1B8_20261126/r5/",
+ "excluded_local_only": [
+  "40_OPS/b0_r5_sourcereadset.json"
+ ],
+ "readback": "git ls-remote origin refs/heads/main returned the same sha as local rev-parse HEAD",
+ "credential": "one-shot http.extraheader via -c; nothing written to git config, argv, URL, log or commit",
+ "not_claimed": [
+  "B1_ACCEPTED",
+  "B2_ACCEPTED",
+  "W0_COMPLETE",
+  "W1 ReadyExecute"
+ ],
+ "fin_order": "DENY"
+}
