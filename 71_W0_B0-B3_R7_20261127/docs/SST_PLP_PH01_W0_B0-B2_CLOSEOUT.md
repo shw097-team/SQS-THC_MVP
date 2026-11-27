@@ -1,6 +1,6 @@
 # SST_PLP_PH01_W0 B0–B2 CLOSEOUT｜B3 准入（2026-11-27_r7）
 
-- 產生：`2026-11-27T15:45:02+0800`（本檔由 `20_DEV/r7/r7_closeout_gen.py` 從收據生成，數字非手抄）
+- 產生：`2026-11-27T15:45:36+0800`（本檔由 `20_DEV/r7/r7_closeout_gen.py` 從收據生成，數字非手抄）
 - Subject／Wave：`SST/SQS-THC/PH01/E00`／`P1-W00M`
 - 活動 SPEC：`2026-11-27_r7_Native-first_CODEX_FINAL`（入口 `00_唯一交付入口_W0_B0-B3_2026-11-27_r7.md`，sha `21c27fbb4f40c82b…`；A5 機械 PASS＋A6 採納 2026-11-27T14:47+08:00）
 - 凍結候選：`45d41c592ef3e89b755a05a7db28798fee044c8e1a81a867b1528e7e00af71b2`（41 成員；`r7_candidate_freeze.json`）
@@ -83,10 +83,10 @@ Checker 的 `ACCEPT` 只意謂「無 PASS 建立在未綁 oracle 上、無 HOLD 
 - 若 `50_PUBLISH/publish_record.json` 存在，以下由該收據生成；未存在時為 `NOT_PUBLISHED`。
 
 - Repo：`https://github.com/shw097-team/SQS-THC_MVP`（public）／branch `main`
-- commit：`64747d6849bbd0b36b7e72f9525c504e3a251ab7`（前一 HEAD `24a59f5cbc12a5fc5a2dfcb4a5cf879b4628c515`）
-- 已發布 48 檔／5,930,307 bytes；LOCAL_ONLY 排除 2 檔（40_OPS/b3_r7_product.json, 40_OPS/b3_r7_tqaep.json）
-- readback：4/4 匿名 raw 取回與 staged 檔 sha256 全等
-- `this record names the commit that introduced the published tree; a later commit that adds this record advances HEAD by one, so the document cites N and the head is N+1`
+- commit：`a0745127d9894750ad6dbd7740872fed760d5a0d`（前一 HEAD `24a59f5cbc12a5fc5a2dfcb4a5cf879b4628c515`）
+- 已發布 48 檔／5,931,953 bytes；LOCAL_ONLY 排除 2 檔（40_OPS/b3_r7_product.json, 40_OPS/b3_r7_tqaep.json）
+- readback：5/5 匿名 raw 取回與 staged 檔 sha256 全等
+- `this record names a074512, the commit that carries the superseding tree (digest 45d41c59…); a later doc-only commit that updates final_head_at_readback advances HEAD by one, which is recorded in the field itself rather than chased`
 
 ## 8｜不宣稱
 

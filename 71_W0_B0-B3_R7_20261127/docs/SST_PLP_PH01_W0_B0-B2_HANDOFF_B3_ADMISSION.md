@@ -1,6 +1,6 @@
 # SST_PLP_PH01_W0_B0–B2 HANDOFF → B3 准入（2026-11-27_r7）
 
-- 產生：`2026-11-27T15:45:02+0800`（由收據生成）
+- 產生：`2026-11-27T15:45:36+0800`（由收據生成）
 - 一句話狀態：以 r7 活動 SPEC 重跑 B1／B2／B3 真產品，B1 32 PASS＋18 HOLD、B2 2854 PASS＋76 HOLD、B3 688 SOURCE_BOUND＋64 HOLD；**B3 `ReadyExecute=HOLD`**，唯一硬阻塞是 B0 descriptor 續期與 B3 原 Reader；四批皆未接受。
 
 ## 1｜立即可做（不需新權限）
