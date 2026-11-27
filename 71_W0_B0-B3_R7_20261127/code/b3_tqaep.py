@@ -27,11 +27,25 @@ import b3_engine as B3
 OPS = B3.OPS
 
 def _load_neg_reconcile() -> dict:
-    p = os.path.join(OPS, "b3_r7_neg_reconcile.json")
-    if not os.path.isfile(p):
+    """Case verdicts from the mutation receipt, re-verified by the reconcile receipt.
+
+    The reconcile receipt no longer judges; it recomputes. A case is used only when the two
+    agree, so a defective mutation receipt cannot leak a verdict into the TQAEP.
+    """
+    mp = os.path.join(OPS, "b3_r7_neg_mutations.json")
+    rp = os.path.join(OPS, "b3_r7_neg_reconcile.json")
+    if not (os.path.isfile(mp) and os.path.isfile(rp)):
         return {}
-    rows = json.load(open(p, encoding="utf-8"))["cases"]
-    return {r["case_id"]: r for r in rows}
+    mut = {c["case_id"]: c for c in json.load(open(mp, encoding="utf-8"))["cases"]}
+    rec = {r["case_id"]: r for r in json.load(open(rp, encoding="utf-8"))["cases"]}
+    out = {}
+    for cid, m in mut.items():
+        r = rec.get(cid)
+        if r and r["recomputed_verdict"] == m["verdict"]:
+            out[cid] = {**m, "verdict": m["verdict"], "expected_first_fail": m["expected_first_fail"],
+                        "observed_first_fail": m["observed_first_fail"],
+                        "mutation_faithful": m["mutation_faithful"], "reason": m.get("reason")}
+    return out
 
 
 NEG_RECONCILE = _load_neg_reconcile()
@@ -332,12 +346,17 @@ def main() -> int:
                 elif r["verdict"] == "PASS":
                     rec.update(verdict="PASS",
                                actual={"atom_in_tool_readset": e is not None,
-                                       "mutation_applied": r["mutation_applied"],
+                                       "mutation_applied": r.get("mutation"),
                                        "expected_first_fail": r["expected_first_fail"],
                                        "observed_first_fail": r["observed_first_fail"],
                                        "mutation_faithful": r["mutation_faithful"]})
+                elif r["verdict"] == "FAIL":
+                    rec.update(verdict="FAIL",
+                               actual={"mutation_applied": r.get("mutation"),
+                                       "observed_first_fail": r.get("observed_first_fail")},
+                               reason=r.get("reason"))
                 else:
-                    rec.update(verdict="HOLD", actual={"mutation_applied": r["mutation_applied"],
+                    rec.update(verdict="HOLD", actual={"mutation_applied": r.get("mutation"),
                                                        "expected_first_fail": r["expected_first_fail"],
                                                        "observed_first_fail": r["observed_first_fail"],
                                                        "mutation_faithful": r["mutation_faithful"]},

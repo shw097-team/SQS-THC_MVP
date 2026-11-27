@@ -3,6 +3,12 @@
  "rule": "a receipt embedding a verbatim clause slice is restricted even though the receipt is ours; publication is decided by content, not filename",
  "excluded": [
   {
+   "path": "40_OPS/b0_current_sourcereadset.json",
+   "sha256": "2a226d27b1559dc7e19ac8a5969f4704dba19f20da10cb0bb8c7b09c82175354",
+   "bytes": 5429,
+   "reason": "NEVER_PUBLISH:B0 source read under a live rights window: it carries the required-set value verbatim and is scoped to that window; the published tree carries its sha256 instead"
+  },
+  {
    "path": "40_OPS/b3_r7_product.json",
    "sha256": "5f7ca6d6e82270f2a04684a8b26b5f67b3efc3b0f7e1e1b112f558baaef5b09d",
    "bytes": 266231,
@@ -10,8 +16,8 @@
   },
   {
    "path": "40_OPS/b3_r7_tqaep.json",
-   "sha256": "61f58376c497c8419102bc585b356cbbdf51d4a7bca4e56c4e1f9af10a0d3d60",
-   "bytes": 1289916,
+   "sha256": "77d3a76a85667f785f89d92507282c2c91f665aa10fcf2b6b0dda6b8f3477c65",
+   "bytes": 1288948,
    "reason": "EMBEDS_CLAUSE_SLICE"
   }
  ]

@@ -1,0 +1,751 @@
+{
+ "schema": "SST.PH01.W0.B2.QualifierDelta@1",
+ "hold_total": 144,
+ "author_qualified_holds": 34,
+ "unknown_requiredness_holds": 110,
+ "other_holds": 0,
+ "qualified_cells": [
+  "EVAL_ONLY_ADAPTER",
+  "EVAL_ONLY_AFTER_BASELINE",
+  "EVAL_ONLY_ALTERNATIVE",
+  "EVAL_ONLY_AS_FORMAT",
+  "EVAL_ONLY_COMPARATOR",
+  "EVAL_ONLY_CONDITIONAL",
+  "EVAL_ONLY_FOR_PROVIDER",
+  "EVAL_ONLY_OPTIONAL",
+  "EVAL_ONLY_RESEARCH",
+  "EVAL_ONLY_UNTIL_REPO",
+  "EVAL_ONLY_WHEN_GAP",
+  "EVAL_ONLY_WHEN_NEED",
+  "REFERENCE_ONLY",
+  "REFERENCE_STANDARD"
+ ],
+ "cases": {
+  "author_qualified": [
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-005__ROW_623",
+    "cell": "REFERENCE_ONLY",
+    "basis": "carrier index 2 holds the author-qualified cell 'REFERENCE_ONLY'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-013__ROW_631",
+    "cell": "EVAL_ONLY_FOR_PROVIDER",
+    "basis": "carrier index 2 holds the author-qualified cell 'EVAL_ONLY_FOR_PROVIDER'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-016__ROW_634",
+    "cell": "EVAL_ONLY_AS_FORMAT",
+    "basis": "carrier index 2 holds the author-qualified cell 'EVAL_ONLY_AS_FORMAT'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-019__ROW_637",
+    "cell": "EVAL_ONLY_WHEN_NEED",
+    "basis": "carrier index 2 holds the author-qualified cell 'EVAL_ONLY_WHEN_NEED'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-022__ROW_640",
+    "cell": "EVAL_ONLY_OPTIONAL",
+    "basis": "carrier index 2 holds the author-qualified cell 'EVAL_ONLY_OPTIONAL'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-027__ROW_645",
+    "cell": "EVAL_ONLY_WHEN_GAP",
+    "basis": "carrier index 2 holds the author-qualified cell 'EVAL_ONLY_WHEN_GAP'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-028__ROW_646",
+    "cell": "EVAL_ONLY_ALTERNATIVE",
+    "basis": "carrier index 2 holds the author-qualified cell 'EVAL_ONLY_ALTERNATIVE'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-030__ROW_648",
+    "cell": "EVAL_ONLY_AFTER_BASELINE",
+    "basis": "carrier index 2 holds the author-qualified cell 'EVAL_ONLY_AFTER_BASELINE'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-035__ROW_653",
+    "cell": "EVAL_ONLY_COMPARATOR",
+    "basis": "carrier index 2 holds the author-qualified cell 'EVAL_ONLY_COMPARATOR'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-036__ROW_654",
+    "cell": "EVAL_ONLY_COMPARATOR",
+    "basis": "carrier index 2 holds the author-qualified cell 'EVAL_ONLY_COMPARATOR'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-037__ROW_655",
+    "cell": "EVAL_ONLY_COMPARATOR",
+    "basis": "carrier index 2 holds the author-qualified cell 'EVAL_ONLY_COMPARATOR'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-041__ROW_659",
+    "cell": "EVAL_ONLY_CONDITIONAL",
+    "basis": "carrier index 2 holds the author-qualified cell 'EVAL_ONLY_CONDITIONAL'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-042__ROW_660",
+    "cell": "EVAL_ONLY_RESEARCH",
+    "basis": "carrier index 2 holds the author-qualified cell 'EVAL_ONLY_RESEARCH'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-043__ROW_661",
+    "cell": "EVAL_ONLY_RESEARCH",
+    "basis": "carrier index 2 holds the author-qualified cell 'EVAL_ONLY_RESEARCH'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-045__ROW_663",
+    "cell": "EVAL_ONLY_ADAPTER",
+    "basis": "carrier index 2 holds the author-qualified cell 'EVAL_ONLY_ADAPTER'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-047__ROW_665",
+    "cell": "EVAL_ONLY_UNTIL_REPO",
+    "basis": "carrier index 2 holds the author-qualified cell 'EVAL_ONLY_UNTIL_REPO'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-049__ROW_667",
+    "cell": "REFERENCE_STANDARD",
+    "basis": "carrier index 2 holds the author-qualified cell 'REFERENCE_STANDARD'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-005__ROW_1143",
+    "cell": "REFERENCE_ONLY",
+    "basis": "carrier index 5 holds the author-qualified cell 'REFERENCE_ONLY'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-013__ROW_1151",
+    "cell": "EVAL_ONLY_FOR_PROVIDER",
+    "basis": "carrier index 5 holds the author-qualified cell 'EVAL_ONLY_FOR_PROVIDER'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-016__ROW_1154",
+    "cell": "EVAL_ONLY_AS_FORMAT",
+    "basis": "carrier index 5 holds the author-qualified cell 'EVAL_ONLY_AS_FORMAT'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-019__ROW_1157",
+    "cell": "EVAL_ONLY_WHEN_NEED",
+    "basis": "carrier index 5 holds the author-qualified cell 'EVAL_ONLY_WHEN_NEED'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-022__ROW_1160",
+    "cell": "EVAL_ONLY_OPTIONAL",
+    "basis": "carrier index 5 holds the author-qualified cell 'EVAL_ONLY_OPTIONAL'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-027__ROW_1165",
+    "cell": "EVAL_ONLY_WHEN_GAP",
+    "basis": "carrier index 5 holds the author-qualified cell 'EVAL_ONLY_WHEN_GAP'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-028__ROW_1166",
+    "cell": "EVAL_ONLY_ALTERNATIVE",
+    "basis": "carrier index 5 holds the author-qualified cell 'EVAL_ONLY_ALTERNATIVE'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-030__ROW_1168",
+    "cell": "EVAL_ONLY_AFTER_BASELINE",
+    "basis": "carrier index 5 holds the author-qualified cell 'EVAL_ONLY_AFTER_BASELINE'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-035__ROW_1173",
+    "cell": "EVAL_ONLY_COMPARATOR",
+    "basis": "carrier index 5 holds the author-qualified cell 'EVAL_ONLY_COMPARATOR'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-036__ROW_1174",
+    "cell": "EVAL_ONLY_COMPARATOR",
+    "basis": "carrier index 5 holds the author-qualified cell 'EVAL_ONLY_COMPARATOR'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-037__ROW_1175",
+    "cell": "EVAL_ONLY_COMPARATOR",
+    "basis": "carrier index 5 holds the author-qualified cell 'EVAL_ONLY_COMPARATOR'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-041__ROW_1179",
+    "cell": "EVAL_ONLY_CONDITIONAL",
+    "basis": "carrier index 5 holds the author-qualified cell 'EVAL_ONLY_CONDITIONAL'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-042__ROW_1180",
+    "cell": "EVAL_ONLY_RESEARCH",
+    "basis": "carrier index 5 holds the author-qualified cell 'EVAL_ONLY_RESEARCH'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-043__ROW_1181",
+    "cell": "EVAL_ONLY_RESEARCH",
+    "basis": "carrier index 5 holds the author-qualified cell 'EVAL_ONLY_RESEARCH'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-045__ROW_1183",
+    "cell": "EVAL_ONLY_ADAPTER",
+    "basis": "carrier index 5 holds the author-qualified cell 'EVAL_ONLY_ADAPTER'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-047__ROW_1185",
+    "cell": "EVAL_ONLY_UNTIL_REPO",
+    "basis": "carrier index 5 holds the author-qualified cell 'EVAL_ONLY_UNTIL_REPO'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-049__ROW_1187",
+    "cell": "REFERENCE_STANDARD",
+    "basis": "carrier index 5 holds the author-qualified cell 'REFERENCE_STANDARD'; AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form"
+   }
+  ],
+  "unknown": [
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-006__ROW_624",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 2 holds 'BASE_REQUIRED_AS_ADAPTER', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-007__ROW_625",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 2 holds 'BASE_REQUIRED_AS_ADAPTER', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-008__ROW_626",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 2 holds 'REUSE_INTERNAL_FIRST', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-015__ROW_633",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 2 holds 'BASE_REQUIRED', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-020__ROW_638",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 2 holds 'REUSE_NATIVE_FIRST', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-021__ROW_639",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 2 holds 'DEFER_UNTIL_GAP', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-023__ROW_641",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 2 holds 'BLOCKED_REPO', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-024__ROW_642",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 2 holds 'BASE_REQUIRED_LOGICAL', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-025__ROW_643",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 2 holds 'BASE_REQUIRED_AS_STUDY_SURFACE', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-026__ROW_644",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 2 holds 'REUSE_INTERNAL_FIRST', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-029__ROW_647",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 2 holds 'REUSE_NATIVE_FIRST', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-038__ROW_656",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 2 holds 'BASE_REQUIRED_AUTHORITY', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-040__ROW_658",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 2 holds 'REUSE_EXISTING_PROVIDER_FIRST / FDA_FO…', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-044__ROW_662",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 2 holds '**REUSE_INTERNAL_FIRST / GOVERNED_PA…', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-052__ROW_670",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 2 holds 'REUSE_STD_TEST_FIRST', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-053__ROW_671",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 2 holds 'DEFER_UNTIL_REPO', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q1__TOOL_R2_TECH54__TECH-054__ROW_672",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 2 holds 'DEFER_BY_DEFAULT', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-006__ROW_1144",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 5 holds 'BASE_REQUIRED_AS_ADAPTER', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-007__ROW_1145",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 5 holds 'BASE_REQUIRED_AS_ADAPTER', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-008__ROW_1146",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 5 holds 'REUSE_INTERNAL_FIRST', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-015__ROW_1153",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 5 holds 'BASE_REQUIRED', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-020__ROW_1158",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 5 holds 'REUSE_NATIVE_FIRST', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-021__ROW_1159",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 5 holds 'DEFER_UNTIL_GAP', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-023__ROW_1161",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 5 holds 'BLOCKED_REPO', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-024__ROW_1162",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 5 holds 'BASE_REQUIRED_LOGICAL', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-025__ROW_1163",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 5 holds 'BASE_REQUIRED_AS_STUDY_SURFACE', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-026__ROW_1164",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 5 holds 'REUSE_INTERNAL_FIRST', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-029__ROW_1167",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 5 holds 'REUSE_NATIVE_FIRST', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-038__ROW_1176",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 5 holds 'BASE_REQUIRED_AUTHORITY', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-040__ROW_1178",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 5 holds 'REUSE_EXISTING_PROVIDER_FIRST / FDA_FOR_PAPER_ONLY', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-044__ROW_1182",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 5 holds '**REUSE_INTERNAL_FIRST / GOVERNED_PAPER_SHADOW_ONLY**（現時本次 REPO/SESS…', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-052__ROW_1190",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 5 holds 'REUSE_STD_TEST_FIRST', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-053__ROW_1191",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 5 holds 'DEFER_UNTIL_REPO', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.R3-REGISTRY-Q2__TOOL_R2_TECH54__TECH-054__ROW_1192",
+    "cell": "UNKNOWN",
+    "basis": "carrier index 5 holds 'DEFER_BY_DEFAULT', which is not in the closed requiredness vocabulary"
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-001",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-002",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-003",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-004",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-005",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-006",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-007",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-008",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-005__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-005__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-006__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-006__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-007__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-007__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-008__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-008__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-013__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-013__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-015__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-015__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-016__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-016__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-019__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-019__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-020__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-020__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-021__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-021__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-022__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-022__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-023__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-023__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-024__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-024__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-025__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-025__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-026__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-026__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-027__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-027__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-028__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-028__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-029__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-029__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-030__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-030__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-035__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-035__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-036__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-036__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-037__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-037__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-038__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-038__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-040__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-040__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-041__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-041__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-042__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-042__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-043__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-043__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-044__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-044__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-045__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-045__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-047__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-047__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-049__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-049__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-052__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-052__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-053__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-053__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-054__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-054__ROUTE",
+    "cell": null,
+    "basis": ""
+   }
+  ],
+  "other": []
+ },
+ "claim_ceiling": "a cell outside the declared requiredness vocabulary holds; the verbatim cell is preserved so the owner can adopt a contract"
+}

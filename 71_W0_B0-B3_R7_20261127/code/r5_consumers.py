@@ -17,13 +17,10 @@ import time
 
 R = r"<LOCAL_ROOT>\71_W0_B0-B3_R7_20261127"
 OPS = os.path.join(R, "40_OPS")
-# The B0 SourceReadSet/2 is NOT re-read in this round: its trusted-context descriptor
-# (00_PREFLIGHT/B0_READ_CONTEXT_2026-11-26.json) expired at 2026-11-27T01:08+08:00 and pins a
-# previous window's authorization_sha; renewing it is a product-code delta only the Owner can
-# authorise. The consumers therefore receive the historical envelope and record its currency,
-# instead of a fabricated fresh one.
-READSET = os.path.join(r"<LOCAL_ROOT>\70_W0_B1B8_20261126",
-                       "40_OPS", "b0_r5_sourcereadset.json")
+# Current B0 envelope: minted in this round under a live window after the descriptor was
+# renewed (b0_descriptor_renewal.json). The historical r5 envelope is kept for reconciliation.
+READSET = os.path.join(r"<LOCAL_ROOT>\71_W0_B0-B3_R7_20261127",
+                       "40_OPS", "b0_current_sourcereadset.json")
 WINDOW = os.path.expanduser("~/.hgk-owner/window.json")
 RECEIPT = (r"<LOCAL_ROOT>"
            r"\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\owner_ws\artifacts\OWNER_WINDOW.json")
@@ -198,11 +195,14 @@ def receive(consumer: str, env: dict, env_bytes: bytes) -> dict:
         return fail("ENVELOPE_AUTHORITY_EXPIRED")
     # currency, derived from the envelope's own authority block against the live window
     live = json.load(open(WINDOW, encoding="utf-8")).get("window_id") if os.path.isfile(WINDOW) else None
-    env_ref = str(auth.get("rights_check_ref") or "")
-    env_wid = env_ref.split(":")[1] if env_ref.startswith("OWNER_WINDOW:") else None
-    rec["envelope_window_id"] = env_wid
+    # identity of the authorising receipt, not of a path: usage_evidence_sha must equal the
+    # sha256 of the receipt the live window just wrote
+    receipt_sha = sha_file(RECEIPT) if os.path.isfile(RECEIPT) else None
+    rec["envelope_window_id"] = None
     rec["live_window_id"] = live
-    rec["rights_currency"] = ("CURRENT" if env_wid and env_wid == live
+    rec["envelope_usage_evidence_sha"] = auth.get("usage_evidence_sha")
+    rec["live_receipt_sha256"] = receipt_sha
+    rec["rights_currency"] = ("CURRENT" if receipt_sha and auth.get("usage_evidence_sha") == receipt_sha
                               else "ENVELOPE_MINTED_UNDER_A_DIFFERENT_WINDOW")
     rec["readset_origin"] = {"path": READSET, "sha256": sha_file(READSET),
                              "note": "historical B0 read; not re-executed this round"}
@@ -254,6 +254,11 @@ def selftest() -> int:
     run(None, "SCOPE_PURPOSE", lambda e: e["scope"].__setitem__("purpose", "some other use"))
     run(None, "CONSUMER_MEMBERSHIP", lambda e: e["scope"].__setitem__("consumer_ids", ["B4"]))
     run(None, "REQUIRED_SET", lambda e: e["entries"][0].__setitem__("required_fields", ["read", "write"]))
+    # exercises the guard that was unexercised in the previous round: an envelope whose own
+    # authority interval has expired must be refused even while the live window is open
+    run(None, "AUTHORITY_EXPIRED",
+        lambda e: (e["entries"][0]["authority"].__setitem__("expires_at", "2020-01-01T00:00:00+08:00"),
+                   e["entries"][1]["authority"].__setitem__("expires_at", "2020-01-01T00:00:00+08:00")))
 
     ok = sum(1 for a in arms if a["pass"])
     out = {"schema": "SST.PH01.W0.B1B2.ConsumerSelftest@1", "generated_at": now(),

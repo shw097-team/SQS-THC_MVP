@@ -1,18 +1,93 @@
 {
- "schema": "SST.PH01.W0.B0B3.ConsumerSelfTest@1",
- "verdict": "HOLD_BASELINE_NOT_VALID",
- "baseline_decision": "REJECT",
- "baseline_first_fail": "RIGHTS_UNVERIFIED",
- "passed": 0,
- "total": 11,
+ "schema": "SST.PH01.W0.B1B2.ConsumerSelftest@1",
+ "generated_at": "2026-11-27T18:11:10+0800",
  "arms": [
   {
    "arm": "BASELINE_POS",
    "consumer": "B1",
+   "decision": "ACCEPT",
+   "first_fail": null,
+   "pass": true
+  },
+  {
+   "arm": "WIRE_VERSION",
+   "consumer": "B1",
    "decision": "REJECT",
-   "first_fail": "RIGHTS_UNVERIFIED",
-   "pass": false
+   "first_fail": "WIRE_VERSION_INVALID",
+   "pass": true
+  },
+  {
+   "arm": "RAW_SHA",
+   "consumer": "B1",
+   "decision": "REJECT",
+   "first_fail": "RAW_SHA_MISMATCH",
+   "pass": true
+  },
+  {
+   "arm": "SPAN",
+   "consumer": "B1",
+   "decision": "REJECT",
+   "first_fail": "SPAN_MISMATCH",
+   "pass": true
+  },
+  {
+   "arm": "CLAUSE_SHA",
+   "consumer": "B1",
+   "decision": "REJECT",
+   "first_fail": "CLAUSE_SHA_MISMATCH",
+   "pass": true
+  },
+  {
+   "arm": "VALUE_TAMPER",
+   "consumer": "B1",
+   "decision": "REJECT",
+   "first_fail": "VALUE_NOT_IN_SLICE",
+   "pass": true
+  },
+  {
+   "arm": "AUTHORITY_FIELD",
+   "consumer": "B1",
+   "decision": "REJECT",
+   "first_fail": "AUTHORITY_FIELD_ABSENT:disclosure",
+   "pass": true
+  },
+  {
+   "arm": "EFFECT_CLAIM",
+   "consumer": "B1",
+   "decision": "REJECT",
+   "first_fail": "EFFECT_CLAIM_INVALID",
+   "pass": true
+  },
+  {
+   "arm": "SCOPE_PURPOSE",
+   "consumer": "B1",
+   "decision": "REJECT",
+   "first_fail": "PURPOSE_MISMATCH",
+   "pass": true
+  },
+  {
+   "arm": "CONSUMER_MEMBERSHIP",
+   "consumer": "B1",
+   "decision": "REJECT",
+   "first_fail": "CONSUMER_NOT_IN_SCOPE",
+   "pass": true
+  },
+  {
+   "arm": "REQUIRED_SET",
+   "consumer": "B1",
+   "decision": "REJECT",
+   "first_fail": "REQUIRED_SET_MISMATCH",
+   "pass": true
+  },
+  {
+   "arm": "AUTHORITY_EXPIRED",
+   "consumer": "B1",
+   "decision": "REJECT",
+   "first_fail": "ENVELOPE_AUTHORITY_EXPIRED",
+   "pass": true
   }
  ],
- "note": "the envelope's own authority interval has expired, so every arm rejects for the same reason the baseline does; the mutations are not distinguished in this round"
+ "passed": 12,
+ "total": 12,
+ "note": "one POS baseline plus single-mutation negatives; a consumer that accepted any mutation would be a rubber stamp"
 }

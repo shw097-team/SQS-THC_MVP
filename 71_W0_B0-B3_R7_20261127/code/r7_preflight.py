@@ -128,8 +128,12 @@ def b4_receiver() -> dict:
             rec = {"consumer_id": "B4", "validator_name": "native_b4_receiver_r7",
                    "validator_version": SPEC.SPEC_VERSION, "subject": "SST/SQS-THC/PH01/E00",
                    "source_id": ent["path"], "sha": t.get("raw_sha256"),
-                   "candidate_digest": run["spec_inputs"]["b1_unit_id_set_sha"],
-                   "envelope_sha256": sha_file(os.path.join(OPS, "b1_r7_run_all.json")),
+                   # field names say what they are: the SPEC unit-id set digest is not a
+                   # producer freeze, and the envelope digest is not a candidate identity
+                   "spec_b1_unit_id_set_sha": run["spec_inputs"]["b1_unit_id_set_sha"],
+                   "producer_spec_b1_sha256": run["spec_inputs"]["b1_spec_sha256"],
+                   "producer_receipt": {"path": os.path.join(OPS, "b1_r7_run_all.json"),
+                                        "sha256": sha_file(os.path.join(OPS, "b1_r7_run_all.json"))},
                    "decision": "REJECT" if lack else "ACCEPT_FOR_DRAFT",
                    "first_fail": ("MANDATORY_FIELD_MISSING:" + ",".join(lack)) if lack else None,
                    "checked_at": now(),
@@ -149,6 +153,7 @@ def b3_admission() -> dict:
     prod = load(os.path.join(OPS, "b3_r7_product.json"))
     tqaep = load(os.path.join(OPS, "b3_r7_tqaep.json"))
     recon = load(os.path.join(OPS, "b3_r7_neg_reconcile.json"))
+    negm = load(os.path.join(OPS, "b3_r7_neg_mutations.json"))
     receipt = load(os.path.join(OPS, "r7_consumer_receipts.json"))
     prior = load(os.path.join(PRE, "b3_prior_draft_inventory.json"))
     win = load(os.path.expanduser("~/.hgk-owner/window.json"))
@@ -211,9 +216,11 @@ def b3_admission() -> dict:
                              "asserted preimage ABSENT for slice1 is not on disk"),
         },
         "oracles": {"source_bound": "direct_parent_ref + resolved_source_ref + direct_clause_sha",
-                    "neg_declared_first_fail": {"executed": recon["cases_executed"],
-                                                "verdicts": recon["verdict_counts"],
-                                                "hold_reasons": recon["hold_reasons"]},
+                    "neg_declared_first_fail": {
+                        "executed": recon.get("cases_verified", recon.get("cases_executed")),
+                        "verdicts": recon["verdict_counts"],
+                        "disagreements": len(recon.get("disagreements") or []),
+                        "hold_reasons": negm.get("hold_reasons")},
                     "semantic_reader": "UNBOUND"},
         "safety": {"fin_order": prod["fin_order"], "effect": prod["effect"]},
         "recovery": {"prior_drafts": prior["files"],
@@ -230,17 +237,29 @@ def b3_admission() -> dict:
         "b0_input": b0,
         "four_ready": ready,
         "readyexecute_blockers": [
-            {"item": "B0 SourceReadSet/2 currency", "owner": "Owner",
-             "decision": ("renew 00_PREFLIGHT/B0_READ_CONTEXT_2026-11-26.json to a live window "
-                          "(task SST_PLP_PH01_W0_B0_SOURCE_READ_AUTH, ceiling READ_ONLY_PROBE) and "
-                          "re-point authorization_sha + the per-source usage_evidence_sha + the "
-                          "product constants EXPECTED_DESCRIPTOR_SHA/BYTES, then re-run the B0 read "
-                          "and the three-end receive"),
-             "blocks": "B3 ReadyExecute and B3 ReadyAccept"},
-            {"item": "original B3 Reader (NEG design carrier / semantic oracle)", "owner": "B3 domain holder",
-             "decision": "supply the typed NEG-design field and the protected-field oracle",
-             "blocks": "the 44 NEG cases (now HOLD) and any semantic claim"},
+            {"item": "B3 atom owner / ratification", "owner": "B3 domain holder (original clause owner)",
+             "decision": ("365/365 units carry the literal '#' as owner and no atom is ratified; "
+                          "supply the owner from the original clause, then the ledger can admit"),
+             "blocks": "ReadyAtom, admission_ready, route_out, ReadyExecute"},
+            {"item": "two identity fields are not verified by the product",
+             "owner": "engineering",
+             "decision": ("FIELD_owner and FIELD_requiredness mutations are not detected "
+                          "(b3_r7_neg_mutations FAIL=2); the product must compare them against a "
+                          "declared expectation before it may accept a row"),
+             "blocks": "ReadyExecute"},
+            {"item": "nine NEG fields have no structured carrier",
+             "owner": "B3 domain holder",
+             "decision": ("original_id, source_sha256, clause_span, parent, child, polarity, "
+                          "oracle, case, draft exist only in clause prose; supply typed fields"),
+             "blocks": "44-case NEG closure (29 HOLD)"},
         ],
+        "b0_currency": {
+            "readset": "40_OPS/b0_current_sourcereadset.json",
+            "window_id": win.get("window_id"),
+            "consumers": [(r.get("consumer_id"), r.get("decision"), r.get("rights_currency"))
+                          for r in receipt["receipts"]],
+            "resolved": all(r.get("decision") == "ACCEPT" for r in receipt["receipts"]),
+        },
         "claim_ceiling": ("B3 product callables executed in memory and one guarded draft write; "
                           "no acceptance, no downstream effect, no semantic oracle"),
     }

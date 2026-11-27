@@ -1,6 +1,6 @@
 {
  "schema": "SST.PH01.W0.B0B3.DeliveryIndex@1",
- "generated_at": "2026-11-27T16:09:24+0800",
+ "generated_at": "2026-11-27T18:32:35+0800",
  "round_root": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127",
  "spec": {
   "version": "2026-11-27_r7_Native-first_CODEX_FINAL",
@@ -11,15 +11,15 @@
  "current_pointers": [
   {
    "role": "closeout",
-   "path": "60_CLOSEOUT/SST_PLP_PH01_W0_B0-B2_CLOSEOUT_rev2.md"
+   "path": "60_CLOSEOUT/SST_PLP_PH01_W0_B0-B2_CLOSEOUT_rev3.md"
   },
   {
    "role": "handoff",
-   "path": "60_CLOSEOUT/SST_PLP_PH01_W0_B0-B2_HANDOFF_B3_ADMISSION_rev2.md"
+   "path": "60_CLOSEOUT/SST_PLP_PH01_W0_B0-B2_HANDOFF_B3_ADMISSION_rev3.md"
   },
   {
    "role": "bootstrap",
-   "path": "60_CLOSEOUT/NEW_SESSION_BOOTSTRAP_rev2.md"
+   "path": "60_CLOSEOUT/NEW_SESSION_BOOTSTRAP_rev3.md"
   },
   {
    "role": "freeze",

@@ -3,7 +3,7 @@
  "repo": "https://github.com/shw097-team/SQS-THC_MVP",
  "branch": "main",
  "visibility": "public",
- "commit": "5099094307c5d4f3378aecba7f50b021f39fe6a8",
+ "commit": "PENDING",
  "previous_remote_head": "24a59f5cbc12a5fc5a2dfcb4a5cf879b4628c515",
  "pushed_paths": "71_W0_B0-B3_R7_20261127/",
  "published_files": "see PUBLISHED_MANIFEST.tsv (rows minus this record)",
@@ -27,9 +27,10 @@
  "readback_method": "anonymous raw.githubusercontent.com at commit a074512…, sha256 compared with the staged file (4/4 matched on 64747d6; re-verified on a074512 below)",
  "commit_lag_note": "this record names commit A, the commit that introduced the rev2 tree; the commit that updates this record advances HEAD by one and is reported in the session closeout, not chased in the file",
  "publication_ne_acceptance": true,
- "recorded_at": "2026-11-27T16:07:45+0800",
+ "recorded_at": "2026-11-27T18:32:42+0800",
  "supersedes_commit": "a0745127d9894750ad6dbd7740872fed760d5a0d",
- "freeze_digest_published": "38f20921b7daa050801be704443cac8296da513dbff0a53b4fc3812ceff82928",
+ "freeze_digest_published": "04d63bbb6f148b2c6121b433e49450db68a77e0d1330c75ca333af450b0e0c0e",
  "final_head_at_readback": null,
- "revision": 2
+ "revision": 3,
+ "publication_authority": "this round's thin prompt §7 (owner-authorised GitHub credential, one-shot header)"
 }

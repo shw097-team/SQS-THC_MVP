@@ -1,12 +1,11 @@
 {
- "schema": "SST.PH01.W0.B3.NegMutations@1",
- "verdict_owner": "b3_r7_neg_reconcile.json",
- "superseded_by": "b3_r7_neg_reconcile.json",
- "refusal_is_not_a_pass": true,
- "generated_at": "2026-11-27T16:05:49+0800",
+ "schema": "SST.PH01.W0.B3.NegMutations@2",
+ "verdict_owner": "this receipt (it now carries expected vs observed and the faithfulness judgement)",
+ "generated_at": "2026-11-27T18:20:30+0800",
  "baseline": {
   "units": 365,
-  "atoms_ready_before": 22
+  "keys_with_child": 22,
+  "declared_neg_designs": 387
  },
  "cases": [
   {
@@ -15,10 +14,11 @@
    "key": "REQ-01::AUTHOR-SPLIT-01",
    "kind": "CHILD",
    "mutation": "DELETE_CHILD",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "AUTHOR:TRACE_ORPHAN",
+   "observed_first_fail": "AUTHOR:TRACE_ORPHAN",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-01.DELETE_NEG",
@@ -26,21 +26,23 @@
    "key": "REQ-01::AUTHOR-SPLIT-01",
    "kind": "CHILD",
    "mutation": "DELETE_NEG",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "AUTHOR:NEG_MISSING",
+   "observed_first_fail": "AUTHOR:NEG_MISSING",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-01.FIELD_original_id",
    "unit_id": "B3.U0001",
    "key": "REQ-01::AUTHOR-SPLIT-01",
    "kind": "CHILD",
-   "mutation": "GENERIC_REMOVE",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation": "FIELD",
+   "mutation_faithful": false,
+   "expected_first_fail": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-01",
+   "observed_first_fail": null,
+   "verdict": "HOLD",
+   "reason": "FIELD_CARRIER_ABSENT:original_id"
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-02.DELETE_CHILD",
@@ -48,10 +50,11 @@
    "key": "REQ-01::AUTHOR-SPLIT-02",
    "kind": "CHILD",
    "mutation": "DELETE_CHILD",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "AUTHOR:TRACE_ORPHAN",
+   "observed_first_fail": "AUTHOR:TRACE_ORPHAN",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-02.DELETE_NEG",
@@ -59,21 +62,23 @@
    "key": "REQ-01::AUTHOR-SPLIT-02",
    "kind": "CHILD",
    "mutation": "DELETE_NEG",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "AUTHOR:NEG_MISSING",
+   "observed_first_fail": "AUTHOR:NEG_MISSING",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-02.FIELD_source_sha256",
    "unit_id": "B3.U0002",
    "key": "REQ-01::AUTHOR-SPLIT-02",
    "kind": "CHILD",
-   "mutation": "GENERIC_REMOVE",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation": "FIELD",
+   "mutation_faithful": false,
+   "expected_first_fail": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-02",
+   "observed_first_fail": null,
+   "verdict": "HOLD",
+   "reason": "FIELD_CARRIER_ABSENT:source_sha256"
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-03.DELETE_CHILD",
@@ -81,10 +86,11 @@
    "key": "REQ-01::AUTHOR-SPLIT-03",
    "kind": "CHILD",
    "mutation": "DELETE_CHILD",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "AUTHOR:TRACE_ORPHAN",
+   "observed_first_fail": "AUTHOR:TRACE_ORPHAN",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-03.DELETE_NEG",
@@ -92,21 +98,23 @@
    "key": "REQ-01::AUTHOR-SPLIT-03",
    "kind": "CHILD",
    "mutation": "DELETE_NEG",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "AUTHOR:NEG_MISSING",
+   "observed_first_fail": "AUTHOR:NEG_MISSING",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-03.FIELD_clause_span",
    "unit_id": "B3.U0003",
    "key": "REQ-01::AUTHOR-SPLIT-03",
    "kind": "CHILD",
-   "mutation": "GENERIC_REMOVE",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation": "FIELD",
+   "mutation_faithful": false,
+   "expected_first_fail": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-03",
+   "observed_first_fail": null,
+   "verdict": "HOLD",
+   "reason": "FIELD_CARRIER_ABSENT:clause_span"
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-04.DELETE_CHILD",
@@ -114,10 +122,11 @@
    "key": "REQ-01::AUTHOR-SPLIT-04",
    "kind": "CHILD",
    "mutation": "DELETE_CHILD",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "AUTHOR:TRACE_ORPHAN",
+   "observed_first_fail": "AUTHOR:TRACE_ORPHAN",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-04.DELETE_NEG",
@@ -125,21 +134,23 @@
    "key": "REQ-01::AUTHOR-SPLIT-04",
    "kind": "CHILD",
    "mutation": "DELETE_NEG",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "AUTHOR:NEG_MISSING",
+   "observed_first_fail": "AUTHOR:NEG_MISSING",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-04.FIELD_parent",
    "unit_id": "B3.U0004",
    "key": "REQ-01::AUTHOR-SPLIT-04",
    "kind": "CHILD",
-   "mutation": "GENERIC_REMOVE",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation": "FIELD",
+   "mutation_faithful": false,
+   "expected_first_fail": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-04",
+   "observed_first_fail": null,
+   "verdict": "HOLD",
+   "reason": "FIELD_CARRIER_ABSENT:parent"
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-05.DELETE_CHILD",
@@ -147,10 +158,11 @@
    "key": "REQ-01::AUTHOR-SPLIT-05",
    "kind": "CHILD",
    "mutation": "DELETE_CHILD",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "AUTHOR:TRACE_ORPHAN",
+   "observed_first_fail": "AUTHOR:TRACE_ORPHAN",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-05.DELETE_NEG",
@@ -158,21 +170,23 @@
    "key": "REQ-01::AUTHOR-SPLIT-05",
    "kind": "CHILD",
    "mutation": "DELETE_NEG",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "AUTHOR:NEG_MISSING",
+   "observed_first_fail": "AUTHOR:NEG_MISSING",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-05.FIELD_child",
    "unit_id": "B3.U0005",
    "key": "REQ-01::AUTHOR-SPLIT-05",
    "kind": "CHILD",
-   "mutation": "DELETE_CHILD",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation": "FIELD",
+   "mutation_faithful": false,
+   "expected_first_fail": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-05",
+   "observed_first_fail": null,
+   "verdict": "HOLD",
+   "reason": "FIELD_CARRIER_ABSENT:child"
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-06.DELETE_CHILD",
@@ -180,10 +194,11 @@
    "key": "REQ-01::AUTHOR-SPLIT-06",
    "kind": "CHILD",
    "mutation": "DELETE_CHILD",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "AUTHOR:TRACE_ORPHAN",
+   "observed_first_fail": "AUTHOR:TRACE_ORPHAN",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-06.DELETE_NEG",
@@ -191,21 +206,23 @@
    "key": "REQ-01::AUTHOR-SPLIT-06",
    "kind": "CHILD",
    "mutation": "DELETE_NEG",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "AUTHOR:NEG_MISSING",
+   "observed_first_fail": "AUTHOR:NEG_MISSING",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-06.FIELD_polarity",
    "unit_id": "B3.U0006",
    "key": "REQ-01::AUTHOR-SPLIT-06",
    "kind": "CHILD",
-   "mutation": "GENERIC_REMOVE",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation": "FIELD",
+   "mutation_faithful": false,
+   "expected_first_fail": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-06",
+   "observed_first_fail": null,
+   "verdict": "HOLD",
+   "reason": "FIELD_CARRIER_ABSENT:polarity"
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-07.DELETE_CHILD",
@@ -213,10 +230,11 @@
    "key": "REQ-01::AUTHOR-SPLIT-07",
    "kind": "CHILD",
    "mutation": "DELETE_CHILD",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "AUTHOR:TRACE_ORPHAN",
+   "observed_first_fail": "AUTHOR:TRACE_ORPHAN",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-07.DELETE_NEG",
@@ -224,21 +242,23 @@
    "key": "REQ-01::AUTHOR-SPLIT-07",
    "kind": "CHILD",
    "mutation": "DELETE_NEG",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "AUTHOR:NEG_MISSING",
+   "observed_first_fail": "AUTHOR:NEG_MISSING",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-07.FIELD_requiredness",
    "unit_id": "B3.U0007",
    "key": "REQ-01::AUTHOR-SPLIT-07",
    "kind": "CHILD",
-   "mutation": "GENERIC_REMOVE",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation": "FIELD",
+   "mutation_faithful": true,
+   "expected_first_fail": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-07",
+   "observed_first_fail": null,
+   "verdict": "FAIL",
+   "reason": "FIELD_MUTATION_NOT_DETECTED:requiredness"
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-08.DELETE_CHILD",
@@ -246,10 +266,11 @@
    "key": "REQ-01::AUTHOR-SPLIT-08",
    "kind": "CHILD",
    "mutation": "DELETE_CHILD",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "AUTHOR:TRACE_ORPHAN",
+   "observed_first_fail": "AUTHOR:TRACE_ORPHAN",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-08.DELETE_NEG",
@@ -257,21 +278,23 @@
    "key": "REQ-01::AUTHOR-SPLIT-08",
    "kind": "CHILD",
    "mutation": "DELETE_NEG",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "AUTHOR:NEG_MISSING",
+   "observed_first_fail": "AUTHOR:NEG_MISSING",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-08.FIELD_owner",
    "unit_id": "B3.U0008",
    "key": "REQ-01::AUTHOR-SPLIT-08",
    "kind": "CHILD",
-   "mutation": "GENERIC_REMOVE",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation": "FIELD",
+   "mutation_faithful": true,
+   "expected_first_fail": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-08",
+   "observed_first_fail": null,
+   "verdict": "FAIL",
+   "reason": "FIELD_MUTATION_NOT_DETECTED:owner"
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-09.DELETE_CHILD",
@@ -279,10 +302,11 @@
    "key": "REQ-01::AUTHOR-SPLIT-09",
    "kind": "CHILD",
    "mutation": "DELETE_CHILD",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "AUTHOR:TRACE_ORPHAN",
+   "observed_first_fail": "AUTHOR:TRACE_ORPHAN",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-09.DELETE_NEG",
@@ -290,21 +314,23 @@
    "key": "REQ-01::AUTHOR-SPLIT-09",
    "kind": "CHILD",
    "mutation": "DELETE_NEG",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "AUTHOR:NEG_MISSING",
+   "observed_first_fail": "AUTHOR:NEG_MISSING",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-09.FIELD_oracle",
    "unit_id": "B3.U0009",
    "key": "REQ-01::AUTHOR-SPLIT-09",
    "kind": "CHILD",
-   "mutation": "GENERIC_REMOVE",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation": "FIELD",
+   "mutation_faithful": false,
+   "expected_first_fail": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-09",
+   "observed_first_fail": null,
+   "verdict": "HOLD",
+   "reason": "FIELD_CARRIER_ABSENT:oracle"
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-10.DELETE_CHILD",
@@ -312,10 +338,11 @@
    "key": "REQ-01::AUTHOR-SPLIT-10",
    "kind": "CHILD",
    "mutation": "DELETE_CHILD",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "AUTHOR:TRACE_ORPHAN",
+   "observed_first_fail": "AUTHOR:TRACE_ORPHAN",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-10.DELETE_NEG",
@@ -323,21 +350,23 @@
    "key": "REQ-01::AUTHOR-SPLIT-10",
    "kind": "CHILD",
    "mutation": "DELETE_NEG",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "AUTHOR:NEG_MISSING",
+   "observed_first_fail": "AUTHOR:NEG_MISSING",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-10.FIELD_case",
    "unit_id": "B3.U0010",
    "key": "REQ-01::AUTHOR-SPLIT-10",
    "kind": "CHILD",
-   "mutation": "GENERIC_REMOVE",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation": "FIELD",
+   "mutation_faithful": false,
+   "expected_first_fail": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-10",
+   "observed_first_fail": null,
+   "verdict": "HOLD",
+   "reason": "FIELD_CARRIER_ABSENT:case"
   },
   {
    "case_id": "B3.NEG.REQ-12__AUTHOR-SPLIT-02.DELETE_CHILD",
@@ -345,10 +374,11 @@
    "key": "REQ-12::AUTHOR-SPLIT-02",
    "kind": "CHILD",
    "mutation": "DELETE_CHILD",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "AUTHOR:TRACE_ORPHAN",
+   "observed_first_fail": "AUTHOR:TRACE_ORPHAN",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-12__AUTHOR-SPLIT-02.DELETE_NEG",
@@ -356,21 +386,23 @@
    "key": "REQ-12::AUTHOR-SPLIT-02",
    "kind": "CHILD",
    "mutation": "DELETE_NEG",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "AUTHOR:NEG_MISSING",
+   "observed_first_fail": "AUTHOR:NEG_MISSING",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-12__AUTHOR-SPLIT-02.FIELD_draft",
    "unit_id": "B3.U0011",
    "key": "REQ-12::AUTHOR-SPLIT-02",
    "kind": "CHILD",
-   "mutation": "GENERIC_REMOVE",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "ATOM_ABSENT",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation": "FIELD",
+   "mutation_faithful": false,
+   "expected_first_fail": "AUTHOR:CHILD_RULE_HOLD:REQ-12::AUTHOR-SPLIT-02",
+   "observed_first_fail": null,
+   "verdict": "HOLD",
+   "reason": "FIELD_CARRIER_ABSENT:draft"
   },
   {
    "case_id": "B3.NEG.PROTECTED_PLP-04",
@@ -378,10 +410,11 @@
    "key": "PROTECTED:PLP-04",
    "kind": "PROTECTED",
    "mutation": "PROTECTED_FIELD",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "DIRECT_CLAUSE_SHA_MISMATCH",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "SUBSTANTIVE_GAP",
+   "observed_first_fail": "SUBSTANTIVE_GAP",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.PROTECTED_CH-00",
@@ -389,10 +422,11 @@
    "key": "PROTECTED:CH-00",
    "kind": "PROTECTED",
    "mutation": "PROTECTED_FIELD",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "DIRECT_CLAUSE_SHA_MISMATCH",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "SUBSTANTIVE_GAP",
+   "observed_first_fail": "SUBSTANTIVE_GAP",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.PROTECTED_CH-01",
@@ -400,10 +434,11 @@
    "key": "PROTECTED:CH-01",
    "kind": "PROTECTED",
    "mutation": "PROTECTED_FIELD",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "DIRECT_CLAUSE_SHA_MISMATCH",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "SUBSTANTIVE_GAP",
+   "observed_first_fail": "SUBSTANTIVE_GAP",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.PROTECTED_CH-03",
@@ -411,10 +446,11 @@
    "key": "PROTECTED:CH-03",
    "kind": "PROTECTED",
    "mutation": "PROTECTED_FIELD",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "DIRECT_CLAUSE_SHA_MISMATCH",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "SUBSTANTIVE_GAP",
+   "observed_first_fail": "SUBSTANTIVE_GAP",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.PROTECTED_CH-41",
@@ -422,10 +458,11 @@
    "key": "PROTECTED:CH-41",
    "kind": "PROTECTED",
    "mutation": "PROTECTED_FIELD",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "DIRECT_CLAUSE_SHA_MISMATCH",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "SUBSTANTIVE_GAP",
+   "observed_first_fail": "SUBSTANTIVE_GAP",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.PROTECTED_CH-42",
@@ -433,10 +470,11 @@
    "key": "PROTECTED:CH-42",
    "kind": "PROTECTED",
    "mutation": "PROTECTED_FIELD",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "DIRECT_CLAUSE_SHA_MISMATCH",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "SUBSTANTIVE_GAP",
+   "observed_first_fail": "SUBSTANTIVE_GAP",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.PROTECTED_CH-59",
@@ -444,10 +482,11 @@
    "key": "PROTECTED:CH-59",
    "kind": "PROTECTED",
    "mutation": "PROTECTED_FIELD",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "DIRECT_CLAUSE_SHA_MISMATCH",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "SUBSTANTIVE_GAP",
+   "observed_first_fail": "SUBSTANTIVE_GAP",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.PROTECTED_PLP-00",
@@ -455,10 +494,11 @@
    "key": "PROTECTED:PLP-00",
    "kind": "PROTECTED",
    "mutation": "PROTECTED_FIELD",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "DIRECT_CLAUSE_SHA_MISMATCH",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "SUBSTANTIVE_GAP",
+   "observed_first_fail": "SUBSTANTIVE_GAP",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.PROTECTED_PLP-01",
@@ -466,10 +506,11 @@
    "key": "PROTECTED:PLP-01",
    "kind": "PROTECTED",
    "mutation": "PROTECTED_FIELD",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "DIRECT_CLAUSE_SHA_MISMATCH",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "SUBSTANTIVE_GAP",
+   "observed_first_fail": "SUBSTANTIVE_GAP",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.PROTECTED_CH-02",
@@ -477,10 +518,11 @@
    "key": "PROTECTED:CH-02",
    "kind": "PROTECTED",
    "mutation": "PROTECTED_FIELD",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "DIRECT_CLAUSE_SHA_MISMATCH",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "SUBSTANTIVE_GAP",
+   "observed_first_fail": "SUBSTANTIVE_GAP",
+   "verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.PROTECTED_CH-04",
@@ -488,14 +530,30 @@
    "key": "PROTECTED:CH-04",
    "kind": "PROTECTED",
    "mutation": "PROTECTED_FIELD",
-   "product_entry": "op_child+op_route over the mutated set",
-   "refused": true,
-   "first_fail": "DIRECT_CLAUSE_SHA_MISMATCH",
-   "verdict": "REFUSAL_EXECUTED"
+   "mutation_faithful": true,
+   "expected_first_fail": "SUBSTANTIVE_GAP",
+   "observed_first_fail": "SUBSTANTIVE_GAP",
+   "verdict": "PASS",
+   "reason": null
   }
  ],
  "counts": {
-  "REFUSAL_EXECUTED": 44
+  "PASS": 33,
+  "HOLD": 9,
+  "FAIL": 2
  },
- "claim_ceiling": "a refusal executed by the product entry over a mutated unit set; it does not prove the downstream wave would behave the same"
+ "hold_reasons": {
+  "FIELD_CARRIER_ABSENT:original_id": 1,
+  "FIELD_CARRIER_ABSENT:source_sha256": 1,
+  "FIELD_CARRIER_ABSENT:clause_span": 1,
+  "FIELD_CARRIER_ABSENT:parent": 1,
+  "FIELD_CARRIER_ABSENT:child": 1,
+  "FIELD_CARRIER_ABSENT:polarity": 1,
+  "FIELD_MUTATION_NOT_DETECTED:requiredness": 1,
+  "FIELD_MUTATION_NOT_DETECTED:owner": 1,
+  "FIELD_CARRIER_ABSENT:oracle": 1,
+  "FIELD_CARRIER_ABSENT:case": 1,
+  "FIELD_CARRIER_ABSENT:draft": 1
+ },
+ "claim_ceiling": "each case's code is produced by the ledger relation under a named mutation; a case whose field has no structured carrier is HOLD, not a pass"
 }

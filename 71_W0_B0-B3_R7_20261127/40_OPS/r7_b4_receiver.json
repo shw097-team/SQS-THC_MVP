@@ -1,6 +1,6 @@
 {
  "schema": "SST.PH01.W0.B4.Receiver@1",
- "generated_at": "2026-11-27T16:09:07+0800",
+ "generated_at": "2026-11-27T18:31:44+0800",
  "mandatory_fields": [
   "commit",
   "path",
@@ -17,11 +17,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "src/kernel/fsdt/__init__.py",
    "sha": "90a5f4d4e27aeafda82d15d439bbfa076cc4f55d70df6ee604b4602bad5598bb",
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "ACCEPT_FOR_DRAFT",
    "first_fail": null,
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": false,
     "blob_is_null": false,
@@ -42,11 +46,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "src/kernel/temporal/__init__.py",
    "sha": "21e0150f8f97f1541e96b452b56571fa1518191a122fa5cf2f1af54ff9483a5d",
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "ACCEPT_FOR_DRAFT",
    "first_fail": null,
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": false,
     "blob_is_null": false,
@@ -67,11 +75,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "src/kernel/knowledge/__init__.py",
    "sha": "ea1e13cd7df0cf81059364c7606be4c6c317d78e4a91d3a847c7219465e33da6",
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "ACCEPT_FOR_DRAFT",
    "first_fail": null,
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": false,
     "blob_is_null": false,
@@ -92,11 +104,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "src/kernel/harness/__init__.py",
    "sha": "288a2a0e474a05fd38b992de5801b0f8f01668741a67c90c0d0e6f6b37ffc27e",
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "ACCEPT_FOR_DRAFT",
    "first_fail": null,
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": false,
     "blob_is_null": false,
@@ -117,11 +133,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "src/kernel/capability/__init__.py",
    "sha": "d2a143c5c970d8a5c2174f051871066fc04c0c9f5863ff4fac253f0cb9d68a41",
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "ACCEPT_FOR_DRAFT",
    "first_fail": null,
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": false,
     "blob_is_null": false,
@@ -142,11 +162,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "adapters/xq-read-watch.yaml",
    "sha": "84e3ac67d77ce76987e368a644e98be66ce1fe64e3e347d0acf1f7b6d721096a",
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "ACCEPT_FOR_DRAFT",
    "first_fail": null,
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": false,
     "blob_is_null": false,
@@ -169,11 +193,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "agents/profiles/sqs-orchestrator",
    "sha": null,
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -194,11 +222,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "agents/profiles/sqs-data-analysis",
    "sha": null,
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -219,11 +251,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "agents/profiles/sqs-risk",
    "sha": null,
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -244,11 +280,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "SQS/TWICT_RUNTIME_PACK_MANIFEST.yaml",
    "sha": null,
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -269,11 +309,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "SQS_ENGINEERING_BASE_DISPOSITION.yaml",
    "sha": null,
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -294,11 +338,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "SQS_STACK_MANIFEST.yaml",
    "sha": null,
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -319,11 +367,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "data_plane/config/*.yaml",
    "sha": null,
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:blob",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": false,
     "blob_is_null": true,
@@ -344,11 +396,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "data_plane/src/backfill_daily.py",
    "sha": null,
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -369,11 +425,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "data_plane/src/check_daily.py",
    "sha": null,
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -394,11 +454,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "adapters/fda-xq-globalwinner-route.yaml",
    "sha": null,
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -419,11 +483,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "TEAM.md",
    "sha": "1936a4651ef549cce50f5ecec9a45a712c7bf92adab0ffd12afa12ff3d43a311",
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -444,11 +512,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "AGENTS.md",
    "sha": "b5257a3e5d06c5781911c4ffbed19bdccc82c763158053842ddc89dcbe6f9e1a",
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -469,11 +541,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "README.md",
    "sha": "aa3084bac9c01af17868582b04c3405b673a7e16947f9c0cbf3f972eef2a20a9",
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -494,11 +570,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "FDA_DESKTOP_CAPABILITY_MATRIX.yaml",
    "sha": "9406456db853e9e6597c30ed400240808c7b0c777dd49c34eb611bf4c863d6c4",
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -519,11 +599,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "fda_router.py",
    "sha": "c3d64650a6e0c6fd3d99b5236c30c4cb03b7621be9763299e335ac1c6ed95e6c",
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -544,11 +628,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "fda_lease.py",
    "sha": "856580b533b547a82772de8624c78792d669cb11bb9cb99551c7141a06594db2",
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -569,11 +657,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "xq_native_adapter.py",
    "sha": "7655c411b5dfebd2da01364f665d82a5c31db7ad66ba2ce0521214401915ddc4",
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -594,11 +686,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "FDA_EXECUTION_BINDING.json",
    "sha": "6a3269202d0dba0ba6c8bb0d6656e592dcda4042a0dc88e63fba732e3335b095",
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -619,11 +715,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "governance/FDA_DEFERRED_SEMIAUTO_CONTRACT.yaml",
    "sha": "6e1c808e278592f2b4d75c6296b4b81d9e227a2f21e188c9594b18085bbf0f8f",
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -644,11 +744,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "governance/FDA_INTEROP_DISPOSITION.yaml",
    "sha": "9fac4d255030443f8031a5bfe62d8e204698cf664ada2b06a65986f347c7ee5e",
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -669,11 +773,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "independent_checker.py",
    "sha": "9009713fd70392d64b84dcf0c1319adb5cfef51d260cd196c831c960f1bbe22e",
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -694,11 +802,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "test_xq_build_drift.py",
    "sha": "cf234c66e389900b517d437a6d2ec4d69977104876fc4ab898a6f4df1aaf8eb9",
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -719,11 +831,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "tests/test_fda_*.py",
    "sha": null,
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -744,11 +860,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "docs/FDA_USER_GUIDE.md",
    "sha": "21a3d22b26e499b1bad10dc7fb0235402b460c3138e0fd719e7791d120815ee5",
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -769,11 +889,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "src/kernel/fsdt/__init__.py",
    "sha": "90a5f4d4e27aeafda82d15d439bbfa076cc4f55d70df6ee604b4602bad5598bb",
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": false,
@@ -800,11 +924,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "src/kernel/temporal/__init__.py",
    "sha": "21e0150f8f97f1541e96b452b56571fa1518191a122fa5cf2f1af54ff9483a5d",
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": false,
@@ -831,11 +959,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "src/kernel/knowledge/__init__.py",
    "sha": "ea1e13cd7df0cf81059364c7606be4c6c317d78e4a91d3a847c7219465e33da6",
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": false,
@@ -862,11 +994,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "src/kernel/harness/__init__.py",
    "sha": "288a2a0e474a05fd38b992de5801b0f8f01668741a67c90c0d0e6f6b37ffc27e",
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": false,
@@ -893,11 +1029,15 @@
    "subject": "SST/SQS-THC/PH01/E00",
    "source_id": "src/kernel/capability/__init__.py",
    "sha": "d2a143c5c970d8a5c2174f051871066fc04c0c9f5863ff4fac253f0cb9d68a41",
-   "candidate_digest": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
-   "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
+   "spec_b1_unit_id_set_sha": "e0d3afa67d4b5d5f765b4d32fccde9b00f4c85b57ab8b84ab7c862e2dafa50e9",
+   "producer_spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "producer_receipt": {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b1_r7_run_all.json",
+    "sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+   },
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit",
-   "checked_at": "2026-11-27T16:09:07+0800",
+   "checked_at": "2026-11-27T18:31:44+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": false,

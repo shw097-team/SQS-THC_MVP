@@ -1,0 +1,37 @@
+{
+ "schema": "SST.PH01.W0.B0.DescriptorRenewal@1",
+ "renewed_at": "2026-11-27T18:10:00+0800",
+ "window": {
+  "window_id": "WIN-5afc943249a6",
+  "task_id": "SST_PLP_PH01_W0_B0_SOURCE_READ_AUTH",
+  "scope": [
+   "b0_source_read_authority",
+   "sqs_thc_ph01_e00"
+  ],
+  "ceiling": "READ_ONLY_PROBE",
+  "expires_at": 1795781329,
+  "max_ops": 10,
+  "ops_used": 0,
+  "receipt_sha256": "fc6eaec319533663ad9d0354ee0a541ac00da47bb749b4afc422cfb9eec900ba"
+ },
+ "descriptor": {
+  "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\00_PREFLIGHT\\B0_READ_CONTEXT_2026-11-26.json",
+  "superseded_path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\00_PREFLIGHT\\B0_READ_CONTEXT_2026-11-26.superseded-2026-11-27.json",
+  "old_sha256": "2064685af26f6706ff7d6adfa1f764398e45d9ed4e89b3671f5ae70cbae3aacd",
+  "old_bytes": 3582,
+  "new_sha256": "ad78641547abfb41a480c79a36516c5cc57c778b028218701b29ac395b07f1f2",
+  "new_bytes": 3670
+ },
+ "unchanged": [
+  "sources[].expected_sha",
+  "sources[].required_set",
+  "scope",
+  "epoch_strategy"
+ ],
+ "product_constant_delta": {
+  "file": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\20_DEV\\b0_reader\\native_entry.py",
+  "EXPECTED_DESCRIPTOR_SHA": "ad78641547abfb41a480c79a36516c5cc57c778b028218701b29ac395b07f1f2",
+  "EXPECTED_DESCRIPTOR_BYTES": 3670,
+  "applied": true
+ }
+}

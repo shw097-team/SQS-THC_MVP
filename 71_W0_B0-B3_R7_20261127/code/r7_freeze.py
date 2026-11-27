@@ -75,12 +75,26 @@ def main() -> int:
     revision = _arg("--revision")
     arts = collect(include_docs)
     dg = digest(arts)
-    man = os.path.join(OPS, "r7_CANDIDATE_MANIFEST.tsv")
+
+    # Identity is decided BEFORE anything is written: a refused run must not touch the
+    # shared manifest or any receipt the checker may be reading (rev1 finding M1).
+    base = os.path.join(OPS, "r7_candidate_freeze.json")
+    out = os.path.join(OPS, f"r7_candidate_freeze.{revision}.json") if revision else base
+    man = (os.path.join(OPS, f"r7_CANDIDATE_MANIFEST.{revision}.tsv") if revision
+           else os.path.join(OPS, "r7_CANDIDATE_MANIFEST.tsv"))
+    for target in (out, man):
+        if os.path.exists(target):
+            print(json.dumps({"refused": "PREIMAGE_NOT_ABSENT", "path": target,
+                              "note": "pass a new --revision <name>; nothing was written"},
+                             ensure_ascii=False))
+            return 3
+
     with open(man, "w", encoding="utf-8", newline="\n") as f:
         for a in arts:
             f.write(f'{a["raw_sha256"]}\t{a["bytes"]}\t{a["path"]}\n')
     receipt = {
         "schema": "SST.PH01.W0.B0B3.CandidateFreeze@1",
+        "revision": revision or "base",
         "candidate_digest": dg,
         "digest_convention": ("sha256 over '<raw_sha256>  <relative path>' lines sorted by "
                               "relative path, one \\n between lines, rstrip('\\n') applied; "
@@ -92,26 +106,26 @@ def main() -> int:
         "manifest": {"path": man, "sha256": sha_file(man)},
         "artefacts": [{k: a[k] for k in ("path", "bytes", "raw_sha256")} for a in arts],
     }
-    # A freeze receipt is write-once. Re-running the freezer used to overwrite the digest a
-    # checker had already judged (569f finding M1); now a new revision is a new file and the
-    # superseded one stays on disk.
-    base = os.path.join(OPS, "r7_candidate_freeze.json")
-    out = os.path.join(OPS, f"r7_candidate_freeze.{revision}.json") if revision else base
-    if os.path.exists(out):
-        print(json.dumps({"refused": "PREIMAGE_NOT_ABSENT", "path": out,
-                          "note": "pass --revision <name> to mint a new revision"}, ensure_ascii=False))
-        return 3
-    if revision and os.path.isfile(base):
-        prev = json.load(open(base, encoding="utf-8"))
-        receipt["supersedes"] = {"path": base, "candidate_digest": prev.get("candidate_digest")}
+    if revision:
+        # supersedes chain: every earlier revision plus the unversioned base, not just one
+        chain = []
+        for prev_path in sorted(
+                [os.path.join(OPS, f) for f in os.listdir(OPS)
+                 if f.startswith("r7_candidate_freeze") and f.endswith(".json")]):
+            try:
+                prev = json.load(open(prev_path, encoding="utf-8"))
+            except Exception:
+                continue
+            chain.append({"path": prev_path, "revision": prev.get("revision"),
+                          "candidate_digest": prev.get("candidate_digest")})
+        receipt["supersedes"] = chain
     json.dump(receipt, open(out, "w", encoding="utf-8", newline="\n"),
               ensure_ascii=False, indent=1)
-    # self-check: recompute from disk and from the manifest
     ok_members = all(sha_file(os.path.join(R7, a["path"].replace("/", os.sep))) == a["raw_sha256"]
                      for a in arts)
-    print(json.dumps({"written": out, "candidate_digest": dg, "members": len(arts),
-                      "members_verify": ok_members, "include_docs": include_docs},
-                     ensure_ascii=False, indent=1))
+    print(json.dumps({"written": out, "manifest": man, "candidate_digest": dg,
+                      "members": len(arts), "members_verify": ok_members,
+                      "include_docs": include_docs}, ensure_ascii=False, indent=1))
     return 0
 
 
