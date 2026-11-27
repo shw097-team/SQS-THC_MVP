@@ -1,0 +1,170 @@
+{
+ "schema": "SST.PH01.W0.B0B3.R7Preflight@1",
+ "generated_at": "2026-11-27T19:33:35+0800",
+ "spec_version": "2026-11-27_r7_Native-first_CODEX_FINAL",
+ "entry": {
+  "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\W0_B0-B3_GEN3_CODEX_FINAL_2026-11-27_r7\\00_唯一交付入口_W0_B0-B3_2026-11-27_r7.md",
+  "sha256": "21c27fbb4f40c82b0019aea545078d2941fb81b165134638bb7dd554972291d2",
+  "bytes": 10673
+ },
+ "manifest": {
+  "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\W0_B0-B3_GEN3_CODEX_FINAL_2026-11-27_r7\\FINAL_SPEC_MANIFEST.tsv",
+  "sha256": "2e4db2d2c2bd6d52316f7e634587888441b5425b7c68902c00b36ded47960d6c",
+  "bytes": 1369,
+  "rows": 8
+ },
+ "manifest_rows": [
+  {
+   "file": "SST_PLP_PH01_W0_B0_執行控制小包.md",
+   "declared_sha256": "582a54048d8b63e37be3d803c829a12ffe164be72963f026cea1a1b6183345d9",
+   "observed_sha256": "582a54048d8b63e37be3d803c829a12ffe164be72963f026cea1a1b6183345d9",
+   "declared_bytes": 99791,
+   "observed_bytes": 99791,
+   "match": true
+  },
+  {
+   "file": "SST_PLP_PH01_W0_B0_執行控制小包_證據型附錄_2026-11-27_r7_Native-first_CODEX_FINAL.md",
+   "declared_sha256": "b981166cbe79295ee383065d4b6ff9f8bf0d67c7ce2879d0840d8b58b82b4cbf",
+   "observed_sha256": "b981166cbe79295ee383065d4b6ff9f8bf0d67c7ce2879d0840d8b58b82b4cbf",
+   "declared_bytes": 2990,
+   "observed_bytes": 2990,
+   "match": true
+  },
+  {
+   "file": "SST_PLP_PH01_W0_B1_執行控制小包_實質正文_2026-11-27_r7_Native-first_CODEX_FINAL.md",
+   "declared_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "observed_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "declared_bytes": 266543,
+   "observed_bytes": 266543,
+   "match": true
+  },
+  {
+   "file": "SST_PLP_PH01_W0_B1_執行控制小包_證據型附錄_2026-11-27_r7_Native-first_CODEX_FINAL.md",
+   "declared_sha256": "349a8386abcddaf4dd0cdf553724b8c11b0eec8bb435addf696deda8b49a228a",
+   "observed_sha256": "349a8386abcddaf4dd0cdf553724b8c11b0eec8bb435addf696deda8b49a228a",
+   "declared_bytes": 5024,
+   "observed_bytes": 5024,
+   "match": true
+  },
+  {
+   "file": "SST_PLP_PH01_W0_B2_執行控制小包_實質正文_2026-11-27_r7_Native-first_CODEX_FINAL.md",
+   "declared_sha256": "acd3282319116142cf55b1bd7d109d1cf08a62907cd05dee8e65eef49554c340",
+   "observed_sha256": "acd3282319116142cf55b1bd7d109d1cf08a62907cd05dee8e65eef49554c340",
+   "declared_bytes": 12552061,
+   "observed_bytes": 12552061,
+   "match": true
+  },
+  {
+   "file": "SST_PLP_PH01_W0_B2_執行控制小包_證據型附錄_2026-11-27_r7_Native-first_CODEX_FINAL.md",
+   "declared_sha256": "6fc59b93304b984aac5a40fc21b0dbe68bbe2d66e4c42f2f449e216504d64f10",
+   "observed_sha256": "6fc59b93304b984aac5a40fc21b0dbe68bbe2d66e4c42f2f449e216504d64f10",
+   "declared_bytes": 4862,
+   "observed_bytes": 4862,
+   "match": true
+  },
+  {
+   "file": "SST_PLP_PH01_W0_B3_執行控制小包_實質正文_2026-11-27_r7_Native-first_CODEX_FINAL.md",
+   "declared_sha256": "c1c9c5326a36c1e0e0b00dc1231b39b4f7c21e10a4f9320f2a4dbaabe6125ec5",
+   "observed_sha256": "c1c9c5326a36c1e0e0b00dc1231b39b4f7c21e10a4f9320f2a4dbaabe6125ec5",
+   "declared_bytes": 1577104,
+   "observed_bytes": 1577104,
+   "match": true
+  },
+  {
+   "file": "SST_PLP_PH01_W0_B3_執行控制小包_證據型附錄_2026-11-27_r7_Native-first_CODEX_FINAL.md",
+   "declared_sha256": "ee95506c8a7aa87f050c8d628c169550f417b14d1a0fed04403490faad149889",
+   "observed_sha256": "ee95506c8a7aa87f050c8d628c169550f417b14d1a0fed04403490faad149889",
+   "declared_bytes": 5156,
+   "observed_bytes": 5156,
+   "match": true
+  }
+ ],
+ "manifest_all_match": true,
+ "batches": {
+  "B1": {
+   "pin": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "observed_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "pin_match": true,
+   "bytes": 266543,
+   "carriers": [
+    "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\SST_PLP_PH01_W0_B1_執行控制小包_實質正文_2026-11-27_r7_Native-first_CODEX_FINAL.md",
+    "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\W0_B0-B3_r7\\SST_PLP_PH01_W0_B1_執行控制小包_實質正文_2026-11-27_r7_Native-first_CODEX_FINAL.md"
+   ],
+   "carrier_count": 2,
+   "carrier_note": "two byte-identical copies are one source in two locations; the primary is the shallower path",
+   "units": 30,
+   "unique_unit_ids": 30,
+   "unique_keys": 30,
+   "cases_in_section_06": 60,
+   "case_ids_declared_in_units": 60,
+   "payload_sha_equal": 30,
+   "payload_sha_mismatch": 0,
+   "join_unit_to_case_missing": 0,
+   "join_case_to_unit_orphan": [],
+   "kind_denominators": {
+    "BASE": 18,
+    "KERNEL": 5,
+    "FDA": 7
+   }
+  },
+  "B2": {
+   "pin": "acd3282319116142cf55b1bd7d109d1cf08a62907cd05dee8e65eef49554c340",
+   "observed_sha256": "acd3282319116142cf55b1bd7d109d1cf08a62907cd05dee8e65eef49554c340",
+   "pin_match": true,
+   "bytes": 12552061,
+   "carriers": [
+    "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\SST_PLP_PH01_W0_B2_執行控制小包_實質正文_2026-11-27_r7_Native-first_CODEX_FINAL.md",
+    "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\W0_B0-B3_r7\\SST_PLP_PH01_W0_B2_執行控制小包_實質正文_2026-11-27_r7_Native-first_CODEX_FINAL.md"
+   ],
+   "carrier_count": 2,
+   "carrier_note": "two byte-identical copies are one source in two locations; the primary is the shallower path",
+   "units": 1465,
+   "unique_unit_ids": 1465,
+   "unique_keys": 1465,
+   "cases_in_section_06": 2930,
+   "case_ids_declared_in_units": 2930,
+   "payload_sha_equal": 1465,
+   "payload_sha_mismatch": 0,
+   "join_unit_to_case_missing": 0,
+   "join_case_to_unit_orphan": [],
+   "kind_denominators": {
+    "HARD": 18,
+    "E00_TECH": 8,
+    "TECH_ROUTE": 54,
+    "Q_SOURCE_ROW": 1385
+   }
+  },
+  "B3": {
+   "pin": "c1c9c5326a36c1e0e0b00dc1231b39b4f7c21e10a4f9320f2a4dbaabe6125ec5",
+   "observed_sha256": "c1c9c5326a36c1e0e0b00dc1231b39b4f7c21e10a4f9320f2a4dbaabe6125ec5",
+   "pin_match": true,
+   "bytes": 1577104,
+   "carriers": [
+    "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\SST_PLP_PH01_W0_B3_執行控制小包_實質正文_2026-11-27_r7_Native-first_CODEX_FINAL.md",
+    "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\W0_B0-B3_r7\\SST_PLP_PH01_W0_B3_執行控制小包_實質正文_2026-11-27_r7_Native-first_CODEX_FINAL.md"
+   ],
+   "carrier_count": 2,
+   "carrier_note": "two byte-identical copies are one source in two locations; the primary is the shallower path",
+   "units": 365,
+   "unique_unit_ids": 365,
+   "unique_keys": 365,
+   "cases_in_section_06": 752,
+   "case_ids_declared_in_units": 752,
+   "payload_sha_equal": 365,
+   "payload_sha_mismatch": 0,
+   "join_unit_to_case_missing": 0,
+   "join_case_to_unit_orphan": [],
+   "kind_denominators": {
+    "CHILD": 11,
+    "DOC_BRIDGE": 92,
+    "H1_ROUTE": 81,
+    "CHILD_ROUTE": 90,
+    "BEHAVIOR_ROUTE": 73,
+    "PROTECTED": 11,
+    "RECOVERY": 2,
+    "AUTHORITY_SEAM": 5
+   }
+  }
+ },
+ "claim_ceiling": "document identity, set completeness and payload integrity only; no semantic re-adjudication of any clause and no product case"
+}

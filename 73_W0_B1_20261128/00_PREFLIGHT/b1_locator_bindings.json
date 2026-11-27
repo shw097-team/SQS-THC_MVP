@@ -1,0 +1,50 @@
+{
+ "schema": "SST.PH01.W0.B1.LocatorBindings@1",
+ "generated_at": "2026-11-26T12:54:49+08:00",
+ "claim_ceiling": "LOCATOR_ONLY_NOT_SPEC_AMENDMENT",
+ "rule": "a binding must name one full path + raw sha256; basename search is never a binding",
+ "bindings": [
+  {
+   "unit": "BASE-009",
+   "declared_path": "src/backfill_daily.py",
+   "resolved_path": "C:\\Projects\\Agent_Workspace\\SQS-THC\\data_plane\\src\\backfill_daily.py",
+   "raw_sha256": "fc10f8021c94e7569d9652e9ee4664ac8758f5f8008399e2fe8c786ff0117bbd",
+   "bytes": 24609,
+   "basis": "LOCATOR_BINDING_CANDIDATE",
+   "equivalence": "same declared filename; declared cell omitted a directory qualifier; identity is the full path + raw sha, never a basename match",
+   "authority": {
+    "read_domain": "REPO_ROOT",
+    "note": "declared cell omits the data_plane/ qualifier; entity identity carried by full path + raw sha, not by basename search"
+   },
+   "ratification": "CANDIDATE_NOT_RATIFIED — closes the locator gap only; does not amend the SPEC path"
+  },
+  {
+   "unit": "BASE-009",
+   "declared_path": "check_daily.py",
+   "resolved_path": "C:\\Projects\\Agent_Workspace\\SQS-THC\\data_plane\\src\\check_daily.py",
+   "raw_sha256": "06b25b72328bf9917100cf4b2eed70e229559a9d33e8129926f3ee01b29cfda5",
+   "bytes": 11197,
+   "basis": "LOCATOR_BINDING_CANDIDATE",
+   "equivalence": "same declared filename; declared cell omitted a directory qualifier; identity is the full path + raw sha, never a basename match",
+   "authority": {
+    "read_domain": "REPO_ROOT",
+    "note": "declared cell omits the data_plane/src/ qualifier"
+   },
+   "ratification": "CANDIDATE_NOT_RATIFIED — closes the locator gap only; does not amend the SPEC path"
+  },
+  {
+   "unit": "BASE-017",
+   "declared_path": "FDA_INTEROP_DISPOSITION.yaml",
+   "resolved_path": "C:\\Projects\\Agent_Workspace\\FHS\\Fabric\\FABRIC\\fabric-desktop-automation\\governance\\FDA_INTEROP_DISPOSITION.yaml",
+   "raw_sha256": "9fac4d255030443f8031a5bfe62d8e204698cf664ada2b06a65986f347c7ee5e",
+   "bytes": 3487,
+   "basis": "LOCATOR_BINDING_CANDIDATE",
+   "equivalence": "same declared filename; declared cell omitted a directory qualifier; identity is the full path + raw sha, never a basename match",
+   "authority": {
+    "read_domain": "EXTERNAL_CARRIER",
+    "note": "declared cell omits the governance/ qualifier used by its own sibling in the same cell"
+   },
+   "ratification": "CANDIDATE_NOT_RATIFIED — closes the locator gap only; does not amend the SPEC path"
+  }
+ ]
+}

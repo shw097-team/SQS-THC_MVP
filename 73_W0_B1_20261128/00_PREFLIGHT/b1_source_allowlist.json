@@ -1,0 +1,99 @@
+{
+ "schema": "SST.PH01.W0.B1.SourceAllowList@1",
+ "generated_at": "2026-11-26T12:54:49+08:00",
+ "source_id": "SST.FDA.PRIMARY_CARRIER",
+ "root": "C:\\Projects\\Agent_Workspace\\FHS\\Fabric\\FABRIC\\fabric-desktop-automation",
+ "purpose": "W0 B1 static source read for FDA slot/BASE evidence; no GUI, no execution, no install",
+ "consumer_ids": [
+  "B1",
+  "B4",
+  "B6"
+ ],
+ "effect": "SOURCE_READ",
+ "write_set": [],
+ "owner_directive": "Owner 2026-11-26: allow both carriers as authorised read-only research; FABRIC/ is the engineering primary, Fabric-rebind-publish/ the mirror",
+ "scope_ceiling": "exactly the 16 artefact paths below; nothing else under FHS/ is in scope",
+ "outside_repo_root": true,
+ "artefacts": [
+  {
+   "path": "FDA_DESKTOP_CAPABILITY_MATRIX.yaml",
+   "raw_sha256": "9406456db853e9e6597c30ed400240808c7b0c777dd49c34eb611bf4c863d6c4",
+   "bytes": 11110
+  },
+  {
+   "path": "fda_router.py",
+   "raw_sha256": "c3d64650a6e0c6fd3d99b5236c30c4cb03b7621be9763299e335ac1c6ed95e6c",
+   "bytes": 1115
+  },
+  {
+   "path": "fda_lease.py",
+   "raw_sha256": "856580b533b547a82772de8624c78792d669cb11bb9cb99551c7141a06594db2",
+   "bytes": 2510
+  },
+  {
+   "path": "xq_native_adapter.py",
+   "raw_sha256": "7655c411b5dfebd2da01364f665d82a5c31db7ad66ba2ce0521214401915ddc4",
+   "bytes": 6631
+  },
+  {
+   "path": "FDA_EXECUTION_BINDING.json",
+   "raw_sha256": "6a3269202d0dba0ba6c8bb0d6656e592dcda4042a0dc88e63fba732e3335b095",
+   "bytes": 3308
+  },
+  {
+   "path": "FDA_ASSET_REGISTRY.json",
+   "raw_sha256": "960c31939f094d6b23e441728bc55d784b3899bbfbb81a9b76038031b7d96dde",
+   "bytes": 4072
+  },
+  {
+   "path": "TEAM.md",
+   "raw_sha256": "1936a4651ef549cce50f5ecec9a45a712c7bf92adab0ffd12afa12ff3d43a311",
+   "bytes": 5768
+  },
+  {
+   "path": "AGENTS.md",
+   "raw_sha256": "b5257a3e5d06c5781911c4ffbed19bdccc82c763158053842ddc89dcbe6f9e1a",
+   "bytes": 3651
+  },
+  {
+   "path": "README.md",
+   "raw_sha256": "aa3084bac9c01af17868582b04c3405b673a7e16947f9c0cbf3f972eef2a20a9",
+   "bytes": 4410
+  },
+  {
+   "path": "docs/FDA_USER_GUIDE.md",
+   "raw_sha256": "21a3d22b26e499b1bad10dc7fb0235402b460c3138e0fd719e7791d120815ee5",
+   "bytes": 22327
+  },
+  {
+   "path": "governance/FDA_INTEROP_DISPOSITION.yaml",
+   "raw_sha256": "9fac4d255030443f8031a5bfe62d8e204698cf664ada2b06a65986f347c7ee5e",
+   "bytes": 3487
+  },
+  {
+   "path": "governance/FDA_DEFERRED_SEMIAUTO_CONTRACT.yaml",
+   "raw_sha256": "6e1c808e278592f2b4d75c6296b4b81d9e227a2f21e188c9594b18085bbf0f8f",
+   "bytes": 2995
+  },
+  {
+   "path": "FDA_DIRECTORY_TREE.txt",
+   "raw_sha256": "b3b108fa5b154ab16bcda89f8ae8b79d34aca843857d95248f00d56f04c994e0",
+   "bytes": 2110
+  },
+  {
+   "path": "FDA_FOLDER_REORGANIZATION_RECEIPT.json",
+   "raw_sha256": "b78987a5022b95ad30af868c7b996a238f44356c728585151dbecf219862082b",
+   "bytes": 751
+  },
+  {
+   "path": "independent_checker.py",
+   "raw_sha256": "9009713fd70392d64b84dcf0c1319adb5cfef51d260cd196c831c960f1bbe22e",
+   "bytes": 12617
+  },
+  {
+   "path": "test_xq_build_drift.py",
+   "raw_sha256": "cf234c66e389900b517d437a6d2ec4d69977104876fc4ab898a6f4df1aaf8eb9",
+   "bytes": 3215
+  }
+ ]
+}

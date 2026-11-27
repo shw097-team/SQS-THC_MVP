@@ -1,0 +1,233 @@
+{
+ "schema": "SST.PH01.W0.B1.BaseReconcile@1",
+ "keys": 23,
+ "by_cause": {
+  "TRACKED_AT_PINNED_COMMIT": 11,
+  "DISK_DIRECTORY_NOT_TRACKED": 1,
+  "DISK_BUT_UNTRACKED": 4,
+  "EXTERNAL_CARRIER_ALLOWLIST_VERIFIED": 6,
+  "TARGET_OUTSIDE_OWNER_ALLOWLIST": 1
+ },
+ "rows": [
+  {
+   "key": "BASE-001",
+   "targets": 1,
+   "statuses": [
+    "TRACKED"
+   ],
+   "cause": "TRACKED_AT_PINNED_COMMIT",
+   "owner": "-"
+  },
+  {
+   "key": "BASE-002",
+   "targets": 1,
+   "statuses": [
+    "TRACKED"
+   ],
+   "cause": "TRACKED_AT_PINNED_COMMIT",
+   "owner": "-"
+  },
+  {
+   "key": "BASE-003",
+   "targets": 1,
+   "statuses": [
+    "TRACKED"
+   ],
+   "cause": "TRACKED_AT_PINNED_COMMIT",
+   "owner": "-"
+  },
+  {
+   "key": "BASE-004",
+   "targets": 1,
+   "statuses": [
+    "TRACKED"
+   ],
+   "cause": "TRACKED_AT_PINNED_COMMIT",
+   "owner": "-"
+  },
+  {
+   "key": "BASE-005",
+   "targets": 1,
+   "statuses": [
+    "TRACKED"
+   ],
+   "cause": "TRACKED_AT_PINNED_COMMIT",
+   "owner": "-"
+  },
+  {
+   "key": "BASE-006",
+   "targets": 3,
+   "statuses": [
+    "DISK_DIRECTORY",
+    "DISK_DIRECTORY",
+    "DISK_DIRECTORY"
+   ],
+   "cause": "DISK_DIRECTORY_NOT_TRACKED",
+   "owner": "Repo owner (commit the directory)"
+  },
+  {
+   "key": "BASE-007",
+   "targets": 1,
+   "statuses": [
+    "DISK_BUT_UNTRACKED"
+   ],
+   "cause": "DISK_BUT_UNTRACKED",
+   "owner": "Repo owner (commit or declare excluded)"
+  },
+  {
+   "key": "BASE-008",
+   "targets": 2,
+   "statuses": [
+    "DISK_BUT_UNTRACKED",
+    "DISK_BUT_UNTRACKED"
+   ],
+   "cause": "DISK_BUT_UNTRACKED",
+   "owner": "Repo owner (commit or declare excluded)"
+  },
+  {
+   "key": "BASE-009",
+   "targets": 3,
+   "statuses": [
+    "TRACKED",
+    "DISK_BUT_UNTRACKED",
+    "DISK_BUT_UNTRACKED"
+   ],
+   "cause": "DISK_BUT_UNTRACKED",
+   "owner": "Repo owner (commit or declare excluded)"
+  },
+  {
+   "key": "BASE-010",
+   "targets": 1,
+   "statuses": [
+    "TRACKED"
+   ],
+   "cause": "TRACKED_AT_PINNED_COMMIT",
+   "owner": "-"
+  },
+  {
+   "key": "BASE-011",
+   "targets": 1,
+   "statuses": [
+    "DISK_BUT_UNTRACKED"
+   ],
+   "cause": "DISK_BUT_UNTRACKED",
+   "owner": "Repo owner (commit or declare excluded)"
+  },
+  {
+   "key": "BASE-012",
+   "targets": 3,
+   "statuses": [
+    "ALLOWLIST_VERIFIED",
+    "ALLOWLIST_VERIFIED",
+    "ALLOWLIST_VERIFIED"
+   ],
+   "cause": "EXTERNAL_CARRIER_ALLOWLIST_VERIFIED",
+   "owner": "-"
+  },
+  {
+   "key": "BASE-013",
+   "targets": 1,
+   "statuses": [
+    "ALLOWLIST_VERIFIED"
+   ],
+   "cause": "EXTERNAL_CARRIER_ALLOWLIST_VERIFIED",
+   "owner": "-"
+  },
+  {
+   "key": "BASE-014",
+   "targets": 1,
+   "statuses": [
+    "ALLOWLIST_VERIFIED"
+   ],
+   "cause": "EXTERNAL_CARRIER_ALLOWLIST_VERIFIED",
+   "owner": "-"
+  },
+  {
+   "key": "BASE-015",
+   "targets": 1,
+   "statuses": [
+    "ALLOWLIST_VERIFIED"
+   ],
+   "cause": "EXTERNAL_CARRIER_ALLOWLIST_VERIFIED",
+   "owner": "-"
+  },
+  {
+   "key": "BASE-016",
+   "targets": 1,
+   "statuses": [
+    "ALLOWLIST_VERIFIED"
+   ],
+   "cause": "EXTERNAL_CARRIER_ALLOWLIST_VERIFIED",
+   "owner": "-"
+  },
+  {
+   "key": "BASE-017",
+   "targets": 3,
+   "statuses": [
+    "ALLOWLIST_VERIFIED",
+    "ALLOWLIST_VERIFIED",
+    "ALLOWLIST_VERIFIED"
+   ],
+   "cause": "EXTERNAL_CARRIER_ALLOWLIST_VERIFIED",
+   "owner": "-"
+  },
+  {
+   "key": "BASE-018",
+   "targets": 4,
+   "statuses": [
+    "ALLOWLIST_VERIFIED",
+    "ALLOWLIST_VERIFIED",
+    "NOT_IN_OWNER_ALLOWLIST",
+    "ALLOWLIST_VERIFIED"
+   ],
+   "cause": "TARGET_OUTSIDE_OWNER_ALLOWLIST",
+   "owner": "FDA Source Owner (D-2)"
+  },
+  {
+   "key": "KERNEL:fsdt",
+   "targets": 1,
+   "statuses": [
+    "TRACKED_CONTENT_MATCH"
+   ],
+   "cause": "TRACKED_AT_PINNED_COMMIT",
+   "owner": "-"
+  },
+  {
+   "key": "KERNEL:temporal",
+   "targets": 1,
+   "statuses": [
+    "TRACKED_CONTENT_MATCH"
+   ],
+   "cause": "TRACKED_AT_PINNED_COMMIT",
+   "owner": "-"
+  },
+  {
+   "key": "KERNEL:knowledge",
+   "targets": 1,
+   "statuses": [
+    "TRACKED_CONTENT_MATCH"
+   ],
+   "cause": "TRACKED_AT_PINNED_COMMIT",
+   "owner": "-"
+  },
+  {
+   "key": "KERNEL:harness",
+   "targets": 1,
+   "statuses": [
+    "TRACKED_CONTENT_MATCH"
+   ],
+   "cause": "TRACKED_AT_PINNED_COMMIT",
+   "owner": "-"
+  },
+  {
+   "key": "KERNEL:capability",
+   "targets": 1,
+   "statuses": [
+    "TRACKED_CONTENT_MATCH"
+   ],
+   "cause": "TRACKED_AT_PINNED_COMMIT",
+   "owner": "-"
+  }
+ ],
+ "claim_ceiling": "each row states the identity the product resolved; no row is called partial without a cause"
+}
