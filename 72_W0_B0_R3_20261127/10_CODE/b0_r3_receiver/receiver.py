@@ -169,6 +169,45 @@ def _check_manifest_evidence(doc: dict[str, Any], dep: dict[str, Any]) -> None:
         raise Reject("MANIFEST_EVIDENCE_UNRESOLVED", "evidence bytes are not the pinned manifest")
 
 
+def _read_source_bytes(exp: dict[str, Any], dep: dict[str, Any]) -> bytes:
+    """Read the pinned source through the product's own same-handle trust primitives.
+
+    `b0_reader.root.open_authorized_file` already proves containment, ancestor identity,
+    reparse refusal and final-component identity, and hands back one owned handle; the
+    bytes come from that handle, so no second open can race the path check.
+    """
+    roots = [str(Path(r)) for r in (dep.get("allowed_roots") or [])]
+    if not roots:
+        # containment must not fail open: a deployment that names no root gets no read
+        raise Reject("TRUST_CONTEXT_UNBOUND", "deployment declares no allowed_roots")
+    locator = Path(exp["locator"])
+    allowed = next((r for r in roots
+                    if str(locator).lower().startswith(r.rstrip("\\").lower() + "\\")), None)
+    if allowed is None:
+        raise Reject("TUPLE_MISMATCH", "pinned locator is outside the deployment's allowed roots")
+    try:
+        from b0_reader.root import PathSecurityError, open_authorized_file
+    except Exception as exc:  # pragma: no cover - environment guard
+        raise Reject("TRUST_CONTEXT_UNBOUND", "product trust primitives unavailable") from exc
+    try:
+        handle, _verdict = open_authorized_file(locator, allowed_root=allowed)
+    except PathSecurityError as exc:
+        raise Reject(exc.code, getattr(exc, "detail", "")) from exc
+    except OSError as exc:
+        raise Reject("SOURCE_UNAVAILABLE", f"trusted source unreadable: {exc}") from exc
+    try:
+        before = handle.identity()
+        raw = handle.read_all()
+        after = handle.identity()
+    except OSError as exc:
+        raise Reject("SOURCE_UNAVAILABLE", f"same-handle read failed: {exc}") from exc
+    finally:
+        handle.close()
+    if before.tuple != after.tuple or len(raw) != after.size:
+        raise Reject("SOURCE_CHANGED_SINCE_READ", "source identity moved during the same-handle read")
+    return raw
+
+
 def _receive_source(sid: str, ent: dict[str, Any], exp: dict[str, Any],
                     dep: dict[str, Any], rights_state: dict[str, Any],
                     now: datetime) -> dict[str, Any]:
@@ -219,26 +258,8 @@ def _receive_source(sid: str, ent: dict[str, Any], exp: dict[str, Any],
         if want and ent.get("rights_epoch") != want:
             raise Reject("EPOCH_STALE", "rights_epoch is not the provider's current epoch")
 
-    # ---- original bytes, read once from the trusted mapping (no envelope locator) ----
-    locator = Path(exp["locator"])
-    roots = [str(Path(r)) for r in (dep.get("allowed_roots") or [])]
-    if roots:
-        resolved = str(locator.resolve())
-        if not any(resolved.lower().startswith(r.rstrip("\\").lower() + "\\") for r in roots):
-            raise Reject("TUPLE_MISMATCH", "pinned locator is outside the deployment's allowed roots")
-    try:
-        before = locator.stat(follow_symlinks=False)
-        if getattr(before, "st_file_attributes", 0) & getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0):
-            raise Reject("PATH_REPARSE_DENIED", "pinned source is a reparse point")
-        raw = locator.read_bytes()
-        after = locator.stat(follow_symlinks=False)
-    except Reject:
-        raise
-    except OSError as exc:
-        raise Reject("SOURCE_UNAVAILABLE", f"trusted source unreadable: {exc}") from exc
-    if (before.st_size, before.st_mtime_ns, getattr(before, "st_ino", 0)) != \
-            (after.st_size, after.st_mtime_ns, getattr(after, "st_ino", 0)) or len(raw) != after.st_size:
-        raise Reject("SOURCE_CHANGED_SINCE_READ", "source identity moved during the read")
+    # ---- original bytes: same-handle read through the product's own trust primitives ----
+    raw = _read_source_bytes(exp, dep)
     if wire.sha256(raw) != exp["expected_raw_sha256"]:
         raise Reject("SOURCE_CHANGED_SINCE_READ", "source bytes no longer match the pin")
     if len(raw) != ent["byte_length"]:
@@ -394,9 +415,10 @@ def receive(deployment: dict[str, Any], consumer_id: str, payload: bytes, *,
         except Reject as exc:
             row(sid, "REJECT", exc.code, sha=ent.get("sha"),
                 evidence={"detail": exc.detail, "scope": "SOURCE",
+                          # no pinned clause value here: a refusal must not echo content
                           "expected": {k: exp[k] for k in
                                        ("expected_raw_sha256", "requirement_span",
-                                        "required_fields", "expected_value")}})
+                                        "required_fields", "expected_value_sha256")}})
             continue
         row(sid, result["decision"], result["first_fail"], sha=ent["sha"], evidence={
             "R": result["R"], "P": result["P"], "M": result["M"],
@@ -405,7 +427,7 @@ def receive(deployment: dict[str, Any], consumer_id: str, payload: bytes, *,
             "authority_interval": result["authority_interval"],
             "provenance": result["provenance"],
             "expected": {k: exp[k] for k in ("expected_raw_sha256", "requirement_span",
-                                             "required_fields", "expected_value",
+                                             "required_fields", "expected_value_sha256",
                                              "required_set_sha256")},
         })
 

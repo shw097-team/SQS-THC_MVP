@@ -1,0 +1,23 @@
+{
+ "schema": "SST.PH01.W0.B0.R3.PublishReadback/1",
+ "increment": 4,
+ "revision": "r13",
+ "commit": "6b5eb556f00acbabeda231394919b6ae2fd43721",
+ "remote_main": "6b5eb556f00acbabeda231394919b6ae2fd43721",
+ "remote_equals_local": true,
+ "tree_files_at_commit": 115,
+ "logs_in_commit": 0,
+ "manifest_rows": 114,
+ "manifest_matches_tree": true,
+ "redacted_files_in_commit": 23,
+ "skipped_git_ignored": 21,
+ "withheld": [
+  {
+   "path": "20_TESTS/fixture/TEST_ONLY_keypair.json",
+   "sha256": "7d01a973182748031fe280934b52a85017c492ba853b72453bf08be3263b960b",
+   "reason": "test private key stays in the work root"
+  }
+ ],
+ "preexisting_residue_files": 56,
+ "fixed_link": "https://github.com/shw097-team/SQS-THC_MVP/commit/6b5eb556f00acbabeda231394919b6ae2fd43721"
+}

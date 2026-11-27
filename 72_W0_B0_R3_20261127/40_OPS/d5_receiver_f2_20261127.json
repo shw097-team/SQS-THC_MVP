@@ -1,0 +1,60 @@
+{
+ "schema": "SST.PH01.W0.B0.R3.D5ReceiverF2/1",
+ "measured_at": "2026-11-27T23:11:15.773458+08:00",
+ "import_surface": {
+  "modules_outside_stdlib": [
+   "__editable___hermes_agent_0_0_0_finder",
+   "_bz2",
+   "_ctypes",
+   "_hashlib",
+   "_lzma",
+   "_zstd",
+   "pywin32_bootstrap"
+  ],
+  "distributions": {
+   "cryptography": "50.0.2",
+   "cffi": "2.1.1",
+   "pycparser": "3.11"
+  },
+  "python": "3.14.9",
+  "receiver_file": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\10_CODE\\b0_r3_receiver\\receiver.py",
+  "rights_file": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\10_CODE\\b0_r3_receiver\\rights.py"
+ },
+ "external_helpers": {
+  "powershell": 1,
+  "whoami": 1,
+  "icacls": 0,
+  "principal": "desktop-57eo414\\user",
+  "note": "PowerShell reads the DACL of the deployment descriptor, whoami proves the process principal; both are OS helpers invoked by the rights entry, not runtime dependencies"
+ },
+ "native_first": {
+  "network_client_modules_imported": [],
+  "claim_ceiling": "No network module appears in the receiver's import set. This is an import-surface observation, not a packet-level OFF proof."
+ },
+ "no_write_observation": {
+  "source_sha_before": {
+   "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
+   "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_WM\\SST_PLP_PH01_ALL_WNM_2026-11-24_r2\\SST_PLP_PH01_W0M_實質正文.md": "5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96"
+  },
+  "source_sha_after": {
+   "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
+   "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_WM\\SST_PLP_PH01_ALL_WNM_2026-11-24_r2\\SST_PLP_PH01_W0M_實質正文.md": "5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96"
+  },
+  "sources_unchanged": true,
+  "code_tree_files": [
+   13,
+   13
+  ],
+  "code_tree_changes": [],
+  "receive_exit": 0,
+  "receive_verdict": "ACCEPTED",
+  "no_product_write_observed": true
+ },
+ "request_used": {
+  "path": "40_OPS/b0_read_request_r9_20261127.json",
+  "sources": [
+   "SST.ALL.W0.BLUEPRINT",
+   "SST.W0M.MAIN"
+  ]
+ }
+}

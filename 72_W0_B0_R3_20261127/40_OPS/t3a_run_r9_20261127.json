@@ -1,0 +1,78 @@
+{
+ "schema": "SST.PH01.W0.B0.R3.T3aRun/1",
+ "ran_at": "2026-11-27T23:10:16.800914+08:00",
+ "owner_window": {
+  "window_id": "WIN-fc1555255dd8",
+  "state": "OPEN",
+  "task": "SST_PLP_PH01_W0_B0_SOURCE_READ_AUTH",
+  "scope": [
+   "b0_source_read_authority",
+   "sqs_thc_ph01_e00"
+  ],
+  "ceiling": "READ_ONLY_PROBE",
+  "remaining_s": 14173,
+  "receipt_sha256": "4c88bc4189a5cc24243133be77ee6831aecf90a8a41e37c2c9c81c6710adc172",
+  "window_matches_receipt": true
+ },
+ "descriptor": {
+  "path": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\00_PREFLIGHT\\B0_READ_CONTEXT_20261127_r8.json",
+  "bytes": 3766,
+  "sha256": "1a3a66f5ae124cd7f08a0560a05cc71a7d7ec23c167230e8705ba5991ec9b8e7",
+  "supersedes": {
+   "path": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\00_PREFLIGHT\\B0_READ_CONTEXT_20261127_r7.json",
+   "note": "renewed earlier in this session"
+  }
+ },
+ "envelope": {
+  "path": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\40_OPS\\b0_sourcereadset_r9_20261127.json",
+  "bytes": 5473,
+  "sha256": "5d264bdc9035879a958c03cec17a8e83c185856f0c8b860d044c0003af14c480",
+  "candidate_digest": "daf538f7e38291789bd991dae4a47a7210e053e6a8aaa512f02a15bd96049fda",
+  "freeze_matches_replica": true,
+  "entries": [
+   {
+    "source_id": "SST.ALL.W0.BLUEPRINT",
+    "sha": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
+    "clause_span": [
+     572,
+     579
+    ],
+    "required_fields": [
+     "read"
+    ],
+    "observed": [
+     "read"
+    ],
+    "missing": [],
+    "authority_valid_from": "2026-11-27T23:09:16+08:00",
+    "authority_expires_at": "2026-11-28T03:06:29+08:00"
+   },
+   {
+    "source_id": "SST.W0M.MAIN",
+    "sha": "5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96",
+    "clause_span": [
+     295,
+     307
+    ],
+    "required_fields": [
+     "read"
+    ],
+    "observed": [
+     "read"
+    ],
+    "missing": [],
+    "authority_valid_from": "2026-11-27T23:09:16+08:00",
+    "authority_expires_at": "2026-11-28T03:06:29+08:00"
+   }
+  ],
+  "write_set": [],
+  "fin_order": "DENY",
+  "errors": []
+ },
+ "deployment": {
+  "path": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\00_PREFLIGHT\\DEPLOYMENT_prod_20261127_r10.json",
+  "bytes": 16006,
+  "sha256": "c5efcca4e2b4798ee91b5f6a5384bc9de073d4ea036d954e0704fb1a0c75a669",
+  "receipt_sha256": "4c88bc4189a5cc24243133be77ee6831aecf90a8a41e37c2c9c81c6710adc172"
+ }
+}

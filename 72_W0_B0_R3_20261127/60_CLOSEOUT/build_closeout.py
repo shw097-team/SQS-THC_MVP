@@ -43,17 +43,17 @@ def rows_of(p: Path) -> list[dict]:
 def main() -> int:
     now = datetime.now(timezone.utc).astimezone()
     base = load(PRE / "T1_BASELINE_20261127.json")
-    prod = load(OPS / "b0_producer_run_r8_20261127.json")
+    prod = load(OPS / "t3a_run_r9_20261127.json")
     t3 = load(OPS / "t3_f1f2_measurement_20261127.json")
-    RECEIPT_REV = "r10"   # the receipts minted against the frozen deployment, independent of doc revision
-    receipts = {c: load(OPS / f"{RECEIPT_REV}_consumer_{c}_receipt.json") for c in ("B1", "B2", "B3")}
+    RECEIPT_REV = "r11_inbound"   # receipts minted by the three batch entries against the current deployment
+    receipts = {c: load(OPS / f"{RECEIPT_REV}_{c.lower()}_receipt.json") for c in ("B1", "B2", "B3")}
     verdict = load(VERIFY / "verdict.json") if (VERIFY / "verdict.json").exists() else None
     log = (OPS / "b0_product_test_r8_20261127.log")
     log_txt = log.read_text(encoding="utf-8", errors="replace") if log.exists() else ""
     log_tail = [l for l in log_txt.splitlines() if l.startswith("Ran ") or l in ("OK", "FAILED")
                 or l.startswith("FAILED (")]
-    dep = load(PRE / "DEPLOYMENT_prod_20261127_r9.json")
-    envelope = load(OPS / "b0_sourcereadset_r8_20261127.json")
+    dep = load(PRE / "DEPLOYMENT_prod_20261127_r10.json")
+    envelope = load(OPS / "b0_sourcereadset_r9_20261127.json")
 
     def table_row(c: str) -> str:
         r = receipts[c]
@@ -63,8 +63,11 @@ def main() -> int:
             cells.append(f'`{row["source_id"]}` → **{row["decision"]}** '
                          f'(first_fail={row["first_fail"]}, sha=`{row["sha"][:16]}…`, '
                          f'R={ev.get("R")}, P={ev.get("P")}, M={ev.get("M")})')
-        return (f'| {c} | `{r["validator_name"]}` / `{r["validator_version"]}` | '
+        inbound = r.get("inbound", {})
+        entry = inbound.get("entry") or f"consumers.{c.lower()}.receive_envelope"
+        return (f'| {c} | `{entry}` | `{r["validator_name"]}` / `{r["validator_version"]}` | '
                 f'{r["sources_accepted"]}/{r["sources_expected"]} | **{r["verdict"]}** | '
+                f'`{inbound.get("mandatory_satisfied")}` | '
                 + '<br>'.join(cells) + ' |')
 
     md = []
@@ -118,7 +121,7 @@ def main() -> int:
               f"- 原生產者 digest（歷史 R5）：`f3fa76eaa1c083af39c88610492a5fcad482dc5b5bbb7eb9a79e2234c8dca49e`（25 檔／2570 B manifest，保留）。\n"
               f"- 本輪 producer freeze：`{prod['envelope']['candidate_digest']}`"
               f"（自 W 內 25 檔重算，**先於**讀 envelope 產生；envelope 宣告值與重算值相等："
-              f"`{prod['envelope']['candidate_digest_matches_replica']}`）。\n"
+              f"`{prod['envelope'].get('candidate_digest_matches_replica', prod['envelope'].get('freeze_matches_replica'))}`）。\n"
               f"- 本輪 envelope：`{prod['envelope']['path']}`，{prod['envelope']['bytes']} B，"
               f"raw `{prod['envelope']['sha256']}`；`write_set={prod['envelope']['write_set']}`、"
               f"`fin_order={prod['envelope']['fin_order']}`、`errors={prod['envelope']['errors']}`。\n"
@@ -144,8 +147,26 @@ def main() -> int:
               "| 分源缺陷 | `if env.get(\"errors\"): fail(...)` 對任何 errors 全份拒 | 全域 wire/tuple 才全拒；單源 typed error／失效只影響該源，兄弟續行 | "
               "`test_entry_and_error_for_same_source`（同源雙載拒）、設計見 §06.2 |\n")
 
+    d5 = load(OPS / "d5_receiver_f2_20261127.json") if (OPS / "d5_receiver_f2_20261127.json").exists() else {}
+    md.append("### 3.1｜本輪 D1–D7 差額處分\n")
+    md.append("| 差額 | 原契約要求 | 本輪處分 | 實證 |\n|---|---|---|---|\n"
+              "| D1 安全讀取 | 同 handle、ancestor／reparse／identity，不得自製第二套讀取 | 改呼叫產品自身 `b0_reader.root.open_authorized_file`，bytes 由該 handle `read_all()` 取得；`allowed_roots` 缺席即 `TRUST_CONTEXT_UNBOUND`（不 fail-open） | "
+              "`test_read_goes_through_the_product_primitive`／`test_allowed_roots_absent_fails_closed`／`test_pinned_locator_outside_allowed_roots` |\n"
+              "| D2 無權內容保護 | 拒絕或返回前失效時不得帶出內容 | 收據 evidence 只留 pin／span／R 與 `expected_value_sha256`，不再輸出 `expected_value`；拒絕路徑同樣無值 | "
+              "`test_accepted_receipt_does_not_carry_the_value`／`test_rights_refusal_does_not_carry_the_value` |\n"
+              "| D3 真權利及獨立 Expected | 真 issuer／區間／撤權／epoch／disclosure；Expected 不得由 envelope 反推 | Ed25519 收據簽章＋task／scope 有序 tuple＋window 同一性＋ceiling＋currency；producer freeze 先於讀 envelope 重算；R 由 RequiredSetSpec 重取、P 由 rule 重導 | "
+              "§4、§5、`test_provider_epoch_cannot_be_nulled` 系列 |\n"
+              "| D4 三端真入站 | 各自入口與 readback，非換 consumer_id | `consumers/b1.py`、`b2.py`、`b3.py` 各自宣告 Expected 並在漂移時拒絕；各自輸出 `inbound` readback | "
+              "§4 實際入口欄、`test_three_entries_agree_with_the_pinned_deployment` |\n"
+              "| D5 F2 真受影 | 不得以舊 Producer import probe 代證 | 對 Receiver 重量：import surface、分發版本、外部 OS 助手、無寫觀測 | "
+              f"`40_OPS/d5_receiver_f2_20261127.json`（no_product_write_observed=`{d5.get('no_write_observation', {}).get('no_product_write_observed')}`） |\n"
+              "| D6 候選／證據分帳 | 受檢候選與證據、發布投影分離 | `CANDIDATE_receiver_<rev>.tsv/json` 只含 receiver 程式＋測試＋fixture pin；證據 freeze 另帳；發布為去敏投影 | "
+              "本節與 `FREEZE_<rev>.json` / `CANDIDATE_receiver_<rev>.json` |\n"
+              "| D7 待升級與散布 | 不重研非必要進階；散布事件如實保留 | §9 待升級區照原具權裁決；LOCAL_ONLY 散布事件與 repo 殘留列於 `REDACTION_NOTICE` §2–§3 | §9、§11 |\n")
+
     md.append("### 4｜真受影 POS：三端各自入站\n")
-    md.append("| Consumer | validator | 每源結果 | 端判定 | 逐源 13 欄與 R/P/M |\n|---|---|---|---|---|\n"
+    md.append("| Consumer | 實際入口 | validator | 每源結果 | 端判定 | mandatory | 逐源 13 欄與 R/P/M |\n"
+              "|---|---|---|---|---|---|---|\n"
               + "\n".join(table_row(c) for c in ("B1", "B2", "B3")))
     md.append(f"\n- 三端同收一份 envelope `{prod['envelope']['sha256']}`，但各自 fixed expected、各自 validator、各自 readback；無換 ID。\n"
               f"- 權利：`{receipts['B1']['rights']['live_window_id']}`、ceiling `{receipts['B1']['rights']['effect_ceiling']}`、"
@@ -305,7 +326,7 @@ def main() -> int:
     # this document, the freeze artefacts, publish readbacks, checker verdicts, the publish
     # clone - is excluded by an enforced predicate, not by a sentence in the receipt.
     EXCLUDED_PREFIXES = ("tmp/", "publish/", "20_DEV/.tmp_tests", "70_PUBLISH/PUBLISH_READBACK_",
-                         "30_VERIFY/verdict", "60_CLOSEOUT/FREEZE")
+                         "30_VERIFY/verdict", "60_CLOSEOUT/FREEZE", "60_CLOSEOUT/CANDIDATE_")
     EXCLUDED_EXACT = {MANIFEST.relative_to(WAVE).as_posix(),
                       FREEZE.relative_to(WAVE).as_posix(),
                       DOC.relative_to(WAVE).as_posix()}
@@ -343,7 +364,7 @@ def main() -> int:
         # in the publish readback instead of here.
         "excluded_by_predicate": {
             "prefixes": ["tmp/", "publish/", "20_DEV/.tmp_tests", "70_PUBLISH/PUBLISH_READBACK_",
-                         "30_VERIFY/verdict", "60_CLOSEOUT/FREEZE"],
+                         "30_VERIFY/verdict", "60_CLOSEOUT/FREEZE", "60_CLOSEOUT/CANDIDATE_"],
             "exact": ["60_CLOSEOUT/FREEZE_MANIFEST_" + REV + ".tsv",
                       "60_CLOSEOUT/FREEZE_" + REV + ".json",
                       "60_CLOSEOUT/SST_PLP_PH01_W0_B0_CLOSEOUT_HANDOFF_" + REV + ".md"],
@@ -356,7 +377,7 @@ def main() -> int:
                           "It asserts nothing about semantics beyond what the receipts measured, "
                           "and it excludes itself, its manifest and the generated document."),
         "receipts": {c: {"verdict": receipts[c]["verdict"],
-                         "sha256": sha(OPS / f"{RECEIPT_REV}_consumer_{c}_receipt.json")} for c in receipts},
+                         "sha256": sha(OPS / f"{RECEIPT_REV}_{c.lower()}_receipt.json")} for c in receipts},
     }, ensure_ascii=False, indent=1).encode("utf-8"))
     mismatched = []
     for line in rows:

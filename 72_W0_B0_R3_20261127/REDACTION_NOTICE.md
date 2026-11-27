@@ -1,9 +1,9 @@
 # REDACTION NOTICE — LOCAL_ONLY clause text
 
-This directory publishes the r13 candidate of SST PH01 W0 B0 R3 (work root
+This directory publishes the r12 candidate of SST PH01 W0 B0 R3 (work root
 `SST_PH01_W0_B0_R3_20261127`).
 
-## 1. What was redacted in this wave (23 files actually in the commit)
+## 1. What was redacted in this wave (25 files actually in the commit)
 
 The clause value carried by the B0 envelope is LOCAL_ONLY for its declared consumers.
 Every published copy replaces exactly that sentence with `<LOCAL_ONLY_REDACTED>`.
@@ -11,6 +11,7 @@ Every published copy replaces exactly that sentence with `<LOCAL_ONLY_REDACTED>`
 | path | original sha256 | published sha256 | occurrences |
 |---|---|---|---|
 | `00_PREFLIGHT/DEPLOYMENT_prod_20261127.json` | `4528119b59f6d8414c96e2e024ef5b77b38eabaee41872a2098dc87306b8cff6` | `89745a94e1e95a85ab0721c47c5fd49931c96da911f8db03ab3e197354ab2294` | 12 |
+| `00_PREFLIGHT/DEPLOYMENT_prod_20261127_r10.json` | `c5efcca4e2b4798ee91b5f6a5384bc9de073d4ea036d954e0704fb1a0c75a669` | `7aba6fc56a63922a0e25a6a229c7e57dff6c75ef05580fd28178b54d6a29a894` | 12 |
 | `00_PREFLIGHT/DEPLOYMENT_prod_20261127_r8.json` | `78c78defe5058cab817fbb916e6656b4f3d061ac7bc4ada1381ebe4248e4aac3` | `f201b7dcb7ea17adc97d4e018c2eedafeed12a75bcae16d0770c2fbefde11124` | 12 |
 | `00_PREFLIGHT/DEPLOYMENT_prod_20261127_r9.json` | `8348c7ca686718e591741c0ca92959145e24da16d9948a5265c8cf7ecb069f1d` | `ae41b52c8b9e0da639a22786c0ed5145a271762abfa9f3411a174c56e9a0e573` | 12 |
 | `00_PREFLIGHT/T1_BASELINE_20261127.json` | `a7a9a2a4c8d903b6fbc27f2a7db46b8fcb71970062e54686a1eeaf74dba3cf5f` | `bf697510500e40cd792cf557407df5c4b5c8f1a9221eedebaf43304beaf72aa8` | 4 |
@@ -21,6 +22,7 @@ Every published copy replaces exactly that sentence with `<LOCAL_ONLY_REDACTED>`
 | `20_DEV/tests/trust_fixture.py` | `c4db3fac39c7d0b76210b54e298b5fc4548cf6e03e3604ef57f0d2d93a0c255f` | `6b551f07f49a42279c2aae4d69722a913c885606e805f683263637f7ba77c132` | 2 |
 | `40_OPS/b0_read_stdout_r8_20261127.json` | `abb5546cbf36b94195fa8935ceb170f163cbe5c7832fbf55d5f778e0f6702d2e` | `5b9775931f06a8013845ba61f42197248c9a1663763554959e4dcca37349856a` | 2 |
 | `40_OPS/b0_sourcereadset_r8_20261127.json` | `abb5546cbf36b94195fa8935ceb170f163cbe5c7832fbf55d5f778e0f6702d2e` | `5b9775931f06a8013845ba61f42197248c9a1663763554959e4dcca37349856a` | 2 |
+| `40_OPS/b0_sourcereadset_r9_20261127.json` | `5d264bdc9035879a958c03cec17a8e83c185856f0c8b860d044c0003af14c480` | `a29928f72897ac4c619bbca95ea6533c9f1e06c4f07e4c356e8664c40cc2bb0e` | 2 |
 | `40_OPS/r10_consumer_B1_receipt.json` | `cb9be7dfe5fd1c46ad2674771a0563e9eae721b54c3c600bf169a461e6932197` | `c700684f1c817b0775060ab6551314ee2ad5bca998410093c9802c1c0cc6dd7e` | 2 |
 | `40_OPS/r10_consumer_B2_receipt.json` | `372003e3eef1c64fc2a9146833f5946718b8801ea8dc3b304d0663a9385a280c` | `2b5f1393b82754300faa7a5a1a23b6c75f6f7eb47e406041da5bdb7667ec8e7e` | 2 |
 | `40_OPS/r10_consumer_B3_receipt.json` | `0258834a444d78297c5427abc56ac56ea72a960a4d8196a263e23fd5aa55640f` | `487844af46c803b5b1e2ddde6ba071a5c6f9360ff6c196a8d9a692c48bd7cfc3` | 2 |
@@ -39,7 +41,7 @@ Every published copy replaces exactly that sentence with `<LOCAL_ONLY_REDACTED>`
 Commit `b144f63` in this repository published the unredacted r8 copies. History is not
 rewritten. This notice is the record that those bytes disclosed one clause sentence.
 
-## 3. Pre-existing residue elsewhere in this repository (56 files at `1220ca47fd55`)
+## 3. Pre-existing residue elsewhere in this repository (56 files at `6b5eb556f00a`)
 
 The same sentence also sits in files this wave did not author. They are listed so the
 disclosure is complete; redacting them would rewrite other rounds' delivered bytes and is

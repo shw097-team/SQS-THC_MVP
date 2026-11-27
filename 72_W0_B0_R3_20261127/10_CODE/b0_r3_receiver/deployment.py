@@ -8,6 +8,7 @@ algorithm tests and carries no product rights.
 """
 from __future__ import annotations
 
+import sys
 from pathlib import Path
 from typing import Any
 
@@ -15,10 +16,16 @@ from .receiver import load_pinned_deployment
 
 WAVE_ROOT = Path(__file__).resolve().parents[2]
 
+# the product tree this wave relocated; the receiver reuses its trust primitives instead of
+# growing a second Windows open path.  Bound here, never from a caller argument.
+_PRODUCT_TREE = WAVE_ROOT / "20_DEV"
+if str(_PRODUCT_TREE) not in sys.path:
+    sys.path.insert(0, str(_PRODUCT_TREE))
+
 PINNED: dict[str, dict[str, str]] = {
     "prod": {
-        "path": str(WAVE_ROOT / "00_PREFLIGHT" / "DEPLOYMENT_prod_20261127_r9.json"),
-        "sha256": "8348c7ca686718e591741c0ca92959145e24da16d9948a5265c8cf7ecb069f1d",
+        "path": str(WAVE_ROOT / "00_PREFLIGHT" / "DEPLOYMENT_prod_20261127_r10.json"),
+        "sha256": "c5efcca4e2b4798ee91b5f6a5384bc9de073d4ea036d954e0704fb1a0c75a669",
     },
     "fixture": {
         "path": str(WAVE_ROOT / "20_TESTS" / "fixture" / "DEPLOYMENT_fixture_20261127_r9.json"),

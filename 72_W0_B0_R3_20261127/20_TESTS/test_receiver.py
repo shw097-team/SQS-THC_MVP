@@ -616,5 +616,71 @@ class HardeningNegatives(ReceiverBase):
         self.assert_reject(r, "TUPLE_MISMATCH")
 
 
+class NoLeakAndPrimitiveArms(ReceiverBase):
+    """D2 (no unauthorised content on any path) and D1 (the product's own read primitive)."""
+
+    def test_accepted_receipt_does_not_carry_the_value(self):
+        r = self.run_env(self.base, "B1")
+        self.assertEqual(r["verdict"], "ACCEPTED")
+        blob = json.dumps(r, ensure_ascii=False)
+        self.assertNotIn("READ FROM THE FIXTURE SOURCE ONLY", blob)
+        self.assertIn("expected_value_sha256", blob)
+
+    def test_rights_refusal_does_not_carry_the_value(self):
+        self.mutate_window(state="CLOSED")
+        r = self.run_env(self.base, "B1")
+        self.assertEqual(r["verdict"], "REJECTED")
+        blob = json.dumps(r, ensure_ascii=False)
+        self.assertNotIn("READ FROM THE FIXTURE SOURCE ONLY", blob)
+
+    def test_allowed_roots_absent_fails_closed(self):
+        dep = copy.deepcopy(self.dep)
+        dep.pop("allowed_roots", None)
+        r = receive(dep, "B1", self.base_raw, now=FAR_NOW)
+        self.assert_reject(r, "TRUST_CONTEXT_UNBOUND")
+
+    def test_read_goes_through_the_product_primitive(self):
+        import b0_reader.root as product_root
+        original = product_root.open_authorized_file
+        calls = []
+
+        def spy(path, **kw):
+            calls.append((str(path), kw.get("allowed_root")))
+            return original(path, **kw)
+
+        product_root.open_authorized_file = spy
+        try:
+            r = self.run_env(self.base, "B1")
+        finally:
+            product_root.open_authorized_file = original
+        self.assertEqual(r["verdict"], "ACCEPTED")
+        self.assertEqual(len(calls), 1)
+        self.assertTrue(calls[0][1])
+
+
+class ConsumerEntryArms(unittest.TestCase):
+    """D4: each batch's own declaration must equal the pinned deployment it consumes."""
+
+    def test_three_entries_agree_with_the_pinned_deployment(self):
+        from b0_r3_receiver import deployment as dep_mod
+        from consumers import b1, b2, b3
+        dep = dep_mod.load("prod")
+        for mod in (b1, b2, b3):
+            pinned = dep["consumers"][mod.CONSUMER_ID]["sources"]
+            self.assertEqual(sorted(mod.EXPECTED["sources"]), sorted(pinned))
+            for sid, decl in mod.EXPECTED["sources"].items():
+                self.assertEqual(decl["required_fields"], pinned[sid]["required_fields"])
+                self.assertEqual(decl["expected_raw_sha256"], pinned[sid]["expected_raw_sha256"])
+                self.assertEqual(decl["requirement_span"], pinned[sid]["requirement_span"])
+
+    def test_entry_refuses_on_declaration_drift(self):
+        from consumers import common
+        bad = {"consumer_use": "x", "sources": {"SST.ALL.W0.BLUEPRINT": {
+            "required_fields": ["read"], "expected_raw_sha256": "0" * 64,
+            "requirement_span": [572, 579]}}}
+        with self.assertRaises(SystemExit):
+            common.run_entry("B1", bad, b"{}", deployment_id="prod")
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=2)

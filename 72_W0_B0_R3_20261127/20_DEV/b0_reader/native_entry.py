@@ -32,12 +32,12 @@ from .winio import (
 EXPECTED_DESCRIPTOR_PATH = (
     r"C:\Projects\Agent_Workspace\FHS-5_Workspace"
     r"\SST_PH01_W0_B0_R3_20261127\00_PREFLIGHT"
-    r"\B0_READ_CONTEXT_20261127_r7.json"
+    r"\B0_READ_CONTEXT_20261127_r8.json"
 )
 EXPECTED_DESCRIPTOR_SHA = (
-    "6f7d8d25955ce3e89489d16565bf8c3fd0c82d0de618bdbaa9deb1efd4e3a397"
+    "1a3a66f5ae124cd7f08a0560a05cc71a7d7ec23c167230e8705ba5991ec9b8e7"
 )
-EXPECTED_DESCRIPTOR_BYTES = 3865
+EXPECTED_DESCRIPTOR_BYTES = 3766
 CONTEXT_VERSION = "B0TrustedContext/1"
 
 _TRUST_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
