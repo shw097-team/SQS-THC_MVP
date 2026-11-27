@@ -388,6 +388,44 @@ def main() -> int:
     if mismatched:
         raise SystemExit(json.dumps({"refused": "MANIFEST_DOES_NOT_DESCRIBE_DISK",
                                      "files": mismatched}, ensure_ascii=False))
+    # ---- D6: the receiver candidate, separate from the evidence freeze ----
+    cand_members = []
+    for rel in ("10_CODE/b0_r3_receiver/wire.py", "10_CODE/b0_r3_receiver/rights.py",
+                "10_CODE/b0_r3_receiver/receiver.py", "10_CODE/b0_r3_receiver/deployment.py",
+                "10_CODE/b0_r3_receiver/cli.py", "10_CODE/b0_r3_receiver/__init__.py",
+                "10_CODE/consumers/common.py", "10_CODE/consumers/b1.py",
+                "10_CODE/consumers/b2.py", "10_CODE/consumers/b3.py",
+                "10_CODE/consumers/__init__.py", "20_TESTS/test_receiver.py",
+                "20_TESTS/fixture/DEPLOYMENT_fixture_20261127_r9.json"):
+        q = WAVE / rel
+        raw = q.read_bytes()
+        cand_members.append(f"{rel}\t{hashlib.sha256(raw).hexdigest()}\t{len(raw)}")
+    cand_body = ("\n".join(cand_members) + "\n").encode("utf-8")
+    cand_tsv = WAVE / "60_CLOSEOUT" / f"CANDIDATE_receiver_{REV}.tsv"
+    cand_tsv.write_bytes(cand_body)
+    (WAVE / "60_CLOSEOUT" / f"CANDIDATE_receiver_{REV}.json").write_text(json.dumps({
+        "schema": "SST.PH01.W0.B0.R3.ReceiverCandidate/1",
+        "revision": REV,
+        "members": len(cand_members),
+        "manifest": {"path": str(cand_tsv), "bytes": len(cand_body),
+                     "sha256": hashlib.sha256(cand_body).hexdigest()},
+        "convention": "path<TAB>sha256<TAB>byte_length<LF>; sorted by UTF-8 bytes",
+        "separate_from_evidence_freeze": True,
+        "note": ("These are the bytes a separated checker judges for the receiver. The evidence "
+                 "freeze covers receipts, descriptors and the product tree as well."),
+    }, ensure_ascii=False, indent=1).encode("utf-8")) if False else         (WAVE / "60_CLOSEOUT" / f"CANDIDATE_receiver_{REV}.json").write_bytes(
+            json.dumps({
+                "schema": "SST.PH01.W0.B0.R3.ReceiverCandidate/1",
+                "revision": REV,
+                "members": len(cand_members),
+                "manifest": {"path": str(cand_tsv), "bytes": len(cand_body),
+                             "sha256": hashlib.sha256(cand_body).hexdigest()},
+                "convention": "path<TAB>sha256<TAB>byte_length<LF>; sorted by UTF-8 bytes",
+                "separate_from_evidence_freeze": True,
+                "note": ("These are the bytes a separated checker judges for the receiver. The "
+                         "evidence freeze covers receipts, descriptors and the product tree too."),
+            }, ensure_ascii=False, indent=1).encode("utf-8"))
+
     print(json.dumps({"document": str(DOC), "bytes": DOC.stat().st_size,
                       "manifest": {"path": str(MANIFEST), "members": len(rows), "sha256": manifest_sha},
                       "freeze": str(FREEZE)}, ensure_ascii=False, indent=1))

@@ -1,0 +1,13 @@
+{
+ "schema": "SST.PH01.W0.B0.R3.ReceiverCandidate/1",
+ "revision": "r18",
+ "members": 13,
+ "manifest": {
+  "path": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\60_CLOSEOUT\\CANDIDATE_receiver_r18.tsv",
+  "bytes": 1320,
+  "sha256": "0c6f8fbe833a7b32b17fbfa75b645793549a0a39b75b2895f506a59967894176"
+ },
+ "convention": "path<TAB>sha256<TAB>byte_length<LF>; sorted by UTF-8 bytes",
+ "separate_from_evidence_freeze": true,
+ "note": "These are the bytes a separated checker judges for the receiver. The evidence freeze covers receipts, descriptors and the product tree too."
+}
