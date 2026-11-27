@@ -24,12 +24,12 @@ if str(_PRODUCT_TREE) not in sys.path:
 
 PINNED: dict[str, dict[str, str]] = {
     "prod": {
-        "path": str(WAVE_ROOT / "00_PREFLIGHT" / "DEPLOYMENT_prod_20261127_r10.json"),
-        "sha256": "c5efcca4e2b4798ee91b5f6a5384bc9de073d4ea036d954e0704fb1a0c75a669",
+        "path": str(WAVE_ROOT / "00_PREFLIGHT" / "DEPLOYMENT_prod_20261127_r11.json"),
+        "sha256": "9d89781cbce772c14fa1d6edcc7ffa8231331827cef1150644736ea8666a4571",
     },
     "fixture": {
         "path": str(WAVE_ROOT / "20_TESTS" / "fixture" / "DEPLOYMENT_fixture_20261127_r9.json"),
-        "sha256": "59c5553466fa36737edaf8bf7b3bb5ac37ff9e9279f076ddf0e9858f92696e95",
+        "sha256": "08fbce8bc27df86329f24ef3b09e486aa4ff2620c7de0f00922566fadbe497a8",
     },
 }
 

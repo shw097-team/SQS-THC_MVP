@@ -22,11 +22,13 @@ CODE = WAVE / "10_CODE"
 RECEIPT = Path(r"C:\Projects\Agent_Workspace\FHS_NEXT_Workspace\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\owner_ws\artifacts\OWNER_WINDOW.json")
 WINDOW = Path(os.path.expanduser("~/.hgk-owner/window.json"))
 TEMPLATE = WAVE / "00_PREFLIGHT" / "B0_READ_CONTEXT_20261127_r7.json"
-NEW_DESCRIPTOR = WAVE / "00_PREFLIGHT" / "B0_READ_CONTEXT_20261127_r8.json"
+REV = os.environ.get("B0_REV", "r8")
+_suffix = int(REV.lstrip("r")) + 1
+NEW_DESCRIPTOR = WAVE / "00_PREFLIGHT" / f"B0_READ_CONTEXT_20261127_{REV}.json"
 NATIVE_ENTRY = WAVE / "20_DEV" / "b0_reader" / "native_entry.py"
 OPS = WAVE / "40_OPS"
-ENVELOPE = OPS / "b0_sourcereadset_r9_20261127.json"
-DEPLOYMENT = WAVE / "00_PREFLIGHT" / "DEPLOYMENT_prod_20261127_r10.json"
+ENVELOPE = OPS / f"b0_sourcereadset_r{_suffix}_20261127.json"
+DEPLOYMENT = WAVE / "00_PREFLIGHT" / f"DEPLOYMENT_prod_20261127_r{_suffix + 1}.json"
 
 # Independent pin for the inherited SourceManifest (provenance: the K documents listed in
 # build_deployment_r8.py).  Never taken from the envelope under test; still UNVERIFIED.
@@ -148,7 +150,7 @@ def main() -> int:
         lambda m: ('EXPECTED_DESCRIPTOR_PATH = (\n'
                    '    r"C:\\Projects\\Agent_Workspace\\FHS-5_Workspace"\n'
                    '    r"\\SST_PH01_W0_B0_R3_20261127\\00_PREFLIGHT"\n'
-                   '    r"\\B0_READ_CONTEXT_20261127_r8.json"\n'
+                   '    r"\\' + NEW_DESCRIPTOR.name + '"' + '\n'
                    ')\n'), code, count=1)
     code2, n_sha = re.subn(r'EXPECTED_DESCRIPTOR_SHA = \(\n    "[0-9a-f]{64}"\n\)',
                            lambda m: f'EXPECTED_DESCRIPTOR_SHA = (\n    "{new_sha}"\n)',
@@ -209,7 +211,14 @@ def main() -> int:
     for src in doc["sources"]:
         loc = Path(src["locator"])
         raw = loc.read_bytes()
-        rs = json.loads(Path(src["required_set"]["ref"]).read_text(encoding="utf-8"))
+        rs_bytes = Path(src["required_set"]["ref"]).read_bytes()
+        if sha(rs_bytes) != src["required_set"]["sha"]:
+            print(json.dumps({"refused": "REQUIRED_SET_PIN_MISMATCH",
+                              "source": src["source_id"],
+                              "declared": src["required_set"]["sha"],
+                              "actual": sha(rs_bytes)}, ensure_ascii=False))
+            return 4
+        rs = json.loads(rs_bytes.decode("utf-8"))
         rule = rs["rules"][0]
         a, b = src["required_set"]["span"]
         lines = physical_lines(raw)
@@ -226,7 +235,12 @@ def main() -> int:
             "requirement_span": [a, b], "expected_clause_sha256": sha(clause),
             "required_fields": rs["required_fields"],
             "required_set_ref": src["required_set"]["ref"],
-            "required_set_sha256": sha(Path(src["required_set"]["ref"]).read_bytes()),
+            "required_set_sha256": sha(rs_bytes),
+            "source_owner": src["source_owner"],
+            "usage_evidence_ref": src["usage_evidence_ref"],
+            "revocation_check_ref": src["revocation_check_ref"],
+            "authorization_valid_from": doc["valid_from"],
+            "authorization_expires_at": doc["expires_at"],
             "extraction_rule": rule, "expected_value": value,
             "expected_value_sha256": sha(value.encode("utf-8")), "mandatory": True,
         }
@@ -297,7 +311,7 @@ def main() -> int:
         "deployment": {"path": str(DEPLOYMENT), "bytes": len(dep_body), "sha256": sha(dep_body),
                        "receipt_sha256": checks["receipt_sha256"]},
     }
-    (OPS / "t3a_run_r9_20261127.json").write_bytes(
+    (OPS / f"t3a_run_{REV}_20261127.json").write_bytes(
         json.dumps(summary, ensure_ascii=False, indent=1).encode("utf-8"))
     print(json.dumps(summary, ensure_ascii=False, indent=1)[:3000])
     return 0 if freeze_ok else 6

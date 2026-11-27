@@ -186,7 +186,7 @@ def main() -> int:
               "`usage_evidence_sha` 必須等於 live window 收據 sha（`rights.py:201`），該收據經 Ed25519 驗章；"
               "`disclosure` 必須落在 deployment 由可信配置釘住的允許集（`rights.py:189`）；"
               "task／scope／principal／ceiling 為 window tuple 精確比對。`source_owner` 屬宣告標籤，"
-              "其真權威由單一 OWNER 簽章收據與上述 sha 綁定承擔，不另立第二權威 | "
+              "其真權威由單一 OWNER 簽章收據與上述 sha 綁定承擔，不另立第二權威（**此標籤化處分已被 §3.3 取代**） | "
               "`verdict_r20_round7.json` item 13 探針；`test_rights_refusal_does_not_carry_the_value` |\n"
               "| D3-B 權利區間與返回前重驗 | 拒絕未生效／到期／超期／撤權，返回前重驗須涵蓋當期全部來源 | "
               "**已閉合**：`check_envelope_authority` 以同一可信時鐘判 `valid_from ≤ now < expires_at`（aware、保 offset），"
@@ -203,8 +203,15 @@ def main() -> int:
               "`required_set_sha256`（重算值）而未與 descriptor 宣告的 pin 比對；現要求二者相等，否則 "
               "`REQUIRED_SET_PIN_MISMATCH`。規則側仍由 spec 位元組導出 `expected_value_sha256`／"
               "`expected_clause_sha256`，receiver 以 `CLAUSE_RULE_MISMATCH` 與 R/P/M 重取作實質核對；"
-              "`provenance.rule_sha` 為宣告標籤，不單獨授予任何 decision | 同上 POS 與 NEG3 臂 |\n")
+              "`provenance.rule_sha` 為宣告標籤，不單獨授予任何 decision（**此處分已被 §3.3 取代**） | 同上 POS 與 NEG3 臂 |\n")
 
+    md.append("### 3.3｜四項具名差額最終處分（r27）\n")
+    md.append("| 具名差額 | 原要求 | 本輪處分（真值綁定，非標籤） | POS／NEG 實證 |\n"
+              "|---|---|---|---|\n"
+              "| ① 實際續期建構器 RequiredSet pin | 取合法 bytes、核其 SHA 等於 descriptor 原宣告 pin、且用同一份已核 bytes 建構 | `40_OPS/t3a_run_r9.py` 新增 `REQUIRED_SET_PIN_MISMATCH`：先讀 bytes→比對 `required_set.sha`→以同一 `rs_bytes` 解析→`required_set_sha256` 取 `sha(rs_bytes)` | 本輪實際續期（r9 descriptor／r10 envelope）跑通；NEG3 由 `d3_d3cd_probe` 覆蓋 |\n"
+              "| ② `provenance.rule_sha` 原規則真值 | B0 §02.R：規則 JSON raw SHA 即 `rule_sha`，不得只核格式 | `receiver.py` 要求 `rule_sha == deployment.required_set_sha256`、`rule_ref == required_set_ref`，不符即 `CLAUSE_RULE_MISMATCH` | `test_rule_sha_must_be_the_required_set_digest`／`test_rule_ref_must_be_the_required_set` |\n"
+              "| ③ authority 原必要欄位真值 | `source_owner`／`usage_evidence_ref`／`revocation_check_ref` 須實質綁定 | `rights.check_envelope_authority(..., exp)` 逐源精確比對三欄，不符即 `RIGHTS_UNVERIFIED`，仍在讀 bytes 之前 | `test_authority_source_owner_is_bound`／`_usage_evidence_ref_is_bound`／`_revocation_ref_is_bound` |\n"
+              "| ④ 原權利區間與返回前重驗 | envelope authority 區間須落在原真授權期間 | `rights.py` 新增包含檢查（超出即 `RIGHTS_UNVERIFIED`），保留既有三種時效碼；返回前 deployment 級 recheck 涵蓋全部來源 | `test_authority_interval_must_sit_inside_the_authorised_period`／`test_the_pinned_values_still_accept` |\n")
     md.append("### 4｜真受影 POS：三端各自入站\n")
     md.append("| Consumer | 實際入口 | validator | 每源結果 | 端判定 | mandatory | 逐源 13 欄與 R/P/M |\n"
               "|---|---|---|---|---|---|---|\n"

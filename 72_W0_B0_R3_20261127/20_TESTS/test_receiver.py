@@ -289,6 +289,44 @@ class TupleAndPinNegatives(ReceiverBase):
         self.assert_reject(self.run_env(doc), "WIRE_INVALID")
 
 
+class D3ResidualArms(ReceiverBase):
+    """r27: the four named D3 residuals must be refused on real values, not shapes."""
+
+    def test_authority_source_owner_is_bound(self):
+        doc = copy.deepcopy(self.base)
+        doc["entries"][0]["authority"]["source_owner"] = "some other owner"
+        self.assert_reject(self.run_env(doc), "RIGHTS_UNVERIFIED")
+
+    def test_authority_usage_evidence_ref_is_bound(self):
+        doc = copy.deepcopy(self.base)
+        doc["entries"][0]["authority"]["usage_evidence_ref"] = str(FX / "another_receipt.json")
+        self.assert_reject(self.run_env(doc), "RIGHTS_UNVERIFIED")
+
+    def test_authority_revocation_ref_is_bound(self):
+        doc = copy.deepcopy(self.base)
+        doc["entries"][0]["authority"]["revocation_check_ref"] = str(FX / "other_state.json") + "#state"
+        self.assert_reject(self.run_env(doc), "RIGHTS_UNVERIFIED")
+
+    def test_authority_interval_must_sit_inside_the_authorised_period(self):
+        doc = copy.deepcopy(self.base)
+        doc["entries"][0]["authority"]["expires_at"] = "2100-06-01T00:00:00+00:00"
+        self.assert_reject(self.run_env(doc), "RIGHTS_UNVERIFIED")
+
+    def test_rule_sha_must_be_the_required_set_digest(self):
+        doc = copy.deepcopy(self.base)
+        doc["entries"][0]["provenance"]["rule_sha"] = "b" * 64
+        self.assert_reject(self.run_env(doc), "CLAUSE_RULE_MISMATCH")
+
+    def test_rule_ref_must_be_the_required_set(self):
+        doc = copy.deepcopy(self.base)
+        doc["entries"][0]["provenance"]["rule_ref"] = str(FX / "some_other_spec.json")
+        self.assert_reject(self.run_env(doc), "CLAUSE_RULE_MISMATCH")
+
+    def test_the_pinned_values_still_accept(self):
+        receipt = self.run_env(copy.deepcopy(self.base))
+        self.assertEqual(receipt["verdict"], "ACCEPTED", receipt)
+
+
 class RequiredSetNegatives(ReceiverBase):
     def test_required_set_changed(self):
         doc = copy.deepcopy(self.base)
@@ -523,9 +561,9 @@ class TrustRootNegatives(ReceiverBase):
         self.assertIn("broad principal has write", ctx.exception.detail)
 
     def test_sealed_descriptor_passes_the_same_gate(self):
-        dep = load_pinned_deployment("fixture",
-                                     "59c5553466fa36737edaf8bf7b3bb5ac37ff9e9279f076ddf0e9858f92696e95",
-                                     str(FX / "DEPLOYMENT_fixture_20261127_r9.json"))
+        from b0_r3_receiver import deployment as dep_mod
+        pin = dep_mod.PINNED["fixture"]
+        dep = load_pinned_deployment("fixture", pin["sha256"], pin["path"])
         self.assertEqual(dep["deployment_id"], "fixture")
 
 

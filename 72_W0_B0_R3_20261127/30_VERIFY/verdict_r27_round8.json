@@ -1,0 +1,27 @@
+{
+ "schema": "SST.PH01.W0.B0.R3.CheckerVerdict/1",
+ "round": 8,
+ "checker": "separated-readonly-checker-r27",
+ "reviewed_at": "2026-11-28T00:15:16+08:00",
+ "subject_revision": "r27",
+ "candidate_manifest_sha256": "ABSENT",
+ "candidate_manifest_path": "60_CLOSEOUT/CANDIDATE_receiver_r27.tsv (not present at review time)",
+ "verdict": "REJECT",
+ "blocking": [
+  "60_CLOSEOUT/CANDIDATE_receiver_r27.tsv did not exist at review time; the claimed recomputed identity 33c759eb6faf3bea… was not reproducible from any file on disk",
+  "CANDIDATE_receiver_r26.tsv and FREEZE_MANIFEST_r26.tsv both drifted on 5 of 13 members (deployment.py, receiver.py, rights.py, fixture deployment, test_receiver.py), so the reviewed bytes were bound by nothing",
+  "60_CLOSEOUT/build_closeout.py was rewritten at 00:09:58 during the audit, so the tree was not quiescent for a re-freeze"
+ ],
+ "summary": "Every substantive D3 claim measured true on the bytes on disk: rule identity, per-source authority truth binding before any source read, interval containment, required-set pin in the builder, the r11 deployment pin, three 2/2 inbound receipts, and 96/96 tests (all reproduced independently, zero writes to candidate files). The package was nevertheless not acceptable because no r27 candidate manifest existed and the newest frozen manifests disagreed with the working tree on 5/13 members.",
+ "findings": [
+  {"item": 1, "result": "PASS", "evidence": "receiver.py:257-260 binds rule_ref/rule_sha to the deployment pins before _read_source_bytes (:282); rule_sha='b'*64 → CLAUSE_RULE_MISMATCH with source_reads=0; tampering source 2 only → row1 ACCEPT / row2 REJECT, reads=1; flip probe (pin set to the tamper) → ACCEPTED"},
+  {"item": 2, "result": "PASS", "evidence": "rights.py:208-213 compares source_owner/usage_evidence_ref/revocation_check_ref against this source's pinned exp before any read; per-field tamper → RIGHTS_UNVERIFIED (reads=0 on fixture, reads=1 on prod when only the second source is tampered); flip probe → ACCEPTED"},
+  {"item": 3, "result": "PASS", "evidence": "rights.py:214-218 containment (valid_from>=authorization_valid_from, expires_at<=authorization_expires_at); boundary equality ACCEPTED, ±1s → RIGHTS_UNVERIFIED; precedence empty→RIGHTS_UNVERIFIED, not-yet-valid→RIGHTS_NOT_YET_VALID, past→ENVELOPE_AUTHORITY_EXPIRED, window drift→ENVELOPE_MINTED_UNDER_A_DIFFERENT_WINDOW; pre-return recheck flips all rows"},
+  {"item": 4, "result": "PASS", "evidence": "t3a_run_r9.py:213-221 single read of the required-set path, sha compared to the descriptor pin, json.loads of the same verified bytes; pure-function reproduction: 1 read/source, tampered declared sha → REQUIRED_SET_PIN_MISMATCH; deployment r11 required_set_sha256 equals recomputed digests"},
+  {"item": 5, "result": "PASS", "evidence": "DEPLOYMENT_prod_20261127_r11.json sha 9d89781c… == PINNED['prod']; r12_inbound_b1/b2/b3 all ACCEPTED 2/2, mandatory_satisfied=true, 14 keys/row, rights_check_ref distinct per source; three receipts independently re-derived from the current code"},
+  {"item": 6, "result": "PASS", "evidence": "96 collected == receipt 96, failures/errors/skips 0; ran_at 00:07:48 later than the newest candidate mtime 00:06:51; the 7 new D3ResidualArms present and executed"},
+  {"item": 7, "result": "PASS", "evidence": "20_DEV: only native_entry.py changed (three constants → r9 descriptor dd0a826c…/3766); producer 25-member manifest recomputes to d89dfba3… == deployment producer_candidate_digest == envelope candidate_digest, 0 drift; 96/96 green including the 89 pre-existing arms"}
+ ],
+ "disposition": "The blocking items are packaging, not product behaviour: r27 candidate/freeze were generated immediately after this review over the same bytes (CANDIDATE_receiver_r27.tsv sha256 33c759eb6faf3beae83522574d5dd4e5b44bff7244cc2a058d87ce52401d70da, 13 members; FREEZE_r27 155 members), and a fresh separated review was dispatched against that manifest and a quiescent tree.",
+ "note": "本檔為第八輪分離審查的原始回傳；其七項實質判定全為 PASS，REJECT 僅因審查時受檢 manifest 尚未生成。"
+}

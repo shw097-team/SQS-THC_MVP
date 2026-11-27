@@ -1,8 +1,8 @@
 {
  "schema": "SST.PH01.W0.B0.R3.T3aRun/1",
- "ran_at": "2026-11-27T23:10:16.800914+08:00",
+ "ran_at": "2026-11-28T00:06:36.294573+08:00",
  "owner_window": {
-  "window_id": "WIN-fc1555255dd8",
+  "window_id": "WIN-1adcbd9344e2",
   "state": "OPEN",
   "task": "SST_PLP_PH01_W0_B0_SOURCE_READ_AUTH",
   "scope": [
@@ -10,24 +10,24 @@
    "sqs_thc_ph01_e00"
   ],
   "ceiling": "READ_ONLY_PROBE",
-  "remaining_s": 14173,
-  "receipt_sha256": "4c88bc4189a5cc24243133be77ee6831aecf90a8a41e37c2c9c81c6710adc172",
+  "remaining_s": 14272,
+  "receipt_sha256": "7328c01983654b8fc390a91cbf27f2113cefd9138edc4732dfe3a75ec4ae2390",
   "window_matches_receipt": true
  },
  "descriptor": {
-  "path": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\00_PREFLIGHT\\B0_READ_CONTEXT_20261127_r8.json",
+  "path": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\00_PREFLIGHT\\B0_READ_CONTEXT_20261127_r9.json",
   "bytes": 3766,
-  "sha256": "1a3a66f5ae124cd7f08a0560a05cc71a7d7ec23c167230e8705ba5991ec9b8e7",
+  "sha256": "dd0a826c9116446475e23077f3b3c9596fa052fbe87b8986dc5761f91225ea38",
   "supersedes": {
    "path": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\00_PREFLIGHT\\B0_READ_CONTEXT_20261127_r7.json",
    "note": "renewed earlier in this session"
   }
  },
  "envelope": {
-  "path": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\40_OPS\\b0_sourcereadset_r9_20261127.json",
+  "path": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\40_OPS\\b0_sourcereadset_r10_20261127.json",
   "bytes": 5473,
-  "sha256": "5d264bdc9035879a958c03cec17a8e83c185856f0c8b860d044c0003af14c480",
-  "candidate_digest": "daf538f7e38291789bd991dae4a47a7210e053e6a8aaa512f02a15bd96049fda",
+  "sha256": "0f13e6890f2e761cbc404452d1a23051e6b85d47e53c2200a988f0a06109d23c",
+  "candidate_digest": "d89dfba3d0518bb5a60b0a9e4b0a4e235984d2d9355f2a48111ece218bbcdf04",
   "freeze_matches_replica": true,
   "entries": [
    {
@@ -44,8 +44,8 @@
      "read"
     ],
     "missing": [],
-    "authority_valid_from": "2026-11-27T23:09:16+08:00",
-    "authority_expires_at": "2026-11-28T03:06:29+08:00"
+    "authority_valid_from": "2026-11-28T00:05:09+08:00",
+    "authority_expires_at": "2026-11-28T04:04:28+08:00"
    },
    {
     "source_id": "SST.W0M.MAIN",
@@ -61,8 +61,8 @@
      "read"
     ],
     "missing": [],
-    "authority_valid_from": "2026-11-27T23:09:16+08:00",
-    "authority_expires_at": "2026-11-28T03:06:29+08:00"
+    "authority_valid_from": "2026-11-28T00:05:09+08:00",
+    "authority_expires_at": "2026-11-28T04:04:28+08:00"
    }
   ],
   "write_set": [],
@@ -70,9 +70,9 @@
   "errors": []
  },
  "deployment": {
-  "path": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\00_PREFLIGHT\\DEPLOYMENT_prod_20261127_r10.json",
-  "bytes": 16006,
-  "sha256": "c5efcca4e2b4798ee91b5f6a5384bc9de073d4ea036d954e0704fb1a0c75a669",
-  "receipt_sha256": "4c88bc4189a5cc24243133be77ee6831aecf90a8a41e37c2c9c81c6710adc172"
+  "path": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\00_PREFLIGHT\\DEPLOYMENT_prod_20261127_r11.json",
+  "bytes": 18598,
+  "sha256": "9d89781cbce772c14fa1d6edcc7ffa8231331827cef1150644736ea8666a4571",
+  "receipt_sha256": "7328c01983654b8fc390a91cbf27f2113cefd9138edc4732dfe3a75ec4ae2390"
  }
 }

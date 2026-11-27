@@ -182,7 +182,8 @@ def check_rights(deployment: dict[str, Any], now: datetime | None = None) -> dic
 
 
 def check_envelope_authority(authority: dict[str, Any], rights_state: dict[str, Any],
-                             deployment: dict[str, Any], now: datetime) -> dict[str, Any]:
+                             deployment: dict[str, Any], now: datetime,
+                             exp: dict[str, Any] | None = None) -> dict[str, Any]:
     """The envelope's own interval and currency, checked against the live receipt."""
     if authority.get("os_principal", "").lower() != deployment["os_principal"].lower():
         raise Reject("RIGHTS_DENIED", "envelope principal is not this consumer's principal")
@@ -201,6 +202,20 @@ def check_envelope_authority(authority: dict[str, Any], rights_state: dict[str, 
     if authority.get("usage_evidence_sha") != rights_state["receipt_sha256"]:
         raise Reject("ENVELOPE_MINTED_UNDER_A_DIFFERENT_WINDOW",
                      "usage evidence is not the receipt in force")
+    if exp:
+        # the authority block's stated source owner / evidence / revocation state must be the
+        # ones the trusted descriptor pinned for *this* source -- not merely well-formed text
+        if authority.get("source_owner") != exp.get("source_owner"):
+            raise Reject("RIGHTS_UNVERIFIED", "authority.source_owner is not the pinned owner")
+        if authority.get("usage_evidence_ref") != exp.get("usage_evidence_ref"):
+            raise Reject("RIGHTS_UNVERIFIED", "authority.usage_evidence_ref is not the pinned evidence")
+        if authority.get("revocation_check_ref") != exp.get("revocation_check_ref"):
+            raise Reject("RIGHTS_UNVERIFIED", "authority.revocation_check_ref is not the pinned state")
+        auth_from = parse_rfc3339(exp.get("authorization_valid_from"))
+        auth_to = parse_rfc3339(exp.get("authorization_expires_at"))
+        if valid_from < auth_from or expires_at > auth_to:
+            raise Reject("RIGHTS_UNVERIFIED",
+                         "authority interval is not inside the authorised period")
     return {"valid_from": authority["valid_from"], "expires_at": authority["expires_at"],
             "usage_evidence_sha": authority["usage_evidence_sha"],
             "currency": "CURRENT", "checked_at": now.isoformat()}

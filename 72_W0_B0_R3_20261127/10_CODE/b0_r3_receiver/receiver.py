@@ -251,10 +251,17 @@ def _receive_source(sid: str, ent: dict[str, Any], exp: dict[str, Any],
         raise Reject("WIRE_INVALID", "provenance shape")
     if prov["requirement_sha"] != exp["expected_raw_sha256"]:
         raise Reject("TUPLE_MISMATCH", "provenance names a different requirement source")
+    # B0 §02.R: the rule JSON's raw SHA *is* provenance.rule_sha.  The deployment pins the
+    # RequiredSet bytes (and their digest against the descriptor's declared pin), so a
+    # format-valid but different digest is a wrong rule, not a label.
+    if prov["rule_ref"] != exp["required_set_ref"]:
+        raise Reject("CLAUSE_RULE_MISMATCH", "provenance.rule_ref is not the pinned RequiredSet")
+    if prov["rule_sha"] != exp["required_set_sha256"]:
+        raise Reject("CLAUSE_RULE_MISMATCH", "provenance.rule_sha is not the pinned RequiredSet digest")
 
     # ---- rights BEFORE any source content is touched (contract order) ----
     authority = _check_authority_block(ent["authority"])
-    interval = rights_mod.check_envelope_authority(authority, rights_state, dep, now)
+    interval = rights_mod.check_envelope_authority(authority, rights_state, dep, now, exp)
     for key in ("acl_epoch", "rights_epoch"):
         if ent[key] is not None and not wire.nonempty(ent[key]):
             raise Reject("WIRE_INVALID", key)

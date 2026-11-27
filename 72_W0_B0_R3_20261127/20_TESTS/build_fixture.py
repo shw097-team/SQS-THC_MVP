@@ -162,6 +162,12 @@ def main() -> int:
         "required_fields": ["read"],
         "required_set_ref": str(rs_path),
         "required_set_sha256": sha(rs_path.read_bytes()),
+        "source_owner": "fixture",
+        "usage_evidence_ref": str(rc_path),
+        "revocation_check_ref": str(wn_path) + "#state",
+        "authorization_valid_from": "2026-11-27T00:00:00+00:00",
+        "authorization_expires_at": __import__("datetime").datetime.fromtimestamp(
+            FAR, __import__("datetime").timezone.utc).isoformat(),
         "extraction_rule": required_set["rules"][0],
         "expected_value": value,
         "expected_value_sha256": sha(value.encode("utf-8")),
