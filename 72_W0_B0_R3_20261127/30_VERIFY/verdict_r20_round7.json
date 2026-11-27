@@ -1,0 +1,28 @@
+{
+ "schema": "SST.PH01.W0.B0.R3.CheckerVerdict/1",
+ "round": 7,
+ "checker": "SST_PH01_W0_B0_r20_separation_checker_round7",
+ "reviewed_at": "2026-11-27T23:33:29+08:00",
+ "subject_revision": "r20",
+ "candidate_manifest_sha256": "c016e65fe290aa498ae6dcd21f1c1861bca357601d24e54dcff5562999cf2d13",
+ "candidate_manifest_path": "60_CLOSEOUT/CANDIDATE_receiver_r20.tsv",
+ "verdict": "ACCEPT",
+ "blocking": [],
+ "summary": "round6 三項 blocking 均已自量測確認處分成立：測試收據 89 等於現行 test_receiver.py 實收集數且晚於該檔 mtime、D5 外部程序計數由同一 subprocess.run 包裝複跑得到完全相同的 icacls 20／powershell 2／whoami 4、候選 13 列確依相對路徑 UTF-8 位元組排序且 sha 自洽。產品行為面另以 13 組獨立探針（fixture 與 prod 各一路）確認 fail-closed、單次同 handle 讀取、拒絕與接受路徑皆不帶 clause 值；FREEZE_r20 140 成員與磁碟雙向全等、0 成員命中排除謂詞，候選為 freeze 的真子集且 sha 相同。殘留僅註解級瑕疵（b2/b3 docstring 仍寫 B1、§6 對 import probe 的『=[]』自述與 d5_v2 不一致、候選未含測試所讀的其他 fixture），不構成可被利用的 fail-open、內容外洩或候選與凍結不一致。",
+ "findings": [
+  {"item": "A", "result": "PASS", "evidence": "receiver_test_run_r19.json tests_run=89／failures=0／skipped=0；同一凍結位元組實收集 89（11 個 TestCase 類、loader.errors=[]）；ran_at 23:23:37.461 晚於 test_receiver.py mtime 23:23:17.858；§3.1 引用的 7 支臂全在該 89 內"},
+  {"item": "B", "result": "PASS", "evidence": "以同手法包裝 subprocess.run 複跑一次 consumers.b3.receive_envelope：icacls=20、powershell=2、whoami=4、total=26，與 d5_receiver_f2_v2 逐項相等；同次 verdict=ACCEPTED 2/2、兩源 sha 前後不變；量級與 root.py:338-342（每源 9 祖先＋1 final _read_acl）及 rights.py 的 2 次 powershell／4 次 whoami 相符"},
+  {"item": "C", "result": "PASS", "evidence": "CANDIDATE_receiver_r20.tsv 13 列／1320 B／sha256=c016e65f…與 json manifest 相等；paths==sorted(paths, key=utf-8 bytes) 成立；13/13 成員與磁盤 sha+bytes 全等；候選為 FREEZE_MANIFEST_r20 的真子集且共用成員 sha 相同；build_closeout.py 無 if False"},
+  {"item": "D", "result": "FAIL", "evidence": "實質面通過（consumer_use 三端各異且等於 prod descriptor；漂移欄已含 namespace/source_version/locator/expected_clause_sha256/extraction_rule；inbound.entry 由 ENTRY 常數帶入）。文件面未處分：b2.py:5 與 b3.py:5 docstring 仍寫『the entry B1 would call』。屬註解級、無行為影響；因兩檔為候選成員，ACCEPT 後不得再改動，留作已知非阻擋殘留"},
+  {"item": "E", "result": "PASS", "evidence": "receiver.py:167-182 evidence 讀取改走 open_authorized_file＋handle.read_all()，PathSecurityError→MANIFEST_EVIDENCE_UNRESOLVED；來源讀取同原語並含 before/after identity 與 size 比對；全樹剩餘裸讀僅 deployment descriptor（先比 sha 再 assert_trust_root）、rights receipt 與 live window（receipt_sha256 釘住且驗簽同一 bytes）、caller 提供的 envelope"},
+  {"item": "F", "result": "PASS", "evidence": "FREEZE_MANIFEST_r20.tsv 140 列／15561 B／sha256=65b8e800…與 FREEZE_r20.json 相符；140/140 與磁盤全等、雙向差集皆空、0 成員命中排除謂詞；§7 列 5 輪、§8 未自稱 ACCEPT；§2 重跑指令指向 r9 envelope 與 r11_inbound_*；r11 三份收據各 2/2 ACCEPTED、mandatory_satisfied=true、rights_check_ref 逐源不同、deployment sha=c5efcca4… 等於 PINNED['prod']"}
+ ],
+ "residue_non_blocking": [
+  "consumers/b2.py:5 與 b3.py:5 docstring 仍寫『the entry B1 would call, carrying B1's independent expectation』（EXPECTED 已各自宣告；因屬候選成員，ACCEPT 後不再改動）",
+  "文件 §6 曾稱『載入之非 stdlib 且非本包模組=[]』，與 d5_v2 自列 12 個 cryptography 模組不一致（已於 r21 文件更正）",
+  "凍結仍納入舊 30_VERIFY/receiver_test_run_r10.json（tests_run=83），與 r19 收據並存",
+  "CANDIDATE 成員清單為硬編碼元組；測試另讀的 6 個 fixture 只在證據 freeze 內",
+  "modules_outside_stdlib_and_package 謂詞只掃已載入且非底線開頭模組，未涵蓋 DLLs 下的 stdlib C 擴充（欄名比實測範圍寬）"
+ ],
+ "note": "本檔為第七輪分離審查的原始回傳，verdict=ACCEPT，blocking 為空。ACCEPT 綁定 candidate_manifest_sha256=c016e65f…；此後任何候選成員變更即失效。"
+}

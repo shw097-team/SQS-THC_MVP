@@ -22,6 +22,21 @@ OLD = Path(r"C:\Projects\Agent_Workspace\SQS-THC_MVP_Workspace")
 PRE = WAVE / "00_PREFLIGHT"
 VERIFY = WAVE / "30_VERIFY"
 REV = os.environ.get("B0_REV", "r9")   # r9 = the candidate the separated checker judged
+CAND_REL = sorted(
+    [f"10_CODE/b0_r3_receiver/{n}" for n in
+     ("__init__.py", "cli.py", "deployment.py", "receiver.py", "rights.py", "wire.py")]
+    + [f"10_CODE/consumers/{n}" for n in ("__init__.py", "b1.py", "b2.py", "b3.py", "common.py")]
+    + ["20_TESTS/test_receiver.py", "20_TESTS/fixture/DEPLOYMENT_fixture_20261127_r9.json"],
+    key=lambda r: r.encode("utf-8"))
+
+
+def candidate_manifest() -> bytes:
+    rows = []
+    for rel in CAND_REL:
+        raw = (WAVE / rel).read_bytes()
+        rows.append(f"{rel}	{hashlib.sha256(raw).hexdigest()}	{len(raw)}")
+    return ("\n".join(rows) + "\n").encode("utf-8")
+
 DOC = WAVE / "60_CLOSEOUT" / f"SST_PLP_PH01_W0_B0_CLOSEOUT_HANDOFF_{REV}.md"
 MANIFEST = WAVE / "60_CLOSEOUT" / f"FREEZE_MANIFEST_{REV}.tsv"
 FREEZE = WAVE / "60_CLOSEOUT" / f"FREEZE_{REV}.json"
@@ -194,11 +209,19 @@ def main() -> int:
               f"`{len(f2w['code_tree_changes'])}`（前 {f2w['code_tree_files_before']}／後 {f2w['code_tree_files_after']} 檔）；"
               f"`no_product_write_observed={f2w['no_product_write_observed']}`；第二次真讀 exit=`{f2w['reader_second_run_exit']}`。"
               f"（工程 recorder 另帳，不計產品寫。）\n"
-              f"- **F2（N08 Native OFF）**：本輪未重跑——本次變更未新增任何 import 或 runtime 依賴，下方 import probe 即為直接觀測；"
-              f"載入之非 stdlib 且非本包模組="
-              f"`{[m for m in f2o['import_probe'].get('packages_loaded_outside_stdlib', []) if not m.startswith('b0_reader')]}`；"
-              f"歷史受界收據 `{f2o['historical_bounded_receipt']['verdict']}` 仍有效。上限：非全機 OFF 證明（遞移 import／kernel/registry 寫入／窗後網路皆未證）。\n")
+              f"- **F2（N08 Native OFF）**：本輪未重跑全機 OFF。歷史 producer 側 import probe 對新 Receiver 不構成證據；"
+              f"改用 `40_OPS/d5_receiver_f2_v2_20261127.json` 的 Receiver 側量測（實際 subprocess 計數、import surface、分發版本、無寫觀測）。"
+              f"歷史受界收據 `{f2o['historical_bounded_receipt']['verdict']}` 僅就 producer 側有效。"
+              f"上限：非全機 OFF 證明（遞移 import／kernel/registry 寫入／窗後網路皆未證）。\n")
 
+    cand_sha = hashlib.sha256(candidate_manifest()).hexdigest()
+    verdicts = []
+    for vf in sorted(VERIFY.glob("verdict_r*_round*.json")):
+        try:
+            doc_v = json.loads(vf.read_bytes())
+        except Exception:
+            continue
+        verdicts.append((vf.name, doc_v))
     md.append("### 7｜分離接受（獨立 Checker）\n")
     rounds = sorted(VERIFY.glob("verdict_r*_round*.json"),
                     key=lambda p: load(p).get("reviewed_at") or "")
@@ -231,22 +254,47 @@ def main() -> int:
                   "| R2/R3/R4 | 凍結後成員被改、宣告寬於實作 | 成員集改為強制謂詞並在收據內複述同一組字面值；寫入後即驗「無被排除檔入列」 | §11 凍結自我驗證 |\n"
                   "| R2/R3/R4 | 文件引用舊數字／不存在的 verdict 路徑、輪次未列 | 標題／案數／fixture pin 均自收據與模組 pin 讀取；§7 逐輪列出實存 verdict 檔 | §5、§7 |\n"
                   "| R2/R3 | LOCAL_ONLY 句進入可散布檔、notice 未交代殘留 | 可散布副本改 `<LOCAL_ONLY_REDACTED>`；repo 內既有殘留逐條列於 `REDACTION_NOTICE` §3 | §11 |\n")
-    if verdict:
-        md.append(f"\n**本輪最終判定：{verdict.get('verdict')}**（{verdict.get('checker')}，{verdict.get('reviewed_at')}）。"
-                  f"受檢候選 `{verdict.get('candidate_manifest_sha256')}`。\n"
-                  f"- 結論：{verdict.get('summary')}\n"
-                  f"- 阻擋項：{verdict.get('blocking')}\n")
+    best = [v for _n, v in verdicts if v.get("candidate_manifest_sha256") == cand_sha]
+    if best:
+        bv = best[-1]
+        md.append(f"\n- 與本件同一候選（`{cand_sha[:16]}…`）的最新分離判定：**{bv['verdict']}**"
+                  f"（{bv['checker']}，{bv['reviewed_at']}），阻擋項 {len(bv.get('blocking') or [])} 條。"
+                  + ("本件可引用為已接受。\n" if bv["verdict"] == "ACCEPT"
+                     else "本件不得引用為已接受。\n"))
     else:
-        md.append("\n**本輪最終判定：PENDING** — 上表列出全部實存判定，尚無任何一輪給出 ACCEPT；"
-                  "本件不得引用為已接受。停止條件為分離 Checker 在同一凍結位元上給出 ACCEPT。\n")
+        md.append(f"\n- 尚無任何判定綁定到本件候選 `{cand_sha[:16]}…`；本件不得引用為已接受。\n")
 
     md.append("### 8｜狀態與本次工程寫入\n")
-    md.append(f"- 產品狀態：`B0_PRODUCT_EXECUTED`（真合法來源、原四 Op、實際 output/exit）；`B0_CORE_ACCEPTED` 之歷史核心範圍承接不改；"
-              f"`B0_COMPLETE` 取決於 §7 分離判定與下列未閉合項。\n"
-              f"- 三端：`B1/B2/B3 INPUT_READY`（各自真 mandatory 輸入、pin、權利、實收）；**不**升各批自身 ReadyExecute。\n"
+    cand_sha = hashlib.sha256(candidate_manifest()).hexdigest()
+    verdicts = []
+    for vf in sorted(VERIFY.glob("verdict_r*_round*.json")):
+        try:
+            doc_v = json.loads(vf.read_bytes())
+        except Exception:
+            continue
+        verdicts.append((vf.name, doc_v))
+    accepts = [(n, v) for n, v in verdicts
+               if v.get("verdict") == "ACCEPT" and v.get("candidate_manifest_sha256") == cand_sha]
+    if accepts:
+        vname, va = accepts[-1]
+        md.append(f"- **`B0_COMPLETE`**（依 B0 §08.3）：與本節同一受檢候選 "
+                  f"`{cand_sha[:16]}…`（`CANDIDATE_receiver_{REV}.tsv`，{len(CAND_REL)} 成員）已由分離 Checker "
+                  f"`{va['checker']}` 於 {va['reviewed_at']} 判 **ACCEPT**、blocking 為空"
+                  f"（`30_VERIFY/{vname}`）；`FREEZE_{REV}.json` 對磁碟全量相符。\n"
+                  f"- 產品狀態鏈：`B0_SPEC_READY` → `B0_ENGINEERING_CANDIDATE` → `B0_PRODUCT_EXECUTED` → "
+                  f"`B0_CORE_ACCEPTED`（歷史核心承接）→ **`B0_COMPLETE`**。\n"
+                  f"- 判定邊界：該 ACCEPT 綁定候選 `{cand_sha[:16]}…`（13 成員，與 r20 位元相同）；"
+                  f"`FREEZE_{REV}.json` 為事後證據帳（含文件、收據與本產生器自身），不參與該判定，亦不改寫受檢候選。\n")
+    else:
+        md.append(f"- 產品狀態：`B0_PRODUCT_EXECUTED`（真合法來源、原四 Op、實際 output/exit）；"
+                  f"`B0_CORE_ACCEPTED` 之歷史核心範圍承接不改；本候選 `{cand_sha[:16]}…` 尚無相符 ACCEPT，"
+                  f"`B0_COMPLETE` 維持 PENDING。\n")
+    md.append(f"- 三端：`B1/B2/B3 INPUT_READY`（各自真 mandatory 輸入、pin、權利、實收）；**不**升各批自身 ReadyExecute。\n"
               f"- 本次工程寫入（W 內）：`00_PREFLIGHT/*`（deployment、descriptor 續期、T1 baseline）、`10_CODE/b0_r3_receiver/*`、"
-              f"`20_DEV/*`（重定位＋`native_entry.py` 三常數）、`20_TESTS/*`、`40_OPS/*`、`30_VERIFY/*`、`60_CLOSEOUT/*`。\n"
-              f"- 未寫：舊 W、K 知識庫、兩來源 raw、產品 WriteSet。\n")
+              f"`10_CODE/consumers/*`、`20_DEV/*`（重定位＋`native_entry.py` 三常數）、`20_TESTS/*`、`40_OPS/*`、`30_VERIFY/*`、`60_CLOSEOUT/*`。\n"
+              f"- 未寫：舊 W、K 知識庫、兩來源 raw、產品 WriteSet。\n"
+              f"- 已知非阻擋殘留（ACCEPT 後不再改動候選）：`consumers/b2.py`、`b3.py` 的 docstring 仍寫「the entry B1 would call」；"
+              f"候選成員清單為硬編碼；測試另讀的 6 個 fixture 只在證據 freeze 內；舊 `receiver_test_run_r10.json`（83 案）與 r19 收據並存。\n")
 
     md.append("### 9｜日後待升級區\n")
     md.append("| 項目 | 當期處分／保留責任 | 再研究條件 |\n|---|---|---|\n"
@@ -398,25 +446,14 @@ def main() -> int:
         raise SystemExit(json.dumps({"refused": "MANIFEST_DOES_NOT_DESCRIBE_DISK",
                                      "files": mismatched}, ensure_ascii=False))
     # ---- D6: the receiver candidate, separate from the evidence freeze ----
-    cand_rel = sorted(
-        [f"10_CODE/b0_r3_receiver/{n}" for n in
-         ("__init__.py", "cli.py", "deployment.py", "receiver.py", "rights.py", "wire.py")]
-        + [f"10_CODE/consumers/{n}" for n in
-           ("__init__.py", "b1.py", "b2.py", "b3.py", "common.py")]
-        + ["20_TESTS/test_receiver.py", "20_TESTS/fixture/DEPLOYMENT_fixture_20261127_r9.json"],
-        key=lambda r: r.encode("utf-8"))
-    cand_members = []
-    for rel in cand_rel:
-        raw = (WAVE / rel).read_bytes()
-        cand_members.append(f"{rel}	{hashlib.sha256(raw).hexdigest()}	{len(raw)}")
-    cand_body = ("\n".join(cand_members) + "\n").encode("utf-8")
+    cand_body = candidate_manifest()
     cand_tsv = WAVE / "60_CLOSEOUT" / f"CANDIDATE_receiver_{REV}.tsv"
     cand_tsv.write_bytes(cand_body)
     (WAVE / "60_CLOSEOUT" / f"CANDIDATE_receiver_{REV}.json").write_bytes(json.dumps({
         "schema": "SST.PH01.W0.B0.R3.ReceiverCandidate/1",
         "revision": REV,
-        "members": len(cand_members),
-        "paths": cand_rel,
+        "members": len(CAND_REL),
+        "paths": CAND_REL,
         "manifest": {"path": str(cand_tsv), "bytes": len(cand_body),
                      "sha256": hashlib.sha256(cand_body).hexdigest()},
         "convention": "path<TAB>sha256<TAB>byte_length<LF>; members sorted by the UTF-8 bytes of the relative path",
