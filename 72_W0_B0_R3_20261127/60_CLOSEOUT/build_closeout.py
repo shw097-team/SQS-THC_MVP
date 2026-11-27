@@ -179,17 +179,22 @@ def main() -> int:
               f"歷史受界收據 `{f2o['historical_bounded_receipt']['verdict']}` 仍有效。上限：非全機 OFF 證明（遞移 import／kernel/registry 寫入／窗後網路皆未證）。\n")
 
     md.append("### 7｜分離接受（獨立 Checker）\n")
-    rounds = sorted(VERIFY.glob("verdict_r*_round*.json"))
+    rounds = sorted(VERIFY.glob("verdict_r*_round*.json"),
+                    key=lambda p: load(p).get("reviewed_at") or "")
     if rounds:
-        md.append("| 輪次 | 判定 | 受檢候選 | 檢查者 | 時間 | 阻擋項 |\n|---|---|---|---|---|---|\n")
+        table = ["| 輪次 | 判定 | 受檢候選 | 檢查者 | 時間 | 阻擋項 |", "|---|---|---|---|---|---|"]
         for rp in rounds:
             rv = load(rp)
             blocking = rv.get("blocking") or [f['item'] for f in rv.get("findings", [])
                                                if f.get("result") == "FAIL"]
-            md.append(f'| `{rp.name}` | **{rv.get("verdict")}** | `{str(rv.get("candidate_manifest_sha256"))[:16]}…` | '
-                      f'{rv.get("checker")} | {rv.get("reviewed_at")} | {len(blocking)} |')
-        md.append("\n"
-                  "已回填的缺陷與其修復（來源輪次如列；含各輪標為非強制但已一併補的項）：\n")
+            cand = rv.get("candidate_manifest_sha256")
+            table.append(f'| `{rp.name}` | **{rv.get("verdict")}** | '
+                         f'`{cand[:16]}…` | {rv.get("checker")} | {rv.get("reviewed_at")} | '
+                         f'{len(blocking)} |' if cand else
+                         f'| `{rp.name}` | **{rv.get("verdict")}** | — | {rv.get("checker")} | '
+                         f'{rv.get("reviewed_at")} | {len(blocking)} |')
+        md.append("\n".join(table) + "\n")
+        md.append("已回填的缺陷與其修復（來源輪次如列；含各輪標為非強制但已一併補的項）：\n")
         md.append("| 來源輪次 | 缺陷 | 修復 | 對應臂 |\n|---|---|---|---|\n"
                   "| R1/R2 | `errors[].attempt=true` 被接受（True==1） | `attempt` 改 `is_int` 嚴格判定 | `test_error_attempt_bool` |\n"
                   "| R1/R2 | `source_manifest.inherited_sha` 只驗形狀 | 與 deployment 釘住的 inherited manifest 精確比對 | `test_inherited_manifest_is_pinned` |\n"
