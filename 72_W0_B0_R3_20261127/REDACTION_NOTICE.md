@@ -1,6 +1,6 @@
 # REDACTION NOTICE — LOCAL_ONLY clause text
 
-This directory publishes the r33 candidate of SST PH01 W0 B0 R3 (work root
+This directory publishes the r34 candidate of SST PH01 W0 B0 R3 (work root
 `SST_PH01_W0_B0_R3_20261127`).
 
 ## 1. What was redacted in this wave (29 files actually in the commit)
@@ -45,7 +45,7 @@ Every published copy replaces exactly that sentence with `<LOCAL_ONLY_REDACTED>`
 Commit `b144f63` in this repository published the unredacted r8 copies. History is not
 rewritten. This notice is the record that those bytes disclosed one clause sentence.
 
-## 3. Pre-existing residue elsewhere in this repository (56 files at `382c2348ecc4`)
+## 3. Pre-existing residue elsewhere in this repository (56 files at `87b7991bb17b`)
 
 The same sentence also sits in files this wave did not author. They are listed so the
 disclosure is complete; redacting them would rewrite other rounds' delivered bytes and is
