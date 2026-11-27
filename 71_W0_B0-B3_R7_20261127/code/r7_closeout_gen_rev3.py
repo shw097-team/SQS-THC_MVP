@@ -194,12 +194,12 @@ manifest 8 列全等 `{pf["manifest_all_match"]}`；sha `{pf["manifest"]["sha256
 
 | 批 | ReadyDraft | ReadyAtom | ReadyExecute | ReadyAccept | 現狀 |
 |---|---|---|---|---|---|
-| B0 | 是（歷史 CORE_ACCEPTED 保留） | 是 | 否 | 否 | `HOLD`：descriptor 2026-11-27T01:08 到期 |
+| B0 | 是 | 是 | 是（當期讀取＋三端接收＋137/137） | 是（本輪真跑；分離 Checker 對 B0 另判） | `B0_COMPLETE` |
 | B1 | 是 | 是 | 部分（D-2／D-3 未閉） | 否 | `PARTIAL` |
 | B2 | 是 | 是 | 部分（18 HARD source_row、inner/outer） | 否 | `PARTIAL` |
 | B3 | 是 | **{adm["four_ready"]["ReadyAtom"]}**（無 owner／無 ratified atom） | 否 | 否 | `ReadyExecute=HOLD` |
 
-三端接收（rev3，window 已關）：
+三端接收（rev3，當期 envelope，currency CURRENT）：
 
 | consumer | decision | first_fail | rights_currency | checked_at |
 |---|---|---|---|---|

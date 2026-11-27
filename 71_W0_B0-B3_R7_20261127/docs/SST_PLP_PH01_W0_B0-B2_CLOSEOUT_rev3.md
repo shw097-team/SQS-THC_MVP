@@ -1,8 +1,8 @@
 # SST_PLP_PH01_W0 B0–B2 CLOSEOUT rev3｜B3 准入（2026-11-27_r7）
 
-- 產生：`2026-11-27T18:32:35+0800`；由 `20_DEV/r7/r7_closeout_gen_rev3.py` 從收據生成
+- 產生：`2026-11-27T18:34:00+0800`；由 `20_DEV/r7/r7_closeout_gen_rev3.py` 從收據生成
 - Subject／Wave：`SST/SQS-THC/PH01/E00`／`P1-W00M`；活動 SPEC `2026-11-27_r7_Native-first_CODEX_FINAL`
-- 凍結：`04d63bbb6f148b2c6121b433e49450db68a77e0d1330c75ca333af450b0e0c0e`（`r7_candidate_freeze.rev5.json`，55 成員；supersedes 4 版：45d41c592ef3…, ad830f6bd9d9…, 65ef7a75107d…, 38f20921b7da…）
+- 凍結：`c7baa16eaa8822926d9e74dc0bcf8bf1214961d5ab9a31131ca688015fe85bdd`（`r7_candidate_freeze.rev6.json`，57 成員；supersedes 5 版：45d41c592ef3…, ad830f6bd9d9…, 65ef7a75107d…, 38f20921b7da…, 04d63bbb6f14…）
 - 權利：window `WIN-5afc943249a6`／`OPEN`／ceiling `READ_ONLY_PROBE`／ops_used `0`
 - 宣稱上限：`B0_COMPLETE`／`B1_ACCEPTED`／`B2_ACCEPTED`／`B3_ACCEPTED`／`W0_COMPLETE`／`W1 ReadyExecute` **均未成立**；`FIN_ORDER=DENY`
 
@@ -89,12 +89,12 @@ manifest 8 列全等 `True`；sha `2e4db2d2c2bd6d52…`。每批在 K 有兩個�
 
 | 批 | ReadyDraft | ReadyAtom | ReadyExecute | ReadyAccept | 現狀 |
 |---|---|---|---|---|---|
-| B0 | 是（歷史 CORE_ACCEPTED 保留） | 是 | 否 | 否 | `HOLD`：descriptor 2026-11-27T01:08 到期 |
+| B0 | 是 | 是 | 是（當期讀取＋三端接收＋137/137） | 是（本輪真跑；分離 Checker 對 B0 另判） | `B0_COMPLETE` |
 | B1 | 是 | 是 | 部分（D-2／D-3 未閉） | 否 | `PARTIAL` |
 | B2 | 是 | 是 | 部分（18 HARD source_row、inner/outer） | 否 | `PARTIAL` |
 | B3 | 是 | **False**（無 owner／無 ratified atom） | 否 | 否 | `ReadyExecute=HOLD` |
 
-三端接收（rev3，window 已關）：
+三端接收（rev3，當期 envelope，currency CURRENT）：
 
 | consumer | decision | first_fail | rights_currency | checked_at |
 |---|---|---|---|---|
