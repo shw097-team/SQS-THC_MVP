@@ -305,7 +305,7 @@ def main() -> int:
         # in the publish readback instead of here.
         "not_a_member": ["60_CLOSEOUT/FREEZE_*", "60_CLOSEOUT/FREEZE_MANIFEST_*",
                          "the closeout document itself", "70_PUBLISH/PUBLISH_READBACK_*",
-                         "30_VERIFY/verdict.json (the verdict slot is filled after the freeze)"],
+                         "30_VERIFY/verdict*.json (verdicts are about the candidate and arrive after the freeze)"],
         "claim_ceiling": ("Freezes the bytes of this round's code, tests, receipts and closeout. "
                           "It asserts nothing about semantics beyond what the receipts measured, "
                           "and it excludes itself, its manifest and the generated document."),

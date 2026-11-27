@@ -1,13 +1,13 @@
 {
  "schema": "SST.PH01.W0.B0.R3.Freeze/1",
  "revision": "r10",
- "frozen_at": "2026-11-27T22:30:51.513041+08:00",
+ "frozen_at": "2026-11-27T22:31:27.842089+08:00",
  "wave_root": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127",
  "members": 115,
  "manifest": {
   "path": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\60_CLOSEOUT\\FREEZE_MANIFEST_r10.tsv",
   "bytes": 12781,
-  "sha256": "429725ffc1e1698841e3a0fc7c48410adb1e65fb4918ed51a4a745bceebf72d5"
+  "sha256": "682c8d8f1c6ffe512f4e5922ac8230ac5d746899305e78aa3c387292367cf85b"
  },
  "convention": "path<TAB>sha256<TAB>byte_length<LF>; members sorted by the UTF-8 bytes of the relative path",
  "not_a_member": [
@@ -15,7 +15,7 @@
   "60_CLOSEOUT/FREEZE_MANIFEST_*",
   "the closeout document itself",
   "70_PUBLISH/PUBLISH_READBACK_*",
-  "30_VERIFY/verdict.json (the verdict slot is filled after the freeze)"
+  "30_VERIFY/verdict*.json (verdicts are about the candidate and arrive after the freeze)"
  ],
  "claim_ceiling": "Freezes the bytes of this round's code, tests, receipts and closeout. It asserts nothing about semantics beyond what the receipts measured, and it excludes itself, its manifest and the generated document.",
  "receipts": {
