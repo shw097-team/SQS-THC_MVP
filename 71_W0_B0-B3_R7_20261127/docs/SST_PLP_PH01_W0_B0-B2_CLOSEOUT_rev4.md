@@ -1,8 +1,8 @@
 # SST_PLP_PH01_W0 B0–B2 CLOSEOUT rev4｜B3 准入（2026-11-27_r7）
 
-- 產生：`2026-11-27T19:03:27+0800`；由 `20_DEV/r7/r7_closeout_gen_rev4.py` 從收據生成
+- 產生：`2026-11-27T19:04:32+0800`；由 `20_DEV/r7/r7_closeout_gen_rev4.py` 從收據生成
 - Subject／Wave：`SST/SQS-THC/PH01/E00`／`P1-W00M`；活動 SPEC `2026-11-27_r7_Native-first_CODEX_FINAL`
-- 凍結：`64125152833e43d2f08227257b01303cfe62b61bfd91d68e0a4fe0d1b88bd2ec`（`r7_candidate_freeze.rev8.json`，62 成員；supersedes 7 版：45d41c592ef3…, ad830f6bd9d9…, 65ef7a75107d…, 38f20921b7da…, 04d63bbb6f14…, c7baa16eaa88…, 690af85b87c9…）
+- 凍結：`816119811b6629a2f460f91259206a2deb7403905ea83f3b4625fc693372373d`（`r7_candidate_freeze.rev9.json`，64 成員；supersedes 8 版：45d41c592ef3…, ad830f6bd9d9…, 65ef7a75107d…, 38f20921b7da…, 04d63bbb6f14…, c7baa16eaa88…, 690af85b87c9…, 64125152833e…）
 - 權利：window `WIN-5afc943249a6`／`CLOSED`／ceiling `READ_ONLY_PROBE`／ops_used `0`
 - 宣稱上限：`B0_COMPLETE`／`B1_ACCEPTED`／`B2_ACCEPTED`／`B3_ACCEPTED`／`W0_COMPLETE`／`W1 ReadyExecute` **均未成立**；`FIN_ORDER=DENY`
 

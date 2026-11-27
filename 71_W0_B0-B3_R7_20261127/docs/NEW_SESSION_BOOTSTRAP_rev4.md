@@ -10,7 +10,8 @@ r7 真產品重跑＋一輪 Checker 更正；B3 `ReadyAtom=false`／`ReadyExecut
 cd "C:/Projects/Agent_Workspace/SQS-THC_MVP_Workspace/71_W0_B0-B3_R7_20261127"
 python -B - <<'PY'
 import json,hashlib
-f=json.load(open("40_OPS/r7_candidate_freeze.rev2.json",encoding="utf-8"))
+import glob as _g
+f=json.load(open(sorted(_g.glob("40_OPS/r7_candidate_freeze.rev*.json"),key=os.path.getmtime)[-1],encoding="utf-8"))
 ok=all(hashlib.sha256(open(a["path"],"rb").read()).hexdigest()==a["raw_sha256"] for a in f["artefacts"])
 body="\n".join(f'{a["raw_sha256"]}  {a["path"]}' for a in sorted(f["artefacts"],key=lambda x:x["path"])).rstrip("\n")
 print(ok, hashlib.sha256(body.encode()).hexdigest()==f["candidate_digest"])

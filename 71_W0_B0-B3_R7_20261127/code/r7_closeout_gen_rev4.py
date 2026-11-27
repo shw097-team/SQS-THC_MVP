@@ -295,7 +295,8 @@ r7 真產品重跑＋一輪 Checker 更正；B3 `ReadyAtom=false`／`ReadyExecut
 cd "C:/Projects/Agent_Workspace/SQS-THC_MVP_Workspace/71_W0_B0-B3_R7_20261127"
 python -B - <<'PY'
 import json,hashlib
-f=json.load(open("40_OPS/r7_candidate_freeze.rev2.json",encoding="utf-8"))
+import glob as _g
+f=json.load(open(sorted(_g.glob("40_OPS/r7_candidate_freeze.rev*.json"),key=os.path.getmtime)[-1],encoding="utf-8"))
 ok=all(hashlib.sha256(open(a["path"],"rb").read()).hexdigest()==a["raw_sha256"] for a in f["artefacts"])
 body="\\n".join(f'{a["raw_sha256"]}  {a["path"]}' for a in sorted(f["artefacts"],key=lambda x:x["path"])).rstrip("\\n")
 print(ok, hashlib.sha256(body.encode()).hexdigest()==f["candidate_digest"])
@@ -321,13 +322,13 @@ B3 owner 綁定、B3 NEG-design 結構化、B2 requiredness 限定詞契約。
 
     idx_path = os.path.join(R7, "DELIVERY_INDEX.json")
     index = load(idx_path)
-    index["revision"] = 2
+    index["revision"] = 4
     index["generated_at"] = now()
     index["current_pointers"] = [
         {"role": "closeout", "path": "60_CLOSEOUT/SST_PLP_PH01_W0_B0-B2_CLOSEOUT_rev4.md"},
         {"role": "handoff", "path": "60_CLOSEOUT/SST_PLP_PH01_W0_B0-B2_HANDOFF_B3_ADMISSION_rev4.md"},
         {"role": "bootstrap", "path": "60_CLOSEOUT/NEW_SESSION_BOOTSTRAP_rev4.md"},
-        {"role": "freeze", "path": "40_OPS/r7_candidate_freeze.rev2.json"},
+        {"role": "freeze", "path": os.path.basename(fr2_path) if fr2_path else ""},
         {"role": "b3_admission", "path": "40_OPS/r7_b3_admission.json"},
         {"role": "preflight", "path": "00_PREFLIGHT/r7_preflight.json"},
         {"role": "checker_verdict", "path": "40_OPS/r7_checker_verdict.md"},
@@ -341,6 +342,8 @@ B3 owner 綁定、B3 NEG-design 結構化、B2 requiredness 限定詞契約。
     index["checker"] = {"verdict_file": "40_OPS/r7_checker_verdict.md",
                         "rev1_verdict": "REJECT", "mandatory_findings": 10,
                         "disposition": "see rev2 retraction table"}
+    index["freeze"] = {"path": os.path.basename(fr2_path) if fr2_path else None,
+                       "candidate_digest": (fr2 or {}).get("candidate_digest")}
     json.dump(index, open(idx_path, "w", encoding="utf-8", newline="\n"),
               ensure_ascii=False, indent=1)
     print(json.dumps({"closeout": "60_CLOSEOUT/SST_PLP_PH01_W0_B0-B2_CLOSEOUT_rev4.md",

@@ -1,6 +1,6 @@
 {
  "schema": "SST.PH01.W0.B0B3.DeliveryIndex@1",
- "generated_at": "2026-11-27T19:03:27+0800",
+ "generated_at": "2026-11-27T19:04:32+0800",
  "round_root": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127",
  "spec": {
   "version": "2026-11-27_r7_Native-first_CODEX_FINAL",
@@ -23,7 +23,7 @@
   },
   {
    "role": "freeze",
-   "path": "40_OPS/r7_candidate_freeze.rev2.json"
+   "path": "r7_candidate_freeze.rev9.json"
   },
   {
    "role": "b3_admission",
@@ -77,7 +77,7 @@
   "state": "see publish record",
   "record": "50_PUBLISH/publish_record.json"
  },
- "revision": 2,
+ "revision": 4,
  "rev1_documents": [
   "60_CLOSEOUT/SST_PLP_PH01_W0_B0-B2_CLOSEOUT.md",
   "60_CLOSEOUT/SST_PLP_PH01_W0_B0-B2_HANDOFF_B3_ADMISSION.md",
@@ -88,5 +88,9 @@
   "rev1_verdict": "REJECT",
   "mandatory_findings": 10,
   "disposition": "see rev2 retraction table"
+ },
+ "freeze": {
+  "path": "r7_candidate_freeze.rev9.json",
+  "candidate_digest": "816119811b6629a2f460f91259206a2deb7403905ea83f3b4625fc693372373d"
  }
 }
