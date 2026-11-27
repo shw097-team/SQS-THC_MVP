@@ -1,0 +1,30 @@
+{
+ "child_id": "FIX-REQ-01::FIXTURE-CHILD",
+ "original_id": "FIX-REQ-01",
+ "owner": "fixture",
+ "polarity": "POSITIVE_READ_AND_DEV_DENY",
+ "required_fields": [
+  "read"
+ ],
+ "required_set_spec_version": "B0RequiredSetSpec/1",
+ "requiredness": "FIXTURE_ONLY",
+ "requirement_ref": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\20_TESTS\\fixture\\source_fixture.md",
+ "requirement_sha": "1e3ec57f37ecebd20138e8b3e57b5a0cbfe21e76dbf0d99ebd36a7911f29605e",
+ "requirement_span": [
+  4,
+  6
+ ],
+ "rules": [
+  {
+   "expected_literal": "READ FROM THE FIXTURE SOURCE ONLY; NO DEV EFFECT.",
+   "field": "read",
+   "method": "MD_LABEL",
+   "prefix": "- **How／Predicate**：",
+   "source_id": "FIXTURE.SOURCE",
+   "span": [
+    5,
+    5
+   ]
+  }
+ ]
+}

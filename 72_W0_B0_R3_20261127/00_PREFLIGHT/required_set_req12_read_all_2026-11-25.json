@@ -1,0 +1,30 @@
+{
+ "child_id": "REQ-12::AUTHOR-SPLIT-01",
+ "original_id": "REQ-12",
+ "owner": "PR-07",
+ "polarity": "POSITIVE_READ_AND_DEV_DENY",
+ "required_fields": [
+  "read"
+ ],
+ "required_set_spec_version": "B0RequiredSetSpec/1",
+ "requiredness": "AUTHOR_SPLIT_UNRATIFIED",
+ "requirement_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md",
+ "requirement_sha": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
+ "requirement_span": [
+  572,
+  579
+ ],
+ "rules": [
+  {
+   "expected_literal": "READ 只讀合法來源，不能繼承 DEV 效應。",
+   "field": "read",
+   "method": "MD_LABEL",
+   "prefix": "- **How／Predicate**：",
+   "source_id": "SST.ALL.W0.BLUEPRINT",
+   "span": [
+    573,
+    573
+   ]
+  }
+ ]
+}

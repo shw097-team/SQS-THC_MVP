@@ -1,0 +1,291 @@
+{
+ "schema": "SST.PH01.W0.B0.R3.Deployment/1",
+ "deployment_id": "b0-r3-prod-20261127",
+ "created_at": "2026-11-27T21:53:55.046137+08:00",
+ "trust_root_kind": "OWNER_AUTHORED_CONFIG_FILE",
+ "subject": "SST/SQS-THC/PH01/E00",
+ "original_wave": "P1-W00M",
+ "bid": 0,
+ "spec_version": "2026-11-25_r4_Native-first",
+ "producer_candidate_digest": "57295b55607fcede38a2c6103b3c3de6a80d2b2e8193e700bc2de2a2d44ba94f",
+ "producer_candidate_digest_basis": "value declared by the B0 producer freeze in force at 2026-11-27 (envelope b0_current_sourcereadset.json / PROMOTION_RECORD); pinned here before receive, never copied from the envelope under test",
+ "scope": {
+  "scope_id": "SQS-THC-PH01-E00-B0-SOURCE-READ",
+  "source_ids": [
+   "SST.ALL.W0.BLUEPRINT",
+   "SST.W0M.MAIN"
+  ],
+  "purpose": "B0 SOURCE_READ under SST_PLP_PH01_W0_B0_SOURCE_READ_AUTH",
+  "consumer_ids": [
+   "B1",
+   "B2",
+   "B3"
+  ]
+ },
+ "scope_purpose": "B0 SOURCE_READ under SST_PLP_PH01_W0_B0_SOURCE_READ_AUTH",
+ "scope_id": "SQS-THC-PH01-E00-B0-SOURCE-READ",
+ "consumer_ids": [
+  "B1",
+  "B2",
+  "B3"
+ ],
+ "source_manifest_expected": {
+  "inherited_sha": "2012a28f630f4e28d60309de0bb5734ce138b18c677445a475c670f1d9f4245e",
+  "verification": "UNVERIFIED",
+  "evidence_ref": null
+ },
+ "os_principal": "desktop-57eo414\\user",
+ "owner_public_hex": "d42c654cd1afba803ef78bee501aa3e2a3d33ff1305c52f914d3ff27bb9be379",
+ "rights": {
+  "task_id": "SST_PLP_PH01_W0_B0_SOURCE_READ_AUTH",
+  "scope": [
+   "b0_source_read_authority",
+   "sqs_thc_ph01_e00"
+  ],
+  "receipt_ref": "C:\\Projects\\Agent_Workspace\\FHS_NEXT_Workspace\\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\\owner_ws\\artifacts\\OWNER_WINDOW.json",
+  "receipt_sha256": "fc6eaec319533663ad9d0354ee0a541ac00da47bb749b4afc422cfb9eec900ba",
+  "receipt_window_id": "WIN-5afc943249a6",
+  "state_ref": "C:\\Users\\user\\.hgk-owner\\window.json",
+  "required_effect_ceiling": "READ_ONLY_PROBE",
+  "revocation_state_ref": "C:\\Users\\user\\.hgk-owner\\window.json#state",
+  "allowed_disclosure": [
+   "LOCAL_ONLY",
+   "APPROVED_CONSUMER"
+  ],
+  "epoch_strategy_allowed": [
+   "PROVIDER_VERSIONED",
+   "LIVE_REVALIDATE"
+  ]
+ },
+ "consumers": {
+  "B1": {
+   "consumer_id": "B1",
+   "validator_name": "b1_b0_r3_receiver",
+   "validator_version": "b0-r3-receiver/1.0.0",
+   "consumer_use": "B1 REPO/BASE/FDA/ROOTS inbound consumption of the B0 SourceReadSet",
+   "source_ids": [
+    "SST.ALL.W0.BLUEPRINT",
+    "SST.W0M.MAIN"
+   ],
+   "sources": {
+    "SST.ALL.W0.BLUEPRINT": {
+     "source_id": "SST.ALL.W0.BLUEPRINT",
+     "namespace": "SST/SQS-THC/PH01/P1-W00M",
+     "source_version": "2026-11-24_r2",
+     "locator": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md",
+     "expected_raw_sha256": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
+     "byte_length": 457294,
+     "requirement_span": [
+      572,
+      579
+     ],
+     "expected_clause_sha256": "77132f0636e30b0cf8d5df1ae3438228b18d847d718e5ffbf5c56825229f9bf6",
+     "required_fields": [
+      "read"
+     ],
+     "required_set_ref": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\00_PREFLIGHT\\required_set_req12_read_all_2026-11-25.json",
+     "required_set_sha256": "50ca45c106bb58fd8a3bfdf1cfaf7400fd3a06d1f95cea7f1fe8c6166eda4764",
+     "extraction_rule": {
+      "expected_literal": "READ 只讀合法來源，不能繼承 DEV 效應。",
+      "field": "read",
+      "method": "MD_LABEL",
+      "prefix": "- **How／Predicate**：",
+      "source_id": "SST.ALL.W0.BLUEPRINT",
+      "span": [
+       573,
+       573
+      ]
+     },
+     "expected_value": "READ 只讀合法來源，不能繼承 DEV 效應。",
+     "expected_value_sha256": "78a231eaa93d64fed87001426970d5133e89847b3f7668e514d6b0f259798dab",
+     "mandatory": true
+    },
+    "SST.W0M.MAIN": {
+     "source_id": "SST.W0M.MAIN",
+     "namespace": "SST/SQS-THC/PH01/P1-W00M",
+     "source_version": "2026-11-24_r2",
+     "locator": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_WM\\SST_PLP_PH01_ALL_WNM_2026-11-24_r2\\SST_PLP_PH01_W0M_實質正文.md",
+     "expected_raw_sha256": "5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96",
+     "byte_length": 311983,
+     "requirement_span": [
+      295,
+      307
+     ],
+     "expected_clause_sha256": "4f0db2cb1d7c740eaf3b5a1de6be4517c951fe654010aeb43100104d13dfbaf5",
+     "required_fields": [
+      "read"
+     ],
+     "required_set_ref": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\00_PREFLIGHT\\required_set_req12_read_w0m_2026-11-25.json",
+     "required_set_sha256": "bc7afa530677746b8c681fc32109041a04e1fd1e7fc201c375d8edff34e6615c",
+     "extraction_rule": {
+      "expected_literal": "READ 只讀合法來源，不能繼承 DEV 效應。",
+      "field": "read",
+      "method": "MD_LABEL",
+      "prefix": "- **How／Predicate**：",
+      "source_id": "SST.W0M.MAIN",
+      "span": [
+       299,
+       299
+      ]
+     },
+     "expected_value": "READ 只讀合法來源，不能繼承 DEV 效應。",
+     "expected_value_sha256": "78a231eaa93d64fed87001426970d5133e89847b3f7668e514d6b0f259798dab",
+     "mandatory": true
+    }
+   }
+  },
+  "B2": {
+   "consumer_id": "B2",
+   "validator_name": "b2_b0_r3_receiver",
+   "validator_version": "b0-r3-receiver/1.0.0",
+   "consumer_use": "B2 QROWS/HARD/META/RETURN inbound consumption of the B0 SourceReadSet",
+   "source_ids": [
+    "SST.ALL.W0.BLUEPRINT",
+    "SST.W0M.MAIN"
+   ],
+   "sources": {
+    "SST.ALL.W0.BLUEPRINT": {
+     "source_id": "SST.ALL.W0.BLUEPRINT",
+     "namespace": "SST/SQS-THC/PH01/P1-W00M",
+     "source_version": "2026-11-24_r2",
+     "locator": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md",
+     "expected_raw_sha256": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
+     "byte_length": 457294,
+     "requirement_span": [
+      572,
+      579
+     ],
+     "expected_clause_sha256": "77132f0636e30b0cf8d5df1ae3438228b18d847d718e5ffbf5c56825229f9bf6",
+     "required_fields": [
+      "read"
+     ],
+     "required_set_ref": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\00_PREFLIGHT\\required_set_req12_read_all_2026-11-25.json",
+     "required_set_sha256": "50ca45c106bb58fd8a3bfdf1cfaf7400fd3a06d1f95cea7f1fe8c6166eda4764",
+     "extraction_rule": {
+      "expected_literal": "READ 只讀合法來源，不能繼承 DEV 效應。",
+      "field": "read",
+      "method": "MD_LABEL",
+      "prefix": "- **How／Predicate**：",
+      "source_id": "SST.ALL.W0.BLUEPRINT",
+      "span": [
+       573,
+       573
+      ]
+     },
+     "expected_value": "READ 只讀合法來源，不能繼承 DEV 效應。",
+     "expected_value_sha256": "78a231eaa93d64fed87001426970d5133e89847b3f7668e514d6b0f259798dab",
+     "mandatory": true
+    },
+    "SST.W0M.MAIN": {
+     "source_id": "SST.W0M.MAIN",
+     "namespace": "SST/SQS-THC/PH01/P1-W00M",
+     "source_version": "2026-11-24_r2",
+     "locator": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_WM\\SST_PLP_PH01_ALL_WNM_2026-11-24_r2\\SST_PLP_PH01_W0M_實質正文.md",
+     "expected_raw_sha256": "5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96",
+     "byte_length": 311983,
+     "requirement_span": [
+      295,
+      307
+     ],
+     "expected_clause_sha256": "4f0db2cb1d7c740eaf3b5a1de6be4517c951fe654010aeb43100104d13dfbaf5",
+     "required_fields": [
+      "read"
+     ],
+     "required_set_ref": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\00_PREFLIGHT\\required_set_req12_read_w0m_2026-11-25.json",
+     "required_set_sha256": "bc7afa530677746b8c681fc32109041a04e1fd1e7fc201c375d8edff34e6615c",
+     "extraction_rule": {
+      "expected_literal": "READ 只讀合法來源，不能繼承 DEV 效應。",
+      "field": "read",
+      "method": "MD_LABEL",
+      "prefix": "- **How／Predicate**：",
+      "source_id": "SST.W0M.MAIN",
+      "span": [
+       299,
+       299
+      ]
+     },
+     "expected_value": "READ 只讀合法來源，不能繼承 DEV 效應。",
+     "expected_value_sha256": "78a231eaa93d64fed87001426970d5133e89847b3f7668e514d6b0f259798dab",
+     "mandatory": true
+    }
+   }
+  },
+  "B3": {
+   "consumer_id": "B3",
+   "validator_name": "b3_b0_r3_receiver",
+   "validator_version": "b0-r3-receiver/1.0.0",
+   "consumer_use": "B3 JOIN/CHILD/ROUTE inbound consumption of the B0 SourceReadSet",
+   "source_ids": [
+    "SST.ALL.W0.BLUEPRINT",
+    "SST.W0M.MAIN"
+   ],
+   "sources": {
+    "SST.ALL.W0.BLUEPRINT": {
+     "source_id": "SST.ALL.W0.BLUEPRINT",
+     "namespace": "SST/SQS-THC/PH01/P1-W00M",
+     "source_version": "2026-11-24_r2",
+     "locator": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md",
+     "expected_raw_sha256": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
+     "byte_length": 457294,
+     "requirement_span": [
+      572,
+      579
+     ],
+     "expected_clause_sha256": "77132f0636e30b0cf8d5df1ae3438228b18d847d718e5ffbf5c56825229f9bf6",
+     "required_fields": [
+      "read"
+     ],
+     "required_set_ref": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\00_PREFLIGHT\\required_set_req12_read_all_2026-11-25.json",
+     "required_set_sha256": "50ca45c106bb58fd8a3bfdf1cfaf7400fd3a06d1f95cea7f1fe8c6166eda4764",
+     "extraction_rule": {
+      "expected_literal": "READ 只讀合法來源，不能繼承 DEV 效應。",
+      "field": "read",
+      "method": "MD_LABEL",
+      "prefix": "- **How／Predicate**：",
+      "source_id": "SST.ALL.W0.BLUEPRINT",
+      "span": [
+       573,
+       573
+      ]
+     },
+     "expected_value": "READ 只讀合法來源，不能繼承 DEV 效應。",
+     "expected_value_sha256": "78a231eaa93d64fed87001426970d5133e89847b3f7668e514d6b0f259798dab",
+     "mandatory": true
+    },
+    "SST.W0M.MAIN": {
+     "source_id": "SST.W0M.MAIN",
+     "namespace": "SST/SQS-THC/PH01/P1-W00M",
+     "source_version": "2026-11-24_r2",
+     "locator": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_WM\\SST_PLP_PH01_ALL_WNM_2026-11-24_r2\\SST_PLP_PH01_W0M_實質正文.md",
+     "expected_raw_sha256": "5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96",
+     "byte_length": 311983,
+     "requirement_span": [
+      295,
+      307
+     ],
+     "expected_clause_sha256": "4f0db2cb1d7c740eaf3b5a1de6be4517c951fe654010aeb43100104d13dfbaf5",
+     "required_fields": [
+      "read"
+     ],
+     "required_set_ref": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\00_PREFLIGHT\\required_set_req12_read_w0m_2026-11-25.json",
+     "required_set_sha256": "bc7afa530677746b8c681fc32109041a04e1fd1e7fc201c375d8edff34e6615c",
+     "extraction_rule": {
+      "expected_literal": "READ 只讀合法來源，不能繼承 DEV 效應。",
+      "field": "read",
+      "method": "MD_LABEL",
+      "prefix": "- **How／Predicate**：",
+      "source_id": "SST.W0M.MAIN",
+      "span": [
+       299,
+       299
+      ]
+     },
+     "expected_value": "READ 只讀合法來源，不能繼承 DEV 效應。",
+     "expected_value_sha256": "78a231eaa93d64fed87001426970d5133e89847b3f7668e514d6b0f259798dab",
+     "mandatory": true
+    }
+   }
+  }
+ },
+ "claim_ceiling": "This descriptor binds one consumer deployment to the original B0 wire contract. It grants no rights of its own: the rights in force are the owner window receipt and the live window state, both re-verified at receive time."
+}

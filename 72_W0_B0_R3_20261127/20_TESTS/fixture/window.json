@@ -1,0 +1,16 @@
+{
+ "schema": "OwnerSigningWindow@1",
+ "window_id": "FIXTURE-WIN-0001",
+ "task_id": "SST_PLP_PH01_W0_B0_SOURCE_READ_AUTH",
+ "scope": [
+  "b0_source_read_authority",
+  "sqs_thc_ph01_e00"
+ ],
+ "opened_at": "2026-11-27T00:00:00",
+ "expires_at": 4102444800,
+ "max_ops": 10,
+ "ops_used": 0,
+ "effect_class_ceiling": "READ_ONLY_PROBE",
+ "state": "OPEN",
+ "owner_public_hex": "b6735536f1d654439b4bdba95149312f3e5e409bc99b1cc14da9b3cfcfbbfb9b"
+}

@@ -1,0 +1,96 @@
+{
+ "wire_version": "SST.B0.SourceReadSet/2",
+ "subject": "SST/SQS-THC/PH01/E00",
+ "original_wave": "P1-W00M",
+ "bid": 0,
+ "spec_version": "2026-11-25_r4_Native-first",
+ "candidate_digest": "0000000000000000000000000000000000000000000000000000000000000001",
+ "scope": {
+  "scope_id": "FIXTURE-SCOPE-B0-R3",
+  "source_ids": [
+   "FIXTURE.SOURCE"
+  ],
+  "purpose": "B0 SOURCE_READ under SST_PLP_PH01_W0_B0_SOURCE_READ_AUTH (fixture)",
+  "consumer_ids": [
+   "B1",
+   "B2",
+   "B3"
+  ]
+ },
+ "source_manifest": {
+  "inherited_sha": "2012a28f630f4e28d60309de0bb5734ce138b18c677445a475c670f1d9f4245e",
+  "verification": "UNVERIFIED",
+  "evidence_ref": null
+ },
+ "entries": [
+  {
+   "source_ref": {
+    "source_id": "FIXTURE.SOURCE",
+    "namespace": "FIXTURE/PH01/B0",
+    "locator": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\20_TESTS\\fixture\\source_fixture.md",
+    "source_version": "fixture_r1"
+   },
+   "sha": "1e3ec57f37ecebd20138e8b3e57b5a0cbfe21e76dbf0d99ebd36a7911f29605e",
+   "byte_length": 481,
+   "encoding": "UTF-8",
+   "clause_span": [
+    4,
+    6
+   ],
+   "clause_sha": "9fc2aa2878a35a60c48ccf9e57864a7e82440ed57334b354a1381405331477b1",
+   "original_id": "FIX-REQ-01",
+   "child_id": "FIX-REQ-01::FIXTURE-CHILD",
+   "polarity": "POSITIVE_READ_AND_DEV_DENY",
+   "requiredness": "FIXTURE_ONLY",
+   "owner": "fixture",
+   "provenance": {
+    "requirement_ref": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\20_TESTS\\fixture\\source_fixture.md",
+    "requirement_sha": "1e3ec57f37ecebd20138e8b3e57b5a0cbfe21e76dbf0d99ebd36a7911f29605e",
+    "requirement_span": [
+     4,
+     6
+    ],
+    "rule_ref": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\20_TESTS\\fixture\\required_set_fixture.json",
+    "rule_sha": "d34e4aec2744b6bfb7a9f35deb2d140d68e14de11337c2533a37dd1d3d3b2dfc"
+   },
+   "required_fields": [
+    "read"
+   ],
+   "observed": {
+    "read": {
+     "value": "READ FROM THE FIXTURE SOURCE ONLY; NO DEV EFFECT.",
+     "source_sha": "1e3ec57f37ecebd20138e8b3e57b5a0cbfe21e76dbf0d99ebd36a7911f29605e",
+     "span": [
+      5,
+      5
+     ],
+     "value_sha": "a23555aa692d0e75184dab184a04c898821b5eee113007bded3770b5e1dd0515"
+    }
+   },
+   "missing": [],
+   "authority": {
+    "source_owner": "fixture",
+    "usage_evidence_ref": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\20_TESTS\\fixture\\receipt.json",
+    "usage_evidence_sha": "6072193f83e05c1ec6d1b2752b471fd0e2595e16bf082f8e40e53ecf05610a53",
+    "os_principal": "desktop-57eo414\\user",
+    "verification_method": "fixture-anchor",
+    "rights_check_ref": "FIXTURE-WIN-0001",
+    "checked_at": "2026-11-27T00:00:00+00:00",
+    "valid_from": "2026-11-27T00:00:00+00:00",
+    "expires_at": "2099-01-01T00:00:00+00:00",
+    "revocation_check_ref": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\20_TESTS\\fixture\\window.json#state",
+    "epoch_strategy": "LIVE_REVALIDATE",
+    "epoch_provider_ref": null,
+    "epoch_evidence_ref": null,
+    "disclosure": "LOCAL_ONLY"
+   },
+   "acl_epoch": null,
+   "rights_epoch": null
+  }
+ ],
+ "errors": [],
+ "write_set": [],
+ "preimage": "N/A",
+ "fin_order": "DENY",
+ "extensions": {}
+}

@@ -1,0 +1,18 @@
+{
+ "window_id": "FIXTURE-WIN-0001",
+ "task_id": "SST_PLP_PH01_W0_B0_SOURCE_READ_AUTH",
+ "opened_at": "2026-11-27T00:00:00",
+ "expires_at": 4102444800,
+ "scope": [
+  "b0_source_read_authority",
+  "sqs_thc_ph01_e00"
+ ],
+ "max_ops": 10,
+ "effect_class_ceiling": "READ_ONLY_PROBE",
+ "policy_epoch_at_open": 13,
+ "enrollments_sha256_at_open": "0000000000000000000000000000000000000000000000000000000000000000",
+ "owner_fingerprint": "fixture-fingerprint",
+ "owner_signature_hex": "922b6de02d6d99bad79b5f5d8133326355cf28e387d35e06c8a2652f41926aad8ca5b0dab0d0d17471cefc7203b0bdf9290a4537dad9621d308c07dae7980a07",
+ "alg": "ed25519",
+ "claim_ceiling": "FIXTURE ONLY: signed by a test key, confers no owner authority"
+}

@@ -1,0 +1,59 @@
+{
+ "schema": "SST.PH01.W0.B0.R3.T3Measurement/1",
+ "measured_at": "2026-11-27T22:11:23.401530+08:00",
+ "f1_n07": {
+  "affected_this_round": false,
+  "reason": "this round changes the receive path and two descriptor constants; it introduces no cross-process cancellation, worker or UNKNOWN state",
+  "cross_process_artifacts_used": [],
+  "finding_budget": "C-R1-01 stays at its original attempts; no third repair is opened because no new in-process or cross-process delta was observed",
+  "historical_in_process_evidence": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\30_VERIFY\\verify_r1_receipt_round5.json"
+ },
+ "f2_n05_no_write": {
+  "source_sha_before": {
+   "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
+   "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_WM\\SST_PLP_PH01_ALL_WNM_2026-11-24_r2\\SST_PLP_PH01_W0M_實質正文.md": "5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96"
+  },
+  "source_sha_after": {
+   "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
+   "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_WM\\SST_PLP_PH01_ALL_WNM_2026-11-24_r2\\SST_PLP_PH01_W0M_實質正文.md": "5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96"
+  },
+  "sources_unchanged": true,
+  "reader_second_run_exit": 0,
+  "reader_second_run_stdout_sha256": "21e398d5dc1981143eecfae197486bd4d2cc7715aec4b105db3db079f30a8cb8",
+  "reader_second_run_stderr": "",
+  "envelope_on_disk_sha256": "abb5546cbf36b94195fa8935ceb170f163cbe5c7832fbf55d5f778e0f6702d2e",
+  "code_tree_files_before": 52,
+  "code_tree_files_after": 52,
+  "code_tree_changes": [],
+  "no_product_write_observed": true,
+  "escaping_writes": {
+   "worktree_status_lines": 41
+  }
+ },
+ "f2_n08_native_off": {
+  "rerun_this_round": false,
+  "reason": "the change adds no import and no runtime dependency; the import probe below is the direct observation that the reader's load surface is unchanged in kind",
+  "import_probe": {
+   "packages_loaded_outside_stdlib": [
+    "b0_reader",
+    "b0_reader.bytes_",
+    "b0_reader.cli",
+    "b0_reader.controls",
+    "b0_reader.errors",
+    "b0_reader.fields",
+    "b0_reader.native_entry",
+    "b0_reader.requiredset",
+    "b0_reader.return_",
+    "b0_reader.root",
+    "b0_reader.winio"
+   ],
+   "b0_reader_file": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\20_DEV\\b0_reader\\__init__.py"
+  },
+  "historical_bounded_receipt": {
+   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\40_OPS\\native_off_r4.json",
+   "sha256": "4130b3cb89cd80c9e6b0f14d1a6d893c4a2e9e03eef4c83a800306f5e9d152a8",
+   "verdict": "NATIVE_OFF_EQUIVALENT_NO_DEPENDENCY"
+  },
+  "claim_ceiling": "NOT a whole-machine OFF proof: transitive imports, kernel/registry writes and post-window network activity stay unproven, exactly as the historical receipt already states"
+ }
+}

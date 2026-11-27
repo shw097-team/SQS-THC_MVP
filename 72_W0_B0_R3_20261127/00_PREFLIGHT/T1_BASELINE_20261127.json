@@ -1,0 +1,295 @@
+{
+ "schema": "SST.PH01.W0.B0.R3.T1Baseline/1",
+ "generated_at": "2026-11-27T21:53:55.046137+08:00",
+ "workspace_root": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127",
+ "old_workspace_readonly": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace",
+ "knowledge_root_readonly": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04",
+ "anchors": {
+  "plan": {
+   "path": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\SST_PH01_W0_B0_剩餘阻斷定向解阻_必要差額閉合暨正式結案工程_方案.md",
+   "present": true,
+   "bytes": 56878,
+   "sha256": "303484a9f3f74ace4d19287b5cf3674cf3367d4f9ae1f13c1c09d376c3daf27a",
+   "declared_sha256": "303484a9f3f74ace4d19287b5cf3674cf3367d4f9ae1f13c1c09d376c3daf27a",
+   "match": true
+  },
+  "control": {
+   "path": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\SST_PH01_W0_B0_HERMES_最小執行控制包.md",
+   "present": true,
+   "bytes": 12537,
+   "sha256": "c8f4a1368ea5a3818d9219a922da224bac3fef57da07c84911518ac12878c759"
+  },
+  "b0_entry": {
+   "path": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\W0_B0-B8_NATIVE_r4\\W0_B0_NATIVE_r4\\B0_NATIVE_FIRST_2026-11-25_r4_CODEX_FINAL\\00_唯一交付入口_2026-11-25_r4.md",
+   "present": true,
+   "bytes": 18805,
+   "sha256": "eab6fda836349f4f960bb34f43df348d890e0faece5602610e603cb29148dda9",
+   "declared_sha256": "eab6fda836349f4f960bb34f43df348d890e0faece5602610e603cb29148dda9",
+   "match": true
+  },
+  "b0_body": {
+   "path": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\W0_B0-B8_NATIVE_r4\\W0_B0_NATIVE_r4\\B0_NATIVE_FIRST_2026-11-25_r4_CODEX_FINAL\\SST_PLP_PH01_W0_B0_執行控制小包_實質正文_2026-11-25_r4_Native-first_定案.md",
+   "present": true,
+   "bytes": 99791,
+   "sha256": "582a54048d8b63e37be3d803c829a12ffe164be72963f026cea1a1b6183345d9",
+   "declared_sha256": "582a54048d8b63e37be3d803c829a12ffe164be72963f026cea1a1b6183345d9",
+   "match": true
+  },
+  "b1_r7": {
+   "path": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\W0_B0-B3_r7\\SST_PLP_PH01_W0_B1_執行控制小包_實質正文_2026-11-27_r7_Native-first_CODEX_FINAL.md",
+   "present": true,
+   "bytes": 266543,
+   "sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "declared_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+   "match": true
+  },
+  "b2_r7": {
+   "path": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\W0_B0-B3_r7\\SST_PLP_PH01_W0_B2_執行控制小包_實質正文_2026-11-27_r7_Native-first_CODEX_FINAL.md",
+   "present": true,
+   "bytes": 12552061,
+   "sha256": "acd3282319116142cf55b1bd7d109d1cf08a62907cd05dee8e65eef49554c340"
+  },
+  "b3_r7": {
+   "path": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\W0_B0-B3_r7\\SST_PLP_PH01_W0_B3_執行控制小包_實質正文_2026-11-27_r7_Native-first_CODEX_FINAL.md",
+   "present": true,
+   "bytes": 1577104,
+   "sha256": "c1c9c5326a36c1e0e0b00dc1231b39b4f7c21e10a4f9320f2a4dbaabe6125ec5"
+  },
+  "r7_entry": {
+   "path": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\W0_B0-B3_r7\\00_唯一交付入口_W0_B0-B3_2026-11-27_r7.md",
+   "present": true,
+   "bytes": 10673,
+   "sha256": "21c27fbb4f40c82b0019aea545078d2941fb81b165134638bb7dd554972291d2"
+  },
+  "r5_checker": {
+   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\30_VERIFY\\verify_r1_receipt_round5.json",
+   "present": true,
+   "bytes": 4629,
+   "sha256": "a4b0a35df7349d19b47120b15f5931f706fbd6bf1d02f54afeb04269cbb971f2"
+  },
+  "legacy_receiver": {
+   "path": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\10_CODE\\legacy_reference\\receiver_r6_20261126.py",
+   "present": true,
+   "bytes": 16569,
+   "sha256": "8bdebc2bc7e325bcb855f3fe226539ef70be0277881a0378be0f7565ca38fa98"
+  },
+  "legacy_r5_consumers": {
+   "path": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\10_CODE\\legacy_reference\\r5_consumers_r7_20261127.py",
+   "present": true,
+   "bytes": 15247,
+   "sha256": "3878190e4e4f21f8456ea54c65000a7c24dd529b7c385508cdeef0409c4c11ee"
+  },
+  "envelope_r7": {
+   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b0_current_sourcereadset.json",
+   "present": true,
+   "bytes": 5429,
+   "sha256": "2a226d27b1559dc7e19ac8a5969f4704dba19f20da10cb0bb8c7b09c82175354"
+  },
+  "r7_receipts": {
+   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\r7_consumer_receipts.json",
+   "present": true,
+   "bytes": 10007,
+   "sha256": "e5beb6c873c240bb18eff43ff43fe6f7b7943a194b98f1acb0d1c265cbfd956d"
+  },
+  "r7_selftest": {
+   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\r7_consumer_selftest.json",
+   "present": true,
+   "bytes": 1905,
+   "sha256": "be596df8214e0174c713f12a3637849a44d6d220048fd07872deaed7bed9c639"
+  },
+  "native_off_r4": {
+   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\40_OPS\\native_off_r4.json",
+   "present": true,
+   "bytes": 41334,
+   "sha256": "4130b3cb89cd80c9e6b0f14d1a6d893c4a2e9e03eef4c83a800306f5e9d152a8"
+  },
+  "promotion": {
+   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\PROMOTION_RECORD.json",
+   "present": true,
+   "bytes": 1738,
+   "sha256": "2483722811d3754d13112d6983a5ea08b43bcbcc90952082691faeb3fd1a9c18"
+  },
+  "session_closeout": {
+   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\docs\\SESSION_CLOSEOUT_2026-11-27.md",
+   "present": false,
+   "bytes": null,
+   "sha256": null
+  },
+  "b0_descriptor_r4": {
+   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\00_PREFLIGHT\\B0_READ_CONTEXT_2026-11-25_r4.json",
+   "present": true,
+   "bytes": 3846,
+   "sha256": "c57518c457c5c3c9a4bf52f0a5ade422aed624249ff1e79e055e8d52f84f6dea"
+  },
+  "b0_descriptor_r6": {
+   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\00_PREFLIGHT\\B0_READ_CONTEXT_2026-11-26.json",
+   "present": true,
+   "bytes": 3670,
+   "sha256": "ad78641547abfb41a480c79a36516c5cc57c778b028218701b29ac395b07f1f2"
+  }
+ },
+ "sources": {
+  "SST.ALL.W0.BLUEPRINT": {
+   "locator": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md",
+   "present": true,
+   "bytes": 457294,
+   "raw_sha256": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
+   "declared_expected_sha": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
+   "sha_match": true,
+   "namespace": "SST/SQS-THC/PH01/P1-W00M",
+   "source_version": "2026-11-24_r2",
+   "requirement_span": [
+    572,
+    579
+   ],
+   "clause_sha256": "77132f0636e30b0cf8d5df1ae3438228b18d847d718e5ffbf5c56825229f9bf6",
+   "required_set_ref": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\00_PREFLIGHT\\required_set_req12_read_all_2026-11-25.json",
+   "required_set_sha256": "50ca45c106bb58fd8a3bfdf1cfaf7400fd3a06d1f95cea7f1fe8c6166eda4764",
+   "required_set_declared_sha": "50ca45c106bb58fd8a3bfdf1cfaf7400fd3a06d1f95cea7f1fe8c6166eda4764",
+   "required_fields": [
+    "read"
+   ],
+   "extraction_rule": {
+    "expected_literal": "READ 只讀合法來源，不能繼承 DEV 效應。",
+    "field": "read",
+    "method": "MD_LABEL",
+    "prefix": "- **How／Predicate**：",
+    "source_id": "SST.ALL.W0.BLUEPRINT",
+    "span": [
+     573,
+     573
+    ]
+   },
+   "extracted_value": "READ 只讀合法來源，不能繼承 DEV 效應。",
+   "extracted_value_sha": "78a231eaa93d64fed87001426970d5133e89847b3f7668e514d6b0f259798dab",
+   "requirement_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md",
+   "child_id": "REQ-12::AUTHOR-SPLIT-01",
+   "original_id": "REQ-12",
+   "owner": "PR-07",
+   "polarity": "POSITIVE_READ_AND_DEV_DENY",
+   "requiredness": "AUTHOR_SPLIT_UNRATIFIED"
+  },
+  "SST.W0M.MAIN": {
+   "locator": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_WM\\SST_PLP_PH01_ALL_WNM_2026-11-24_r2\\SST_PLP_PH01_W0M_實質正文.md",
+   "present": true,
+   "bytes": 311983,
+   "raw_sha256": "5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96",
+   "declared_expected_sha": "5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96",
+   "sha_match": true,
+   "namespace": "SST/SQS-THC/PH01/P1-W00M",
+   "source_version": "2026-11-24_r2",
+   "requirement_span": [
+    295,
+    307
+   ],
+   "clause_sha256": "4f0db2cb1d7c740eaf3b5a1de6be4517c951fe654010aeb43100104d13dfbaf5",
+   "required_set_ref": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\00_PREFLIGHT\\required_set_req12_read_w0m_2026-11-25.json",
+   "required_set_sha256": "bc7afa530677746b8c681fc32109041a04e1fd1e7fc201c375d8edff34e6615c",
+   "required_set_declared_sha": "bc7afa530677746b8c681fc32109041a04e1fd1e7fc201c375d8edff34e6615c",
+   "required_fields": [
+    "read"
+   ],
+   "extraction_rule": {
+    "expected_literal": "READ 只讀合法來源，不能繼承 DEV 效應。",
+    "field": "read",
+    "method": "MD_LABEL",
+    "prefix": "- **How／Predicate**：",
+    "source_id": "SST.W0M.MAIN",
+    "span": [
+     299,
+     299
+    ]
+   },
+   "extracted_value": "READ 只讀合法來源，不能繼承 DEV 效應。",
+   "extracted_value_sha": "78a231eaa93d64fed87001426970d5133e89847b3f7668e514d6b0f259798dab",
+   "requirement_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_WM\\SST_PLP_PH01_ALL_WNM_2026-11-24_r2\\SST_PLP_PH01_W0M_實質正文.md",
+   "child_id": "REQ-12::AUTHOR-SPLIT-01",
+   "original_id": "REQ-12",
+   "owner": "PR-07",
+   "polarity": "POSITIVE_READ_AND_DEV_DENY",
+   "requiredness": "AUTHOR_SPLIT_UNRATIFIED"
+  }
+ },
+ "rights_state": {
+  "receipt_ref": "C:\\Projects\\Agent_Workspace\\FHS_NEXT_Workspace\\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\\owner_ws\\artifacts\\OWNER_WINDOW.json",
+  "receipt_bytes": 930,
+  "receipt_sha256": "fc6eaec319533663ad9d0354ee0a541ac00da47bb749b4afc422cfb9eec900ba",
+  "receipt_window_id": "WIN-5afc943249a6",
+  "receipt_task_id": "SST_PLP_PH01_W0_B0_SOURCE_READ_AUTH",
+  "receipt_scope": [
+   "b0_source_read_authority",
+   "sqs_thc_ph01_e00"
+  ],
+  "receipt_expires_at": 1795781329,
+  "receipt_effect_ceiling": "READ_ONLY_PROBE",
+  "live_state_ref": "C:\\Users\\user\\.hgk-owner\\window.json",
+  "live_window_id": "WIN-5afc943249a6",
+  "live_state": "CLOSED",
+  "live_expires_at": 1795781329,
+  "live_observed_at": "2026-11-27T21:53:55.046137+08:00",
+  "live_state_open": false,
+  "live_same_window": true,
+  "owner_public_hex": "d42c654cd1afba803ef78bee501aa3e2a3d33ff1305c52f914d3ff27bb9be379",
+  "os_principal": "desktop-57eo414\\user"
+ },
+ "envelope_under_test": {
+  "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b0_current_sourcereadset.json",
+  "bytes": 5429,
+  "sha256": "2a226d27b1559dc7e19ac8a5969f4704dba19f20da10cb0bb8c7b09c82175354",
+  "candidate_digest": "57295b55607fcede38a2c6103b3c3de6a80d2b2e8193e700bc2de2a2d44ba94f",
+  "entries": [
+   {
+    "source_id": "SST.ALL.W0.BLUEPRINT",
+    "sha": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
+    "clause_span": [
+     572,
+     579
+    ],
+    "required_fields": [
+     "read"
+    ],
+    "observed": [
+     "read"
+    ],
+    "missing": [],
+    "authority_valid_from": "2026-11-27T18:08:49+08:00",
+    "authority_expires_at": "2026-11-27T20:08:49+08:00",
+    "authority_usage_evidence_sha": "fc6eaec319533663ad9d0354ee0a541ac00da47bb749b4afc422cfb9eec900ba"
+   },
+   {
+    "source_id": "SST.W0M.MAIN",
+    "sha": "5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96",
+    "clause_span": [
+     295,
+     307
+    ],
+    "required_fields": [
+     "read"
+    ],
+    "observed": [
+     "read"
+    ],
+    "missing": [],
+    "authority_valid_from": "2026-11-27T18:08:49+08:00",
+    "authority_expires_at": "2026-11-27T20:08:49+08:00",
+    "authority_usage_evidence_sha": "fc6eaec319533663ad9d0354ee0a541ac00da47bb749b4afc422cfb9eec900ba"
+   }
+  ],
+  "errors": []
+ },
+ "deployment": {
+  "path": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\00_PREFLIGHT\\DEPLOYMENT_prod_20261127.json",
+  "bytes": 11622,
+  "sha256": "4528119b59f6d8414c96e2e024ef5b77b38eabaee41872a2098dc87306b8cff6"
+ },
+ "deltas": {
+  "G03_G04_valid_from_offset": "open: r5 used mktime/strptime[:19]; repaired receiver uses aware RFC3339",
+  "G05_cross_window_currency": "open: r5 recorded currency without deciding; repaired receiver refuses non-current",
+  "G06_authority_truth": "open: r5 checked 14 keys exist; repaired receiver verifies receipt signature + interval",
+  "G07_candidate_digest": "open: r5 only required non-empty; repaired receiver exact-compares the pinned freeze",
+  "G08_wire_tuple": "open: r5 had no strict parser, no duplicate-key/NaN/type checks, next() first match",
+  "G09_caller_locator": "open: r5 opened envelope locator; repaired receiver reads only the trusted mapping",
+  "G10_three_consumers": "open: r5 expected one source for all three; repaired receiver pins both sources per consumer",
+  "sibling_accounting": "open: r5 refused the whole envelope on any errors[]; repaired receiver splits per source"
+ }
+}

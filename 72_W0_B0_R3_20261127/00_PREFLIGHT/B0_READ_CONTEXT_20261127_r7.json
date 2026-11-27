@@ -1,0 +1,67 @@
+{
+  "allowed_principal": "DESKTOP-57EO414\\user",
+  "authorization_note": "授權引用為 Owner 於 2026-11-27 本人以 tkinter 視窗簽發之收據（window_id WIN-09b414353796、ed25519、ceiling READ_ONLY_PROBE、scope b0_source_read_authority,sqs_thc_ph01_e00、max_ops 20）。口令未經代理，收據僅存於 owner_ws/artifacts。本檔為 W 內合法重定位後之續期，非新授權；前窗 WIN-5afc943249a6 已 CLOSED 不再引用。",
+  "authorization_ref": "C:\\Projects\\Agent_Workspace\\FHS_NEXT_Workspace\\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\\owner_ws\\artifacts\\OWNER_WINDOW.json",
+  "authorization_sha": "f2a02bf821f4bf451e10716d3a53afd56b2b02412085916f6932d4835f78ce35",
+  "context_version": "B0TrustedContext/1",
+  "epoch_note": "K 本地文件無 provider 版本化 rights/ACL epoch 服務；依 §02.F 以 ROOT／RETURN／接收前即時再驗 Owner 使用權、當次 OS 身份與撤權／時效承擔，不自造 epoch。",
+  "epoch_strategy": "LIVE_REVALIDATE",
+  "expires_at": "2026-11-28T02:01:17+08:00",
+  "revocation_ref": "C:\\Users\\user\\.hgk-owner\\window.json#state",
+  "scope": {
+    "consumer_ids": [
+      "B1",
+      "B2",
+      "B3"
+    ],
+    "purpose": "B0 SOURCE_READ under SST_PLP_PH01_W0_B0_SOURCE_READ_AUTH",
+    "scope_id": "SQS-THC-PH01-E00-B0-SOURCE-READ",
+    "source_ids": [
+      "SST.ALL.W0.BLUEPRINT",
+      "SST.W0M.MAIN"
+    ]
+  },
+  "sources": [
+    {
+      "allowed_root": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS",
+      "expected_sha": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
+      "locator": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md",
+      "namespace": "SST/SQS-THC/PH01/P1-W00M",
+      "required_set": {
+        "ref": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\00_PREFLIGHT\\required_set_req12_read_all_2026-11-25.json",
+        "sha": "50ca45c106bb58fd8a3bfdf1cfaf7400fd3a06d1f95cea7f1fe8c6166eda4764",
+        "span": [
+          572,
+          579
+        ]
+      },
+      "revocation_check_ref": "C:\\Users\\user\\.hgk-owner\\window.json#state",
+      "source_id": "SST.ALL.W0.BLUEPRINT",
+      "source_owner": "SST Owner (single human OWNER, KB author)",
+      "source_version": "2026-11-24_r2",
+      "usage_evidence_ref": "C:\\Projects\\Agent_Workspace\\FHS_NEXT_Workspace\\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\\owner_ws\\artifacts\\OWNER_WINDOW.json",
+      "usage_evidence_sha": "f2a02bf821f4bf451e10716d3a53afd56b2b02412085916f6932d4835f78ce35"
+    },
+    {
+      "allowed_root": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS",
+      "expected_sha": "5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96",
+      "locator": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_WM\\SST_PLP_PH01_ALL_WNM_2026-11-24_r2\\SST_PLP_PH01_W0M_實質正文.md",
+      "namespace": "SST/SQS-THC/PH01/P1-W00M",
+      "required_set": {
+        "ref": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\00_PREFLIGHT\\required_set_req12_read_w0m_2026-11-25.json",
+        "sha": "bc7afa530677746b8c681fc32109041a04e1fd1e7fc201c375d8edff34e6615c",
+        "span": [
+          295,
+          307
+        ]
+      },
+      "revocation_check_ref": "C:\\Users\\user\\.hgk-owner\\window.json#state",
+      "source_id": "SST.W0M.MAIN",
+      "source_owner": "SST Owner (single human OWNER, KB author)",
+      "source_version": "2026-11-24_r2",
+      "usage_evidence_ref": "C:\\Projects\\Agent_Workspace\\FHS_NEXT_Workspace\\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\\owner_ws\\artifacts\\OWNER_WINDOW.json",
+      "usage_evidence_sha": "f2a02bf821f4bf451e10716d3a53afd56b2b02412085916f6932d4835f78ce35"
+    }
+  ],
+  "valid_from": "2026-11-27T22:02:28+08:00"
+}
