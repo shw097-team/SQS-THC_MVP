@@ -1,6 +1,6 @@
 {
  "schema": "SST.PH01.W0.B3.Admission@1",
- "generated_at": "2026-11-27T19:17:18+0800",
+ "generated_at": "2026-11-27T19:33:35+0800",
  "spec_b3_sha256": "c1c9c5326a36c1e0e0b00dc1231b39b4f7c21e10a4f9320f2a4dbaabe6125ec5",
  "host": {
   "hostname": "DESKTOP-57EO414",
@@ -13,7 +13,7 @@
    "callable": "b3_product.op_join",
    "rows": 365,
    "source_bound_ready": 273,
-   "admission_ready": 18,
+   "admission_ready": 90,
    "held": 92
   },
   "CHILD": {
@@ -26,8 +26,8 @@
    "callable": "b3_product.op_route",
    "routes": 365,
    "source_bound": 273,
-   "route_out": 18,
-   "hold": 347,
+   "route_out": 90,
+   "hold": 275,
    "note": "route_out requires a bound owner; 365/365 units carry the literal '#' as owner, so no route may leave this round"
   },
   "COMMIT": {
@@ -162,26 +162,28 @@
   "ReadyAtom": false,
   "ReadyExecute": false,
   "ReadyAccept": false,
-  "readyatom_reason": "no atom carries an owner (365/365 are the literal '#') and no attachment is ratified; a source-bound atom is not an admissible atom"
+  "readyatom_reason": "90/273 source-bound atoms are admissible; the rest lack an owner declaration or a ratification",
+  "owner_basis_tally": {
+   "NOT_DECLARED": 275,
+   "LEDGER_ROW_ROLE": 72,
+   "PAYLOAD_TEXT": 18
+  },
+  "admission_blocker_tally": {
+   "owner:UNBOUND": 275
+  }
  },
  "readyexecute_blockers": [
   {
-   "item": "B3 atom owner / ratification",
-   "owner": "B3 domain holder (original clause owner)",
-   "decision": "365/365 units carry the literal '#' as owner and no atom is ratified; supply the owner from the original clause, then the ledger can admit",
-   "blocks": "ReadyAtom, admission_ready, route_out, ReadyExecute"
+   "item": "183 source-bound atoms without a declared owner",
+   "owner": "B3 domain holder (clause owner)",
+   "decision": "the owner is not declared in the Unit, the payload or the pinned clause; a minimal typed supplement plus the owner's adoption is required",
+   "blocks": "ReadyAtom and ReadyExecute"
   },
   {
-   "item": "two identity fields are not verified by the product",
-   "owner": "engineering",
-   "decision": "FIELD_owner and FIELD_requiredness mutations are not detected (b3_r7_neg_mutations FAIL=2); the product must compare them against a declared expectation before it may accept a row",
-   "blocks": "ReadyExecute"
-  },
-  {
-   "item": "nine NEG fields have no structured carrier",
-   "owner": "B3 domain holder",
-   "decision": "original_id, source_sha256, clause_span, parent, child, polarity, oracle, case, draft exist only in clause prose; supply typed fields",
-   "blocks": "44-case NEG closure (29 HOLD)"
+   "item": "requiredness has no cross-batch carrier for B3 atoms",
+   "owner": "B2/B3 interface owner",
+   "decision": "B3 units name no tool id, so the B2 requiredness column cannot be joined; supply a typed mapping or declare it not applicable",
+   "blocks": "two of the 44 NEG cases (FIELD_requiredness) and any semantic claim"
   }
  ],
  "b0_currency": {

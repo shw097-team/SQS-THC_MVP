@@ -326,6 +326,10 @@ def _payload_text(u: dict) -> str:
     return ""
 
 
+_LEDGER_ROW_RE = re.compile(r"\|\s*L\d+:\s*(.+)")
+_DISPOSITION_RE = re.compile(r"^(DEFER|N/?A\b|HOLD|NOT_|PENDING)", re.I)
+
+
 def declared_owner(u: dict) -> tuple[str | None, str]:
     """Owner as the unit actually declares it.
 
@@ -347,9 +351,17 @@ def declared_owner(u: dict) -> tuple[str | None, str]:
             raw = read_bytes(ref["path"])
             sl = _slice(raw, ref["a"], ref["b"])
             if sl is not None:
-                m2 = _OWNER_RE.search(sl.decode("utf-8", "replace"))
+                text = sl.decode("utf-8", "replace")
+                m2 = _OWNER_RE.search(text)
                 if m2:
                     return m2.group(1).strip(), "PINNED_CLAUSE"
+                # the pinned clause may carry a ledger row: | L<n>: key ／ ROLE ／ consumer ／ sha.
+                # A role token is owner evidence; a disposition token is not.
+                mrow = _LEDGER_ROW_RE.search(text)
+                if mrow:
+                    parts = [x.strip() for x in re.split(r"／|/", mrow.group(1))]
+                    if len(parts) >= 2 and not _DISPOSITION_RE.search(parts[1]):
+                        return parts[1], "LEDGER_ROW_ROLE"
         except Exception:
             pass
     return None, "NOT_DECLARED"
@@ -533,7 +545,18 @@ def run(dry_run: bool = False) -> dict:
     ledger = render_ledger(join, child, route, units)
     lname = os.environ.get("B3_LEDGER_NAME", "SourceChildLedger.draft.md")
     commit = {"decision": "DRY_RUN"} if dry_run else op_commit(ledger, name=lname)
+    def _tally(rows):
+        ob, blk = {}, {}
+        for r in rows:
+            ob[r.get("owner_basis")] = ob.get(r.get("owner_basis"), 0) + 1
+            for b in r.get("admission_blockers") or []:
+                blk[b["field"] + ":" + b["reason"]] = blk.get(b["field"] + ":" + b["reason"], 0) + 1
+        return {"owner_basis": ob, "admission_blockers": blk,
+                "admission_ready": sum(1 for r in rows if r.get("admission_ready")),
+                "source_bound_ready": sum(1 for r in rows if r.get("source_bound_ready"))}
+
     out = {"schema": "SST.PH01.W0.B3.Product@1", "generated_at": now(),
+           "admission_tally": _tally(join["rows"]),
            "spec_b3_sha256": spec["raw_sha256"], "units": len(units),
            "join": join["summary"], "child": child["summary"], "route": route["summary"],
            "commit": commit, "fin_order": "DENY",

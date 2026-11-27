@@ -192,14 +192,18 @@ def b3_admission() -> dict:
                                 for r in receipt["receipts"]],
           "note": ("current read under the live window; the historical r5 envelope is kept "
                    "only for reconciliation")}
+    tally = prod.get("admission_tally") or {}
+    sb = tally.get("source_bound_ready", 0)
+    adm_n = tally.get("admission_ready", 0)
     ready = {
         "ReadyDraft": True,
-        "ReadyAtom": False,
+        "ReadyAtom": bool(sb) and adm_n == sb,
         "ReadyExecute": False,
         "ReadyAccept": False,
-        "readyatom_reason": ("no atom carries an owner (365/365 are the literal '#') and no "
-                             "attachment is ratified; a source-bound atom is not an admissible "
-                             "atom"),
+        "readyatom_reason": (f"{adm_n}/{sb} source-bound atoms are admissible; the rest lack an "
+                            "owner declaration or a ratification"),
+        "owner_basis_tally": tally.get("owner_basis"),
+        "admission_blocker_tally": tally.get("admission_blockers"),
     }
     out = {
         "schema": "SST.PH01.W0.B3.Admission@1",
@@ -243,21 +247,16 @@ def b3_admission() -> dict:
         "b0_input": b0,
         "four_ready": ready,
         "readyexecute_blockers": [
-            {"item": "B3 atom owner / ratification", "owner": "B3 domain holder (original clause owner)",
-             "decision": ("365/365 units carry the literal '#' as owner and no atom is ratified; "
-                          "supply the owner from the original clause, then the ledger can admit"),
-             "blocks": "ReadyAtom, admission_ready, route_out, ReadyExecute"},
-            {"item": "two identity fields are not verified by the product",
-             "owner": "engineering",
-             "decision": ("FIELD_owner and FIELD_requiredness mutations are not detected "
-                          "(b3_r7_neg_mutations FAIL=2); the product must compare them against a "
-                          "declared expectation before it may accept a row"),
-             "blocks": "ReadyExecute"},
-            {"item": "nine NEG fields have no structured carrier",
-             "owner": "B3 domain holder",
-             "decision": ("original_id, source_sha256, clause_span, parent, child, polarity, "
-                          "oracle, case, draft exist only in clause prose; supply typed fields"),
-             "blocks": "44-case NEG closure (29 HOLD)"},
+            {"item": f"{sb - adm_n} source-bound atoms without a declared owner",
+             "owner": "B3 domain holder (clause owner)",
+             "decision": ("the owner is not declared in the Unit, the payload or the pinned clause; "
+                          "a minimal typed supplement plus the owner's adoption is required"),
+             "blocks": "ReadyAtom and ReadyExecute"},
+            {"item": "requiredness has no cross-batch carrier for B3 atoms",
+             "owner": "B2/B3 interface owner",
+             "decision": ("B3 units name no tool id, so the B2 requiredness column cannot be "
+                          "joined; supply a typed mapping or declare it not applicable"),
+             "blocks": "two of the 44 NEG cases (FIELD_requiredness) and any semantic claim"},
         ],
         "b0_currency": {
             "readset": "40_OPS/b0_current_sourcereadset.json",

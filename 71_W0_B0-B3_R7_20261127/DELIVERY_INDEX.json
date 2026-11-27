@@ -1,6 +1,6 @@
 {
  "schema": "SST.PH01.W0.B0B3.DeliveryIndex@1",
- "generated_at": "2026-11-27T19:17:56+0800",
+ "generated_at": "2026-11-27T19:33:49+0800",
  "round_root": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127",
  "spec": {
   "version": "2026-11-27_r7_Native-first_CODEX_FINAL",
@@ -11,19 +11,19 @@
  "current_pointers": [
   {
    "role": "closeout",
-   "path": "60_CLOSEOUT/SST_PLP_PH01_W0_B0-B2_CLOSEOUT_rev5.md"
+   "path": "60_CLOSEOUT/SST_PLP_PH01_W0_B0-B2_CLOSEOUT_rev6.md"
   },
   {
    "role": "handoff",
-   "path": "60_CLOSEOUT/SST_PLP_PH01_W0_B0-B2_HANDOFF_B3_ADMISSION_rev5.md"
+   "path": "60_CLOSEOUT/SST_PLP_PH01_W0_B0-B2_HANDOFF_B3_ADMISSION_rev6.md"
   },
   {
    "role": "bootstrap",
-   "path": "60_CLOSEOUT/NEW_SESSION_BOOTSTRAP_rev5.md"
+   "path": "60_CLOSEOUT/NEW_SESSION_BOOTSTRAP_rev6.md"
   },
   {
    "role": "freeze",
-   "path": "r7_candidate_freeze.rev11.json"
+   "path": "r7_candidate_freeze.rev12.json"
   },
   {
    "role": "b3_admission",
@@ -49,7 +49,15 @@
   "ReadyAtom": false,
   "ReadyExecute": false,
   "ReadyAccept": false,
-  "readyatom_reason": "no atom carries an owner (365/365 are the literal '#') and no attachment is ratified; a source-bound atom is not an admissible atom"
+  "readyatom_reason": "90/273 source-bound atoms are admissible; the rest lack an owner declaration or a ratification",
+  "owner_basis_tally": {
+   "NOT_DECLARED": 275,
+   "LEDGER_ROW_ROLE": 72,
+   "PAYLOAD_TEXT": 18
+  },
+  "admission_blocker_tally": {
+   "owner:UNBOUND": 275
+  }
  },
  "promotion_state": {
   "promoted_to_primary": [],
@@ -77,7 +85,7 @@
   "state": "see publish record",
   "record": "50_PUBLISH/publish_record.json"
  },
- "revision": 5,
+ "revision": 6,
  "rev1_documents": [
   "60_CLOSEOUT/SST_PLP_PH01_W0_B0-B2_CLOSEOUT.md",
   "60_CLOSEOUT/SST_PLP_PH01_W0_B0-B2_HANDOFF_B3_ADMISSION.md",
@@ -90,7 +98,7 @@
   "disposition": "see rev2 retraction table"
  },
  "freeze": {
-  "path": "r7_candidate_freeze.rev11.json",
-  "candidate_digest": "46bc8680f84f8b29d6d48a3ce0259e0870782ead3ef68cdfd452bfcb7e089fbe"
+  "path": "r7_candidate_freeze.rev12.json",
+  "candidate_digest": "8fe2b08d56670234946a121436a946af6f656f1070ac29efd8f5f95be31d0195"
  }
 }
