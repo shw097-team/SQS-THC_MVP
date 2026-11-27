@@ -1,0 +1,11 @@
+{
+ "schema": "SST.PH01.W0.B0.R3.TestRun/1",
+ "ran_at": "2026-11-27T22:28:06.651922+08:00",
+ "suite": "20_TESTS/test_receiver.py",
+ "tests_run": 83,
+ "failures": 0,
+ "errors": 0,
+ "skipped": 0,
+ "ok": true,
+ "failed_ids": []
+}

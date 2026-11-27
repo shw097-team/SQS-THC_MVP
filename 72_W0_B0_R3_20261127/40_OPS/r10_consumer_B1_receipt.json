@@ -1,0 +1,189 @@
+{
+ "schema": "SST.PH01.W0.B0.R3.ConsumerReceipt/1",
+ "consumer_id": "B1",
+ "validator_name": "b1_b0_r3_receiver",
+ "validator_version": "b0-r3-receiver/1.0.0",
+ "deployment": {
+  "path": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\00_PREFLIGHT\\DEPLOYMENT_prod_20261127_r9.json",
+  "sha256": "8348c7ca686718e591741c0ca92959145e24da16d9948a5265c8cf7ecb069f1d",
+  "deployment_id": "prod",
+  "trust_root_kind": "OWNER_AUTHORED_CONFIG_FILE"
+ },
+ "envelope_sha256": "abb5546cbf36b94195fa8935ceb170f163cbe5c7832fbf55d5f778e0f6702d2e",
+ "envelope_bytes": 5473,
+ "checked_at": "2026-11-27T14:28:15.434165+00:00",
+ "rights": {
+  "receipt_ref": "C:\\Projects\\Agent_Workspace\\FHS_NEXT_Workspace\\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\\owner_ws\\artifacts\\OWNER_WINDOW.json",
+  "receipt_sha256": "f2a02bf821f4bf451e10716d3a53afd56b2b02412085916f6932d4835f78ce35",
+  "receipt_window_id": "WIN-09b414353796",
+  "state_ref": "C:\\Users\\user\\.hgk-owner\\window.json",
+  "state_sha256": "a66bdef50217ee1b1d6cbed86a0e096c6ef20e880c7b1f6c6ff3deca1280f686",
+  "live_window_id": "WIN-09b414353796",
+  "live_expires_at": 1795802477,
+  "effect_ceiling": "READ_ONLY_PROBE",
+  "task_id": "SST_PLP_PH01_W0_B0_SOURCE_READ_AUTH",
+  "scope": [
+   "b0_source_read_authority",
+   "sqs_thc_ph01_e00"
+  ],
+  "principal": "desktop-57eo414\\user",
+  "checked_at": "2026-11-27T14:28:15.434165+00:00"
+ },
+ "rows": [
+  {
+   "consumer_id": "B1",
+   "validator_name": "b1_b0_r3_receiver",
+   "validator_version": "b0-r3-receiver/1.0.0",
+   "subject": "SST/SQS-THC/PH01/E00",
+   "scope_id": "SQS-THC-PH01-E00-B0-SOURCE-READ",
+   "spec_version": "2026-11-25_r4_Native-first",
+   "candidate_digest": "c96ddbaec5638ab59fbce6898b40f93ac2709f844f4e4cbe5ef47e52fd4ba3f2",
+   "source_id": "SST.ALL.W0.BLUEPRINT",
+   "sha": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
+   "rights_check_ref": "WIN-09b414353796:f2a02bf821f4bf45:SST.ALL.W0.BLUEPRINT",
+   "decision": "ACCEPT",
+   "first_fail": null,
+   "checked_at": "2026-11-27T14:28:15.434165+00:00",
+   "evidence": {
+    "R": [
+     "read"
+    ],
+    "P": [
+     "read"
+    ],
+    "M": [],
+    "clause_sha": "77132f0636e30b0cf8d5df1ae3438228b18d847d718e5ffbf5c56825229f9bf6",
+    "clause_span": [
+     572,
+     579
+    ],
+    "authority_checked": {
+     "source_owner": "SST Owner (single human OWNER, KB author)",
+     "usage_evidence_ref": "C:\\Projects\\Agent_Workspace\\FHS_NEXT_Workspace\\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\\owner_ws\\artifacts\\OWNER_WINDOW.json",
+     "usage_evidence_sha": "f2a02bf821f4bf451e10716d3a53afd56b2b02412085916f6932d4835f78ce35",
+     "os_principal": "DESKTOP-57EO414\\user",
+     "verification_method": "LIVE_REVALIDATE_OWNER_WINDOW_OS_TOKEN",
+     "rights_check_ref": "C:\\Projects\\Agent_Workspace\\FHS_NEXT_Workspace\\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\\owner_ws\\artifacts\\OWNER_WINDOW.json",
+     "checked_at": "2026-11-27T22:02:35+08:00",
+     "valid_from": "2026-11-27T22:02:28+08:00",
+     "expires_at": "2026-11-28T02:01:17+08:00",
+     "revocation_check_ref": "C:\\Users\\user\\.hgk-owner\\window.json#state",
+     "epoch_strategy": "LIVE_REVALIDATE",
+     "epoch_provider_ref": null,
+     "epoch_evidence_ref": null,
+     "disclosure": "LOCAL_ONLY"
+    },
+    "authority_interval": {
+     "valid_from": "2026-11-27T22:02:28+08:00",
+     "expires_at": "2026-11-28T02:01:17+08:00",
+     "usage_evidence_sha": "f2a02bf821f4bf451e10716d3a53afd56b2b02412085916f6932d4835f78ce35",
+     "currency": "CURRENT",
+     "checked_at": "2026-11-27T14:28:15.434165+00:00"
+    },
+    "provenance": {
+     "requirement_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md",
+     "requirement_sha": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
+     "requirement_span": [
+      572,
+      579
+     ],
+     "rule_ref": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\00_PREFLIGHT\\required_set_req12_read_all_2026-11-25.json",
+     "rule_sha": "50ca45c106bb58fd8a3bfdf1cfaf7400fd3a06d1f95cea7f1fe8c6166eda4764"
+    },
+    "expected": {
+     "expected_raw_sha256": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
+     "requirement_span": [
+      572,
+      579
+     ],
+     "required_fields": [
+      "read"
+     ],
+     "expected_value": "<LOCAL_ONLY_REDACTED>",
+     "required_set_sha256": "50ca45c106bb58fd8a3bfdf1cfaf7400fd3a06d1f95cea7f1fe8c6166eda4764"
+    }
+   }
+  },
+  {
+   "consumer_id": "B1",
+   "validator_name": "b1_b0_r3_receiver",
+   "validator_version": "b0-r3-receiver/1.0.0",
+   "subject": "SST/SQS-THC/PH01/E00",
+   "scope_id": "SQS-THC-PH01-E00-B0-SOURCE-READ",
+   "spec_version": "2026-11-25_r4_Native-first",
+   "candidate_digest": "c96ddbaec5638ab59fbce6898b40f93ac2709f844f4e4cbe5ef47e52fd4ba3f2",
+   "source_id": "SST.W0M.MAIN",
+   "sha": "5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96",
+   "rights_check_ref": "WIN-09b414353796:f2a02bf821f4bf45:SST.W0M.MAIN",
+   "decision": "ACCEPT",
+   "first_fail": null,
+   "checked_at": "2026-11-27T14:28:15.434165+00:00",
+   "evidence": {
+    "R": [
+     "read"
+    ],
+    "P": [
+     "read"
+    ],
+    "M": [],
+    "clause_sha": "4f0db2cb1d7c740eaf3b5a1de6be4517c951fe654010aeb43100104d13dfbaf5",
+    "clause_span": [
+     295,
+     307
+    ],
+    "authority_checked": {
+     "source_owner": "SST Owner (single human OWNER, KB author)",
+     "usage_evidence_ref": "C:\\Projects\\Agent_Workspace\\FHS_NEXT_Workspace\\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\\owner_ws\\artifacts\\OWNER_WINDOW.json",
+     "usage_evidence_sha": "f2a02bf821f4bf451e10716d3a53afd56b2b02412085916f6932d4835f78ce35",
+     "os_principal": "DESKTOP-57EO414\\user",
+     "verification_method": "LIVE_REVALIDATE_OWNER_WINDOW_OS_TOKEN",
+     "rights_check_ref": "C:\\Projects\\Agent_Workspace\\FHS_NEXT_Workspace\\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\\owner_ws\\artifacts\\OWNER_WINDOW.json",
+     "checked_at": "2026-11-27T22:02:37+08:00",
+     "valid_from": "2026-11-27T22:02:28+08:00",
+     "expires_at": "2026-11-28T02:01:17+08:00",
+     "revocation_check_ref": "C:\\Users\\user\\.hgk-owner\\window.json#state",
+     "epoch_strategy": "LIVE_REVALIDATE",
+     "epoch_provider_ref": null,
+     "epoch_evidence_ref": null,
+     "disclosure": "LOCAL_ONLY"
+    },
+    "authority_interval": {
+     "valid_from": "2026-11-27T22:02:28+08:00",
+     "expires_at": "2026-11-28T02:01:17+08:00",
+     "usage_evidence_sha": "f2a02bf821f4bf451e10716d3a53afd56b2b02412085916f6932d4835f78ce35",
+     "currency": "CURRENT",
+     "checked_at": "2026-11-27T14:28:15.434165+00:00"
+    },
+    "provenance": {
+     "requirement_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_WM\\SST_PLP_PH01_ALL_WNM_2026-11-24_r2\\SST_PLP_PH01_W0M_實質正文.md",
+     "requirement_sha": "5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96",
+     "requirement_span": [
+      295,
+      307
+     ],
+     "rule_ref": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\00_PREFLIGHT\\required_set_req12_read_w0m_2026-11-25.json",
+     "rule_sha": "bc7afa530677746b8c681fc32109041a04e1fd1e7fc201c375d8edff34e6615c"
+    },
+    "expected": {
+     "expected_raw_sha256": "5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96",
+     "requirement_span": [
+      295,
+      307
+     ],
+     "required_fields": [
+      "read"
+     ],
+     "expected_value": "<LOCAL_ONLY_REDACTED>",
+     "required_set_sha256": "bc7afa530677746b8c681fc32109041a04e1fd1e7fc201c375d8edff34e6615c"
+    }
+   }
+  }
+ ],
+ "sources_expected": 2,
+ "sources_accepted": 2,
+ "sources_draft_missing": 0,
+ "sources_rejected": 0,
+ "global_first_fail": null,
+ "verdict": "ACCEPTED",
+ "claim_ceiling": "This receipt evidences one consumer's inbound acceptance of one B0 SourceReadSet/2 envelope. It does not accept B1/B2/B3 own products, does not raise B0 to COMPLETE and grants no write."
+}

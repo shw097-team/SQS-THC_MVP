@@ -88,7 +88,7 @@ class ProductReadTests(unittest.TestCase):
         self.assertEqual(entry["missing"], [])
         self.assertEqual(
             entry["observed"]["read"]["value"],
-            "READ 只讀合法來源，不能繼承 DEV 效應。",
+            "<LOCAL_ONLY_REDACTED>",
         )
         self.assertEqual(len(entry["authority"]), 14)
         self.assertEqual(entry["authority"]["disclosure"], "LOCAL_ONLY")
@@ -633,7 +633,7 @@ class ProductReadTests(unittest.TestCase):
                     "span": [2, 2],
                     "prefix": LABEL,
                     "expected_literal": (
-                        "READ 只讀合法來源，不能繼承 DEV 效應。"
+                        "<LOCAL_ONLY_REDACTED>"
                     ),
                 },
             ],
@@ -706,7 +706,7 @@ class ProductReadTests(unittest.TestCase):
                     "span": [2, 2],
                     "prefix": LABEL,
                     "expected_literal": (
-                        "READ 只讀合法來源，不能繼承 DEV 效應。"
+                        "<LOCAL_ONLY_REDACTED>"
                     ),
                 }
             ],

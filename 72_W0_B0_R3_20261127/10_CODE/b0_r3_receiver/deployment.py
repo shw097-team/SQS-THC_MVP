@@ -17,12 +17,12 @@ WAVE_ROOT = Path(__file__).resolve().parents[2]
 
 PINNED: dict[str, dict[str, str]] = {
     "prod": {
-        "path": str(WAVE_ROOT / "00_PREFLIGHT" / "DEPLOYMENT_prod_20261127_r8.json"),
-        "sha256": "78c78defe5058cab817fbb916e6656b4f3d061ac7bc4ada1381ebe4248e4aac3",
+        "path": str(WAVE_ROOT / "00_PREFLIGHT" / "DEPLOYMENT_prod_20261127_r9.json"),
+        "sha256": "8348c7ca686718e591741c0ca92959145e24da16d9948a5265c8cf7ecb069f1d",
     },
     "fixture": {
-        "path": str(WAVE_ROOT / "20_TESTS" / "fixture" / "DEPLOYMENT_fixture_20261127.json"),
-        "sha256": "4aaaf297a1f473f13179a5f76bfccf754821320922defe7f40587bbb8738a1d5",
+        "path": str(WAVE_ROOT / "20_TESTS" / "fixture" / "DEPLOYMENT_fixture_20261127_r9.json"),
+        "sha256": "59c5553466fa36737edaf8bf7b3bb5ac37ff9e9279f076ddf0e9858f92696e95",
     },
 }
 

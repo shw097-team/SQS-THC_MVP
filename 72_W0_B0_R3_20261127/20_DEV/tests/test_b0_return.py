@@ -116,7 +116,7 @@ class B0ReturnTests(unittest.TestCase):
     def test_one_missing_field_entry_uses_exit_two(self) -> None:
         payload = (
             "header\n"
-            "- **How／Predicate**：READ 只讀合法來源，不能繼承 DEV 效應。\n".encode()
+            "- **How／Predicate**：<LOCAL_ONLY_REDACTED>\n".encode()
         )
         rules = [
             {
@@ -128,7 +128,7 @@ class B0ReturnTests(unittest.TestCase):
                 "span": [2, 2],
             },
             {
-                "expected_literal": "READ 只讀合法來源，不能繼承 DEV 效應。",
+                "expected_literal": "<LOCAL_ONLY_REDACTED>",
                 "field": "read",
                 "method": "MD_LABEL",
                 "prefix": "- **How／Predicate**：",

@@ -86,7 +86,7 @@
      "required_set_ref": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\00_PREFLIGHT\\required_set_req12_read_all_2026-11-25.json",
      "required_set_sha256": "50ca45c106bb58fd8a3bfdf1cfaf7400fd3a06d1f95cea7f1fe8c6166eda4764",
      "extraction_rule": {
-      "expected_literal": "READ 只讀合法來源，不能繼承 DEV 效應。",
+      "expected_literal": "<LOCAL_ONLY_REDACTED>",
       "field": "read",
       "method": "MD_LABEL",
       "prefix": "- **How／Predicate**：",
@@ -96,7 +96,7 @@
        573
       ]
      },
-     "expected_value": "READ 只讀合法來源，不能繼承 DEV 效應。",
+     "expected_value": "<LOCAL_ONLY_REDACTED>",
      "expected_value_sha256": "78a231eaa93d64fed87001426970d5133e89847b3f7668e514d6b0f259798dab",
      "mandatory": true
     },
@@ -118,7 +118,7 @@
      "required_set_ref": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\00_PREFLIGHT\\required_set_req12_read_w0m_2026-11-25.json",
      "required_set_sha256": "bc7afa530677746b8c681fc32109041a04e1fd1e7fc201c375d8edff34e6615c",
      "extraction_rule": {
-      "expected_literal": "READ 只讀合法來源，不能繼承 DEV 效應。",
+      "expected_literal": "<LOCAL_ONLY_REDACTED>",
       "field": "read",
       "method": "MD_LABEL",
       "prefix": "- **How／Predicate**：",
@@ -128,7 +128,7 @@
        299
       ]
      },
-     "expected_value": "READ 只讀合法來源，不能繼承 DEV 效應。",
+     "expected_value": "<LOCAL_ONLY_REDACTED>",
      "expected_value_sha256": "78a231eaa93d64fed87001426970d5133e89847b3f7668e514d6b0f259798dab",
      "mandatory": true
     }
@@ -162,7 +162,7 @@
      "required_set_ref": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\00_PREFLIGHT\\required_set_req12_read_all_2026-11-25.json",
      "required_set_sha256": "50ca45c106bb58fd8a3bfdf1cfaf7400fd3a06d1f95cea7f1fe8c6166eda4764",
      "extraction_rule": {
-      "expected_literal": "READ 只讀合法來源，不能繼承 DEV 效應。",
+      "expected_literal": "<LOCAL_ONLY_REDACTED>",
       "field": "read",
       "method": "MD_LABEL",
       "prefix": "- **How／Predicate**：",
@@ -172,7 +172,7 @@
        573
       ]
      },
-     "expected_value": "READ 只讀合法來源，不能繼承 DEV 效應。",
+     "expected_value": "<LOCAL_ONLY_REDACTED>",
      "expected_value_sha256": "78a231eaa93d64fed87001426970d5133e89847b3f7668e514d6b0f259798dab",
      "mandatory": true
     },
@@ -194,7 +194,7 @@
      "required_set_ref": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\00_PREFLIGHT\\required_set_req12_read_w0m_2026-11-25.json",
      "required_set_sha256": "bc7afa530677746b8c681fc32109041a04e1fd1e7fc201c375d8edff34e6615c",
      "extraction_rule": {
-      "expected_literal": "READ 只讀合法來源，不能繼承 DEV 效應。",
+      "expected_literal": "<LOCAL_ONLY_REDACTED>",
       "field": "read",
       "method": "MD_LABEL",
       "prefix": "- **How／Predicate**：",
@@ -204,7 +204,7 @@
        299
       ]
      },
-     "expected_value": "READ 只讀合法來源，不能繼承 DEV 效應。",
+     "expected_value": "<LOCAL_ONLY_REDACTED>",
      "expected_value_sha256": "78a231eaa93d64fed87001426970d5133e89847b3f7668e514d6b0f259798dab",
      "mandatory": true
     }
@@ -238,7 +238,7 @@
      "required_set_ref": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\00_PREFLIGHT\\required_set_req12_read_all_2026-11-25.json",
      "required_set_sha256": "50ca45c106bb58fd8a3bfdf1cfaf7400fd3a06d1f95cea7f1fe8c6166eda4764",
      "extraction_rule": {
-      "expected_literal": "READ 只讀合法來源，不能繼承 DEV 效應。",
+      "expected_literal": "<LOCAL_ONLY_REDACTED>",
       "field": "read",
       "method": "MD_LABEL",
       "prefix": "- **How／Predicate**：",
@@ -248,7 +248,7 @@
        573
       ]
      },
-     "expected_value": "READ 只讀合法來源，不能繼承 DEV 效應。",
+     "expected_value": "<LOCAL_ONLY_REDACTED>",
      "expected_value_sha256": "78a231eaa93d64fed87001426970d5133e89847b3f7668e514d6b0f259798dab",
      "mandatory": true
     },
@@ -270,7 +270,7 @@
      "required_set_ref": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\00_PREFLIGHT\\required_set_req12_read_w0m_2026-11-25.json",
      "required_set_sha256": "bc7afa530677746b8c681fc32109041a04e1fd1e7fc201c375d8edff34e6615c",
      "extraction_rule": {
-      "expected_literal": "READ 只讀合法來源，不能繼承 DEV 效應。",
+      "expected_literal": "<LOCAL_ONLY_REDACTED>",
       "field": "read",
       "method": "MD_LABEL",
       "prefix": "- **How／Predicate**：",
@@ -280,7 +280,7 @@
        299
       ]
      },
-     "expected_value": "READ 只讀合法來源，不能繼承 DEV 效應。",
+     "expected_value": "<LOCAL_ONLY_REDACTED>",
      "expected_value_sha256": "78a231eaa93d64fed87001426970d5133e89847b3f7668e514d6b0f259798dab",
      "mandatory": true
     }

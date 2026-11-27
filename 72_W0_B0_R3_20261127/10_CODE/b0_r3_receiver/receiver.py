@@ -12,6 +12,7 @@ result (B0 §02.E/§03.2, W0-ADR01 R8).
 from __future__ import annotations
 
 import json
+import stat
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -65,10 +66,19 @@ def _global_checks(doc: dict[str, Any], dep: dict[str, Any], consumer_id: str) -
         raise Reject("WIRE_INVALID", "source_manifest shape")
     if not wire.is_sha256(manifest["inherited_sha"]):
         raise Reject("WIRE_INVALID", "source_manifest.inherited_sha")
+    # the inherited manifest is a pin, not a claim: it must be the value the deployment holds
+    pinned_manifest = (dep.get("source_manifest_expected") or {}).get("inherited_sha")
+    if pinned_manifest and manifest["inherited_sha"] != pinned_manifest:
+        raise Reject("TUPLE_MISMATCH", "source_manifest.inherited_sha is not the pinned inherited manifest")
     if manifest["verification"] not in ("VERIFIED", "UNVERIFIED"):
         raise Reject("WIRE_INVALID", "source_manifest.verification")
     if manifest["verification"] == "UNVERIFIED" and manifest["evidence_ref"] is not None:
         raise Reject("WIRE_INVALID", "UNVERIFIED manifest carries an evidence_ref")
+    # the envelope can never upgrade the manifest the deployment holds as UNVERIFIED
+    expected_ver = (dep.get("source_manifest_expected") or {}).get("verification")
+    if expected_ver and manifest["verification"] == "VERIFIED" and expected_ver != "VERIFIED":
+        raise Reject("MANIFEST_VERIFICATION_ESCALATED",
+                     "envelope claims a VERIFIED manifest the deployment holds as UNVERIFIED")
     if not isinstance(doc["entries"], list) or not isinstance(doc["errors"], list):
         raise Reject("WIRE_INVALID", "entries/errors must be arrays")
 
@@ -89,7 +99,9 @@ def _index_sources(doc: dict[str, Any], expected: set[str]) -> tuple[dict[str, d
             raise Reject("WIRE_INVALID", f"duplicate error for {sid}")
         if err["op"] not in wire.OPS:
             raise Reject("WIRE_INVALID", "source error op")
-        if type(err["retryable"]) is not bool or err["attempt"] not in (1, 2):
+        # integers reject bool: `attempt` must be an int, never True/False
+        if type(err["retryable"]) is not bool or not wire.is_int(err["attempt"]) \
+                or err["attempt"] not in (1, 2):
             raise Reject("WIRE_INVALID", "source error retryable/attempt")
         for key in ("code", "first_fail", "resume"):
             if not wire.nonempty(err[key]):
@@ -138,6 +150,25 @@ def _check_authority_block(authority: Any) -> dict[str, Any]:
     return authority
 
 
+def _check_manifest_evidence(doc: dict[str, Any], dep: dict[str, Any]) -> None:
+    """A VERIFIED manifest is only as good as the bytes the deployment pinned for it."""
+    manifest = doc["source_manifest"]
+    if manifest["verification"] != "VERIFIED":
+        return
+    pin = dep.get("source_manifest_expected") or {}
+    expected_sha = pin.get("evidence_sha256")
+    if not expected_sha:
+        raise Reject("MANIFEST_EVIDENCE_UNRESOLVED", "deployment holds no verified-manifest digest")
+    ref = manifest.get("evidence_ref")
+    if not wire.nonempty(ref):
+        raise Reject("MANIFEST_EVIDENCE_UNRESOLVED", "VERIFIED manifest without an evidence_ref")
+    path = Path(ref)
+    if not path.is_file():
+        raise Reject("MANIFEST_EVIDENCE_UNRESOLVED", "evidence_ref does not resolve to bytes")
+    if wire.sha256(path.read_bytes()) != expected_sha:
+        raise Reject("MANIFEST_EVIDENCE_UNRESOLVED", "evidence bytes are not the pinned manifest")
+
+
 def _receive_source(sid: str, ent: dict[str, Any], exp: dict[str, Any],
                     dep: dict[str, Any], rights_state: dict[str, Any],
                     now: datetime) -> dict[str, Any]:
@@ -169,11 +200,45 @@ def _receive_source(sid: str, ent: dict[str, Any], exp: dict[str, Any],
     if prov["requirement_sha"] != exp["expected_raw_sha256"]:
         raise Reject("TUPLE_MISMATCH", "provenance names a different requirement source")
 
+    # ---- rights BEFORE any source content is touched (contract order) ----
+    authority = _check_authority_block(ent["authority"])
+    interval = rights_mod.check_envelope_authority(authority, rights_state, dep, now)
+    for key in ("acl_epoch", "rights_epoch"):
+        if ent[key] is not None and not wire.nonempty(ent[key]):
+            raise Reject("WIRE_INVALID", key)
+    if authority["epoch_strategy"] == "PROVIDER_VERSIONED":
+        provider = dep.get("epoch_provider") or {}
+        declared = [ent.get("acl_epoch"), ent.get("rights_epoch")]
+        if not provider.get("provider_ref") or not all(wire.nonempty(v) for v in declared):
+            # a bare string in one epoch column is not a provider-versioned epoch
+            raise Reject("EPOCH_UNBOUND",
+                         "PROVIDER_VERSIONED needs a deployment-bound provider and real acl/rights epochs")
+        if authority.get("epoch_provider_ref") != provider["provider_ref"]:
+            raise Reject("EPOCH_UNBOUND", "epoch_provider_ref is not the provider this deployment binds")
+        want = provider.get("expected_rights_epoch")
+        if want and ent.get("rights_epoch") != want:
+            raise Reject("EPOCH_STALE", "rights_epoch is not the provider's current epoch")
+
     # ---- original bytes, read once from the trusted mapping (no envelope locator) ----
+    locator = Path(exp["locator"])
+    roots = [str(Path(r)) for r in (dep.get("allowed_roots") or [])]
+    if roots:
+        resolved = str(locator.resolve())
+        if not any(resolved.lower().startswith(r.rstrip("\\").lower() + "\\") for r in roots):
+            raise Reject("TUPLE_MISMATCH", "pinned locator is outside the deployment's allowed roots")
     try:
-        raw = Path(exp["locator"]).read_bytes()
+        before = locator.stat(follow_symlinks=False)
+        if getattr(before, "st_file_attributes", 0) & getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0):
+            raise Reject("PATH_REPARSE_DENIED", "pinned source is a reparse point")
+        raw = locator.read_bytes()
+        after = locator.stat(follow_symlinks=False)
+    except Reject:
+        raise
     except OSError as exc:
         raise Reject("SOURCE_UNAVAILABLE", f"trusted source unreadable: {exc}") from exc
+    if (before.st_size, before.st_mtime_ns, getattr(before, "st_ino", 0)) != \
+            (after.st_size, after.st_mtime_ns, getattr(after, "st_ino", 0)) or len(raw) != after.st_size:
+        raise Reject("SOURCE_CHANGED_SINCE_READ", "source identity moved during the read")
     if wire.sha256(raw) != exp["expected_raw_sha256"]:
         raise Reject("SOURCE_CHANGED_SINCE_READ", "source bytes no longer match the pin")
     if len(raw) != ent["byte_length"]:
@@ -232,12 +297,6 @@ def _receive_source(sid: str, ent: dict[str, Any], exp: dict[str, Any],
     if set(m_fields) | set(observed) != set(required):
         raise Reject("TUPLE_MISMATCH", "R/P/M is not a partition of R")
 
-    authority = _check_authority_block(ent["authority"])
-    interval = rights_mod.check_envelope_authority(authority, rights_state, dep, now)
-    for key in ("acl_epoch", "rights_epoch"):
-        if ent[key] is not None and not wire.nonempty(ent[key]):
-            raise Reject("WIRE_INVALID", key)
-
     decision, first_fail = "ACCEPT", None
     if m_fields:
         decision, first_fail = "DRAFT_MISSING", "MANDATORY_FIELD_MISSING"
@@ -269,8 +328,9 @@ def receive(deployment: dict[str, Any], consumer_id: str, payload: bytes, *,
             "candidate_digest": deployment["producer_candidate_digest"],
             "source_id": sid,
             "sha": sha,
+            # per-source: the window + receipt that authorised THIS source's decision
             "rights_check_ref": (f'{rights_state["live_window_id"]}:'
-                                 f'{rights_state["receipt_sha256"][:16]}' if rights_state else None),
+                                 f'{rights_state["receipt_sha256"][:16]}:{sid}' if rights_state else None),
             "decision": decision,
             "first_fail": first_fail,
             "checked_at": now.isoformat(),
@@ -303,6 +363,14 @@ def receive(deployment: dict[str, Any], consumer_id: str, payload: bytes, *,
                                                       "scope": "ENVELOPE_OR_RIGHTS"})
         return _receipt(deployment, consumer_id, payload, rows, now, rights_state,
                         global_fail, deployment_ref)
+
+    try:
+        _check_manifest_evidence(doc, deployment)
+    except Reject as exc:
+        for sid in sorted(expected):
+            row(sid, "REJECT", exc.code, evidence={"detail": exc.detail, "scope": "MANIFEST"})
+        return _receipt(deployment, consumer_id, payload, rows, now, rights_state,
+                        exc.code, deployment_ref)
 
     try:
         entries, errors = _index_sources(doc, expected)

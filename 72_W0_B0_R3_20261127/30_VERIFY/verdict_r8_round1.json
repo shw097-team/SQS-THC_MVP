@@ -1,0 +1,26 @@
+{
+ "schema": "SST.PH01.W0.B0.R3.CheckerVerdict/1",
+ "transcription_note": "Persisted by the making session from the separated checker's returned JSON (subagent sa-0-91f60191, deleg_576653e3, 2026-11-27T22:10:23+08:00). Verbatim fields kept; the session did not edit the verdict. Reviewed bytes were the r8 candidate: envelope abb5546c…, deployment 78c78def…, receiver.py 5dcfb235….",
+ "checker": "SST_PH01_W0_B0_r8_separation_checker",
+ "verdict": "REJECT",
+ "reviewed_at": "2026-11-27T22:10:23+08:00",
+ "candidate_manifest_sha256": null,
+ "candidate_ids": {
+  "envelope_raw_sha256": "abb5546cbf36b94195fa8935ceb170f163cbe5c7832fbf55d5f778e0f6702d2e",
+  "deployment_sha256": "78c78defe5058cab817fbb916e6656b4f3d061ac7bc4ada1381ebe4248e4aac3",
+  "receiver_py_sha256": "5dcfb235b0c9df46072a633b08eb2c4cbfaa3f290d152c51a60e5fab60bd983c",
+  "rights_py_sha256": "ca10fa4976aa774da20b381ef8cffbf6b6af80ebd17fcfda0f3952544b812b95",
+  "wire_py_sha256": "e385be078865640f37529fc73a8f2aafa7a2370c9ec7e4f4b17ca95533962a10"
+ },
+ "summary": "Receiver is substantively real (tuple/pin independently recomputed, pinned locator opened, strict wire rejects, per-source accounting does not contaminate siblings) but not acceptable as-is: authority is checked after the source bytes are read, source_manifest.inherited_sha is never pinned, VERIFIED with a nonexistent evidence_ref is accepted, errors[].attempt accepts bool, and PROVIDER_VERSIONED with all epochs null is accepted.",
+ "findings": [
+  {"item": 1, "result": "PASS", "evidence": "three separate executions with distinct checked_at; 13 columns per source; rights_check_ref derived from the live receipt but envelope-scoped (no per-source discrimination)"},
+  {"item": 2, "result": "PASS", "evidence": "TUPLE_MISMATCH when the envelope locator differs from the pinned mapping; Path(exp['locator']) is what gets opened. Residual: no containment/reparse/ADS/allowed_root check on the pinned locator, single read+hash"},
+  {"item": 3, "result": "FAIL", "evidence": "errors[].attempt=true accepted (True==1); source_manifest.inherited_sha=0*64 accepted; verification=VERIFIED with evidence_ref=C:/no/such/manifest.json accepted"},
+  {"item": 4, "result": "PASS", "evidence": "per-source try/except with continue; two-source probe returned 1 ACCEPT + 1 REJECT CLAUSE_SHA_MISMATCH in the same receipt"},
+  {"item": 5, "result": "FAIL", "evidence": "authority block evaluated after the source read and value re-derivation; PROVIDER_VERSIONED with all epochs null accepted; LIVE_REVALIDATE only string-matched"},
+  {"item": 6, "result": "PASS", "evidence": "25/25 manifest members re-hashed, 2570 B, digest c96ddbae… = pin = envelope; both entries' raw/clause/value sha recomputed MATCH; 24/25 members byte-identical to the old tree, only native_entry.py differs"},
+  {"item": 7, "result": "HOLD", "evidence": "60_CLOSEOUT had no document/manifest at review time (generated later at 22:12); product log appeared truncated because the suite was still running"},
+  {"item": 8, "result": "PASS", "evidence": "no owner key/credential; only the labelled TEST_ONLY fixture key whose public half b6735536… differs from the owner key; the clause sentence appears only in the envelope and the receipts' expected block, both LOCAL_ONLY artefacts"}
+ ]
+}

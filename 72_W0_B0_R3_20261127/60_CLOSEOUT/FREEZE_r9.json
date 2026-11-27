@@ -1,0 +1,32 @@
+{
+ "schema": "SST.PH01.W0.B0.R3.Freeze/1",
+ "frozen_at": "2026-11-27T22:19:36.853128+08:00",
+ "wave_root": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127",
+ "members": 106,
+ "manifest": {
+  "path": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\60_CLOSEOUT\\FREEZE_MANIFEST_r9.tsv",
+  "bytes": 11822,
+  "sha256": "6871537ff2f9b26649cfd5c28c0b4ace77d828d267d845c9e84a938c0ca3d025"
+ },
+ "convention": "path<TAB>sha256<TAB>byte_length<LF>, UTF-8 path order, sorted by path",
+ "document": {
+  "path": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\60_CLOSEOUT\\SST_PLP_PH01_W0_B0_CLOSEOUT_HANDOFF_r9.md",
+  "bytes": 19205,
+  "sha256": "51c544fe0cf0e8027e238d83ef023b99575610ed2e9fa124aeb01adfac808ba7"
+ },
+ "claim_ceiling": "Freezes the bytes of this round's code, tests, receipts and closeout. It asserts nothing about semantics beyond what the receipts measured, and it excludes itself, its manifest and the generated document.",
+ "receipts": {
+  "B1": {
+   "verdict": "ACCEPTED",
+   "sha256": "7320f9f9a7525cfd801e960365de5558aa798d7d97beebc63158600da1a3381d"
+  },
+  "B2": {
+   "verdict": "ACCEPTED",
+   "sha256": "6b277f9603866d782a69539c9399f3c7fc3e88c46b4d6f5eb0c0ee845527755c"
+  },
+  "B3": {
+   "verdict": "ACCEPTED",
+   "sha256": "26b6845d95dd242c80d6d4d81a798aacc47923270d53a02fb222764ba0067004"
+  }
+ }
+}

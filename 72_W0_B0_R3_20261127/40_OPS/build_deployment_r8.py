@@ -19,7 +19,7 @@ OLD = Path(r"C:\Projects\Agent_Workspace\SQS-THC_MVP_Workspace")
 RECEIPT = Path(r"C:\Projects\Agent_Workspace\FHS_NEXT_Workspace\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\owner_ws\artifacts\OWNER_WINDOW.json")
 WINDOW = Path(os.path.expanduser("~/.hgk-owner/window.json"))
 ENVELOPE = WAVE / "40_OPS" / "b0_sourcereadset_r8_20261127.json"
-OUT = WAVE / "00_PREFLIGHT" / "DEPLOYMENT_prod_20261127_r8.json"
+OUT = WAVE / "00_PREFLIGHT" / "DEPLOYMENT_prod_20261127_r9.json"
 DESCRIPTOR = WAVE / "00_PREFLIGHT" / "B0_READ_CONTEXT_20261127_r7.json"
 
 CANDIDATE_PATHS = (
@@ -169,6 +169,7 @@ def main() -> int:
         "consumer_ids": descriptor["scope"]["consumer_ids"],
         "source_ids": descriptor["scope"]["source_ids"],
         "source_manifest_expected": env["source_manifest"],
+        "allowed_roots": sorted({s["allowed_root"] for s in descriptor["sources"]}),
         "os_principal": window.get("owner_fingerprint") and subprocess.run(
             ["whoami"], capture_output=True, text=True).stdout.strip().lower(),
         "owner_public_hex": window.get("owner_public_hex"),

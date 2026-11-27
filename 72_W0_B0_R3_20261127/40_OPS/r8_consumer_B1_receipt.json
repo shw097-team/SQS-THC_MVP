@@ -99,7 +99,7 @@
      "required_fields": [
       "read"
      ],
-     "expected_value": "READ 只讀合法來源，不能繼承 DEV 效應。",
+     "expected_value": "<LOCAL_ONLY_REDACTED>",
      "required_set_sha256": "50ca45c106bb58fd8a3bfdf1cfaf7400fd3a06d1f95cea7f1fe8c6166eda4764"
     }
    }
@@ -173,7 +173,7 @@
      "required_fields": [
       "read"
      ],
-     "expected_value": "READ 只讀合法來源，不能繼承 DEV 效應。",
+     "expected_value": "<LOCAL_ONLY_REDACTED>",
      "required_set_sha256": "bc7afa530677746b8c681fc32109041a04e1fd1e7fc201c375d8edff34e6615c"
     }
    }

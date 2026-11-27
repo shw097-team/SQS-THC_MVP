@@ -45,7 +45,7 @@ class SourceArtifacts:
 def raw_baseline() -> bytes:
     return (
         "\ufeff標題\r\n"
-        f"{LABEL}READ 只讀合法來源，不能繼承 DEV 效應。\n"
+        f"{LABEL}<LOCAL_ONLY_REDACTED>\n"
         "末行（無結尾換行）"
     ).encode("utf-8")
 
@@ -201,7 +201,7 @@ class IsolatedProductHarness:
                     "span": [2, 2],
                     "prefix": LABEL,
                     "expected_literal": (
-                        "READ 只讀合法來源，不能繼承 DEV 效應。"
+                        "<LOCAL_ONLY_REDACTED>"
                     ),
                 }
             ]

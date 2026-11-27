@@ -12,15 +12,19 @@ import json
 import os
 from datetime import datetime, timezone
 from pathlib import Path
+import sys
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "10_CODE"))
+from b0_r3_receiver import deployment as _dep  # noqa: E402
 
 WAVE = Path(__file__).resolve().parents[1]
 OPS = WAVE / "40_OPS"
 OLD = Path(r"C:\Projects\Agent_Workspace\SQS-THC_MVP_Workspace")
 PRE = WAVE / "00_PREFLIGHT"
 VERIFY = WAVE / "30_VERIFY"
-DOC = WAVE / "60_CLOSEOUT" / "SST_PLP_PH01_W0_B0_CLOSEOUT_HANDOFF_r8.md"
-MANIFEST = WAVE / "60_CLOSEOUT" / "FREEZE_MANIFEST_r8.tsv"
-FREEZE = WAVE / "60_CLOSEOUT" / "FREEZE_r8.json"
+REV = os.environ.get("B0_REV", "r9")   # r9 = the candidate the separated checker judged
+DOC = WAVE / "60_CLOSEOUT" / f"SST_PLP_PH01_W0_B0_CLOSEOUT_HANDOFF_{REV}.md"
+MANIFEST = WAVE / "60_CLOSEOUT" / f"FREEZE_MANIFEST_{REV}.tsv"
+FREEZE = WAVE / "60_CLOSEOUT" / f"FREEZE_{REV}.json"
 
 
 def sha(p: Path) -> str:
@@ -41,13 +45,13 @@ def main() -> int:
     base = load(PRE / "T1_BASELINE_20261127.json")
     prod = load(OPS / "b0_producer_run_r8_20261127.json")
     t3 = load(OPS / "t3_f1f2_measurement_20261127.json")
-    receipts = {c: load(OPS / f"r8_consumer_{c}_receipt.json") for c in ("B1", "B2", "B3")}
+    receipts = {c: load(OPS / f"{REV}_consumer_{c}_receipt.json") for c in ("B1", "B2", "B3")}
     verdict = load(VERIFY / "verdict.json") if (VERIFY / "verdict.json").exists() else None
     log = (OPS / "b0_product_test_r8_20261127.log")
     log_txt = log.read_text(encoding="utf-8", errors="replace") if log.exists() else ""
     log_tail = [l for l in log_txt.splitlines() if l.startswith("Ran ") or l in ("OK", "FAILED")
                 or l.startswith("FAILED (")]
-    dep = load(PRE / "DEPLOYMENT_prod_20261127_r8.json")
+    dep = load(PRE / "DEPLOYMENT_prod_20261127_r9.json")
     envelope = load(OPS / "b0_sourcereadset_r8_20261127.json")
 
     def table_row(c: str) -> str:
@@ -63,7 +67,7 @@ def main() -> int:
                 + '<br>'.join(cells) + ' |')
 
     md = []
-    md.append("# SST PH01 W0 B0｜剩餘阻斷定向解阻、必要差額閉合暨正式結案（r8）\n")
+    md.append(f"# SST PH01 W0 B0｜剩餘阻斷定向解阻、必要差額閉合暨正式結案（{REV}）\n")
     md.append(f"生成時間：`{now.isoformat()}`｜工程根：`{WAVE}`｜"
               "本件由收據生成，數字皆為引用值。\n")
     md.append("> 本件是 W 內的新修訂；舊 `SQS-THC_MVP_Workspace\\SST_PLP_PH01_W0_B0_CLOSEOUT_HANDOFF.md` "
@@ -146,14 +150,18 @@ def main() -> int:
               f"- 權利：`{receipts['B1']['rights']['live_window_id']}`、ceiling `{receipts['B1']['rights']['effect_ceiling']}`、"
               f"receipt `{receipts['B1']['rights']['receipt_sha256'][:16]}…`，principal `{receipts['B1']['rights']['principal']}`；"
               "每筆收據於返回前再驗一次權利。\n"
+              f"- 逐源 `rights_check_ref`＝`<window_id>:<receipt_sha256[:16]>:<source_id>`，實例：`"
+              + "`、`".join(r["rights_check_ref"] for r in receipts["B1"]["rows"]) + "`。\n"
               f"- 13 欄：`consumer_id, validator_name, validator_version, subject, scope_id, spec_version, candidate_digest, "
               "source_id, sha, rights_check_ref, decision, first_fail, checked_at`（實體見各收據 `rows[]`，另有 `evidence` 附 R/P/M 與 authority）。\n")
 
     md.append("### 5｜受影 NEG 與演算法自測\n")
-    md.append(f"- 單元／契約測試：`20_TESTS/test_receiver.py` — 73 案全綠（POS baseline + 單一變異 NEG；每臂斷言**精確** first_fail，"
-              "baseline 不合法時回 `HOLD_BASELINE_NOT_VALID` 而非計分）。\n"
+    tr = load(VERIFY / "receiver_test_run_r10.json") if (VERIFY / "receiver_test_run_r10.json").exists() else {}
+    md.append(f"- 單元／契約測試：`20_TESTS/test_receiver.py` — tests_run={tr.get('tests_run')}、"
+              f"failures={tr.get('failures')}、errors={tr.get('errors')}、ok=`{tr.get('ok')}`"
+              "（POS baseline + 單一變異 NEG；每臂斷言**精確** first_fail；無常數式拒絕臂）。\n"
               f"- fixture 走同一簽章／區間／currency 程式路徑（fixture 收據由 TEST_ONLY 金鑰簽發，無 bypass 分支），"
-              f"fixture deployment pin `{sha(WAVE / '20_TESTS' / 'fixture' / 'DEPLOYMENT_fixture_20261127.json')[:16]}…`。\n"
+              f"fixture deployment pin `{_dep.PINNED['fixture']['sha256'][:16]}…`（`{_dep.PINNED['fixture']['path']}`）。\n"
               f"- 產品測試（重定位後原套件）：{' / '.join(log_tail) if log_tail else 'NOT_EXECUTED'}。\n")
 
     md.append("### 6｜F1／F2 與 Native OFF\n")
@@ -170,13 +178,34 @@ def main() -> int:
               f"歷史受界收據 `{f2o['historical_bounded_receipt']['verdict']}` 仍有效。上限：非全機 OFF 證明（遞移 import／kernel/registry 寫入／窗後網路皆未證）。\n")
 
     md.append("### 7｜分離接受（獨立 Checker）\n")
+    r1 = load(VERIFY / "verdict_r8_round1.json") if (VERIFY / "verdict_r8_round1.json").exists() else None
+    if r1:
+        md.append(f"**第一輪（r8 候選）判定：{r1['verdict']}** — {r1['checker']}，{r1['reviewed_at']}。"
+                  "受檢識別：envelope `" + r1["candidate_ids"]["envelope_raw_sha256"][:16]
+                  + "…`、deployment `" + r1["candidate_ids"]["deployment_sha256"][:16]
+                  + "…`、receiver.py `" + r1["candidate_ids"]["receiver_py_sha256"][:16] + "…`。\n")
+        md.append("| 第一輪判定 | 缺陷 | 本輪（r9）修復 | 對應新臂 |\n|---|---|---|---|\n"
+                  "| FAIL item 3 | `errors[].attempt=true` 被接受（True==1） | `attempt` 改 `is_int` 嚴格判定 | "
+                  "`test_error_attempt_bool` |\n"
+                  "| FAIL item 3 | `source_manifest.inherited_sha` 只驗形狀、未釘值 | 與 deployment 釘住的 inherited manifest 精確比對 | "
+                  "`test_inherited_manifest_is_pinned` |\n"
+                  "| FAIL item 3 | `VERIFIED` 搭配不存在的 `evidence_ref` 被接受 | VERIFIED 必須有可解析的證據檔，否則 `MANIFEST_EVIDENCE_UNRESOLVED` | "
+                  "`test_verified_manifest_needs_resolvable_evidence`／`_without_evidence_ref` |\n"
+                  "| FAIL item 5 | 權利判定在讀取來源 bytes 之後 | authority／區間／epoch 全部前置於任何內容讀取 | "
+                  "`test_rights_decided_before_any_source_byte` |\n"
+                  "| FAIL item 5 | `PROVIDER_VERSIONED` 搭配全 null epoch 被接受 | 至少一個真 epoch 值，否則 `EPOCH_UNBOUND` | "
+                  "`test_provider_epoch_cannot_be_nulled` |\n"
+                  "| 非強制 | pinned locator 無 containment／reparse 檢查 | 新增 `allowed_roots` containment、reparse 拒絕、讀前後 identity/size 比對 | "
+                  "`test_pinned_locator_outside_allowed_roots` |\n"
+                  "| 非強制 | `rights_check_ref` 未區分來源 | 改為 `window:receipt[:16]:source_id` | §4 三端收據 |\n")
+        md.append(f"\n本輪 r9 已逐項修復並重跑；三端真接收以 r9 deployment 重做（見 §4）。此表為第一輪 REJECT 的保留記錄，不被新判定覆蓋。\n")
     if verdict:
-        md.append(f"- 判定：**{verdict.get('verdict')}**（{verdict.get('checker')}，{verdict.get('reviewed_at')}）。\n"
+        md.append(f"\n**本輪（r9 候選）判定：{verdict.get('verdict')}**（{verdict.get('checker')}，{verdict.get('reviewed_at')}）。\n"
                   f"- 受檢候選：`{verdict.get('candidate_manifest_sha256')}`；只讀、未改候選。\n"
                   f"- 主要結論：{verdict.get('summary')}\n"
-                  f"- 非強制意見：{verdict.get('findings')}\n")
+                  f"- 逐項：{verdict.get('findings')}\n")
     else:
-        md.append("- **HOLD**：獨立 Checker 判定尚未回填（`30_VERIFY/verdict.json` 不存在）。本件不得引用為已接受。\n")
+        md.append("\n**本輪（r9 候選）判定：HOLD** — `30_VERIFY/verdict.json` 尚未回填；本件不得引用為已接受。\n")
 
     md.append("### 8｜狀態與本次工程寫入\n")
     md.append(f"- 產品狀態：`B0_PRODUCT_EXECUTED`（真合法來源、原四 Op、實際 output/exit）；`B0_CORE_ACCEPTED` 之歷史核心範圍承接不改；"
@@ -249,7 +278,7 @@ def main() -> int:
 
     # ---- freeze manifest over this wave (excludes itself, the document and the freeze) ----
     rows = []
-    for p in sorted(WAVE.rglob("*")):
+    for p in sorted(WAVE.rglob("*"), key=lambda q: q.relative_to(WAVE).as_posix().encode("utf-8")):
         if not p.is_file():
             continue
         rel = p.relative_to(WAVE).as_posix()
@@ -265,18 +294,30 @@ def main() -> int:
     manifest_sha = hashlib.sha256(body).hexdigest()
     FREEZE.write_bytes(json.dumps({
         "schema": "SST.PH01.W0.B0.R3.Freeze/1",
+        "revision": REV,
         "frozen_at": now.isoformat(),
         "wave_root": str(WAVE),
         "members": len(rows),
         "manifest": {"path": str(MANIFEST), "bytes": len(body), "sha256": manifest_sha},
-        "convention": "path<TAB>sha256<TAB>byte_length<LF>, UTF-8 path order, sorted by path",
-        "document": {"path": str(DOC), "bytes": DOC.stat().st_size, "sha256": sha(DOC)},
+        "convention": "path<TAB>sha256<TAB>byte_length<LF>; members sorted by the UTF-8 bytes of the relative path",
+        # the closeout document is a rendering of these receipts and is deliberately NOT a
+        # frozen member: it is regenerated whenever a verdict lands, and its digest is recorded
+        # in the publish readback instead of here.
         "claim_ceiling": ("Freezes the bytes of this round's code, tests, receipts and closeout. "
                           "It asserts nothing about semantics beyond what the receipts measured, "
                           "and it excludes itself, its manifest and the generated document."),
         "receipts": {c: {"verdict": receipts[c]["verdict"],
-                         "sha256": sha(OPS / f"r8_consumer_{c}_receipt.json")} for c in receipts},
+                         "sha256": sha(OPS / f"{REV}_consumer_{c}_receipt.json")} for c in receipts},
     }, ensure_ascii=False, indent=1).encode("utf-8"))
+    mismatched = []
+    for line in rows:
+        rel, want_sha, want_bytes = line.split("	")
+        disk = WAVE / rel
+        if not disk.exists() or sha(disk) != want_sha or disk.stat().st_size != int(want_bytes):
+            mismatched.append(rel)
+    if mismatched:
+        raise SystemExit(json.dumps({"refused": "MANIFEST_DOES_NOT_DESCRIBE_DISK",
+                                     "files": mismatched}, ensure_ascii=False))
     print(json.dumps({"document": str(DOC), "bytes": DOC.stat().st_size,
                       "manifest": {"path": str(MANIFEST), "members": len(rows), "sha256": manifest_sha},
                       "freeze": str(FREEZE)}, ensure_ascii=False, indent=1))

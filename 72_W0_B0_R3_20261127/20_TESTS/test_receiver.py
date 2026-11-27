@@ -121,7 +121,7 @@ class POS(ReceiverBase):
         self.assertEqual(sorted(row), sorted(cols + ["evidence"]))
         self.assertEqual(row["sha"], wire.sha256(raw_of(FX / "source_fixture.md")))
         self.assertIsNone(row["first_fail"])
-        self.assertRegex(row["rights_check_ref"], r"^FIXTURE-WIN-0001:[0-9a-f]{16}$")
+        self.assertRegex(row["rights_check_ref"], r"^FIXTURE-WIN-0001:[0-9a-f]{16}:FIXTURE\.SOURCE$")
         self.assertTrue(row["evidence"]["clause_sha"])
         self.assertEqual(row["evidence"]["R"], ["read"])
         self.assertEqual(row["evidence"]["P"], ["read"])
@@ -508,14 +508,14 @@ class RightsNegatives(ReceiverBase):
 class TrustRootNegatives(ReceiverBase):
     def test_descriptor_hash_is_the_pin(self):
         with self.assertRaises(Reject) as ctx:
-            load_pinned_deployment("fixture", "0" * 64, str(FX / "DEPLOYMENT_fixture_20261127.json"))
+            load_pinned_deployment("fixture", "0" * 64, str(FX / "DEPLOYMENT_fixture_20261127_r9.json"))
         self.assertEqual(ctx.exception.code, "TRUST_CONTEXT_UNBOUND")
 
     def test_descriptor_in_an_unsealed_directory_is_refused(self):
         stolen = WAVE / "tmp" / "unsealed"
         stolen.mkdir(parents=True, exist_ok=True)
         target = stolen / "DEPLOYMENT_copy.json"
-        target.write_bytes((FX / "DEPLOYMENT_fixture_20261127.json").read_bytes())
+        target.write_bytes((FX / "DEPLOYMENT_fixture_20261127_r9.json").read_bytes())
         sha = wire.sha256(target.read_bytes())
         with self.assertRaises(Reject) as ctx:
             load_pinned_deployment("fixture", sha, str(target))
@@ -524,9 +524,96 @@ class TrustRootNegatives(ReceiverBase):
 
     def test_sealed_descriptor_passes_the_same_gate(self):
         dep = load_pinned_deployment("fixture",
-                                     "4aaaf297a1f473f13179a5f76bfccf754821320922defe7f40587bbb8738a1d5",
-                                     str(FX / "DEPLOYMENT_fixture_20261127.json"))
+                                     "59c5553466fa36737edaf8bf7b3bb5ac37ff9e9279f076ddf0e9858f92696e95",
+                                     str(FX / "DEPLOYMENT_fixture_20261127_r9.json"))
         self.assertEqual(dep["deployment_id"], "fixture")
+
+
+class HardeningNegatives(ReceiverBase):
+    """Arms added after the first separated verdict (attempt 1 -> attempt 2)."""
+
+    def test_error_attempt_bool(self):
+        doc = copy.deepcopy(self.base)
+        doc["entries"] = []
+        doc["errors"] = [{"source_id": "FIXTURE.SOURCE", "op": "BYTES", "code": "X",
+                          "first_fail": "SOURCE_CHANGED_SINCE_READ", "retryable": False,
+                          "attempt": True, "resume": "owner"}]
+        self.assert_reject(self.run_env(doc), "WIRE_INVALID")
+
+    def test_inherited_manifest_is_pinned(self):
+        doc = copy.deepcopy(self.base)
+        doc["source_manifest"]["inherited_sha"] = "0" * 64
+        self.assert_reject(self.run_env(doc), "TUPLE_MISMATCH")
+
+    def test_verified_manifest_needs_resolvable_evidence(self):
+        doc = copy.deepcopy(self.base)
+        doc["source_manifest"]["verification"] = "VERIFIED"
+        doc["source_manifest"]["evidence_ref"] = "C:/no/such/manifest.json"
+        # the deployment holds this manifest as UNVERIFIED, so the claim cannot be upgraded
+        self.assert_reject(self.run_env(doc), "MANIFEST_VERIFICATION_ESCALATED")
+
+    def test_verified_manifest_without_evidence_ref(self):
+        doc = copy.deepcopy(self.base)
+        doc["source_manifest"]["verification"] = "VERIFIED"
+        doc["source_manifest"]["evidence_ref"] = None
+        self.assert_reject(self.run_env(doc), "MANIFEST_VERIFICATION_ESCALATED")
+
+    def test_provider_epoch_cannot_be_nulled(self):
+        doc = copy.deepcopy(self.base)
+        doc["entries"][0]["authority"]["epoch_strategy"] = "PROVIDER_VERSIONED"
+        self.assert_reject(self.run_env(doc), "EPOCH_UNBOUND")
+
+    def test_rights_decided_before_any_source_byte(self):
+        """An expired authority must be refused before the pinned locator is ever opened."""
+        dep = copy.deepcopy(self.dep)
+        absent = str(FX / "absent.md")
+        dep["consumers"]["B1"]["sources"]["FIXTURE.SOURCE"]["locator"] = absent
+        doc = copy.deepcopy(self.base)
+        for e in doc["entries"]:
+            e["source_ref"]["locator"] = absent      # tuple still consistent
+            e["authority"]["valid_from"] = "2025-01-01T00:00:00+00:00"
+            e["authority"]["expires_at"] = "2026-01-01T00:00:00+00:00"
+        r = receive(dep, "B1", json.dumps(doc, ensure_ascii=False).encode("utf-8"), now=FAR_NOW)
+        self.assert_reject(r, "ENVELOPE_AUTHORITY_EXPIRED")
+        self.assertNotIn("SOURCE_UNAVAILABLE", json.dumps(r))
+
+
+    def test_verified_manifest_bound_to_the_deployment_digest(self):
+        """With a deployment-held digest, VERIFIED still needs those exact bytes."""
+        dep = copy.deepcopy(self.dep)
+        dep["source_manifest_expected"] = dict(dep["source_manifest_expected"],
+                                               verification="VERIFIED",
+                                               evidence_sha256="a" * 64)
+        doc = copy.deepcopy(self.base)
+        doc["source_manifest"] = {"inherited_sha": dep["source_manifest_expected"]["inherited_sha"],
+                                  "verification": "VERIFIED",
+                                  "evidence_ref": str(FX / "source_fixture.md")}
+        r = receive(dep, "B1", json.dumps(doc, ensure_ascii=False).encode("utf-8"), now=FAR_NOW)
+        self.assert_reject(r, "MANIFEST_EVIDENCE_UNRESOLVED")
+
+    def test_epoch_string_without_provider_is_not_an_epoch(self):
+        doc = copy.deepcopy(self.base)
+        doc["entries"][0]["authority"]["epoch_strategy"] = "PROVIDER_VERSIONED"
+        doc["entries"][0]["acl_epoch"] = "acl:v1"
+        doc["entries"][0]["rights_epoch"] = "rights:v1"
+        self.assert_reject(self.run_env(doc), "EPOCH_UNBOUND")
+
+    def test_epoch_bound_provider_with_stale_epoch(self):
+        dep = copy.deepcopy(self.dep)
+        dep["epoch_provider"] = {"provider_ref": "prov:A", "expected_rights_epoch": "rights:v9"}
+        doc = copy.deepcopy(self.base)
+        doc["entries"][0]["authority"]["epoch_strategy"] = "PROVIDER_VERSIONED"
+        doc["entries"][0]["authority"]["epoch_provider_ref"] = "prov:A"
+        doc["entries"][0]["acl_epoch"] = "acl:v1"
+        doc["entries"][0]["rights_epoch"] = "rights:v1"
+        r = receive(dep, "B1", json.dumps(doc, ensure_ascii=False).encode("utf-8"), now=FAR_NOW)
+        self.assert_reject(r, "EPOCH_STALE")
+
+    def test_pinned_locator_outside_allowed_roots(self):
+        dep = copy.deepcopy(self.dep)
+        dep["allowed_roots"] = [str(WAVE / "tmp")]
+        r = receive(dep, "B1", self.base_raw, now=FAR_NOW)
+        self.assert_reject(r, "TUPLE_MISMATCH")
 
 
 if __name__ == "__main__":

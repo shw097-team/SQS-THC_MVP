@@ -183,6 +183,12 @@ def main() -> int:
         "consumer_ids": ["B1", "B2", "B3"],
         "source_ids": ["FIXTURE.SOURCE"],
         "os_principal": principal,
+        "allowed_roots": [str(FX)],
+        "source_manifest_expected": {
+            "inherited_sha": "2012a28f630f4e28d60309de0bb5734ce138b18c677445a475c670f1d9f4245e",
+            "verification": "UNVERIFIED",
+            "evidence_ref": None,
+        },
         "owner_public_hex": pub_hex,
         "rights": {
             "task_id": TASK,
@@ -208,7 +214,7 @@ def main() -> int:
         },
         "claim_ceiling": "FIXTURE ONLY — exercises the receive algorithm; confers no product rights",
     }
-    dep_path = FX / "DEPLOYMENT_fixture_20261127.json"
+    dep_path = FX / "DEPLOYMENT_fixture_20261127_r9.json"
     write(dep_path, json.dumps(dep, ensure_ascii=False, indent=1).encode("utf-8"))
 
     envelope = {

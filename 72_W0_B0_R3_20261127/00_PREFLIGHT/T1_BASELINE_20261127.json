@@ -150,7 +150,7 @@
     "read"
    ],
    "extraction_rule": {
-    "expected_literal": "READ 只讀合法來源，不能繼承 DEV 效應。",
+    "expected_literal": "<LOCAL_ONLY_REDACTED>",
     "field": "read",
     "method": "MD_LABEL",
     "prefix": "- **How／Predicate**：",
@@ -160,7 +160,7 @@
      573
     ]
    },
-   "extracted_value": "READ 只讀合法來源，不能繼承 DEV 效應。",
+   "extracted_value": "<LOCAL_ONLY_REDACTED>",
    "extracted_value_sha": "78a231eaa93d64fed87001426970d5133e89847b3f7668e514d6b0f259798dab",
    "requirement_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md",
    "child_id": "REQ-12::AUTHOR-SPLIT-01",
@@ -190,7 +190,7 @@
     "read"
    ],
    "extraction_rule": {
-    "expected_literal": "READ 只讀合法來源，不能繼承 DEV 效應。",
+    "expected_literal": "<LOCAL_ONLY_REDACTED>",
     "field": "read",
     "method": "MD_LABEL",
     "prefix": "- **How／Predicate**：",
@@ -200,7 +200,7 @@
      299
     ]
    },
-   "extracted_value": "READ 只讀合法來源，不能繼承 DEV 效應。",
+   "extracted_value": "<LOCAL_ONLY_REDACTED>",
    "extracted_value_sha": "78a231eaa93d64fed87001426970d5133e89847b3f7668e514d6b0f259798dab",
    "requirement_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_WM\\SST_PLP_PH01_ALL_WNM_2026-11-24_r2\\SST_PLP_PH01_W0M_實質正文.md",
    "child_id": "REQ-12::AUTHOR-SPLIT-01",
