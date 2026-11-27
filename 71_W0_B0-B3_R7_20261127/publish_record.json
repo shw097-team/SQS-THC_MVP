@@ -3,11 +3,11 @@
  "repo": "https://github.com/shw097-team/SQS-THC_MVP",
  "branch": "main",
  "visibility": "public",
- "commit": "PENDING",
+ "commit": "2ab37416bbd0473c56fe8541304de27a3fa954a2",
  "previous_remote_head": "24a59f5cbc12a5fc5a2dfcb4a5cf879b4628c515",
  "pushed_paths": "71_W0_B0-B3_R7_20261127/",
- "published_files": "computed at commit A; see PUBLISHED_MANIFEST.tsv rows",
- "published_bytes": "computed at commit A; see PUBLISHED_MANIFEST.tsv rows",
+ "published_files": "see PUBLISHED_MANIFEST.tsv (rows minus this record)",
+ "published_bytes": "see PUBLISHED_MANIFEST.tsv",
  "auth": "one-shot http.extraheader built in the same shell command from the credential file; not written to git config, argv beyond the header, URL, log or commit",
  "local_only_exclusions": [
   {
@@ -25,7 +25,7 @@
  ],
  "readback": [],
  "readback_method": "anonymous raw.githubusercontent.com at commit a074512…, sha256 compared with the staged file (4/4 matched on 64747d6; re-verified on a074512 below)",
- "commit_lag_note": "this record names a074512, the commit that carries the superseding tree (digest 45d41c59…); a later doc-only commit that updates final_head_at_readback advances HEAD by one, which is recorded in the field itself rather than chased",
+ "commit_lag_note": "this record names commit A, the commit that introduced the rev2 tree; the commit that updates this record advances HEAD by one and is reported in the session closeout, not chased in the file",
  "publication_ne_acceptance": true,
  "recorded_at": "2026-11-27T16:07:45+0800",
  "supersedes_commit": "a0745127d9894750ad6dbd7740872fed760d5a0d",
