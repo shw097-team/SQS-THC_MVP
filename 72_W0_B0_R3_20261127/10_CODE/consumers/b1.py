@@ -9,9 +9,10 @@ from __future__ import annotations
 from .common import cli, run_entry
 
 CONSUMER_ID = "B1"
+ENTRY = "consumers.b1.receive_envelope"
 
-# B1's own declaration, fixed before the envelope is read; the entry refuses if the pinned
-# deployment disagrees with it.
+# B1's own declaration, fixed before the envelope is read; the entry refuses if the
+# pinned deployment disagrees with it.
 EXPECTED = {
     "consumer_use": "B1 REPO/BASE/FDA/ROOTS inbound consumption of the B0 SourceReadSet",
     "sources": {
@@ -30,8 +31,9 @@ EXPECTED = {
 
 
 def receive_envelope(payload: bytes, *, now=None) -> dict:
-    return run_entry(CONSUMER_ID, EXPECTED, payload, now=now)
+    return run_entry(CONSUMER_ID, EXPECTED, payload,
+                     entry=ENTRY, now=now)
 
 
 if __name__ == "__main__":
-    raise SystemExit(cli(CONSUMER_ID, EXPECTED))
+    raise SystemExit(cli(CONSUMER_ID, EXPECTED, ENTRY))

@@ -20,7 +20,7 @@ ENTRY_SCHEMA = "SST.PH01.W0.B0.R3.InboundReadback/1"
 
 
 def run_entry(consumer_id: str, own_expected: dict[str, Any], payload: bytes, *,
-              deployment_id: str = "prod", now=None) -> dict[str, Any]:
+              entry: str, deployment_id: str = "prod", now=None) -> dict[str, Any]:
     dep = deployment_mod.load(deployment_id)
     consumer = dep["consumers"][consumer_id]
 
@@ -32,17 +32,26 @@ def run_entry(consumer_id: str, own_expected: dict[str, Any], payload: bytes, *,
             "consumer_id": consumer_id,
             "declared": sorted(own_expected["sources"]),
             "pinned": sorted(pinned_sources)}, ensure_ascii=False))
+    if own_expected.get("consumer_use") and own_expected["consumer_use"] != consumer["consumer_use"]:
+        raise SystemExit(json.dumps({
+            "refused": "CONSUMER_EXPECTATION_DRIFT", "consumer_id": consumer_id,
+            "field": "consumer_use", "declared": own_expected["consumer_use"],
+            "pinned": consumer["consumer_use"]}, ensure_ascii=False))
+    fields = ("required_fields", "expected_raw_sha256", "requirement_span",
+              "namespace", "source_version", "locator", "expected_clause_sha256")
     for sid, decl in own_expected["sources"].items():
         pin = pinned_sources[sid]
-        if (decl["required_fields"] != pin["required_fields"]
-                or decl["expected_raw_sha256"] != pin["expected_raw_sha256"]
-                or decl["requirement_span"] != pin["requirement_span"]):
+        drift = [f for f in fields if f in decl and decl[f] != pin[f]]
+        rule = decl.get("extraction_rule")
+        if rule and (rule.get("span") != pin["extraction_rule"].get("span")
+                     or rule.get("prefix") != pin["extraction_rule"].get("prefix")):
+            drift.append("extraction_rule")
+        if drift:
             raise SystemExit(json.dumps({
                 "refused": "CONSUMER_EXPECTATION_DRIFT",
-                "consumer_id": consumer_id, "source_id": sid,
-                "declared": decl, "pinned": {k: pin[k] for k in
-                                             ("required_fields", "expected_raw_sha256",
-                                              "requirement_span")}}, ensure_ascii=False))
+                "consumer_id": consumer_id, "source_id": sid, "fields": drift,
+                "declared": {k: decl.get(k) for k in fields},
+                "pinned": {k: pin.get(k) for k in fields}}, ensure_ascii=False))
 
     receipt = receive(dep, consumer_id, payload, now=now,
                       deployment_ref=dep.get("_deployment_ref"))
@@ -50,7 +59,7 @@ def run_entry(consumer_id: str, own_expected: dict[str, Any], payload: bytes, *,
     readback = {
         "schema": ENTRY_SCHEMA,
         "consumer_id": consumer_id,
-        "entry": f"consumers.{consumer_id.lower()}.receive_envelope",
+        "entry": entry,
         "consumer_use": consumer["consumer_use"],
         "deployment": receipt["deployment"],
         "envelope_sha256": receipt["envelope_sha256"],
@@ -67,7 +76,8 @@ def run_entry(consumer_id: str, own_expected: dict[str, Any], payload: bytes, *,
     return receipt
 
 
-def cli(consumer_id: str, own_expected: dict[str, Any], argv: list[str] | None = None) -> int:
+def cli(consumer_id: str, own_expected: dict[str, Any], entry: str,
+        argv: list[str] | None = None) -> int:
     argv = list(sys.argv[1:] if argv is None else argv)
     if not argv or argv[0] != "receive":
         print(json.dumps({"refused": "USAGE", "usage": "receive --envelope <file|-> [--out <path>]"}))
@@ -83,7 +93,7 @@ def cli(consumer_id: str, own_expected: dict[str, Any], argv: list[str] | None =
         print(json.dumps({"refused": "USAGE", "detail": "--envelope is required"}))
         return 64
     payload = sys.stdin.buffer.read() if envelope == "-" else Path(envelope).read_bytes()
-    receipt = run_entry(consumer_id, own_expected, payload)
+    receipt = run_entry(consumer_id, own_expected, payload, entry=entry)
     text = json.dumps(receipt, ensure_ascii=False, indent=1)
     if out:
         p = Path(out)

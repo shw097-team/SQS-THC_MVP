@@ -1,0 +1,54 @@
+{
+ "schema": "SST.PH01.W0.B0.R3.D5ReceiverF2/2",
+ "measured_at": "2026-11-27T23:24:04.735603+08:00",
+ "external_process_calls_observed": {
+  "icacls": 20,
+  "powershell": 2,
+  "whoami": 4
+ },
+ "external_process_total": 26,
+ "how_measured": "subprocess.run wrapped in-process around one real receive; every call counted by executable name, including the product's own icacls ACL reads",
+ "modules_outside_stdlib_and_package": [
+  "cryptography",
+  "cryptography.__about__",
+  "cryptography.hazmat",
+  "cryptography.hazmat.bindings",
+  "cryptography.hazmat.bindings._rust",
+  "cryptography.hazmat.primitives",
+  "cryptography.hazmat.primitives._serialization",
+  "cryptography.hazmat.primitives.asymmetric",
+  "cryptography.hazmat.primitives.asymmetric.ed25519",
+  "cryptography.hazmat.primitives.hashes",
+  "cryptography.utils",
+  "pywin32_bootstrap"
+ ],
+ "distributions": {
+  "cryptography": "50.0.2",
+  "cffi": "2.1.1",
+  "pycparser": "3.11",
+  "pywin32": "311"
+ },
+ "python": "3.14.9",
+ "native_first": {
+  "network_modules_in_scope": [],
+  "claim_ceiling": "Import-surface observation only; no packet-level OFF proof."
+ },
+ "no_write_observation": {
+  "source_sha_before": {
+   "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
+   "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_WM\\SST_PLP_PH01_ALL_WNM_2026-11-24_r2\\SST_PLP_PH01_W0M_實質正文.md": "5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96"
+  },
+  "source_sha_after": {
+   "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
+   "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_WM\\SST_PLP_PH01_ALL_WNM_2026-11-24_r2\\SST_PLP_PH01_W0M_實質正文.md": "5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96"
+  },
+  "sources_unchanged": true,
+  "code_tree_files": [
+   13,
+   13
+  ],
+  "code_tree_changes": [],
+  "receive_verdict": "ACCEPTED",
+  "no_product_write_observed": true
+ }
+}

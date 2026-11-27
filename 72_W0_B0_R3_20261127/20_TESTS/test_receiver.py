@@ -679,7 +679,7 @@ class ConsumerEntryArms(unittest.TestCase):
             "required_fields": ["read"], "expected_raw_sha256": "0" * 64,
             "requirement_span": [572, 579]}}}
         with self.assertRaises(SystemExit):
-            common.run_entry("B1", bad, b"{}", deployment_id="prod")
+            common.run_entry("B1", bad, b"{}", entry="consumers.b1.receive_envelope", deployment_id="prod")
 
 
 if __name__ == "__main__":

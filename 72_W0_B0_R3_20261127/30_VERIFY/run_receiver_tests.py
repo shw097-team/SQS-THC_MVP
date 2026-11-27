@@ -10,7 +10,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 WAVE = Path(__file__).resolve().parents[1]
-OUT = WAVE / "30_VERIFY" / "receiver_test_run_r10.json"
+OUT = WAVE / "30_VERIFY" / "receiver_test_run_r19.json"
 sys.path.insert(0, str(WAVE / "10_CODE"))
 sys.path.insert(0, str(WAVE / "20_TESTS"))
 

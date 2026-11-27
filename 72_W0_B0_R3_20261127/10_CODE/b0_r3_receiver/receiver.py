@@ -162,10 +162,23 @@ def _check_manifest_evidence(doc: dict[str, Any], dep: dict[str, Any]) -> None:
     ref = manifest.get("evidence_ref")
     if not wire.nonempty(ref):
         raise Reject("MANIFEST_EVIDENCE_UNRESOLVED", "VERIFIED manifest without an evidence_ref")
-    path = Path(ref)
-    if not path.is_file():
-        raise Reject("MANIFEST_EVIDENCE_UNRESOLVED", "evidence_ref does not resolve to bytes")
-    if wire.sha256(path.read_bytes()) != expected_sha:
+    path = str(Path(ref))
+    try:
+        from b0_reader.root import PathSecurityError, open_authorized_file
+    except Exception as exc:  # pragma: no cover - environment guard
+        raise Reject("TRUST_CONTEXT_UNBOUND", "product trust primitives unavailable") from exc
+    try:
+        handle, _v = open_authorized_file(path, allowed_root=str(Path(path).parent))
+    except PathSecurityError as exc:
+        raise Reject("MANIFEST_EVIDENCE_UNRESOLVED",
+                     f"evidence_ref failed the same-handle path check: {exc.code}") from exc
+    except OSError as exc:
+        raise Reject("MANIFEST_EVIDENCE_UNRESOLVED", "evidence_ref does not resolve to bytes") from exc
+    try:
+        payload = handle.read_all()
+    finally:
+        handle.close()
+    if wire.sha256(payload) != expected_sha:
         raise Reject("MANIFEST_EVIDENCE_UNRESOLVED", "evidence bytes are not the pinned manifest")
 
 

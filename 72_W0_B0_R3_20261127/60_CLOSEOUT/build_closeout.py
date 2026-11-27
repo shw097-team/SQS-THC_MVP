@@ -147,7 +147,7 @@ def main() -> int:
               "| 分源缺陷 | `if env.get(\"errors\"): fail(...)` 對任何 errors 全份拒 | 全域 wire/tuple 才全拒；單源 typed error／失效只影響該源，兄弟續行 | "
               "`test_entry_and_error_for_same_source`（同源雙載拒）、設計見 §06.2 |\n")
 
-    d5 = load(OPS / "d5_receiver_f2_20261127.json") if (OPS / "d5_receiver_f2_20261127.json").exists() else {}
+    d5 = load(OPS / "d5_receiver_f2_v2_20261127.json") if (OPS / "d5_receiver_f2_20261127.json").exists() else {}
     md.append("### 3.1｜本輪 D1–D7 差額處分\n")
     md.append("| 差額 | 原契約要求 | 本輪處分 | 實證 |\n|---|---|---|---|\n"
               "| D1 安全讀取 | 同 handle、ancestor／reparse／identity，不得自製第二套讀取 | 改呼叫產品自身 `b0_reader.root.open_authorized_file`，bytes 由該 handle `read_all()` 取得；`allowed_roots` 缺席即 `TRUST_CONTEXT_UNBOUND`（不 fail-open） | "
@@ -158,8 +158,8 @@ def main() -> int:
               "§4、§5、`test_provider_epoch_cannot_be_nulled` 系列 |\n"
               "| D4 三端真入站 | 各自入口與 readback，非換 consumer_id | `consumers/b1.py`、`b2.py`、`b3.py` 各自宣告 Expected 並在漂移時拒絕；各自輸出 `inbound` readback | "
               "§4 實際入口欄、`test_three_entries_agree_with_the_pinned_deployment` |\n"
-              "| D5 F2 真受影 | 不得以舊 Producer import probe 代證 | 對 Receiver 重量：import surface、分發版本、外部 OS 助手、無寫觀測 | "
-              f"`40_OPS/d5_receiver_f2_20261127.json`（no_product_write_observed=`{d5.get('no_write_observation', {}).get('no_product_write_observed')}`） |\n"
+              "| D5 F2 真受影 | 不得以舊 Producer import probe 代證 | 對 Receiver 重量：以 `subprocess.run` 包裝實際計數外部程序、import surface、分發版本、無寫觀測 | "
+              f"`40_OPS/d5_receiver_f2_v2_20261127.json`（no_product_write_observed=`{d5.get('no_write_observation', {}).get('no_product_write_observed')}`） |\n"
               "| D6 候選／證據分帳 | 受檢候選與證據、發布投影分離 | `CANDIDATE_receiver_<rev>.tsv/json` 只含 receiver 程式＋測試＋fixture pin；證據 freeze 另帳；發布為去敏投影 | "
               "本節與 `FREEZE_<rev>.json` / `CANDIDATE_receiver_<rev>.json` |\n"
               "| D7 待升級與散布 | 不重研非必要進階；散布事件如實保留 | §9 待升級區照原具權裁決；LOCAL_ONLY 散布事件與 repo 殘留列於 `REDACTION_NOTICE` §2–§3 | §9、§11 |\n")
@@ -178,7 +178,7 @@ def main() -> int:
               "source_id, sha, rights_check_ref, decision, first_fail, checked_at`（實體見各收據 `rows[]`，另有 `evidence` 附 R/P/M 與 authority）。\n")
 
     md.append("### 5｜受影 NEG 與演算法自測\n")
-    tr = load(VERIFY / "receiver_test_run_r10.json") if (VERIFY / "receiver_test_run_r10.json").exists() else {}
+    tr = load(VERIFY / "receiver_test_run_r19.json") if (VERIFY / "receiver_test_run_r19.json").exists() else {}
     md.append(f"- 單元／契約測試：`20_TESTS/test_receiver.py` — tests_run={tr.get('tests_run')}、"
               f"failures={tr.get('failures')}、errors={tr.get('errors')}、ok=`{tr.get('ok')}`"
               "（POS baseline + 單一變異 NEG；每臂斷言**精確** first_fail；無常數式拒絕臂）。\n"
@@ -301,8 +301,17 @@ def main() -> int:
               "# 釘住 producer freeze 與當期收據\n"
               "python -B 40_OPS/build_deployment_r8.py\n"
               "# 三端各自接收（無 caller context；deployment 由模組釘住）\n"
-              "PYTHONPATH=<W>/10_CODE python -B -m b0_r3_receiver.cli receive --consumer B1 "
-              "--envelope 40_OPS/b0_sourcereadset_r8_20261127.json --out 40_OPS/r8_consumer_B1_receipt.json\n"
+              "PYTHONPATH=<W>/10_CODE python -B -m consumers.b1 receive "
+              "--envelope 40_OPS/b0_sourcereadset_r9_20261127.json "
+              "--out 40_OPS/r11_inbound_b1_receipt.json\n"
+              "PYTHONPATH=<W>/10_CODE python -B -m consumers.b2 receive "
+              "--envelope 40_OPS/b0_sourcereadset_r9_20261127.json "
+              "--out 40_OPS/r11_inbound_b2_receipt.json\n"
+              "PYTHONPATH=<W>/10_CODE python -B -m consumers.b3 receive "
+              "--envelope 40_OPS/b0_sourcereadset_r9_20261127.json "
+              "--out 40_OPS/r11_inbound_b3_receipt.json\n"
+              "# D5 receiver 量測（實際 subprocess 計數＋無寫觀測）\n"
+              "python -B 40_OPS/d5_v2.py\n"
               "# 演算法自測\n"
               "PYTHONPATH=<W>/10_CODE python -B -m unittest discover -s 20_TESTS -p \"test_*.py\"\n"
               "```\n")
@@ -389,42 +398,32 @@ def main() -> int:
         raise SystemExit(json.dumps({"refused": "MANIFEST_DOES_NOT_DESCRIBE_DISK",
                                      "files": mismatched}, ensure_ascii=False))
     # ---- D6: the receiver candidate, separate from the evidence freeze ----
+    cand_rel = sorted(
+        [f"10_CODE/b0_r3_receiver/{n}" for n in
+         ("__init__.py", "cli.py", "deployment.py", "receiver.py", "rights.py", "wire.py")]
+        + [f"10_CODE/consumers/{n}" for n in
+           ("__init__.py", "b1.py", "b2.py", "b3.py", "common.py")]
+        + ["20_TESTS/test_receiver.py", "20_TESTS/fixture/DEPLOYMENT_fixture_20261127_r9.json"],
+        key=lambda r: r.encode("utf-8"))
     cand_members = []
-    for rel in ("10_CODE/b0_r3_receiver/wire.py", "10_CODE/b0_r3_receiver/rights.py",
-                "10_CODE/b0_r3_receiver/receiver.py", "10_CODE/b0_r3_receiver/deployment.py",
-                "10_CODE/b0_r3_receiver/cli.py", "10_CODE/b0_r3_receiver/__init__.py",
-                "10_CODE/consumers/common.py", "10_CODE/consumers/b1.py",
-                "10_CODE/consumers/b2.py", "10_CODE/consumers/b3.py",
-                "10_CODE/consumers/__init__.py", "20_TESTS/test_receiver.py",
-                "20_TESTS/fixture/DEPLOYMENT_fixture_20261127_r9.json"):
-        q = WAVE / rel
-        raw = q.read_bytes()
-        cand_members.append(f"{rel}\t{hashlib.sha256(raw).hexdigest()}\t{len(raw)}")
+    for rel in cand_rel:
+        raw = (WAVE / rel).read_bytes()
+        cand_members.append(f"{rel}	{hashlib.sha256(raw).hexdigest()}	{len(raw)}")
     cand_body = ("\n".join(cand_members) + "\n").encode("utf-8")
     cand_tsv = WAVE / "60_CLOSEOUT" / f"CANDIDATE_receiver_{REV}.tsv"
     cand_tsv.write_bytes(cand_body)
-    (WAVE / "60_CLOSEOUT" / f"CANDIDATE_receiver_{REV}.json").write_text(json.dumps({
+    (WAVE / "60_CLOSEOUT" / f"CANDIDATE_receiver_{REV}.json").write_bytes(json.dumps({
         "schema": "SST.PH01.W0.B0.R3.ReceiverCandidate/1",
         "revision": REV,
         "members": len(cand_members),
+        "paths": cand_rel,
         "manifest": {"path": str(cand_tsv), "bytes": len(cand_body),
                      "sha256": hashlib.sha256(cand_body).hexdigest()},
-        "convention": "path<TAB>sha256<TAB>byte_length<LF>; sorted by UTF-8 bytes",
+        "convention": "path<TAB>sha256<TAB>byte_length<LF>; members sorted by the UTF-8 bytes of the relative path",
         "separate_from_evidence_freeze": True,
         "note": ("These are the bytes a separated checker judges for the receiver. The evidence "
                  "freeze covers receipts, descriptors and the product tree as well."),
-    }, ensure_ascii=False, indent=1).encode("utf-8")) if False else         (WAVE / "60_CLOSEOUT" / f"CANDIDATE_receiver_{REV}.json").write_bytes(
-            json.dumps({
-                "schema": "SST.PH01.W0.B0.R3.ReceiverCandidate/1",
-                "revision": REV,
-                "members": len(cand_members),
-                "manifest": {"path": str(cand_tsv), "bytes": len(cand_body),
-                             "sha256": hashlib.sha256(cand_body).hexdigest()},
-                "convention": "path<TAB>sha256<TAB>byte_length<LF>; sorted by UTF-8 bytes",
-                "separate_from_evidence_freeze": True,
-                "note": ("These are the bytes a separated checker judges for the receiver. The "
-                         "evidence freeze covers receipts, descriptors and the product tree too."),
-            }, ensure_ascii=False, indent=1).encode("utf-8"))
+    }, ensure_ascii=False, indent=1).encode("utf-8"))
 
     print(json.dumps({"document": str(DOC), "bytes": DOC.stat().st_size,
                       "manifest": {"path": str(MANIFEST), "members": len(rows), "sha256": manifest_sha},
