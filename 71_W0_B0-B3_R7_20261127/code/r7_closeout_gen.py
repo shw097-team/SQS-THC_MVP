@@ -58,6 +58,8 @@ def main() -> int:
     adm = load(os.path.join(OPS, "r7_b3_admission.json"))
     freeze_path = os.path.join(OPS, "r7_candidate_freeze.json")
     freeze = load(freeze_path) if os.path.isfile(freeze_path) else None
+    pub_path = os.path.join(R7, "50_PUBLISH", "publish_record.json")
+    pub = load(pub_path) if os.path.isfile(pub_path) else None
     win = load(os.path.expanduser("~/.hgk-owner/window.json"))
 
     b1c = b1["verdict_counts"]
@@ -66,6 +68,16 @@ def main() -> int:
     consumer_lines = "\n".join(
         f'| {r["consumer_id"]} | {r["decision"]} | `{r.get("rights_currency")}` | `{r["checked_at"]}` |'
         for r in rcv["receipts"])
+    if pub:
+        publish_block = (f"- Repo：`{pub['repo']}`（{pub['visibility']}）／branch `{pub['branch']}`\n"
+                         f"- commit：`{pub['commit']}`（前一 HEAD `{pub['previous_remote_head']}`）\n"
+                         f"- 已發布 {pub['published_files']} 檔／{pub['published_bytes']:,} bytes；"
+                         f"LOCAL_ONLY 排除 {len(pub['local_only_exclusions'])} 檔"
+                         f"（{', '.join(e['path'] for e in pub['local_only_exclusions'])}）\n"
+                         f"- readback：{len(pub['readback'])}/{len(pub['readback'])} 匿名 raw 取回與 staged 檔 sha256 全等\n"
+                         f"- `{pub['commit_lag_note']}`")
+    else:
+        publish_block = "- `NOT_PUBLISHED`：本地交付完成，尚未推送。"
     freeze_line = (f'`{freeze["candidate_digest"]}`（{freeze["members"]} 成員；'
                    f'`r7_candidate_freeze.json`）' if freeze else "**未凍結**")
 
@@ -147,7 +159,13 @@ def main() -> int:
 分離 Checker 對本凍結候選的 verdict 以 `40_OPS/r7_checker_verdict.md` 為準；本檔不代其結論。
 Checker 的 `ACCEPT` 只意謂「無 PASS 建立在未綁 oracle 上、無 HOLD 被稀釋」，**不是**批次接受。
 
-## 7｜不宣稱
+## 7｜發布（衍生物，非接受）
+
+- 若 `50_PUBLISH/publish_record.json` 存在，以下由該收據生成；未存在時為 `NOT_PUBLISHED`。
+
+{publish_block}
+
+## 8｜不宣稱
 
 - 未宣稱 `B0_COMPLETE`／`B1_ACCEPTED`／`B2_ACCEPTED`／`B3_ACCEPTED`／`W0_COMPLETE`／`W1 ReadyExecute`。
 - 未宣稱任何語意 oracle 已綁；`PASS_SOURCE_BOUND` 只證 locator 與身分，不證語意。

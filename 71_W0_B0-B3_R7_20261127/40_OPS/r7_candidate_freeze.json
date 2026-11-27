@@ -1,6 +1,6 @@
 {
  "schema": "SST.PH01.W0.B0B3.CandidateFreeze@1",
- "candidate_digest": "6816248936b798d366b6ea593c70e4dc63d45d96b3080695bb83896e28e3d121",
+ "candidate_digest": "45d41c592ef3e89b755a05a7db28798fee044c8e1a81a867b1528e7e00af71b2",
  "digest_convention": "sha256 over '<raw_sha256>  <relative path>' lines sorted by relative path, one \\n between lines, rstrip('\\n') applied; the freeze receipt and this manifest are not members",
  "include_docs": false,
  "members": 41,
@@ -11,7 +11,7 @@
  },
  "manifest": {
   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\r7_CANDIDATE_MANIFEST.tsv",
-  "sha256": "4779d2f4aa7de667a6cb6627137c4969e3b54e432480e7c0a224aa1ad0a48e8b"
+  "sha256": "0bcd636804189b5d6eab7fe4d550db2d685eb2790ef1cbb73304a00db3ba2b41"
  },
  "artefacts": [
   {
@@ -126,8 +126,8 @@
   },
   {
    "path": "20_DEV/r7/r7_closeout_gen.py",
-   "bytes": 18810,
-   "raw_sha256": "6d706a1b0d45250940aa4dabd9acf72a5d12b6458e9fcc0ebb3df37b783ae85e"
+   "bytes": 19982,
+   "raw_sha256": "7342a2f906fce6e925bcf42f9cf69e20650ce3c748d9a8e59b7aa50116661862"
   },
   {
    "path": "20_DEV/r7/r7_freeze.py",
