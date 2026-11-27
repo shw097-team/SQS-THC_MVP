@@ -1,0 +1,180 @@
+{
+ "schema": "SST.PH01.W0.B3.Admission@1",
+ "generated_at": "2026-11-27T15:41:37+0800",
+ "spec_b3_sha256": "c1c9c5326a36c1e0e0b00dc1231b39b4f7c21e10a4f9320f2a4dbaabe6125ec5",
+ "host": {
+  "hostname": "DESKTOP-57EO414",
+  "os": "Windows-11-10.0.26200-SP0",
+  "python": "3.14.9",
+  "principal": "user"
+ },
+ "ops": {
+  "JOIN": {
+   "callable": "b3_product.op_join",
+   "rows": 365,
+   "ready": 273,
+   "held": 92
+  },
+  "CHILD": {
+   "callable": "b3_product.op_child",
+   "atoms": 114,
+   "ready": 22,
+   "held": 92
+  },
+  "ROUTE": {
+   "callable": "b3_product.op_route",
+   "routes": 365,
+   "route_out": 273,
+   "hold": 92
+  },
+  "COMMIT": {
+   "callable": "b3_product.op_commit",
+   "receipt": {
+    "decision": "COMMITTED",
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b3_ledger\\SourceChildLedger.draft.slice2.md",
+    "bytes": 29687,
+    "sha256": "1861ca3ab35aa71f090b5af339503f8f21dbfad900a21be5a9df7fefd0773e43",
+    "preimage": "ABSENT",
+    "postimage_verified": true,
+    "write_set": [
+     "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b3_ledger\\SourceChildLedger.draft.slice2.md"
+    ],
+    "rights_ref": "OWNER_WINDOW:WIN-3657818f0331:HOST_OPERATIONS",
+    "single_file": true,
+    "effect": "LOCAL_DRAFT_WRITE"
+   }
+  }
+ },
+ "output_root": {
+  "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b3_ledger",
+  "preimage_state": {
+   "SourceChildLedger.draft.md": {
+    "bytes": 29687,
+    "sha256": "1861ca3ab35aa71f090b5af339503f8f21dbfad900a21be5a9df7fefd0773e43"
+   },
+   "SourceChildLedger.draft.slice2.md": {
+    "bytes": 29687,
+    "sha256": "1861ca3ab35aa71f090b5af339503f8f21dbfad900a21be5a9df7fefd0773e43"
+   }
+  },
+  "writer": "b3_product.op_commit (single file, 'xb', readback compared)",
+  "single_writer": true
+ },
+ "oracles": {
+  "source_bound": "direct_parent_ref + resolved_source_ref + direct_clause_sha",
+  "neg_declared_first_fail": {
+   "executed": 44,
+   "verdicts": {
+    "HOLD": 44
+   },
+   "hold_reasons": {
+    "MUTATION_NOT_FAITHFUL:MUTATION_DELETES_NEG_CARRIER_WITH_UNIT": 12,
+    "MUTATION_NOT_FAITHFUL:MUTATION_NOT_DECLARED_SHAPE": 11,
+    "MUTATION_NOT_FAITHFUL:MUTATION_APPLIED_TO_WRONG_FIELD:original_id": 1,
+    "MUTATION_NOT_FAITHFUL:MUTATION_APPLIED_TO_WRONG_FIELD:source_sha256": 1,
+    "MUTATION_NOT_FAITHFUL:MUTATION_APPLIED_TO_WRONG_FIELD:clause_span": 1,
+    "MUTATION_NOT_FAITHFUL:MUTATION_APPLIED_TO_WRONG_FIELD:parent": 1,
+    "MUTATION_NOT_FAITHFUL:MUTATION_APPLIED_TO_WRONG_FIELD:polarity": 1,
+    "MUTATION_NOT_FAITHFUL:MUTATION_APPLIED_TO_WRONG_FIELD:requiredness": 1,
+    "MUTATION_NOT_FAITHFUL:MUTATION_APPLIED_TO_WRONG_FIELD:owner": 1,
+    "MUTATION_NOT_FAITHFUL:MUTATION_APPLIED_TO_WRONG_FIELD:oracle": 1,
+    "MUTATION_NOT_FAITHFUL:MUTATION_APPLIED_TO_WRONG_FIELD:case": 1,
+    "MUTATION_NOT_FAITHFUL:MUTATION_APPLIED_TO_WRONG_FIELD:draft": 1,
+    "FIRST_FAIL_CODE_DIVERGENT": 11
+   }
+  },
+  "semantic_reader": "UNBOUND"
+ },
+ "safety": {
+  "fin_order": "DENY",
+  "effect": "SOURCE_READ+IN_MEMORY_TRANSFORM+LOCAL_DRAFT_WRITE"
+ },
+ "recovery": {
+  "prior_drafts": [
+   {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\70_W0_B1B8_20261126\\40_OPS\\b3_ledger\\SourceChildLedger.draft.md",
+    "bytes": 29624,
+    "sha256": "4732841099875e32032454582bce7811624e2cb8a04d4f1035c23073bebc1b87",
+    "write_lock_probe": "UNLOCKED",
+    "mtime": "2026-11-27T00:53:34"
+   },
+   {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\70_W0_B1B8_20261126\\40_OPS\\b3_ledger\\SourceChildLedger.draft.v2.md",
+    "bytes": 29624,
+    "sha256": "cc1cb866f9650a97b601d679a3a3ae35861a2f5038368cdd19d369aa2e54a084",
+    "write_lock_probe": "UNLOCKED",
+    "mtime": "2026-11-27T01:10:16"
+   },
+   {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\70_W0_B1B8_20261126\\40_OPS\\b3_draft\\SourceChildLedger.draft.json",
+    "bytes": 407447,
+    "sha256": "c6819579b9f7fa4af13ec4ed48aba6bc0cfaefde64170d79d6817bd670adb881",
+    "write_lock_probe": "UNLOCKED",
+    "mtime": "2026-11-26T22:51:03"
+   },
+   {
+    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\70_W0_B1B8_20261126\\40_OPS\\b3_draft\\SourceChildLedger.draft.v2.json",
+    "bytes": 315375,
+    "sha256": "f08ec1896cf5c92d67c16a7e5dc23adb03dbbfe5f9ddd4ed91e909373dc61e5e",
+    "write_lock_probe": "UNLOCKED",
+    "mtime": "2026-11-26T23:26:54"
+   }
+  ],
+  "worker_or_handle_artefacts": [],
+  "write_locks": [
+   "UNLOCKED",
+   "UNLOCKED",
+   "UNLOCKED",
+   "UNLOCKED"
+  ]
+ },
+ "rights": {
+  "window_id": "WIN-3657818f0331",
+  "task_id": "SST_PLP_PH01_W0_B0-B3_R7_ACCEPT",
+  "effect_class_ceiling": "HOST_OPERATIONS",
+  "expires_at": 1795793067,
+  "state": "OPEN"
+ },
+ "b0_input": {
+  "kind": "RECEIPT_ONLY",
+  "reason": "no current B0 SourceReadSet/2: the trusted-context descriptor 00_PREFLIGHT/B0_READ_CONTEXT_2026-11-26.json expired 2026-11-27T01:08+08:00 and pins a previous window's authorization_sha; renewal edits product constants and needs the Owner",
+  "consumer_currency": [
+   {
+    "consumer": "B1",
+    "decision": "ACCEPT",
+    "rights_currency": "ENVELOPE_MINTED_UNDER_A_DIFFERENT_WINDOW"
+   },
+   {
+    "consumer": "B2",
+    "decision": "ACCEPT",
+    "rights_currency": "ENVELOPE_MINTED_UNDER_A_DIFFERENT_WINDOW"
+   },
+   {
+    "consumer": "B3",
+    "decision": "ACCEPT",
+    "rights_currency": "ENVELOPE_MINTED_UNDER_A_DIFFERENT_WINDOW"
+   }
+  ]
+ },
+ "four_ready": {
+  "ReadyDraft": true,
+  "ReadyAtom": true,
+  "ReadyExecute": false,
+  "ReadyAccept": false
+ },
+ "readyexecute_blockers": [
+  {
+   "item": "B0 SourceReadSet/2 currency",
+   "owner": "Owner",
+   "decision": "renew 00_PREFLIGHT/B0_READ_CONTEXT_2026-11-26.json to a live window (task SST_PLP_PH01_W0_B0_SOURCE_READ_AUTH, ceiling READ_ONLY_PROBE) and re-point authorization_sha + the per-source usage_evidence_sha + the product constants EXPECTED_DESCRIPTOR_SHA/BYTES, then re-run the B0 read and the three-end receive",
+   "blocks": "B3 ReadyExecute and B3 ReadyAccept"
+  },
+  {
+   "item": "original B3 Reader (NEG design carrier / semantic oracle)",
+   "owner": "B3 domain holder",
+   "decision": "supply the typed NEG-design field and the protected-field oracle",
+   "blocks": "the 44 NEG cases (now HOLD) and any semantic claim"
+  }
+ ],
+ "claim_ceiling": "B3 product callables executed in memory and one guarded draft write; no acceptance, no downstream effect, no semantic oracle"
+}

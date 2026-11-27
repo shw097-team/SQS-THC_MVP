@@ -1,0 +1,2039 @@
+{
+ "schema": "SST.PH01.W0.B1.TQAEP@5",
+ "spec_version": "2026-11-27_r7_Native-first_CODEX_FINAL",
+ "spec_b1_sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7",
+ "generated_at": "2026-11-27T15:39:56+0800",
+ "repo_head": "9a70501ad4bbf315c675894a7a58c0f98bf18f47",
+ "case_count": 60,
+ "expected_case_set_sha256": "910962c5ce5faac737700f1921be3a6a513247d4e390d851d626b471a51b2110",
+ "verdict_counts": {
+  "PASS": 32,
+  "HOLD": 18,
+  "PARTIAL": 5,
+  "PASS_SOURCE_BOUND": 5
+ },
+ "cases": {
+  "B1.NEG.BASE-001": {
+   "case_id": "B1.NEG.BASE-001",
+   "unit_id": "B1.U0001",
+   "key": "BASE-001",
+   "kind": "BASE",
+   "expected_first_fail": "BASE_ROW_MISSING",
+   "oracle_domain": "SQS-THC Financial Contract Kernel：沿原 declared path `SQS-THC/src/kernel/fsdt/__init__.py，contract validation/normalization`。原Owner/Need=BASE_REQUIRED_TO_INSPECT；R02／金融 Owner；保原驗收 `A",
+   "actual": {
+    "original_mutation": {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    },
+    "added_safety_regression": true
+   },
+   "verdict": "PASS",
+   "arms": [
+    {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    }
+   ],
+   "added_safety_arm": {
+    "arm": "FOREIGN_OR_REMOTE_AS_LOCAL",
+    "oracle_predeclared": "a target that is not tracked at the pinned commit must never be given a commit/blob/raw_sha identity, whatever else exists on disk or in another repository",
+    "accepted_statuses_predeclared": [
+     "ABSENT_TREE",
+     "NOT_IN_TREE",
+     "COMMIT_UNRESOLVED",
+     "DISK_BUT_UNTRACKED"
+    ],
+    "expected_first_fail": "FOREIGN_AS_LOCAL_REFUSED",
+    "observed": [
+     {
+      "status": "DISK_BUT_UNTRACKED",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": false
+     }
+    ],
+    "pass": true
+   }
+  },
+  "B1.NEG.BASE-002": {
+   "case_id": "B1.NEG.BASE-002",
+   "unit_id": "B1.U0002",
+   "key": "BASE-002",
+   "kind": "BASE",
+   "expected_first_fail": "BASE_ROW_MISSING",
+   "oracle_domain": "SQS FiveClocks/PIT Kernel：沿原 declared path `src/kernel/temporal/__init__.py；event/decision/effective/availability`。原Owner/Need=BASE_REQUIRED_TO_INSPECT；R02；保原驗收 `known_at>decision_",
+   "actual": {
+    "original_mutation": {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    },
+    "added_safety_regression": true
+   },
+   "verdict": "PASS",
+   "arms": [
+    {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    }
+   ],
+   "added_safety_arm": {
+    "arm": "FOREIGN_OR_REMOTE_AS_LOCAL",
+    "oracle_predeclared": "a target that is not tracked at the pinned commit must never be given a commit/blob/raw_sha identity, whatever else exists on disk or in another repository",
+    "accepted_statuses_predeclared": [
+     "ABSENT_TREE",
+     "NOT_IN_TREE",
+     "COMMIT_UNRESOLVED",
+     "DISK_BUT_UNTRACKED"
+    ],
+    "expected_first_fail": "FOREIGN_AS_LOCAL_REFUSED",
+    "observed": [
+     {
+      "status": "DISK_BUT_UNTRACKED",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": false
+     }
+    ],
+    "pass": true
+   }
+  },
+  "B1.NEG.BASE-003": {
+   "case_id": "B1.NEG.BASE-003",
+   "unit_id": "B1.U0003",
+   "key": "BASE-003",
+   "kind": "BASE",
+   "expected_first_fail": "BASE_ROW_MISSING",
+   "oracle_domain": "SQS Knowledge Kernel：沿原 declared path `src/kernel/knowledge/__init__.py；provenance/retrieval`。原Owner/Need=REUSE_FIRST；R19；保原驗收 `revoked source excluded from retrieval / REVOKED_KNO",
+   "actual": {
+    "original_mutation": {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    },
+    "added_safety_regression": true
+   },
+   "verdict": "PASS",
+   "arms": [
+    {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    }
+   ],
+   "added_safety_arm": {
+    "arm": "FOREIGN_OR_REMOTE_AS_LOCAL",
+    "oracle_predeclared": "a target that is not tracked at the pinned commit must never be given a commit/blob/raw_sha identity, whatever else exists on disk or in another repository",
+    "accepted_statuses_predeclared": [
+     "ABSENT_TREE",
+     "NOT_IN_TREE",
+     "COMMIT_UNRESOLVED",
+     "DISK_BUT_UNTRACKED"
+    ],
+    "expected_first_fail": "FOREIGN_AS_LOCAL_REFUSED",
+    "observed": [
+     {
+      "status": "DISK_BUT_UNTRACKED",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": false
+     }
+    ],
+    "pass": true
+   }
+  },
+  "B1.NEG.BASE-004": {
+   "case_id": "B1.NEG.BASE-004",
+   "unit_id": "B1.U0004",
+   "key": "BASE-004",
+   "kind": "BASE",
+   "expected_first_fail": "BASE_ROW_MISSING",
+   "oracle_domain": "SQS Harness Kernel：沿原 declared path `src/kernel/harness/__init__.py；job/handoff`。原Owner/Need=REUSE_FIRST；R01；保原驗收 `duplicate WorkOrder id cannot dispatch twice / HARNESS_DOUBLE_DIS",
+   "actual": {
+    "original_mutation": {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    },
+    "added_safety_regression": true
+   },
+   "verdict": "PASS",
+   "arms": [
+    {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    }
+   ],
+   "added_safety_arm": {
+    "arm": "FOREIGN_OR_REMOTE_AS_LOCAL",
+    "oracle_predeclared": "a target that is not tracked at the pinned commit must never be given a commit/blob/raw_sha identity, whatever else exists on disk or in another repository",
+    "accepted_statuses_predeclared": [
+     "ABSENT_TREE",
+     "NOT_IN_TREE",
+     "COMMIT_UNRESOLVED",
+     "DISK_BUT_UNTRACKED"
+    ],
+    "expected_first_fail": "FOREIGN_AS_LOCAL_REFUSED",
+    "observed": [
+     {
+      "status": "DISK_BUT_UNTRACKED",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": false
+     }
+    ],
+    "pass": true
+   }
+  },
+  "B1.NEG.BASE-005": {
+   "case_id": "B1.NEG.BASE-005",
+   "unit_id": "B1.U0005",
+   "key": "BASE-005",
+   "kind": "BASE",
+   "expected_first_fail": "BASE_ROW_MISSING",
+   "oracle_domain": "SQS Capability Kernel：沿原 declared path `src/kernel/capability/__init__.py；admission/adapter`。原Owner/Need=REUSE_FIRST；R17；保原驗收 `8-slot/62-Need mismatch rejected / CAPABILITY_DENOMIN",
+   "actual": {
+    "original_mutation": {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    },
+    "added_safety_regression": true
+   },
+   "verdict": "PASS",
+   "arms": [
+    {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    }
+   ],
+   "added_safety_arm": {
+    "arm": "FOREIGN_OR_REMOTE_AS_LOCAL",
+    "oracle_predeclared": "a target that is not tracked at the pinned commit must never be given a commit/blob/raw_sha identity, whatever else exists on disk or in another repository",
+    "accepted_statuses_predeclared": [
+     "ABSENT_TREE",
+     "NOT_IN_TREE",
+     "COMMIT_UNRESOLVED",
+     "DISK_BUT_UNTRACKED"
+    ],
+    "expected_first_fail": "FOREIGN_AS_LOCAL_REFUSED",
+    "observed": [
+     {
+      "status": "DISK_BUT_UNTRACKED",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": false
+     }
+    ],
+    "pass": true
+   }
+  },
+  "B1.NEG.BASE-006": {
+   "case_id": "B1.NEG.BASE-006",
+   "unit_id": "B1.U0006",
+   "key": "BASE-006",
+   "kind": "BASE",
+   "expected_first_fail": "BASE_ROW_MISSING",
+   "oracle_domain": "SQS 3 Persistent Profiles：沿原 declared path `agents/profiles/sqs-{orchestrator,data-analysis,risk}；已存在三實體 profile`。原Owner/Need=REUSE_FIRST；R01/R09；保原驗收 `PIPD LITE != sqs-risk / PROF",
+   "actual": {
+    "original_mutation": {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    },
+    "added_safety_regression": false
+   },
+   "verdict": "PASS",
+   "arms": [
+    {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    }
+   ],
+   "added_safety_arm": {
+    "arm": "FOREIGN_OR_REMOTE_AS_LOCAL",
+    "oracle_predeclared": "a target that is not tracked at the pinned commit must never be given a commit/blob/raw_sha identity, whatever else exists on disk or in another repository",
+    "accepted_statuses_predeclared": [
+     "ABSENT_TREE",
+     "NOT_IN_TREE",
+     "COMMIT_UNRESOLVED",
+     "DISK_BUT_UNTRACKED"
+    ],
+    "expected_first_fail": "FOREIGN_AS_LOCAL_REFUSED",
+    "observed": [
+     {
+      "status": "DISK_DIRECTORY",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": false
+     },
+     {
+      "status": "DISK_DIRECTORY",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": false
+     },
+     {
+      "status": "DISK_DIRECTORY",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": false
+     }
+    ],
+    "pass": false
+   },
+   "added_safety_regression_failed": true
+  },
+  "B1.NEG.BASE-007": {
+   "case_id": "B1.NEG.BASE-007",
+   "unit_id": "B1.U0007",
+   "key": "BASE-007",
+   "kind": "BASE",
+   "expected_first_fail": "BASE_ROW_MISSING",
+   "oracle_domain": "TW-ICT Runtime Pack：沿原 declared path `SQS/TWICT_RUNTIME_PACK_MANIFEST.yaml（M00..M15）`。原Owner/Need=REUSE_FIRST；FSDT Owner；保原驗收 `M00..15 runtime variant stable / RUNTIME_PACK_DRIFT`。",
+   "actual": {
+    "original_mutation": {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    },
+    "added_safety_regression": true
+   },
+   "verdict": "PASS",
+   "arms": [
+    {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    }
+   ],
+   "added_safety_arm": {
+    "arm": "FOREIGN_OR_REMOTE_AS_LOCAL",
+    "oracle_predeclared": "a target that is not tracked at the pinned commit must never be given a commit/blob/raw_sha identity, whatever else exists on disk or in another repository",
+    "accepted_statuses_predeclared": [
+     "ABSENT_TREE",
+     "NOT_IN_TREE",
+     "COMMIT_UNRESOLVED",
+     "DISK_BUT_UNTRACKED"
+    ],
+    "expected_first_fail": "FOREIGN_AS_LOCAL_REFUSED",
+    "observed": [
+     {
+      "status": "DISK_BUT_UNTRACKED",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": false
+     }
+    ],
+    "pass": true
+   }
+  },
+  "B1.NEG.BASE-008": {
+   "case_id": "B1.NEG.BASE-008",
+   "unit_id": "B1.U0008",
+   "key": "BASE-008",
+   "kind": "BASE",
+   "expected_first_fail": "BASE_ROW_MISSING",
+   "oracle_domain": "SQS Tool/Base Disposition：沿原 declared path `SQS_ENGINEERING_BASE_DISPOSITION.yaml、SQS_STACK_MANIFEST.yaml`。原Owner/Need=INSPECT_AND_QUALIFY；R17/HGK；保原驗收 `every disposition has consu",
+   "actual": {
+    "original_mutation": {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    },
+    "added_safety_regression": true
+   },
+   "verdict": "PASS",
+   "arms": [
+    {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    }
+   ],
+   "added_safety_arm": {
+    "arm": "FOREIGN_OR_REMOTE_AS_LOCAL",
+    "oracle_predeclared": "a target that is not tracked at the pinned commit must never be given a commit/blob/raw_sha identity, whatever else exists on disk or in another repository",
+    "accepted_statuses_predeclared": [
+     "ABSENT_TREE",
+     "NOT_IN_TREE",
+     "COMMIT_UNRESOLVED",
+     "DISK_BUT_UNTRACKED"
+    ],
+    "expected_first_fail": "FOREIGN_AS_LOCAL_REFUSED",
+    "observed": [
+     {
+      "status": "DISK_BUT_UNTRACKED",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": false
+     },
+     {
+      "status": "DISK_BUT_UNTRACKED",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": false
+     }
+    ],
+    "pass": true
+   }
+  },
+  "B1.NEG.BASE-009": {
+   "case_id": "B1.NEG.BASE-009",
+   "unit_id": "B1.U0009",
+   "key": "BASE-009",
+   "kind": "BASE",
+   "expected_first_fail": "BASE_ROW_MISSING",
+   "oracle_domain": "SQS Daily Data Layer：沿原 declared path `data_plane/config/*.yaml、src/backfill_daily.py、check_daily.py`。原Owner/Need=CURRENTNESS_GATE；R02；保原驗收 `258/263 daily counts not treated as fre",
+   "actual": {
+    "original_mutation": {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    },
+    "added_safety_regression": true
+   },
+   "verdict": "PASS",
+   "arms": [
+    {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    }
+   ],
+   "added_safety_arm": {
+    "arm": "FOREIGN_OR_REMOTE_AS_LOCAL",
+    "oracle_predeclared": "a target that is not tracked at the pinned commit must never be given a commit/blob/raw_sha identity, whatever else exists on disk or in another repository",
+    "accepted_statuses_predeclared": [
+     "ABSENT_TREE",
+     "NOT_IN_TREE",
+     "COMMIT_UNRESOLVED",
+     "DISK_BUT_UNTRACKED"
+    ],
+    "expected_first_fail": "FOREIGN_AS_LOCAL_REFUSED",
+    "observed": [
+     {
+      "status": "ABSENT_TREE",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": null
+     },
+     {
+      "status": "DISK_BUT_UNTRACKED",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": false
+     },
+     {
+      "status": "DISK_BUT_UNTRACKED",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": false
+     }
+    ],
+    "pass": true
+   }
+  },
+  "B1.NEG.BASE-010": {
+   "case_id": "B1.NEG.BASE-010",
+   "unit_id": "B1.U0010",
+   "key": "BASE-010",
+   "kind": "BASE",
+   "expected_first_fail": "BASE_ROW_MISSING",
+   "oracle_domain": "SQS XQ Read-watch：沿原 declared path `adapters/xq-read-watch.yaml`。原Owner/Need=REUSE_FIRST_READ_ONLY；R10/R13；保原驗收 `XQ route denies submit/cancel/replace / XQ_READ_ONLY_BYPASS`。B1只定位；",
+   "actual": {
+    "original_mutation": {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    },
+    "added_safety_regression": true
+   },
+   "verdict": "PASS",
+   "arms": [
+    {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    }
+   ],
+   "added_safety_arm": {
+    "arm": "FOREIGN_OR_REMOTE_AS_LOCAL",
+    "oracle_predeclared": "a target that is not tracked at the pinned commit must never be given a commit/blob/raw_sha identity, whatever else exists on disk or in another repository",
+    "accepted_statuses_predeclared": [
+     "ABSENT_TREE",
+     "NOT_IN_TREE",
+     "COMMIT_UNRESOLVED",
+     "DISK_BUT_UNTRACKED"
+    ],
+    "expected_first_fail": "FOREIGN_AS_LOCAL_REFUSED",
+    "observed": [
+     {
+      "status": "DISK_BUT_UNTRACKED",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": false
+     }
+    ],
+    "pass": true
+   }
+  },
+  "B1.NEG.BASE-011": {
+   "case_id": "B1.NEG.BASE-011",
+   "unit_id": "B1.U0011",
+   "key": "BASE-011",
+   "kind": "BASE",
+   "expected_first_fail": "BASE_ROW_MISSING",
+   "oracle_domain": "SQS→FDA Official Consumer Route：沿原 declared path `adapters/fda-xq-globalwinner-route.yaml`。原Owner/Need=REVALIDATE_ROUTE；R17+HGK；保原驗收 `unknown route registry/expiry denies / SQS_FDA",
+   "actual": {
+    "original_mutation": {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    },
+    "added_safety_regression": true
+   },
+   "verdict": "PASS",
+   "arms": [
+    {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    }
+   ],
+   "added_safety_arm": {
+    "arm": "FOREIGN_OR_REMOTE_AS_LOCAL",
+    "oracle_predeclared": "a target that is not tracked at the pinned commit must never be given a commit/blob/raw_sha identity, whatever else exists on disk or in another repository",
+    "accepted_statuses_predeclared": [
+     "ABSENT_TREE",
+     "NOT_IN_TREE",
+     "COMMIT_UNRESOLVED",
+     "DISK_BUT_UNTRACKED"
+    ],
+    "expected_first_fail": "FOREIGN_AS_LOCAL_REFUSED",
+    "observed": [
+     {
+      "status": "DISK_BUT_UNTRACKED",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": false
+     }
+    ],
+    "pass": true
+   }
+  },
+  "B1.NEG.BASE-012": {
+   "case_id": "B1.NEG.BASE-012",
+   "unit_id": "B1.U0012",
+   "key": "BASE-012",
+   "kind": "BASE",
+   "expected_first_fail": "BASE_ROW_MISSING",
+   "oracle_domain": "Fabric FDA Shared Profile：沿原 declared path `FABRIC/fabric-desktop-automation/TEAM.md、AGENTS.md、README.md`。原Owner/Need=REUSE_EXISTING_SHARED_INFRA；HGK/Fabric；保原驗收 `HGK profile not b",
+   "actual": {
+    "original_mutation": {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    },
+    "added_safety_regression": true
+   },
+   "verdict": "PASS",
+   "arms": [
+    {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    }
+   ],
+   "added_safety_arm": {
+    "arm": "FOREIGN_OR_REMOTE_AS_LOCAL",
+    "oracle_predeclared": "a target that is not tracked at the pinned commit must never be given a commit/blob/raw_sha identity, whatever else exists on disk or in another repository",
+    "accepted_statuses_predeclared": [
+     "ABSENT_TREE",
+     "NOT_IN_TREE",
+     "COMMIT_UNRESOLVED",
+     "DISK_BUT_UNTRACKED"
+    ],
+    "expected_first_fail": "FOREIGN_AS_LOCAL_REFUSED",
+    "observed": [
+     {
+      "status": "DISK_BUT_UNTRACKED",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": null
+     },
+     {
+      "status": "DISK_BUT_UNTRACKED",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": null
+     },
+     {
+      "status": "DISK_BUT_UNTRACKED",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": null
+     }
+    ],
+    "pass": true
+   }
+  },
+  "B1.NEG.BASE-013": {
+   "case_id": "B1.NEG.BASE-013",
+   "unit_id": "B1.U0013",
+   "key": "BASE-013",
+   "kind": "BASE",
+   "expected_first_fail": "BASE_ROW_MISSING",
+   "oracle_domain": "FDA Desktop Capability Matrix：沿原 declared path `FABRIC/fabric-desktop-automation/FDA_DESKTOP_CAPABILITY_MATRIX.yaml`。原Owner/Need=REVALIDATE_PROMOTION；Fabric；保原驗收 `flat/nested canon",
+   "actual": {
+    "original_mutation": {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    },
+    "added_safety_regression": true
+   },
+   "verdict": "PASS",
+   "arms": [
+    {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    }
+   ],
+   "added_safety_arm": {
+    "arm": "FOREIGN_OR_REMOTE_AS_LOCAL",
+    "oracle_predeclared": "a target that is not tracked at the pinned commit must never be given a commit/blob/raw_sha identity, whatever else exists on disk or in another repository",
+    "accepted_statuses_predeclared": [
+     "ABSENT_TREE",
+     "NOT_IN_TREE",
+     "COMMIT_UNRESOLVED",
+     "DISK_BUT_UNTRACKED"
+    ],
+    "expected_first_fail": "FOREIGN_AS_LOCAL_REFUSED",
+    "observed": [
+     {
+      "status": "ABSENT_TREE",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": null
+     }
+    ],
+    "pass": true
+   }
+  },
+  "B1.NEG.BASE-014": {
+   "case_id": "B1.NEG.BASE-014",
+   "unit_id": "B1.U0014",
+   "key": "BASE-014",
+   "kind": "BASE",
+   "expected_first_fail": "BASE_ROW_MISSING",
+   "oracle_domain": "FDA deterministic router：沿原 declared path `FABRIC/fabric-desktop-automation/fda_router.py`。原Owner/Need=MATRIX_NORMALIZER_REQUIRED；Fabric；保原驗收 `existing enum ID only; no invented ba",
+   "actual": {
+    "original_mutation": {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    },
+    "added_safety_regression": true
+   },
+   "verdict": "PASS",
+   "arms": [
+    {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    }
+   ],
+   "added_safety_arm": {
+    "arm": "FOREIGN_OR_REMOTE_AS_LOCAL",
+    "oracle_predeclared": "a target that is not tracked at the pinned commit must never be given a commit/blob/raw_sha identity, whatever else exists on disk or in another repository",
+    "accepted_statuses_predeclared": [
+     "ABSENT_TREE",
+     "NOT_IN_TREE",
+     "COMMIT_UNRESOLVED",
+     "DISK_BUT_UNTRACKED"
+    ],
+    "expected_first_fail": "FOREIGN_AS_LOCAL_REFUSED",
+    "observed": [
+     {
+      "status": "ABSENT_TREE",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": null
+     }
+    ],
+    "pass": true
+   }
+  },
+  "B1.NEG.BASE-015": {
+   "case_id": "B1.NEG.BASE-015",
+   "unit_id": "B1.U0015",
+   "key": "BASE-015",
+   "kind": "BASE",
+   "expected_first_fail": "BASE_ROW_MISSING",
+   "oracle_domain": "FDA Desktop Lease：沿原 declared path `FABRIC/fabric-desktop-automation/fda_lease.py`。原Owner/Need=MULTIPROCESS_FENCING_GAP；Fabric/HGK；保原驗收 `2 processes same lease epoch -> one owner /",
+   "actual": {
+    "original_mutation": {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    },
+    "added_safety_regression": true
+   },
+   "verdict": "PASS",
+   "arms": [
+    {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    }
+   ],
+   "added_safety_arm": {
+    "arm": "FOREIGN_OR_REMOTE_AS_LOCAL",
+    "oracle_predeclared": "a target that is not tracked at the pinned commit must never be given a commit/blob/raw_sha identity, whatever else exists on disk or in another repository",
+    "accepted_statuses_predeclared": [
+     "ABSENT_TREE",
+     "NOT_IN_TREE",
+     "COMMIT_UNRESOLVED",
+     "DISK_BUT_UNTRACKED"
+    ],
+    "expected_first_fail": "FOREIGN_AS_LOCAL_REFUSED",
+    "observed": [
+     {
+      "status": "ABSENT_TREE",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": null
+     }
+    ],
+    "pass": true
+   }
+  },
+  "B1.NEG.BASE-016": {
+   "case_id": "B1.NEG.BASE-016",
+   "unit_id": "B1.U0016",
+   "key": "BASE-016",
+   "kind": "BASE",
+   "expected_first_fail": "BASE_ROW_MISSING",
+   "oracle_domain": "FDA Native XQ Adapter：沿原 declared path `FABRIC/fabric-desktop-automation/xq_native_adapter.py`。原Owner/Need=REVALIDATE_BUILD；Fabric；保原驗收 `changed XQ build/selector invalidates / XQ_",
+   "actual": {
+    "original_mutation": {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    },
+    "added_safety_regression": true
+   },
+   "verdict": "PASS",
+   "arms": [
+    {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    }
+   ],
+   "added_safety_arm": {
+    "arm": "FOREIGN_OR_REMOTE_AS_LOCAL",
+    "oracle_predeclared": "a target that is not tracked at the pinned commit must never be given a commit/blob/raw_sha identity, whatever else exists on disk or in another repository",
+    "accepted_statuses_predeclared": [
+     "ABSENT_TREE",
+     "NOT_IN_TREE",
+     "COMMIT_UNRESOLVED",
+     "DISK_BUT_UNTRACKED"
+    ],
+    "expected_first_fail": "FOREIGN_AS_LOCAL_REFUSED",
+    "observed": [
+     {
+      "status": "ABSENT_TREE",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": null
+     }
+    ],
+    "pass": true
+   }
+  },
+  "B1.NEG.BASE-017": {
+   "case_id": "B1.NEG.BASE-017",
+   "unit_id": "B1.U0017",
+   "key": "BASE-017",
+   "kind": "BASE",
+   "expected_first_fail": "BASE_ROW_MISSING",
+   "oracle_domain": "FDA Routing/Execution Governance：沿原 declared path `FDA_EXECUTION_BINDING.json、governance/FDA_DEFERRED_SEMIAUTO_CONTRACT.yaml、FDA_INTEROP_DISPOSITION.yaml`。原Owner/Need=CONDITIONAL_O",
+   "actual": {
+    "original_mutation": {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    },
+    "added_safety_regression": true
+   },
+   "verdict": "PASS",
+   "arms": [
+    {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    }
+   ],
+   "added_safety_arm": {
+    "arm": "FOREIGN_OR_REMOTE_AS_LOCAL",
+    "oracle_predeclared": "a target that is not tracked at the pinned commit must never be given a commit/blob/raw_sha identity, whatever else exists on disk or in another repository",
+    "accepted_statuses_predeclared": [
+     "ABSENT_TREE",
+     "NOT_IN_TREE",
+     "COMMIT_UNRESOLVED",
+     "DISK_BUT_UNTRACKED"
+    ],
+    "expected_first_fail": "FOREIGN_AS_LOCAL_REFUSED",
+    "observed": [
+     {
+      "status": "ABSENT_TREE",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": null
+     },
+     {
+      "status": "ABSENT_TREE",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": null
+     },
+     {
+      "status": "ABSENT_TREE",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": null
+     }
+    ],
+    "pass": true
+   }
+  },
+  "B1.NEG.BASE-018": {
+   "case_id": "B1.NEG.BASE-018",
+   "unit_id": "B1.U0018",
+   "key": "BASE-018",
+   "kind": "BASE",
+   "expected_first_fail": "BASE_ROW_MISSING",
+   "oracle_domain": "FDA Evidence + Test Assets：沿原 declared path `independent_checker.py、test_xq_build_drift.py、tests/test_fda_*、docs/FDA_USER_GUIDE.md`。原Owner/Need=REUSE_TEST_PATTERNS_ONLY；獨立 R16；保原驗收",
+   "actual": {
+    "original_mutation": {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    },
+    "added_safety_regression": true
+   },
+   "verdict": "PASS",
+   "arms": [
+    {
+     "arm": "DELETE_ROW",
+     "expected_first_fail": "BASE_ROW_MISSING",
+     "observed": "BASE_ROW_MISSING",
+     "pass": true
+    }
+   ],
+   "added_safety_arm": {
+    "arm": "FOREIGN_OR_REMOTE_AS_LOCAL",
+    "oracle_predeclared": "a target that is not tracked at the pinned commit must never be given a commit/blob/raw_sha identity, whatever else exists on disk or in another repository",
+    "accepted_statuses_predeclared": [
+     "ABSENT_TREE",
+     "NOT_IN_TREE",
+     "COMMIT_UNRESOLVED",
+     "DISK_BUT_UNTRACKED"
+    ],
+    "expected_first_fail": "FOREIGN_AS_LOCAL_REFUSED",
+    "observed": [
+     {
+      "status": "ABSENT_TREE",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": null
+     },
+     {
+      "status": "ABSENT_TREE",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": null
+     },
+     {
+      "status": "ABSENT_TREE",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": null
+     },
+     {
+      "status": "ABSENT_TREE",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "foreign_commit_present_locally": null
+     }
+    ],
+    "pass": true
+   }
+  },
+  "B1.NEG.FDA_at_simulated_order": {
+   "case_id": "B1.NEG.FDA_at_simulated_order",
+   "unit_id": "B1.U0028",
+   "key": "FDA:at_simulated_order",
+   "kind": "FDA",
+   "expected_first_fail": "SIM_BROKER_TYPE_DENY",
+   "oracle_domain": "原Slot=at_simulated_order；Reader=原 simulator；期待=typed SimReceipt/SimFill；不可混同舊action classes。",
+   "actual": {
+    "mutation_field": "fill_type",
+    "deny": true,
+    "first_fail": "SIM_BROKER_TYPE_DENY"
+   },
+   "verdict": "HOLD",
+   "arms": [],
+   "hold_reason": "FIXTURE_ONLY_NO_PRODUCT_CALLABLE: the refusal fires in the author fixture domain with the original FirstFail string, but the original slot mapping/schema is unbound (D-3)"
+  },
+  "B1.NEG.FDA_broker_external_event_read": {
+   "case_id": "B1.NEG.FDA_broker_external_event_read",
+   "unit_id": "B1.U0029",
+   "key": "FDA:broker_external_event_read",
+   "kind": "FDA",
+   "expected_first_fail": "BROKER_FACT_MISSING",
+   "oracle_domain": "原Slot=broker_external_event_read；Reader=R13 Broker Reader；期待=BrokerSeq/Receipt/BoR；不可混同舊action classes。",
+   "actual": {
+    "mutation_field": "origin",
+    "deny": true,
+    "first_fail": "BROKER_FACT_MISSING"
+   },
+   "verdict": "HOLD",
+   "arms": [],
+   "hold_reason": "FIXTURE_ONLY_NO_PRODUCT_CALLABLE: the refusal fires in the author fixture domain with the original FirstFail string, but the original slot mapping/schema is unbound (D-3)"
+  },
+  "B1.NEG.FDA_broker_live_submit": {
+   "case_id": "B1.NEG.FDA_broker_live_submit",
+   "unit_id": "B1.U0030",
+   "key": "FDA:broker_live_submit",
+   "kind": "FDA",
+   "expected_first_fail": "FIN_ORDER_DENY_ALWAYS",
+   "oracle_domain": "原Slot=broker_live_submit；Reader=無允許 POS；期待=DENY invariant；無 token/connector；不可混同舊action classes。",
+   "actual": {
+    "arms": [
+     {
+      "action": "submit",
+      "policy_value": "DENY_ALWAYS",
+      "order_path_reached": false,
+      "effect": "NONE",
+      "decision": "DENY",
+      "first_fail": "FIN_ORDER_DENY_ALWAYS",
+      "reason": "pinned carrier policy live_broker=DENY_ALWAYS"
+     },
+     {
+      "action": "replace",
+      "policy_value": "DENY_ALWAYS",
+      "order_path_reached": false,
+      "effect": "NONE",
+      "decision": "DENY",
+      "first_fail": "FIN_ORDER_DENY_ALWAYS",
+      "reason": "pinned carrier policy live_broker=DENY_ALWAYS"
+     },
+     {
+      "action": "cancel",
+      "policy_value": "DENY_ALWAYS",
+      "order_path_reached": false,
+      "effect": "NONE",
+      "decision": "DENY",
+      "first_fail": "FIN_ORDER_DENY_ALWAYS",
+      "reason": "pinned carrier policy live_broker=DENY_ALWAYS"
+     }
+    ],
+    "unknown_action": {
+     "action": "replace_all_orders",
+     "policy_value": "DENY_ALWAYS",
+     "order_path_reached": false,
+     "effect": "NONE",
+     "decision": "DENY",
+     "first_fail": "FIN_ORDER_DENY_ALWAYS",
+     "reason": "action is not in the admissible set {read}"
+    },
+    "policy_flip_probe": {
+     "action": "submit",
+     "policy_value": "ALLOW",
+     "order_path_reached": false,
+     "effect": "NONE",
+     "decision": "DENY",
+     "first_fail": "NO_CONNECTOR_PRESENT",
+     "reason": "policy would admit the effect but this process has no token, session, lease or broker client, so it still cannot be reached"
+    },
+    "policy": {
+     "value": "DENY_ALWAYS",
+     "artefact": "FDA_DESKTOP_CAPABILITY_MATRIX.yaml",
+     "line": 24,
+     "sha256": "9406456db853e9e6597c30ed400240808c7b0c777dd49c34eb611bf4c863d6c4"
+    }
+   },
+   "verdict": "PASS",
+   "arms": []
+  },
+  "B1.NEG.FDA_radar_signal": {
+   "case_id": "B1.NEG.FDA_radar_signal",
+   "unit_id": "B1.U0025",
+   "key": "FDA:radar_signal",
+   "kind": "FDA",
+   "expected_first_fail": "SIGNAL_TIME_HOLD",
+   "oracle_domain": "原Slot=radar_signal；Reader=XQ Radar Reader；期待=SignalID/時序；不可混同舊action classes。",
+   "actual": {
+    "mutation_field": "signal_known_at>decision_asof",
+    "deny": true,
+    "first_fail": "SIGNAL_TIME_HOLD"
+   },
+   "verdict": "HOLD",
+   "arms": [],
+   "hold_reason": "FIXTURE_ONLY_NO_PRODUCT_CALLABLE: the refusal fires in the author fixture domain with the original FirstFail string, but the original slot mapping/schema is unbound (D-3)"
+  },
+  "B1.NEG.FDA_watch_ui": {
+   "case_id": "B1.NEG.FDA_watch_ui",
+   "unit_id": "B1.U0024",
+   "key": "FDA:watch_ui",
+   "kind": "FDA",
+   "expected_first_fail": "FDA_WINDOW_HOLD",
+   "oracle_domain": "原Slot=watch_ui；Reader=FDA window/build/SKU/lease；期待=合法只讀觀察；不可混同舊action classes。",
+   "actual": {
+    "mutation_field": "valid_until<observed_at",
+    "deny": true,
+    "first_fail": "FDA_WINDOW_HOLD"
+   },
+   "verdict": "HOLD",
+   "arms": [],
+   "hold_reason": "FIXTURE_ONLY_NO_PRODUCT_CALLABLE: the refusal fires in the author fixture domain with the original FirstFail string, but the original slot mapping/schema is unbound (D-3)"
+  },
+  "B1.NEG.FDA_xs_backtest": {
+   "case_id": "B1.NEG.FDA_xs_backtest",
+   "unit_id": "B1.U0027",
+   "key": "FDA:xs_backtest",
+   "kind": "FDA",
+   "expected_first_fail": "BACKTEST_SCOPE_HOLD",
+   "oracle_domain": "原Slot=xs_backtest；Reader=XQ Backtest Reader；期待=PIT/Rule/Raw；不可混同舊action classes。",
+   "actual": {
+    "mutation_field": "pit_status",
+    "deny": true,
+    "first_fail": "BACKTEST_SCOPE_HOLD"
+   },
+   "verdict": "HOLD",
+   "arms": [],
+   "hold_reason": "FIXTURE_ONLY_NO_PRODUCT_CALLABLE: the refusal fires in the author fixture domain with the original FirstFail string, but the original slot mapping/schema is unbound (D-3)"
+  },
+  "B1.NEG.FDA_xs_compile": {
+   "case_id": "B1.NEG.FDA_xs_compile",
+   "unit_id": "B1.U0026",
+   "key": "FDA:xs_compile",
+   "kind": "FDA",
+   "expected_first_fail": "COMPILE_RAW_MISSING",
+   "oracle_domain": "原Slot=xs_compile；Reader=原 XScript compiler；期待=ScriptSHA/diagnostic；不可混同舊action classes。",
+   "actual": {
+    "mutation_field": "script_sha",
+    "deny": true,
+    "first_fail": "COMPILE_RAW_MISSING"
+   },
+   "verdict": "HOLD",
+   "arms": [],
+   "hold_reason": "FIXTURE_ONLY_NO_PRODUCT_CALLABLE: the refusal fires in the author fixture domain with the original FirstFail string, but the original slot mapping/schema is unbound (D-3)"
+  },
+  "B1.NEG.KERNEL_capability": {
+   "case_id": "B1.NEG.KERNEL_capability",
+   "unit_id": "B1.U0023",
+   "key": "KERNEL:capability",
+   "kind": "KERNEL",
+   "expected_first_fail": "SECOND_WRITER",
+   "oracle_domain": "Input=原Need/Fit/Slot/Reader；規則=Need/Fit與admission分開，工具能力不授Permit；驗收=62-Need/8-slot分母漂移或fake grant拒；Consumer=E04/E05 R17。",
+   "actual": null,
+   "verdict": "HOLD",
+   "arms": [],
+   "hold_reason": "D-4: 'change one protected field' needs the original protected field/path/old/new and the Kernel domain callable; an AST symbol or a SECOND_WRITER constant is not that oracle"
+  },
+  "B1.NEG.KERNEL_fsdt": {
+   "case_id": "B1.NEG.KERNEL_fsdt",
+   "unit_id": "B1.U0019",
+   "key": "KERNEL:fsdt",
+   "kind": "KERNEL",
+   "expected_first_fail": "SECOND_WRITER",
+   "oracle_domain": "Input=FinancialContract/InstrumentIdentity/PriceQuantityValue；規則=validate_contract→normalize→pit_validate；保原owner/currency/adjustment/schema/value_formula，不另寫金融真相；驗收=錯owner、currenc",
+   "actual": null,
+   "verdict": "HOLD",
+   "arms": [],
+   "hold_reason": "D-4: 'change one protected field' needs the original protected field/path/old/new and the Kernel domain callable; an AST symbol or a SECOND_WRITER constant is not that oracle"
+  },
+  "B1.NEG.KERNEL_harness": {
+   "case_id": "B1.NEG.KERNEL_harness",
+   "unit_id": "B1.U0022",
+   "key": "KERNEL:harness",
+   "kind": "KERNEL",
+   "expected_first_fail": "SECOND_WRITER",
+   "oracle_domain": "Input=原WorkOrderGraph/HandoffPacket/schema1.0.0；規則=保原owner/graph no cycle/ACK；僅薄handoff adapter不另dispatch；驗收=缺ACK/自合併/重複workorder拒，不開第二queue；Consumer=E04/E05原R01/Repo Reader。",
+   "actual": null,
+   "verdict": "HOLD",
+   "arms": [],
+   "hold_reason": "D-4: 'change one protected field' needs the original protected field/path/old/new and the Kernel domain callable; an AST symbol or a SECOND_WRITER constant is not that oracle"
+  },
+  "B1.NEG.KERNEL_knowledge": {
+   "case_id": "B1.NEG.KERNEL_knowledge",
+   "unit_id": "B1.U0021",
+   "key": "KERNEL:knowledge",
+   "kind": "KERNEL",
+   "expected_first_fail": "SECOND_WRITER",
+   "oracle_domain": "Input=原provenance/source rights及retrieval context；規則=只返回可撤權投影，保source ref，撤權/expiry後排除cache；驗收=revoked source仍被檢索→REVOKED_KNOWLEDGE；Consumer=E01/E02 R19。",
+   "actual": null,
+   "verdict": "HOLD",
+   "arms": [],
+   "hold_reason": "D-4: 'change one protected field' needs the original protected field/path/old/new and the Kernel domain callable; an AST symbol or a SECOND_WRITER constant is not that oracle"
+  },
+  "B1.NEG.KERNEL_temporal": {
+   "case_id": "B1.NEG.KERNEL_temporal",
+   "unit_id": "B1.U0020",
+   "key": "KERNEL:temporal",
+   "kind": "KERNEL",
+   "expected_first_fail": "SECOND_WRITER",
+   "oracle_domain": "Input=原Clock向量+as-of+closed-bar+rights；規則=原Reader決定canonical clock alias/zone；known/available/closed不得晚於decision；驗收=future/unclosed/offset未知→PIT/Time HOLD；Consumer=E01/E02 temporal",
+   "actual": null,
+   "verdict": "HOLD",
+   "arms": [],
+   "hold_reason": "D-4: 'change one protected field' needs the original protected field/path/old/new and the Kernel domain callable; an AST symbol or a SECOND_WRITER constant is not that oracle"
+  },
+  "B1.POS.BASE-001": {
+   "case_id": "B1.POS.BASE-001",
+   "unit_id": "B1.U0001",
+   "key": "BASE-001",
+   "kind": "BASE",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "statuses": [
+     "TRACKED"
+    ],
+    "identities": [
+     {
+      "path": "src/kernel/fsdt/__init__.py",
+      "commit": "9a70501ad4bbf315c675894a7a58c0f98bf18f47",
+      "blob": "c21ec7b7af3e3b24590a6bfb901702ad251503b3",
+      "raw_sha256": "90a5f4d4e27aeafda82d15d439bbfa076cc4f55d70df6ee604b4602bad5598bb",
+      "disk_sha256": null,
+      "bytes": 8034
+     }
+    ],
+    "missing": [],
+    "identity_ok": true,
+    "unresolved_statuses": []
+   },
+   "verdict": "PASS",
+   "arms": []
+  },
+  "B1.POS.BASE-002": {
+   "case_id": "B1.POS.BASE-002",
+   "unit_id": "B1.U0002",
+   "key": "BASE-002",
+   "kind": "BASE",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "statuses": [
+     "TRACKED"
+    ],
+    "identities": [
+     {
+      "path": "src/kernel/temporal/__init__.py",
+      "commit": "9a70501ad4bbf315c675894a7a58c0f98bf18f47",
+      "blob": "de8eeba8443fe8e2c62d960103e0e846210e7878",
+      "raw_sha256": "21e0150f8f97f1541e96b452b56571fa1518191a122fa5cf2f1af54ff9483a5d",
+      "disk_sha256": null,
+      "bytes": 5048
+     }
+    ],
+    "missing": [],
+    "identity_ok": true,
+    "unresolved_statuses": []
+   },
+   "verdict": "PASS",
+   "arms": []
+  },
+  "B1.POS.BASE-003": {
+   "case_id": "B1.POS.BASE-003",
+   "unit_id": "B1.U0003",
+   "key": "BASE-003",
+   "kind": "BASE",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "statuses": [
+     "TRACKED"
+    ],
+    "identities": [
+     {
+      "path": "src/kernel/knowledge/__init__.py",
+      "commit": "9a70501ad4bbf315c675894a7a58c0f98bf18f47",
+      "blob": "c9476a27102bf69e5bef4a0bdc212b01c2e973b7",
+      "raw_sha256": "ea1e13cd7df0cf81059364c7606be4c6c317d78e4a91d3a847c7219465e33da6",
+      "disk_sha256": null,
+      "bytes": 6722
+     }
+    ],
+    "missing": [],
+    "identity_ok": true,
+    "unresolved_statuses": []
+   },
+   "verdict": "PASS",
+   "arms": []
+  },
+  "B1.POS.BASE-004": {
+   "case_id": "B1.POS.BASE-004",
+   "unit_id": "B1.U0004",
+   "key": "BASE-004",
+   "kind": "BASE",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "statuses": [
+     "TRACKED"
+    ],
+    "identities": [
+     {
+      "path": "src/kernel/harness/__init__.py",
+      "commit": "9a70501ad4bbf315c675894a7a58c0f98bf18f47",
+      "blob": "1be286eb1352e3539a64dd42b9828539a7f8eac5",
+      "raw_sha256": "288a2a0e474a05fd38b992de5801b0f8f01668741a67c90c0d0e6f6b37ffc27e",
+      "disk_sha256": null,
+      "bytes": 7253
+     }
+    ],
+    "missing": [],
+    "identity_ok": true,
+    "unresolved_statuses": []
+   },
+   "verdict": "PASS",
+   "arms": []
+  },
+  "B1.POS.BASE-005": {
+   "case_id": "B1.POS.BASE-005",
+   "unit_id": "B1.U0005",
+   "key": "BASE-005",
+   "kind": "BASE",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "statuses": [
+     "TRACKED"
+    ],
+    "identities": [
+     {
+      "path": "src/kernel/capability/__init__.py",
+      "commit": "9a70501ad4bbf315c675894a7a58c0f98bf18f47",
+      "blob": "43a3a23fc7c64a7bdffc5db8f7efc56edd502673",
+      "raw_sha256": "d2a143c5c970d8a5c2174f051871066fc04c0c9f5863ff4fac253f0cb9d68a41",
+      "disk_sha256": null,
+      "bytes": 4449
+     }
+    ],
+    "missing": [],
+    "identity_ok": true,
+    "unresolved_statuses": []
+   },
+   "verdict": "PASS",
+   "arms": []
+  },
+  "B1.POS.BASE-006": {
+   "case_id": "B1.POS.BASE-006",
+   "unit_id": "B1.U0006",
+   "key": "BASE-006",
+   "kind": "BASE",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "statuses": [
+     "DISK_DIRECTORY",
+     "DISK_DIRECTORY",
+     "DISK_DIRECTORY"
+    ],
+    "identities": [
+     {
+      "path": "agents/profiles/sqs-orchestrator",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "disk_sha256": null,
+      "bytes": null
+     },
+     {
+      "path": "agents/profiles/sqs-data-analysis",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "disk_sha256": null,
+      "bytes": null
+     },
+     {
+      "path": "agents/profiles/sqs-risk",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "disk_sha256": null,
+      "bytes": null
+     }
+    ],
+    "missing": [],
+    "identity_ok": false,
+    "unresolved_statuses": [
+     "DISK_DIRECTORY",
+     "DISK_DIRECTORY",
+     "DISK_DIRECTORY"
+    ]
+   },
+   "verdict": "PARTIAL",
+   "arms": [],
+   "hold_reason": "declared target(s) unresolved: DISK_DIRECTORY, DISK_DIRECTORY, DISK_DIRECTORY -- recorded as missing, never as PASS"
+  },
+  "B1.POS.BASE-007": {
+   "case_id": "B1.POS.BASE-007",
+   "unit_id": "B1.U0007",
+   "key": "BASE-007",
+   "kind": "BASE",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "statuses": [
+     "DISK_BUT_UNTRACKED"
+    ],
+    "identities": [
+     {
+      "path": "SQS/TWICT_RUNTIME_PACK_MANIFEST.yaml",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "disk_sha256": "ec4245d5a5d57a525045f6c34b5a51371fd0942a89112db2d6c65222e7e75ca6",
+      "bytes": 1737
+     }
+    ],
+    "missing": [],
+    "identity_ok": false,
+    "unresolved_statuses": [
+     "DISK_BUT_UNTRACKED"
+    ]
+   },
+   "verdict": "PARTIAL",
+   "arms": [],
+   "hold_reason": "declared target(s) unresolved: DISK_BUT_UNTRACKED -- recorded as missing, never as PASS"
+  },
+  "B1.POS.BASE-008": {
+   "case_id": "B1.POS.BASE-008",
+   "unit_id": "B1.U0008",
+   "key": "BASE-008",
+   "kind": "BASE",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "statuses": [
+     "DISK_BUT_UNTRACKED",
+     "DISK_BUT_UNTRACKED"
+    ],
+    "identities": [
+     {
+      "path": "SQS_ENGINEERING_BASE_DISPOSITION.yaml",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "disk_sha256": "c973577ea0ad8dba35b28cdf94f204cc5c6cccf099a370fa00aa919c766933b5",
+      "bytes": 8046
+     },
+     {
+      "path": "SQS_STACK_MANIFEST.yaml",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "disk_sha256": "6f5ea69c20216772b143008e904e96760221406175d1df1e19e7baed51298cbd",
+      "bytes": 1713
+     }
+    ],
+    "missing": [],
+    "identity_ok": false,
+    "unresolved_statuses": [
+     "DISK_BUT_UNTRACKED",
+     "DISK_BUT_UNTRACKED"
+    ]
+   },
+   "verdict": "PARTIAL",
+   "arms": [],
+   "hold_reason": "declared target(s) unresolved: DISK_BUT_UNTRACKED, DISK_BUT_UNTRACKED -- recorded as missing, never as PASS"
+  },
+  "B1.POS.BASE-009": {
+   "case_id": "B1.POS.BASE-009",
+   "unit_id": "B1.U0009",
+   "key": "BASE-009",
+   "kind": "BASE",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "statuses": [
+     "TRACKED",
+     "DISK_BUT_UNTRACKED",
+     "DISK_BUT_UNTRACKED"
+    ],
+    "identities": [
+     {
+      "path": "data_plane/config/*.yaml",
+      "commit": "9a70501ad4bbf315c675894a7a58c0f98bf18f47",
+      "blob": null,
+      "raw_sha256": null,
+      "disk_sha256": null,
+      "bytes": null
+     },
+     {
+      "path": "data_plane/src/backfill_daily.py",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "disk_sha256": "fc10f8021c94e7569d9652e9ee4664ac8758f5f8008399e2fe8c786ff0117bbd",
+      "bytes": 24609
+     },
+     {
+      "path": "data_plane/src/check_daily.py",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "disk_sha256": "06b25b72328bf9917100cf4b2eed70e229559a9d33e8129926f3ee01b29cfda5",
+      "bytes": 11197
+     }
+    ],
+    "missing": [],
+    "identity_ok": false,
+    "unresolved_statuses": [
+     "DISK_BUT_UNTRACKED",
+     "DISK_BUT_UNTRACKED"
+    ]
+   },
+   "verdict": "PARTIAL",
+   "arms": [],
+   "hold_reason": "declared target(s) unresolved: DISK_BUT_UNTRACKED, DISK_BUT_UNTRACKED -- recorded as missing, never as PASS"
+  },
+  "B1.POS.BASE-010": {
+   "case_id": "B1.POS.BASE-010",
+   "unit_id": "B1.U0010",
+   "key": "BASE-010",
+   "kind": "BASE",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "statuses": [
+     "TRACKED"
+    ],
+    "identities": [
+     {
+      "path": "adapters/xq-read-watch.yaml",
+      "commit": "9a70501ad4bbf315c675894a7a58c0f98bf18f47",
+      "blob": "6750125803ddb868c704bfcfbfbed274797a395f",
+      "raw_sha256": "84e3ac67d77ce76987e368a644e98be66ce1fe64e3e347d0acf1f7b6d721096a",
+      "disk_sha256": null,
+      "bytes": 850
+     }
+    ],
+    "missing": [],
+    "identity_ok": true,
+    "unresolved_statuses": []
+   },
+   "verdict": "PASS",
+   "arms": []
+  },
+  "B1.POS.BASE-011": {
+   "case_id": "B1.POS.BASE-011",
+   "unit_id": "B1.U0011",
+   "key": "BASE-011",
+   "kind": "BASE",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "statuses": [
+     "DISK_BUT_UNTRACKED"
+    ],
+    "identities": [
+     {
+      "path": "adapters/fda-xq-globalwinner-route.yaml",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "disk_sha256": "8f65c29f2b51975d1d81d512cab6bef36601db519ebd2b5aa231144ec3f15bb7",
+      "bytes": 3402
+     }
+    ],
+    "missing": [],
+    "identity_ok": false,
+    "unresolved_statuses": [
+     "DISK_BUT_UNTRACKED"
+    ]
+   },
+   "verdict": "PARTIAL",
+   "arms": [],
+   "hold_reason": "declared target(s) unresolved: DISK_BUT_UNTRACKED -- recorded as missing, never as PASS"
+  },
+  "B1.POS.BASE-012": {
+   "case_id": "B1.POS.BASE-012",
+   "unit_id": "B1.U0012",
+   "key": "BASE-012",
+   "kind": "BASE",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "statuses": [
+     "ALLOWLIST_VERIFIED",
+     "ALLOWLIST_VERIFIED",
+     "ALLOWLIST_VERIFIED"
+    ],
+    "identities": [
+     {
+      "path": "TEAM.md",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": "1936a4651ef549cce50f5ecec9a45a712c7bf92adab0ffd12afa12ff3d43a311",
+      "disk_sha256": null,
+      "bytes": 5768
+     },
+     {
+      "path": "AGENTS.md",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": "b5257a3e5d06c5781911c4ffbed19bdccc82c763158053842ddc89dcbe6f9e1a",
+      "disk_sha256": null,
+      "bytes": 3651
+     },
+     {
+      "path": "README.md",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": "aa3084bac9c01af17868582b04c3405b673a7e16947f9c0cbf3f972eef2a20a9",
+      "disk_sha256": null,
+      "bytes": 4410
+     }
+    ],
+    "missing": [],
+    "identity_ok": true,
+    "unresolved_statuses": []
+   },
+   "verdict": "PASS",
+   "arms": []
+  },
+  "B1.POS.BASE-013": {
+   "case_id": "B1.POS.BASE-013",
+   "unit_id": "B1.U0013",
+   "key": "BASE-013",
+   "kind": "BASE",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "statuses": [
+     "ALLOWLIST_VERIFIED"
+    ],
+    "identities": [
+     {
+      "path": "FDA_DESKTOP_CAPABILITY_MATRIX.yaml",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": "9406456db853e9e6597c30ed400240808c7b0c777dd49c34eb611bf4c863d6c4",
+      "disk_sha256": null,
+      "bytes": 11110
+     }
+    ],
+    "missing": [],
+    "identity_ok": true,
+    "unresolved_statuses": []
+   },
+   "verdict": "PASS",
+   "arms": []
+  },
+  "B1.POS.BASE-014": {
+   "case_id": "B1.POS.BASE-014",
+   "unit_id": "B1.U0014",
+   "key": "BASE-014",
+   "kind": "BASE",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "statuses": [
+     "ALLOWLIST_VERIFIED"
+    ],
+    "identities": [
+     {
+      "path": "fda_router.py",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": "c3d64650a6e0c6fd3d99b5236c30c4cb03b7621be9763299e335ac1c6ed95e6c",
+      "disk_sha256": null,
+      "bytes": 1115
+     }
+    ],
+    "missing": [],
+    "identity_ok": true,
+    "unresolved_statuses": []
+   },
+   "verdict": "PASS",
+   "arms": []
+  },
+  "B1.POS.BASE-015": {
+   "case_id": "B1.POS.BASE-015",
+   "unit_id": "B1.U0015",
+   "key": "BASE-015",
+   "kind": "BASE",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "statuses": [
+     "ALLOWLIST_VERIFIED"
+    ],
+    "identities": [
+     {
+      "path": "fda_lease.py",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": "856580b533b547a82772de8624c78792d669cb11bb9cb99551c7141a06594db2",
+      "disk_sha256": null,
+      "bytes": 2510
+     }
+    ],
+    "missing": [],
+    "identity_ok": true,
+    "unresolved_statuses": []
+   },
+   "verdict": "PASS",
+   "arms": []
+  },
+  "B1.POS.BASE-016": {
+   "case_id": "B1.POS.BASE-016",
+   "unit_id": "B1.U0016",
+   "key": "BASE-016",
+   "kind": "BASE",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "statuses": [
+     "ALLOWLIST_VERIFIED"
+    ],
+    "identities": [
+     {
+      "path": "xq_native_adapter.py",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": "7655c411b5dfebd2da01364f665d82a5c31db7ad66ba2ce0521214401915ddc4",
+      "disk_sha256": null,
+      "bytes": 6631
+     }
+    ],
+    "missing": [],
+    "identity_ok": true,
+    "unresolved_statuses": []
+   },
+   "verdict": "PASS",
+   "arms": []
+  },
+  "B1.POS.BASE-017": {
+   "case_id": "B1.POS.BASE-017",
+   "unit_id": "B1.U0017",
+   "key": "BASE-017",
+   "kind": "BASE",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "statuses": [
+     "ALLOWLIST_VERIFIED",
+     "ALLOWLIST_VERIFIED",
+     "ALLOWLIST_VERIFIED"
+    ],
+    "identities": [
+     {
+      "path": "FDA_EXECUTION_BINDING.json",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": "6a3269202d0dba0ba6c8bb0d6656e592dcda4042a0dc88e63fba732e3335b095",
+      "disk_sha256": null,
+      "bytes": 3308
+     },
+     {
+      "path": "governance/FDA_DEFERRED_SEMIAUTO_CONTRACT.yaml",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": "6e1c808e278592f2b4d75c6296b4b81d9e227a2f21e188c9594b18085bbf0f8f",
+      "disk_sha256": null,
+      "bytes": 2995
+     },
+     {
+      "path": "governance/FDA_INTEROP_DISPOSITION.yaml",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": "9fac4d255030443f8031a5bfe62d8e204698cf664ada2b06a65986f347c7ee5e",
+      "disk_sha256": null,
+      "bytes": 3487
+     }
+    ],
+    "missing": [],
+    "identity_ok": true,
+    "unresolved_statuses": []
+   },
+   "verdict": "PASS",
+   "arms": []
+  },
+  "B1.POS.BASE-018": {
+   "case_id": "B1.POS.BASE-018",
+   "unit_id": "B1.U0018",
+   "key": "BASE-018",
+   "kind": "BASE",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "statuses": [
+     "ALLOWLIST_VERIFIED",
+     "ALLOWLIST_VERIFIED",
+     "NOT_IN_OWNER_ALLOWLIST",
+     "ALLOWLIST_VERIFIED"
+    ],
+    "identities": [
+     {
+      "path": "independent_checker.py",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": "9009713fd70392d64b84dcf0c1319adb5cfef51d260cd196c831c960f1bbe22e",
+      "disk_sha256": null,
+      "bytes": 12617
+     },
+     {
+      "path": "test_xq_build_drift.py",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": "cf234c66e389900b517d437a6d2ec4d69977104876fc4ab898a6f4df1aaf8eb9",
+      "disk_sha256": null,
+      "bytes": 3215
+     },
+     {
+      "path": "tests/test_fda_*.py",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": null,
+      "disk_sha256": null,
+      "bytes": null
+     },
+     {
+      "path": "docs/FDA_USER_GUIDE.md",
+      "commit": null,
+      "blob": null,
+      "raw_sha256": "21a3d22b26e499b1bad10dc7fb0235402b460c3138e0fd719e7791d120815ee5",
+      "disk_sha256": null,
+      "bytes": 22327
+     }
+    ],
+    "missing": [],
+    "identity_ok": false,
+    "unresolved_statuses": [
+     "NOT_IN_OWNER_ALLOWLIST"
+    ]
+   },
+   "verdict": "HOLD",
+   "arms": [],
+   "hold_reason": "D-2 read right (owner allow-list) not granted for this declared cell"
+  },
+  "B1.POS.FDA_at_simulated_order": {
+   "case_id": "B1.POS.FDA_at_simulated_order",
+   "unit_id": "B1.U0028",
+   "key": "FDA:at_simulated_order",
+   "kind": "FDA",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "fixture_baseline_valid": true,
+    "check": {
+     "deny": false
+    }
+   },
+   "verdict": "HOLD",
+   "arms": [],
+   "hold_reason": "FIXTURE_ONLY_NO_PRODUCT_CALLABLE: D-3 author fixture domain only; no original typed schema/Reader, so this is not an original semantic PASS"
+  },
+  "B1.POS.FDA_broker_external_event_read": {
+   "case_id": "B1.POS.FDA_broker_external_event_read",
+   "unit_id": "B1.U0029",
+   "key": "FDA:broker_external_event_read",
+   "kind": "FDA",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "fixture_baseline_valid": true,
+    "check": {
+     "deny": false
+    }
+   },
+   "verdict": "HOLD",
+   "arms": [],
+   "hold_reason": "FIXTURE_ONLY_NO_PRODUCT_CALLABLE: D-3 author fixture domain only; no original typed schema/Reader, so this is not an original semantic PASS"
+  },
+  "B1.POS.FDA_broker_live_submit": {
+   "case_id": "B1.POS.FDA_broker_live_submit",
+   "unit_id": "B1.U0030",
+   "key": "FDA:broker_live_submit",
+   "kind": "FDA",
+   "expected_first_fail": "FIN_ORDER_DENY_ALWAYS",
+   "oracle_domain": "DENY invariant檢查；無允許效果POS",
+   "actual": {
+    "pos_is_deny_invariant": true,
+    "read_control": {
+     "action": "read",
+     "policy_value": "DENY_ALWAYS",
+     "order_path_reached": false,
+     "effect": "SOURCE_READ",
+     "decision": "ALLOW_READ_CONTROL",
+     "artefact": "FDA_DESKTOP_CAPABILITY_MATRIX.yaml",
+     "artefact_sha256": "9406456db853e9e6597c30ed400240808c7b0c777dd49c34eb611bf4c863d6c4",
+     "artefact_line": 24,
+     "artefact_bytes": 11110,
+     "reason": "read-only observation control anchored to the pinned carrier digest; does not reach any order path"
+    },
+    "policy": {
+     "value": "DENY_ALWAYS",
+     "line": 24,
+     "artefact": "FDA_DESKTOP_CAPABILITY_MATRIX.yaml",
+     "sha256": "9406456db853e9e6597c30ed400240808c7b0c777dd49c34eb611bf4c863d6c4",
+     "bytes": 11110
+    },
+    "allowed_effect_pos": null
+   },
+   "verdict": "PASS",
+   "arms": []
+  },
+  "B1.POS.FDA_radar_signal": {
+   "case_id": "B1.POS.FDA_radar_signal",
+   "unit_id": "B1.U0025",
+   "key": "FDA:radar_signal",
+   "kind": "FDA",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "fixture_baseline_valid": true,
+    "check": {
+     "deny": false
+    }
+   },
+   "verdict": "HOLD",
+   "arms": [],
+   "hold_reason": "FIXTURE_ONLY_NO_PRODUCT_CALLABLE: D-3 author fixture domain only; no original typed schema/Reader, so this is not an original semantic PASS"
+  },
+  "B1.POS.FDA_watch_ui": {
+   "case_id": "B1.POS.FDA_watch_ui",
+   "unit_id": "B1.U0024",
+   "key": "FDA:watch_ui",
+   "kind": "FDA",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "fixture_baseline_valid": true,
+    "check": {
+     "deny": false
+    }
+   },
+   "verdict": "HOLD",
+   "arms": [],
+   "hold_reason": "FIXTURE_ONLY_NO_PRODUCT_CALLABLE: D-3 author fixture domain only; no original typed schema/Reader, so this is not an original semantic PASS"
+  },
+  "B1.POS.FDA_xs_backtest": {
+   "case_id": "B1.POS.FDA_xs_backtest",
+   "unit_id": "B1.U0027",
+   "key": "FDA:xs_backtest",
+   "kind": "FDA",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "fixture_baseline_valid": true,
+    "check": {
+     "deny": false
+    }
+   },
+   "verdict": "HOLD",
+   "arms": [],
+   "hold_reason": "FIXTURE_ONLY_NO_PRODUCT_CALLABLE: D-3 author fixture domain only; no original typed schema/Reader, so this is not an original semantic PASS"
+  },
+  "B1.POS.FDA_xs_compile": {
+   "case_id": "B1.POS.FDA_xs_compile",
+   "unit_id": "B1.U0026",
+   "key": "FDA:xs_compile",
+   "kind": "FDA",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "fixture_baseline_valid": true,
+    "check": {
+     "deny": false
+    }
+   },
+   "verdict": "HOLD",
+   "arms": [],
+   "hold_reason": "FIXTURE_ONLY_NO_PRODUCT_CALLABLE: D-3 author fixture domain only; no original typed schema/Reader, so this is not an original semantic PASS"
+  },
+  "B1.POS.KERNEL_capability": {
+   "case_id": "B1.POS.KERNEL_capability",
+   "unit_id": "B1.U0023",
+   "key": "KERNEL:capability",
+   "kind": "KERNEL",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "content_identity": "RAW_SHA_MATCH_AT_LOCAL_HEAD",
+    "symbols_ok": 12,
+    "symbols_total": 12,
+    "pinned_commit_present_locally": false,
+    "raw_sha256": "d2a143c5c970d8a5c2174f051871066fc04c0c9f5863ff4fac253f0cb9d68a41",
+    "observed_commit": "9a70501ad4bbf315c675894a7a58c0f98bf18f47"
+   },
+   "verdict": "PASS_SOURCE_BOUND",
+   "arms": [],
+   "claim": "CONTENT_IDENTITY_AND_SYMBOL_SPAN_ONLY",
+   "hold_reason": "D-4 semantic part stays HOLD: the 10 author rules are not ratified by the original Kernel Domain Owner; evidence PASS only"
+  },
+  "B1.POS.KERNEL_fsdt": {
+   "case_id": "B1.POS.KERNEL_fsdt",
+   "unit_id": "B1.U0019",
+   "key": "KERNEL:fsdt",
+   "kind": "KERNEL",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "content_identity": "RAW_SHA_MATCH_AT_LOCAL_HEAD",
+    "symbols_ok": 14,
+    "symbols_total": 14,
+    "pinned_commit_present_locally": false,
+    "raw_sha256": "90a5f4d4e27aeafda82d15d439bbfa076cc4f55d70df6ee604b4602bad5598bb",
+    "observed_commit": "9a70501ad4bbf315c675894a7a58c0f98bf18f47"
+   },
+   "verdict": "PASS_SOURCE_BOUND",
+   "arms": [],
+   "claim": "CONTENT_IDENTITY_AND_SYMBOL_SPAN_ONLY",
+   "hold_reason": "D-4 semantic part stays HOLD: the 10 author rules are not ratified by the original Kernel Domain Owner; evidence PASS only"
+  },
+  "B1.POS.KERNEL_harness": {
+   "case_id": "B1.POS.KERNEL_harness",
+   "unit_id": "B1.U0022",
+   "key": "KERNEL:harness",
+   "kind": "KERNEL",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "content_identity": "RAW_SHA_MATCH_AT_LOCAL_HEAD",
+    "symbols_ok": 13,
+    "symbols_total": 13,
+    "pinned_commit_present_locally": false,
+    "raw_sha256": "288a2a0e474a05fd38b992de5801b0f8f01668741a67c90c0d0e6f6b37ffc27e",
+    "observed_commit": "9a70501ad4bbf315c675894a7a58c0f98bf18f47"
+   },
+   "verdict": "PASS_SOURCE_BOUND",
+   "arms": [],
+   "claim": "CONTENT_IDENTITY_AND_SYMBOL_SPAN_ONLY",
+   "hold_reason": "D-4 semantic part stays HOLD: the 10 author rules are not ratified by the original Kernel Domain Owner; evidence PASS only"
+  },
+  "B1.POS.KERNEL_knowledge": {
+   "case_id": "B1.POS.KERNEL_knowledge",
+   "unit_id": "B1.U0021",
+   "key": "KERNEL:knowledge",
+   "kind": "KERNEL",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "content_identity": "RAW_SHA_MATCH_AT_LOCAL_HEAD",
+    "symbols_ok": 12,
+    "symbols_total": 12,
+    "pinned_commit_present_locally": false,
+    "raw_sha256": "ea1e13cd7df0cf81059364c7606be4c6c317d78e4a91d3a847c7219465e33da6",
+    "observed_commit": "9a70501ad4bbf315c675894a7a58c0f98bf18f47"
+   },
+   "verdict": "PASS_SOURCE_BOUND",
+   "arms": [],
+   "claim": "CONTENT_IDENTITY_AND_SYMBOL_SPAN_ONLY",
+   "hold_reason": "D-4 semantic part stays HOLD: the 10 author rules are not ratified by the original Kernel Domain Owner; evidence PASS only"
+  },
+  "B1.POS.KERNEL_temporal": {
+   "case_id": "B1.POS.KERNEL_temporal",
+   "unit_id": "B1.U0020",
+   "key": "KERNEL:temporal",
+   "kind": "KERNEL",
+   "expected_first_fail": "NONE_IF_VALID",
+   "oracle_domain": "獨立原條文/原payload逐欄相等；滿足§05本key規則，不借其他key",
+   "actual": {
+    "content_identity": "RAW_SHA_MATCH_AT_LOCAL_HEAD",
+    "symbols_ok": 13,
+    "symbols_total": 13,
+    "pinned_commit_present_locally": false,
+    "raw_sha256": "21e0150f8f97f1541e96b452b56571fa1518191a122fa5cf2f1af54ff9483a5d",
+    "observed_commit": "9a70501ad4bbf315c675894a7a58c0f98bf18f47"
+   },
+   "verdict": "PASS_SOURCE_BOUND",
+   "arms": [],
+   "claim": "CONTENT_IDENTITY_AND_SYMBOL_SPAN_ONLY",
+   "hold_reason": "D-4 semantic part stays HOLD: the 10 author rules are not ratified by the original Kernel Domain Owner; evidence PASS only"
+  }
+ },
+ "claim_ceiling": "B1_ACCEPTED requires every applicable case to be PASS with the original oracle. HOLD and FIXTURE_ONLY are NOT PASS."
+}

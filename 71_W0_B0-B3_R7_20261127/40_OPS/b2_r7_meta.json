@@ -1,0 +1,299 @@
+{
+ "schema": "SST.PH01.W0.B2.META@2",
+ "generated_at": "2026-11-27T15:27:08+0800",
+ "registry": "pypi.org JSON API (official)",
+ "installed_anything": false,
+ "selected_anything": false,
+ "counts": {
+  "NOT_A_DISTRIBUTION": 9,
+  "COLLECTED": 2,
+  "VERSION_UNBOUND": 7
+ },
+ "entries": [
+  {
+   "unit_id": "B2.U0001",
+   "key": "R3-REGISTRY-Q1::ECP_TECH43::TECH-01",
+   "tool_id": "TECH-01",
+   "pin_text": "Python pin UNBOUND",
+   "metadata": null,
+   "decision": "NOT_A_DISTRIBUTION",
+   "missing": [
+    {
+     "field": "metadata",
+     "reason": "FORMAT_UNSUPPORTED",
+     "detail": "programming language runtime (Python); its licence is the PSF licence, not a distribution licence, and the admissible version is set by the product pin"
+    }
+   ]
+  },
+  {
+   "unit_id": "B2.U0002",
+   "key": "R3-REGISTRY-Q1::ECP_TECH43::TECH-02",
+   "tool_id": "TECH-02",
+   "pin_text": "Pydantic 2.14.4",
+   "metadata": {
+    "distribution": "pydantic",
+    "version": "2.14.4",
+    "license": null,
+    "license_expression": "MIT",
+    "requires_python": ">=3.10",
+    "summary": "Data validation using Python type hints",
+    "provenance": {
+     "url": "https://pypi.org/pypi/pydantic/2.14.4/json",
+     "retrieved_at": "2026-11-27T15:27:08+0800",
+     "response_sha256": "5d722dd4d4d25910be858c847dc61d0ca53d641ed016db61da937c8af49e35a9",
+     "response_bytes": 147543
+    }
+   },
+   "decision": "COLLECTED",
+   "missing": []
+  },
+  {
+   "unit_id": "B2.U0003",
+   "key": "R3-REGISTRY-Q1::ECP_TECH43::TECH-03",
+   "tool_id": "TECH-03",
+   "pin_text": "JSON Schema Draft 2020-12 + jsonschema 4.26.0",
+   "metadata": {
+    "distribution": "jsonschema",
+    "version": "4.26.0",
+    "license": null,
+    "license_expression": "MIT",
+    "requires_python": ">=3.10",
+    "summary": "An implementation of JSON Schema validation for Python",
+    "provenance": {
+     "url": "https://pypi.org/pypi/jsonschema/4.26.0/json",
+     "retrieved_at": "2026-11-27T15:27:08+0800",
+     "response_sha256": "d0c9ccdfa30c3cdc57b048c2be21123dfb0c2f4d6bef2e8324dcb4eac985cfcf",
+     "response_bytes": 9468
+    }
+   },
+   "decision": "COLLECTED",
+   "missing": []
+  },
+  {
+   "unit_id": "B2.U0004",
+   "key": "R3-REGISTRY-Q1::ECP_TECH43::TECH-04",
+   "tool_id": "TECH-04",
+   "pin_text": "pytest pin UNBOUND",
+   "metadata": null,
+   "decision": "VERSION_UNBOUND",
+   "missing": [
+    {
+     "field": "metadata",
+     "reason": "UNVERIFIED",
+     "detail": "the pin for 'pytest' is not a version ('pytest pin UNBOUND'); a licence may not be attributed to an unpinned tool, and the latest release is not the pin"
+    }
+   ]
+  },
+  {
+   "unit_id": "B2.U0005",
+   "key": "R3-REGISTRY-Q1::ECP_TECH43::TECH-05",
+   "tool_id": "TECH-05",
+   "pin_text": "Hypothesis pin UNBOUND",
+   "metadata": null,
+   "decision": "VERSION_UNBOUND",
+   "missing": [
+    {
+     "field": "metadata",
+     "reason": "UNVERIFIED",
+     "detail": "the pin for 'hypothesis' is not a version ('Hypothesis pin UNBOUND'); a licence may not be attributed to an unpinned tool, and the latest release is not the pin"
+    }
+   ]
+  },
+  {
+   "unit_id": "B2.U0006",
+   "key": "R3-REGISTRY-Q1::ECP_TECH43::TECH-08",
+   "tool_id": "TECH-08",
+   "pin_text": "Parquet format + PyArrow candidate pin UNBOUND",
+   "metadata": null,
+   "decision": "VERSION_UNBOUND",
+   "missing": [
+    {
+     "field": "metadata",
+     "reason": "UNVERIFIED",
+     "detail": "the pin for 'pyarrow' is not a version ('Parquet format + PyArrow candidate pin UNBOUND'); a licence may not be attributed to an unpinned tool, and the latest release is not the pin"
+    }
+   ]
+  },
+  {
+   "unit_id": "B2.U0007",
+   "key": "R3-REGISTRY-Q1::ECP_TECH43::TECH-09",
+   "tool_id": "TECH-09",
+   "pin_text": "DuckDB pin UNBOUND",
+   "metadata": null,
+   "decision": "VERSION_UNBOUND",
+   "missing": [
+    {
+     "field": "metadata",
+     "reason": "UNVERIFIED",
+     "detail": "the pin for 'duckdb' is not a version ('DuckDB pin UNBOUND'); a licence may not be attributed to an unpinned tool, and the latest release is not the pin"
+    }
+   ]
+  },
+  {
+   "unit_id": "B2.U0008",
+   "key": "R3-REGISTRY-Q1::ECP_TECH43::TECH-14",
+   "tool_id": "TECH-14",
+   "pin_text": "MLflow pin UNBOUND",
+   "metadata": null,
+   "decision": "VERSION_UNBOUND",
+   "missing": [
+    {
+     "field": "metadata",
+     "reason": "UNVERIFIED",
+     "detail": "the pin for 'mlflow' is not a version ('MLflow pin UNBOUND'); a licence may not be attributed to an unpinned tool, and the latest release is not the pin"
+    }
+   ]
+  },
+  {
+   "unit_id": "B2.U0009",
+   "key": "R3-REGISTRY-Q1::ECP_TECH43::TECH-15",
+   "tool_id": "TECH-15",
+   "pin_text": "Qlib pin UNBOUND",
+   "metadata": null,
+   "decision": "VERSION_UNBOUND",
+   "missing": [
+    {
+     "field": "metadata",
+     "reason": "UNVERIFIED",
+     "detail": "the pin for 'pyqlib' is not a version ('Qlib pin UNBOUND'); a licence may not be attributed to an unpinned tool, and the latest release is not the pin"
+    }
+   ]
+  },
+  {
+   "unit_id": "B2.U0010",
+   "key": "R3-REGISTRY-Q1::ECP_TECH43::TECH-19",
+   "tool_id": "TECH-19",
+   "pin_text": "OpenTelemetry pin UNBOUND",
+   "metadata": null,
+   "decision": "VERSION_UNBOUND",
+   "missing": [
+    {
+     "field": "metadata",
+     "reason": "UNVERIFIED",
+     "detail": "the pin for 'opentelemetry-sdk' is not a version ('OpenTelemetry pin UNBOUND'); a licence may not be attributed to an unpinned tool, and the latest release is not the pin"
+    }
+   ]
+  },
+  {
+   "unit_id": "B2.U0011",
+   "key": "R3-REGISTRY-Q1::ECP_TECH43::TECH-24",
+   "tool_id": "TECH-24",
+   "pin_text": "GitHub Actions workflow commit UNBOUND",
+   "metadata": null,
+   "decision": "NOT_A_DISTRIBUTION",
+   "missing": [
+    {
+     "field": "metadata",
+     "reason": "FORMAT_UNSUPPORTED",
+     "detail": "hosted service (GitHub Actions)"
+    }
+   ]
+  },
+  {
+   "unit_id": "B2.U0012",
+   "key": "R3-REGISTRY-Q1::ECP_TECH43::TECH-25",
+   "tool_id": "TECH-25",
+   "pin_text": "CODEOWNERS pin UNBOUND",
+   "metadata": null,
+   "decision": "NOT_A_DISTRIBUTION",
+   "missing": [
+    {
+     "field": "metadata",
+     "reason": "FORMAT_UNSUPPORTED",
+     "detail": "repository feature (CODEOWNERS), not a distribution"
+    }
+   ]
+  },
+  {
+   "unit_id": "B2.U0013",
+   "key": "R3-REGISTRY-Q1::ECP_TECH43::TECH-26",
+   "tool_id": "TECH-26",
+   "pin_text": "SBOM pin UNBOUND",
+   "metadata": null,
+   "decision": "NOT_A_DISTRIBUTION",
+   "missing": [
+    {
+     "field": "metadata",
+     "reason": "FORMAT_UNSUPPORTED",
+     "detail": "artefact class (SBOM), not a distribution"
+    }
+   ]
+  },
+  {
+   "unit_id": "B2.U0014",
+   "key": "R3-REGISTRY-Q1::ECP_TECH43::TECH-27",
+   "tool_id": "TECH-27",
+   "pin_text": "Artifact Attestations pin UNBOUND",
+   "metadata": null,
+   "decision": "NOT_A_DISTRIBUTION",
+   "missing": [
+    {
+     "field": "metadata",
+     "reason": "FORMAT_UNSUPPORTED",
+     "detail": "hosted feature (Artifact Attestations)"
+    }
+   ]
+  },
+  {
+   "unit_id": "B2.U0015",
+   "key": "R3-REGISTRY-Q1::ECP_TECH43::TECH-28",
+   "tool_id": "TECH-28",
+   "pin_text": "SLSA pin UNBOUND",
+   "metadata": null,
+   "decision": "NOT_A_DISTRIBUTION",
+   "missing": [
+    {
+     "field": "metadata",
+     "reason": "FORMAT_UNSUPPORTED",
+     "detail": "framework (SLSA), not a distribution"
+    }
+   ]
+  },
+  {
+   "unit_id": "B2.U0016",
+   "key": "R3-REGISTRY-Q1::ECP_TECH43::TECH-29",
+   "tool_id": "TECH-29",
+   "pin_text": "Sigstore pin UNBOUND",
+   "metadata": null,
+   "decision": "NOT_A_DISTRIBUTION",
+   "missing": [
+    {
+     "field": "metadata",
+     "reason": "FORMAT_UNSUPPORTED",
+     "detail": "project (Sigstore); the installable parts are separate distributions"
+    }
+   ]
+  },
+  {
+   "unit_id": "B2.U0017",
+   "key": "R3-REGISTRY-Q1::ECP_TECH43::TECH-30",
+   "tool_id": "TECH-30",
+   "pin_text": "OpenSSF pin UNBOUND",
+   "metadata": null,
+   "decision": "NOT_A_DISTRIBUTION",
+   "missing": [
+    {
+     "field": "metadata",
+     "reason": "FORMAT_UNSUPPORTED",
+     "detail": "organisation (OpenSSF), not a distribution"
+    }
+   ]
+  },
+  {
+   "unit_id": "B2.U0018",
+   "key": "R3-REGISTRY-Q1::ECP_TECH43::TECH-42",
+   "tool_id": "TECH-42",
+   "pin_text": "XQ/XS pin UNBOUND",
+   "metadata": null,
+   "decision": "NOT_A_DISTRIBUTION",
+   "missing": [
+    {
+     "field": "metadata",
+     "reason": "FORMAT_UNSUPPORTED",
+     "detail": "vendor product (XQ/XS); no official public metadata right in this run"
+    }
+   ]
+  }
+ ],
+ "claim_ceiling": "metadata collected for real bytes only where a version pin exists; nothing installed, nothing selected"
+}

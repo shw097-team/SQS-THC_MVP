@@ -1,0 +1,75 @@
+{
+ "schema": "SST.PH01.W0.B0B3.DeliveryIndex@1",
+ "generated_at": "2026-11-27T15:43:09+0800",
+ "round_root": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127",
+ "spec": {
+  "version": "2026-11-27_r7_Native-first_CODEX_FINAL",
+  "entry_sha256": "21c27fbb4f40c82b0019aea545078d2941fb81b165134638bb7dd554972291d2",
+  "manifest_sha256": "2e4db2d2c2bd6d52316f7e634587888441b5425b7c68902c00b36ded47960d6c",
+  "manifest_all_match": true
+ },
+ "current_pointers": [
+  {
+   "role": "closeout",
+   "path": "60_CLOSEOUT/SST_PLP_PH01_W0_B0-B2_CLOSEOUT.md"
+  },
+  {
+   "role": "handoff",
+   "path": "60_CLOSEOUT/SST_PLP_PH01_W0_B0-B2_HANDOFF_B3_ADMISSION.md"
+  },
+  {
+   "role": "bootstrap",
+   "path": "60_CLOSEOUT/NEW_SESSION_BOOTSTRAP.md"
+  },
+  {
+   "role": "freeze",
+   "path": "40_OPS/r7_candidate_freeze.json"
+  },
+  {
+   "role": "b3_admission",
+   "path": "40_OPS/r7_b3_admission.json"
+  },
+  {
+   "role": "preflight",
+   "path": "00_PREFLIGHT/r7_preflight.json"
+  }
+ ],
+ "phase_status": {
+  "B0": "HOLD_RIGHTS_CURRENCY",
+  "B1": "PARTIAL",
+  "B2": "PARTIAL",
+  "B3": "READY_EXECUTE_HOLD"
+ },
+ "four_ready": {
+  "ReadyDraft": true,
+  "ReadyAtom": true,
+  "ReadyExecute": false,
+  "ReadyAccept": false
+ },
+ "promotion_state": {
+  "promoted_to_primary": [],
+  "items_eligible": [],
+  "blockers": [
+   "B0 SourceReadSet/2 currency",
+   "original B3 Reader (NEG design carrier / semantic oracle)"
+  ]
+ },
+ "accepted": {
+  "B0": false,
+  "B1": false,
+  "B2": false,
+  "B3": false,
+  "W0": false
+ },
+ "layer_legend": {
+  "20_DEV/r7": "engine (code)",
+  "00_PREFLIGHT": "authority + census",
+  "40_OPS": "receipts",
+  "60_CLOSEOUT": "generated documents",
+  "40_OPS/b3_ledger": "product effect (draft write), not a manifest member"
+ },
+ "published": {
+  "state": "see publish record",
+  "record": "50_PUBLISH/publish_record.json"
+ }
+}

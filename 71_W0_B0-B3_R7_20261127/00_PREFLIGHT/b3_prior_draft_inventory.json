@@ -1,0 +1,33 @@
+{
+ "probe_at": "2026-11-27T15:40:12+0800",
+ "files": [
+  {
+   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\70_W0_B1B8_20261126\\40_OPS\\b3_ledger\\SourceChildLedger.draft.md",
+   "bytes": 29624,
+   "sha256": "4732841099875e32032454582bce7811624e2cb8a04d4f1035c23073bebc1b87",
+   "write_lock_probe": "UNLOCKED",
+   "mtime": "2026-11-27T00:53:34"
+  },
+  {
+   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\70_W0_B1B8_20261126\\40_OPS\\b3_ledger\\SourceChildLedger.draft.v2.md",
+   "bytes": 29624,
+   "sha256": "cc1cb866f9650a97b601d679a3a3ae35861a2f5038368cdd19d369aa2e54a084",
+   "write_lock_probe": "UNLOCKED",
+   "mtime": "2026-11-27T01:10:16"
+  },
+  {
+   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\70_W0_B1B8_20261126\\40_OPS\\b3_draft\\SourceChildLedger.draft.json",
+   "bytes": 407447,
+   "sha256": "c6819579b9f7fa4af13ec4ed48aba6bc0cfaefde64170d79d6817bd670adb881",
+   "write_lock_probe": "UNLOCKED",
+   "mtime": "2026-11-26T22:51:03"
+  },
+  {
+   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\70_W0_B1B8_20261126\\40_OPS\\b3_draft\\SourceChildLedger.draft.v2.json",
+   "bytes": 315375,
+   "sha256": "f08ec1896cf5c92d67c16a7e5dc23adb03dbbfe5f9ddd4ed91e909373dc61e5e",
+   "write_lock_probe": "UNLOCKED",
+   "mtime": "2026-11-26T23:26:54"
+  }
+ ]
+}
