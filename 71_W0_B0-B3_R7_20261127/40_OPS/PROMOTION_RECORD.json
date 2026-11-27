@@ -1,0 +1,50 @@
+{
+ "schema": "SST.PH01.W0.B0B3.PromotionRecord@1",
+ "generated_at": "2026-11-27T19:52:14+0800",
+ "promoted": [
+  {
+   "path": "40_OPS/b0_descriptor_renewal.json",
+   "bytes": 1332,
+   "sha256": "b63234ef78253ded172497395e10f4f987a72dca419e942e2848cd78c67b14b1",
+   "name": "B0 descriptor renewal",
+   "basis": "window WIN-5afc943249a6, ceiling READ_ONLY_PROBE, only authorization/usage/time changed",
+   "published": true
+  },
+  {
+   "path": "40_OPS/b0_current_sourcereadset.json",
+   "bytes": 5429,
+   "sha256": "2a226d27b1559dc7e19ac8a5969f4704dba19f20da10cb0bb8c7b09c82175354",
+   "name": "B0 current SourceReadSet/2",
+   "basis": "exit 0, 2 sources, 14 authority fields, missing=[], write_set=[]",
+   "published": false
+  },
+  {
+   "path": "40_OPS/r7_consumer_receipts.json",
+   "bytes": 10007,
+   "sha256": "e5beb6c873c240bb18eff43ff43fe6f7b7943a194b98f1acb0d1c265cbfd956d",
+   "name": "B0 three-end receive",
+   "basis": "B1/B2/B3 ACCEPT, currency CURRENT (usage_evidence_sha equals the live receipt)",
+   "published": true
+  },
+  {
+   "path": "40_OPS/r7_consumer_selftest.json",
+   "bytes": 1905,
+   "sha256": "be596df8214e0174c713f12a3637849a44d6d220048fd07872deaed7bed9c639",
+   "name": "consumer self-test",
+   "basis": "12/12 arms, including ENVELOPE_AUTHORITY_EXPIRED",
+   "published": true
+  },
+  {
+   "path": "40_OPS/b0_product_test_2026-11-27.log",
+   "bytes": 244,
+   "sha256": "8d008cc40fc5c051897c3ce71231318e7d914aca81c76113f3360ff6ba893a46",
+   "name": "B0 product case suite",
+   "basis": "137 tests OK, bounded temp root, TMPDIR unset",
+   "published": true
+  }
+ ],
+ "candidate": {
+  "path": "40_OPS/r7_candidate_freeze.rev12.json",
+  "digest": "8fe2b08d56670234946a121436a946af6f656f1070ac29efd8f5f95be31d0195"
+ }
+}

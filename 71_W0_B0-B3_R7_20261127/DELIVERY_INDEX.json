@@ -36,11 +36,31 @@
   {
    "role": "checker_verdict",
    "path": "40_OPS/r7_checker_verdict.md"
+  },
+  {
+   "role": "session_closeout",
+   "path": "60_CLOSEOUT/SESSION_CLOSEOUT_2026-11-27.md"
+  },
+  {
+   "role": "handoff_next_session",
+   "path": "60_CLOSEOUT/HANDOFF_NEXT_SESSION.md"
+  },
+  {
+   "role": "bootstrap_next_session",
+   "path": "60_CLOSEOUT/BOOTSTRAP_NEXT_SESSION.md"
+  },
+  {
+   "role": "layers",
+   "path": "40_OPS/LAYERS.json"
+  },
+  {
+   "role": "promotion_record",
+   "path": "40_OPS/PROMOTION_RECORD.json"
   }
  ],
  "phase_status": {
-  "B0": "HOLD_RIGHTS_CURRENCY",
-  "B1": "PARTIAL",
+  "B0": "COMPLETE",
+  "B1": "PARTIAL_PARK_UNTIL_DELTA",
   "B2": "PARTIAL",
   "B3": "READY_ATOM_FALSE_READY_EXECUTE_HOLD"
  },
@@ -60,15 +80,29 @@
   }
  },
  "promotion_state": {
-  "promoted_to_primary": [],
+  "promoted_to_primary": [
+   "40_OPS/b0_descriptor_renewal.json",
+   "40_OPS/b0_current_sourcereadset.json",
+   "40_OPS/r7_consumer_receipts.json",
+   "40_OPS/r7_consumer_selftest.json",
+   "40_OPS/b0_product_test_2026-11-27.log"
+  ],
   "items_eligible": [],
   "blockers": [
-   "B0 SourceReadSet/2 currency",
-   "original B3 Reader (NEG design carrier / semantic oracle)"
+   "B3 owner undeclared for 183 source-bound atoms",
+   "B3 requiredness has no cross-batch carrier",
+   "B2 20 route cases: product code differs from the declared FirstFail"
+  ],
+  "basis_of_B0_acceptance": [
+   "window WIN-5afc943249a6, ceiling READ_ONLY_PROBE, only authorization/usage/time changed",
+   "exit 0, 2 sources, 14 authority fields, missing=[], write_set=[]",
+   "B1/B2/B3 ACCEPT, currency CURRENT (usage_evidence_sha equals the live receipt)",
+   "12/12 arms, including ENVELOPE_AUTHORITY_EXPIRED",
+   "137 tests OK, bounded temp root, TMPDIR unset"
   ]
  },
  "accepted": {
-  "B0": false,
+  "B0": true,
   "B1": false,
   "B2": false,
   "B3": false,
@@ -85,7 +119,7 @@
   "state": "see publish record",
   "record": "50_PUBLISH/publish_record.json"
  },
- "revision": 6,
+ "revision": 7,
  "rev1_documents": [
   "60_CLOSEOUT/SST_PLP_PH01_W0_B0-B2_CLOSEOUT.md",
   "60_CLOSEOUT/SST_PLP_PH01_W0_B0-B2_HANDOFF_B3_ADMISSION.md",
@@ -100,5 +134,21 @@
  "freeze": {
   "path": "r7_candidate_freeze.rev12.json",
   "candidate_digest": "8fe2b08d56670234946a121436a946af6f656f1070ac29efd8f5f95be31d0195"
+ },
+ "layers": {
+  "path": "40_OPS/LAYERS.json",
+  "tally": {
+   "CURRENT_CANDIDATE": 26,
+   "DOC_HISTORY": 12,
+   "EFFECT": 2,
+   "LOCAL_ONLY": 1,
+   "PRIMARY": 44,
+   "SUPERSEDED": 19,
+   "VERDICT_SUPERSEDED": 1
+  },
+  "current_candidate": {
+   "path": "40_OPS/r7_candidate_freeze.rev12.json",
+   "digest": "8fe2b08d56670234946a121436a946af6f656f1070ac29efd8f5f95be31d0195"
+  }
  }
 }
