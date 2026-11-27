@@ -63,8 +63,16 @@ def digest(artefacts: list[dict]) -> str:
     return hashlib.sha256(body.encode("utf-8")).hexdigest()
 
 
+def _arg(flag: str) -> str | None:
+    if flag in sys.argv:
+        i = sys.argv.index(flag)
+        return sys.argv[i + 1] if i + 1 < len(sys.argv) else None
+    return None
+
+
 def main() -> int:
     include_docs = "--include-docs" in sys.argv
+    revision = _arg("--revision")
     arts = collect(include_docs)
     dg = digest(arts)
     man = os.path.join(OPS, "r7_CANDIDATE_MANIFEST.tsv")
@@ -84,7 +92,18 @@ def main() -> int:
         "manifest": {"path": man, "sha256": sha_file(man)},
         "artefacts": [{k: a[k] for k in ("path", "bytes", "raw_sha256")} for a in arts],
     }
-    out = os.path.join(OPS, "r7_candidate_freeze.json")
+    # A freeze receipt is write-once. Re-running the freezer used to overwrite the digest a
+    # checker had already judged (569f finding M1); now a new revision is a new file and the
+    # superseded one stays on disk.
+    base = os.path.join(OPS, "r7_candidate_freeze.json")
+    out = os.path.join(OPS, f"r7_candidate_freeze.{revision}.json") if revision else base
+    if os.path.exists(out):
+        print(json.dumps({"refused": "PREIMAGE_NOT_ABSENT", "path": out,
+                          "note": "pass --revision <name> to mint a new revision"}, ensure_ascii=False))
+        return 3
+    if revision and os.path.isfile(base):
+        prev = json.load(open(base, encoding="utf-8"))
+        receipt["supersedes"] = {"path": base, "candidate_digest": prev.get("candidate_digest")}
     json.dump(receipt, open(out, "w", encoding="utf-8", newline="\n"),
               ensure_ascii=False, indent=1)
     # self-check: recompute from disk and from the manifest

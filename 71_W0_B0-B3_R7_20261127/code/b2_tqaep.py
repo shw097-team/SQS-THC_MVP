@@ -56,10 +56,18 @@ def main() -> int:
     sections = B.carrier_sections()
 
     cases = {}
+    # the SPEC's own declared FirstFail per case, so both polarities are comparable
+    import w0_spec as _W
+    _tbl = _W.case_table(open(b2["path"], encoding="utf-8").read(), "B2")
 
     def put(uid, cid, verdict, actual, note=""):
+        exp = (_tbl.get(cid) or {}).get("expected")
+        obs = actual.get("first_fail") if isinstance(actual, dict) else None
         cases[cid] = {"case_id": cid, "unit_id": uid, "verdict": verdict,
-                      "actual": actual, "note": note}
+                      "actual": actual, "note": note,
+                      "expected_first_fail": exp, "observed_first_fail": obs,
+                      "first_fail_matches": (None if exp is None else
+                                             (None if obs is None else exp == obs))}
 
     for u in q:
         uid, key = u["unit_id"], u["key"]

@@ -80,17 +80,26 @@ NOT_REQUIREDNESS_MARKERS = ("ROUTE_ONLY_NOT_TOOL_REQUIREDNESS", "N_A", "NA", "N/
 
 
 def is_requiredness_value(val: str) -> bool:
-    """A requiredness cell is either a base atom, a compound of atoms (a/b), or an
-    atom with an author qualifier (EVAL_ONLY_COMPARATOR, EVAL_ONLY_RESEARCH ...).
-    The verbatim string is kept; only its shape is validated against the atom set."""
+    """A requiredness cell is a base atom or a compound of atoms joined by '/'.
+
+    An atom plus an author qualifier (`EVAL_ONLY_COMPARATOR`, `BASE_REQUIRED_FOR_X`) used to be
+    admitted here, which let 40 rows pass on an invented shape rule while 34 identical-shaped
+    rows were HOLD as UNKNOWN. No carrier contract declares the qualifier form, so it is now
+    `AUTHOR_QUALIFIER_UNRATIFIED` and holds; the verbatim cell stays in the carrier payload and
+    in `requiredness_verbatim`."""
     if not val:
         return False
     if val in NOT_REQUIREDNESS_MARKERS:
         return False
     for a in BASE_REQ_ATOMS:
-        if val == a or val.startswith(a + "/") or val.startswith(a + "_") or val.startswith(a + " "):
+        if val == a or val.startswith(a + "/"):
             return True
     return False
+
+
+def is_author_qualified(val: str) -> bool:
+    """Base atom + qualifier (underscore or space). Shape only; not a declared value."""
+    return any(val.startswith(a + "_") or val.startswith(a + " ") for a in BASE_REQ_ATOMS)
 DIMENSION_BY_NS = {
     "R3-REGISTRY-Q1": {"dimension": "Requiredness", "requiredness_index": 2},
     "R3-REGISTRY-Q2": {"dimension": "AdmissionDecision", "requiredness_index": 5,
@@ -140,6 +149,11 @@ def requiredness_for(namespace: str, payload: list) -> tuple[str, str, str]:
         return val, f"carrier index {idx} of the {dim} registry", dim
     if is_requiredness_value(val):
         return val, f"carrier index {idx} of the {dim} registry (compound value)", dim
+    if is_author_qualified(val):
+        return ("UNKNOWN",
+                f"carrier index {idx} holds the author-qualified cell {val!r}; "
+                "AUTHOR_QUALIFIER_UNRATIFIED: no carrier contract declares the qualifier form",
+                dim)
     if val in NOT_REQUIREDNESS_MARKERS:
         return ("NOT_APPLICABLE",
                 f"carrier index {idx} holds the source's own not-applicable marker {val!r}", dim)

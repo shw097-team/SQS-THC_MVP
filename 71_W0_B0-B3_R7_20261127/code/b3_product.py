@@ -285,10 +285,29 @@ def op_join(units: list[dict], tool_readset: dict, source_side: dict) -> dict:
         if ev.get("decision") != "SOURCE_BOUND_VERIFIED":
             row["missing"].append({"field": "source_verified", "reason": "UNVERIFIED",
                                    "detail": ev.get("decision")})
+        # Two different readiness claims, kept apart: a source-bound atom is not an
+        # admissible ledger row. The owner field is literally "#" in 365/365 units and no
+        # atom carries a ratification, so the admission half is 0 by measurement, not by mood.
+        owner = u.get("owner")
+        row["owner_bound"] = owner not in (None, "", "#")
+        row["ratification"] = ("CANDIDATE_NOT_RATIFIED"
+                               if owner not in (None, "", "#") else "OWNER_UNBOUND")
+        row["source_bound_ready"] = not row["missing"]
+        admission_blockers = []
+        if not row["owner_bound"]:
+            admission_blockers.append({"field": "owner", "reason": "UNBOUND",
+                                       "detail": "unit carries no owner (literal '#'); a row may not "
+                                                 "be admitted or routed to B4 on it"})
+        if row["ratification"] != "RATIFIED":
+            admission_blockers.append({"field": "ratification", "reason": row["ratification"],
+                                       "detail": "no ratified locator/atom pin exists in this round"})
+        row["admission_blockers"] = admission_blockers
+        row["admission_ready"] = row["source_bound_ready"] and not admission_blockers
         rows.append(row)
     return {"rows": rows, "errors": errors,
             "summary": {"rows": len(rows),
-                        "ready": sum(1 for r in rows if not r["missing"]),
+                        "source_bound_ready": sum(1 for r in rows if r["source_bound_ready"]),
+                        "admission_ready": sum(1 for r in rows if r["admission_ready"]),
                         "held": sum(1 for r in rows if r["missing"]),
                         "errors": len(errors)}}
 
@@ -324,16 +343,24 @@ def op_route(units: list[dict], child: dict) -> dict:
         wave, consumer, route_kind = target
         ev = idx.get(u.get("key"), {}).get("evidence") or verify_mapping(u)
         ok = ev.get("decision") == "SOURCE_BOUND_VERIFIED"
+        owner_ok = u.get("owner") not in (None, "", "#")
+        # A route may only leave when the source verifies AND the owner is bound. Without an
+        # owner a ROUTE_OUT would name a consumer of a row nobody owns, which is exactly the
+        # ROUTE_OUT/null-owner shape the separated checker rejected.
+        route_out = ok and owner_ok
         routes.append({"atom": u.get("key"), "unit_id": u["unit_id"], "kind": kind,
                        "PH": "PH01", "W": wave, "B": consumer, "route_kind": route_kind,
                        "consumer": consumer,
                        "expected_set_snapshot": {"direct_clause_sha": u.get("direct_clause_sha"),
                                                  "payload_sha": u.get("payload_sha")},
-                       "route_out": ("ROUTE_OUT" if ok else "HOLD"),
-                       "first_fail": None if ok else ev.get("decision"),
+                       "source_verified": ok, "owner_bound": owner_ok,
+                       "route_out": "ROUTE_OUT" if route_out else "HOLD",
+                       "first_fail": (None if route_out else
+                                      (ev.get("decision") if not ok else "ROUTE_OWNER_UNBOUND")),
                        "owner": u.get("owner")})
     return {"routes": routes,
             "summary": {"routes": len(routes),
+                        "source_bound": sum(1 for r in routes if r["source_verified"]),
                         "route_out": sum(1 for r in routes if r["route_out"] == "ROUTE_OUT"),
                         "hold": sum(1 for r in routes if r["route_out"] == "HOLD")}}
 
@@ -369,7 +396,9 @@ def render_ledger(join: dict, child: dict, route: dict, units: list[dict]) -> st
     L = ["# SourceChildLedger.draft", "",
          "generated_at: NOT_IN_BODY - the wall clock lives in the receipt, so the ledger digest is reproducible",
          "claim_ceiling: DRAFT_ONLY - not a product outcome, not an ACK",
-         f"units: {len(units)}", f"join_ready: {join['summary']['ready']}",
+         f"units: {len(units)}",
+         f"source_bound_ready: {join['summary']['source_bound_ready']}",
+         f"admission_ready: {join['summary']['admission_ready']}",
          f"join_held: {join['summary']['held']}",
          f"child_ready: {child['summary']['ready']}", f"child_held: {child['summary']['held']}",
          f"routes_out: {route['summary']['route_out']}", f"routes_hold: {route['summary']['hold']}",

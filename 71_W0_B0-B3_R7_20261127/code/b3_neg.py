@@ -75,11 +75,18 @@ def run() -> dict:
                          "product_entry": "op_child+op_route over the mutated set",
                          "refused": bool(refused_by_child or refused_by_route),
                          "first_fail": first_fail,
-                         "verdict": "PASS_REFUSAL" if (refused_by_child or refused_by_route) else "FAIL"})
+                         "verdict": "REFUSAL_EXECUTED" if (refused_by_child or refused_by_route) else "FAIL"})
     counts = {}
     for r in rows:
         counts[r["verdict"]] = counts.get(r["verdict"], 0) + 1
-    out = {"schema": "SST.PH01.W0.B3.NegMutations@1", "generated_at": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
+    out = {"schema": "SST.PH01.W0.B3.NegMutations@1",
+           # this receipt records that a refusal FIRED; it is not a case verdict.
+           # Case verdicts belong to b3_neg_reconcile.json, which compares the declared
+           # FirstFail and the faithfulness of the applied mutation.
+           "verdict_owner": "b3_r7_neg_reconcile.json",
+           "superseded_by": "b3_r7_neg_reconcile.json",
+           "refusal_is_not_a_pass": True,
+           "generated_at": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
            "baseline": {"units": len(units), "atoms_ready_before": base_ready},
            "cases": rows, "counts": counts,
            "claim_ceiling": ("a refusal executed by the product entry over a mutated unit set; "

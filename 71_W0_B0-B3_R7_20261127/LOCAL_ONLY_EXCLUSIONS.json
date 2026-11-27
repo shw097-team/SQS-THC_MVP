@@ -4,14 +4,14 @@
  "excluded": [
   {
    "path": "40_OPS/b3_r7_product.json",
-   "sha256": "89bc94883a410cd0b9b94b1a2f742cf13f67accb8b054fe443a3d0482900c2ac",
-   "bytes": 241609,
+   "sha256": "5f7ca6d6e82270f2a04684a8b26b5f67b3efc3b0f7e1e1b112f558baaef5b09d",
+   "bytes": 266231,
    "reason": "EMBEDS_CLAUSE_SLICE"
   },
   {
    "path": "40_OPS/b3_r7_tqaep.json",
-   "sha256": "cc72cd5c4afabd4ad33261fee2c7588b260d780042a8b7fc21f2a023852e53ca",
-   "bytes": 1209992,
+   "sha256": "61f58376c497c8419102bc585b356cbbdf51d4a7bca4e56c4e1f9af10a0d3d60",
+   "bytes": 1289916,
    "reason": "EMBEDS_CLAUSE_SLICE"
   }
  ]

@@ -6264,7 +6264,7 @@
   {
    "tool_key": "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-005::ROW=623",
    "source_row": "623",
-   "requiredness": "REFERENCE_ONLY",
+   "requiredness": "UNKNOWN",
    "payload_sha": "725f5049c57876656ba54db1f79068c84d73ea72994c6c5943978da65edf14ce",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -6392,7 +6392,7 @@
   {
    "tool_key": "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-013::ROW=631",
    "source_row": "631",
-   "requiredness": "EVAL_ONLY_FOR_PROVIDER",
+   "requiredness": "UNKNOWN",
    "payload_sha": "8c6046109b8dff6fdd49d78b097a296fd54e80ad90a386eab165bc8704705cc5",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -6440,7 +6440,7 @@
   {
    "tool_key": "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-016::ROW=634",
    "source_row": "634",
-   "requiredness": "EVAL_ONLY_AS_FORMAT",
+   "requiredness": "UNKNOWN",
    "payload_sha": "6c6a8e01961b2157a733b8b557c640e39240150d634b6ddd53713381682d39f8",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -6488,7 +6488,7 @@
   {
    "tool_key": "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-019::ROW=637",
    "source_row": "637",
-   "requiredness": "EVAL_ONLY_WHEN_NEED",
+   "requiredness": "UNKNOWN",
    "payload_sha": "c26bf26eb5d86100916e7a6c98daf8cba81e230cc7c1b72712ee930630910941",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -6536,7 +6536,7 @@
   {
    "tool_key": "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-022::ROW=640",
    "source_row": "640",
-   "requiredness": "EVAL_ONLY_OPTIONAL",
+   "requiredness": "UNKNOWN",
    "payload_sha": "f5c908cfbed0ef8c482a28ef14b3438c6a1be42ea5938bfeba783bba3c36d689",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -6616,7 +6616,7 @@
   {
    "tool_key": "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-027::ROW=645",
    "source_row": "645",
-   "requiredness": "EVAL_ONLY_WHEN_GAP",
+   "requiredness": "UNKNOWN",
    "payload_sha": "c54f27bd016344a63883b848272f84ea053570862f9d6d5342af721d9fd5f431",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -6632,7 +6632,7 @@
   {
    "tool_key": "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-028::ROW=646",
    "source_row": "646",
-   "requiredness": "EVAL_ONLY_ALTERNATIVE",
+   "requiredness": "UNKNOWN",
    "payload_sha": "2ce5b70a85073b40cdadb8367ded1f889f504d52b42a25dcbd975d90747b09fc",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -6664,7 +6664,7 @@
   {
    "tool_key": "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-030::ROW=648",
    "source_row": "648",
-   "requiredness": "EVAL_ONLY_AFTER_BASELINE",
+   "requiredness": "UNKNOWN",
    "payload_sha": "0ef811e77c8a74ced0d85f6c6ab1a02f78b159006afee5715c0d0b693da672d8",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -6744,7 +6744,7 @@
   {
    "tool_key": "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-035::ROW=653",
    "source_row": "653",
-   "requiredness": "EVAL_ONLY_COMPARATOR",
+   "requiredness": "UNKNOWN",
    "payload_sha": "ad57c807ff73fc94b5981dac354a83194658035471c55ff51c334991344ee5d1",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -6760,7 +6760,7 @@
   {
    "tool_key": "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-036::ROW=654",
    "source_row": "654",
-   "requiredness": "EVAL_ONLY_COMPARATOR",
+   "requiredness": "UNKNOWN",
    "payload_sha": "575ee7e43a935c1a29b31f7860cb54205e1a775e769f5bc34957a3ab2e8f8e52",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -6776,7 +6776,7 @@
   {
    "tool_key": "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-037::ROW=655",
    "source_row": "655",
-   "requiredness": "EVAL_ONLY_COMPARATOR",
+   "requiredness": "UNKNOWN",
    "payload_sha": "892dd44c40e9ec3fb3a28b2136a0fa0a4146c9544c5532633e05b6de78ef2fea",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -6840,7 +6840,7 @@
   {
    "tool_key": "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-041::ROW=659",
    "source_row": "659",
-   "requiredness": "EVAL_ONLY_CONDITIONAL",
+   "requiredness": "UNKNOWN",
    "payload_sha": "52ef4fd0e6120c10456c3d06b5eb5656455367810f6ea28fb5b350e949145cf6",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -6856,7 +6856,7 @@
   {
    "tool_key": "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-042::ROW=660",
    "source_row": "660",
-   "requiredness": "EVAL_ONLY_RESEARCH",
+   "requiredness": "UNKNOWN",
    "payload_sha": "69de457c50ea2dc97d06e97ae1a2502f0fcaf2d6f531cd03025f1c418420910e",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -6872,7 +6872,7 @@
   {
    "tool_key": "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-043::ROW=661",
    "source_row": "661",
-   "requiredness": "EVAL_ONLY_RESEARCH",
+   "requiredness": "UNKNOWN",
    "payload_sha": "c67cfee6bfe4d3e4b6d1b0bdc9b25d70dd16fdfce853e7906910bc7033f9f045",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -6904,7 +6904,7 @@
   {
    "tool_key": "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-045::ROW=663",
    "source_row": "663",
-   "requiredness": "EVAL_ONLY_ADAPTER",
+   "requiredness": "UNKNOWN",
    "payload_sha": "ec496687edb264925b4d0d7741823105711f200a79be25af474f1489bf6bc790",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -6936,7 +6936,7 @@
   {
    "tool_key": "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-047::ROW=665",
    "source_row": "665",
-   "requiredness": "EVAL_ONLY_UNTIL_REPO",
+   "requiredness": "UNKNOWN",
    "payload_sha": "439051a74949cfc4c34ba5d96f2a1aee9d23bd80eb419b10601f20ab7df90990",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -6968,7 +6968,7 @@
   {
    "tool_key": "R3-REGISTRY-Q1::TOOL_R2_TECH54::TECH-049::ROW=667",
    "source_row": "667",
-   "requiredness": "REFERENCE_STANDARD",
+   "requiredness": "UNKNOWN",
    "payload_sha": "e9a4bcbda92ef7dea2fbe0dfcba777f2d0c8f858a17023cb5e9c7cca35027420",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -14482,7 +14482,7 @@
   {
    "tool_key": "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-005::ROW=1143",
    "source_row": "1143",
-   "requiredness": "REFERENCE_ONLY",
+   "requiredness": "UNKNOWN",
    "payload_sha": "dd07383ecde18a1b6401b5f864211750943bd2e2da41b62cbd0bb25b86dbee2f",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -14610,7 +14610,7 @@
   {
    "tool_key": "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-013::ROW=1151",
    "source_row": "1151",
-   "requiredness": "EVAL_ONLY_FOR_PROVIDER",
+   "requiredness": "UNKNOWN",
    "payload_sha": "4917b8b2f44747ea897e9a23baff16036c2fead6509174e2f33ce71d549e1fc4",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -14658,7 +14658,7 @@
   {
    "tool_key": "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-016::ROW=1154",
    "source_row": "1154",
-   "requiredness": "EVAL_ONLY_AS_FORMAT",
+   "requiredness": "UNKNOWN",
    "payload_sha": "762109b4702365a1b069c460d57dd2ec83054ec3387150b668dd0551f8845b36",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -14706,7 +14706,7 @@
   {
    "tool_key": "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-019::ROW=1157",
    "source_row": "1157",
-   "requiredness": "EVAL_ONLY_WHEN_NEED",
+   "requiredness": "UNKNOWN",
    "payload_sha": "9108228787d10b234df0a949e99440700909d5c6d505f87765c4b45a581882c3",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -14754,7 +14754,7 @@
   {
    "tool_key": "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-022::ROW=1160",
    "source_row": "1160",
-   "requiredness": "EVAL_ONLY_OPTIONAL",
+   "requiredness": "UNKNOWN",
    "payload_sha": "301b662b9c159b6bcff86ac63021b19bd2b16bbc3b90edbb7c10b15a73077d6b",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -14834,7 +14834,7 @@
   {
    "tool_key": "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-027::ROW=1165",
    "source_row": "1165",
-   "requiredness": "EVAL_ONLY_WHEN_GAP",
+   "requiredness": "UNKNOWN",
    "payload_sha": "8a8822dad1ee0562cbd58b1073c2fccdc1a7c6c9f8d5894555c8fdc6d80af432",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -14850,7 +14850,7 @@
   {
    "tool_key": "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-028::ROW=1166",
    "source_row": "1166",
-   "requiredness": "EVAL_ONLY_ALTERNATIVE",
+   "requiredness": "UNKNOWN",
    "payload_sha": "439b18d294ee717f0c495fe32faa60e73c6e57733f0bc966e58b215cfa63477e",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -14882,7 +14882,7 @@
   {
    "tool_key": "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-030::ROW=1168",
    "source_row": "1168",
-   "requiredness": "EVAL_ONLY_AFTER_BASELINE",
+   "requiredness": "UNKNOWN",
    "payload_sha": "33e848525b103ef251e5a3e8a5aead7af7a7fa7af4059c48ae656256bd7509c0",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -14962,7 +14962,7 @@
   {
    "tool_key": "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-035::ROW=1173",
    "source_row": "1173",
-   "requiredness": "EVAL_ONLY_COMPARATOR",
+   "requiredness": "UNKNOWN",
    "payload_sha": "ec19ee4c3b578075f0e76410dc12b0ca4d63036092ad93e83f36e1fa61417a24",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -14978,7 +14978,7 @@
   {
    "tool_key": "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-036::ROW=1174",
    "source_row": "1174",
-   "requiredness": "EVAL_ONLY_COMPARATOR",
+   "requiredness": "UNKNOWN",
    "payload_sha": "4a65bdf9fbce7ce35b0d99885237d6343d1a9b9c913a83cb6aa7a01001914589",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -14994,7 +14994,7 @@
   {
    "tool_key": "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-037::ROW=1175",
    "source_row": "1175",
-   "requiredness": "EVAL_ONLY_COMPARATOR",
+   "requiredness": "UNKNOWN",
    "payload_sha": "1c8d79473bcf2268fb0c61f12467d71cd9cf7dc2d575ad147fe29aa44122dc2d",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -15058,7 +15058,7 @@
   {
    "tool_key": "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-041::ROW=1179",
    "source_row": "1179",
-   "requiredness": "EVAL_ONLY_CONDITIONAL",
+   "requiredness": "UNKNOWN",
    "payload_sha": "153145666d77764b15362b5a8d94e27f3b3fafdd2d12175e1bbe43ab5ecd260c",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -15074,7 +15074,7 @@
   {
    "tool_key": "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-042::ROW=1180",
    "source_row": "1180",
-   "requiredness": "EVAL_ONLY_RESEARCH",
+   "requiredness": "UNKNOWN",
    "payload_sha": "15291a056302c2dde40e88c7b5479ced96883398ce2b31988302c64a00ed06ca",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -15090,7 +15090,7 @@
   {
    "tool_key": "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-043::ROW=1181",
    "source_row": "1181",
-   "requiredness": "EVAL_ONLY_RESEARCH",
+   "requiredness": "UNKNOWN",
    "payload_sha": "45e18f5a14d5ec7fcadc6ba8add9f48a1d8c2277fe1113f41c9e59d1b60e64c6",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -15122,7 +15122,7 @@
   {
    "tool_key": "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-045::ROW=1183",
    "source_row": "1183",
-   "requiredness": "EVAL_ONLY_ADAPTER",
+   "requiredness": "UNKNOWN",
    "payload_sha": "9943a297e8f077901ca19f371c4276e3d9bdd1a33e5ba8c62d4001060e604a22",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -15154,7 +15154,7 @@
   {
    "tool_key": "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-047::ROW=1185",
    "source_row": "1185",
-   "requiredness": "EVAL_ONLY_UNTIL_REPO",
+   "requiredness": "UNKNOWN",
    "payload_sha": "0100e1a3a68e51b7a9fbc196668c6a842035ca02fea0d28db9e820012bbd35cc",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",
@@ -15186,7 +15186,7 @@
   {
    "tool_key": "R3-REGISTRY-Q2::TOOL_R2_TECH54::TECH-049::ROW=1187",
    "source_row": "1187",
-   "requiredness": "REFERENCE_STANDARD",
+   "requiredness": "UNKNOWN",
    "payload_sha": "a58bbd2733c9e6902b35adea357b7e2c30ffb2cfebbe48b30cdd8201b7432ff8",
    "metadata": null,
    "kind": "Q_SOURCE_ROW",

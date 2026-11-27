@@ -1,6 +1,6 @@
 {
  "schema": "SST.PH01.W0.B0B3.DeliveryIndex@1",
- "generated_at": "2026-11-27T15:45:36+0800",
+ "generated_at": "2026-11-27T16:07:30+0800",
  "round_root": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127",
  "spec": {
   "version": "2026-11-27_r7_Native-first_CODEX_FINAL",
@@ -11,19 +11,19 @@
  "current_pointers": [
   {
    "role": "closeout",
-   "path": "60_CLOSEOUT/SST_PLP_PH01_W0_B0-B2_CLOSEOUT.md"
+   "path": "60_CLOSEOUT/SST_PLP_PH01_W0_B0-B2_CLOSEOUT_rev2.md"
   },
   {
    "role": "handoff",
-   "path": "60_CLOSEOUT/SST_PLP_PH01_W0_B0-B2_HANDOFF_B3_ADMISSION.md"
+   "path": "60_CLOSEOUT/SST_PLP_PH01_W0_B0-B2_HANDOFF_B3_ADMISSION_rev2.md"
   },
   {
    "role": "bootstrap",
-   "path": "60_CLOSEOUT/NEW_SESSION_BOOTSTRAP.md"
+   "path": "60_CLOSEOUT/NEW_SESSION_BOOTSTRAP_rev2.md"
   },
   {
    "role": "freeze",
-   "path": "40_OPS/r7_candidate_freeze.json"
+   "path": "40_OPS/r7_candidate_freeze.rev2.json"
   },
   {
    "role": "b3_admission",
@@ -32,13 +32,17 @@
   {
    "role": "preflight",
    "path": "00_PREFLIGHT/r7_preflight.json"
+  },
+  {
+   "role": "checker_verdict",
+   "path": "40_OPS/r7_checker_verdict.md"
   }
  ],
  "phase_status": {
   "B0": "HOLD_RIGHTS_CURRENCY",
   "B1": "PARTIAL",
   "B2": "PARTIAL",
-  "B3": "READY_EXECUTE_HOLD"
+  "B3": "READY_ATOM_FALSE_READY_EXECUTE_HOLD"
  },
  "four_ready": {
   "ReadyDraft": true,
@@ -71,5 +75,17 @@
  "published": {
   "state": "see publish record",
   "record": "50_PUBLISH/publish_record.json"
+ },
+ "revision": 2,
+ "rev1_documents": [
+  "60_CLOSEOUT/SST_PLP_PH01_W0_B0-B2_CLOSEOUT.md",
+  "60_CLOSEOUT/SST_PLP_PH01_W0_B0-B2_HANDOFF_B3_ADMISSION.md",
+  "60_CLOSEOUT/NEW_SESSION_BOOTSTRAP.md"
+ ],
+ "checker": {
+  "verdict_file": "40_OPS/r7_checker_verdict.md",
+  "rev1_verdict": "REJECT",
+  "mandatory_findings": 10,
+  "disposition": "see rev2 retraction table"
  }
 }

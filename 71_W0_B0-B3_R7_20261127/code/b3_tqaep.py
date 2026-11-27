@@ -311,7 +311,9 @@ def main() -> int:
         uid = u.get("unit_id")
         kind = u.get("kind")
         rec = {"case_id": cid, "unit_id": uid, "kind": kind, "verdict": None,
-               "actual": None, "reason": None}
+               "actual": None, "reason": None,
+               "expected_first_fail": c.get("expected"),
+               "observed_first_fail": None, "first_fail_matches": None}
 
         if kind in ("CHILD", "PROTECTED"):
             chk = check_child_unit(u)
@@ -393,6 +395,14 @@ def main() -> int:
         else:
             rec.update(verdict="NOT_EXECUTED", reason=f"unknown kind {kind!r}")
 
+        _obs = rec["actual"].get("first_fail") if isinstance(rec.get("actual"), dict) else None
+        rec["observed_first_fail"] = _obs
+        rec["first_fail_matches"] = (None if rec["expected_first_fail"] is None else
+                                     (None if _obs is None else rec["expected_first_fail"] == _obs))
+        _obs = rec["actual"].get("first_fail") if isinstance(rec.get("actual"), dict) else None
+        rec["observed_first_fail"] = _obs
+        rec["first_fail_matches"] = (None if rec["expected_first_fail"] is None else
+                                     (None if _obs is None else rec["expected_first_fail"] == _obs))
         results[cid] = rec
 
     counts = collections.Counter(r["verdict"] for r in results.values())

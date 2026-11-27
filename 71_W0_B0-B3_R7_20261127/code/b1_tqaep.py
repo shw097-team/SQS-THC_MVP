@@ -281,6 +281,16 @@ def run_case(case: dict, spec: dict, unit: dict, ctx_via_cli: list[str]) -> dict
                 rec["hold_reason"] = ("FIXTURE_ONLY_NO_PRODUCT_CALLABLE: the refusal fires in the author "
                                       "fixture domain with the original FirstFail string, but the original "
                                       "slot mapping/schema is unbound (D-3)")
+    # both polarities recorded: the SPEC's declared first-fail beside what the product returned
+    obs = None
+    if isinstance(rec.get("actual"), dict):
+        for k in ("first_fail", "observed_first_fail"):
+            if rec["actual"].get(k):
+                obs = rec["actual"][k]
+                break
+    rec["observed_first_fail"] = obs
+    rec["first_fail_matches"] = (None if obs is None else
+                                 rec["expected_first_fail"] == obs)
     return rec
 
 

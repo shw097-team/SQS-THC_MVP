@@ -182,6 +182,20 @@ def receive(consumer: str, env: dict, env_bytes: bytes) -> dict:
     if absent:
         return fail("AUTHORITY_FIELD_ABSENT:" + ",".join(absent))
     rec["authority_checked"] = {k: auth[k] for k in need}
+    # The envelope's own authority block carries its own interval. A live window in front of
+    # an expired envelope does not make the envelope current; this is the fail-closed check.
+    def _ts(s):
+        try:
+            return time.mktime(time.strptime(str(s)[:19], "%Y-%m-%dT%H:%M:%S"))
+        except Exception:
+            return None
+    exp_ts, now_ts = _ts(auth.get("expires_at")), time.time()
+    rec["envelope_authority_interval"] = {"valid_from": auth.get("valid_from"),
+                                          "expires_at": auth.get("expires_at"),
+                                          "checked_at_run_clock": now()}
+    if exp_ts is not None and exp_ts <= now_ts:
+        rec["envelope_authority_expired_at_receive"] = True
+        return fail("ENVELOPE_AUTHORITY_EXPIRED")
     # currency, derived from the envelope's own authority block against the live window
     live = json.load(open(WINDOW, encoding="utf-8")).get("window_id") if os.path.isfile(WINDOW) else None
     env_ref = str(auth.get("rights_check_ref") or "")
@@ -213,6 +227,23 @@ def selftest() -> int:
 
     run(None, "BASELINE_POS", lambda e: None)
     arms[-1]["pass"] = arms[-1]["decision"] == "ACCEPT"
+    if not arms[-1]["pass"]:
+        # A negative arm whose positive baseline already fails cannot tell its mutation apart
+        # from the baseline it was applied to. Report the inadmissible baseline, not 10/11.
+        out = {"schema": "SST.PH01.W0.B0B3.ConsumerSelfTest@1",
+               "verdict": "HOLD_BASELINE_NOT_VALID",
+               "baseline_decision": arms[-1]["decision"],
+               "baseline_first_fail": arms[-1]["first_fail"],
+               "passed": 0, "total": 11, "arms": arms,
+               "note": ("the envelope's own authority interval has expired, so every arm "
+                        "rejects for the same reason the baseline does; the mutations are "
+                        "not distinguished in this round")}
+        json.dump(out, open(os.path.join(OPS, "r7_consumer_selftest.json"), "w",
+                            encoding="utf-8", newline="\n"), ensure_ascii=False, indent=1)
+        print(json.dumps({"verdict": out["verdict"], "baseline": arms[-1]["first_fail"],
+                          "written": os.path.join(OPS, "r7_consumer_selftest.json")},
+                         ensure_ascii=False, indent=1))
+        return 0
     run(None, "WIRE_VERSION", lambda e: e.__setitem__("wire_version", "SST.B0.SourceReadSet/1"))
     run(None, "RAW_SHA", lambda e: e["entries"][0].__setitem__("sha", "0" * 64))
     run(None, "SPAN", lambda e: e["entries"][0].__setitem__("clause_span", [571, 579]))

@@ -3,11 +3,11 @@
  "repo": "https://github.com/shw097-team/SQS-THC_MVP",
  "branch": "main",
  "visibility": "public",
- "commit": "a0745127d9894750ad6dbd7740872fed760d5a0d",
+ "commit": "PENDING",
  "previous_remote_head": "24a59f5cbc12a5fc5a2dfcb4a5cf879b4628c515",
  "pushed_paths": "71_W0_B0-B3_R7_20261127/",
- "published_files": 48,
- "published_bytes": 5931953,
+ "published_files": "computed at commit A; see PUBLISHED_MANIFEST.tsv rows",
+ "published_bytes": "computed at commit A; see PUBLISHED_MANIFEST.tsv rows",
  "auth": "one-shot http.extraheader built in the same shell command from the credential file; not written to git config, argv beyond the header, URL, log or commit",
  "local_only_exclusions": [
   {
@@ -23,33 +23,13 @@
    "reason": "EMBEDS_CLAUSE_SLICE"
   }
  ],
- "readback": [
-  {
-   "path": "docs/SST_PLP_PH01_W0_B0-B2_CLOSEOUT.md",
-   "match": true
-  },
-  {
-   "path": "docs/SST_PLP_PH01_W0_B0-B2_HANDOFF_B3_ADMISSION.md",
-   "match": true
-  },
-  {
-   "path": "40_OPS/r7_candidate_freeze.json",
-   "match": true
-  },
-  {
-   "path": "code/r7_preflight.py",
-   "match": true
-  },
-  {
-   "path": "PUBLISHED_MANIFEST.tsv",
-   "match": true
-  }
- ],
+ "readback": [],
  "readback_method": "anonymous raw.githubusercontent.com at commit a074512…, sha256 compared with the staged file (4/4 matched on 64747d6; re-verified on a074512 below)",
  "commit_lag_note": "this record names a074512, the commit that carries the superseding tree (digest 45d41c59…); a later doc-only commit that updates final_head_at_readback advances HEAD by one, which is recorded in the field itself rather than chased",
  "publication_ne_acceptance": true,
- "recorded_at": "2026-11-27T15:44:47+0800",
- "supersedes_commit": "64747d6849bbd0b36b7e72f9525c504e3a251ab7",
- "freeze_digest_published": "45d41c592ef3e89b755a05a7db28798fee044c8e1a81a867b1528e7e00af71b2",
- "final_head_at_readback": null
+ "recorded_at": "2026-11-27T16:07:45+0800",
+ "supersedes_commit": "a0745127d9894750ad6dbd7740872fed760d5a0d",
+ "freeze_digest_published": "65ef7a75107d0bb57401194e37bb8dd2b989efbee173d10d76f78b6ed4e1f7df",
+ "final_head_at_readback": null,
+ "revision": 2
 }

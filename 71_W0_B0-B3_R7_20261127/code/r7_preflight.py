@@ -154,11 +154,16 @@ def b3_admission() -> dict:
     win = load(os.path.expanduser("~/.hgk-owner/window.json"))
     ops = {
         "JOIN": {"callable": "b3_product.op_join", "rows": prod["join"]["rows"],
-                 "ready": prod["join"]["ready"], "held": prod["join"]["held"]},
+                 "source_bound_ready": prod["join"]["source_bound_ready"],
+                 "admission_ready": prod["join"]["admission_ready"],
+                 "held": prod["join"]["held"]},
         "CHILD": {"callable": "b3_product.op_child", "atoms": prod["child"]["atoms"],
                   "ready": prod["child"]["ready"], "held": prod["child"]["held"]},
         "ROUTE": {"callable": "b3_product.op_route", "routes": prod["route"]["routes"],
-                  "route_out": prod["route"]["route_out"], "hold": prod["route"]["hold"]},
+                  "source_bound": prod["route"]["source_bound"],
+                  "route_out": prod["route"]["route_out"], "hold": prod["route"]["hold"],
+                  "note": ("route_out requires a bound owner; 365/365 units carry the literal "
+                           "'#' as owner, so no route may leave this round")},
         "COMMIT": {"callable": "b3_product.op_commit", "receipt": prod["commit"]},
     }
     output_root = os.path.join(OPS, "b3_ledger")
@@ -176,9 +181,12 @@ def b3_admission() -> dict:
                                 for r in receipt["receipts"]]}
     ready = {
         "ReadyDraft": True,
-        "ReadyAtom": True,
+        "ReadyAtom": False,
         "ReadyExecute": False,
         "ReadyAccept": False,
+        "readyatom_reason": ("no atom carries an owner (365/365 are the literal '#') and no "
+                             "attachment is ratified; a source-bound atom is not an admissible "
+                             "atom"),
     }
     out = {
         "schema": "SST.PH01.W0.B3.Admission@1",
@@ -187,9 +195,19 @@ def b3_admission() -> dict:
         "host": {"hostname": socket.gethostname(), "os": platform.platform(),
                  "python": platform.python_version(), "principal": os.environ.get("USERNAME")},
         "ops": ops,
-        "output_root": {"path": output_root, "preimage_state": preimage_probe,
-                        "writer": "b3_product.op_commit (single file, 'xb', readback compared)",
-                        "single_writer": True},
+        "output_root": {
+            "path": output_root,
+            "preimage_state_at_first_slice": ("ABSENT — the directory was created by the first "
+                                              "guarded write at 2026-11-27T15:40+0800; the write "
+                                              "log is the two file mtimes below"),
+            "postimage_state_at_this_run": preimage_probe,
+            "writer": "b3_product.op_commit (single file, 'xb', readback compared)",
+            "single_writer": True,
+            "known_defect": ("the first slice's own product receipt was overwritten by the "
+                             "immediate re-run used as the guard test; the committed bytes are "
+                             "recoverable from the file (sha 1861ca3a…) but the receipt that "
+                             "asserted preimage ABSENT for slice1 is not on disk"),
+        },
         "oracles": {"source_bound": "direct_parent_ref + resolved_source_ref + direct_clause_sha",
                     "neg_declared_first_fail": {"executed": recon["cases_executed"],
                                                 "verdicts": recon["verdict_counts"],
@@ -201,7 +219,12 @@ def b3_admission() -> dict:
                      "write_locks": [f["write_lock_probe"] for f in prior["files"]]},
         "rights": {"window_id": win.get("window_id"), "task_id": win.get("task_id"),
                    "effect_class_ceiling": win.get("effect_class_ceiling"),
-                   "expires_at": win.get("expires_at"), "state": win.get("state")},
+                   "expires_at": win.get("expires_at"), "state": win.get("state"),
+                   "ops_used": win.get("ops_used"), "max_ops": win.get("max_ops"),
+                   "op_counter_note": ("ops_used stayed 0: the draft write is a local file "
+                                       "create guarded by reading the window, not an operation "
+                                       "countersigned by the broker. rights_ref names a window, "
+                                       "not a signed per-op receipt")},
         "b0_input": b0,
         "four_ready": ready,
         "readyexecute_blockers": [
