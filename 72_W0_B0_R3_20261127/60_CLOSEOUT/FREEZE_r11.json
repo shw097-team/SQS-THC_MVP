@@ -1,0 +1,35 @@
+{
+ "schema": "SST.PH01.W0.B0.R3.Freeze/1",
+ "revision": "r11",
+ "frozen_at": "2026-11-27T22:43:29.111019+08:00",
+ "wave_root": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127",
+ "members": 116,
+ "manifest": {
+  "path": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\60_CLOSEOUT\\FREEZE_MANIFEST_r11.tsv",
+  "bytes": 12893,
+  "sha256": "86d6e8db34283f3468998cb3c701a8c16fd50a18327798f85659f6fc326f2155"
+ },
+ "convention": "path<TAB>sha256<TAB>byte_length<LF>; members sorted by the UTF-8 bytes of the relative path",
+ "not_a_member": [
+  "60_CLOSEOUT/FREEZE_*",
+  "60_CLOSEOUT/FREEZE_MANIFEST_*",
+  "the closeout document itself",
+  "70_PUBLISH/PUBLISH_READBACK_*",
+  "30_VERIFY/verdict*.json (verdicts are about the candidate and arrive after the freeze)"
+ ],
+ "claim_ceiling": "Freezes the bytes of this round's code, tests, receipts and closeout. It asserts nothing about semantics beyond what the receipts measured, and it excludes itself, its manifest and the generated document.",
+ "receipts": {
+  "B1": {
+   "verdict": "ACCEPTED",
+   "sha256": "cb9be7dfe5fd1c46ad2674771a0563e9eae721b54c3c600bf169a461e6932197"
+  },
+  "B2": {
+   "verdict": "ACCEPTED",
+   "sha256": "372003e3eef1c64fc2a9146833f5946718b8801ea8dc3b304d0663a9385a280c"
+  },
+  "B3": {
+   "verdict": "ACCEPTED",
+   "sha256": "0258834a444d78297c5427abc56ac56ea72a960a4d8196a263e23fd5aa55640f"
+  }
+ }
+}

@@ -1,0 +1,20 @@
+{
+ "schema": "SST.PH01.W0.B0.R3.CheckerVerdict/1",
+ "transcription_note": "Persisted by the making session from the separated checker's returned JSON (subagent sa-0-599f7bb1, deleg_0dab2bfb, 2026-11-27T22:26:26+08:00). Fields kept; the session edited nothing. Reviewed candidate: the r9 freeze manifest 6871537f… (106 members).",
+ "checker": "SST_PH01_W0_B0_r9_separation_checker_round2",
+ "verdict": "REJECT",
+ "reviewed_at": "2026-11-27T22:26:26+08:00",
+ "candidate_manifest_sha256": "6871537ff2f9b26649cfd5c28c0b4ace77d828d267d845c9e84a938c0ca3d025",
+ "summary": "Round-1 five FAILs are genuinely closed with no regression, but the package is still unacceptable: one manifest member (build_closeout.py) was modified 59 s after the freeze, §5 cited two non-current figures (73 cases vs 80 measured; fixture pin 4aaaf297… vs 59c55534…), and two new checks were existence-only (VERIFIED could pass with C:/Windows/win.ini).",
+ "findings": [
+  {"item": 1, "result": "PASS", "evidence": "each of the five repairs reproduced by read-only in-memory probes: attempt=true→WIRE_INVALID; inherited_sha=0*64→TUPLE_MISMATCH; VERIFIED+bad ref→MANIFEST_EVIDENCE_UNRESOLVED; authority evaluated with source_reads=0 on three arms; PROVIDER_VERSIONED with all-null epochs→EPOCH_UNBOUND"},
+  {"item": 2, "result": "PASS", "evidence": "fixture baseline 3 consumers ACCEPTED; prod re-run 2/2 ACCEPTED with rows equal to the stored receipts; rights_check_ref differs per source but is only an envelope-level receipt with a sid suffix"},
+  {"item": 3, "result": "PASS", "evidence": "containment enforced before open (C:/Windows/win.ini→TUPLE_MISMATCH, source_reads=0); prefix-sibling and case/trailing-slash variants correct; junction→PATH_REPARSE_DENIED; before/after size+mtime+inode compared. Residual: empty allowed_roots skips the check (fail-open, unreachable in the two pinned deployments)"},
+  {"item": 4, "result": "PASS", "evidence": "baseline not harmed; EPOCH_UNBOUND is per-source and only on all-null; MANIFEST_EVIDENCE_UNRESOLVED only on VERIFIED with null/''/missing ref"},
+  {"item": 5, "result": "FAIL", "evidence": "manifest self-hash matches but 105/106 members match disk: build_closeout.py manifest cfe4cc67…/23192 B vs disk f6e64708…/23525 B, mtime 22:20:36 later than the 22:19:36 freeze. Also the declared 'UTF-8 path order' is actually case-insensitive (Path ordering)"},
+  {"item": 6, "result": "FAIL", "evidence": "§7/§8/§4 honest, but §5 cites 73 cases (measured 80) and fixture pin 4aaaf297… (r9 pin 59c55534…), claims a HOLD_BASELINE_NOT_VALID mechanism the harness does not implement, and the title still says r8"},
+  {"item": 7, "result": "PASS", "evidence": "product log ends with 'Ran 137 tests in 414.716s', 'OK', 'EXIT=0'; 137 '… ok' lines; no FAILED/ERROR"},
+  {"item": 8, "result": "FAIL", "evidence": "no private key or owner key leaks, but the LOCAL_ONLY clause sentence sits in DEPLOYMENT_prod_*_r9.json, the required_set files, T1_BASELINE and the three consumer receipts' expected block, and travelled to the public mirror in commit b144f63"},
+  {"item": 9, "result": "FAIL", "evidence": "MANIFEST_EVIDENCE_UNRESOLVED was existence-only (VERIFIED + C:/Windows/win.ini accepted; the deployment's UNVERIFIED was never compared); EPOCH_UNBOUND passed on a bare acl:v1 string; Path.is_file() on a caller-supplied ref ran before check_rights"}
+ ]
+}

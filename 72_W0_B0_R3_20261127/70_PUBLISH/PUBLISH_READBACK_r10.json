@@ -2,8 +2,8 @@
  "schema": "SST.PH01.W0.B0.R3.PublishReadback/1",
  "increment": 2,
  "revision": "r10",
- "commit": "cbb9ca14d46e01aff4e201c8402216f88046d0d8",
- "remote_main": "cbb9ca14d46e01aff4e201c8402216f88046d0d8",
+ "commit": "21cdd44b5c4035746a6558a4b2855306dd03b48a",
+ "remote_main": "21cdd44b5c4035746a6558a4b2855306dd03b48a",
  "remote_equals_local": true,
  "files_published": 119,
  "redacted_files": 26,
@@ -16,5 +16,5 @@
  ],
  "notice_readback_bytes": 6083,
  "notice_readback_has_redaction": true,
- "fixed_link": "https://github.com/shw097-team/SQS-THC_MVP/commit/cbb9ca14d46e01aff4e201c8402216f88046d0d8"
+ "fixed_link": "https://github.com/shw097-team/SQS-THC_MVP/commit/21cdd44b5c4035746a6558a4b2855306dd03b48a"
 }

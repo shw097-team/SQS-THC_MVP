@@ -1,10 +1,12 @@
 # REDACTION NOTICE — LOCAL_ONLY clause text
 
-This directory publishes the r10 candidate of SST PH01 W0 B0 R3.
+This directory publishes the r11 candidate of SST PH01 W0 B0 R3 (work root
+`SST_PH01_W0_B0_R3_20261127`).
+
+## 1. What was redacted in this wave
 
 The clause value carried by the B0 envelope is LOCAL_ONLY for its declared consumers.
-Every published copy therefore replaces that one clause sentence with
-`<LOCAL_ONLY_REDACTED>`; the pinned originals remain in the work root with the digests below.
+Every published copy replaces exactly that sentence with `<LOCAL_ONLY_REDACTED>`.
 
 | path | original sha256 | published sha256 | occurrences |
 |---|---|---|---|
@@ -34,12 +36,81 @@ Every published copy therefore replaces that one clause sentence with
 | `40_OPS/r9_consumer_B2_receipt.json` | `6b277f9603866d782a69539c9399f3c7fc3e88c46b4d6f5eb0c0ee845527755c` | `1a7d17e6dd2beaf87032278f7c055dd4101385e24e070680e4f714bf2d67a5aa` | 2 |
 | `40_OPS/r9_consumer_B3_receipt.json` | `26b6845d95dd242c80d6d4d81a798aacc47923270d53a02fb222764ba0067004` | `4e74cca4bd4531e3de386ed0a233342b60a6a387538635e4df2522184b5d6e75` | 2 |
 | `70_PUBLISH/publish_redacted.py` | `7b1d4e5a82e30f60c10ba6e9e1ff385dd16d9d9049903e7e4f2d46f6bee1a923` | `5239380c6feddcf7ecb3449e09fac210995036091cb7a27ef9e354a7bb015eaa` | 1 |
+| `70_PUBLISH/publish_v3.py` | `d0fcba1a0f4c3e8030149a114f9993185c07b68628b754412999d253e5850acb` | `135d06071a997064f39ad363118f9224756eb20438c742ab77680505fb17f4b8` | 1 |
 
-Consequences a reader must know:
+## 2. What this publication cannot retract
+
+Commit `b144f63` in this repository published the unredacted r8 copies. History is not
+rewritten. This notice is the record that those bytes disclosed one clause sentence.
+
+## 3. Pre-existing residue elsewhere in this repository (56 files at `21cdd44b5c40`)
+
+The same sentence also sits in files this wave did not author. They are listed so the
+disclosure is complete; redacting them would rewrite other rounds' delivered bytes and is
+left to the rights holder.
+
+- `00_PREFLIGHT/required_set_req12_read_all_2026-11-25.json`
+- `00_PREFLIGHT/required_set_req12_read_w0m_2026-11-25.json`
+- `20_DEV/tests/test_b0_return.py`
+- `20_DEV/tests/test_product_read.py`
+- `20_DEV/tests/trust_fixture.py`
+- `30_VERIFY/commander_recheck_2026-11-25.json`
+- `40_OPS/ops_r4_f_neg_pin.json`
+- `40_OPS/ops_r4_f_neg_pin.raw/stdout.txt`
+- `40_OPS/ops_r4_f_neg_span.json`
+- `40_OPS/ops_r4_f_neg_span.raw/stdout.txt`
+- `40_OPS/ops_r4_f_pos.json`
+- `40_OPS/ops_r4_f_pos.raw/stdout.txt`
+- `40_OPS/ops_r4_g_neg_pin.json`
+- `40_OPS/ops_r4_g_neg_pin.raw/stdout.txt`
+- `40_OPS/ops_r4_g_neg_span.json`
+- `40_OPS/ops_r4_g_neg_span.raw/stdout.txt`
+- `40_OPS/ops_r4_g_pos.json`
+- `40_OPS/ops_r4_g_pos.raw/stdout.txt`
+- `40_OPS/ops_r4_h_neg_pin.json`
+- `40_OPS/ops_r4_h_neg_pin.raw/stdout.txt`
+- `40_OPS/ops_r4_h_neg_span.json`
+- `40_OPS/ops_r4_h_neg_span.raw/stdout.txt`
+- `40_OPS/ops_r4_h_pos.json`
+- `40_OPS/ops_r4_h_pos.raw/stdout.txt`
+- `40_OPS/ops_r4_neg_pin.json`
+- `40_OPS/ops_r4_neg_pin.raw/stdout.txt`
+- `40_OPS/ops_r4_pos.json`
+- `40_OPS/ops_r4_pos.raw/stdout.txt`
+- `40_OPS/ops_r4_possealed.json`
+- `40_OPS/ops_r4_possealed.raw/stdout.txt`
+- `40_OPS/ops_r4_r1_neg_pin.json`
+- `40_OPS/ops_r4_r1_neg_pin.raw/stdout.txt`
+- `40_OPS/ops_r4_r1_pos.json`
+- `40_OPS/ops_r4_r1_pos.raw/stdout.txt`
+- `40_OPS/ops_r4_r2_neg_pin.json`
+- `40_OPS/ops_r4_r2_neg_pin.raw/stdout.txt`
+- `40_OPS/ops_r4_r2_pos.json`
+- `40_OPS/ops_r4_r2_pos.raw/stdout.txt`
+- `40_OPS/ops_r4_r3_neg_pin.json`
+- `40_OPS/ops_r4_r3_neg_pin.raw/stdout.txt`
+- `40_OPS/ops_r4_r3_pos.json`
+- `40_OPS/ops_r4_r3_pos.raw/stdout.txt`
+- `40_OPS/ops_r4_r4_neg_pin.json`
+- `40_OPS/ops_r4_r4_neg_pin.raw/stdout.txt`
+- `40_OPS/ops_r4_r4_pos.json`
+- `40_OPS/ops_r4_r4_pos.raw/stdout.txt`
+- `40_OPS/ops_r4_r5_neg_pin.json`
+- `40_OPS/ops_r4_r5_neg_pin.raw/stdout.txt`
+- `40_OPS/ops_r4_r5_pos.json`
+- `40_OPS/ops_r4_r5_pos.raw/stdout.txt`
+- `40_OPS/ops_run_r4_pos1.json`
+- `40_OPS/ops_run_r4_pos1.raw/stdout.txt`
+- `40_OPS/ops_run_r4_pos2.json`
+- `40_OPS/ops_run_r4_pos2.raw/stdout.txt`
+- `SST_PLP_PH01_W0_B0_CLOSEOUT.md`
+- `SST_PLP_PH01_W0_B0_HANDOFF.md`
+
+## 4. Consequences a reader must know
 
 1. A redacted `observed.value` / `expected_value` no longer re-derives from the source, so the
-   published envelope and receipts are a *projection*; verify them against the local originals.
-2. The earlier commit `b144f63` in this repository published the unredacted r8 copies. History is
-   not rewritten; this notice is the record that those bytes disclosed one clause sentence.
-3. `20_TESTS/fixture/TEST_ONLY_keypair.json` is withheld (test private key); its public half and the
-   receipt it signed are published, so fixture verification still works.
+   published envelope and receipts are a *projection*. Verify them against the local originals
+   whose digests are in this table.
+2. `20_TESTS/fixture/TEST_ONLY_keypair.json` is withheld (test private key). Its public half and
+   the receipt it signed are published, so fixture verification still works.
+3. Engine receipts git ignores (`*.logs`, `*.attempts.ndjson`) are not published and not counted.

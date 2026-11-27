@@ -45,7 +45,8 @@ def main() -> int:
     base = load(PRE / "T1_BASELINE_20261127.json")
     prod = load(OPS / "b0_producer_run_r8_20261127.json")
     t3 = load(OPS / "t3_f1f2_measurement_20261127.json")
-    receipts = {c: load(OPS / f"{REV}_consumer_{c}_receipt.json") for c in ("B1", "B2", "B3")}
+    RECEIPT_REV = "r10"   # the receipts minted against the frozen deployment, independent of doc revision
+    receipts = {c: load(OPS / f"{RECEIPT_REV}_consumer_{c}_receipt.json") for c in ("B1", "B2", "B3")}
     verdict = load(VERIFY / "verdict.json") if (VERIFY / "verdict.json").exists() else None
     log = (OPS / "b0_product_test_r8_20261127.log")
     log_txt = log.read_text(encoding="utf-8", errors="replace") if log.exists() else ""
@@ -178,34 +179,40 @@ def main() -> int:
               f"歷史受界收據 `{f2o['historical_bounded_receipt']['verdict']}` 仍有效。上限：非全機 OFF 證明（遞移 import／kernel/registry 寫入／窗後網路皆未證）。\n")
 
     md.append("### 7｜分離接受（獨立 Checker）\n")
-    r1 = load(VERIFY / "verdict_r8_round1.json") if (VERIFY / "verdict_r8_round1.json").exists() else None
-    if r1:
-        md.append(f"**第一輪（r8 候選）判定：{r1['verdict']}** — {r1['checker']}，{r1['reviewed_at']}。"
-                  "受檢識別：envelope `" + r1["candidate_ids"]["envelope_raw_sha256"][:16]
-                  + "…`、deployment `" + r1["candidate_ids"]["deployment_sha256"][:16]
-                  + "…`、receiver.py `" + r1["candidate_ids"]["receiver_py_sha256"][:16] + "…`。\n")
-        md.append("| 第一輪判定 | 缺陷 | 本輪（r9）修復 | 對應新臂 |\n|---|---|---|---|\n"
-                  "| FAIL item 3 | `errors[].attempt=true` 被接受（True==1） | `attempt` 改 `is_int` 嚴格判定 | "
-                  "`test_error_attempt_bool` |\n"
-                  "| FAIL item 3 | `source_manifest.inherited_sha` 只驗形狀、未釘值 | 與 deployment 釘住的 inherited manifest 精確比對 | "
-                  "`test_inherited_manifest_is_pinned` |\n"
-                  "| FAIL item 3 | `VERIFIED` 搭配不存在的 `evidence_ref` 被接受 | VERIFIED 必須有可解析的證據檔，否則 `MANIFEST_EVIDENCE_UNRESOLVED` | "
-                  "`test_verified_manifest_needs_resolvable_evidence`／`_without_evidence_ref` |\n"
-                  "| FAIL item 5 | 權利判定在讀取來源 bytes 之後 | authority／區間／epoch 全部前置於任何內容讀取 | "
+    rounds = sorted(VERIFY.glob("verdict_r*_round*.json"))
+    if rounds:
+        md.append("| 輪次 | 判定 | 受檢候選 | 檢查者 | 時間 | 阻擋項 |\n|---|---|---|---|---|---|\n")
+        for rp in rounds:
+            rv = load(rp)
+            blocking = rv.get("blocking") or [f['item'] for f in rv.get("findings", [])
+                                               if f.get("result") == "FAIL"]
+            md.append(f'| `{rp.name}` | **{rv.get("verdict")}** | `{str(rv.get("candidate_manifest_sha256"))[:16]}…` | '
+                      f'{rv.get("checker")} | {rv.get("reviewed_at")} | {len(blocking)} |')
+        md.append("\n"
+                  "第一輪（r8）判定的五項缺陷與第二輪（r9）判定的四項缺陷，逐項修復如下：\n")
+        md.append("| 缺陷 | 修復 | 對應臂 |\n|---|---|---|\n"
+                  "| `errors[].attempt=true` 被接受（True==1） | `attempt` 改 `is_int` 嚴格判定 | `test_error_attempt_bool` |\n"
+                  "| `source_manifest.inherited_sha` 只驗形狀 | 與 deployment 釘住的 inherited manifest 精確比對 | `test_inherited_manifest_is_pinned` |\n"
+                  "| `VERIFIED` 搭配不存在的 `evidence_ref` 被接受 | 先拒「把 deployment 的 UNVERIFIED 升級成 VERIFIED」，再要求 evidence 位元組 sha 等於 deployment 釘值 | "
+                  "`test_verified_manifest_needs_resolvable_evidence`／`_bound_to_the_deployment_digest`／`_without_evidence_ref` |\n"
+                  "| 權利判定在讀取來源 bytes 之後 | authority／區間／epoch 全部前置於任何內容讀取（probe 證 source_reads=0） | "
                   "`test_rights_decided_before_any_source_byte` |\n"
-                  "| FAIL item 5 | `PROVIDER_VERSIONED` 搭配全 null epoch 被接受 | 至少一個真 epoch 值，否則 `EPOCH_UNBOUND` | "
-                  "`test_provider_epoch_cannot_be_nulled` |\n"
-                  "| 非強制 | pinned locator 無 containment／reparse 檢查 | 新增 `allowed_roots` containment、reparse 拒絕、讀前後 identity/size 比對 | "
+                  "| `PROVIDER_VERSIONED` 全 null 或單字串即通過 | 需 deployment 綁定的 provider_ref＋真實 acl/rights epoch，且 rights_epoch 須等於 provider 現值 | "
+                  "`test_provider_epoch_cannot_be_nulled`／`_epoch_string_without_provider_is_not_an_epoch`／`_epoch_bound_provider_with_stale_epoch` |\n"
+                  "| pinned locator 無 containment／reparse | `allowed_roots` containment、reparse 拒絕、讀前後 identity/size 比對 | "
                   "`test_pinned_locator_outside_allowed_roots` |\n"
-                  "| 非強制 | `rights_check_ref` 未區分來源 | 改為 `window:receipt[:16]:source_id` | §4 三端收據 |\n")
-        md.append(f"\n本輪 r9 已逐項修復並重跑；三端真接收以 r9 deployment 重做（見 §4）。此表為第一輪 REJECT 的保留記錄，不被新判定覆蓋。\n")
+                  "| `rights_check_ref` 未區分來源 | `window:receipt[:16]:source_id` | §4 三端收據 |\n"
+                  "| 凍結後成員被改（兩次） | 成員集改為**強制謂詞**（`EXCLUDED_PREFIXES`＋`EXCLUDED_EXACT`），寫入後即驗「無被排除檔入列」，且發布收據移出成員集 | "
+                  "§11 凍結自我驗證 |\n"
+                  "| 文件引用舊數字／不存在的 verdict 路徑 | 標題、案數、fixture pin 全部改為從收據與模組 pin 讀取；本表逐輪列出實存 verdict 檔 | §5、§7 |\n"
+                  "| LOCAL_ONLY 句進入可散布檔 | 26 檔改為 `<LOCAL_ONLY_REDACTED>`；repo 內既有殘留逐條列於 `REDACTION_NOTICE.md` | §11 |\n")
     if verdict:
-        md.append(f"\n**本輪（r9 候選）判定：{verdict.get('verdict')}**（{verdict.get('checker')}，{verdict.get('reviewed_at')}）。\n"
-                  f"- 受檢候選：`{verdict.get('candidate_manifest_sha256')}`；只讀、未改候選。\n"
-                  f"- 主要結論：{verdict.get('summary')}\n"
-                  f"- 逐項：{verdict.get('findings')}\n")
+        md.append(f"\n**本輪最終判定：{verdict.get('verdict')}**（{verdict.get('checker')}，{verdict.get('reviewed_at')}）。"
+                  f"受檢候選 `{verdict.get('candidate_manifest_sha256')}`。\n"
+                  f"- 結論：{verdict.get('summary')}\n"
+                  f"- 阻擋項：{verdict.get('blocking')}\n")
     else:
-        md.append("\n**本輪（r9 候選）判定：HOLD** — `30_VERIFY/verdict.json` 尚未回填；本件不得引用為已接受。\n")
+        md.append("\n**本輪最終判定：PENDING** — 尚無 `30_VERIFY/verdict.json`；本件不得引用為已接受。\n")
 
     md.append("### 8｜狀態與本次工程寫入\n")
     md.append(f"- 產品狀態：`B0_PRODUCT_EXECUTED`（真合法來源、原四 Op、實際 output/exit）；`B0_CORE_ACCEPTED` 之歷史核心範圍承接不改；"
@@ -226,11 +233,23 @@ def main() -> int:
 
     md.append("### 10｜仍未閉合與恢復條件\n")
     items = []
-    if not verdict:
-        items.append("獨立 Checker 判定（`30_VERIFY/verdict.json`）— 恢復條件：分離執行者在凍結位元上完成只讀審查。")
+    vfiles = sorted(p.name for p in VERIFY.glob("verdict*.json"))
+    items.append("獨立 Checker 判定 — 實存判定檔：" + ("、".join(f"`30_VERIFY/{v}`" for v in vfiles) or "無")
+                 + "；恢復條件：分離執行者在同一凍結位元上完成只讀審查並給出 ACCEPT。")
     items.append("`source_manifest.verification` 仍 `UNVERIFIED`（繼承 `2012a28f…` 原件未取得）— 只有當期來源依法受該 manifest 約束時才阻擋；本輪兩源未受其約束，故不冒完成。")
     items.append("B1/B2/B3 自身產品（Repo/BASE/FDA/ROOTS、QROWS/HARD/META/RETURN、JOIN/CHILD/ROUTE/COMMIT）不在本輪範圍，仍未執行。")
     md.append("\n".join(f"- {i}" for i in items) + "\n")
+
+    md.append("### 11｜凍結與發布自我驗證\n")
+    md.append("- 凍結在**所有**程式／測試／收據寫完之後一次成生；成員集由強制謂詞界定"
+              "（排除 `tmp/`、`publish/`、`__pycache__`、`20_DEV/.tmp_tests`、`70_PUBLISH/PUBLISH_READBACK_*`、"
+              "`30_VERIFY/verdict*`、本文件、本 manifest、本 freeze）。寫入後即對每個成員重讀磁碟並比對 sha/bytes，"
+              "不符則中止（不會產出描述不了磁碟的 manifest）。\n"
+              "- 排序慣例：以相對路徑的 UTF-8 位元組排序（非 Windows 大小寫不敏感排序）。\n"
+              "- 發布：以 `git ls-files` 實計數量寫入 `PUBLISH_MANIFEST.tsv`，並逐檔驗「發布副本不再含 LOCAL_ONLY 原句」；"
+              "被 `.gitignore` 排除的 `*.logs`／`*.attempts.ndjson` 一律不複製、不列入。\n"
+              "- 發布收據與 verdict 檔**不是**凍結成員：它們在凍結之後由定義產生（checker 判定、推送讀回），"
+              "寫入成員集會使 manifest 描述不了自己的候選。\n")
 
     md.append("## SST_PLP_PH01_W0_B0_HANDOFF\n")
     md.append("### 1｜可直接消費的入站結果\n")
@@ -276,19 +295,33 @@ def main() -> int:
     DOC.parent.mkdir(parents=True, exist_ok=True)
     DOC.write_bytes("\n".join(md).encode("utf-8"))
 
-    # ---- freeze manifest over this wave (excludes itself, the document and the freeze) ----
+    # ---- freeze manifest over this wave ---------------------------------------------------
+    # Members are the candidate bytes only.  Everything that is *about* the candidate -
+    # this document, the freeze artefacts, publish readbacks, checker verdicts, the publish
+    # clone - is excluded by an enforced predicate, not by a sentence in the receipt.
+    EXCLUDED_PREFIXES = ("tmp/", "publish/", "20_DEV/.tmp_tests", "70_PUBLISH/PUBLISH_READBACK_",
+                         "30_VERIFY/verdict")
+    EXCLUDED_EXACT = {MANIFEST.relative_to(WAVE).as_posix(),
+                      FREEZE.relative_to(WAVE).as_posix(),
+                      DOC.relative_to(WAVE).as_posix()}
+
+    def excluded(rel: str) -> bool:
+        return rel in EXCLUDED_EXACT or "__pycache__" in rel or any(
+            rel.startswith(prefix) for prefix in EXCLUDED_PREFIXES)
+
     rows = []
     for p in sorted(WAVE.rglob("*"), key=lambda q: q.relative_to(WAVE).as_posix().encode("utf-8")):
         if not p.is_file():
             continue
         rel = p.relative_to(WAVE).as_posix()
-        if p in (MANIFEST, FREEZE, DOC):
-            continue
-        if rel.startswith("tmp/") or rel.startswith("publish/") or "__pycache__" in rel \
-                or rel.startswith("20_DEV/.tmp_tests"):
+        if excluded(rel):
             continue
         raw = p.read_bytes()
         rows.append(f"{rel}\t{hashlib.sha256(raw).hexdigest()}\t{len(raw)}")
+    violations = [r.split("\t")[0] for r in rows if excluded(r.split("\t")[0])]
+    if violations:
+        raise SystemExit(json.dumps({"refused": "EXCLUDED_FILE_ENTERED_MANIFEST",
+                                     "files": violations}))
     body = ("\n".join(rows) + "\n").encode("utf-8")
     MANIFEST.write_bytes(body)
     manifest_sha = hashlib.sha256(body).hexdigest()
@@ -310,7 +343,7 @@ def main() -> int:
                           "It asserts nothing about semantics beyond what the receipts measured, "
                           "and it excludes itself, its manifest and the generated document."),
         "receipts": {c: {"verdict": receipts[c]["verdict"],
-                         "sha256": sha(OPS / f"{REV}_consumer_{c}_receipt.json")} for c in receipts},
+                         "sha256": sha(OPS / f"{RECEIPT_REV}_consumer_{c}_receipt.json")} for c in receipts},
     }, ensure_ascii=False, indent=1).encode("utf-8"))
     mismatched = []
     for line in rows:
