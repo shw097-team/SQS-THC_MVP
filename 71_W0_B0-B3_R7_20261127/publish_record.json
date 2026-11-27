@@ -3,7 +3,7 @@
  "repo": "https://github.com/shw097-team/SQS-THC_MVP",
  "branch": "main",
  "visibility": "public",
- "commit": "2ab37416bbd0473c56fe8541304de27a3fa954a2",
+ "commit": "PENDING",
  "previous_remote_head": "24a59f5cbc12a5fc5a2dfcb4a5cf879b4628c515",
  "pushed_paths": "71_W0_B0-B3_R7_20261127/",
  "published_files": "see PUBLISHED_MANIFEST.tsv (rows minus this record)",
@@ -29,7 +29,7 @@
  "publication_ne_acceptance": true,
  "recorded_at": "2026-11-27T16:07:45+0800",
  "supersedes_commit": "a0745127d9894750ad6dbd7740872fed760d5a0d",
- "freeze_digest_published": "65ef7a75107d0bb57401194e37bb8dd2b989efbee173d10d76f78b6ed4e1f7df",
+ "freeze_digest_published": "38f20921b7daa050801be704443cac8296da513dbff0a53b4fc3812ceff82928",
  "final_head_at_readback": null,
  "revision": 2
 }

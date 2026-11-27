@@ -1,6 +1,6 @@
 {
  "schema": "SST.PH01.W0.B0B3.DeliveryIndex@1",
- "generated_at": "2026-11-27T16:07:30+0800",
+ "generated_at": "2026-11-27T16:09:24+0800",
  "round_root": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127",
  "spec": {
   "version": "2026-11-27_r7_Native-first_CODEX_FINAL",
@@ -46,9 +46,10 @@
  },
  "four_ready": {
   "ReadyDraft": true,
-  "ReadyAtom": true,
+  "ReadyAtom": false,
   "ReadyExecute": false,
-  "ReadyAccept": false
+  "ReadyAccept": false,
+  "readyatom_reason": "no atom carries an owner (365/365 are the literal '#') and no attachment is ratified; a source-bound atom is not an admissible atom"
  },
  "promotion_state": {
   "promoted_to_primary": [],

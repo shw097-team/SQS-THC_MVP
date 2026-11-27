@@ -177,7 +177,9 @@ def b3_admission() -> dict:
                      "and pins a previous window's authorization_sha; renewal edits product "
                      "constants and needs the Owner"),
           "consumer_currency": [{"consumer": r["consumer_id"], "decision": r["decision"],
-                                 "rights_currency": r["rights_currency"]}
+                                 "first_fail": r.get("first_fail"),
+                                 "rights_currency": r.get("rights_currency"),
+                                 "authority_expired": r.get("envelope_authority_expired_at_receive")}
                                 for r in receipt["receipts"]]}
     ready = {
         "ReadyDraft": True,

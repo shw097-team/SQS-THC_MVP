@@ -1,6 +1,6 @@
 {
  "schema": "SST.PH01.W0.B3.Admission@1",
- "generated_at": "2026-11-27T15:41:37+0800",
+ "generated_at": "2026-11-27T16:09:07+0800",
  "spec_b3_sha256": "c1c9c5326a36c1e0e0b00dc1231b39b4f7c21e10a4f9320f2a4dbaabe6125ec5",
  "host": {
   "hostname": "DESKTOP-57EO414",
@@ -12,7 +12,8 @@
   "JOIN": {
    "callable": "b3_product.op_join",
    "rows": 365,
-   "ready": 273,
+   "source_bound_ready": 273,
+   "admission_ready": 0,
    "held": 92
   },
   "CHILD": {
@@ -24,30 +25,24 @@
   "ROUTE": {
    "callable": "b3_product.op_route",
    "routes": 365,
-   "route_out": 273,
-   "hold": 92
+   "source_bound": 273,
+   "route_out": 0,
+   "hold": 365,
+   "note": "route_out requires a bound owner; 365/365 units carry the literal '#' as owner, so no route may leave this round"
   },
   "COMMIT": {
    "callable": "b3_product.op_commit",
    "receipt": {
-    "decision": "COMMITTED",
-    "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b3_ledger\\SourceChildLedger.draft.slice2.md",
-    "bytes": 29687,
-    "sha256": "1861ca3ab35aa71f090b5af339503f8f21dbfad900a21be5a9df7fefd0773e43",
-    "preimage": "ABSENT",
-    "postimage_verified": true,
-    "write_set": [
-     "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b3_ledger\\SourceChildLedger.draft.slice2.md"
-    ],
-    "rights_ref": "OWNER_WINDOW:WIN-3657818f0331:HOST_OPERATIONS",
-    "single_file": true,
-    "effect": "LOCAL_DRAFT_WRITE"
+    "decision": "NOT_COMMITTED",
+    "first_fail": "OWNER_WINDOW_CLOSED",
+    "note": "the Ops run in memory; the product write needs a window whose ceiling covers REPOSITORY_WRITE"
    }
   }
  },
  "output_root": {
   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b3_ledger",
-  "preimage_state": {
+  "preimage_state_at_first_slice": "ABSENT — the directory was created by the first guarded write at 2026-11-27T15:40+0800; the write log is the two file mtimes below",
+  "postimage_state_at_this_run": {
    "SourceChildLedger.draft.md": {
     "bytes": 29687,
     "sha256": "1861ca3ab35aa71f090b5af339503f8f21dbfad900a21be5a9df7fefd0773e43"
@@ -58,7 +53,8 @@
    }
   },
   "writer": "b3_product.op_commit (single file, 'xb', readback compared)",
-  "single_writer": true
+  "single_writer": true,
+  "known_defect": "the first slice's own product receipt was overwritten by the immediate re-run used as the guard test; the committed bytes are recoverable from the file (sha 1861ca3a…) but the receipt that asserted preimage ABSENT for slice1 is not on disk"
  },
  "oracles": {
   "source_bound": "direct_parent_ref + resolved_source_ref + direct_clause_sha",
@@ -87,7 +83,7 @@
  },
  "safety": {
   "fin_order": "DENY",
-  "effect": "SOURCE_READ+IN_MEMORY_TRANSFORM+LOCAL_DRAFT_WRITE"
+  "effect": "SOURCE_READ+IN_MEMORY_TRANSFORM"
  },
  "recovery": {
   "prior_drafts": [
@@ -133,7 +129,10 @@
   "task_id": "SST_PLP_PH01_W0_B0-B3_R7_ACCEPT",
   "effect_class_ceiling": "HOST_OPERATIONS",
   "expires_at": 1795793067,
-  "state": "OPEN"
+  "state": "CLOSED",
+  "ops_used": 0,
+  "max_ops": 40,
+  "op_counter_note": "ops_used stayed 0: the draft write is a local file create guarded by reading the window, not an operation countersigned by the broker. rights_ref names a window, not a signed per-op receipt"
  },
  "b0_input": {
   "kind": "RECEIPT_ONLY",
@@ -141,26 +140,33 @@
   "consumer_currency": [
    {
     "consumer": "B1",
-    "decision": "ACCEPT",
-    "rights_currency": "ENVELOPE_MINTED_UNDER_A_DIFFERENT_WINDOW"
+    "decision": "REJECT",
+    "first_fail": "RIGHTS_UNVERIFIED",
+    "rights_currency": null,
+    "authority_expired": null
    },
    {
     "consumer": "B2",
-    "decision": "ACCEPT",
-    "rights_currency": "ENVELOPE_MINTED_UNDER_A_DIFFERENT_WINDOW"
+    "decision": "REJECT",
+    "first_fail": "RIGHTS_UNVERIFIED",
+    "rights_currency": null,
+    "authority_expired": null
    },
    {
     "consumer": "B3",
-    "decision": "ACCEPT",
-    "rights_currency": "ENVELOPE_MINTED_UNDER_A_DIFFERENT_WINDOW"
+    "decision": "REJECT",
+    "first_fail": "RIGHTS_UNVERIFIED",
+    "rights_currency": null,
+    "authority_expired": null
    }
   ]
  },
  "four_ready": {
   "ReadyDraft": true,
-  "ReadyAtom": true,
+  "ReadyAtom": false,
   "ReadyExecute": false,
-  "ReadyAccept": false
+  "ReadyAccept": false,
+  "readyatom_reason": "no atom carries an owner (365/365 are the literal '#') and no attachment is ratified; a source-bound atom is not an admissible atom"
  },
  "readyexecute_blockers": [
   {

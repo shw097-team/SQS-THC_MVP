@@ -1,8 +1,8 @@
 # SST_PLP_PH01_W0 B0–B2 CLOSEOUT rev2｜B3 准入（2026-11-27_r7）
 
-- 產生：`2026-11-27T16:07:30+0800`；由 `20_DEV/r7/r7_closeout_gen_rev2.py` 從收據生成
+- 產生：`2026-11-27T16:09:24+0800`；由 `20_DEV/r7/r7_closeout_gen_rev2.py` 從收據生成
 - Subject／Wave：`SST/SQS-THC/PH01/E00`／`P1-W00M`；活動 SPEC `2026-11-27_r7_Native-first_CODEX_FINAL`
-- 凍結：`65ef7a75107d0bb57401194e37bb8dd2b989efbee173d10d76f78b6ed4e1f7df`（`r7_candidate_freeze.<rev>.json`，45 成員，supersedes `45d41c592ef3e89b…`）
+- 凍結：`38f20921b7daa050801be704443cac8296da513dbff0a53b4fc3812ceff82928`（`r7_candidate_freeze.<rev>.json`，46 成員，supersedes `45d41c592ef3e89b…`）
 - 權利：window `WIN-3657818f0331`／`CLOSED`／ceiling `HOST_OPERATIONS`／ops_used `0`
 - 宣稱上限：`B0_COMPLETE`／`B1_ACCEPTED`／`B2_ACCEPTED`／`B3_ACCEPTED`／`W0_COMPLETE`／`W1 ReadyExecute` **均未成立**；`FIN_ORDER=DENY`
 
@@ -77,7 +77,7 @@ manifest 8 列全等 `True`；sha `2e4db2d2c2bd6d52…`。每批在 K 有兩個�
 | B0 | 是（歷史 CORE_ACCEPTED 保留） | 是 | 否 | 否 | `HOLD`：descriptor 2026-11-27T01:08 到期 |
 | B1 | 是 | 是 | 部分（D-2／D-3 未閉） | 否 | `PARTIAL` |
 | B2 | 是 | 是 | 部分（18 HARD source_row、inner/outer） | 否 | `PARTIAL` |
-| B3 | 是 | **True**（無 owner／無 ratified atom） | 否 | 否 | `ReadyExecute=HOLD` |
+| B3 | 是 | **False**（無 owner／無 ratified atom） | 否 | 否 | `ReadyExecute=HOLD` |
 
 三端接收（rev2，window 已關）：
 

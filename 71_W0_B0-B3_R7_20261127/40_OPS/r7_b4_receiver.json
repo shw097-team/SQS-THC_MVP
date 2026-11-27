@@ -1,6 +1,6 @@
 {
  "schema": "SST.PH01.W0.B4.Receiver@1",
- "generated_at": "2026-11-27T16:05:10+0800",
+ "generated_at": "2026-11-27T16:09:07+0800",
  "mandatory_fields": [
   "commit",
   "path",
@@ -21,7 +21,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "ACCEPT_FOR_DRAFT",
    "first_fail": null,
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": false,
     "blob_is_null": false,
@@ -46,7 +46,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "ACCEPT_FOR_DRAFT",
    "first_fail": null,
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": false,
     "blob_is_null": false,
@@ -71,7 +71,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "ACCEPT_FOR_DRAFT",
    "first_fail": null,
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": false,
     "blob_is_null": false,
@@ -96,7 +96,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "ACCEPT_FOR_DRAFT",
    "first_fail": null,
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": false,
     "blob_is_null": false,
@@ -121,7 +121,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "ACCEPT_FOR_DRAFT",
    "first_fail": null,
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": false,
     "blob_is_null": false,
@@ -146,7 +146,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "ACCEPT_FOR_DRAFT",
    "first_fail": null,
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": false,
     "blob_is_null": false,
@@ -173,7 +173,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -198,7 +198,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -223,7 +223,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -248,7 +248,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -273,7 +273,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -298,7 +298,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -323,7 +323,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:blob",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": false,
     "blob_is_null": true,
@@ -348,7 +348,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -373,7 +373,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -398,7 +398,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -423,7 +423,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -448,7 +448,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -473,7 +473,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -498,7 +498,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -523,7 +523,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -548,7 +548,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -573,7 +573,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -598,7 +598,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -623,7 +623,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -648,7 +648,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -673,7 +673,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -698,7 +698,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -723,7 +723,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -748,7 +748,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit,blob",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": true,
@@ -773,7 +773,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": false,
@@ -804,7 +804,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": false,
@@ -835,7 +835,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": false,
@@ -866,7 +866,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": false,
@@ -897,7 +897,7 @@
    "envelope_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80",
    "decision": "REJECT",
    "first_fail": "MANDATORY_FIELD_MISSING:commit",
-   "checked_at": "2026-11-27T16:05:10+0800",
+   "checked_at": "2026-11-27T16:09:07+0800",
    "identity_fabrication_check": {
     "commit_is_null": true,
     "blob_is_null": false,
