@@ -1,0 +1,16 @@
+{
+ "schema": "SST.PH01.W0.B0.R3.CheckerVerdict/1",
+ "transcription_note": "Persisted by the making session from the separated checker's returned JSON (subagent sa-0-4974d92e, deleg_dee20b10, 2026-11-27T22:38:11+08:00). Reviewed the r10 freeze 682c8d8f…",
+ "checker": "SST_PH01_W0_B0_r10_separation_checker_round3",
+ "verdict": "REJECT",
+ "reviewed_at": "2026-11-27T22:38:11+08:00",
+ "candidate_manifest_sha256": "682c8d8f1c6ffe512f4e5922ac8230ac5d746899305e78aa3c387292367cf85b",
+ "blocking": [
+  "70_PUBLISH/PUBLISH_READBACK_r10.json was rewritten after the freeze (sha 2657f143… declared, ec69a4ac… on disk)",
+  "FREEZE_r10.json not_a_member patterns contradicted 7 actual members",
+  "PUBLISH_MANIFEST listed 119 files while the commit held 106 (14 *.logs ignored by git)",
+  "§7 did not record the round-2 REJECT and cited a nonexistent 30_VERIFY/verdict.json",
+  "56 files elsewhere in the public repo still carry the LOCAL_ONLY sentence and the notice did not say so"
+ ],
+ "summary": "Freeze self-check, ordering, doc figures, four new bindings and three-consumer no-regression all really landed (114/115 members byte+sha equal), but the same 'member changed after the freeze' class recurred, not_a_member contradicted 7 members, the published manifest over-claimed 14 files, and the document/notice described things that were not there."
+}

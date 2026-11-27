@@ -1,0 +1,14 @@
+{
+ "schema": "SST.PH01.W0.B0.R3.CheckerVerdict/1",
+ "transcription_note": "Persisted by the making session from the separated checker's returned JSON (subagent sa-0-c6781b61, deleg_e45cae55, 2026-11-27T22:51:10+08:00). Reviewed the r11 freeze 86d6e8db…",
+ "checker": "SST_PH01_W0_B0_r11_separation_checker_round4",
+ "verdict": "REJECT",
+ "reviewed_at": "2026-11-27T22:51:10+08:00",
+ "candidate_manifest_sha256": "86d6e8db34283f3468998cb3c701a8c16fd50a18327798f85659f6fc326f2155",
+ "blocking": [
+  "FREEZE_r11.json not_a_member pattern `FREEZE_*` matched 6 actual members (only r11's three were excluded)",
+  "§7 still named a nonexistent 30_VERIFY/verdict.json and did not list the round-3 (r10) REJECT",
+  "the published REDACTION_NOTICE listed 5 *.logs files as published/redacted although git held none of them"
+ ],
+ "summary": "Byte level is real: 116/116 frozen members equal disk, 103/103 publish rows equal the commit blobs, zero LOCAL_ONLY in the r11 subtree, the 56-file residue set is exact and untouched by this commit, 83 tests green and three consumers 2/2 ACCEPTED. What still fails is the candidate's description of itself: a declaration wider than its implementation, a dangling verdict path, and a notice that claimed files git never received."
+}

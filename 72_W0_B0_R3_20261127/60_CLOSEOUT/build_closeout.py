@@ -189,30 +189,30 @@ def main() -> int:
             md.append(f'| `{rp.name}` | **{rv.get("verdict")}** | `{str(rv.get("candidate_manifest_sha256"))[:16]}…` | '
                       f'{rv.get("checker")} | {rv.get("reviewed_at")} | {len(blocking)} |')
         md.append("\n"
-                  "第一輪（r8）判定的五項缺陷與第二輪（r9）判定的四項缺陷，逐項修復如下：\n")
-        md.append("| 缺陷 | 修復 | 對應臂 |\n|---|---|---|\n"
-                  "| `errors[].attempt=true` 被接受（True==1） | `attempt` 改 `is_int` 嚴格判定 | `test_error_attempt_bool` |\n"
-                  "| `source_manifest.inherited_sha` 只驗形狀 | 與 deployment 釘住的 inherited manifest 精確比對 | `test_inherited_manifest_is_pinned` |\n"
-                  "| `VERIFIED` 搭配不存在的 `evidence_ref` 被接受 | 先拒「把 deployment 的 UNVERIFIED 升級成 VERIFIED」，再要求 evidence 位元組 sha 等於 deployment 釘值 | "
+                  "已回填的缺陷與其修復（來源輪次如列；含各輪標為非強制但已一併補的項）：\n")
+        md.append("| 來源輪次 | 缺陷 | 修復 | 對應臂 |\n|---|---|---|---|\n"
+                  "| R1/R2 | `errors[].attempt=true` 被接受（True==1） | `attempt` 改 `is_int` 嚴格判定 | `test_error_attempt_bool` |\n"
+                  "| R1/R2 | `source_manifest.inherited_sha` 只驗形狀 | 與 deployment 釘住的 inherited manifest 精確比對 | `test_inherited_manifest_is_pinned` |\n"
+                  "| R1/R2 | `VERIFIED` 搭配不存在的 `evidence_ref` 被接受 | 先拒「把 deployment 的 UNVERIFIED 升級成 VERIFIED」，再要求 evidence 位元組 sha 等於 deployment 釘值 | "
                   "`test_verified_manifest_needs_resolvable_evidence`／`_bound_to_the_deployment_digest`／`_without_evidence_ref` |\n"
-                  "| 權利判定在讀取來源 bytes 之後 | authority／區間／epoch 全部前置於任何內容讀取（probe 證 source_reads=0） | "
+                  "| R1/R2 | 權利判定在讀取來源 bytes 之後 | authority／區間／epoch 全部前置於任何內容讀取（probe 證 source_reads=0） | "
                   "`test_rights_decided_before_any_source_byte` |\n"
-                  "| `PROVIDER_VERSIONED` 全 null 或單字串即通過 | 需 deployment 綁定的 provider_ref＋真實 acl/rights epoch，且 rights_epoch 須等於 provider 現值 | "
+                  "| R1/R2 | `PROVIDER_VERSIONED` 全 null 或單字串即通過 | 需 deployment 綁定的 provider_ref＋真實 acl/rights epoch，且 rights_epoch 須等於 provider 現值 | "
                   "`test_provider_epoch_cannot_be_nulled`／`_epoch_string_without_provider_is_not_an_epoch`／`_epoch_bound_provider_with_stale_epoch` |\n"
-                  "| pinned locator 無 containment／reparse | `allowed_roots` containment、reparse 拒絕、讀前後 identity/size 比對 | "
+                  "| R2 | pinned locator 無 containment／reparse（該輪標非強制） | `allowed_roots` containment、reparse 拒絕、讀前後 identity/size 比對 | "
                   "`test_pinned_locator_outside_allowed_roots` |\n"
-                  "| `rights_check_ref` 未區分來源 | `window:receipt[:16]:source_id` | §4 三端收據 |\n"
-                  "| 凍結後成員被改（兩次） | 成員集改為**強制謂詞**（`EXCLUDED_PREFIXES`＋`EXCLUDED_EXACT`），寫入後即驗「無被排除檔入列」，且發布收據移出成員集 | "
-                  "§11 凍結自我驗證 |\n"
-                  "| 文件引用舊數字／不存在的 verdict 路徑 | 標題、案數、fixture pin 全部改為從收據與模組 pin 讀取；本表逐輪列出實存 verdict 檔 | §5、§7 |\n"
-                  "| LOCAL_ONLY 句進入可散布檔 | 26 檔改為 `<LOCAL_ONLY_REDACTED>`；repo 內既有殘留逐條列於 `REDACTION_NOTICE.md` | §11 |\n")
+                  "| R2 | `rights_check_ref` 未區分來源（該輪標非強制） | `window:receipt[:16]:source_id` | §4 三端收據 |\n"
+                  "| R2/R3/R4 | 凍結後成員被改、宣告寬於實作 | 成員集改為強制謂詞並在收據內複述同一組字面值；寫入後即驗「無被排除檔入列」 | §11 凍結自我驗證 |\n"
+                  "| R2/R3/R4 | 文件引用舊數字／不存在的 verdict 路徑、輪次未列 | 標題／案數／fixture pin 均自收據與模組 pin 讀取；§7 逐輪列出實存 verdict 檔 | §5、§7 |\n"
+                  "| R2/R3 | LOCAL_ONLY 句進入可散布檔、notice 未交代殘留 | 可散布副本改 `<LOCAL_ONLY_REDACTED>`；repo 內既有殘留逐條列於 `REDACTION_NOTICE` §3 | §11 |\n")
     if verdict:
         md.append(f"\n**本輪最終判定：{verdict.get('verdict')}**（{verdict.get('checker')}，{verdict.get('reviewed_at')}）。"
                   f"受檢候選 `{verdict.get('candidate_manifest_sha256')}`。\n"
                   f"- 結論：{verdict.get('summary')}\n"
                   f"- 阻擋項：{verdict.get('blocking')}\n")
     else:
-        md.append("\n**本輪最終判定：PENDING** — 尚無 `30_VERIFY/verdict.json`；本件不得引用為已接受。\n")
+        md.append("\n**本輪最終判定：PENDING** — 上表列出全部實存判定，尚無任何一輪給出 ACCEPT；"
+                  "本件不得引用為已接受。停止條件為分離 Checker 在同一凍結位元上給出 ACCEPT。\n")
 
     md.append("### 8｜狀態與本次工程寫入\n")
     md.append(f"- 產品狀態：`B0_PRODUCT_EXECUTED`（真合法來源、原四 Op、實際 output/exit）；`B0_CORE_ACCEPTED` 之歷史核心範圍承接不改；"
@@ -300,7 +300,7 @@ def main() -> int:
     # this document, the freeze artefacts, publish readbacks, checker verdicts, the publish
     # clone - is excluded by an enforced predicate, not by a sentence in the receipt.
     EXCLUDED_PREFIXES = ("tmp/", "publish/", "20_DEV/.tmp_tests", "70_PUBLISH/PUBLISH_READBACK_",
-                         "30_VERIFY/verdict")
+                         "30_VERIFY/verdict", "60_CLOSEOUT/FREEZE")
     EXCLUDED_EXACT = {MANIFEST.relative_to(WAVE).as_posix(),
                       FREEZE.relative_to(WAVE).as_posix(),
                       DOC.relative_to(WAVE).as_posix()}
@@ -336,9 +336,17 @@ def main() -> int:
         # the closeout document is a rendering of these receipts and is deliberately NOT a
         # frozen member: it is regenerated whenever a verdict lands, and its digest is recorded
         # in the publish readback instead of here.
-        "not_a_member": ["60_CLOSEOUT/FREEZE_*", "60_CLOSEOUT/FREEZE_MANIFEST_*",
-                         "the closeout document itself", "70_PUBLISH/PUBLISH_READBACK_*",
-                         "30_VERIFY/verdict*.json (verdicts are about the candidate and arrive after the freeze)"],
+        "excluded_by_predicate": {
+            "prefixes": ["tmp/", "publish/", "20_DEV/.tmp_tests", "70_PUBLISH/PUBLISH_READBACK_",
+                         "30_VERIFY/verdict", "60_CLOSEOUT/FREEZE"],
+            "exact": ["60_CLOSEOUT/FREEZE_MANIFEST_" + REV + ".tsv",
+                      "60_CLOSEOUT/FREEZE_" + REV + ".json",
+                      "60_CLOSEOUT/SST_PLP_PH01_W0_B0_CLOSEOUT_HANDOFF_" + REV + ".md"],
+            "note": ("these two lists are the literal EXCLUDED_PREFIXES / EXCLUDED_EXACT values "
+                     "applied when the manifest is built; freeze artefacts of every revision, "
+                     "publish readbacks, checker verdicts, the publish clone, caches and this "
+                     "document describe the candidate rather than belong to it"),
+        },
         "claim_ceiling": ("Freezes the bytes of this round's code, tests, receipts and closeout. "
                           "It asserts nothing about semantics beyond what the receipts measured, "
                           "and it excludes itself, its manifest and the generated document."),

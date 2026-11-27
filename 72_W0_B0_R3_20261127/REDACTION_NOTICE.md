@@ -1,9 +1,9 @@
 # REDACTION NOTICE — LOCAL_ONLY clause text
 
-This directory publishes the r11 candidate of SST PH01 W0 B0 R3 (work root
+This directory publishes the r12 candidate of SST PH01 W0 B0 R3 (work root
 `SST_PH01_W0_B0_R3_20261127`).
 
-## 1. What was redacted in this wave
+## 1. What was redacted in this wave (23 files actually in the commit)
 
 The clause value carried by the B0 envelope is LOCAL_ONLY for its declared consumers.
 Every published copy replaces exactly that sentence with `<LOCAL_ONLY_REDACTED>`.
@@ -16,11 +16,6 @@ Every published copy replaces exactly that sentence with `<LOCAL_ONLY_REDACTED>`
 | `00_PREFLIGHT/T1_BASELINE_20261127.json` | `a7a9a2a4c8d903b6fbc27f2a7db46b8fcb71970062e54686a1eeaf74dba3cf5f` | `bf697510500e40cd792cf557407df5c4b5c8f1a9221eedebaf43304beaf72aa8` | 4 |
 | `00_PREFLIGHT/required_set_req12_read_all_2026-11-25.json` | `50ca45c106bb58fd8a3bfdf1cfaf7400fd3a06d1f95cea7f1fe8c6166eda4764` | `ea59efc53df9cdac8bd5d6a0e873092a63e7973e4836431f1ab9856807ccc4dc` | 1 |
 | `00_PREFLIGHT/required_set_req12_read_w0m_2026-11-25.json` | `bc7afa530677746b8c681fc32109041a04e1fd1e7fc201c375d8edff34e6615c` | `a4b7a1c39b4c9809e4e02556bc434e4b29003584fb6b05a6f7387540df990312` | 1 |
-| `20_DEV/exec_r4_wave1_receipt.json.logs/attempt-5364-1795578140-1-stdout.txt` | `0a1dfaa4fd25213298625d70a30dafb8a3bb1f9e018504b127b7d34d922ae362` | `c5de167edae49f2db13815eb0e11f52832586b374a4211b8eeda2dac2fb551c4` | 68 |
-| `20_DEV/exec_r4_wave2_receipt.json.logs/attempt-5400-1795580545-1-stdout.txt` | `f2e9f0a846d739cfebb4dd7e11d8e5b126a13591703c66106ba1edea0a9fc382` | `d45bdec826c69b8d562670f0ac880dda5a1227bd791413520e8241ef465d5934` | 37 |
-| `20_DEV/exec_r4_wave3_receipt.json.logs/attempt-5420-1795582887-1-stdout.txt` | `135d42d53625bb16c5b21eebad6372c4e2378242c0746ea3fa867e5947b2f245` | `566b4ee8cd8ce845b8d4f3082bad136b47a329f760128d070af7e8561209e081` | 55 |
-| `20_DEV/exec_r4_wave4_receipt.json.logs/attempt-17240-1795585835-1-stdout.txt` | `c2f573f48e6394131c404aa5c3fa18e6398dacfc97de1480a5d2787789de09d5` | `0224634e627eb23e7ea1aa4bdc3a7a76efc0f1ceb825f1be36357829411784ad` | 230 |
-| `20_DEV/exec_r4_wave5_receipt.json.logs/attempt-11492-1795588517-1-stdout.txt` | `5b0aae468c160027cc3cb75ffefbd806c12a30089902cfcd23ddc995551166a3` | `e8dd27022ffb66348512d334ec52c78381adb7729e6a4799882255ef769ede01` | 26 |
 | `20_DEV/tests/test_b0_return.py` | `7f4fbaff3ca399145b22aee84476297a02577e6142f20d06ce7d6a5c5e7540fd` | `e2ecc19b9da2264c436bb6294efd60f0a3f917f2159917300157c5afca177af5` | 2 |
 | `20_DEV/tests/test_product_read.py` | `9e2d808ab821c9ac5e9ca2fcb844401dcfa342f9808e55515b30f2b6c24adeac` | `4cb095a785746a868874e332e2f908fb8f5a59da534a58b2e70de637a00f1c7b` | 3 |
 | `20_DEV/tests/trust_fixture.py` | `c4db3fac39c7d0b76210b54e298b5fc4548cf6e03e3604ef57f0d2d93a0c255f` | `6b551f07f49a42279c2aae4d69722a913c885606e805f683263637f7ba77c132` | 2 |
@@ -37,13 +32,14 @@ Every published copy replaces exactly that sentence with `<LOCAL_ONLY_REDACTED>`
 | `40_OPS/r9_consumer_B3_receipt.json` | `26b6845d95dd242c80d6d4d81a798aacc47923270d53a02fb222764ba0067004` | `4e74cca4bd4531e3de386ed0a233342b60a6a387538635e4df2522184b5d6e75` | 2 |
 | `70_PUBLISH/publish_redacted.py` | `7b1d4e5a82e30f60c10ba6e9e1ff385dd16d9d9049903e7e4f2d46f6bee1a923` | `5239380c6feddcf7ecb3449e09fac210995036091cb7a27ef9e354a7bb015eaa` | 1 |
 | `70_PUBLISH/publish_v3.py` | `d0fcba1a0f4c3e8030149a114f9993185c07b68628b754412999d253e5850acb` | `135d06071a997064f39ad363118f9224756eb20438c742ab77680505fb17f4b8` | 1 |
+| `70_PUBLISH/publish_v4.py` | `3735285bfc0b86fa0a126f062b7d54ed228f8f5ee69ea58297ed1266009d6a5a` | `964f587214c4fe9b3d930103d2c118e8cf2c0242575065c71b8fa78fa5264264` | 1 |
 
 ## 2. What this publication cannot retract
 
 Commit `b144f63` in this repository published the unredacted r8 copies. History is not
 rewritten. This notice is the record that those bytes disclosed one clause sentence.
 
-## 3. Pre-existing residue elsewhere in this repository (56 files at `21cdd44b5c40`)
+## 3. Pre-existing residue elsewhere in this repository (56 files at `de2d8d89c0af`)
 
 The same sentence also sits in files this wave did not author. They are listed so the
 disclosure is complete; redacting them would rewrite other rounds' delivered bytes and is
@@ -106,11 +102,12 @@ left to the rights holder.
 - `SST_PLP_PH01_W0_B0_CLOSEOUT.md`
 - `SST_PLP_PH01_W0_B0_HANDOFF.md`
 
-## 4. Consequences a reader must know
+## 4. Conventions and consequences
 
-1. A redacted `observed.value` / `expected_value` no longer re-derives from the source, so the
-   published envelope and receipts are a *projection*. Verify them against the local originals
-   whose digests are in this table.
-2. `20_TESTS/fixture/TEST_ONLY_keypair.json` is withheld (test private key). Its public half and
+1. `PUBLISH_MANIFEST.tsv` uses LF line endings and lists every tracked file under this
+   directory except itself; `git ls-tree -r` count == rows + 1 by construction.
+2. A redacted `observed.value` / `expected_value` no longer re-derives from the source, so the
+   published envelope and receipts are a *projection*. Verify them against the local originals.
+3. `20_TESTS/fixture/TEST_ONLY_keypair.json` is withheld (test private key). Its public half and
    the receipt it signed are published, so fixture verification still works.
-3. Engine receipts git ignores (`*.logs`, `*.attempts.ndjson`) are not published and not counted.
+4. Engine receipts git ignores (`*.logs/`, `*.ndjson`) are neither copied nor counted.
