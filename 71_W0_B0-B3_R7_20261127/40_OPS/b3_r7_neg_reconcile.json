@@ -5,8 +5,8 @@
  "spec_b3_sha256": "c1c9c5326a36c1e0e0b00dc1231b39b4f7c21e10a4f9320f2a4dbaabe6125ec5",
  "cases_verified": 44,
  "verdict_counts": {
-  "PASS": 33,
-  "HOLD": 11
+  "PASS": 42,
+  "HOLD": 2
  },
  "disagreements": [],
  "cases": [
@@ -33,12 +33,12 @@
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-01.FIELD_original_id",
    "expected": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-01",
-   "observed": null,
+   "observed": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-01",
    "mutation": "FIELD",
-   "mutation_faithful": false,
-   "receipt_verdict": "HOLD",
-   "recomputed_verdict": "HOLD",
-   "reason": "FIELD_CARRIER_ABSENT:original_id"
+   "mutation_faithful": true,
+   "receipt_verdict": "PASS",
+   "recomputed_verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-02.DELETE_CHILD",
@@ -63,12 +63,12 @@
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-02.FIELD_source_sha256",
    "expected": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-02",
-   "observed": null,
+   "observed": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-02",
    "mutation": "FIELD",
-   "mutation_faithful": false,
-   "receipt_verdict": "HOLD",
-   "recomputed_verdict": "HOLD",
-   "reason": "FIELD_CARRIER_ABSENT:source_sha256"
+   "mutation_faithful": true,
+   "receipt_verdict": "PASS",
+   "recomputed_verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-03.DELETE_CHILD",
@@ -93,12 +93,12 @@
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-03.FIELD_clause_span",
    "expected": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-03",
-   "observed": null,
+   "observed": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-03",
    "mutation": "FIELD",
-   "mutation_faithful": false,
-   "receipt_verdict": "HOLD",
-   "recomputed_verdict": "HOLD",
-   "reason": "FIELD_CARRIER_ABSENT:clause_span"
+   "mutation_faithful": true,
+   "receipt_verdict": "PASS",
+   "recomputed_verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-04.DELETE_CHILD",
@@ -123,12 +123,12 @@
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-04.FIELD_parent",
    "expected": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-04",
-   "observed": null,
+   "observed": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-04",
    "mutation": "FIELD",
-   "mutation_faithful": false,
-   "receipt_verdict": "HOLD",
-   "recomputed_verdict": "HOLD",
-   "reason": "FIELD_CARRIER_ABSENT:parent"
+   "mutation_faithful": true,
+   "receipt_verdict": "PASS",
+   "recomputed_verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-05.DELETE_CHILD",
@@ -153,12 +153,12 @@
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-05.FIELD_child",
    "expected": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-05",
-   "observed": null,
+   "observed": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-05",
    "mutation": "FIELD",
-   "mutation_faithful": false,
-   "receipt_verdict": "HOLD",
-   "recomputed_verdict": "HOLD",
-   "reason": "FIELD_CARRIER_ABSENT:child"
+   "mutation_faithful": true,
+   "receipt_verdict": "PASS",
+   "recomputed_verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-06.DELETE_CHILD",
@@ -183,12 +183,12 @@
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-06.FIELD_polarity",
    "expected": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-06",
-   "observed": null,
+   "observed": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-06",
    "mutation": "FIELD",
-   "mutation_faithful": false,
-   "receipt_verdict": "HOLD",
-   "recomputed_verdict": "HOLD",
-   "reason": "FIELD_CARRIER_ABSENT:polarity"
+   "mutation_faithful": true,
+   "receipt_verdict": "PASS",
+   "recomputed_verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-07.DELETE_CHILD",
@@ -273,12 +273,12 @@
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-09.FIELD_oracle",
    "expected": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-09",
-   "observed": null,
+   "observed": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-09",
    "mutation": "FIELD",
-   "mutation_faithful": false,
-   "receipt_verdict": "HOLD",
-   "recomputed_verdict": "HOLD",
-   "reason": "FIELD_CARRIER_ABSENT:oracle"
+   "mutation_faithful": true,
+   "receipt_verdict": "PASS",
+   "recomputed_verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-10.DELETE_CHILD",
@@ -303,12 +303,12 @@
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-10.FIELD_case",
    "expected": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-10",
-   "observed": null,
+   "observed": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-10",
    "mutation": "FIELD",
-   "mutation_faithful": false,
-   "receipt_verdict": "HOLD",
-   "recomputed_verdict": "HOLD",
-   "reason": "FIELD_CARRIER_ABSENT:case"
+   "mutation_faithful": true,
+   "receipt_verdict": "PASS",
+   "recomputed_verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.REQ-12__AUTHOR-SPLIT-02.DELETE_CHILD",
@@ -333,12 +333,12 @@
   {
    "case_id": "B3.NEG.REQ-12__AUTHOR-SPLIT-02.FIELD_draft",
    "expected": "AUTHOR:CHILD_RULE_HOLD:REQ-12::AUTHOR-SPLIT-02",
-   "observed": null,
+   "observed": "AUTHOR:CHILD_RULE_HOLD:REQ-12::AUTHOR-SPLIT-02",
    "mutation": "FIELD",
-   "mutation_faithful": false,
-   "receipt_verdict": "HOLD",
-   "recomputed_verdict": "HOLD",
-   "reason": "FIELD_CARRIER_ABSENT:draft"
+   "mutation_faithful": true,
+   "receipt_verdict": "PASS",
+   "recomputed_verdict": "PASS",
+   "reason": null
   },
   {
    "case_id": "B3.NEG.PROTECTED_PLP-04",

@@ -4,7 +4,7 @@
  "spec_b2_sha256": "acd3282319116142cf55b1bd7d109d1cf08a62907cd05dee8e65eef49554c340",
  "expected_unit_set_sha256": "d54bdd4a5a1a6b6b48177465729222749da7e15873e78ffb7e5bbc8c3f8634e8",
  "expected_case_set_sha256": "30592c711efbd312df8005ad156038798311019cab349f912ee758b097266dd5",
- "generated_at": "2026-11-27T16:05:15+0800",
+ "generated_at": "2026-11-27T19:14:32+0800",
  "case_count": 2930,
  "expected_case_count": 2930,
  "orphan_case_ids": [],
@@ -15,8 +15,8 @@
   "TECH_ROUTE": 54
  },
  "verdict_counts": {
-  "PASS": 2786,
-  "HOLD": 144
+  "PASS": 2766,
+  "HOLD": 164
  },
  "carrier_dimensions": {
   "R3-REGISTRY-Q1": {
@@ -45910,8 +45910,8 @@
    },
    "note": "original obligation: a HARD obligation may not be downgraded by an author NOFIT; the inner functional failure stays HOLD under TT-UP-1",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "TOOL_REQUIREDNESS_HOLD",
+   "first_fail_matches": true
   },
   "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-02": {
    "case_id": "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-02",
@@ -45947,8 +45947,8 @@
    },
    "note": "original obligation: a HARD obligation may not be downgraded by an author NOFIT; the inner functional failure stays HOLD under TT-UP-1",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "TOOL_REQUIREDNESS_HOLD",
+   "first_fail_matches": true
   },
   "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-03": {
    "case_id": "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-03",
@@ -45984,8 +45984,8 @@
    },
    "note": "original obligation: a HARD obligation may not be downgraded by an author NOFIT; the inner functional failure stays HOLD under TT-UP-1",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "TOOL_REQUIREDNESS_HOLD",
+   "first_fail_matches": true
   },
   "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-04": {
    "case_id": "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-04",
@@ -46021,8 +46021,8 @@
    },
    "note": "original obligation: a HARD obligation may not be downgraded by an author NOFIT; the inner functional failure stays HOLD under TT-UP-1",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "TOOL_REQUIREDNESS_HOLD",
+   "first_fail_matches": true
   },
   "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-05": {
    "case_id": "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-05",
@@ -46058,8 +46058,8 @@
    },
    "note": "original obligation: a HARD obligation may not be downgraded by an author NOFIT; the inner functional failure stays HOLD under TT-UP-1",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "TOOL_REQUIREDNESS_HOLD",
+   "first_fail_matches": true
   },
   "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-08": {
    "case_id": "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-08",
@@ -46095,8 +46095,8 @@
    },
    "note": "original obligation: a HARD obligation may not be downgraded by an author NOFIT; the inner functional failure stays HOLD under TT-UP-1",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "TOOL_REQUIREDNESS_HOLD",
+   "first_fail_matches": true
   },
   "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-09": {
    "case_id": "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-09",
@@ -46132,8 +46132,8 @@
    },
    "note": "original obligation: a HARD obligation may not be downgraded by an author NOFIT; the inner functional failure stays HOLD under TT-UP-1",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "TOOL_REQUIREDNESS_HOLD",
+   "first_fail_matches": true
   },
   "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-14": {
    "case_id": "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-14",
@@ -46169,8 +46169,8 @@
    },
    "note": "original obligation: a HARD obligation may not be downgraded by an author NOFIT; the inner functional failure stays HOLD under TT-UP-1",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "TOOL_REQUIREDNESS_HOLD",
+   "first_fail_matches": true
   },
   "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-15": {
    "case_id": "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-15",
@@ -46206,8 +46206,8 @@
    },
    "note": "original obligation: a HARD obligation may not be downgraded by an author NOFIT; the inner functional failure stays HOLD under TT-UP-1",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "TOOL_REQUIREDNESS_HOLD",
+   "first_fail_matches": true
   },
   "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-19": {
    "case_id": "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-19",
@@ -46243,8 +46243,8 @@
    },
    "note": "original obligation: a HARD obligation may not be downgraded by an author NOFIT; the inner functional failure stays HOLD under TT-UP-1",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "TOOL_REQUIREDNESS_HOLD",
+   "first_fail_matches": true
   },
   "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-24": {
    "case_id": "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-24",
@@ -46280,8 +46280,8 @@
    },
    "note": "original obligation: a HARD obligation may not be downgraded by an author NOFIT; the inner functional failure stays HOLD under TT-UP-1",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "TOOL_REQUIREDNESS_HOLD",
+   "first_fail_matches": true
   },
   "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-25": {
    "case_id": "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-25",
@@ -46317,8 +46317,8 @@
    },
    "note": "original obligation: a HARD obligation may not be downgraded by an author NOFIT; the inner functional failure stays HOLD under TT-UP-1",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "TOOL_REQUIREDNESS_HOLD",
+   "first_fail_matches": true
   },
   "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-26": {
    "case_id": "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-26",
@@ -46354,8 +46354,8 @@
    },
    "note": "original obligation: a HARD obligation may not be downgraded by an author NOFIT; the inner functional failure stays HOLD under TT-UP-1",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "TOOL_REQUIREDNESS_HOLD",
+   "first_fail_matches": true
   },
   "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-27": {
    "case_id": "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-27",
@@ -46391,8 +46391,8 @@
    },
    "note": "original obligation: a HARD obligation may not be downgraded by an author NOFIT; the inner functional failure stays HOLD under TT-UP-1",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "TOOL_REQUIREDNESS_HOLD",
+   "first_fail_matches": true
   },
   "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-28": {
    "case_id": "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-28",
@@ -46428,8 +46428,8 @@
    },
    "note": "original obligation: a HARD obligation may not be downgraded by an author NOFIT; the inner functional failure stays HOLD under TT-UP-1",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "TOOL_REQUIREDNESS_HOLD",
+   "first_fail_matches": true
   },
   "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-29": {
    "case_id": "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-29",
@@ -46465,8 +46465,8 @@
    },
    "note": "original obligation: a HARD obligation may not be downgraded by an author NOFIT; the inner functional failure stays HOLD under TT-UP-1",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "TOOL_REQUIREDNESS_HOLD",
+   "first_fail_matches": true
   },
   "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-30": {
    "case_id": "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-30",
@@ -46502,8 +46502,8 @@
    },
    "note": "original obligation: a HARD obligation may not be downgraded by an author NOFIT; the inner functional failure stays HOLD under TT-UP-1",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "TOOL_REQUIREDNESS_HOLD",
+   "first_fail_matches": true
   },
   "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-42": {
    "case_id": "B2.POS.R3-REGISTRY-Q1__ECP_TECH43__TECH-42",
@@ -46539,8 +46539,8 @@
    },
    "note": "original obligation: a HARD obligation may not be downgraded by an author NOFIT; the inner functional failure stays HOLD under TT-UP-1",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "TOOL_REQUIREDNESS_HOLD",
+   "first_fail_matches": true
   },
   "B2.POS.TOOL_R2_TECH54__TECH-001": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-001",
@@ -46575,8 +46575,8 @@
    },
    "note": "an unauthorised enable is refused with the spec's declared FirstFail STATE_CONFLICT",
    "expected_first_fail": "STATE_CONFLICT",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "STATE_CONFLICT",
+   "first_fail_matches": true
   },
   "B2.POS.TOOL_R2_TECH54__TECH-002": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-002",
@@ -46611,8 +46611,8 @@
    },
    "note": "an unauthorised enable is refused with the spec's declared FirstFail STATE_CONFLICT",
    "expected_first_fail": "STATE_CONFLICT",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "STATE_CONFLICT",
+   "first_fail_matches": true
   },
   "B2.POS.TOOL_R2_TECH54__TECH-003": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-003",
@@ -46647,8 +46647,8 @@
    },
    "note": "an unauthorised enable is refused with the spec's declared FirstFail STATE_CONFLICT",
    "expected_first_fail": "STATE_CONFLICT",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "STATE_CONFLICT",
+   "first_fail_matches": true
   },
   "B2.POS.TOOL_R2_TECH54__TECH-004": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-004",
@@ -46683,8 +46683,8 @@
    },
    "note": "an unauthorised enable is refused with the spec's declared FirstFail STATE_CONFLICT",
    "expected_first_fail": "STATE_CONFLICT",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "STATE_CONFLICT",
+   "first_fail_matches": true
   },
   "B2.POS.TOOL_R2_TECH54__TECH-005": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-005",
@@ -46719,8 +46719,8 @@
    },
    "note": "an unauthorised enable is refused with the spec's declared FirstFail STATE_CONFLICT",
    "expected_first_fail": "STATE_CONFLICT",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "STATE_CONFLICT",
+   "first_fail_matches": true
   },
   "B2.POS.TOOL_R2_TECH54__TECH-006": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-006",
@@ -46755,8 +46755,8 @@
    },
    "note": "an unauthorised enable is refused with the spec's declared FirstFail STATE_CONFLICT",
    "expected_first_fail": "STATE_CONFLICT",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "STATE_CONFLICT",
+   "first_fail_matches": true
   },
   "B2.POS.TOOL_R2_TECH54__TECH-007": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-007",
@@ -46791,8 +46791,8 @@
    },
    "note": "an unauthorised enable is refused with the spec's declared FirstFail STATE_CONFLICT",
    "expected_first_fail": "STATE_CONFLICT",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "STATE_CONFLICT",
+   "first_fail_matches": true
   },
   "B2.POS.TOOL_R2_TECH54__TECH-008": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-008",
@@ -46825,8 +46825,8 @@
    },
    "note": "an unauthorised enable is refused with the spec's declared FirstFail STATE_CONFLICT",
    "expected_first_fail": "STATE_CONFLICT",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "STATE_CONFLICT",
+   "first_fail_matches": true
   },
   "B2.POS.TOOL_R2_TECH54__TECH-001__ROUTE": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-001__ROUTE",
@@ -46850,7 +46850,7 @@
   "B2.NEG.TOOL_R2_TECH54__TECH-001__ROUTE": {
    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-001__ROUTE",
    "unit_id": "B2.U0027",
-   "verdict": "PASS",
+   "verdict": "HOLD",
    "actual": {
     "mutation": "route requiredness EVAL_ONLY -> OPTIONAL",
     "guard": {
@@ -46859,10 +46859,11 @@
      "detail": "the route states ['OPTIONAL'] while the tool row carries 'EVAL_ONLY'"
     }
    },
-   "note": "a route may not restate a different requiredness",
+   "note": "FIRST_FAIL_CODE_DIVERGENT: spec declares TOOL_REQUIREDNESS_HOLD, product returned ROUTE_REQUIREDNESS_DRIFT_DENY",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "ROUTE_REQUIREDNESS_DRIFT_DENY",
+   "first_fail_matches": false,
+   "verdict_before_code_check": "PASS"
   },
   "B2.POS.TOOL_R2_TECH54__TECH-002__ROUTE": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-002__ROUTE",
@@ -46886,7 +46887,7 @@
   "B2.NEG.TOOL_R2_TECH54__TECH-002__ROUTE": {
    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-002__ROUTE",
    "unit_id": "B2.U0028",
-   "verdict": "PASS",
+   "verdict": "HOLD",
    "actual": {
     "mutation": "route requiredness EVAL_ONLY -> OPTIONAL",
     "guard": {
@@ -46895,10 +46896,11 @@
      "detail": "the route states ['OPTIONAL'] while the tool row carries 'EVAL_ONLY'"
     }
    },
-   "note": "a route may not restate a different requiredness",
+   "note": "FIRST_FAIL_CODE_DIVERGENT: spec declares TOOL_REQUIREDNESS_HOLD, product returned ROUTE_REQUIREDNESS_DRIFT_DENY",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "ROUTE_REQUIREDNESS_DRIFT_DENY",
+   "first_fail_matches": false,
+   "verdict_before_code_check": "PASS"
   },
   "B2.POS.TOOL_R2_TECH54__TECH-003__ROUTE": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-003__ROUTE",
@@ -46922,7 +46924,7 @@
   "B2.NEG.TOOL_R2_TECH54__TECH-003__ROUTE": {
    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-003__ROUTE",
    "unit_id": "B2.U0029",
-   "verdict": "PASS",
+   "verdict": "HOLD",
    "actual": {
     "mutation": "route requiredness EVAL_ONLY -> OPTIONAL",
     "guard": {
@@ -46931,10 +46933,11 @@
      "detail": "the route states ['OPTIONAL'] while the tool row carries 'EVAL_ONLY'"
     }
    },
-   "note": "a route may not restate a different requiredness",
+   "note": "FIRST_FAIL_CODE_DIVERGENT: spec declares TOOL_REQUIREDNESS_HOLD, product returned ROUTE_REQUIREDNESS_DRIFT_DENY",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "ROUTE_REQUIREDNESS_DRIFT_DENY",
+   "first_fail_matches": false,
+   "verdict_before_code_check": "PASS"
   },
   "B2.POS.TOOL_R2_TECH54__TECH-004__ROUTE": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-004__ROUTE",
@@ -46959,7 +46962,7 @@
   "B2.NEG.TOOL_R2_TECH54__TECH-004__ROUTE": {
    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-004__ROUTE",
    "unit_id": "B2.U0030",
-   "verdict": "PASS",
+   "verdict": "HOLD",
    "actual": {
     "mutation": "route requiredness REFERENCE/EVAL_ONLY -> OPTIONAL",
     "guard": {
@@ -46968,10 +46971,11 @@
      "detail": "the route states ['OPTIONAL'] while the tool row carries 'REFERENCE/EVAL_ONLY'"
     }
    },
-   "note": "a route may not restate a different requiredness",
+   "note": "FIRST_FAIL_CODE_DIVERGENT: spec declares TOOL_REQUIREDNESS_HOLD, product returned ROUTE_REQUIREDNESS_DRIFT_DENY",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "ROUTE_REQUIREDNESS_DRIFT_DENY",
+   "first_fail_matches": false,
+   "verdict_before_code_check": "PASS"
   },
   "B2.POS.TOOL_R2_TECH54__TECH-005__ROUTE": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-005__ROUTE",
@@ -47127,7 +47131,7 @@
   "B2.NEG.TOOL_R2_TECH54__TECH-009__ROUTE": {
    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-009__ROUTE",
    "unit_id": "B2.U0035",
-   "verdict": "PASS",
+   "verdict": "HOLD",
    "actual": {
     "mutation": "route requiredness EVAL_ONLY -> OPTIONAL",
     "guard": {
@@ -47136,10 +47140,11 @@
      "detail": "the route states ['OPTIONAL'] while the tool row carries 'EVAL_ONLY'"
     }
    },
-   "note": "a route may not restate a different requiredness",
+   "note": "FIRST_FAIL_CODE_DIVERGENT: spec declares TOOL_REQUIREDNESS_HOLD, product returned ROUTE_REQUIREDNESS_DRIFT_DENY",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "ROUTE_REQUIREDNESS_DRIFT_DENY",
+   "first_fail_matches": false,
+   "verdict_before_code_check": "PASS"
   },
   "B2.POS.TOOL_R2_TECH54__TECH-010__ROUTE": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-010__ROUTE",
@@ -47163,7 +47168,7 @@
   "B2.NEG.TOOL_R2_TECH54__TECH-010__ROUTE": {
    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-010__ROUTE",
    "unit_id": "B2.U0036",
-   "verdict": "PASS",
+   "verdict": "HOLD",
    "actual": {
     "mutation": "route requiredness EVAL_ONLY -> OPTIONAL",
     "guard": {
@@ -47172,10 +47177,11 @@
      "detail": "the route states ['OPTIONAL'] while the tool row carries 'EVAL_ONLY'"
     }
    },
-   "note": "a route may not restate a different requiredness",
+   "note": "FIRST_FAIL_CODE_DIVERGENT: spec declares TOOL_REQUIREDNESS_HOLD, product returned ROUTE_REQUIREDNESS_DRIFT_DENY",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "ROUTE_REQUIREDNESS_DRIFT_DENY",
+   "first_fail_matches": false,
+   "verdict_before_code_check": "PASS"
   },
   "B2.POS.TOOL_R2_TECH54__TECH-011__ROUTE": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-011__ROUTE",
@@ -47199,7 +47205,7 @@
   "B2.NEG.TOOL_R2_TECH54__TECH-011__ROUTE": {
    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-011__ROUTE",
    "unit_id": "B2.U0037",
-   "verdict": "PASS",
+   "verdict": "HOLD",
    "actual": {
     "mutation": "route requiredness EVAL_ONLY -> OPTIONAL",
     "guard": {
@@ -47208,10 +47214,11 @@
      "detail": "the route states ['OPTIONAL'] while the tool row carries 'EVAL_ONLY'"
     }
    },
-   "note": "a route may not restate a different requiredness",
+   "note": "FIRST_FAIL_CODE_DIVERGENT: spec declares TOOL_REQUIREDNESS_HOLD, product returned ROUTE_REQUIREDNESS_DRIFT_DENY",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "ROUTE_REQUIREDNESS_DRIFT_DENY",
+   "first_fail_matches": false,
+   "verdict_before_code_check": "PASS"
   },
   "B2.POS.TOOL_R2_TECH54__TECH-012__ROUTE": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-012__ROUTE",
@@ -47235,7 +47242,7 @@
   "B2.NEG.TOOL_R2_TECH54__TECH-012__ROUTE": {
    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-012__ROUTE",
    "unit_id": "B2.U0038",
-   "verdict": "PASS",
+   "verdict": "HOLD",
    "actual": {
     "mutation": "route requiredness EVAL_ONLY -> OPTIONAL",
     "guard": {
@@ -47244,10 +47251,11 @@
      "detail": "the route states ['OPTIONAL'] while the tool row carries 'EVAL_ONLY'"
     }
    },
-   "note": "a route may not restate a different requiredness",
+   "note": "FIRST_FAIL_CODE_DIVERGENT: spec declares TOOL_REQUIREDNESS_HOLD, product returned ROUTE_REQUIREDNESS_DRIFT_DENY",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "ROUTE_REQUIREDNESS_DRIFT_DENY",
+   "first_fail_matches": false,
+   "verdict_before_code_check": "PASS"
   },
   "B2.POS.TOOL_R2_TECH54__TECH-013__ROUTE": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-013__ROUTE",
@@ -47305,7 +47313,7 @@
   "B2.NEG.TOOL_R2_TECH54__TECH-014__ROUTE": {
    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-014__ROUTE",
    "unit_id": "B2.U0040",
-   "verdict": "PASS",
+   "verdict": "HOLD",
    "actual": {
     "mutation": "route requiredness REFERENCE/EVAL_ONLY -> OPTIONAL",
     "guard": {
@@ -47314,10 +47322,11 @@
      "detail": "the route states ['OPTIONAL'] while the tool row carries 'REFERENCE/EVAL_ONLY'"
     }
    },
-   "note": "a route may not restate a different requiredness",
+   "note": "FIRST_FAIL_CODE_DIVERGENT: spec declares TOOL_REQUIREDNESS_HOLD, product returned ROUTE_REQUIREDNESS_DRIFT_DENY",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "ROUTE_REQUIREDNESS_DRIFT_DENY",
+   "first_fail_matches": false,
+   "verdict_before_code_check": "PASS"
   },
   "B2.POS.TOOL_R2_TECH54__TECH-015__ROUTE": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-015__ROUTE",
@@ -47407,7 +47416,7 @@
   "B2.NEG.TOOL_R2_TECH54__TECH-017__ROUTE": {
    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-017__ROUTE",
    "unit_id": "B2.U0043",
-   "verdict": "PASS",
+   "verdict": "HOLD",
    "actual": {
     "mutation": "route requiredness EVAL_ONLY -> OPTIONAL",
     "guard": {
@@ -47416,10 +47425,11 @@
      "detail": "the route states ['OPTIONAL'] while the tool row carries 'EVAL_ONLY'"
     }
    },
-   "note": "a route may not restate a different requiredness",
+   "note": "FIRST_FAIL_CODE_DIVERGENT: spec declares TOOL_REQUIREDNESS_HOLD, product returned ROUTE_REQUIREDNESS_DRIFT_DENY",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "ROUTE_REQUIREDNESS_DRIFT_DENY",
+   "first_fail_matches": false,
+   "verdict_before_code_check": "PASS"
   },
   "B2.POS.TOOL_R2_TECH54__TECH-018__ROUTE": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-018__ROUTE",
@@ -47443,7 +47453,7 @@
   "B2.NEG.TOOL_R2_TECH54__TECH-018__ROUTE": {
    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-018__ROUTE",
    "unit_id": "B2.U0044",
-   "verdict": "PASS",
+   "verdict": "HOLD",
    "actual": {
     "mutation": "route requiredness EVAL_ONLY -> OPTIONAL",
     "guard": {
@@ -47452,10 +47462,11 @@
      "detail": "the route states ['OPTIONAL'] while the tool row carries 'EVAL_ONLY'"
     }
    },
-   "note": "a route may not restate a different requiredness",
+   "note": "FIRST_FAIL_CODE_DIVERGENT: spec declares TOOL_REQUIREDNESS_HOLD, product returned ROUTE_REQUIREDNESS_DRIFT_DENY",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "ROUTE_REQUIREDNESS_DRIFT_DENY",
+   "first_fail_matches": false,
+   "verdict_before_code_check": "PASS"
   },
   "B2.POS.TOOL_R2_TECH54__TECH-019__ROUTE": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-019__ROUTE",
@@ -47875,7 +47886,7 @@
   "B2.NEG.TOOL_R2_TECH54__TECH-031__ROUTE": {
    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-031__ROUTE",
    "unit_id": "B2.U0057",
-   "verdict": "PASS",
+   "verdict": "HOLD",
    "actual": {
     "mutation": "route requiredness EVAL_ONLY -> OPTIONAL",
     "guard": {
@@ -47884,10 +47895,11 @@
      "detail": "the route states ['OPTIONAL'] while the tool row carries 'EVAL_ONLY'"
     }
    },
-   "note": "a route may not restate a different requiredness",
+   "note": "FIRST_FAIL_CODE_DIVERGENT: spec declares TOOL_REQUIREDNESS_HOLD, product returned ROUTE_REQUIREDNESS_DRIFT_DENY",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "ROUTE_REQUIREDNESS_DRIFT_DENY",
+   "first_fail_matches": false,
+   "verdict_before_code_check": "PASS"
   },
   "B2.POS.TOOL_R2_TECH54__TECH-032__ROUTE": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-032__ROUTE",
@@ -47911,7 +47923,7 @@
   "B2.NEG.TOOL_R2_TECH54__TECH-032__ROUTE": {
    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-032__ROUTE",
    "unit_id": "B2.U0058",
-   "verdict": "PASS",
+   "verdict": "HOLD",
    "actual": {
     "mutation": "route requiredness EVAL_ONLY -> OPTIONAL",
     "guard": {
@@ -47920,10 +47932,11 @@
      "detail": "the route states ['OPTIONAL'] while the tool row carries 'EVAL_ONLY'"
     }
    },
-   "note": "a route may not restate a different requiredness",
+   "note": "FIRST_FAIL_CODE_DIVERGENT: spec declares TOOL_REQUIREDNESS_HOLD, product returned ROUTE_REQUIREDNESS_DRIFT_DENY",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "ROUTE_REQUIREDNESS_DRIFT_DENY",
+   "first_fail_matches": false,
+   "verdict_before_code_check": "PASS"
   },
   "B2.POS.TOOL_R2_TECH54__TECH-033__ROUTE": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-033__ROUTE",
@@ -47947,7 +47960,7 @@
   "B2.NEG.TOOL_R2_TECH54__TECH-033__ROUTE": {
    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-033__ROUTE",
    "unit_id": "B2.U0059",
-   "verdict": "PASS",
+   "verdict": "HOLD",
    "actual": {
     "mutation": "route requiredness EVAL_ONLY -> OPTIONAL",
     "guard": {
@@ -47956,10 +47969,11 @@
      "detail": "the route states ['OPTIONAL'] while the tool row carries 'EVAL_ONLY'"
     }
    },
-   "note": "a route may not restate a different requiredness",
+   "note": "FIRST_FAIL_CODE_DIVERGENT: spec declares TOOL_REQUIREDNESS_HOLD, product returned ROUTE_REQUIREDNESS_DRIFT_DENY",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "ROUTE_REQUIREDNESS_DRIFT_DENY",
+   "first_fail_matches": false,
+   "verdict_before_code_check": "PASS"
   },
   "B2.POS.TOOL_R2_TECH54__TECH-034__ROUTE": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-034__ROUTE",
@@ -47983,7 +47997,7 @@
   "B2.NEG.TOOL_R2_TECH54__TECH-034__ROUTE": {
    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-034__ROUTE",
    "unit_id": "B2.U0060",
-   "verdict": "PASS",
+   "verdict": "HOLD",
    "actual": {
     "mutation": "route requiredness EVAL_ONLY -> OPTIONAL",
     "guard": {
@@ -47992,10 +48006,11 @@
      "detail": "the route states ['OPTIONAL'] while the tool row carries 'EVAL_ONLY'"
     }
    },
-   "note": "a route may not restate a different requiredness",
+   "note": "FIRST_FAIL_CODE_DIVERGENT: spec declares TOOL_REQUIREDNESS_HOLD, product returned ROUTE_REQUIREDNESS_DRIFT_DENY",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "ROUTE_REQUIREDNESS_DRIFT_DENY",
+   "first_fail_matches": false,
+   "verdict_before_code_check": "PASS"
   },
   "B2.POS.TOOL_R2_TECH54__TECH-035__ROUTE": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-035__ROUTE",
@@ -48152,7 +48167,7 @@
   "B2.NEG.TOOL_R2_TECH54__TECH-039__ROUTE": {
    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-039__ROUTE",
    "unit_id": "B2.U0065",
-   "verdict": "PASS",
+   "verdict": "HOLD",
    "actual": {
     "mutation": "route requiredness REFERENCE/EVAL_ONLY -> OPTIONAL",
     "guard": {
@@ -48161,10 +48176,11 @@
      "detail": "the route states ['OPTIONAL'] while the tool row carries 'REFERENCE/EVAL_ONLY'"
     }
    },
-   "note": "a route may not restate a different requiredness",
+   "note": "FIRST_FAIL_CODE_DIVERGENT: spec declares TOOL_REQUIREDNESS_HOLD, product returned ROUTE_REQUIREDNESS_DRIFT_DENY",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "ROUTE_REQUIREDNESS_DRIFT_DENY",
+   "first_fail_matches": false,
+   "verdict_before_code_check": "PASS"
   },
   "B2.POS.TOOL_R2_TECH54__TECH-040__ROUTE": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-040__ROUTE",
@@ -48386,7 +48402,7 @@
   "B2.NEG.TOOL_R2_TECH54__TECH-046__ROUTE": {
    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-046__ROUTE",
    "unit_id": "B2.U0072",
-   "verdict": "PASS",
+   "verdict": "HOLD",
    "actual": {
     "mutation": "route requiredness EVAL_ONLY -> OPTIONAL",
     "guard": {
@@ -48395,10 +48411,11 @@
      "detail": "the route states ['OPTIONAL'] while the tool row carries 'EVAL_ONLY'"
     }
    },
-   "note": "a route may not restate a different requiredness",
+   "note": "FIRST_FAIL_CODE_DIVERGENT: spec declares TOOL_REQUIREDNESS_HOLD, product returned ROUTE_REQUIREDNESS_DRIFT_DENY",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "ROUTE_REQUIREDNESS_DRIFT_DENY",
+   "first_fail_matches": false,
+   "verdict_before_code_check": "PASS"
   },
   "B2.POS.TOOL_R2_TECH54__TECH-047__ROUTE": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-047__ROUTE",
@@ -48455,7 +48472,7 @@
   "B2.NEG.TOOL_R2_TECH54__TECH-048__ROUTE": {
    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-048__ROUTE",
    "unit_id": "B2.U0074",
-   "verdict": "PASS",
+   "verdict": "HOLD",
    "actual": {
     "mutation": "route requiredness EVAL_ONLY -> OPTIONAL",
     "guard": {
@@ -48464,10 +48481,11 @@
      "detail": "the route states ['OPTIONAL'] while the tool row carries 'EVAL_ONLY'"
     }
    },
-   "note": "a route may not restate a different requiredness",
+   "note": "FIRST_FAIL_CODE_DIVERGENT: spec declares TOOL_REQUIREDNESS_HOLD, product returned ROUTE_REQUIREDNESS_DRIFT_DENY",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "ROUTE_REQUIREDNESS_DRIFT_DENY",
+   "first_fail_matches": false,
+   "verdict_before_code_check": "PASS"
   },
   "B2.POS.TOOL_R2_TECH54__TECH-049__ROUTE": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-049__ROUTE",
@@ -48524,7 +48542,7 @@
   "B2.NEG.TOOL_R2_TECH54__TECH-050__ROUTE": {
    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-050__ROUTE",
    "unit_id": "B2.U0076",
-   "verdict": "PASS",
+   "verdict": "HOLD",
    "actual": {
     "mutation": "route requiredness EVAL_ONLY -> OPTIONAL",
     "guard": {
@@ -48533,10 +48551,11 @@
      "detail": "the route states ['OPTIONAL'] while the tool row carries 'EVAL_ONLY'"
     }
    },
-   "note": "a route may not restate a different requiredness",
+   "note": "FIRST_FAIL_CODE_DIVERGENT: spec declares TOOL_REQUIREDNESS_HOLD, product returned ROUTE_REQUIREDNESS_DRIFT_DENY",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "ROUTE_REQUIREDNESS_DRIFT_DENY",
+   "first_fail_matches": false,
+   "verdict_before_code_check": "PASS"
   },
   "B2.POS.TOOL_R2_TECH54__TECH-051__ROUTE": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-051__ROUTE",
@@ -48560,7 +48579,7 @@
   "B2.NEG.TOOL_R2_TECH54__TECH-051__ROUTE": {
    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-051__ROUTE",
    "unit_id": "B2.U0077",
-   "verdict": "PASS",
+   "verdict": "HOLD",
    "actual": {
     "mutation": "route requiredness EVAL_ONLY -> OPTIONAL",
     "guard": {
@@ -48569,10 +48588,11 @@
      "detail": "the route states ['OPTIONAL'] while the tool row carries 'EVAL_ONLY'"
     }
    },
-   "note": "a route may not restate a different requiredness",
+   "note": "FIRST_FAIL_CODE_DIVERGENT: spec declares TOOL_REQUIREDNESS_HOLD, product returned ROUTE_REQUIREDNESS_DRIFT_DENY",
    "expected_first_fail": "TOOL_REQUIREDNESS_HOLD",
-   "observed_first_fail": null,
-   "first_fail_matches": null
+   "observed_first_fail": "ROUTE_REQUIREDNESS_DRIFT_DENY",
+   "first_fail_matches": false,
+   "verdict_before_code_check": "PASS"
   },
   "B2.POS.TOOL_R2_TECH54__TECH-052__ROUTE": {
    "case_id": "B2.POS.TOOL_R2_TECH54__TECH-052__ROUTE",
@@ -48674,6 +48694,6 @@
    "first_fail_matches": null
   }
  },
- "elapsed_s": 1.6,
+ "elapsed_s": 1.7,
  "claim_ceiling": "HOLD/PARTIAL are never PASS; tool admission stays with B5/R17"
 }

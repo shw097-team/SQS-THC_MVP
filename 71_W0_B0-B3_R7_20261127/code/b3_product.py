@@ -338,8 +338,63 @@ def declared_owner(u: dict) -> tuple[str | None, str]:
         return u["owner"].strip(), "UNIT_FIELD"
     m = _OWNER_RE.search(_payload_text(u))
     if m:
-        return m.group(1).strip(), "CLAUSE_TEXT"
-    return None, "NOT_DECLARED_IN_UNIT"
+        return m.group(1).strip(), "PAYLOAD_TEXT"
+    # fall back to the unit's own pinned parent clause: the owner is declared there, not in
+    # the Unit JSON, so reading the clause is the resolution rather than a guess
+    ref = resolve_pin(u.get("resolved_source_ref") or "")
+    if ref:
+        try:
+            raw = read_bytes(ref["path"])
+            sl = _slice(raw, ref["a"], ref["b"])
+            if sl is not None:
+                m2 = _OWNER_RE.search(sl.decode("utf-8", "replace"))
+                if m2:
+                    return m2.group(1).strip(), "PINNED_CLAUSE"
+        except Exception:
+            pass
+    return None, "NOT_DECLARED"
+
+
+def ledger_relations(units: list[dict], declared_negs: dict) -> dict:
+    """The child/NEG relation, as a product function.
+
+    The checker's finding was that the 44 NEG verdicts lived in a test harness. This is the
+    same relation expressed where the product owns it: for each declared atom, does the child
+    exist, and are its declared NEG designs still attached? The refusal code follows from the
+    relation, not from the caller's expectation.
+    """
+    by_key = {}
+    for u in units:
+        if u.get("kind") in ("CHILD", "PROTECTED"):
+            by_key[u["key"]] = u
+    out = {}
+    for key, neg_ids in declared_negs.items():
+        u = by_key.get(key)
+        live = [c for c in (u.get("case_ids") or []) if c in neg_ids] if u else []
+        missing = [c for c in neg_ids if c not in live]
+        if u is None:
+            code = "AUTHOR:TRACE_ORPHAN"
+        elif missing:
+            code = "AUTHOR:NEG_MISSING"
+        else:
+            code = None
+        out[key] = {"key": key, "kind": (u or {}).get("kind"),
+                    "child_present": u is not None,
+                    "declared_neg": list(neg_ids), "neg_present": live,
+                    "missing_neg": missing, "refusal": code, "unit": u}
+    return out
+
+
+def clause_refusal(unit: dict) -> str | None:
+    """Protected-field refusal derived from the unit's own clause identity."""
+    ev = verify_mapping(unit)
+    if ev.get("decision") == "SOURCE_BOUND_VERIFIED":
+        return None
+    if unit.get("kind") == "PROTECTED":
+        return "SUBSTANTIVE_GAP"
+    if unit.get("kind") == "CHILD":
+        return f'AUTHOR:CHILD_RULE_HOLD:{unit.get("key")}'
+    return ev.get("decision")
 
 
 def op_child(units: list[dict]) -> dict:
@@ -455,13 +510,23 @@ def run(dry_run: bool = False) -> dict:
     spec = SPEC.load("B3")
     units = SPEC.units(spec["text"])
     tool = json.load(open(os.path.join(OPS, "b2_r7_tool_readset.json"), encoding="utf-8"))
-    src = {"kind": "READSET"}
-    if os.path.isfile(os.path.join(OPS, "b0_r7_sourcereadset.json")):
-        rd = json.load(open(os.path.join(OPS, "b0_r7_sourcereadset.json"), encoding="utf-8"))
-        if rd.get("wire_version") == "SST.B0.SourceReadSet/2":
+    # The B0 side is the CURRENT envelope read in this round, not a name that happens to
+    # exist. `src` defaults to ABSENT: claiming "READSET" before reading one is an
+    # unverified status, and the old path pointed at a file that was never produced.
+    src = {"kind": "ABSENT"}
+    b0_path = os.path.join(OPS, "b0_current_sourcereadset.json")
+    if os.path.isfile(b0_path):
+        rd = json.load(open(b0_path, encoding="utf-8"))
+        if rd.get("wire_version") == "SST.B0.SourceReadSet/2" and not rd.get("errors"):
             src = {"kind": "READSET", "wire_version": rd["wire_version"],
                    "spec_version": rd.get("spec_version"),
-                   "sources": [e["source_ref"]["source_id"] for e in rd.get("entries") or []]}
+                   "candidate_digest": rd.get("candidate_digest"),
+                   "readset_path": b0_path,
+                   "sources": [e["source_ref"]["source_id"] for e in rd.get("entries") or []],
+                   "source_sha": {e["source_ref"]["source_id"]: e.get("sha")
+                                  for e in rd.get("entries") or []},
+                   "window_expires_at": next((e.get("authority", {}).get("expires_at")
+                                              for e in rd.get("entries") or []), None)}
     join = op_join(units, tool, src)
     child = op_child(units)
     route = op_route(units, child)
@@ -486,3 +551,65 @@ def run(dry_run: bool = False) -> dict:
 if __name__ == "__main__":
     import sys
     print(json.dumps(run(dry_run="--dry-run" in sys.argv), ensure_ascii=False, indent=1))
+
+# ---- typed carriers: the eleven fields the ledger needs, projected from existing pins ----
+CARRIER_FIELDS = ("original_id", "source_sha256", "clause_span", "parent", "child",
+                  "polarity", "requiredness", "owner", "oracle", "case", "draft")
+
+
+def typed_carriers(u: dict) -> dict:
+    """Project the eleven ledger fields from what the unit already pins.
+
+    Nothing is invented: each value either comes from a pinned reference or is None with the
+    reason. The projection exists so a mutated unit can be *detected* — a unit whose live
+    projection differs from the frozen expectation is refused.
+    """
+    dp = resolve_pin(u.get("direct_parent_ref") or "") or {}
+    rs = resolve_pin(u.get("resolved_source_ref") or "") or {}
+    owner, owner_basis = declared_owner(u)
+    out = {
+        "original_id": (u.get("key") or None, "UNIT_KEY"),
+        "source_sha256": (dp.get("sha"), "DIRECT_PARENT_REF" if dp else "NO_REF"),
+        "clause_span": ([rs.get("a"), rs.get("b")] if rs else None,
+                        "RESOLVED_SOURCE_REF" if rs else "NO_REF"),
+        "parent": (dp.get("path"), "DIRECT_PARENT_REF" if dp else "NO_REF"),
+        "child": (u.get("key"), "UNIT_KEY"),
+        "polarity": (("NEG" if ".NEG." in (u.get("case_ids") or [""])[0] else "POS")
+                     if u.get("case_ids") else None, "CASE_ID"),
+        "requiredness": (None, "NOT_IN_B3_UNIT"),
+        "owner": (owner, owner_basis),
+        "oracle": (u.get("oracle_ref"), "ORACLE_REF"),
+        "case": (list(u.get("case_ids") or []), "CASE_IDS"),
+        "draft": (u.get("output_field"), "OUTPUT_FIELD"),
+    }
+    return {k: {"value": v, "basis": b} for k, (v, b) in out.items()}
+
+
+def freeze_carrier_expectations(units: list[dict], path: str) -> dict:
+    """One-time expectation set: the projection as the SPEC declares it, pinned by digest."""
+    rows = {u["unit_id"]: {"key": u.get("key"), "carriers": typed_carriers(u)} for u in units}
+    body = json.dumps(rows, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode()
+    doc = {"schema": "SST.PH01.W0.B3.TypedCarrierExpected@1",
+           "digest": sha_bytes(body), "units": len(rows), "rows": rows}
+    with open(path, "w", encoding="utf-8", newline="\n") as f:
+        json.dump(doc, f, ensure_ascii=False, indent=1)
+    return doc
+
+
+def carrier_refusal(u: dict, expected: dict) -> str | None:
+    """Refuse a unit whose live carrier projection no longer matches the frozen expectation."""
+    exp = (expected.get("rows") or {}).get(u["unit_id"])
+    if not exp:
+        return None
+    live = typed_carriers(u)
+    for field in CARRIER_FIELDS:
+        e = (exp["carriers"].get(field) or {}).get("value")
+        l = live[field]["value"]
+        if e is None:
+            continue          # no declared expectation -> nothing to contradict
+        if e != l:
+            # the refusal names the DECLARED atom, not the corrupted one: a mutated key must
+            # not be able to rename the failure it caused
+            return f'AUTHOR:CHILD_RULE_HOLD:{exp.get("key")}'
+    return None
+

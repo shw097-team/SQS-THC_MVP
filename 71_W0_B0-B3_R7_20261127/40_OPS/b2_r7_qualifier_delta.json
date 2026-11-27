@@ -1,8 +1,8 @@
 {
  "schema": "SST.PH01.W0.B2.QualifierDelta@1",
- "hold_total": 144,
+ "hold_total": 164,
  "author_qualified_holds": 34,
- "unknown_requiredness_holds": 110,
+ "unknown_requiredness_holds": 130,
  "other_holds": 0,
  "qualified_cells": [
   "EVAL_ONLY_ADAPTER",
@@ -405,6 +405,26 @@
     "basis": ""
    },
    {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-001__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-002__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-003__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-004__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
     "case_id": "B2.POS.TOOL_R2_TECH54__TECH-005__ROUTE",
     "cell": null,
     "basis": ""
@@ -445,12 +465,37 @@
     "basis": ""
    },
    {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-009__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-010__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-011__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-012__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
     "case_id": "B2.POS.TOOL_R2_TECH54__TECH-013__ROUTE",
     "cell": null,
     "basis": ""
    },
    {
     "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-013__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-014__ROUTE",
     "cell": null,
     "basis": ""
    },
@@ -471,6 +516,16 @@
    },
    {
     "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-016__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-017__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-018__ROUTE",
     "cell": null,
     "basis": ""
    },
@@ -595,6 +650,26 @@
     "basis": ""
    },
    {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-031__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-032__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-033__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-034__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
     "case_id": "B2.POS.TOOL_R2_TECH54__TECH-035__ROUTE",
     "cell": null,
     "basis": ""
@@ -631,6 +706,11 @@
    },
    {
     "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-038__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-039__ROUTE",
     "cell": null,
     "basis": ""
    },
@@ -695,6 +775,11 @@
     "basis": ""
    },
    {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-046__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
     "case_id": "B2.POS.TOOL_R2_TECH54__TECH-047__ROUTE",
     "cell": null,
     "basis": ""
@@ -705,12 +790,27 @@
     "basis": ""
    },
    {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-048__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
     "case_id": "B2.POS.TOOL_R2_TECH54__TECH-049__ROUTE",
     "cell": null,
     "basis": ""
    },
    {
     "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-049__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-050__ROUTE",
+    "cell": null,
+    "basis": ""
+   },
+   {
+    "case_id": "B2.NEG.TOOL_R2_TECH54__TECH-051__ROUTE",
     "cell": null,
     "basis": ""
    },

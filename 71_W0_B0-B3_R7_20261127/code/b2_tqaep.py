@@ -62,7 +62,11 @@ def main() -> int:
 
     def put(uid, cid, verdict, actual, note=""):
         exp = (_tbl.get(cid) or {}).get("expected")
-        obs = actual.get("first_fail") if isinstance(actual, dict) else None
+        obs = None
+        if isinstance(actual, dict):
+            obs = (actual.get("first_fail")
+                   or (actual.get("guard") or {}).get("first_fail")
+                   or (actual.get("refusal") or {}).get("first_fail"))
         cases[cid] = {"case_id": cid, "unit_id": uid, "verdict": verdict,
                       "actual": actual, "note": note,
                       "expected_first_fail": exp, "observed_first_fail": obs,
@@ -163,6 +167,17 @@ def main() -> int:
             "a route may not restate a different requiredness")
 
     missing = [u["key"] for u in units for cid in u["case_ids"] if cid not in cases]
+    # A verdict must survive the SPEC's own declared FirstFail. A guard that refuses with a
+    # different code is a genuine divergence, not a pass with a different label.
+    for c in cases.values():
+        if c["verdict"] == "PASS" and c.get("expected_first_fail") and c.get("observed_first_fail"):
+            if c["expected_first_fail"] != c["observed_first_fail"]:
+                c["verdict_before_code_check"] = "PASS"
+                c["verdict"] = "HOLD"
+                c["note"] = ("FIRST_FAIL_CODE_DIVERGENT: spec declares "
+                             f'{c["expected_first_fail"]}, product returned '
+                             f'{c["observed_first_fail"]}')
+
     counts = {}
     for c in cases.values():
         counts[c["verdict"]] = counts.get(c["verdict"], 0) + 1

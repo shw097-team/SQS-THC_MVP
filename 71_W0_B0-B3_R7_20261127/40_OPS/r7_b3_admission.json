@@ -1,6 +1,6 @@
 {
  "schema": "SST.PH01.W0.B3.Admission@1",
- "generated_at": "2026-11-27T19:03:26+0800",
+ "generated_at": "2026-11-27T19:17:18+0800",
  "spec_b3_sha256": "c1c9c5326a36c1e0e0b00dc1231b39b4f7c21e10a4f9320f2a4dbaabe6125ec5",
  "host": {
   "hostname": "DESKTOP-57EO414",
@@ -59,22 +59,13 @@
   "neg_declared_first_fail": {
    "executed": 44,
    "verdicts": {
-    "PASS": 33,
-    "HOLD": 11
+    "PASS": 42,
+    "HOLD": 2
    },
    "disagreements": 0,
    "hold_reasons": {
-    "FIELD_CARRIER_ABSENT:original_id": 1,
-    "FIELD_CARRIER_ABSENT:source_sha256": 1,
-    "FIELD_CARRIER_ABSENT:clause_span": 1,
-    "FIELD_CARRIER_ABSENT:parent": 1,
-    "FIELD_CARRIER_ABSENT:child": 1,
-    "FIELD_CARRIER_ABSENT:polarity": 1,
     "FIELD_CARRIER_ABSENT:requiredness": 1,
-    "FIELD_CARRIER_ABSENT:owner": 1,
-    "FIELD_CARRIER_ABSENT:oracle": 1,
-    "FIELD_CARRIER_ABSENT:case": 1,
-    "FIELD_CARRIER_ABSENT:draft": 1
+    "FIELD_CARRIER_ABSENT:owner": 1
    }
   },
   "semantic_reader": "UNBOUND"

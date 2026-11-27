@@ -45,19 +45,8 @@ def declared_negs(tbl: dict) -> dict:
 
 
 def ledger(units: list[dict], declared: dict) -> dict:
-    """The relation the mutations are applied to: child presence vs declared NEG designs."""
-    by_key = {}
-    for u in units:
-        if u.get("kind") in ("CHILD", "PROTECTED"):
-            by_key[u["key"]] = u
-    rows = {}
-    for key, neg_ids in declared.items():
-        u = by_key.get(key)
-        live = [c for c in (u.get("case_ids") or []) if c in neg_ids] if u else []
-        rows[key] = {"key": key, "kind": (u or {}).get("kind"),
-                     "child_present": u is not None, "declared_neg": list(neg_ids),
-                     "neg_present": live, "unit": u}
-    return rows
+    """Delegates to the product relation; the harness only mutates."""
+    return P.ledger_relations(units, declared)
 
 
 def eval_child(unit: dict) -> dict:
@@ -82,6 +71,11 @@ def run() -> dict:
     units = SPEC.units(spec["text"])
     tbl = SPEC.case_table(spec["text"], "B3")
     declared = declared_negs(tbl)
+    exp_path = os.path.join(OPS, "b3_typed_carrier_expected.json")
+    if os.path.isfile(exp_path):
+        carrier_exp = json.load(open(exp_path, encoding="utf-8"))
+    else:
+        carrier_exp = P.freeze_carrier_expectations(units, exp_path)
     base_rows = ledger(units, declared)
     base_ok = sum(1 for r in base_rows.values() if r["child_present"])
 
@@ -109,22 +103,32 @@ def run() -> dict:
             elif how == "PROTECTED_FIELD":
                 bad = copy.deepcopy(base_unit)
                 bad["direct_clause_sha"] = "0" * 64
-                ev = eval_child(bad)
-                observed = "SUBSTANTIVE_GAP" if not ev["ok"] else None
+                observed = P.clause_refusal(bad)
             else:
                 name = cid.rsplit(".", 1)[-1].replace("FIELD_", "")
-                if name not in CHILD_FIELDS:
+                exp_val = ((carrier_exp.get("rows") or {}).get(base_unit["unit_id"], {})
+                           .get("carriers", {}).get(name, {}) or {}).get("value")
+                if exp_val is None:
                     note = f"FIELD_CARRIER_ABSENT:{name}"
                 else:
                     bad = copy.deepcopy(base_unit)
                     if name == "direct_clause_sha":
                         bad["direct_clause_sha"] = "0" * 64
-                    elif name == "key":
+                    elif name in ("child", "original_id"):
                         bad["key"] = bad["key"] + "::MUT"
+                    elif name in ("parent", "source_sha256"):
+                        bad["direct_parent_ref"] = (bad.get("direct_parent_ref") or "") + "MUT"
+                    elif name == "clause_span":
+                        bad["resolved_source_ref"] = (bad.get("resolved_source_ref") or "L1–2") + "MUT"
+                    elif name in ("case", "polarity"):
+                        bad["case_ids"] = list(bad.get("case_ids") or []) + ["B3.NEG.MUT"]
+                    elif name == "oracle":
+                        bad["oracle_ref"] = (bad.get("oracle_ref") or "") + "MUT"
+                    elif name == "draft":
+                        bad["output_field"] = (bad.get("output_field") or "") + "MUT"
                     else:
-                        bad[name] = (bad.get(name) or "") + "::MUT" if isinstance(bad.get(name), str) else "MUT"
-                    ev = eval_child(bad)
-                    observed = f"AUTHOR:CHILD_RULE_HOLD:{key}" if not ev["ok"] else None
+                        bad[name] = "MUT"
+                    observed = P.carrier_refusal(bad, carrier_exp) or P.clause_refusal(bad)
 
             expected = (tbl.get(cid) or {}).get("expected")
             faithful = note is None
