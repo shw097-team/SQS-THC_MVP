@@ -22,6 +22,18 @@ ENVELOPE = WAVE / "40_OPS" / "b0_sourcereadset_r8_20261127.json"
 OUT = WAVE / "00_PREFLIGHT" / "DEPLOYMENT_prod_20261127_r9.json"
 DESCRIPTOR = WAVE / "00_PREFLIGHT" / "B0_READ_CONTEXT_20261127_r7.json"
 
+# Independent pin for the inherited SourceManifest.  Provenance (not the envelope):
+#   K:\...\SST_Native-first_重構\SST_PH01_W0M_第三代重構_藍圖.md
+#   K:\...\SST_Native-first_重構\SST_PLP_PH01_W0M_實質正文_2026-11-27_r5_Native-first_GEN3.md
+#   K:\...\產品＆施工雙去耦合_第二代\SST Native-first｜W0 B1–B2 最終收斂性結案…報告.md
+# The original bytes were never obtained, so the state stays UNVERIFIED: this pins
+# *which* inherited manifest the deployment expects, not that the file was verified.
+SOURCE_MANIFEST_PIN = {
+    "inherited_sha": "2012a28f630f4e28d60309de0bb5734ce138b18c677445a475c670f1d9f4245e",
+    "verification": "UNVERIFIED",
+    "evidence_ref": None,
+}
+
 CANDIDATE_PATHS = (
     "00_PREFLIGHT/B0_READ_CONTEXT_2026-11-25_r4.json",
     "00_PREFLIGHT/required_set_req12_read_all_2026-11-25.json",
@@ -94,6 +106,19 @@ def main() -> int:
                          ensure_ascii=False, indent=1))
         return 4
 
+    env_manifest = env.get("source_manifest") or {}
+    if env_manifest.get("inherited_sha") != SOURCE_MANIFEST_PIN["inherited_sha"]:
+        print(json.dumps({"refused": "SOURCE_MANIFEST_NOT_THE_PIN",
+                          "envelope_declared": env_manifest.get("inherited_sha"),
+                          "independent_pin": SOURCE_MANIFEST_PIN["inherited_sha"]},
+                         ensure_ascii=False))
+        return 4
+    if env_manifest.get("verification") != SOURCE_MANIFEST_PIN["verification"]:
+        print(json.dumps({"refused": "SOURCE_MANIFEST_STATE_NOT_THE_PIN",
+                          "envelope_declared": env_manifest.get("verification")},
+                         ensure_ascii=False))
+        return 4
+
     sources = {}
     for src in descriptor["sources"]:
         loc = Path(src["locator"])
@@ -111,6 +136,13 @@ def main() -> int:
         if value is None:
             print(json.dumps({"refused": "RULE_YIELDS_NOTHING", "source": src["source_id"]}))
             return 4
+        rs_bytes = Path(src["required_set"]["ref"]).read_bytes()
+        if sha(rs_bytes) != src["required_set"]["sha"]:
+            print(json.dumps({"refused": "REQUIRED_SET_PIN_MISMATCH",
+                              "source": src["source_id"],
+                              "declared": src["required_set"]["sha"],
+                              "actual": sha(rs_bytes)}, ensure_ascii=False))
+            return 4
         sources[src["source_id"]] = {
             "source_id": src["source_id"],
             "namespace": src["namespace"],
@@ -122,7 +154,7 @@ def main() -> int:
             "expected_clause_sha256": sha(clause),
             "required_fields": rs["required_fields"],
             "required_set_ref": src["required_set"]["ref"],
-            "required_set_sha256": sha(Path(src["required_set"]["ref"]).read_bytes()),
+            "required_set_sha256": sha(rs_bytes),
             "extraction_rule": rule,
             "expected_value": value,
             "expected_value_sha256": sha(value.encode("utf-8")),
@@ -168,7 +200,7 @@ def main() -> int:
         "scope_id": descriptor["scope"]["scope_id"],
         "consumer_ids": descriptor["scope"]["consumer_ids"],
         "source_ids": descriptor["scope"]["source_ids"],
-        "source_manifest_expected": env["source_manifest"],
+        "source_manifest_expected": dict(SOURCE_MANIFEST_PIN),
         "allowed_roots": sorted({s["allowed_root"] for s in descriptor["sources"]}),
         "os_principal": window.get("owner_fingerprint") and subprocess.run(
             ["whoami"], capture_output=True, text=True).stdout.strip().lower(),

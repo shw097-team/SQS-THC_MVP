@@ -28,6 +28,14 @@ OPS = WAVE / "40_OPS"
 ENVELOPE = OPS / "b0_sourcereadset_r9_20261127.json"
 DEPLOYMENT = WAVE / "00_PREFLIGHT" / "DEPLOYMENT_prod_20261127_r10.json"
 
+# Independent pin for the inherited SourceManifest (provenance: the K documents listed in
+# build_deployment_r8.py).  Never taken from the envelope under test; still UNVERIFIED.
+SOURCE_MANIFEST_PIN = {
+    "inherited_sha": "2012a28f630f4e28d60309de0bb5734ce138b18c677445a475c670f1d9f4245e",
+    "verification": "UNVERIFIED",
+    "evidence_ref": None,
+}
+
 CANDIDATE_PATHS = (
     "00_PREFLIGHT/B0_READ_CONTEXT_2026-11-25_r4.json",
     "00_PREFLIGHT/required_set_req12_read_all_2026-11-25.json",
@@ -190,6 +198,13 @@ def main() -> int:
     freeze_ok = envdoc.get("candidate_digest") == digest
 
     # ---- 4. rebuild the receiver deployment against the new receipt ----
+    env_manifest = envdoc.get("source_manifest") or {}
+    if env_manifest.get("inherited_sha") != SOURCE_MANIFEST_PIN["inherited_sha"] or             env_manifest.get("verification") != SOURCE_MANIFEST_PIN["verification"]:
+        print(json.dumps({"refused": "SOURCE_MANIFEST_NOT_THE_PIN",
+                          "envelope": env_manifest, "pin": SOURCE_MANIFEST_PIN},
+                         ensure_ascii=False, indent=1))
+        return 4
+
     sources = {}
     for src in doc["sources"]:
         loc = Path(src["locator"])
@@ -235,7 +250,7 @@ def main() -> int:
         "scope": doc["scope"], "scope_purpose": doc["scope"]["purpose"],
         "scope_id": doc["scope"]["scope_id"], "consumer_ids": doc["scope"]["consumer_ids"],
         "source_ids": doc["scope"]["source_ids"],
-        "source_manifest_expected": envdoc["source_manifest"],
+        "source_manifest_expected": dict(SOURCE_MANIFEST_PIN),
         "allowed_roots": sorted({s["allowed_root"] for s in doc["sources"]}),
         "os_principal": subprocess.run(["whoami"], capture_output=True, text=True).stdout.strip().lower(),
         "owner_public_hex": window.get("owner_public_hex"),

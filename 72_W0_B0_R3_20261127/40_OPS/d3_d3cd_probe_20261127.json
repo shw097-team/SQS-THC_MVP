@@ -1,0 +1,53 @@
+{
+ "schema": "SST.PH01.W0.B0.R3.D3CDProbe/1",
+ "measured_at": "2026-11-27T23:51:31.052071+08:00",
+ "envelope": {
+  "path": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\40_OPS\\b0_sourcereadset_r9_20261127.json",
+  "sha256": "5d264bdc9035879a958c03cec17a8e83c185856f0c8b860d044c0003af14c480"
+ },
+ "descriptor": {
+  "path": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\00_PREFLIGHT\\B0_READ_CONTEXT_20261127_r8.json",
+  "sha256": "1a3a66f5ae124cd7f08a0560a05cc71a7d7ec23c167230e8705ba5991ec9b8e7"
+ },
+ "deployment": {
+  "path": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\00_PREFLIGHT\\DEPLOYMENT_prod_20261127_r10.json",
+  "sha256": "c5efcca4e2b4798ee91b5f6a5384bc9de073d4ea036d954e0704fb1a0c75a669"
+ },
+ "arms": [
+  {
+   "arm": "POS_rebuild_matches_accepted_on_the_D3_projection",
+   "exit": 0,
+   "manifest_expectation_equal": true,
+   "per_source_required_set_equal": true,
+   "t3a_pin_equals_accepted_deployment": true,
+   "accepted": {
+    "inherited_sha": "2012a28f630f4e28d60309de0bb5734ce138b18c677445a475c670f1d9f4245e",
+    "verification": "UNVERIFIED",
+    "evidence_ref": null
+   },
+   "ok": true
+  },
+  {
+   "arm": "NEG_manifest_digest_differs",
+   "exit": 4,
+   "first_fail": "SOURCE_MANIFEST_NOT_THE_PIN",
+   "observed": "{\"refused\": \"SOURCE_MANIFEST_NOT_THE_PIN\", \"envelope_declared\": \"0000000000000000000000000000000000000000000000000000000000000000\", \"independent_pin\": \"2012a28f630f4e28d60309de0bb5734ce138b18c677445a4",
+   "ok": true
+  },
+  {
+   "arm": "NEG_manifest_state_escalated",
+   "exit": 4,
+   "first_fail": "SOURCE_MANIFEST_STATE_NOT_THE_PIN",
+   "observed": "{\"refused\": \"SOURCE_MANIFEST_STATE_NOT_THE_PIN\", \"envelope_declared\": \"VERIFIED\"}",
+   "ok": true
+  },
+  {
+   "arm": "NEG_required_set_pin_differs",
+   "exit": 4,
+   "first_fail": "REQUIRED_SET_PIN_MISMATCH",
+   "observed": "{\"refused\": \"REQUIRED_SET_PIN_MISMATCH\", \"source\": \"SST.ALL.W0.BLUEPRINT\", \"declared\": \"0000000000000000000000000000000000000000000000000000000000000000\", \"actual\": \"50ca45c106bb58fd8a3bfdf1cfaf7400fd",
+   "ok": true
+  }
+ ],
+ "all_ok": true
+}

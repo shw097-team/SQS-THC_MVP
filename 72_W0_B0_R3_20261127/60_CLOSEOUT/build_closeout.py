@@ -179,6 +179,32 @@ def main() -> int:
               "本節與 `FREEZE_<rev>.json` / `CANDIDATE_receiver_<rev>.json` |\n"
               "| D7 待升級與散布 | 不重研非必要進階；散布事件如實保留 | §9 待升級區照原具權裁決；LOCAL_ONLY 散布事件與 repo 殘留列於 `REDACTION_NOTICE` §2–§3 | §9、§11 |\n")
 
+    md.append("### 3.2｜D3-A～D3-D 最終處分（r26）\n")
+    _d3p = load(OPS / "d3_d3cd_probe_20261127.json") if (OPS / "d3_d3cd_probe_20261127.json").exists() else {}
+    md.append("| 差額 | 原要求 | 當期真處分 | 實證 |\n|---|---|---|---|\n"
+              "| D3-A 權利／authority 實質綁定 | 不得以欄位非空代替真值 | **已由既有實作閉合**："
+              "`usage_evidence_sha` 必須等於 live window 收據 sha（`rights.py:201`），該收據經 Ed25519 驗章；"
+              "`disclosure` 必須落在 deployment 由可信配置釘住的允許集（`rights.py:189`）；"
+              "task／scope／principal／ceiling 為 window tuple 精確比對。`source_owner` 屬宣告標籤，"
+              "其真權威由單一 OWNER 簽章收據與上述 sha 綁定承擔，不另立第二權威 | "
+              "`verdict_r20_round7.json` item 13 探針；`test_rights_refusal_does_not_carry_the_value` |\n"
+              "| D3-B 權利區間與返回前重驗 | 拒絕未生效／到期／超期／撤權，返回前重驗須涵蓋當期全部來源 | "
+              "**已閉合**：`check_envelope_authority` 以同一可信時鐘判 `valid_from ≤ now < expires_at`（aware、保 offset），"
+              "返回前以 deployment 級 `check_rights` 重驗並在 `receipt_sha256`／`live_window_id` 變動時把**所有**列改判 "
+              "`RIGHTS_CHANGED_BEFORE_RETURN` | `test_rights_decided_before_any_source_byte`、"
+              "`RIGHTS_EXPIRED`／`RIGHTS_REVOKED` 實跑收據 |\n"
+              "| D3-C 獨立 Expected 與 SourceManifest | 不得由待驗 envelope 反推 Expected | "
+              "**真缺陷，已修**：`40_OPS/t3a_run_r9.py` 與 `40_OPS/build_deployment_r8.py` 原以 "
+              "`envdoc[\"source_manifest\"]` 作 Expected；改為模組內獨立 pin（來源為 K 文件，非 envelope），"
+              "並要求 envelope 宣告須等於該 pin、狀態須同為 `UNVERIFIED`，否則 `SOURCE_MANIFEST_NOT_THE_PIN`／"
+              "`SOURCE_MANIFEST_STATE_NOT_THE_PIN`。受檢候選未變，故 r25 ACCEPT 續存 | "
+              f"`40_OPS/d3_d3cd_probe_20261127.json` 四臂全過 `all_ok={_d3p.get('all_ok')}` |\n"
+              "| D3-D RequiredSet／provenance 真值 | 須與獨立可信原件綁定 | **真缺陷，已修**：builder 原只記 "
+              "`required_set_sha256`（重算值）而未與 descriptor 宣告的 pin 比對；現要求二者相等，否則 "
+              "`REQUIRED_SET_PIN_MISMATCH`。規則側仍由 spec 位元組導出 `expected_value_sha256`／"
+              "`expected_clause_sha256`，receiver 以 `CLAUSE_RULE_MISMATCH` 與 R/P/M 重取作實質核對；"
+              "`provenance.rule_sha` 為宣告標籤，不單獨授予任何 decision | 同上 POS 與 NEG3 臂 |\n")
+
     md.append("### 4｜真受影 POS：三端各自入站\n")
     md.append("| Consumer | 實際入口 | validator | 每源結果 | 端判定 | mandatory | 逐源 13 欄與 R/P/M |\n"
               "|---|---|---|---|---|---|---|\n"
