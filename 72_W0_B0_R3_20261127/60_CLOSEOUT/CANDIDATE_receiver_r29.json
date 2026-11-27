@@ -1,0 +1,28 @@
+{
+ "schema": "SST.PH01.W0.B0.R3.ReceiverCandidate/1",
+ "revision": "r29",
+ "members": 13,
+ "paths": [
+  "10_CODE/b0_r3_receiver/__init__.py",
+  "10_CODE/b0_r3_receiver/cli.py",
+  "10_CODE/b0_r3_receiver/deployment.py",
+  "10_CODE/b0_r3_receiver/receiver.py",
+  "10_CODE/b0_r3_receiver/rights.py",
+  "10_CODE/b0_r3_receiver/wire.py",
+  "10_CODE/consumers/__init__.py",
+  "10_CODE/consumers/b1.py",
+  "10_CODE/consumers/b2.py",
+  "10_CODE/consumers/b3.py",
+  "10_CODE/consumers/common.py",
+  "20_TESTS/fixture/DEPLOYMENT_fixture_20261127_r9.json",
+  "20_TESTS/test_receiver.py"
+ ],
+ "manifest": {
+  "path": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\60_CLOSEOUT\\CANDIDATE_receiver_r29.tsv",
+  "bytes": 1321,
+  "sha256": "33c759eb6faf3beae83522574d5dd4e5b44bff7244cc2a058d87ce52401d70da"
+ },
+ "convention": "path<TAB>sha256<TAB>byte_length<LF>; members sorted by the UTF-8 bytes of the relative path",
+ "separate_from_evidence_freeze": true,
+ "note": "These are the bytes a separated checker judges for the receiver. The evidence freeze covers receipts, descriptors and the product tree as well."
+}

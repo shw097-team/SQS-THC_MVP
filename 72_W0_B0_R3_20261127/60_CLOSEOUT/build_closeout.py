@@ -316,7 +316,7 @@ def main() -> int:
                   f"（`30_VERIFY/{vname}`）；`FREEZE_{REV}.json` 對磁碟全量相符。\n"
                   f"- 產品狀態鏈：`B0_SPEC_READY` → `B0_ENGINEERING_CANDIDATE` → `B0_PRODUCT_EXECUTED` → "
                   f"`B0_CORE_ACCEPTED`（歷史核心承接）→ **`B0_COMPLETE`**。\n"
-                  f"- 判定邊界：該 ACCEPT 綁定候選 `{cand_sha[:16]}…`（13 成員，與 r20 位元相同）；"
+                  f"- 判定邊界：該 ACCEPT 綁定候選 `{cand_sha[:16]}…`（13 成員，受檢位元）；"
                   f"`FREEZE_{REV}.json` 為事後證據帳（含文件、收據與本產生器自身），不參與該判定，亦不改寫受檢候選。\n")
     else:
         md.append(f"- 產品狀態：`B0_PRODUCT_EXECUTED`（真合法來源、原四 Op、實際 output/exit）；"

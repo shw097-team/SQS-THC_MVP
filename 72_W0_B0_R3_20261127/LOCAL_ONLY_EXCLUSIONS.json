@@ -1,6 +1,6 @@
 {
  "schema": "SST.PH01.W0.B0.R3.PublishExclusions/1",
- "revision": "r28",
+ "revision": "r30",
  "withheld": [
   {
    "path": "20_TESTS/fixture/TEST_ONLY_keypair.json",
@@ -250,7 +250,7 @@
   "20_DEV/exec_repair1_receipt.json.logs/attempt-21972-1795521571-1-stdout.txt"
  ],
  "preexisting_residue": {
-  "parent": "b87661414048a91a8e18938b4da1e57fb0d0ea9d",
+  "parent": "c0e496970d245e86638bd21f4e856a04d5f0a284",
   "count": 56,
   "paths": [
    "00_PREFLIGHT/required_set_req12_read_all_2026-11-25.json",

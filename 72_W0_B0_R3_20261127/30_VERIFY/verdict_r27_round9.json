@@ -1,0 +1,25 @@
+{
+ "schema": "SST.PH01.W0.B0.R3.CheckerVerdict/1",
+ "round": 9,
+ "checker": "separated-readonly-checker-r27-round9",
+ "reviewed_at": "2026-11-28T00:19:41+08:00",
+ "subject_revision": "r27",
+ "candidate_manifest_sha256": "33c759eb6faf3beae83522574d5dd4e5b44bff7244cc2a058d87ce52401d70da",
+ "candidate_manifest_path": "60_CLOSEOUT/CANDIDATE_receiver_r27.tsv",
+ "verdict": "ACCEPT",
+ "blocking": [],
+ "summary": "受檢 manifest 已生成且與磁盤完全一致：CANDIDATE_receiver_r27.tsv 重算 sha 為 33c759eb…（1321 B、13 列、UTF-8 位元組排序），13/13 成員 sha+bytes 全等；FREEZE_MANIFEST_r27（155）與 r28（156）各自重算 sha 等於 json 且全員與磁盤全等、0 命中排除謂詞。四項 predicate 以 in-memory overlay 重測全部命中契約碼且 source_reads=0（在任何來源 bytes 讀取之前）；三端 r12 收據 2/2 ACCEPTED、mandatory_satisfied=true、deployment sha 9d89781c… 與 deployment.py PINNED['prod'] 及磁盤一致；96 案收集數相符、ran_at 晚於所有成員 mtime。文件 §3.3 四項處分表、§7 判定名冊（含 round8 REJECT）、§8 明示尚無綁定 33c759eb 的 ACCEPT 皆在，無懸空路徑。僅餘純文件級殘留，不影響候選完整性。",
+ "findings": [
+  {"item": "A", "result": "PASS", "evidence": "sha256(CANDIDATE_receiver_r27.tsv)=33c759eb6faf3beae83522574d5dd4e5b44bff7244cc2a058d87ce52401d70da、1321 B；json manifest 同值；13 rows、13/13 磁盤 sha+bytes 全等（mismatch=0）；paths==sorted(utf8) True；LF-only 且結尾換行"},
+  {"item": "B", "result": "PASS", "evidence": "FREEZE_MANIFEST_r27 sha=cb476313…（155 列）、r28 sha=0e51da81…（156 列），各自等於 json；disk mismatch=0、dups=0、sorted_utf8 True、predicate hits=0；雙向差集僅 2 個 __pycache__/*.pyc（強制排除）與後生的 r28 文件"},
+  {"item": "C", "result": "PASS", "evidence": "in-memory overlay（未寫檔）：rule_sha/rule_ref 錯值→CLAUSE_RULE_MISMATCH、source_reads=0；authority 三欄各錯值→RIGHTS_UNVERIFIED、reads=0/0/0；interval 超出→RIGHTS_UNVERIFIED、reads=0；baseline ACCEPTED、reads=1；代碼順序 receiver.py:258/260 與 rights.py:209-223 皆先於 :282 的 _read_source_bytes"},
+  {"item": "D", "result": "PASS", "evidence": "r12_inbound_b1/b2/b3：ACCEPTED、2/2、mandatory_satisfied=true；三檔 deployment.sha256=9d89781c… == PINNED['prod'] == 磁盤 r11 實算值"},
+  {"item": "E", "result": "PASS", "evidence": "receiver_test_run_r19.json tests_run=96、0 fail/err；對凍結測試檔實收集 96（12 類，含 D3ResidualArms 7 案）；ran_at 00:07:48 晚於候選最大 mtime 00:06:51"},
+  {"item": "F", "result": "PASS", "evidence": "r28 §3.3 四項處分列齊並指向 receiver.py:258/260、rights.py:209-217 與 D3ResidualArms 臂；§7 七列含 round8 REJECT；§8 明示該時點尚無 ACCEPT、B0_COMPLETE PENDING；24 個絕對路徑僅 1 個不存在且已標 ABSENT 並給出實存解析"}
+ ],
+ "residue_non_blocking": [
+  "r27 freeze 與 r28 freeze 之差集含 2 個與後生文件，屬證據帳時間差，非候選漂移",
+  "§1 漂移表保留 1 個 ABSENT 歷史路徑（SESSION_CLOSEOUT_2026-11-27.md）並已給出實存解析"
+ ],
+ "note": "第九輪分離審查原始回傳；verdict=ACCEPT、blocking 空，綁定 candidate 33c759eb…。此後任何候選成員變更即失效。"
+}
