@@ -1,0 +1,45 @@
+{
+ "schema": "SST.PH01.W0.B0.R3.Freeze/1",
+ "revision": "r32",
+ "frozen_at": "2026-11-28T00:34:06.740085+08:00",
+ "wave_root": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127",
+ "members": 167,
+ "manifest": {
+  "path": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\60_CLOSEOUT\\FREEZE_MANIFEST_r32.tsv",
+  "bytes": 18695,
+  "sha256": "7613de173d605a3eaf8dc2d18a525487a4d26bcf0e13d2472647ad4f7620acc9"
+ },
+ "convention": "path<TAB>sha256<TAB>byte_length<LF>; members sorted by the UTF-8 bytes of the relative path",
+ "excluded_by_predicate": {
+  "prefixes": [
+   "tmp/",
+   "publish/",
+   "20_DEV/.tmp_tests",
+   "70_PUBLISH/PUBLISH_READBACK_",
+   "30_VERIFY/verdict",
+   "60_CLOSEOUT/FREEZE",
+   "60_CLOSEOUT/CANDIDATE_"
+  ],
+  "exact": [
+   "60_CLOSEOUT/FREEZE_MANIFEST_r32.tsv",
+   "60_CLOSEOUT/FREEZE_r32.json",
+   "60_CLOSEOUT/SST_PLP_PH01_W0_B0_CLOSEOUT_HANDOFF_r32.md"
+  ],
+  "note": "these two lists are the literal EXCLUDED_PREFIXES / EXCLUDED_EXACT values applied when the manifest is built; freeze artefacts of every revision, publish readbacks, checker verdicts, the publish clone, caches and this document describe the candidate rather than belong to it"
+ },
+ "claim_ceiling": "Freezes the bytes of this round's code, tests, receipts and closeout. It asserts nothing about semantics beyond what the receipts measured, and it excludes itself, its manifest and the generated document.",
+ "receipts": {
+  "B1": {
+   "verdict": "ACCEPTED",
+   "sha256": "522ad00b7964e575665300506e6a4a2bc17b8f8e571d7fb665121be7d747b02d"
+  },
+  "B2": {
+   "verdict": "ACCEPTED",
+   "sha256": "0e009157f53c8eee8bbad4a39ec0b50e0c24a5e5e4c773318cbffb403a3cf11a"
+  },
+  "B3": {
+   "verdict": "ACCEPTED",
+   "sha256": "2f32ec8361f114b884557d7b794a784532b6cf38a2b7d52ccc30f28e779086fb"
+  }
+ }
+}

@@ -327,6 +327,45 @@ class D3ResidualArms(ReceiverBase):
         self.assertEqual(receipt["verdict"], "ACCEPTED", receipt)
 
 
+class ReturnTimePerSourceArms(ReceiverBase):
+    """r31: an expired per-source authority must not ride on a live shared window.
+
+    Sibling isolation for the same predicates is already measured on the two-source prod
+    fixture (round 9: row1 ACCEPT / row2 REJECT); these arms use the single-source fixture
+    to pin the return-time clock behaviour itself.
+    """
+
+    def _run(self, *, now, return_now, mutate=None):
+        doc = copy.deepcopy(self.base)
+        if mutate:
+            mutate(doc)
+        payload = json.dumps(doc, ensure_ascii=False).encode("utf-8")
+        return receive(self.dep, "B1", payload, now=now, return_now=return_now)
+
+    def test_source_expired_before_return_is_refused(self):
+        receipt = self._run(
+            now=FAR_NOW, return_now=datetime(2099, 1, 2, tzinfo=timezone.utc))
+        self.assertEqual(receipt["verdict"], "REJECTED", receipt)
+        self.assertEqual(receipt["rows"][0]["first_fail"], "ENVELOPE_AUTHORITY_EXPIRED", receipt)
+
+    def test_source_not_yet_in_force_at_return_is_refused(self):
+        receipt = self._run(
+            now=datetime(2026, 11, 27, 0, 0, 0, tzinfo=timezone.utc),
+            return_now=datetime(2026, 11, 26, 23, 0, 0, tzinfo=timezone.utc))
+        self.assertEqual(receipt["verdict"], "REJECTED", receipt)
+        self.assertEqual(receipt["rows"][0]["first_fail"], "RIGHTS_NOT_YET_VALID", receipt)
+
+    def test_valid_at_return_still_accepts(self):
+        receipt = self._run(now=FAR_NOW, return_now=FAR_NOW)
+        self.assertEqual(receipt["verdict"], "ACCEPTED", receipt)
+
+    def test_dead_window_at_return_refuses_every_row(self):
+        self.mutate_window(state="CLOSED")
+        receipt = self.run_env(copy.deepcopy(self.base))
+        self.assertEqual(receipt["verdict"], "REJECTED", receipt)
+        self.assertTrue(all(r["decision"] == "REJECT" for r in receipt["rows"]), receipt)
+
+
 class RequiredSetNegatives(ReceiverBase):
     def test_required_set_changed(self):
         doc = copy.deepcopy(self.base)

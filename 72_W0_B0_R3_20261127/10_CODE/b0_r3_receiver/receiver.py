@@ -351,7 +351,8 @@ def _receive_source(sid: str, ent: dict[str, Any], exp: dict[str, Any],
 
 
 def receive(deployment: dict[str, Any], consumer_id: str, payload: bytes, *,
-            now: datetime | None = None, deployment_ref: dict[str, Any] | None = None) -> dict[str, Any]:
+            now: datetime | None = None, deployment_ref: dict[str, Any] | None = None,
+            return_now: datetime | None = None) -> dict[str, Any]:
     now = now or datetime.now(timezone.utc)
     consumer = deployment["consumers"][consumer_id]
     expected = set(consumer["source_ids"])
@@ -464,6 +465,27 @@ def receive(deployment: dict[str, Any], consumer_id: str, payload: bytes, *,
         for r in rows:
             r["decision"] = "REJECT"
             r["first_fail"] = recheck_fail
+
+    # B0 §03.2/N01: the *applicable* return-time re-validation includes each source's own
+    # authority interval.  A live shared window does not keep an expired per-source authority
+    # alive, and an expired sibling must not condemn a source that is still in force.
+    ret_now = return_now or datetime.now(timezone.utc)
+    for r in rows:
+        if r["decision"] != "ACCEPT":
+            continue
+        ent = entries.get(r["source_id"])
+        if not ent:
+            continue
+        try:
+            vf = rights_mod.parse_rfc3339(ent["authority"].get("valid_from"))
+            ex = rights_mod.parse_rfc3339(ent["authority"].get("expires_at"))
+        except Reject:
+            r["decision"], r["first_fail"] = "REJECT", "RIGHTS_UNVERIFIED"
+            continue
+        if ret_now < vf:
+            r["decision"], r["first_fail"] = "REJECT", "RIGHTS_NOT_YET_VALID"
+        elif ret_now >= ex:
+            r["decision"], r["first_fail"] = "REJECT", "ENVELOPE_AUTHORITY_EXPIRED"
 
     return _receipt(deployment, consumer_id, payload, rows, now, rights_state,
                     None, deployment_ref)

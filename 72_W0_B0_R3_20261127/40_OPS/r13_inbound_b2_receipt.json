@@ -1,0 +1,226 @@
+{
+ "schema": "SST.PH01.W0.B0.R3.ConsumerReceipt/1",
+ "consumer_id": "B2",
+ "validator_name": "b2_b0_r3_receiver",
+ "validator_version": "b0-r3-receiver/1.1.0",
+ "deployment": {
+  "path": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\00_PREFLIGHT\\DEPLOYMENT_prod_20261127_r12.json",
+  "sha256": "30f402a3f47ed399b8bf0d2d04eec9f11dec30a8c09c58cc3a3080a7ae43cb91",
+  "deployment_id": "prod",
+  "trust_root_kind": "OWNER_AUTHORED_CONFIG_FILE"
+ },
+ "envelope_sha256": "fc7269789632cf29edd0671e70e688cece836afe3778147046e0566688dfeb6a",
+ "envelope_bytes": 5473,
+ "checked_at": "2026-11-27T16:32:34.465394+00:00",
+ "rights": {
+  "receipt_ref": "C:\\Projects\\Agent_Workspace\\FHS_NEXT_Workspace\\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\\owner_ws\\artifacts\\OWNER_WINDOW.json",
+  "receipt_sha256": "bd0e539a2afae874c3f91848c87371de2f6509bed7f11ba492dd841d89f2efac",
+  "receipt_window_id": "WIN-056f06fe7b02",
+  "state_ref": "C:\\Users\\user\\.hgk-owner\\window.json",
+  "state_sha256": "6fac7c2290012b3ee5e4f86f868ed022bfe97623ec9455e799b932e658978167",
+  "live_window_id": "WIN-056f06fe7b02",
+  "live_expires_at": 1795811508,
+  "effect_ceiling": "READ_ONLY_PROBE",
+  "task_id": "SST_PLP_PH01_W0_B0_SOURCE_READ_AUTH",
+  "scope": [
+   "b0_source_read_authority",
+   "sqs_thc_ph01_e00"
+  ],
+  "principal": "desktop-57eo414\\user",
+  "checked_at": "2026-11-27T16:32:34.465394+00:00"
+ },
+ "rows": [
+  {
+   "consumer_id": "B2",
+   "validator_name": "b2_b0_r3_receiver",
+   "validator_version": "b0-r3-receiver/1.1.0",
+   "subject": "SST/SQS-THC/PH01/E00",
+   "scope_id": "SQS-THC-PH01-E00-B0-SOURCE-READ",
+   "spec_version": "2026-11-25_r4_Native-first",
+   "candidate_digest": "fde97eeb58188b2968f7743381d51f2791fe583186cdbe7be470666a316aedce",
+   "source_id": "SST.ALL.W0.BLUEPRINT",
+   "sha": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
+   "rights_check_ref": "WIN-056f06fe7b02:bd0e539a2afae874:SST.ALL.W0.BLUEPRINT",
+   "decision": "ACCEPT",
+   "first_fail": null,
+   "checked_at": "2026-11-27T16:32:34.465394+00:00",
+   "evidence": {
+    "R": [
+     "read"
+    ],
+    "P": [
+     "read"
+    ],
+    "M": [],
+    "clause_sha": "77132f0636e30b0cf8d5df1ae3438228b18d847d718e5ffbf5c56825229f9bf6",
+    "clause_span": [
+     572,
+     579
+    ],
+    "authority_checked": {
+     "source_owner": "SST Owner (single human OWNER, KB author)",
+     "usage_evidence_ref": "C:\\Projects\\Agent_Workspace\\FHS_NEXT_Workspace\\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\\owner_ws\\artifacts\\OWNER_WINDOW.json",
+     "usage_evidence_sha": "bd0e539a2afae874c3f91848c87371de2f6509bed7f11ba492dd841d89f2efac",
+     "os_principal": "DESKTOP-57EO414\\user",
+     "verification_method": "LIVE_REVALIDATE_OWNER_WINDOW_OS_TOKEN",
+     "rights_check_ref": "C:\\Projects\\Agent_Workspace\\FHS_NEXT_Workspace\\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\\owner_ws\\artifacts\\OWNER_WINDOW.json",
+     "checked_at": "2026-11-28T00:32:11+08:00",
+     "valid_from": "2026-11-28T00:32:04+08:00",
+     "expires_at": "2026-11-28T04:31:48+08:00",
+     "revocation_check_ref": "C:\\Users\\user\\.hgk-owner\\window.json#state",
+     "epoch_strategy": "LIVE_REVALIDATE",
+     "epoch_provider_ref": null,
+     "epoch_evidence_ref": null,
+     "disclosure": "LOCAL_ONLY"
+    },
+    "authority_interval": {
+     "valid_from": "2026-11-28T00:32:04+08:00",
+     "expires_at": "2026-11-28T04:31:48+08:00",
+     "usage_evidence_sha": "bd0e539a2afae874c3f91848c87371de2f6509bed7f11ba492dd841d89f2efac",
+     "currency": "CURRENT",
+     "checked_at": "2026-11-27T16:32:34.465394+00:00"
+    },
+    "provenance": {
+     "requirement_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\藍圖\\SST_PLP_PH01_W0_全批次藍圖.md",
+     "requirement_sha": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
+     "requirement_span": [
+      572,
+      579
+     ],
+     "rule_ref": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\00_PREFLIGHT\\required_set_req12_read_all_2026-11-25.json",
+     "rule_sha": "50ca45c106bb58fd8a3bfdf1cfaf7400fd3a06d1f95cea7f1fe8c6166eda4764"
+    },
+    "expected": {
+     "expected_raw_sha256": "dd37a40b112bf5aac379adb44285ec01409519f7af64418298375833859d01a1",
+     "requirement_span": [
+      572,
+      579
+     ],
+     "required_fields": [
+      "read"
+     ],
+     "expected_value_sha256": "78a231eaa93d64fed87001426970d5133e89847b3f7668e514d6b0f259798dab",
+     "required_set_sha256": "50ca45c106bb58fd8a3bfdf1cfaf7400fd3a06d1f95cea7f1fe8c6166eda4764"
+    }
+   }
+  },
+  {
+   "consumer_id": "B2",
+   "validator_name": "b2_b0_r3_receiver",
+   "validator_version": "b0-r3-receiver/1.1.0",
+   "subject": "SST/SQS-THC/PH01/E00",
+   "scope_id": "SQS-THC-PH01-E00-B0-SOURCE-READ",
+   "spec_version": "2026-11-25_r4_Native-first",
+   "candidate_digest": "fde97eeb58188b2968f7743381d51f2791fe583186cdbe7be470666a316aedce",
+   "source_id": "SST.W0M.MAIN",
+   "sha": "5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96",
+   "rights_check_ref": "WIN-056f06fe7b02:bd0e539a2afae874:SST.W0M.MAIN",
+   "decision": "ACCEPT",
+   "first_fail": null,
+   "checked_at": "2026-11-27T16:32:34.465394+00:00",
+   "evidence": {
+    "R": [
+     "read"
+    ],
+    "P": [
+     "read"
+    ],
+    "M": [],
+    "clause_sha": "4f0db2cb1d7c740eaf3b5a1de6be4517c951fe654010aeb43100104d13dfbaf5",
+    "clause_span": [
+     295,
+     307
+    ],
+    "authority_checked": {
+     "source_owner": "SST Owner (single human OWNER, KB author)",
+     "usage_evidence_ref": "C:\\Projects\\Agent_Workspace\\FHS_NEXT_Workspace\\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\\owner_ws\\artifacts\\OWNER_WINDOW.json",
+     "usage_evidence_sha": "bd0e539a2afae874c3f91848c87371de2f6509bed7f11ba492dd841d89f2efac",
+     "os_principal": "DESKTOP-57EO414\\user",
+     "verification_method": "LIVE_REVALIDATE_OWNER_WINDOW_OS_TOKEN",
+     "rights_check_ref": "C:\\Projects\\Agent_Workspace\\FHS_NEXT_Workspace\\FHS_vNEXT_W0W1_CLOSEOUT_W2_ENTRY_20261115\\owner_ws\\artifacts\\OWNER_WINDOW.json",
+     "checked_at": "2026-11-28T00:32:13+08:00",
+     "valid_from": "2026-11-28T00:32:04+08:00",
+     "expires_at": "2026-11-28T04:31:48+08:00",
+     "revocation_check_ref": "C:\\Users\\user\\.hgk-owner\\window.json#state",
+     "epoch_strategy": "LIVE_REVALIDATE",
+     "epoch_provider_ref": null,
+     "epoch_evidence_ref": null,
+     "disclosure": "LOCAL_ONLY"
+    },
+    "authority_interval": {
+     "valid_from": "2026-11-28T00:32:04+08:00",
+     "expires_at": "2026-11-28T04:31:48+08:00",
+     "usage_evidence_sha": "bd0e539a2afae874c3f91848c87371de2f6509bed7f11ba492dd841d89f2efac",
+     "currency": "CURRENT",
+     "checked_at": "2026-11-27T16:32:34.465394+00:00"
+    },
+    "provenance": {
+     "requirement_ref": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_WM\\SST_PLP_PH01_ALL_WNM_2026-11-24_r2\\SST_PLP_PH01_W0M_實質正文.md",
+     "requirement_sha": "5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96",
+     "requirement_span": [
+      295,
+      307
+     ],
+     "rule_ref": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\00_PREFLIGHT\\required_set_req12_read_w0m_2026-11-25.json",
+     "rule_sha": "bc7afa530677746b8c681fc32109041a04e1fd1e7fc201c375d8edff34e6615c"
+    },
+    "expected": {
+     "expected_raw_sha256": "5670990d8f0faa571e21460919b4afd8c681396340583b47ed36a8a3b787da96",
+     "requirement_span": [
+      295,
+      307
+     ],
+     "required_fields": [
+      "read"
+     ],
+     "expected_value_sha256": "78a231eaa93d64fed87001426970d5133e89847b3f7668e514d6b0f259798dab",
+     "required_set_sha256": "bc7afa530677746b8c681fc32109041a04e1fd1e7fc201c375d8edff34e6615c"
+    }
+   }
+  }
+ ],
+ "sources_expected": 2,
+ "sources_accepted": 2,
+ "sources_draft_missing": 0,
+ "sources_rejected": 0,
+ "global_first_fail": null,
+ "verdict": "ACCEPTED",
+ "claim_ceiling": "This receipt evidences one consumer's inbound acceptance of one B0 SourceReadSet/2 envelope. It does not accept B1/B2/B3 own products, does not raise B0 to COMPLETE and grants no write.",
+ "inbound": {
+  "schema": "SST.PH01.W0.B0.R3.InboundReadback/1",
+  "consumer_id": "B2",
+  "entry": "consumers.b2.receive_envelope",
+  "consumer_use": "B2 QROWS/HARD/META/RETURN inbound consumption of the B0 SourceReadSet",
+  "deployment": {
+   "path": "C:\\Projects\\Agent_Workspace\\FHS-5_Workspace\\SST_PH01_W0_B0_R3_20261127\\00_PREFLIGHT\\DEPLOYMENT_prod_20261127_r12.json",
+   "sha256": "30f402a3f47ed399b8bf0d2d04eec9f11dec30a8c09c58cc3a3080a7ae43cb91",
+   "deployment_id": "prod",
+   "trust_root_kind": "OWNER_AUTHORED_CONFIG_FILE"
+  },
+  "envelope_sha256": "fc7269789632cf29edd0671e70e688cece836afe3778147046e0566688dfeb6a",
+  "expected_sources": [
+   "SST.ALL.W0.BLUEPRINT",
+   "SST.W0M.MAIN"
+  ],
+  "accepted_sources": [
+   "SST.ALL.W0.BLUEPRINT",
+   "SST.W0M.MAIN"
+  ],
+  "mandatory_satisfied": true,
+  "per_source": [
+   {
+    "source_id": "SST.ALL.W0.BLUEPRINT",
+    "decision": "ACCEPT",
+    "first_fail": null,
+    "rights_check_ref": "WIN-056f06fe7b02:bd0e539a2afae874:SST.ALL.W0.BLUEPRINT"
+   },
+   {
+    "source_id": "SST.W0M.MAIN",
+    "decision": "ACCEPT",
+    "first_fail": null,
+    "rights_check_ref": "WIN-056f06fe7b02:bd0e539a2afae874:SST.W0M.MAIN"
+   }
+  ],
+  "claim_ceiling": "This is the batch's inbound acceptance of one B0 envelope. It is not the batch's own product acceptance and raises no ReadyExecute."
+ }
+}

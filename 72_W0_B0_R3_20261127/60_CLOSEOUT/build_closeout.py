@@ -58,17 +58,17 @@ def rows_of(p: Path) -> list[dict]:
 def main() -> int:
     now = datetime.now(timezone.utc).astimezone()
     base = load(PRE / "T1_BASELINE_20261127.json")
-    prod = load(OPS / "t3a_run_r9_20261127.json")
+    prod = load(OPS / "t3a_run_r10_20261127.json")
     t3 = load(OPS / "t3_f1f2_measurement_20261127.json")
-    RECEIPT_REV = "r11_inbound"   # receipts minted by the three batch entries against the current deployment
+    RECEIPT_REV = "r13_inbound"   # receipts minted by the three batch entries against the current deployment
     receipts = {c: load(OPS / f"{RECEIPT_REV}_{c.lower()}_receipt.json") for c in ("B1", "B2", "B3")}
     verdict = load(VERIFY / "verdict.json") if (VERIFY / "verdict.json").exists() else None
     log = (OPS / "b0_product_test_r8_20261127.log")
     log_txt = log.read_text(encoding="utf-8", errors="replace") if log.exists() else ""
     log_tail = [l for l in log_txt.splitlines() if l.startswith("Ran ") or l in ("OK", "FAILED")
                 or l.startswith("FAILED (")]
-    dep = load(PRE / "DEPLOYMENT_prod_20261127_r10.json")
-    envelope = load(OPS / "b0_sourcereadset_r9_20261127.json")
+    dep = load(PRE / "DEPLOYMENT_prod_20261127_r12.json")
+    envelope = load(OPS / "b0_sourcereadset_r11_20261127.json")
 
     def table_row(c: str) -> str:
         r = receipts[c]
@@ -212,6 +212,11 @@ def main() -> int:
               "| ② `provenance.rule_sha` 原規則真值 | B0 §02.R：規則 JSON raw SHA 即 `rule_sha`，不得只核格式 | `receiver.py` 要求 `rule_sha == deployment.required_set_sha256`、`rule_ref == required_set_ref`，不符即 `CLAUSE_RULE_MISMATCH` | `test_rule_sha_must_be_the_required_set_digest`／`test_rule_ref_must_be_the_required_set` |\n"
               "| ③ authority 原必要欄位真值 | `source_owner`／`usage_evidence_ref`／`revocation_check_ref` 須實質綁定 | `rights.check_envelope_authority(..., exp)` 逐源精確比對三欄，不符即 `RIGHTS_UNVERIFIED`，仍在讀 bytes 之前 | `test_authority_source_owner_is_bound`／`_usage_evidence_ref_is_bound`／`_revocation_ref_is_bound` |\n"
               "| ④ 原權利區間與返回前重驗 | envelope authority 區間須落在原真授權期間 | `rights.py` 新增包含檢查（超出即 `RIGHTS_UNVERIFIED`），保留既有三種時效碼；返回前 deployment 級 recheck 涵蓋全部來源 | `test_authority_interval_must_sit_inside_the_authorised_period`／`test_the_pinned_values_still_accept` |\n")
+    md.append("### 3.4｜T1 兩項原權利差額最終處分（r32）\n")
+    md.append("| 具名差額 | 原要求 | 本輪處分 | POS／NEG 實證 |\n"
+              "|---|---|---|---|\n"
+              "| T1-① 返回前逐源權利有效期間 | 共同 window 仍有效但個別來源在讀取後、返回前到期，必須只拒該源 | `receiver.receive(..., return_now=)` 於既有 deployment 級 recheck 之後，逐列重驗該源 `authority.valid_from/expires_at`：未生效→`RIGHTS_NOT_YET_VALID`、已到期→`ENVELOPE_AUTHORITY_EXPIRED`，只翻轉該列；window 失效仍由 deployment 級 recheck 全列拒絕 | `ReturnTimePerSourceArms` 4 臂（到期→拒、未生效→拒、仍有效→ACCEPT、window CLOSED→全拒）；`now` 與 `return_now` 分離以受控時鐘驗證 |\n"
+              "| T1-② live task/scope 與 disclosure 真權位 | 不得以列舉合法代證來源權位 | **承接原機制，不新增重複檢查**：deployment 以 `rights.receipt_sha256` 釘住簽章 receipt（Ed25519 驗章、同一 bytes），task/scope 因此不可被 envelope 改寫；live window 只承擔狀態與期限；`disclosure` 由 deployment 的 `allowed_disclosure`（可信配置釘值）限制，來源使用／散布限制由 LOCAL_ONLY 邊界承載 | `test_rights_refusal_does_not_carry_the_value`、`ENVELOPE_MINTED_UNDER_A_DIFFERENT_WINDOW`、round 9 探針 |\n")
     md.append("### 4｜真受影 POS：三端各自入站\n")
     md.append("| Consumer | 實際入口 | validator | 每源結果 | 端判定 | mandatory | 逐源 13 欄與 R/P/M |\n"
               "|---|---|---|---|---|---|---|\n"
@@ -383,14 +388,14 @@ def main() -> int:
               "python -B 40_OPS/build_deployment_r8.py\n"
               "# 三端各自接收（無 caller context；deployment 由模組釘住）\n"
               "PYTHONPATH=<W>/10_CODE python -B -m consumers.b1 receive "
-              "--envelope 40_OPS/b0_sourcereadset_r9_20261127.json "
-              "--out 40_OPS/r11_inbound_b1_receipt.json\n"
+              "--envelope 40_OPS/b0_sourcereadset_r11_20261127.json "
+              "--out 40_OPS/r13_inbound_b1_receipt.json\n"
               "PYTHONPATH=<W>/10_CODE python -B -m consumers.b2 receive "
-              "--envelope 40_OPS/b0_sourcereadset_r9_20261127.json "
-              "--out 40_OPS/r11_inbound_b2_receipt.json\n"
+              "--envelope 40_OPS/b0_sourcereadset_r11_20261127.json "
+              "--out 40_OPS/r13_inbound_b2_receipt.json\n"
               "PYTHONPATH=<W>/10_CODE python -B -m consumers.b3 receive "
-              "--envelope 40_OPS/b0_sourcereadset_r9_20261127.json "
-              "--out 40_OPS/r11_inbound_b3_receipt.json\n"
+              "--envelope 40_OPS/b0_sourcereadset_r11_20261127.json "
+              "--out 40_OPS/r13_inbound_b3_receipt.json\n"
               "# D5 receiver 量測（實際 subprocess 計數＋無寫觀測）\n"
               "python -B 40_OPS/d5_v2.py\n"
               "# 演算法自測\n"

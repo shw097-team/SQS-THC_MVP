@@ -1,6 +1,6 @@
 {
  "schema": "SST.PH01.W0.B0.R3.PublishExclusions/1",
- "revision": "r30",
+ "revision": "r33",
  "withheld": [
   {
    "path": "20_TESTS/fixture/TEST_ONLY_keypair.json",
@@ -31,6 +31,14 @@
    "published_sha256": "20ed763e12768c66e3e181dc6c04ce92632ce7f6ea87af1f0b4228d090e3e3e3",
    "original_sha256": "9d89781cbce772c14fa1d6edcc7ffa8231331827cef1150644736ea8666a4571",
    "original_bytes": 18598,
+   "occurrences": 12
+  },
+  {
+   "path": "00_PREFLIGHT/DEPLOYMENT_prod_20261127_r12.json",
+   "published_bytes": 18365,
+   "published_sha256": "ec60eb04275655b32d5544d335f21af7ccd8b8711f7a7e385754e5ae6d2b8f91",
+   "original_sha256": "30f402a3f47ed399b8bf0d2d04eec9f11dec30a8c09c58cc3a3080a7ae43cb91",
+   "original_bytes": 18737,
    "occurrences": 12
   },
   {
@@ -110,6 +118,14 @@
    "published_bytes": 5411,
    "published_sha256": "528bc8886eeb78e0c4c9600973a7d035ce3eebb9383309d85a4b09c5fb7b7340",
    "original_sha256": "0f13e6890f2e761cbc404452d1a23051e6b85d47e53c2200a988f0a06109d23c",
+   "original_bytes": 5473,
+   "occurrences": 2
+  },
+  {
+   "path": "40_OPS/b0_sourcereadset_r11_20261127.json",
+   "published_bytes": 5411,
+   "published_sha256": "30e82536296d39ab8dc551054250eeef72d3338911266209094a9d22337a6dce",
+   "original_sha256": "fc7269789632cf29edd0671e70e688cece836afe3778147046e0566688dfeb6a",
    "original_bytes": 5473,
    "occurrences": 2
   },
@@ -250,7 +266,7 @@
   "20_DEV/exec_repair1_receipt.json.logs/attempt-21972-1795521571-1-stdout.txt"
  ],
  "preexisting_residue": {
-  "parent": "c0e496970d245e86638bd21f4e856a04d5f0a284",
+  "parent": "382c2348ecc4b73d893745eead144794e551e17d",
   "count": 56,
   "paths": [
    "00_PREFLIGHT/required_set_req12_read_all_2026-11-25.json",
