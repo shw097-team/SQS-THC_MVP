@@ -176,16 +176,22 @@ def b3_admission() -> dict:
     for f in sorted(os.listdir(output_root)):
         p = os.path.join(output_root, f)
         preimage_probe[f] = {"bytes": os.path.getsize(p), "sha256": sha_file(p)}
-    b0 = {"kind": "RECEIPT_ONLY",
-          "reason": ("no current B0 SourceReadSet/2: the trusted-context descriptor "
-                     "00_PREFLIGHT/B0_READ_CONTEXT_2026-11-26.json expired 2026-11-27T01:08+08:00 "
-                     "and pins a previous window's authorization_sha; renewal edits product "
-                     "constants and needs the Owner"),
+    rd_path = os.path.join(OPS, "b0_current_sourcereadset.json")
+    rd = load(rd_path) if os.path.isfile(rd_path) else {}
+    b0 = {"kind": "READSET" if rd else "ABSENT",
+          "path": rd_path if rd else None,
+          "sha256": sha_file(rd_path) if rd else None,
+          "wire_version": rd.get("wire_version"),
+          "candidate_digest": rd.get("candidate_digest"),
+          "sources": [e["source_ref"]["source_id"] for e in rd.get("entries") or []],
+          "errors": rd.get("errors"),
+          "write_set": rd.get("write_set"),
           "consumer_currency": [{"consumer": r["consumer_id"], "decision": r["decision"],
                                  "first_fail": r.get("first_fail"),
-                                 "rights_currency": r.get("rights_currency"),
-                                 "authority_expired": r.get("envelope_authority_expired_at_receive")}
-                                for r in receipt["receipts"]]}
+                                 "rights_currency": r.get("rights_currency")}
+                                for r in receipt["receipts"]],
+          "note": ("current read under the live window; the historical r5 envelope is kept "
+                   "only for reconciliation")}
     ready = {
         "ReadyDraft": True,
         "ReadyAtom": False,

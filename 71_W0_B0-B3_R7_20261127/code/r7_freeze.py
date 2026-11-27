@@ -70,6 +70,26 @@ def _arg(flag: str) -> str | None:
     return None
 
 
+def _external_inputs() -> list[dict]:
+    """Bytes the frozen set depends on that live outside this round root.
+
+    They are recorded by path + sha256 rather than copied: copying another principal's
+    authority file into a deliverable would change who holds it.
+    """
+    cand = [
+        (r"<LOCAL_ROOT>\00_PREFLIGHT\B0_READ_CONTEXT_2026-11-26.json",
+         "B0 trusted-context descriptor"),
+        (r"<LOCAL_ROOT>\20_DEV\b0_reader\native_entry.py",
+         "B0 reader (declares the descriptor's sha/bytes)"),
+    ]
+    out = []
+    for path, role in cand:
+        if os.path.isfile(path):
+            out.append({"role": role, "path": path, "bytes": os.path.getsize(path),
+                        "sha256": sha_file(path)})
+    return out
+
+
 def main() -> int:
     include_docs = "--include-docs" in sys.argv
     revision = _arg("--revision")
@@ -104,6 +124,7 @@ def main() -> int:
         "members_by_layer": {k: sum(1 for a in arts if a["layer"] == k)
                              for k in sorted({a["layer"] for a in arts})},
         "manifest": {"path": man, "sha256": sha_file(man)},
+        "external_inputs": _external_inputs(),
         "artefacts": [{k: a[k] for k in ("path", "bytes", "raw_sha256")} for a in arts],
     }
     if revision:
@@ -119,8 +140,16 @@ def main() -> int:
             chain.append({"path": prev_path, "revision": prev.get("revision"),
                           "candidate_digest": prev.get("candidate_digest")})
         receipt["supersedes"] = chain
-    json.dump(receipt, open(out, "w", encoding="utf-8", newline="\n"),
-              ensure_ascii=False, indent=1)
+    # 'x' makes the create atomic: a second writer on the same revision fails instead of
+    # interleaving with this one (the rev1 finding was an overwrite, this is the same class)
+    try:
+        fh = open(out, "x", encoding="utf-8", newline="\n")
+    except FileExistsError:
+        print(json.dumps({"refused": "PREIMAGE_NOT_ABSENT", "path": out,
+                          "note": "another writer created this revision first"}, ensure_ascii=False))
+        return 3
+    with fh:
+        json.dump(receipt, fh, ensure_ascii=False, indent=1)
     ok_members = all(sha_file(os.path.join(R7, a["path"].replace("/", os.sep))) == a["raw_sha256"]
                      for a in arts)
     print(json.dumps({"written": out, "manifest": man, "candidate_digest": dg,

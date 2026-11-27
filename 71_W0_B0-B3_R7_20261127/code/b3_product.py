@@ -288,19 +288,21 @@ def op_join(units: list[dict], tool_readset: dict, source_side: dict) -> dict:
         # Two different readiness claims, kept apart: a source-bound atom is not an
         # admissible ledger row. The owner field is literally "#" in 365/365 units and no
         # atom carries a ratification, so the admission half is 0 by measurement, not by mood.
-        owner = u.get("owner")
-        row["owner_bound"] = owner not in (None, "", "#")
-        row["ratification"] = ("CANDIDATE_NOT_RATIFIED"
-                               if owner not in (None, "", "#") else "OWNER_UNBOUND")
+        owner, owner_basis = declared_owner(u)
+        row["owner"] = owner
+        row["owner_basis"] = owner_basis
+        row["owner_bound"] = bool(owner)
+        # Two different acceptances, kept apart: the SPEC's own locators are adopted (A6),
+        # while the semantic half needs the original Reader, which is absent. The second is a
+        # ReadyAccept criterion, not a ReadyExecute blocker.
+        row["ratification"] = {"locator": "SPEC_ADOPTED_A6",
+                               "semantic": "ORIGINAL_READER_ABSENT"}
         row["source_bound_ready"] = not row["missing"]
         admission_blockers = []
         if not row["owner_bound"]:
             admission_blockers.append({"field": "owner", "reason": "UNBOUND",
-                                       "detail": "unit carries no owner (literal '#'); a row may not "
-                                                 "be admitted or routed to B4 on it"})
-        if row["ratification"] != "RATIFIED":
-            admission_blockers.append({"field": "ratification", "reason": row["ratification"],
-                                       "detail": "no ratified locator/atom pin exists in this round"})
+                                       "detail": f"owner basis {owner_basis}; a row may not be "
+                                                 "admitted or routed to B4 on an undeclared owner"})
         row["admission_blockers"] = admission_blockers
         row["admission_ready"] = row["source_bound_ready"] and not admission_blockers
         rows.append(row)
@@ -312,6 +314,34 @@ def op_join(units: list[dict], tool_readset: dict, source_side: dict) -> dict:
                         "errors": len(errors)}}
 
 
+_OWNER_RE = re.compile(r"Owner\s*[=：:]\s*([^；;\n」。]+)")
+
+
+def _payload_text(u: dict) -> str:
+    p = u.get("source_payload")
+    if isinstance(p, str):
+        return p
+    if isinstance(p, list):
+        return "\n".join(x for x in p if isinstance(x, str))
+    return ""
+
+
+def declared_owner(u: dict) -> tuple[str | None, str]:
+    """Owner as the unit actually declares it.
+
+    The previous fallback was `(source_payload or [None])[0]`, which on a string payload
+    returns the first CHARACTER — that is where the literal '#' in 365/365 rows came from.
+    Now: an explicit `owner` field, else the clause's own `Owner=` line, else nothing, with
+    the basis recorded so a blocker can name its cause.
+    """
+    if isinstance(u.get("owner"), str) and u["owner"].strip():
+        return u["owner"].strip(), "UNIT_FIELD"
+    m = _OWNER_RE.search(_payload_text(u))
+    if m:
+        return m.group(1).strip(), "CLAUSE_TEXT"
+    return None, "NOT_DECLARED_IN_UNIT"
+
+
 def op_child(units: list[dict]) -> dict:
     """The original Child / Protected / DOC_BRIDGE atoms, each verified, with owner+scope+source_sha."""
     out = []
@@ -320,7 +350,7 @@ def op_child(units: list[dict]) -> dict:
             continue
         ev = doc_bridge(u) if u.get("kind") == "DOC_BRIDGE" else verify_mapping(u)
         out.append({"atom": u.get("key"), "unit_id": u["unit_id"], "kind": u.get("kind"),
-                    "owner": u.get("owner") or (u.get("source_payload") or [None])[0],
+                    "owner": declared_owner(u)[0], "owner_basis": declared_owner(u)[1],
                     "source_sha": ev.get("clause_sha_observed") or ev.get("resolved"),
                     "evidence": ev,
                     "disposition": ("READY_ATOM" if ev["decision"] == "SOURCE_BOUND_VERIFIED"
@@ -343,7 +373,7 @@ def op_route(units: list[dict], child: dict) -> dict:
         wave, consumer, route_kind = target
         ev = idx.get(u.get("key"), {}).get("evidence") or verify_mapping(u)
         ok = ev.get("decision") == "SOURCE_BOUND_VERIFIED"
-        owner_ok = u.get("owner") not in (None, "", "#")
+        owner_ok = bool(declared_owner(u)[0])
         # A route may only leave when the source verifies AND the owner is bound. Without an
         # owner a ROUTE_OUT would name a consumer of a row nobody owns, which is exactly the
         # ROUTE_OUT/null-owner shape the separated checker rejected.
@@ -357,7 +387,7 @@ def op_route(units: list[dict], child: dict) -> dict:
                        "route_out": "ROUTE_OUT" if route_out else "HOLD",
                        "first_fail": (None if route_out else
                                       (ev.get("decision") if not ok else "ROUTE_OWNER_UNBOUND")),
-                       "owner": u.get("owner")})
+                       "owner": declared_owner(u)[0], "owner_basis": declared_owner(u)[1]})
     return {"routes": routes,
             "summary": {"routes": len(routes),
                         "source_bound": sum(1 for r in routes if r["source_verified"]),

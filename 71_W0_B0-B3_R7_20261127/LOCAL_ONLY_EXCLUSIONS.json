@@ -10,14 +10,14 @@
   },
   {
    "path": "40_OPS/b3_r7_product.json",
-   "sha256": "5f7ca6d6e82270f2a04684a8b26b5f67b3efc3b0f7e1e1b112f558baaef5b09d",
-   "bytes": 266231,
+   "sha256": "801fdd21b1bf2f50417148dc05368ee6b3872111e06966f05fb374abdb60099a",
+   "bytes": 284483,
    "reason": "EMBEDS_CLAUSE_SLICE"
   },
   {
    "path": "40_OPS/b3_r7_tqaep.json",
-   "sha256": "77d3a76a85667f785f89d92507282c2c91f665aa10fcf2b6b0dda6b8f3477c65",
-   "bytes": 1288948,
+   "sha256": "2935666be4bddd678aec0e0402a5200e6bef601ba2b4b94c6daa346b0573ad9a",
+   "bytes": 1289139,
    "reason": "EMBEDS_CLAUSE_SLICE"
   }
  ]

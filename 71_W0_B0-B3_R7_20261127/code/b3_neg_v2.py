@@ -30,7 +30,10 @@ import b3_product as P
 import w0_spec as SPEC
 
 OPS = P.OPS
-CHILD_FIELDS = {"owner", "requiredness", "key", "payload_sha", "direct_clause_sha"}
+# Only fields the unit actually carries and the product actually verifies. `owner` and
+# `requiredness` are NOT in the unit (owner is absent in 365/365; requiredness lives in the
+# B2 carrier), so mutating them cannot be observed here and must be HOLD, not FAIL.
+CHILD_FIELDS = {"key", "payload_sha", "direct_clause_sha"}
 
 
 def declared_negs(tbl: dict) -> dict:

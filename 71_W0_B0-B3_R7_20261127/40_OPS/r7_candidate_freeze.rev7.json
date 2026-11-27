@@ -1,0 +1,365 @@
+{
+ "schema": "SST.PH01.W0.B0B3.CandidateFreeze@1",
+ "revision": "rev7",
+ "candidate_digest": "690af85b87c9a40dfacc9a5ec9d7bdfb0f2ea3ac4e92c74c7eb92573ffba9b31",
+ "digest_convention": "sha256 over '<raw_sha256>  <relative path>' lines sorted by relative path, one \\n between lines, rstrip('\\n') applied; the freeze receipt and this manifest are not members",
+ "include_docs": false,
+ "members": 60,
+ "members_by_layer": {
+  "00_PREFLIGHT": 4,
+  "20_DEV": 28,
+  "40_OPS": 28
+ },
+ "manifest": {
+  "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\r7_CANDIDATE_MANIFEST.rev7.tsv",
+  "sha256": "2089983cc06d009cc5ca993021c908ef2c0256112b6ea99f6e9591094b98ee38"
+ },
+ "external_inputs": [
+  {
+   "role": "B0 trusted-context descriptor",
+   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\00_PREFLIGHT\\B0_READ_CONTEXT_2026-11-26.json",
+   "bytes": 3670,
+   "sha256": "ad78641547abfb41a480c79a36516c5cc57c778b028218701b29ac395b07f1f2"
+  },
+  {
+   "role": "B0 reader (declares the descriptor's sha/bytes)",
+   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\20_DEV\\b0_reader\\native_entry.py",
+   "bytes": 21890,
+   "sha256": "e673d2f6449eb3e3002fb007df3b65333329f8c49987d11c077bfff4eb708017"
+  }
+ ],
+ "artefacts": [
+  {
+   "path": "00_PREFLIGHT/b1_locator_bindings.json",
+   "bytes": 2502,
+   "raw_sha256": "a8025e2faae502f0f959a1e375367d9c8dcee243b10ad7138e80acd284d983f9"
+  },
+  {
+   "path": "00_PREFLIGHT/b1_source_allowlist.json",
+   "bytes": 3105,
+   "raw_sha256": "de92bd2cde3ff8a763c718e48b510a1650d3f03d3aba7e9ef544b09bf02ae1ed"
+  },
+  {
+   "path": "00_PREFLIGHT/b3_prior_draft_inventory.json",
+   "bytes": 1352,
+   "raw_sha256": "65df8eb5a41be597a8b0ebf578c5653bbfb8f4e51690497d87a562573f52a88e"
+  },
+  {
+   "path": "00_PREFLIGHT/r7_preflight.json",
+   "bytes": 7530,
+   "raw_sha256": "5263680927990fb00f740c5bf99ec6ba0ab47a5e44b5ea758c28c671d623da6e"
+  },
+  {
+   "path": "20_DEV/r7/b0_descriptor_renew.py",
+   "bytes": 5323,
+   "raw_sha256": "99273d7b7f25b3d21fd323b5a759d4864680d785cf7a4bf8105dc3375dda1ec5"
+  },
+  {
+   "path": "20_DEV/r7/b1_cli.py",
+   "bytes": 4762,
+   "raw_sha256": "6cc9fa4ecf8f50d175bdb6405981f2dddac7f34b2363fe65b8b3dd650a99cb56"
+  },
+  {
+   "path": "20_DEV/r7/b1_edge_sec.py",
+   "bytes": 4651,
+   "raw_sha256": "4ba756f65df84923b1564be52b1b38d020a9a26b6638ccc190045539a136002e"
+  },
+  {
+   "path": "20_DEV/r7/b1_engine.py",
+   "bytes": 35697,
+   "raw_sha256": "4cd5f6f83e1aa400496b3147369348db02959b6876780a5a70d86b06e45d9093"
+  },
+  {
+   "path": "20_DEV/r7/b1_spec.py",
+   "bytes": 3919,
+   "raw_sha256": "1b7683a7a13ae6f40bb8d8205652d4fa60ece2e29aefb24a3290a4740fc89ae8"
+  },
+  {
+   "path": "20_DEV/r7/b1_tqaep.py",
+   "bytes": 18187,
+   "raw_sha256": "11e1d33140535959bca144753216576d4ff8d192702ebfe65b0a87ceffde0b9e"
+  },
+  {
+   "path": "20_DEV/r7/b1b2_freeze.py",
+   "bytes": 4813,
+   "raw_sha256": "a3f660604330852b732d8abc0dda135d1a39f7985ac02c8976aa49d2bea9b46e"
+  },
+  {
+   "path": "20_DEV/r7/b2_engine.py",
+   "bytes": 27328,
+   "raw_sha256": "e6911a963f4517fa909b2d8bbb427009e02ea0659052566617e0b1a72b089957"
+  },
+  {
+   "path": "20_DEV/r7/b2_meta.py",
+   "bytes": 6687,
+   "raw_sha256": "95e13729fac9a4e617f3c2f54fed35da49b6d245602db1529b6c9eba5ff2c1c7"
+  },
+  {
+   "path": "20_DEV/r7/b2_tqaep.py",
+   "bytes": 15657,
+   "raw_sha256": "fabb6ae98f7e54d0e0d4b7cdee3c8bf7e68782b1e354e8a3018fe4448cde93f9"
+  },
+  {
+   "path": "20_DEV/r7/b3_closeout.py",
+   "bytes": 8317,
+   "raw_sha256": "a54d4f1b4c73fd712a269021812e81274905533efd647227ac319a1e46e1e93b"
+  },
+  {
+   "path": "20_DEV/r7/b3_engine.py",
+   "bytes": 10633,
+   "raw_sha256": "5aa4ff9d6f6566fb7bcc1b42a923974ea1f8e0c546c8bdfa1e65a60c00c00670"
+  },
+  {
+   "path": "20_DEV/r7/b3_neg.py",
+   "bytes": 4321,
+   "raw_sha256": "25e7b1aa510957fe22774dae443b8983cec180a9ef1998c6b59d72fb362d4df2"
+  },
+  {
+   "path": "20_DEV/r7/b3_neg_reconcile.py",
+   "bytes": 3700,
+   "raw_sha256": "c77e47edf50c70b8fc25a798cdc1992fa58001b2fc42b1ab1ba6fa02d4db1ecc"
+  },
+  {
+   "path": "20_DEV/r7/b3_neg_v2.py",
+   "bytes": 7463,
+   "raw_sha256": "4ce8622d45a1920cedae815d873233900b704ca805871f6edca357d710e3e6d3"
+  },
+  {
+   "path": "20_DEV/r7/b3_product.py",
+   "bytes": 22772,
+   "raw_sha256": "a645f8aec3f2fe946045056e9a0031ebd4c920d6f53265e480249a044cff6009"
+  },
+  {
+   "path": "20_DEV/r7/b3_tqaep.py",
+   "bytes": 21541,
+   "raw_sha256": "5614b5d61a4fa4603f813bbe34f4053fc1a61bf4f26943f14bf6ea2c07480782"
+  },
+  {
+   "path": "20_DEV/r7/closeout_gen.py",
+   "bytes": 20396,
+   "raw_sha256": "791345fbe3c7871b996368680ed4e6a4e917a4b30565e59da4096d91f05dd9f2"
+  },
+  {
+   "path": "20_DEV/r7/publish_note.py",
+   "bytes": 2005,
+   "raw_sha256": "66b2784d67aa0f772c641002267c418f5b34518eaa4aadf6e14f8aaeb33fe513"
+  },
+  {
+   "path": "20_DEV/r7/r5_consumers.py",
+   "bytes": 15247,
+   "raw_sha256": "3878190e4e4f21f8456ea54c65000a7c24dd529b7c385508cdeef0409c4c11ee"
+  },
+  {
+   "path": "20_DEV/r7/r7_closeout_gen.py",
+   "bytes": 19982,
+   "raw_sha256": "7342a2f906fce6e925bcf42f9cf69e20650ce3c748d9a8e59b7aa50116661862"
+  },
+  {
+   "path": "20_DEV/r7/r7_closeout_gen_rev2.py",
+   "bytes": 21881,
+   "raw_sha256": "5d718b1274775e2e9fbee879291b686f546d6f107bce13be630e50983fa89ebe"
+  },
+  {
+   "path": "20_DEV/r7/r7_closeout_gen_rev3.py",
+   "bytes": 24093,
+   "raw_sha256": "c7e33e7a182a83b343f60cdf398ac786451d792fc4156ab63036c89ee74d42b2"
+  },
+  {
+   "path": "20_DEV/r7/r7_closeout_gen_rev4.py",
+   "bytes": 24452,
+   "raw_sha256": "21bc6b649c1255edd8e52e1a440e36c9a73b50860b8caa63b3202dead360dcab"
+  },
+  {
+   "path": "20_DEV/r7/r7_freeze.py",
+   "bytes": 7020,
+   "raw_sha256": "8c97b544d24c62332e53544c810bddfee9a1fcbcaae87ff661172812ea436730"
+  },
+  {
+   "path": "20_DEV/r7/r7_preflight.py",
+   "bytes": 15852,
+   "raw_sha256": "fc7deaa2930aa8fa48292d88c7b321829d30d09adae3d8d174490dab57d95ecb"
+  },
+  {
+   "path": "20_DEV/r7/r7_reconcile.py",
+   "bytes": 4968,
+   "raw_sha256": "323cf111cf771d7ca2d466ff08ab199b55e84ba811d368ea73c732b8b10e71ce"
+  },
+  {
+   "path": "20_DEV/r7/w0_spec.py",
+   "bytes": 4775,
+   "raw_sha256": "6a40989c5a0679088fc696967168308d71a55242a03f32f453f4956cefca2abb"
+  },
+  {
+   "path": "40_OPS/SUPERSEDED_RECEIPTS.md",
+   "bytes": 1517,
+   "raw_sha256": "6f05be089f8618f6ba8b645cb51ffe9a58a26cd89d8f79eb9c265b43d264be78"
+  },
+  {
+   "path": "40_OPS/b0_current_sourcereadset.json",
+   "bytes": 5429,
+   "raw_sha256": "2a226d27b1559dc7e19ac8a5969f4704dba19f20da10cb0bb8c7b09c82175354"
+  },
+  {
+   "path": "40_OPS/b0_descriptor_renewal.json",
+   "bytes": 1332,
+   "raw_sha256": "b63234ef78253ded172497395e10f4f987a72dca419e942e2848cd78c67b14b1"
+  },
+  {
+   "path": "40_OPS/b1_r7_base_reconcile.json",
+   "bytes": 4410,
+   "raw_sha256": "4e75a12c53ced51ad42f530d321faae9b1874615e33a1537d958d4d9a628fed4"
+  },
+  {
+   "path": "40_OPS/b1_r7_edge_sec.json",
+   "bytes": 3316,
+   "raw_sha256": "f08250664166f9df242141b57f40216c2f64631e6b87b2064a2a64c8f07d0565"
+  },
+  {
+   "path": "40_OPS/b1_r7_run_all.json",
+   "bytes": 60062,
+   "raw_sha256": "cdae2204943eb1182d8f159208474e671536a4de97396bce2fb93ec299c5ce80"
+  },
+  {
+   "path": "40_OPS/b1_r7_tqaep.json",
+   "bytes": 68736,
+   "raw_sha256": "45988a69c3e408c491227c9723ed51a812bdd5473f74abe242a9eeba07c80948"
+  },
+  {
+   "path": "40_OPS/b2_r7_meta.json",
+   "bytes": 8525,
+   "raw_sha256": "3d89c35c5b9a23afdb186f20eab7a440c8a8a87c0f764853bb1883d542bcf7c2"
+  },
+  {
+   "path": "40_OPS/b2_r7_qualifier_delta.json",
+   "bytes": 25781,
+   "raw_sha256": "5730906a38fe788601d72d15e1635ef6da1fb13a8c576c86d353a65f1371edad"
+  },
+  {
+   "path": "40_OPS/b2_r7_receivers.json",
+   "bytes": 2805405,
+   "raw_sha256": "8cfd7afa82f100e999ece8dbae2bfaa2753e8cae43c0ef992ac786d1eb160b7e"
+  },
+  {
+   "path": "40_OPS/b2_r7_tool_readset.json",
+   "bytes": 703886,
+   "raw_sha256": "0aa1abc1e1db3d38b72355dc37e2f16e0b30c41aa1c41ca16071d91d4911b125"
+  },
+  {
+   "path": "40_OPS/b2_r7_tqaep.json",
+   "bytes": 2198745,
+   "raw_sha256": "f3e1689799cf62e45d80c823a3a888e1393782fc04fe6b5b8d8f98eb2a93bc13"
+  },
+  {
+   "path": "40_OPS/b3_r7_neg_mutations.json",
+   "bytes": 16400,
+   "raw_sha256": "8bff05a589c59be5b51a4580bf1588773eb3efaaf44dbccb4c510dc8097e3624"
+  },
+  {
+   "path": "40_OPS/b3_r7_neg_reconcile.json",
+   "bytes": 13193,
+   "raw_sha256": "32f6ad60b2e3723302dc6499de1fccee4bdc660a483509b4ec959385330eaa1b"
+  },
+  {
+   "path": "40_OPS/b3_r7_product.json",
+   "bytes": 284483,
+   "raw_sha256": "801fdd21b1bf2f50417148dc05368ee6b3872111e06966f05fb374abdb60099a"
+  },
+  {
+   "path": "40_OPS/b3_r7_tqaep.json",
+   "bytes": 1288948,
+   "raw_sha256": "77d3a76a85667f785f89d92507282c2c91f665aa10fcf2b6b0dda6b8f3477c65"
+  },
+  {
+   "path": "40_OPS/r7_CANDIDATE_MANIFEST.rev5.tsv",
+   "bytes": 5433,
+   "raw_sha256": "cb60887963761da48a948c6e1699e0f40fc725fc054e604c9acec10957bc880a"
+  },
+  {
+   "path": "40_OPS/r7_CANDIDATE_MANIFEST.rev6.tsv",
+   "bytes": 5649,
+   "raw_sha256": "6f26db8049da85a0c4ef6cb7f62a1b9fd20ca1cea1e268dd6ea68fe48bdc68e1"
+  },
+  {
+   "path": "40_OPS/r7_b3_admission.json",
+   "bytes": 7512,
+   "raw_sha256": "213f5370b1e4799af6bb41cd496d3e87257486fef18533b868752285c1b59e1f"
+  },
+  {
+   "path": "40_OPS/r7_b4_receiver.json",
+   "bytes": 44091,
+   "raw_sha256": "09e28094adc08bbb74f627e55495c726924ade6f4539f1f4145c62f1358207a4"
+  },
+  {
+   "path": "40_OPS/r7_candidate_freeze.rev2.json",
+   "bytes": 7495,
+   "raw_sha256": "946336c6ac19c98d14d5e37d3a851a0067d82a480497e88ced9b02a562426fbe"
+  },
+  {
+   "path": "40_OPS/r7_candidate_freeze.rev3.json",
+   "bytes": 7812,
+   "raw_sha256": "609c041fd41ee2de27ba6b65d2d34991675528ce2a5cddc2125fe6a2b6c4cc74"
+  },
+  {
+   "path": "40_OPS/r7_candidate_freeze.rev4.json",
+   "bytes": 7974,
+   "raw_sha256": "38fd16eaff19fee75531a14bae3159da75f372e77b7db9d3421bca16d526ec22"
+  },
+  {
+   "path": "40_OPS/r7_candidate_freeze.rev5.json",
+   "bytes": 10204,
+   "raw_sha256": "72a783aeeed5d82ea4e575f2643d7a687fa8f95c896d4d15c4a30075cd6b6d11"
+  },
+  {
+   "path": "40_OPS/r7_candidate_freeze.rev6.json",
+   "bytes": 10783,
+   "raw_sha256": "1d8c03425341d714b1bac1d775539b6ff7a58d51f67a7ee99011bf090f6d45dd"
+  },
+  {
+   "path": "40_OPS/r7_checker_verdict.md",
+   "bytes": 21700,
+   "raw_sha256": "1a2daab09185f5dfba05f18439289bb32f2145ddb9aa5242b1a98c39d1b8073e"
+  },
+  {
+   "path": "40_OPS/r7_consumer_receipts.json",
+   "bytes": 10007,
+   "raw_sha256": "e5beb6c873c240bb18eff43ff43fe6f7b7943a194b98f1acb0d1c265cbfd956d"
+  },
+  {
+   "path": "40_OPS/r7_consumer_selftest.json",
+   "bytes": 1905,
+   "raw_sha256": "be596df8214e0174c713f12a3637849a44d6d220048fd07872deaed7bed9c639"
+  }
+ ],
+ "supersedes": [
+  {
+   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\r7_candidate_freeze.json",
+   "revision": null,
+   "candidate_digest": "45d41c592ef3e89b755a05a7db28798fee044c8e1a81a867b1528e7e00af71b2"
+  },
+  {
+   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\r7_candidate_freeze.rev2.json",
+   "revision": null,
+   "candidate_digest": "ad830f6bd9d9dcd37d82ea9745cafd5914ef8259aecf05dfc6f1fccc66f9a4ce"
+  },
+  {
+   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\r7_candidate_freeze.rev3.json",
+   "revision": null,
+   "candidate_digest": "65ef7a75107d0bb57401194e37bb8dd2b989efbee173d10d76f78b6ed4e1f7df"
+  },
+  {
+   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\r7_candidate_freeze.rev4.json",
+   "revision": null,
+   "candidate_digest": "38f20921b7daa050801be704443cac8296da513dbff0a53b4fc3812ceff82928"
+  },
+  {
+   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\r7_candidate_freeze.rev5.json",
+   "revision": "rev5",
+   "candidate_digest": "04d63bbb6f148b2c6121b433e49450db68a77e0d1330c75ca333af450b0e0c0e"
+  },
+  {
+   "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\r7_candidate_freeze.rev6.json",
+   "revision": "rev6",
+   "candidate_digest": "c7baa16eaa8822926d9e74dc0bcf8bf1214961d5ab9a31131ca688015fe85bdd"
+  }
+ ]
+}

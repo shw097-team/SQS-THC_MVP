@@ -1,7 +1,7 @@
 {
  "schema": "SST.PH01.W0.B3.NegMutations@2",
  "verdict_owner": "this receipt (it now carries expected vs observed and the faithfulness judgement)",
- "generated_at": "2026-11-27T18:20:30+0800",
+ "generated_at": "2026-11-27T19:00:46+0800",
  "baseline": {
   "units": 365,
   "keys_with_child": 22,
@@ -254,11 +254,11 @@
    "key": "REQ-01::AUTHOR-SPLIT-07",
    "kind": "CHILD",
    "mutation": "FIELD",
-   "mutation_faithful": true,
+   "mutation_faithful": false,
    "expected_first_fail": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-07",
    "observed_first_fail": null,
-   "verdict": "FAIL",
-   "reason": "FIELD_MUTATION_NOT_DETECTED:requiredness"
+   "verdict": "HOLD",
+   "reason": "FIELD_CARRIER_ABSENT:requiredness"
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-08.DELETE_CHILD",
@@ -290,11 +290,11 @@
    "key": "REQ-01::AUTHOR-SPLIT-08",
    "kind": "CHILD",
    "mutation": "FIELD",
-   "mutation_faithful": true,
+   "mutation_faithful": false,
    "expected_first_fail": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-08",
    "observed_first_fail": null,
-   "verdict": "FAIL",
-   "reason": "FIELD_MUTATION_NOT_DETECTED:owner"
+   "verdict": "HOLD",
+   "reason": "FIELD_CARRIER_ABSENT:owner"
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-09.DELETE_CHILD",
@@ -539,8 +539,7 @@
  ],
  "counts": {
   "PASS": 33,
-  "HOLD": 9,
-  "FAIL": 2
+  "HOLD": 11
  },
  "hold_reasons": {
   "FIELD_CARRIER_ABSENT:original_id": 1,
@@ -549,8 +548,8 @@
   "FIELD_CARRIER_ABSENT:parent": 1,
   "FIELD_CARRIER_ABSENT:child": 1,
   "FIELD_CARRIER_ABSENT:polarity": 1,
-  "FIELD_MUTATION_NOT_DETECTED:requiredness": 1,
-  "FIELD_MUTATION_NOT_DETECTED:owner": 1,
+  "FIELD_CARRIER_ABSENT:requiredness": 1,
+  "FIELD_CARRIER_ABSENT:owner": 1,
   "FIELD_CARRIER_ABSENT:oracle": 1,
   "FIELD_CARRIER_ABSENT:case": 1,
   "FIELD_CARRIER_ABSENT:draft": 1

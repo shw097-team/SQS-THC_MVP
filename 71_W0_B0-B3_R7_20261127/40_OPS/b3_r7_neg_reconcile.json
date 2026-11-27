@@ -6,8 +6,7 @@
  "cases_verified": 44,
  "verdict_counts": {
   "PASS": 33,
-  "HOLD": 9,
-  "FAIL": 2
+  "HOLD": 11
  },
  "disagreements": [],
  "cases": [
@@ -216,10 +215,10 @@
    "expected": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-07",
    "observed": null,
    "mutation": "FIELD",
-   "mutation_faithful": true,
-   "receipt_verdict": "FAIL",
-   "recomputed_verdict": "FAIL",
-   "reason": "FIELD_MUTATION_NOT_DETECTED:requiredness"
+   "mutation_faithful": false,
+   "receipt_verdict": "HOLD",
+   "recomputed_verdict": "HOLD",
+   "reason": "FIELD_CARRIER_ABSENT:requiredness"
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-08.DELETE_CHILD",
@@ -246,10 +245,10 @@
    "expected": "AUTHOR:CHILD_RULE_HOLD:REQ-01::AUTHOR-SPLIT-08",
    "observed": null,
    "mutation": "FIELD",
-   "mutation_faithful": true,
-   "receipt_verdict": "FAIL",
-   "recomputed_verdict": "FAIL",
-   "reason": "FIELD_MUTATION_NOT_DETECTED:owner"
+   "mutation_faithful": false,
+   "receipt_verdict": "HOLD",
+   "recomputed_verdict": "HOLD",
+   "reason": "FIELD_CARRIER_ABSENT:owner"
   },
   {
    "case_id": "B3.NEG.REQ-01__AUTHOR-SPLIT-09.DELETE_CHILD",

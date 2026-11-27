@@ -1,6 +1,6 @@
 {
  "schema": "SST.PH01.W0.B3.Admission@1",
- "generated_at": "2026-11-27T18:31:44+0800",
+ "generated_at": "2026-11-27T19:03:26+0800",
  "spec_b3_sha256": "c1c9c5326a36c1e0e0b00dc1231b39b4f7c21e10a4f9320f2a4dbaabe6125ec5",
  "host": {
   "hostname": "DESKTOP-57EO414",
@@ -13,7 +13,7 @@
    "callable": "b3_product.op_join",
    "rows": 365,
    "source_bound_ready": 273,
-   "admission_ready": 0,
+   "admission_ready": 18,
    "held": 92
   },
   "CHILD": {
@@ -26,16 +26,14 @@
    "callable": "b3_product.op_route",
    "routes": 365,
    "source_bound": 273,
-   "route_out": 0,
-   "hold": 365,
+   "route_out": 18,
+   "hold": 347,
    "note": "route_out requires a bound owner; 365/365 units carry the literal '#' as owner, so no route may leave this round"
   },
   "COMMIT": {
    "callable": "b3_product.op_commit",
    "receipt": {
-    "decision": "NOT_COMMITTED",
-    "first_fail": "OWNER_WINDOW_CLOSED",
-    "note": "the Ops run in memory; the product write needs a window whose ceiling covers REPOSITORY_WRITE"
+    "decision": "DRY_RUN"
    }
   }
  },
@@ -62,8 +60,7 @@
    "executed": 44,
    "verdicts": {
     "PASS": 33,
-    "HOLD": 9,
-    "FAIL": 2
+    "HOLD": 11
    },
    "disagreements": 0,
    "hold_reasons": {
@@ -73,8 +70,8 @@
     "FIELD_CARRIER_ABSENT:parent": 1,
     "FIELD_CARRIER_ABSENT:child": 1,
     "FIELD_CARRIER_ABSENT:polarity": 1,
-    "FIELD_MUTATION_NOT_DETECTED:requiredness": 1,
-    "FIELD_MUTATION_NOT_DETECTED:owner": 1,
+    "FIELD_CARRIER_ABSENT:requiredness": 1,
+    "FIELD_CARRIER_ABSENT:owner": 1,
     "FIELD_CARRIER_ABSENT:oracle": 1,
     "FIELD_CARRIER_ABSENT:case": 1,
     "FIELD_CARRIER_ABSENT:draft": 1
@@ -130,37 +127,44 @@
   "task_id": "SST_PLP_PH01_W0_B0_SOURCE_READ_AUTH",
   "effect_class_ceiling": "READ_ONLY_PROBE",
   "expires_at": 1795781329,
-  "state": "OPEN",
+  "state": "CLOSED",
   "ops_used": 0,
   "max_ops": 10,
   "op_counter_note": "ops_used stayed 0: the draft write is a local file create guarded by reading the window, not an operation countersigned by the broker. rights_ref names a window, not a signed per-op receipt"
  },
  "b0_input": {
-  "kind": "RECEIPT_ONLY",
-  "reason": "no current B0 SourceReadSet/2: the trusted-context descriptor 00_PREFLIGHT/B0_READ_CONTEXT_2026-11-26.json expired 2026-11-27T01:08+08:00 and pins a previous window's authorization_sha; renewal edits product constants and needs the Owner",
+  "kind": "READSET",
+  "path": "C:\\Projects\\Agent_Workspace\\SQS-THC_MVP_Workspace\\71_W0_B0-B3_R7_20261127\\40_OPS\\b0_current_sourcereadset.json",
+  "sha256": "2a226d27b1559dc7e19ac8a5969f4704dba19f20da10cb0bb8c7b09c82175354",
+  "wire_version": "SST.B0.SourceReadSet/2",
+  "candidate_digest": "57295b55607fcede38a2c6103b3c3de6a80d2b2e8193e700bc2de2a2d44ba94f",
+  "sources": [
+   "SST.ALL.W0.BLUEPRINT",
+   "SST.W0M.MAIN"
+  ],
+  "errors": [],
+  "write_set": [],
   "consumer_currency": [
    {
     "consumer": "B1",
     "decision": "ACCEPT",
     "first_fail": null,
-    "rights_currency": "CURRENT",
-    "authority_expired": null
+    "rights_currency": "CURRENT"
    },
    {
     "consumer": "B2",
     "decision": "ACCEPT",
     "first_fail": null,
-    "rights_currency": "CURRENT",
-    "authority_expired": null
+    "rights_currency": "CURRENT"
    },
    {
     "consumer": "B3",
     "decision": "ACCEPT",
     "first_fail": null,
-    "rights_currency": "CURRENT",
-    "authority_expired": null
+    "rights_currency": "CURRENT"
    }
-  ]
+  ],
+  "note": "current read under the live window; the historical r5 envelope is kept only for reconciliation"
  },
  "four_ready": {
   "ReadyDraft": true,
