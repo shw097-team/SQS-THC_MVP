@@ -1,0 +1,29 @@
+{
+ "schema": "SST.PH01.W0.B1.CurrentPointer/1",
+ "wave": "SST_PH01_W0_B1_20261128",
+ "status": "B1_NOT_ACCEPTED_PARTIAL",
+ "layer": "candidate",
+ "candidate_is_not_accepted": true,
+ "accepted_cases": 29,
+ "open_cases": 31,
+ "case_total": 60,
+ "ready": {"ReadyDraft": "PRESENT", "ReadyAtom": "PARTIAL", "ReadyExecute": "NOT_READY", "ReadyAccept": "NOT_READY"},
+ "document": "60_CLOSEOUT/SST_PLP_PH01_W0_B1_STATUS_20261128.md",
+ "baseline": "30_VERIFY/B1_T1_BASELINE_20261128.json",
+ "spec": {"path": "C:\\Projects\\Agent_Workspace\\知識庫\\SQS\\【1】SST_PLP_PH01-04\\SST_PLP_PH01_W0_B0-B8\\W0_B0-B3_r7\\SST_PLP_PH01_W0_B1_執行控制小包_實質正文_2026-11-27_r7_Native-first_CODEX_FINAL.md",
+          "sha256": "28437e1b249291f9a89c54c35c23fa11f515d1803c770d4a65e6b28f394f63f7"},
+ "inherited_assets": {
+  "10_CODE/b1_product/*": "byte-copies of 71_W0_B0-B3_R7_20261127/20_DEV/r7/{b1_spec,b1_engine,b1_cli,b1_tqaep,b1_edge_sec}.py; not modified, not accepted",
+  "40_OPS/b1_r7_*.json": "the r7 TQAEP/run receipts used as DATA for reclassification",
+  "30_VERIFY/historical_r7_mechanical_verdict.md": "historical mechanical verdict (that review lost candidate immutability; it is history, not acceptance)"
+ },
+ "parks": [
+  {"id": "F01/D-1", "owner": "Repo/Source Owner", "resume": "per-target approval of namespace/root/path/commit/blob/raw/usage/receipt, then re-read with identity and re-run 11 POS cases"},
+  {"id": "F02/D-2", "owner": "Owner", "resume": "extend the allow-list or grant the four FDA test read rights; no glob/mirror substitutes"},
+  {"id": "F03/D-3", "owner": "FDA Owner / FDA-XQ-R13 Reader", "resume": "original artefacts + qualified reader, then re-derive slot→action→artifact M:N and re-run 14 cases"},
+  {"id": "F04/D-4", "owner": "Kernel Owner", "resume": "original ten author rules + SECOND_WRITER oracle, then re-judge 5 NEG cases"},
+  {"id": "fabricated_commit", "owner": "Owner", "resume": "two repair attempts already spent; a third needs an explicit Owner re-open"}
+ ],
+ "invariants": {"product_write_set": [], "preimage": "N/A", "fin_order": "DENY", "no_lease": true, "no_live_submit": true},
+ "next": "On any resume predicate: re-run only the affected cases, re-freeze the candidate, then a separated acceptance. B2/B3 documents are not blocked by B1."
+}

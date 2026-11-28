@@ -1,0 +1,19 @@
+{
+ "schema": "SST.PH01.W0.B1.PublishReadback/1",
+ "published_at": "2026-11-28T01:33:17.792404+08:00",
+ "subtree": "73_W0_B1_20261128",
+ "commit": "4602fc1f37820847ad97ca3a2b127e45be1071c2",
+ "url": "https://github.com/shw097-team/SQS-THC_MVP/tree/4602fc1f37820847ad97ca3a2b127e45be1071c2/73_W0_B1_20261128",
+ "tree_files_at_commit": 20,
+ "manifest_entries": 19,
+ "manifest_mismatch": 0,
+ "redacted_files": 1,
+ "redacted": [
+  {
+   "path": "70_PUBLISH/publish_b1.py",
+   "local_sha256": "890bc5e9bacb38fc001f9e89b16c7f7b0b3a24754eb80dd8a3c9637505b52c10",
+   "published_sha256": "9825459b463966df5257735e21a4f63cd8702165ddbfe1a4ddd6d02d7dc4c307",
+   "hits": 1
+  }
+ ]
+}
