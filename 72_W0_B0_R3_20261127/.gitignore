@@ -1,0 +1,9 @@
+# local build artifacts — never committed, never delivered
+publish/
+tmp/
+__pycache__/
+*.pyc
+*.pyo
+.PYTHON_CACHE/
+*.logs
+*.attempts.ndjson
