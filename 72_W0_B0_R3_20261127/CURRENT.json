@@ -17,11 +17,30 @@
   "note": "r27..r34 are the same bytes; r34 is the published revision label. The candidate is the ACCEPTED object, not a pending candidate."
  },
  "active_chain": {
-  "descriptor": {"path": "00_PREFLIGHT/B0_READ_CONTEXT_20261127_r10.json", "sha256": "fd52572f0fc6b8da…"},
-  "envelope": {"path": "40_OPS/b0_sourcereadset_r11_20261127.json", "sha256": "fc7269789632cf29…", "bytes": 5473},
-  "deployment": {"path": "00_PREFLIGHT/DEPLOYMENT_prod_20261127_r12.json", "sha256": "30f402a3f47ed399ba…", "pinned_in": "10_CODE/b0_r3_receiver/deployment.py:PINNED['prod']"},
-  "receipts": ["40_OPS/r13_inbound_b1_receipt.json", "40_OPS/r13_inbound_b2_receipt.json", "40_OPS/r13_inbound_b3_receipt.json"],
-  "owner_window": {"window_id": "WIN-056f06fe7b02", "state": "CLOSED", "receipt_sha256": "bd0e539a2afae874…"},
+  "descriptor": {
+   "path": "00_PREFLIGHT/B0_READ_CONTEXT_20261127_r10.json",
+   "sha256": "fd52572f0fc6b8da…"
+  },
+  "envelope": {
+   "path": "40_OPS/b0_sourcereadset_r11_20261127.json",
+   "sha256": "fc7269789632cf29…",
+   "bytes": 5473
+  },
+  "deployment": {
+   "path": "00_PREFLIGHT/DEPLOYMENT_prod_20261127_r12.json",
+   "sha256": "30f402a3f47ed399ba…",
+   "pinned_in": "10_CODE/b0_r3_receiver/deployment.py:PINNED['prod']"
+  },
+  "receipts": [
+   "40_OPS/r13_inbound_b1_receipt.json",
+   "40_OPS/r13_inbound_b2_receipt.json",
+   "40_OPS/r13_inbound_b3_receipt.json"
+  ],
+  "owner_window": {
+   "window_id": "WIN-056f06fe7b02",
+   "state": "CLOSED",
+   "receipt_sha256": "bd0e539a2afae874…"
+  },
   "producer_candidate_digest": "fde97eeb58188b2968f7743381d51f2791fe583186cdbe7be470666a316aedce"
  },
  "document": {
@@ -31,17 +50,34 @@
   "b1_entry_note": "60_CLOSEOUT/B1_ENTRY_NOTE_20261128.md"
  },
  "layers": {
-  "main": ["10_CODE/b0_r3_receiver/*", "10_CODE/consumers/*", "00_PREFLIGHT/{descriptor r10, deployment r12}", "40_OPS/r13_inbound_*", "60_CLOSEOUT/{r34 doc, FREEZE_r34, CANDIDATE_receiver_r34}", "30_VERIFY/verdict_r*_round*.json"],
-  "archive": ["90_ARCHIVE/superseded_revisions/* — r8..r33 documents, freezes, manifests and candidate manifests; superseded by r34 and not to be used as the active pointer"],
-  "disposable": ["tmp/ (deleted)", "__pycache__ (deleted)", "publish/ (local git clone of the delivery repo; excluded from commits)"],
-  "evidence_history": ["30_VERIFY/verdict_r*.json (10 rounds, unmodified)", "40_OPS/r8..r12 receipts (superseded, kept as history)"]
+  "main": [
+   "10_CODE/b0_r3_receiver/*",
+   "10_CODE/consumers/*",
+   "00_PREFLIGHT/{descriptor r10, deployment r12}",
+   "40_OPS/r13_inbound_*",
+   "60_CLOSEOUT/{r34 doc, FREEZE_r34, CANDIDATE_receiver_r34} + the 26 frozen historical r8..r33 documents (they are FREEZE_r34 members and must stay in place)",
+   "30_VERIFY/verdict_r*_round*.json"
+  ],
+  "archive": [
+   "90_ARCHIVE/superseded_revisions/* — 84 files: superseded freezes, freeze manifests and candidate manifests (all excluded from the freeze predicate). The superseded *documents* are freeze members and therefore stay in 60_CLOSEOUT"
+  ],
+  "disposable": [
+   "tmp/ (deleted)",
+   "__pycache__ (deleted)",
+   "publish/ (local git clone of the delivery repo; excluded from commits)"
+  ],
+  "evidence_history": [
+   "30_VERIFY/verdict_r*.json (10 rounds, unmodified)",
+   "40_OPS/r8..r12 receipts (superseded, kept as history)",
+   "60_CLOSEOUT/SST_PLP_PH01_W0_B0_CLOSEOUT_HANDOFF_r8..r33.md (frozen historical documents)"
+  ]
  },
  "invariants": {
   "product_write_set": [],
   "preimage": "N/A",
   "fin_order": "DENY",
   "freeze_member_set_unchanged_by_hygiene": true,
-  "note": "Moving superseded documents into 90_ARCHIVE does not change FREEZE_r34 members: documents, freezes and candidate manifests are excluded from the freeze predicate."
+  "note": "Hygiene moved only freeze-excluded artefacts (freezes, manifests, candidate manifests). The 26 historical documents are freeze members and were restored to 60_CLOSEOUT; FREEZE_r34 now resolves 170/170 with 0 drift."
  },
  "next": "B1 (73_W0_B1_20261128) is NOT_ACCEPTED_PARTIAL; see 60_CLOSEOUT/B1_ENTRY_NOTE_20261128.md and the B1 wave's CURRENT.json"
 }

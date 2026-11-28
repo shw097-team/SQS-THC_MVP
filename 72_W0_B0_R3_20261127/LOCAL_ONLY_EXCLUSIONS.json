@@ -266,7 +266,7 @@
   "20_DEV/exec_repair1_receipt.json.logs/attempt-21972-1795521571-1-stdout.txt"
  ],
  "preexisting_residue": {
-  "parent": "4602fc1f37820847ad97ca3a2b127e45be1071c2",
+  "parent": "b7571cfec4a22084611e4799ac73119c02d56c64",
   "count": 56,
   "paths": [
    "00_PREFLIGHT/required_set_req12_read_all_2026-11-25.json",
