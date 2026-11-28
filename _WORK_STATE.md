@@ -20,8 +20,8 @@ OWNER window `WIN-056f06fe7b02` 已 CLOSED；新接收需重新取得合法權�
 
 | 層 | 位置 | 內容 |
 |---|---|---|
-| **main（主用）** | `72_…/60_CLOSEOUT`（7 檔）、`72_…/10_CODE`、`72_…/00_PREFLIGHT`（r10／r12）、`72_…/40_OPS`（r13 收據） | 受檢候選、最終 CLOSEOUT/HANDOFF、freeze、活動鏈 |
-| **archive（歷史）** | `72_…/90_ARCHIVE/superseded_revisions`（110 檔） | r8–r33 的文件、freeze、manifest、候選 manifest；**不得**當活動指標 |
+| **main（主用）** | `72_…/60_CLOSEOUT`（33 檔＝最終 r34 七件＋26 份**受凍歷史文件**）、`72_…/10_CODE`、`72_…/00_PREFLIGHT`（r10／r12）、`72_…/40_OPS`（r13 收據） | 受檢候選、最終 CLOSEOUT/HANDOFF、freeze、活動鏈 |
+| **archive（歷史）** | `72_…/90_ARCHIVE/superseded_revisions`（84 檔） | 被取代的 freeze／manifest／候選 manifest（皆為 freeze 排除項）；`r8–r33` **文件**因屬 `FREEZE_r34` 成員，留在 `60_CLOSEOUT` 原位 |
 | **evidence（證據）** | `72_…/30_VERIFY/verdict_r*_round*.json`（10 輪） | 未經改寫的分離判定原文 |
 | **candidate（未接受）** | `73_W0_B1_20261128` | B1 基線、r7 原碼原樣、重新分類收據、PARK |
 | **disposable** | `publish/`、`tmp/`、`__pycache__/` | 本地建置物；`tmp/` 與 `__pycache__` 已刪，`publish/` 只在本機 clone |
